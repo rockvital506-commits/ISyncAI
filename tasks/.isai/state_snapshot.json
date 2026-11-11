@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1.0",
+  "revision": 1,
+  "timestamp_utc": "2026-11-11T16:06:13Z",
+  "genesis_sha256": "4ba8961ae9426294f5b967ade6f5dadf0f648698591317859e8998a5d98482b9",
+  "master_vector_version": "1.0.0",
+  "master_vector_digest": "fd5e8b91669707b381d49214045219db3976b9a6fb185a2acd6d8edb5f49ef2c",
+  "active_tasks": [],
+  "open_handles": [],
+  "node_spec_digests": {
+    "isai://knowledge": "cebfddc7f16523122dcbd53c637d653ddc6f53858bda007a9004ea67c51c2f56",
+    "isai://root": "ab7bba045c8104734b5364a261a1a2ea3c12b8487e7dd6ee9629c707c7070ffc",
+    "isai://tasks": "80c99e84e74ed1046b1132696d69c6757899aacaabbe41cac10e0a59c32d3f8a",
+    "isai://tests": "4a10c9efcd3f431b53d4875132a0b86d516f4273092f901f6bb826b873fffdbb",
+    "isai://user": "7513efe18a6c62a845576e3bda53a696cf93cbde17e5a19bc536cf09275fb647"
+  },
+  "node_interface_digests": {
+    "isai://knowledge": "a9c47a01b00764192ca3ccce336482c008fa20ef697994d1a44f1a280dc1c14f",
+    "isai://root": "77035afa9a40320491389b53d2e64622a82d74cb8b495793184d2cec62e51ccf",
+    "isai://tasks": "b4ca4ed97da35067cdec4ed9126ab99e78d8f838f9a7a7e2fd5675179653ad5b",
+    "isai://tests": "8adc0f23a99e3a25ba4ac96bd04a47913f63f3e34bbb07bc79a73946e42cc2b5",
+    "isai://user": "97f2aaa0c02fc104c5edfd02498862e0fe1031af4a10c758ab2ad5d1c1d3d532"
+  },
+  "audit_status": "VALID"
+}
