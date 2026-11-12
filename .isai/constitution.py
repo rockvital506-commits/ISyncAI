@@ -32,10 +32,11 @@ GENESIS_SHA256: str = "4ba8961ae9426294f5b967ade6f5dadf0f648698591317859e8998a5d
 class IntegrityLevel(StrEnum):
     """Windows MIC-inspired integrity rings protecting ISAI from unauthorized mutation."""
 
-    IL_0_GENESIS = "IL_0_GENESIS"       # Byte-immutable Genesis Frame (never mutates)
-    IL_1_KERNEL = "IL_1_KERNEL"         # Core .isai/ engine & Master Vector (governed evolution)
-    IL_2_CANONICAL = "IL_2_CANONICAL"   # Promoted hives (/user, /knowledge, domains) via Watchdog gate
-    IL_3_STAGING = "IL_3_STAGING"       # Runtime task arena (/tasks) for active execution & staging
+    IL_0_GENESIS = "IL_0_GENESIS"           # Byte-immutable Genesis Frame (never mutates)
+    IL_1C_FUNDAMENTAL = "IL_1C_FUNDAMENTAL" # Conditionally-mutable Sub-Genesis Fundamental (6-Step Algedonic + Operator ratification only)
+    IL_1_KERNEL = "IL_1_KERNEL"             # Core .isai/ engine & Master Vector (governed evolution)
+    IL_2_CANONICAL = "IL_2_CANONICAL"       # Promoted hives (/user, /knowledge, domains) via Watchdog gate
+    IL_3_STAGING = "IL_3_STAGING"           # Runtime task arena (/tasks) for active execution & staging
 
 
 class BoundaryIgnoreSpec(BaseModel):
@@ -48,12 +49,14 @@ class BoundaryIgnoreSpec(BaseModel):
         ".venv",
         "__pycache__",
         ".pytest_cache",
+        ".hypothesis",
         ".mypy_cache",
         ".ruff_cache",
         "build",
         "dist",
     )
     ignored_dir_suffixes: tuple[str, ...] = (".egg-info",)
+    ignored_file_names: tuple[str, ...] = (".isai_write.lock",)
     ignored_file_suffixes: tuple[str, ...] = (".pyc", ".pyo", ".pyd")
 
     def is_ignored(self, rel_path: Path) -> bool:
@@ -63,6 +66,8 @@ class BoundaryIgnoreSpec(BaseModel):
                 return True
             if any(part.endswith(sfx) for sfx in self.ignored_dir_suffixes):
                 return True
+        if rel_path.name in self.ignored_file_names:
+            return True
         if any(rel_path.name.endswith(sfx) for sfx in self.ignored_file_suffixes):
             return True
         return False

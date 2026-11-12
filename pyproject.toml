@@ -4,17 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "isai"
-version = "0.1.0"
-description = "ISyncAI (ISAI) — Portable Co-Evolutionary Human-Agent Synchronization Kernel"
+version = "0.2.5"
+description = "ISyncAI (ISAI) — Portable Fractal Symbiosis & Context Synchronization Kernel"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "pydantic>=2.7,<3.0",
+    "pydantic>=2.7",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
+    "hypothesis>=6.100",
 ]
 
 [project.scripts]
@@ -28,4 +29,7 @@ isai = ".isai"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["."]
+addopts = "-q"
+markers = [
+    "isai_scope: Marks which ISAI hypergraph scopes or edges a cross-test verifies.",
+]
