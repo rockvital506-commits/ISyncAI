@@ -4,12 +4,12 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://user -->
-<!-- isai:spec_digest=7513efe18a6c62a845576e3bda53a696cf93cbde17e5a19bc536cf09275fb647 -->
-<!-- isai:interface_digest=97f2aaa0c02fc104c5edfd02498862e0fe1031af4a10c758ab2ad5d1c1d3d532 -->
+<!-- isai:spec_digest=9d3a7be81298d5776efd9d11ccadca9c1ecd33919e844c7858ede12863066a7d -->
+<!-- isai:interface_digest=116cf18fdfe073301accb2b8e7261b3632e3ed7c13b9630148313b827ed6d191 -->
 
 ## Паспорт узла `isai://user` — Улей когнитивного профиля и компетенций оператора (User Twin / HKCU)
 
-- **Уровень целостности:** `IL_2_CANONICAL`
+- **Уровень целостности:** `IL_2_CANONICAL` | **Видимость:** `PUBLIC`
 - **Родительский узел:** `isai://root`
 - **Цель (`Goal`):** Хранить и развивать верифицированную модель оператора (когнитивный стиль, инженерные директивы и матрицу компетенций) для точной калибровки любой подключаемой модели без пересказа очевидных базовых концепций.
 
@@ -27,19 +27,24 @@
 - Запрет на галлюцинацию неподтверждённых биографических или технических фактов об операторе.
 - Соответствие архетипу Genesis-ядра: FiduSys-Novator & Chronitect.
 
-### Адаптер (`Inputs / Outputs`)
+### Адаптер и Связывание Портов (`Adapter & Port Wirings`)
 - **Входы (`Inputs`):**
-  - `verified_skill_or_preference_delta` (`CompetencyRecord | CognitiveDirective`, опциональный) — Подтверждённое в ходе совместных тасков обновление навыков или предпочтений оператора.
+  - `verified_skill_or_preference_delta` (`CompetencyRecord | CognitiveDirective`, опциональный) [схемы: `isai.domain_models:CompetencyRecord`, `isai.domain_models:CognitiveDirective`] — Подтверждённое в ходе совместных тасков обновление навыков или предпочтений оператора.
 - **Выходы (`Outputs`):**
-  - `operator_calibration_slice` (`dict[str, Any]`, гарантированный) — Компактный срез директив и релевантных компетенций для включения в RSoC.
+  - `operator_calibration_slice` (`dict[str, Any]`, гарантированный) [схемы: `builtins:dict`] — Компактный срез директив и релевантных компетенций для включения в RSoC.
 
-### Реестр владения и символов (`Ownership & Symbols`)
+### Реестр владения и верифицируемых символов (`Ownership & Symbol Bindings`)
 - **Файлы узла (`owned_files`):** `README.md`
 - **Служебные файлы (`system_files`):** `.isai/node.py`, `.isai/profile.py`
-- **Экспортируемые сущности (`defined_symbols`):** `isai://user#OperatorProfile`
+- **Экспортируемые сущности (`symbol_bindings`):**
+  - `isai://user#OperatorProfile` (`python_attr` → `profile.py:USER_PROFILE`, видимость: `PUBLIC`)
 
-### Связи и Маршрутизация (`Router & Transitions`)
-- **Связанные сущности (`related_refs`):** `isai://root#GenesisKernel`, `isai://root#RSoCCompiler`, `isai://tasks#WatchdogService`
+### Типизированные связи и Маршрутизация (`Typed Links & Router`)
+- **Типизированные связи (`links`):**
+  - `isai://root#GenesisKernel` [`GOVERNED_BY` | RSoC: `NONE`]
+  - `isai://root#RSoCCompiler` [`CALIBRATES` | RSoC: `INTERFACE_STUB`] — Подача калибровочного среза в компилятор RSoC.
+  - `isai://tasks#WatchdogService` [`CONSUMES_CONTRACT` | RSoC: `INTERFACE_STUB`] — Транзакционный контроль мутаций профиля.
+  - `isai://root#NeuroVascularFundamental` [`GOVERNED_BY` | RSoC: `NONE`] — Подчинение субгенетическому нервно-сосудистому фундаменталу IL-1C.
 - **Допустимые переходы (`transitions`):**
   - При `inject_into_rsoc` → `isai://root#RSoCCompiler` [режим: `FAST_READ`] — Передача релевантного среза профиля в компилятор контекста фазы.
   - При `evolve_operator_profile` → `isai://tasks` [режим: `STAGED_TRANSACTION`] — Инициация транзакционной фазы обновления компетенций по итогам практической работы.

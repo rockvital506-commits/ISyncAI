@@ -1,7 +1,8 @@
-"""Operational Symbiosis Runtime Models: ISAI-PEP v1, Task DAG, Watchdog Handles, Snapshot & Chronicle."""
+"""Operational Symbiosis Runtime Models (v0.2.0): ISAI-PEP v1, Audit, Watchdog, Mutation Plans & Chronicle."""
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from enum import StrEnum
 from typing import Literal
 
@@ -11,6 +12,46 @@ from isai.contracts import EntityRef, PhaseMode
 
 MAX_PHASE_ITERATIONS: int = 3
 MAX_MACRO_REPLANS: int = 2
+DEFAULT_LEASE_TTL_SECONDS: int = 1800
+
+
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def parse_utc_iso(ts: str) -> datetime:
+    if ts.endswith("Z"):
+        return datetime.fromisoformat(ts[:-1] + "+00:00")
+    dt = datetime.fromisoformat(ts)
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
+class AuditIssue(BaseModel):
+    """Single structural, cryptographic, referential, contract, or crash-state violation."""
+
+    model_config = ConfigDict(frozen=True)
+
+    code: str
+    location: str
+    message: str
+
+
+class AuditReport(BaseModel):
+    """Comprehensive deterministic Gate A 360° verification report."""
+
+    model_config = ConfigDict(frozen=True)
+
+    valid: bool
+    checked_nodes: tuple[str, ...] = ()
+    verified_symbols_count: int = 0
+    verified_port_wirings_count: int = 0
+    resolved_refs_count: int = 0
+    checked_markdown_files_count: int = 0
+    chronicle_events_count: int = 0
+    current_revision: int = 0
+    issues: tuple[AuditIssue, ...] = ()
 
 
 class GateKind(StrEnum):
@@ -73,67 +114,58 @@ class PhaseStatus(StrEnum):
 
 class PhaseExecutionState(BaseModel):
     """
-    ISAI-PEP v1: Adapted & Optimized Phase Execution Protocol State.
-    Enforces max 3 iterations, conditional delta-research, and Dual-Gate verification.
+    ISAI-PEP v1 Micro-Loop State Machine (Inner Contour).
+    Adapts the Artifact Protocol to ISAI's context-compiled, dual-gated architecture.
     """
 
-    schema_version: str = "0.1.0"
     phase_ref: EntityRef
     description: str = Field(min_length=1)
-    rsoc_digest: str = Field(min_length=1)
+    phase_mode: PhaseMode = PhaseMode.STAGED_TRANSACTION
     iteration: int = Field(default=0, ge=0, le=MAX_PHASE_ITERATIONS)
     status: PhaseStatus = PhaseStatus.INIT
 
+    rsoc_digest: str = Field(min_length=1)
     goals: list[str] = Field(default_factory=list)
+    acceptance_gates: list[CriterionSpec] = Field(default_factory=list)
     knowledge_gaps: list[str] = Field(default_factory=list)
-    patterns: list[PatternSpec] = Field(default_factory=list)
-    success_criteria: list[CriterionSpec] = Field(default_factory=list)
-    plan_and_strategies: str = ""
-    diagnostics: list[DiagnosticEntry] = Field(default_factory=list)
+    research_findings: list[str] = Field(default_factory=list)
+    selected_patterns: list[PatternSpec] = Field(default_factory=list)
+    execution_plan: list[str] = Field(default_factory=list)
     realization: PhaseOutputEnvelope | None = None
-
-    def build_task_context(self) -> str:
-        """Step 1 of ISAI-PEP v1: Assemble compact delta-aware context without raw failed drafts."""
-        causes = "\n- ".join(
-            f"[{d.failed_gate_id}] {d.root_cause} (evidence: {d.evidence})"
-            for d in self.diagnostics
-        )
-        recs = "\n- ".join(
-            f"[{d.failed_gate_id}] {d.remediation_action} (research={d.requires_new_research})"
-            for d in self.diagnostics
-        )
-        cause_block = f"- {causes}" if causes else "-"
-        rec_block = f"- {recs}" if recs else "-"
-        return (
-            f"# description:\n- {self.description}\n"
-            f"# problem_causes:\n{cause_block}\n"
-            f"# recommendations:\n{rec_block}"
-        )
+    diagnostics: list[DiagnosticEntry] = Field(default_factory=list)
 
     def should_run_research(self) -> bool:
-        """Step 3 Conditional Research guard: skip redundant searches when gaps are empty."""
-        if not self.knowledge_gaps:
-            return False
         if self.iteration == 0:
-            return True
+            return len(self.knowledge_gaps) > 0
         return any(d.requires_new_research for d in self.diagnostics)
+
+    def build_task_context(self) -> str:
+        sections: list[str] = [
+            f"PHASE: {self.phase_ref} (mode={self.phase_mode.value}, iter={self.iteration}/{MAX_PHASE_ITERATIONS})",
+            f"TASK: {self.description}",
+            f"RSOC_DIGEST: {self.rsoc_digest}",
+        ]
+        if self.diagnostics:
+            diag_lines = [
+                f"  - [{d.failed_gate_id}] Cause: {d.root_cause} -> Fix: {d.remediation_action}"
+                for d in self.diagnostics
+            ]
+            sections.append("DIAGNOSTICS_DELTA:\n" + "\n".join(diag_lines))
+        return "\n".join(sections)
 
     def record_gate_outcome(
         self,
-        *,
         passed: bool,
         new_diagnostics: list[DiagnosticEntry] | None = None,
     ) -> PhaseStatus:
-        """Step 8 Deterministic Branching: converge on pass or advance retry counter up to MAX_PHASE_ITERATIONS."""
         if passed:
             if self.realization is None:
-                raise ValueError("Cannot mark phase CONVERGED when realization is None.")
+                raise ValueError("Cannot converge phase when realization is None.")
             self.status = PhaseStatus.CONVERGED
             return self.status
 
-        if not new_diagnostics:
-            raise ValueError("Failed verification must provide at least one DiagnosticEntry.")
-        self.diagnostics = list(new_diagnostics)
+        if new_diagnostics:
+            self.diagnostics.extend(new_diagnostics)
         self.iteration += 1
         if self.iteration >= MAX_PHASE_ITERATIONS:
             self.status = PhaseStatus.EXHAUSTED
@@ -143,44 +175,72 @@ class PhaseExecutionState(BaseModel):
 
 
 class PhaseNodeSpec(BaseModel):
-    """Single node in a user task's Macro-Orchestrator Phase DAG."""
+    """Single node inside a Macro Task Phase DAG (Outer Contour)."""
 
     model_config = ConfigDict(frozen=True)
 
     phase_id: str = Field(min_length=1)
     title: str = Field(min_length=1)
     target_node_ref: EntityRef
-    mode: PhaseMode = PhaseMode.STAGED_TRANSACTION
     depends_on: tuple[str, ...] = ()
+    phase_mode: PhaseMode = PhaseMode.STAGED_TRANSACTION
     read_set: tuple[EntityRef, ...] = ()
     write_set: tuple[EntityRef, ...] = ()
 
 
 class TaskManifest(BaseModel):
-    """Macro-Orchestrator specification of a phased user task."""
+    """Macro Task Execution Strategy supporting localized subgraph replanning."""
 
     model_config = ConfigDict(frozen=True)
 
-    schema_version: str = "0.1.0"
-    task_ref: EntityRef
-    title: str = Field(min_length=1)
-    bootstrap_mode: bool = False
+    task_id: str = Field(min_length=1)
     ultimate_goal: str = Field(min_length=1)
     global_criteria: tuple[CriterionSpec, ...] = Field(min_length=1)
     phases: tuple[PhaseNodeSpec, ...] = Field(min_length=1)
     replan_count: int = Field(default=0, ge=0, le=MAX_MACRO_REPLANS)
-    status: Literal["ACTIVE", "PROMOTED", "ESCALATED", "ABORTED"] = "ACTIVE"
+
+    @model_validator(mode="after")
+    def _validate_dag_acyclic(self) -> TaskManifest:
+        ids = [p.phase_id for p in self.phases]
+        if len(ids) != len(set(ids)):
+            raise ValueError("Duplicate phase_id in TaskManifest (Redundancy=FATAL).")
+        known = set(ids)
+        adj = {p.phase_id: p.depends_on for p in self.phases}
+        for pid, deps in adj.items():
+            for dep in deps:
+                if dep not in known:
+                    raise ValueError(f"Phase '{pid}' depends on unknown phase '{dep}'.")
+                if dep == pid:
+                    raise ValueError(f"Phase '{pid}' cannot depend on itself.")
+
+        visiting: set[str] = set()
+        visited: set[str] = set()
+
+        def _dfs(node: str) -> None:
+            if node in visiting:
+                raise ValueError(f"Cycle detected in TaskManifest DAG at '{node}'.")
+            if node in visited:
+                return
+            visiting.add(node)
+            for dep in adj[node]:
+                _dfs(dep)
+            visiting.remove(node)
+            visited.add(node)
+
+        for pid in ids:
+            _dfs(pid)
+        return self
 
 
 class HandleAccess(StrEnum):
-    """Windows Object Manager inspired handle modes tracked by Watchdog."""
+    """NT Object Manager-inspired handle access modes."""
 
     READ = "READ"
     WRITE_LEASE = "WRITE_LEASE"
 
 
 class HandleRecord(BaseModel):
-    """Active reference handle held by a running task/phase in Watchdog."""
+    """Active object handle tracked by Watchdog with TTL lease fencing for Crash Recovery."""
 
     model_config = ConfigDict(frozen=True)
 
@@ -190,10 +250,18 @@ class HandleRecord(BaseModel):
     target_ref: EntityRef
     access: HandleAccess
     base_interface_digest: str = Field(min_length=1)
+    acquired_at_utc: str = Field(default_factory=utc_now_iso)
+    lease_ttl_seconds: int = Field(default=DEFAULT_LEASE_TTL_SECONDS, ge=1)
+
+    def is_expired(self, now_utc: datetime | None = None) -> bool:
+        ref_now = now_utc.astimezone(timezone.utc) if now_utc else datetime.now(timezone.utc)
+        acquired_dt = parse_utc_iso(self.acquired_at_utc)
+        elapsed = (ref_now - acquired_dt).total_seconds()
+        return elapsed > float(self.lease_ttl_seconds)
 
 
 class ImpactAssessment(BaseModel):
-    """Watchdog Salsa Early-Cutoff evaluation result after a node mutation."""
+    """Result of Salsa Early-Cutoff & Transitive N-hop BFS Cascade Analysis."""
 
     model_config = ConfigDict(frozen=True)
 
@@ -202,17 +270,104 @@ class ImpactAssessment(BaseModel):
     new_interface_digest: str
     early_cutoff: bool
     impacted_dependents: tuple[EntityRef, ...] = ()
+    max_hop_depth: int = 0
 
 
-class SystemStateSnapshot(BaseModel):
-    """Atomic point-in-time state snapshot stored at tasks/.isai/state_snapshot.json."""
+class CanMutateReport(BaseModel):
+    """Pact 'can-i-deploy' inspired preflight safety report over the VAET reverse index."""
 
     model_config = ConfigDict(frozen=True)
 
-    schema_version: str = "0.1.0"
+    target_uri: str
+    operation: Literal["decommission", "remove_symbol", "mutate_interface"]
+    safe_without_cascade: bool
+    blocking_reasons: tuple[str, ...] = ()
+    external_inbound_sources: tuple[str, ...] = ()
+    transitive_dependents: tuple[str, ...] = ()
+    affected_tests: tuple[str, ...] = ()
+
+
+class MutationPlan(BaseModel):
+    """Buildozer 'emit-and-apply' structured plan/result for transactional link mutations."""
+
+    model_config = ConfigDict(frozen=True)
+
+    operation: str
+    dry_run: bool
+    applied: bool
+    touched_files: tuple[str, ...] = ()
+    deleted_paths: tuple[str, ...] = ()
+    added_edges: tuple[str, ...] = ()
+    removed_edges: tuple[str, ...] = ()
+    impacted_dependents: tuple[str, ...] = ()
+    affected_tests: tuple[str, ...] = ()
+
+
+class RecoveryReport(BaseModel):
+    """Deterministic Crash Recovery outcome returned by 'isai recover'."""
+
+    model_config = ConfigDict(frozen=True)
+
+    recovered: bool
+    removed_temp_files: tuple[str, ...] = ()
+    removed_orphan_staging_dirs: tuple[str, ...] = ()
+    expired_tasks_aborted: tuple[str, ...] = ()
+    rebuilt_snapshot_revision: int = Field(ge=0)
+    chronicle_tx_id: str | None = None
+
+
+class ChronicleEvent(BaseModel):
+    """Immutable append-only Chrono-Graph ledger record (.isai/chronicle.jsonl)."""
+
+    model_config = ConfigDict(frozen=True)
+
+    schema_version: str = "0.2.5"
+    tx_id: str = Field(min_length=1)
+    revision: int = Field(ge=1)
+    timestamp_utc: str = Field(min_length=1)
+    actor: str = Field(min_length=1)
+    phase_ref: EntityRef
+    operation: Literal[
+        "BOOTSTRAP",
+        "PROMOTE",
+        "MUTATE_VECTOR",
+        "RATIFY_FUNDAMENTAL",
+        "ALGEDONIC_ALERT",
+        "DISTILL",
+        "REPLAN",
+        "RECOVER",
+    ]
+    touched_refs: tuple[EntityRef, ...] = Field(min_length=1)
+    interface_changed: bool = False
+    ratified_nvf_digest: str | None = None
+    operator_approved: bool = False
+    summary: str = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _validate_ratification_invariants(self) -> ChronicleEvent:
+        if self.operation == "RATIFY_FUNDAMENTAL":
+            if not self.ratified_nvf_digest or len(self.ratified_nvf_digest) != 64:
+                raise ValueError(
+                    "RATIFY_FUNDAMENTAL ChronicleEvent requires a 64-char SHA-256 ratified_nvf_digest."
+                )
+            if not self.operator_approved:
+                raise ValueError(
+                    "RATIFY_FUNDAMENTAL ChronicleEvent requires operator_approved=True (Algedonic Step 6)."
+                )
+        return self
+
+
+class SystemStateSnapshot(BaseModel):
+    """Volatile HKCC-equivalent runtime state snapshot (tasks/.isai/state_snapshot.json)."""
+
+    model_config = ConfigDict(frozen=True)
+
+    schema_version: str = "0.2.5"
     revision: int = Field(ge=0)
     timestamp_utc: str = Field(min_length=1)
     genesis_sha256: str = Field(min_length=64, max_length=64)
+    nvf_version: str = Field(default="1.0", min_length=1)
+    nvf_digest: str = Field(default="", max_length=64)
     master_vector_version: str = Field(min_length=1)
     master_vector_digest: str = Field(min_length=64, max_length=64)
     active_tasks: tuple[EntityRef, ...] = ()
@@ -222,40 +377,9 @@ class SystemStateSnapshot(BaseModel):
     audit_status: Literal["VALID", "STAGING", "DIRTY"] = "VALID"
 
     @model_validator(mode="after")
-    def _validate_handle_consistency(self) -> SystemStateSnapshot:
-        active_set = set(self.active_tasks)
-        for h in self.open_handles:
-            if h.owner_task_ref not in active_set:
-                raise ValueError(
-                    f"Leaked HandleRecord '{h.handle_id}': owner '{h.owner_task_ref}' "
-                    "is not in active_tasks (HandleCount must drop to 0 on task close)."
-                )
-        # Verify no two active tasks hold conflicting WRITE_LEASE on the same target_ref
-        write_owners: dict[str, str] = {}
-        for h in self.open_handles:
-            if h.access == HandleAccess.WRITE_LEASE:
-                prev = write_owners.get(h.target_ref)
-                if prev is not None and prev != f"{h.owner_task_ref}:{h.phase_id}":
-                    raise ValueError(
-                        f"MVCC Write-Write lease conflict on '{h.target_ref}' "
-                        f"between '{prev}' and '{h.owner_task_ref}:{h.phase_id}'."
-                    )
-                write_owners[h.target_ref] = f"{h.owner_task_ref}:{h.phase_id}"
+    def _check_quiescent_handles(self) -> SystemStateSnapshot:
+        if not self.active_tasks and self.open_handles:
+            raise ValueError(
+                "Handle leak detected: open_handles must be empty when active_tasks is empty."
+            )
         return self
-
-
-class ChronicleEvent(BaseModel):
-    """Immutable append-only ledger entry in .isai/chronicle.jsonl."""
-
-    model_config = ConfigDict(frozen=True)
-
-    schema_version: str = "0.1.0"
-    tx_id: str = Field(min_length=1)
-    revision: int = Field(ge=1)
-    timestamp_utc: str = Field(min_length=1)
-    actor: str = Field(min_length=1)
-    phase_ref: EntityRef
-    operation: Literal["BOOTSTRAP", "CREATE", "UPDATE", "PROMOTE", "DISTILL", "CLOSE_TASK"]
-    touched_refs: tuple[EntityRef, ...] = Field(min_length=1)
-    interface_changed: bool = False
-    summary: str = Field(min_length=1)
