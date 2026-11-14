@@ -77,6 +77,7 @@ NODE = ISAINodeSpec(
         'FUNDAMENTAL.md',
         'VISION.md',
         'AGENTS.md',
+        'RETROSPECTIVE.md',
         'pyproject.toml',
         '.gitignore',
     ),

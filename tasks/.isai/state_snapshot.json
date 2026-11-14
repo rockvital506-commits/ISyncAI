@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.5",
   "revision": 12,
-  "timestamp_utc": "2026-11-14T13:53:43Z",
+  "timestamp_utc": "2026-11-14T14:34:18Z",
   "genesis_sha256": "4ba8961ae9426294f5b967ade6f5dadf0f648698591317859e8998a5d98482b9",
   "nvf_version": "1.2",
   "nvf_digest": "d5e519fd2e8b77aca1fd9d4f4941d0327a49eee34331ac8e65ffd5a8253fce3a",
@@ -11,7 +11,7 @@
   "open_handles": [],
   "node_spec_digests": {
     "isai://knowledge": "c3f203b8d0f61251762776c8e705996a52103b0a150cb811c4791205c63fe41b",
-    "isai://root": "9d4845236a3150b93e3496b9d6a6f72119c1ffb34cfba4a5d1156d1013dcd1d8",
+    "isai://root": "cd9e53b1d29e2b4d1653fb1e7377064c4571af0dceff5064467d3be4ca62ce7d",
     "isai://tasks": "c6bfc963b6def96988c40c7a0639f6fe9a52d15ba8fadc7bf3e1bdd9e072a1bb",
     "isai://tests": "04301f5f15f1d384ba7b0466d3f7450e90f41b556c90ef512a182ccc73a005dc",
     "isai://user": "9d3a7be81298d5776efd9d11ccadca9c1ecd33919e844c7858ede12863066a7d"

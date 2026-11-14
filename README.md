@@ -16,7 +16,7 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://root -->
-<!-- isai:spec_digest=9d4845236a3150b93e3496b9d6a6f72119c1ffb34cfba4a5d1156d1013dcd1d8 -->
+<!-- isai:spec_digest=cd9e53b1d29e2b4d1653fb1e7377064c4571af0dceff5064467d3be4ca62ce7d -->
 <!-- isai:interface_digest=99ba0424edcffa64b22d5fe9eff0fa9a80666331ba935dbe62ae0ee64d5519d4 -->
 
 ## Паспорт узла `isai://root` — Корневой узел-драйвер, индекс гиперграфа и транзакционный инжектор связей ISAI
@@ -52,7 +52,7 @@
   - `audit_report` (`AuditReport`, гарантированный) [схемы: `isai.protocol:AuditReport`] — Детерминированный вердикт целостности всех колец IL-0..IL-3, портов и ссылок.
 
 ### Реестр владения и верифицируемых символов (`Ownership & Symbol Bindings`)
-- **Файлы узла (`owned_files`):** `README.md`, `FUNDAMENTAL.md`, `VISION.md`, `AGENTS.md`, `pyproject.toml`, `.gitignore`
+- **Файлы узла (`owned_files`):** `README.md`, `FUNDAMENTAL.md`, `VISION.md`, `AGENTS.md`, `RETROSPECTIVE.md`, `pyproject.toml`, `.gitignore`
 - **Служебные файлы (`system_files`):** `.isai/__init__.py`, `.isai/__main__.py`, `.isai/atomic_io.py`, `.isai/constitution.py`, `.isai/contracts.py`, `.isai/protocol.py`, `.isai/domain_models.py`, `.isai/neuro_vascular.py`, `.isai/vector.py`, `.isai/graph_index.py`, `.isai/engine.py`, `.isai/link_mutator.py`, `.isai/node.py`, `.isai/chronicle.jsonl`, `.isai/vector_ledger.py`, `.isai/health_checks.py`, `.isai/vector_ledger.jsonl`, `.isai/text_engineering.py`
 - **Экспортируемые сущности (`symbol_bindings`):**
   - `isai://root#GenesisKernel` (`python_attr` → `constitution.py:GENESIS_CONSTITUTION`, видимость: `PUBLIC`)

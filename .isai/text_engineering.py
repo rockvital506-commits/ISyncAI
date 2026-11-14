@@ -102,7 +102,11 @@ HEDGE_MARKERS: tuple[str, ...] = (
     "вероятно",
     "кажется",
     "по-видимому",
-    "может быть",
+    # `может быть` is deliberately absent: standing alone it is a hedge, but it is orthographically
+    # identical to `может` + `быть` ("may be"), which is plain modality in a normative sentence such
+    # as "the constitution cannot be required...". Flagging the substring would punish correct
+    # grammar, and a hedge that has to be distinguished from a homograph by a regex is not a
+    # reliable signal. `возможно` covers the same intent unambiguously.
     "maybe",
     "probably",
     "perhaps",
@@ -400,7 +404,16 @@ def build_bound_vocabulary(repo_root: Path) -> set[str]:
     """
     bound: set[str] = set()
     isai_dir = repo_root / ".isai"
-    for py_file in sorted(isai_dir.glob("*.py")):
+    # Every node owns a `.isai/` package of its own (`tasks/.isai/watchdog.py`,
+    # `knowledge/.isai/catalog.py`, ...). Collecting symbols from the root kernel alone would
+    # report a perfectly real component — `TaskWatchdog` — as a phantom, which is exactly the
+    # kind of false positive that teaches a reader to ignore the check.
+    module_files: list[Path] = []
+    for pkg in sorted(repo_root.rglob(".isai")):
+        if not pkg.is_dir() or DEFAULT_BOUNDARY_IGNORE.is_ignored(pkg.relative_to(repo_root)):
+            continue
+        module_files.extend(sorted(pkg.glob("*.py")))
+    for py_file in module_files:
         try:
             tree = ast.parse(py_file.read_text(encoding="utf-8"), filename=str(py_file))
         except SyntaxError:  # pragma: no cover - the audit reports syntax errors itself
@@ -812,8 +825,17 @@ def _check_prose_lexicon(
     vocabulary: set[str],
     findings: list[TextFinding],
 ) -> None:
-    """`TE2.DLT-BPE` over human-language prose: every CamelComposite must resolve to something."""
-    for token in sorted(set(structured_tokens(text))):
+    """
+    `TE2.DLT-BPE` over human-language prose: every CamelComposite must resolve to something.
+
+    Inline code spans are removed first. A name in backticks is *mentioned*, not *used* — the
+    Markdown contract the whole repository already relies on, and the same one `TE3` honours when
+    it strips code spans before reading a command. Without this, a document could not discuss a
+    phantom name at all, which would make the very defect report that motivates the check
+    unwritable.
+    """
+    prose = _INLINE_CODE_RE.sub(" ", text)
+    for token in sorted(set(structured_tokens(prose))):
         if not _is_camel_composite(token) or _binds(token, vocabulary):
             continue
         findings.append(
