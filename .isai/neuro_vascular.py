@@ -129,8 +129,8 @@ class NeuroVascularFundamentalSpec(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
 
     fundamental_id: EntityRef = "isai://root#NeuroVascularFundamental"
-    frame_id: str = "ISAI-NVF/1.1"
-    version: str = "1.1"
+    frame_id: str = "ISAI-NVF/1.2"
+    version: str = "1.2"
     tier: IntegrityLevel = IntegrityLevel.IL_1C_FUNDAMENTAL
     tier_token: str = "IL-1C_SUB_GENESIS"
     governed_by: EntityRef = "isai://root#GenesisKernel"
@@ -140,7 +140,7 @@ class NeuroVascularFundamentalSpec(BaseModel):
     )
     mutability_law: str = (
         "CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY | "
-        "VectorMutation=CHECKBOX_RATIFIED_LEDGER_ONLY]"
+        "VectorMutation=NUMBERED_OPERATOR_TASK_LEDGER_ONLY]"
     )
 
     lexicon_anchors: tuple[str, ...]
@@ -149,6 +149,7 @@ class NeuroVascularFundamentalSpec(BaseModel):
     nervous_tritier_rule: str
     vascular_rules: tuple[str, ...]
     vector_governance_rules: tuple[str, ...]
+    text_engineering_rules: tuple[str, ...]
     precedents_summary: str
     bottleneck_guards_summary: str
     homeostasis_mode: str
@@ -196,6 +197,10 @@ class NeuroVascularFundamentalSpec(BaseModel):
         lines.extend(["", "[VECTOR-GOVERNANCE :: GOAL-VECTOR MUTATION LEDGER & LIFECYCLE GATES]:"])
         for vrule in self.vector_governance_rules:
             lines.append(f"  - {vrule}")
+
+        lines.extend(["", "[TEXT-ENGINEERING :: LLM-NATIVE TEXT OF EVERY SYSTEM FOLDER & FILE]:"])
+        for trule in self.text_engineering_rules:
+            lines.append(f"  - {trule}")
 
         lines.extend(
             [
@@ -255,6 +260,7 @@ class NeuroVascularFundamentalSpec(BaseModel):
             ],
             "vascular_circuit": list(self.vascular_rules),
             "vector_governance": list(self.vector_governance_rules),
+            "text_engineering": list(self.text_engineering_rules),
             "immune_memory": [self.precedents_summary, self.bottleneck_guards_summary],
         }
 
@@ -342,25 +348,50 @@ NEURO_VASCULAR_FUNDAMENTAL = NeuroVascularFundamentalSpec(
         "VM2.ProposalBinding: ∀Proposal: id + Anchor[kind,index] + anchor_fingerprint(SHA256) + "
         "base_vector_digest + rationale(>=60ch) + evidence[>=1] + expected_benefit + risk | "
         "StaleAnchorApply=FATAL | UnjustifiedCheckbox=FATAL",
-        "VM3.SignalSource: ConfirmationChannel := OperatorPromptOnly (¬self-output) & "
-        "∀SignalLine: ¬FencedCode ∧ ¬InlineCode ∧ ¬QuotedProse | "
-        "Phrase := standalone_control_line[подтвердить вектор системы] | "
-        "Phrase=RatifyCurrentVectorOnly(¬blanket_mutation_consent) | SelfConfirmation=FATAL",
-        "VM4.ApplyCeremony: CONFIRMED => mutate(.isai/vector.py) -> `isai vector apply` -> "
-        "atomic[MUTATE_VECTOR + APPLIED + state_snapshot + VISION.md] | "
+        "VM3.SignalSource: ConfirmationChannel := OPERATOR_TASK_ONLY (¬self-output) & "
+        "∀SignalLine: ¬FencedCode ∧ ¬InlineCode ∧ ¬BlockQuote ∧ ¬EmbeddedProse | "
+        "Task := standalone_control_line[подтвердить мутации вектора системы + numbers] | "
+        "CheckboxConsent=FORBIDDEN | LegacyPhrase=REFUSED | SelfConfirmation=FATAL",
+        "VM4.NumberedRatification: ImplementationRequest := numbered[1..5] mutations(each: anchor + "
+        "proposed_text + rationale(>=60ch) + evidence + risk) -> BATCH_PROPOSED(base=head) | "
+        "Task∧numbers => APPLY_EXACTLY_those_ordinals[atomic_compose_against_one_pre-image] | "
+        "Task∧¬numbers => RatifyVersion(apply_NOTHING) | UnlistedOrdinal=REFUSED | "
         "ApplyWithoutConfirm=FATAL | ApplyWithoutLiveDigestChange=FATAL | VersionBump=REQUIRED",
-        "VM5.DeferralDecay: DeferWindow=1_prompt | Deferrals>=2 => EXPIRED => ReProposeWithFreshEvidence | "
-        "OrphanPendingProposal=FATAL | ProposalBatch<=5_ranked",
+        "VM5.ConfirmedBaseline&Decay: ConfirmedVersion := version_of_last_PR(SEALED) | "
+        "¬Task => ConfirmedVersion_unchanged ∧ SelectionStartsFromIt | Applied∧¬SEALED => "
+        "UNRELEASED_RATIFIED_MUTATION=FATAL | DeferWindow=1_prompt | Deferrals>=2 => EXPIRED => "
+        "ReProposeWithFreshEvidence | OrphanPendingProposal=FATAL | Batch<=5_ranked",
         "VM6.DriftDetect: ∀ChangedAnchor: ∃APPLIED(anchor) ∧ contiguous_digest_chain | "
         "else UNCONFIRMED_VECTOR_DRIFT=FATAL | RawHandEdit(vector.py)=FORBIDDEN",
         "VM7.GateV-PrePR: PrePR => `isai gate verify` over "
         "[ROOT | TASKS | KNOWLEDGE | UNIVERSE | TESTS | .isai_Subfolders] | "
         "CriticalDeviation => Neutralize -> Return_PrePR -> FullRerun(no_partial) | "
         "StatusAssertedInProse=FATAL | Status:=NO_SYSTEMIC_DEVIATION only_by_tool_with_evidence_digest",
-        "VM8.TurnBoundary: PrePromptGate:=read(prev_checkboxes ∪ phrase) -> "
-        "[phrase∧¬boxes => RatifyVector + DeferPending] ∨ [boxes => Strategy -> Apply] -> ApplyGate | "
+        "VM8.TurnBoundary: PrePromptGate:=read(operator_task) -> "
+        "[¬task => HoldConfirmedVersion] ∨ [task∧¬numbers => RatifyVersion + DeferUnselected] ∨ "
+        "[task∧numbers => Compose -> Apply] -> ApplyGate | "
         "PostPromptGate:=AuditVector -> AuditResearchWindow(since_last_APPLIED|BASELINE) -> "
         "RankProposals(<=5) -> CheckboxRequest | GateSkipped=FATAL",
+    ),
+    text_engineering_rules=(
+        "TE0.LevelLaw: ∀SystemText: L(text):=DecodedBy ∈ {HumanRepr, Machine, Both} -> "
+        "Signature[L0|L1|L2|L3|L4|L5] | ¬Signature=TE_LEVEL_UNCLASSIFIED=FATAL",
+        "TE1.CarrierPurity: L1_CANON: str(py)≡DeclarativeData[¬behavioural_prose | ¬multi-clause_narrative] | "
+        "L2_TRANSCRIPT: Projection≡SHA256_Render(SourceOfTruth)[¬hand-edit | ¬sync_block_drift] | "
+        "HandEdit(L2)=FATAL",
+        "TE2.DLT-BPE: CanonLexicon[structured_tokens]: (CamelComposite ∨ SeparatedComposite ∨ "
+        "DomainAcronym[closed_set]) ∧ ∀Morpheme:[a-z0-9]{2,}(?:[-_][a-z0-9]{2,})* | "
+        "PhantomToken=FATAL | OpaqueUnicode=FATAL | MixedScriptToken=WARNING",
+        "TE3.CommandTruth: ∀`isai <cmd>` ∈ SystemText: ResolvableIn(CLI_ast) | PhantomCommand=FATAL | "
+        "StatusAssertedInProse=FORBIDDEN",
+        "TE4.FrameLaw: ∀NormativeText(L3|canon): BimodalU[PrimacyHead=priority ∧ mutability ∧ "
+        "digest | Middle=sectioned_core | RecencyPeak=STOP_tripwires] | ExplanatoryRedundancy=WARNING",
+        "TE5.SalienceOrder: RuleSequence := safety ∧ mutability ∧ digest ∧ refs -> operational -> "
+        "explanatory | ∀Section: role∈{DECIDE|EXECUTE|EXPLAIN} | BleedRole=Misplacement",
+        "TE6.ChronicleRegister: EventText:=ClosedTaxonomy[summary(>=1) + typed_summary{evidence | "
+        "blast_radius | next_action}] ∧ Freshness[what] + Lineage[why ∧ whence] | HedgingInEvent=FATAL",
+        "TE7.VerifyCompile: PrePR => `isai gate verify` over TE0..TE6 ∧ "
+        "ValidateTextOffline via `isai text check` | SilentTextDrift=FATAL",
     ),
     precedents_summary=(
         "Precedents[PREC-01..09]: Prefix586_HashSplit | LiveUTF8_CompileExec_NoPycCollision(PEP3147_mtime_size) | Physical_SymbolBinding | FenceSafe_ProseScan | ModelJsonSchema_CrossProcDeterminism | StripSYNC_FromProseVAET | ExtraBackupPaths_FullRollback | PreImport_ASTGate | VenvRehydrate_Or_SnapshotFallback"

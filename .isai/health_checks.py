@@ -4,7 +4,7 @@ Executes deterministic structural checks across the root system folder, the task
 the knowledge universe, the verification suite and every registered `.isai` system
 subfolder before a pull request may be opened.
 
-Gate V contract (ISAI-NVF v1.1 `[VECTOR-GOVERNANCE]` VM7):
+Gate V contract (ISAI-NVF v1.2 `[VECTOR-GOVERNANCE]` VM7 + `[TEXT-ENGINEERING]` TE7):
 
   * `status = NO_SYSTEMIC_DEVIATION` may only be emitted by this module, never asserted
     in prose, and it carries the SHA-256 digest of the full evidence set.
@@ -47,6 +47,7 @@ class HealthDomain(StrEnum):
     KNOWLEDGE = "KNOWLEDGE"
     UNIVERSE = "UNIVERSE"
     TESTS = "TESTS"
+    TEXT = "TEXT"
     SYSTEM_SUBFOLDERS = "SYSTEM_SUBFOLDERS"
 
 
@@ -620,6 +621,95 @@ def check_system_subfolders(repo_root: Path, nodes: dict[str, tuple[Path, Any]])
     return results
 
 
+def check_text_domain(repo_root: Path) -> list[HealthCheckResult]:
+    """
+    `TE7.VerifyCompile`: the offline text reader is part of the pre-PR gate.
+
+    Three independent verdicts are reported, because they fail for different reasons and require
+    different repairs: the **level law** (a text nobody can classify), the **carrier duties**
+    (`TE1..TE6` over the strings a reader sees) and the **lexicon closure** (structured tokens that
+    bind to no live symbol). One aggregate status would let a clean lexicon hide a broken projection.
+    """
+    from isai.text_engineering import CARRIER_LEVELS, level_inventory, validate_text
+
+    results: list[HealthCheckResult] = []
+    report = validate_text(repo_root)
+    inventory = level_inventory(repo_root)
+    declared = {level.value for level in CARRIER_LEVELS}
+    missing_levels = sorted(declared - {k for k, v in inventory.items() if v})
+    results.append(
+        _ok(
+            "H-TEXT-01",
+            HealthDomain.TEXT,
+            f"Every system text declares a TE0 level signature ({len(inventory)} families, "
+            f"{sum(len(v) for v in inventory.values())} files).",
+        )
+        if not missing_levels
+        else _fail(
+            "H-TEXT-01",
+            HealthDomain.TEXT,
+            "The level inventory is incomplete: a carrier level has no file at all, so a reader "
+            "would find an unclassified text family.",
+            evidence=f"empty levels={missing_levels}",
+        )
+    )
+
+    carrier_failures = [
+        f for f in report.findings if f.check != "TE2.DLT-BPE" and f.severity == "CRITICAL"
+    ]
+    results.append(
+        _ok(
+            "H-TEXT-02",
+            HealthDomain.TEXT,
+            f"Every carrier honours its contract: TE1..TE6 across {report.files_checked} files "
+            f"({report.text_bytes} bytes of system text).",
+        )
+        if not carrier_failures
+        else _fail(
+            "H-TEXT-02",
+            HealthDomain.TEXT,
+            "Text carrier deviations detected (hand-edited projection, phantom command, hedge, "
+            "unbalanced frame or unranked rule).",
+            evidence="; ".join(
+                f"{f.check}@{f.location}: {f.message}" for f in carrier_failures[:6]
+            ),
+        )
+    )
+
+    lexicon_failures = [f for f in report.findings if f.check == "TE2.DLT-BPE"]
+    results.append(
+        _ok(
+            "H-TEXT-03",
+            HealthDomain.TEXT,
+            "Every structured token binds to a live symbol, command, file or domain acronym.",
+        )
+        if not lexicon_failures
+        else _fail(
+            "H-TEXT-03",
+            HealthDomain.TEXT,
+            "Phantom lexicon: structured tokens that resolve to nothing.",
+            evidence="; ".join(f"{f.location}: {f.message}" for f in lexicon_failures[:6]),
+        )
+    )
+
+    projection_failures = [f for f in report.findings if f.check == "TE1.CarrierPurity"]
+    results.append(
+        _ok(
+            "H-TEXT-04",
+            HealthDomain.TEXT,
+            f"Every L2 transcript is byte-identical to its source of truth ({report.evidence_digest[:12]}…).",
+        )
+        if not projection_failures
+        else _fail(
+            "H-TEXT-04",
+            HealthDomain.TEXT,
+            "A synchronised transcript drifted from its source: the same fact now has two versions.",
+            evidence="; ".join(f"{f.location}: {f.message}" for f in projection_failures[:4]),
+        )
+    )
+    return results
+
+
 def evaluate_gate_v(
     repo_root: Path,
     *,
@@ -640,6 +730,7 @@ def evaluate_gate_v(
     results.extend(check_universe_domain(root))
     results.extend(check_tests_domain(root, nodes))
     results.extend(check_system_subfolders(root, nodes))
+    results.extend(check_text_domain(root))
     for extra in extra_checks:
         results.extend(extra(root))
 

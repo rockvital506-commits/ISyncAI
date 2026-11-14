@@ -1,21 +1,21 @@
 <!-- ISAI:NVF_SYNC:BEGIN -->
 <!-- isai:nvf_id=isai://root#NeuroVascularFundamental -->
-<!-- isai:nvf_version=1.1 -->
-<!-- isai:nvf_digest=79bcda9cb9610649f05f8cad3aaae82590dc96ff9a1108ea723e7d25e83831e8 -->
-<!-- isai:nvf_dsl_sha256=60f91d80b4b176133fbc38408db4e362142b2c53455270cfc687c133f46e5e41 -->
+<!-- isai:nvf_version=1.2 -->
+<!-- isai:nvf_digest=7e0250bfd7c6ea511b569fd1baba44f4ec835a387495d3cc15e479448ab40f66 -->
+<!-- isai:nvf_dsl_sha256=d5e519fd2e8b77aca1fd9d4f4941d0327a49eee34331ac8e65ffd5a8253fce3a -->
 
-# Субконституционный Нервно-Сосудистый Фундаментал (`ISAI-NVF/1.1`)
+# Субконституционный Нервно-Сосудистый Фундаментал (`ISAI-NVF/1.2`)
 
 > **Кольцо целостности:** `IL_1C_FUNDAMENTAL` (`IL-1C_SUB_GENESIS`) — подчинён исключительно `isai://root#GenesisKernel` (`IL_0_GENESIS`).
-> **Режим мутируемости:** `CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY | VectorMutation=CHECKBOX_RATIFIED_LEDGER_ONLY]` (любая правка без ратифицированного Оператором события `RATIFY_FUNDAMENTAL` в `.isai/chronicle.jsonl` блокируется `isai audit`).
-> **Отпечаток DSL (`SHA-256`):** `60f91d80b4b176133fbc38408db4e362142b2c53455270cfc687c133f46e5e41`
+> **Режим мутируемости:** `CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY | VectorMutation=NUMBERED_OPERATOR_TASK_LEDGER_ONLY]` (любая правка без ратифицированного Оператором события `RATIFY_FUNDAMENTAL` в `.isai/chronicle.jsonl` блокируется `isai audit`).
+> **Отпечаток DSL (`SHA-256`):** `d5e519fd2e8b77aca1fd9d4f4941d0327a49eee34331ac8e65ffd5a8253fce3a`
 
 ```yaml
 # ISAI-NVF :: NEURO-VASCULAR FUNDAMENTAL
-[FRAME-ID]: ISAI-NVF/1.1 | TIER: IL-1C_SUB_GENESIS | GOVERNED-BY: isai://root#GenesisKernel
+[FRAME-ID]: ISAI-NVF/1.2 | TIER: IL-1C_SUB_GENESIS | GOVERNED-BY: isai://root#GenesisKernel
 [PRIORITY-ORDER]: IL-0_GENESIS >> IL-1C_NVF >> IL-1_KERNEL >> IL-2_CANONICAL >> IL-3_STAGING
 [AGENT-CALIBRATION]: FiduSys-Novator & Graph-Chronitect | Mandate: Deterministic-Reflex >> LLM-Guess
-[MUTABILITY-LAW]: CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY | VectorMutation=CHECKBOX_RATIFIED_LEDGER_ONLY]
+[MUTABILITY-LAW]: CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY | VectorMutation=NUMBERED_OPERATOR_TASK_LEDGER_ONLY]
 
 [LEXICON-ANCHORS]:
   - Nervous-Circuit := FractalTopology + EAVT_VAET_Index + SpinalReflexes + AST_LinkMutator + TriTier_GateA
@@ -48,12 +48,22 @@
 [VECTOR-GOVERNANCE :: GOAL-VECTOR MUTATION LEDGER & LIFECYCLE GATES]:
   - VM1.SingleSource: VectorState := deterministic_fold(.isai/vector_ledger.jsonl) | SourceOfTruth := .isai/vector.py -> VISION.md:=projection | SilentProposalDrop=FATAL | AppendOnlyTamper=FATAL
   - VM2.ProposalBinding: ∀Proposal: id + Anchor[kind,index] + anchor_fingerprint(SHA256) + base_vector_digest + rationale(>=60ch) + evidence[>=1] + expected_benefit + risk | StaleAnchorApply=FATAL | UnjustifiedCheckbox=FATAL
-  - VM3.SignalSource: ConfirmationChannel := OperatorPromptOnly (¬self-output) & ∀SignalLine: ¬FencedCode ∧ ¬InlineCode ∧ ¬QuotedProse | Phrase := standalone_control_line[подтвердить вектор системы] | Phrase=RatifyCurrentVectorOnly(¬blanket_mutation_consent) | SelfConfirmation=FATAL
-  - VM4.ApplyCeremony: CONFIRMED => mutate(.isai/vector.py) -> `isai vector apply` -> atomic[MUTATE_VECTOR + APPLIED + state_snapshot + VISION.md] | ApplyWithoutConfirm=FATAL | ApplyWithoutLiveDigestChange=FATAL | VersionBump=REQUIRED
-  - VM5.DeferralDecay: DeferWindow=1_prompt | Deferrals>=2 => EXPIRED => ReProposeWithFreshEvidence | OrphanPendingProposal=FATAL | ProposalBatch<=5_ranked
+  - VM3.SignalSource: ConfirmationChannel := OPERATOR_TASK_ONLY (¬self-output) & ∀SignalLine: ¬FencedCode ∧ ¬InlineCode ∧ ¬BlockQuote ∧ ¬EmbeddedProse | Task := standalone_control_line[подтвердить мутации вектора системы + numbers] | CheckboxConsent=FORBIDDEN | LegacyPhrase=REFUSED | SelfConfirmation=FATAL
+  - VM4.NumberedRatification: ImplementationRequest := numbered[1..5] mutations(each: anchor + proposed_text + rationale(>=60ch) + evidence + risk) -> BATCH_PROPOSED(base=head) | Task∧numbers => APPLY_EXACTLY_those_ordinals[atomic_compose_against_one_pre-image] | Task∧¬numbers => RatifyVersion(apply_NOTHING) | UnlistedOrdinal=REFUSED | ApplyWithoutConfirm=FATAL | ApplyWithoutLiveDigestChange=FATAL | VersionBump=REQUIRED
+  - VM5.ConfirmedBaseline&Decay: ConfirmedVersion := version_of_last_PR(SEALED) | ¬Task => ConfirmedVersion_unchanged ∧ SelectionStartsFromIt | Applied∧¬SEALED => UNRELEASED_RATIFIED_MUTATION=FATAL | DeferWindow=1_prompt | Deferrals>=2 => EXPIRED => ReProposeWithFreshEvidence | OrphanPendingProposal=FATAL | Batch<=5_ranked
   - VM6.DriftDetect: ∀ChangedAnchor: ∃APPLIED(anchor) ∧ contiguous_digest_chain | else UNCONFIRMED_VECTOR_DRIFT=FATAL | RawHandEdit(vector.py)=FORBIDDEN
   - VM7.GateV-PrePR: PrePR => `isai gate verify` over [ROOT | TASKS | KNOWLEDGE | UNIVERSE | TESTS | .isai_Subfolders] | CriticalDeviation => Neutralize -> Return_PrePR -> FullRerun(no_partial) | StatusAssertedInProse=FATAL | Status:=NO_SYSTEMIC_DEVIATION only_by_tool_with_evidence_digest
-  - VM8.TurnBoundary: PrePromptGate:=read(prev_checkboxes ∪ phrase) -> [phrase∧¬boxes => RatifyVector + DeferPending] ∨ [boxes => Strategy -> Apply] -> ApplyGate | PostPromptGate:=AuditVector -> AuditResearchWindow(since_last_APPLIED|BASELINE) -> RankProposals(<=5) -> CheckboxRequest | GateSkipped=FATAL
+  - VM8.TurnBoundary: PrePromptGate:=read(operator_task) -> [¬task => HoldConfirmedVersion] ∨ [task∧¬numbers => RatifyVersion + DeferUnselected] ∨ [task∧numbers => Compose -> Apply] -> ApplyGate | PostPromptGate:=AuditVector -> AuditResearchWindow(since_last_APPLIED|BASELINE) -> RankProposals(<=5) -> CheckboxRequest | GateSkipped=FATAL
+
+[TEXT-ENGINEERING :: LLM-NATIVE TEXT OF EVERY SYSTEM FOLDER & FILE]:
+  - TE0.LevelLaw: ∀SystemText: L(text):=DecodedBy ∈ {HumanRepr, Machine, Both} -> Signature[L0|L1|L2|L3|L4|L5] | ¬Signature=TE_LEVEL_UNCLASSIFIED=FATAL
+  - TE1.CarrierPurity: L1_CANON: str(py)≡DeclarativeData[¬behavioural_prose | ¬multi-clause_narrative] | L2_TRANSCRIPT: Projection≡SHA256_Render(SourceOfTruth)[¬hand-edit | ¬sync_block_drift] | HandEdit(L2)=FATAL
+  - TE2.DLT-BPE: CanonLexicon[structured_tokens]: (CamelComposite ∨ SeparatedComposite ∨ DomainAcronym[closed_set]) ∧ ∀Morpheme:[a-z0-9]{2,}(?:[-_][a-z0-9]{2,})* | PhantomToken=FATAL | OpaqueUnicode=FATAL | MixedScriptToken=WARNING
+  - TE3.CommandTruth: ∀`isai <cmd>` ∈ SystemText: ResolvableIn(CLI_ast) | PhantomCommand=FATAL | StatusAssertedInProse=FORBIDDEN
+  - TE4.FrameLaw: ∀NormativeText(L3|canon): BimodalU[PrimacyHead=priority ∧ mutability ∧ digest | Middle=sectioned_core | RecencyPeak=STOP_tripwires] | ExplanatoryRedundancy=WARNING
+  - TE5.SalienceOrder: RuleSequence := safety ∧ mutability ∧ digest ∧ refs -> operational -> explanatory | ∀Section: role∈{DECIDE|EXECUTE|EXPLAIN} | BleedRole=Misplacement
+  - TE6.ChronicleRegister: EventText:=ClosedTaxonomy[summary(>=1) + typed_summary{evidence | blast_radius | next_action}] ∧ Freshness[what] + Lineage[why ∧ whence] | HedgingInEvent=FATAL
+  - TE7.VerifyCompile: PrePR => `isai gate verify` over TE0..TE6 ∧ ValidateTextOffline via `isai text check` | SilentTextDrift=FATAL
 
 [IMMUNE-MEMORY :: PRECEDENTS & BOTTLENECK WATCH]:
   - Precedents[PREC-01..09]: Prefix586_HashSplit | LiveUTF8_CompileExec_NoPycCollision(PEP3147_mtime_size) | Physical_SymbolBinding | FenceSafe_ProseScan | ModelJsonSchema_CrossProcDeterminism | StripSYNC_FromProseVAET | ExtraBackupPaths_FullRollback | PreImport_ASTGate | VenvRehydrate_Or_SnapshotFallback

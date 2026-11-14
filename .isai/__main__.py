@@ -1,4 +1,4 @@
-"""CLI Entrypoint for ISyncAI (ISAI v0.3.0): audit | sync | recover | rsoc | nv | vector | gate | graph | link."""
+"""CLI Entrypoint for ISyncAI (ISAI v0.3.0): audit | sync | recover | rsoc | nv | vector | text | gate | graph | link."""
 
 from __future__ import annotations
 
@@ -20,12 +20,13 @@ from isai.health_checks import evaluate_gate_v
 from isai.link_mutator import LinkMutator
 from isai.protocol import utc_now_iso
 from isai.vector_ledger import (
+    CONFIRM_TASK_ANCHOR_FORMS,
     VectorMutationLedger,
     VectorMutationProposal,
     apply_confirmed_proposal,
     evaluate_ledger_deviations,
     parse_operator_signal,
-    render_proposal_checkboxes,
+    render_numbered_mutations,
 )
 
 
@@ -72,8 +73,21 @@ def main(argv: list[str] | None = None) -> int:
     vec_sub = vec_p.add_subparsers(dest="vector_cmd", required=True)
 
     vec_sub.add_parser("init", help="Anchor the append-only vector mutation ledger (idempotent)")
-    vec_sub.add_parser("audit", help="Audit vector ledger chain, drift and pending proposals")
-    vec_sub.add_parser("pending", help="Render the operator checkbox block for pending proposals")
+    vec_sub.add_parser("audit", help="Audit vector ledger chain, drift, numbered batches and confirmations")
+    vec_sub.add_parser("pending", help="Render the numbered implementation request for pending proposals")
+
+    vbt = vec_sub.add_parser("batch", help="Register (or refresh) the numbered implementation request over pending proposals")
+    vbt.add_argument(
+        "--id",
+        dest="proposal_ids",
+        action="append",
+        default=[],
+        help="Proposal id to include; the n-th --id becomes mutation number n (default: all pending, ranked by risk)",
+    )
+
+    vseal = vec_sub.add_parser("seal", help="Seal the live vector as the confirmed version of the last pull request")
+    vseal.add_argument("--pr", required=True, type=str, help="Pull-request reference (e.g. #3 or a PR URL)")
+    vseal.add_argument("--note", default=None, type=str)
 
     vpr = vec_sub.add_parser("propose", help="Register a structured vector mutation proposal")
     vpr.add_argument("--anchor-kind", required=True, type=str)
@@ -86,7 +100,7 @@ def main(argv: list[str] | None = None) -> int:
     vpr.add_argument("--expected-benefit", required=True, type=str)
     vpr.add_argument("--risk", default="LOW", choices=("LOW", "MEDIUM", "HIGH"))
 
-    vsig = vec_sub.add_parser("signal", help="Ingest one operator prompt and apply the VM3 decision table")
+    vsig = vec_sub.add_parser("signal", help="Ingest one operator prompt and apply the VM3/VM4 decision table")
     vsig.add_argument("prompt_text", nargs="+", type=str)
     vsig.add_argument("--note", default=None, type=str)
 
@@ -95,6 +109,13 @@ def main(argv: list[str] | None = None) -> int:
     vap.add_argument("--summary", required=True, type=str)
 
     vec_sub.add_parser("expire", help="Expire pending proposals that exhausted their deferral window")
+
+    # 'isai text' subcommands (ISAI-NVF v1.2 [TEXT-ENGINEERING] TE0..TE7)
+    text_p = sub.add_parser("text", help="Read every system text offline and verify LLM-native engineering")
+    text_sub = text_p.add_subparsers(dest="text_cmd", required=True)
+    text_sub.add_parser("check", help="Verify TE0..TE6 duties across every system folder and file")
+    text_sub.add_parser("levels", help="Emit the TE0 level inventory (signature -> files)")
+    text_sub.add_parser("packet", help="Emit the compact [TEXT-ENGINEERING] RSoC slice")
 
     # 'isai gate' subcommands (Pre-PR Gate V system health)
     gate_p = sub.add_parser("gate", help="Run the pre-PR Gate V system health verification")
@@ -258,8 +279,56 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(payload, ensure_ascii=False, indent=2))
             return 0
         if args.vector_cmd == "pending":
+            from isai.vector_ledger import render_numbered_mutations as _render
+
             state = ledger.state()
-            print(render_proposal_checkboxes(state.pending()))
+            batch = state.latest_batch()
+            members = state.batch_members(batch.batch_id) if batch else state.pending()
+            print(_render(members, batch=batch) if members else "")
+            if state.confirmed_version_digest() is not None:
+                print(
+                    json.dumps(
+                        {
+                            "confirmed_version": vector.version
+                            if state.confirmed_version_digest() == vector.spec_digest()
+                            else state.last_sealed_version or state.baseline_version,
+                            "sealed_pr_ref": state.last_sealed_pr_ref,
+                            "unreleased_mutations": [i["proposal_id"] for i in state.unreleased_mutations()],
+                            "confirmation_task_anchor": CONFIRM_TASK_ANCHOR_FORMS[0],
+                        },
+                        ensure_ascii=False,
+                        indent=2,
+                    )
+                )
+            return 0
+
+        if args.vector_cmd == "batch":
+            from isai.vector_ledger import MAX_BATCH_SIZE
+
+            state = ledger.state()
+            head = state.ledger_head()
+            if args.proposal_ids:
+                chosen = tuple(args.proposal_ids)
+            else:
+                ranking = {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
+                chosen = tuple(
+                    p.proposal_id
+                    for p in sorted(
+                        state.pending(),
+                        key=lambda p: (ranking[p.risk_level.value], p.proposal_id),
+                    )[:MAX_BATCH_SIZE]
+                )
+            if not chosen:
+                print(json.dumps({"batch": None, "reason": "no pending proposals"}, ensure_ascii=False, indent=2))
+                return 0
+            event = ledger.open_batch(chosen, base_vector_digest=head or "")
+            print(json.dumps(event.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            print(render_numbered_mutations(state.batch_members(event.batch.batch_id), batch=event.batch))
+            return 0
+
+        if args.vector_cmd == "seal":
+            event = ledger.seal(vector, pr_ref=args.pr)
+            print(json.dumps(event.model_dump(mode="json"), ensure_ascii=False, indent=2))
             return 0
         if args.vector_cmd == "propose":
             from isai.vector_ledger import VectorAnchorKind, anchor_fingerprint, MutationKind
@@ -304,6 +373,20 @@ def main(argv: list[str] | None = None) -> int:
             for pid in expired:
                 ledger.expire(pid, note="Deferral decay exceeded (VM5).")
             print(json.dumps({"expired": expired}, ensure_ascii=False, indent=2))
+            return 0
+
+    if args.command == "text":
+        from isai.text_engineering import level_inventory, text_engineering_packet, validate_text
+
+        if args.text_cmd == "check":
+            report = validate_text(repo_root)
+            print(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            return 0 if report.valid else 1
+        if args.text_cmd == "levels":
+            print(json.dumps(level_inventory(repo_root), ensure_ascii=False, indent=2))
+            return 0
+        if args.text_cmd == "packet":
+            print(json.dumps(text_engineering_packet(), ensure_ascii=False, indent=2))
             return 0
 
     if args.command == "gate":

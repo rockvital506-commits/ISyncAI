@@ -46,10 +46,11 @@ from isai.protocol import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-# IL-1C v1.1 digest (VECTOR-GOVERNANCE VM1..VM8 amendment, ratified in the Chronicle).
-EXPECTED_NVF_SHA256 = "60f91d80b4b176133fbc38408db4e362142b2c53455270cfc687c133f46e5e41"
-EXPECTED_NVF_LINES = 63
-EXPECTED_NVF_BYTES = 8579
+# IL-1C v1.2 digest (TE0..TE7 text-engineering amendment + numbered operator-task consent,
+# ratified in the Chronicle as TX-0012).
+EXPECTED_NVF_SHA256 = "d5e519fd2e8b77aca1fd9d4f4941d0327a49eee34331ac8e65ffd5a8253fce3a"
+EXPECTED_NVF_LINES = 73
+EXPECTED_NVF_BYTES = 10540
 
 
 def _clone_repo_to_tmp(tmp_path: Path) -> Path:
@@ -111,7 +112,7 @@ def _sample_task_manifest() -> TaskManifest:
 
 @pytest.mark.isai_scope("isai://root#NeuroVascularFundamental", "isai://root")
 def test_nvf_dsl_lossless_fidelity_and_cli_show_verify(capsys: pytest.CaptureFixture[str]) -> None:
-    """ISAI-NVF v1.1 must render byte-identically (63 lines, 8579 UTF-8 bytes) with 0% semantic loss."""
+    """ISAI-NVF v1.2 must render byte-identically (73 lines, 10540 UTF-8 bytes) with 0% semantic loss."""
     dsl = NEURO_VASCULAR_FUNDAMENTAL.render_dsl()
     lines = dsl.splitlines()
     assert len(lines) == EXPECTED_NVF_LINES
@@ -119,9 +120,9 @@ def test_nvf_dsl_lossless_fidelity_and_cli_show_verify(capsys: pytest.CaptureFix
     assert NEURO_VASCULAR_FUNDAMENTAL.dsl_sha256() == EXPECTED_NVF_SHA256
 
     for mandatory_token in (
-        "[FRAME-ID]: ISAI-NVF/1.1 | TIER: IL-1C_SUB_GENESIS | GOVERNED-BY: isai://root#GenesisKernel",
+        "[FRAME-ID]: ISAI-NVF/1.2 | TIER: IL-1C_SUB_GENESIS | GOVERNED-BY: isai://root#GenesisKernel",
         "[PRIORITY-ORDER]: IL-0_GENESIS >> IL-1C_NVF >> IL-1_KERNEL >> IL-2_CANONICAL >> IL-3_STAGING",
-        "VectorMutation=CHECKBOX_RATIFIED_LEDGER_ONLY",
+        "VectorMutation=NUMBERED_OPERATOR_TASK_LEDGER_ONLY",
         "[LEXICON-ANCHORS]:",
         "N1.Addressing:",
         "N7.Spinal-Reflexes:",
@@ -170,7 +171,7 @@ def test_bimodal_rsoc_primacy_head_and_recency_tail_ordering() -> None:
 
     head = packet["enforced_neuro_vascular_frame"]
     tail = packet["terminal_execution_guard"]
-    assert head["frame_id"] == "ISAI-NVF/1.1"
+    assert head["frame_id"] == "ISAI-NVF/1.2"
     assert head["dsl_sha256"] == EXPECTED_NVF_SHA256
     assert len(head["lexicon_anchors"]) == 5
     assert len(head["vector_governance"]) == 8

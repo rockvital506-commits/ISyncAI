@@ -1,13 +1,12 @@
-"""Tri-Tier Verification Suite for `[VECTOR-GOVERNANCE]` (ISAI-NVF v1.1, VM1..VM8).
+"""Tri-Tier Verification Suite for `[VECTOR-GOVERNANCE]` (ISAI-NVF v1.2, VM1..VM8).
 
-Tier V1 — Ledger algebra & operator-signal fidelity (deterministic invariants).
+Tier V1 — Ledger algebra & numbered-ratification fidelity (deterministic invariants).
 Tier V2 — Gate V pre-PR system health, drift detection & atomic apply ceremony.
-Tier V3 — Generative Hypothesis state machine over arbitrary proposal lifecycles.
+Tier V3 — Generative Hypothesis state machine over arbitrary numbered-ratification lifecycles.
 """
 
 from __future__ import annotations
 
-import re
 import shutil
 from pathlib import Path
 
@@ -38,6 +37,9 @@ from isai.health_checks import (
 )
 from isai.protocol import ChronicleEvent, utc_now_iso
 from isai.vector_ledger import (
+    CONFIRM_TASK_ANCHOR_FORMS,
+    LEGACY_PHRASE_FORMS,
+    MAX_BATCH_SIZE,
     MAX_DEFERRALS,
     ConfirmationChannel,
     LedgerEventKind,
@@ -48,13 +50,14 @@ from isai.vector_ledger import (
     VectorAnchorKind,
     VectorMutationLedger,
     VectorMutationProposal,
-    anchor_fingerprint,
     anchor_digest_profile,
+    anchor_fingerprint,
+    apply_confirmed_batch,
     apply_confirmed_proposal,
     evaluate_ledger_deviations,
     fold_events,
     parse_operator_signal,
-    render_proposal_checkboxes,
+    render_numbered_mutations,
     resolve_anchor_text,
     vector_profile_digest,
 )
@@ -117,60 +120,310 @@ def _mk_proposal(vector: MasterVectorSpec, **overrides: object) -> VectorMutatio
     return VectorMutationProposal.model_validate(base)
 
 
+def _task(*ordinals: int) -> OperatorSignal:
+    """Build the operator signal of a real confirmation task with the given numbers."""
+    anchor = CONFIRM_TASK_ANCHOR_FORMS[0]
+    text = anchor if not ordinals else f"{anchor}: " + ", ".join(str(n) for n in ordinals)
+    signal = parse_operator_signal(text)
+    assert signal.task_present is True
+    return signal
+
+
+def _open_batch(ledger: VectorMutationLedger, proposal_ids: tuple[str, ...]) -> str:
+    state = ledger.state()
+    event = ledger.open_batch(proposal_ids, base_vector_digest=state.ledger_head() or "")
+    assert event.batch is not None
+    return event.batch.batch_id
+
+
 # ============================================================================
-# TIER V1: Operator-signal fidelity (VM3)
+# TIER V1: Numbered ratification protocol (VM3 / VM4)
 # ============================================================================
 
 
 @pytest.mark.isai_scope("isai://root#MasterVector", "isai://root#VectorMutationLedger")
-def test_operator_signal_detects_standalone_phrase_and_checked_boxes() -> None:
-    """VM3: only standalone control lines and real checkboxes are ratification signals."""
-    signal = parse_operator_signal(
-        "- [x] VMP-0003\n"
-        "- [ ] VMP-0004\n"
-        "- [!] VMP-0005\n"
-        "[x] VMP-0006 — согласен с обоснованием\n"
-    )
-    assert signal.checked_proposal_ids == ("VMP-0003", "VMP-0006")
-    assert signal.rejected_proposal_ids == ("VMP-0005",)
-    assert signal.phrase_confirmed is False
+def test_confirmation_task_requires_the_exact_anchor_and_its_numbers() -> None:
+    """VM3: only the separate explicit task carries consent, and only its numbers name mutations."""
+    assert parse_operator_signal("продолжаем работу").task_present is False
 
-    phrase = parse_operator_signal("подтвердить вектор системы")
-    assert phrase.phrase_confirmed is True
-    assert phrase.checked_proposal_ids == ()
+    bare = parse_operator_signal("подтвердить мутации вектора системы")
+    assert bare.task_present is True
+    assert bare.selected_ordinals == ()
+    assert bare.confirms_any_mutation is False
 
-    with_marks = parse_operator_signal("**Подтвердить вектор системы!**\n")
-    assert with_marks.phrase_confirmed is True
-    assert with_marks.matched_line is not None
+    numbered = parse_operator_signal("подтвердить мутации вектора системы: 1, 3")
+    assert numbered.task_present is True
+    assert numbered.selected_ordinals == (1, 3)
+    assert numbered.confirms_any_mutation is True
 
-    yo_form = parse_operator_signal("Подтвердить вектор системы")
-    assert yo_form.phrase_confirmed is True
+    decorated = parse_operator_signal("**Подтвердить мутации вектора системы** — № 1 и 3\n")
+    assert decorated.selected_ordinals == (1, 3)
+    assert parse_operator_signal("- подтвердить мутации вектора системы (2)").selected_ordinals == (2,)
+    assert parse_operator_signal("подтвердить мутации вектора системы 1 и 3").selected_ordinals == (1, 3)
+    assert parse_operator_signal("Подтвердить мутации вектора системы.").task_present is True
 
 
 @pytest.mark.isai_scope("isai://root#MasterVector")
-def test_operator_signal_ignores_fenced_code_inline_code_and_quoted_prose() -> None:
-    """Anti-self-confirmation reflex: documenting or quoting the protocol must never ratify it."""
+def test_versions_years_and_prose_never_become_mutation_numbers() -> None:
+    """A version bump, a year or a percentage must never be read as a mutation ordinal."""
+    for text in (
+        "подтвердить мутации вектора системы: 1.2.5",
+        "подтвердить мутации вектора системы: 2026",
+        "подтвердить мутации вектора системы: 30% уверенности",
+        "подтвердить мутации вектора системы: 1 promt = 1 задача",
+    ):
+        signal = parse_operator_signal(text)
+        assert signal.task_present is True
+        assert signal.selected_ordinals == (), text
+        assert not signal.confirms_any_mutation
+
+    out_of_range = parse_operator_signal("подтвердить мутации вектора системы: 1 2 3 9")
+    assert out_of_range.selected_ordinals == (1, 2, 3)
+    assert out_of_range.unknown_ordinal_tokens == (9,)
+
+
+@pytest.mark.isai_scope("isai://root#MasterVector")
+def test_quoting_or_documenting_the_task_never_ratifies_it() -> None:
+    """Anti-self-confirmation reflex: fences, inline code, blockquotes and prose are inert."""
     documentation = (
-        "Правило требует, чтобы оператор написал `подтвердить вектор системы`.\n"
+        "Правило требует отдельной задачи `подтвердить мутации вектора системы: 1`.\n"
         "```markdown\n"
-        "- [x] VMP-0001\n"
-        "подтвердить вектор системы\n"
+        "подтвердить мутации вектора системы: 1\n"
         "```\n"
-        "Пример: \"подтвердить вектор системы\" — цитата внутри прозы.\n"
-        "- В тексте выше встречается фраза: подтвердить вектор системы и это не сигнал.\n"
+        "> подтвердить мутации вектора системы: 1\n"
+        'Пример: "подтвердить мутации вектора системы: 1" — цитата внутри прозы.\n'
+        "Please подтвердить мутации вектора системы: 1\n"
     )
     signal = parse_operator_signal(documentation)
-    assert signal.phrase_confirmed is False
-    assert signal.checked_proposal_ids == ()
+    assert signal.task_present is False
+    assert signal.selected_ordinals == ()
     assert signal.suppressed_candidates >= 1
 
 
 @pytest.mark.isai_scope("isai://root#MasterVector")
-def test_rejected_box_wins_over_checked_box_for_same_proposal() -> None:
-    """A proposal marked both ways in one prompt must not be silently confirmed."""
-    signal = parse_operator_signal("- [x] VMP-0009\n- [!] VMP-0009\n")
-    assert signal.checked_proposal_ids == ()
-    assert signal.rejected_proposal_ids == ("VMP-0009",)
+def test_superseded_phrase_is_recognised_only_to_be_refused(tmp_path: Path) -> None:
+    """The retired one-word phrase must never silently ratify a version or a mutation."""
+    for phrase in LEGACY_PHRASE_FORMS:
+        signal = parse_operator_signal(phrase)
+        assert signal.task_present is False
+        assert signal.legacy_phrase_present is True
+
+    vector = _vector(REPO_ROOT)
+    root = tmp_path / "legacy"
+    root.mkdir()
+    ledger = VectorMutationLedger(root)
+    ledger.initialize(vector)
+    result = ledger.ingest_operator_signal(parse_operator_signal(LEGACY_PHRASE_FORMS[0]), vector)
+    assert result["legacy_phrase_refused"] is True
+    assert result["version_reaffirmed"] is False
+    assert result["confirmed"] == [] and result["applied"] == []
+    assert ledger.state().last_reaffirmed_digest == vector_profile_digest(vector)
+
+
+@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
+def test_absent_task_keeps_the_last_confirmed_version_and_changes_nothing(tmp_path: Path) -> None:
+    """No confirmation task => the current confirmed version stays in force; nothing happens."""
+    vector = _vector(REPO_ROOT)
+    root = tmp_path / "no_task"
+    root.mkdir()
+    ledger = VectorMutationLedger(root)
+    ledger.initialize(vector)
+    ledger.propose(_mk_proposal(vector))
+
+    before = ledger.read_events()
+    result = ledger.ingest_operator_signal(parse_operator_signal("обычный рабочий промпт"), vector)
+    assert result["task_present"] is False
+    assert ledger.read_events() == before, "an unnumbered prompt must not touch the ledger"
+    assert ledger.state().confirmed_version_digest() == vector_profile_digest(vector)
+
+
+@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
+def test_task_without_numbers_confirms_the_version_without_implementing(tmp_path: Path) -> None:
+    """VM4: a confirmation task with no numbers ratifies the version and applies nothing."""
+    vector = _vector(REPO_ROOT)
+    root = tmp_path / "version_only"
+    root.mkdir()
+    ledger = VectorMutationLedger(root)
+    ledger.initialize(vector)
+    ledger.propose(_mk_proposal(vector))
+    batch_id = _open_batch(ledger, ("VMP-0001",))
+
+    result = ledger.ingest_operator_signal(_task(), vector)
+    state = ledger.state()
+    assert result["version_reaffirmed"] is True
+    assert result["confirmed"] == [] and result["applied"] == []
+    assert state.status_of("VMP-0001") == ProposalStatus.PENDING
+    assert state.last_reaffirmed_digest == vector_profile_digest(vector)
+    assert state.deferrals["VMP-0001"] == 1, "an offered-but-unselected mutation decays (VM5)"
+    assert batch_id == "VMB-0001"
+
+
+@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
+def test_numbers_ratify_exactly_the_selected_mutations_atomically(tmp_path: Path) -> None:
+    """VM4: the numbered set is composed and committed as one atomic ceremony."""
+    sandbox = _clone_repo_to_tmp(tmp_path)
+    vector = _vector(sandbox)
+    ledger = _fresh_ledger(sandbox)
+    sentinel = len(vector.core_objectives)
+    for pid in ("VMP-0001", "VMP-0002", "VMP-0003"):
+        ledger.propose(
+            _mk_proposal(
+                vector,
+                proposal_id=pid,
+                anchor_kind=VectorAnchorKind.CORE_OBJECTIVE,
+                anchor_index=sentinel,
+                mutation_kind=MutationKind.ADD,
+                proposed_text=f"Добавленная цель {pid}",
+            )
+        )
+    _open_batch(ledger, ("VMP-0001", "VMP-0002", "VMP-0003"))
+
+    result = ledger.ingest_operator_signal(_task(1, 3), _vector(sandbox))
+    assert result["confirmed"] == ["VMP-0001", "VMP-0003"]
+    assert result["applied"] == ["VMP-0001", "VMP-0003"]
+    # VMP-0002 was offered but not numbered, and it targeted the *same append sentinel* as the two
+    # mutations the Operator did select. Once they land, that sentinel no longer exists, so the
+    # proposal can never be materialised: the atomic apply retires it in the same transaction
+    # (VM5/VM6 hygiene) rather than leaving an un-appliable pending proposal behind. The Operator's
+    # unselected work is not silent: it is superseded, recorded, and must be re-proposed against
+    # the live vector with fresh evidence.
+    assert "VMP-0002" not in result["applied"]
+    assert "VMP-0002" not in result["confirmed"]
+    assert result["superseded"] == ["VMP-0002"]
+
+    applied = _vector(sandbox)
+    # Both numbered mutations landed on the SAME anchor sequence in one transaction.
+    assert applied.core_objectives[sentinel] == "Добавленная цель VMP-0001"
+    assert applied.core_objectives[sentinel + 1] == "Добавленная цель VMP-0003"
+    assert len(applied.core_objectives) == sentinel + 2
+
+    state = ledger.state()
+    assert state.status_of("VMP-0001") == ProposalStatus.APPLIED
+    assert state.status_of("VMP-0003") == ProposalStatus.APPLIED
+    assert state.status_of("VMP-0002") == ProposalStatus.SUPERSEDED
+    assert state.ledger_head() == vector_profile_digest(applied)
+    codes = {d.code for d in evaluate_ledger_deviations(state, applied)}
+    assert codes == {"UNRELEASED_RATIFIED_MUTATION"}, codes
+
+
+@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
+def test_ordinal_outside_the_batch_is_refused_not_ignored(tmp_path: Path) -> None:
+    """An ordinal the request never offered cannot be ratified by guessing."""
+    vector = _vector(REPO_ROOT)
+    root = tmp_path / "out_of_range"
+    root.mkdir()
+    ledger = VectorMutationLedger(root)
+    ledger.initialize(vector)
+    ledger.propose(_mk_proposal(vector))
+    _open_batch(ledger, ("VMP-0001",))
+
+    result = ledger.ingest_operator_signal(_task(2), vector)
+    assert result["confirmed"] == []
+    # The batch offered exactly one mutation, so ordinal 2 names nothing at all: it is refused as
+    # unknown, never reinterpreted as "the nearest mutation" and never silently ignored.
+    assert result["unknown_ordinals"] == [2]
+    assert result["selected_ordinals"] == []
+    assert ledger.state().status_of("VMP-0001") == ProposalStatus.PENDING
+
+
+@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
+def test_batch_is_bound_to_the_live_vector_head(tmp_path: Path) -> None:
+    """A numbered request is numbered against a digest; a stale request must not be ratified."""
+    sandbox = _clone_repo_to_tmp(tmp_path)
+    vector = _vector(sandbox)
+    ledger = _fresh_ledger(sandbox)
+    ledger.propose(_mk_proposal(vector))
+    batch_id = _open_batch(ledger, ("VMP-0001",))
+
+    # A second mutation is applied after the request was numbered.
+    ledger.propose(_mk_proposal(vector, proposal_id="VMP-0002", anchor_index=1))
+    ledger.confirm("VMP-0002", selected_ordinals=(2,))
+    outcome = apply_confirmed_proposal(sandbox, "VMP-0002", summary="shift the vector head")
+    assert outcome.applied is True, outcome.reason
+
+    result = ledger.ingest_operator_signal(_task(1), _vector(sandbox))
+    assert result["confirmed"] == []
+    assert result["stale_ordinals"] == [1]
+    state = ledger.state()
+    assert any(
+        d.code == "STALE_NUMBERED_BATCH" for d in evaluate_ledger_deviations(state, _vector(sandbox))
+    )
+    assert batch_id == "VMB-0001"
+
+
+@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
+def test_seal_makes_the_last_pull_request_the_confirmed_version(tmp_path: Path) -> None:
+    """VM5: applied mutations are unreleased until a SEALED record pins the last-PR version."""
+    sandbox = _clone_repo_to_tmp(tmp_path)
+    vector = _vector(sandbox)
+    ledger = _fresh_ledger(sandbox)
+    ledger.propose(_mk_proposal(vector))
+    _open_batch(ledger, ("VMP-0001",))
+    ledger.ingest_operator_signal(_task(1), _vector(sandbox))
+
+    state = ledger.state()
+    assert state.confirmed_version_digest() == vector_profile_digest(vector)
+    assert [i["proposal_id"] for i in state.unreleased_mutations()] == ["VMP-0001"]
+    assert "UNRELEASED_RATIFIED_MUTATION" in {
+        d.code for d in evaluate_ledger_deviations(state, _vector(sandbox))
+    }
+
+    seal = ledger.seal(_vector(sandbox), pr_ref="#3")
+    state = ledger.state()
+    assert seal.kind == LedgerEventKind.SEALED
+    assert state.last_sealed_pr_ref == "#3"
+    assert state.last_sealed_version == _vector(sandbox).version
+    assert state.confirmed_version_digest() == vector_profile_digest(_vector(sandbox))
+    assert state.unreleased_mutations() == ()
+    assert evaluate_ledger_deviations(state, _vector(sandbox)) == []
+    assert audit_repository(sandbox).valid is True
+
+
+@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
+def test_deferral_decay_expires_proposals_after_two_windows(tmp_path: Path) -> None:
+    """VM5: a proposal deferred twice expires and must return with fresh evidence."""
+    vector = _vector(REPO_ROOT)
+    root = tmp_path / "decay"
+    root.mkdir()
+    ledger = VectorMutationLedger(root)
+    ledger.initialize(vector)
+    ledger.propose(_mk_proposal(vector))
+    _open_batch(ledger, ("VMP-0001",))
+
+    first = ledger.ingest_operator_signal(_task(), vector, note="window 1")
+    assert first["version_reaffirmed"] is True
+    assert first["deferred"] == ["VMP-0001"]
+    assert first["expired"] == []
+    assert ledger.state().status_of("VMP-0001") == ProposalStatus.PENDING
+
+    second = ledger.ingest_operator_signal(_task(), vector, note="window 2")
+    assert second["deferred"] == ["VMP-0001"]
+    assert second["expired"] == ["VMP-0001"]
+    assert ledger.state().status_of("VMP-0001") == ProposalStatus.EXPIRED
+    assert ledger.state().deferrals["VMP-0001"] == MAX_DEFERRALS
+
+
+@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
+def test_numbered_request_renders_ordinals_justifications_and_the_task_anchor() -> None:
+    """VM2/VM4: the Operator must see number, anchor, rationale, exact text and evidence digests."""
+    from isai.vector_ledger import VectorMutationBatch
+
+    vector = _vector(REPO_ROOT)
+    proposal = _mk_proposal(vector)
+    batch = VectorMutationBatch(
+        batch_id="VMB-0001",
+        base_vector_digest=vector_profile_digest(vector),
+        proposal_ids=("VMP-0001",),
+        created_at_utc=utc_now_iso(),
+    )
+    block = render_numbered_mutations((proposal,), batch=batch)
+    assert "1. **VMP-0001** `EDIT` CORE_OBJECTIVE[0]" in block
+    assert proposal.rationale in block
+    assert proposal.anchor_fingerprint[:12] in block
+    assert proposal.base_vector_digest[:12] in block
+    assert CONFIRM_TASK_ANCHOR_FORMS[0] in block
+    assert "[ ]" not in block, "the numbered request offers no checkbox consent surface"
+    assert render_numbered_mutations(()) == ""
 
 
 # ============================================================================
@@ -180,7 +433,7 @@ def test_rejected_box_wins_over_checked_box_for_same_proposal() -> None:
 
 @pytest.mark.isai_scope("isai://root#VectorMutationLedger")
 def test_proposal_binding_rejects_shallow_rationale_and_missing_evidence() -> None:
-    """VM2: an unjustified checkbox mutation is structurally impossible to create."""
+    """VM2: an unjustified mutation is structurally impossible to create."""
     vector = _vector(REPO_ROOT)
     with pytest.raises(ValidationError, match=">= 60 characters"):
         _mk_proposal(vector, rationale="Надо.")
@@ -206,17 +459,21 @@ def test_ledger_fold_blocks_apply_without_confirm_and_broken_digest_chain(tmp_pa
     with pytest.raises(ValueError, match="Apply-Without-Confirm"):
         ledger.append(
             kind=LedgerEventKind.APPLIED,
-            channel=ConfirmationChannel.CHECKBOX,
+            channel=ConfirmationChannel.OPERATOR_TASK,
             proposal_id=proposal.proposal_id,
             vector_digest_before=vector_profile_digest(vector),
             vector_digest_after="a" * 64,
             chronicle_tx_id="TX-9999",
         )
 
-    # Confirmed proposals cannot be re-confirmed (idempotency guard).
-    ledger.confirm(proposal.proposal_id)
-    with pytest.raises(ValueError, match="Cannot confirm"):
+    # A confirmation without a selected ordinal is structurally impossible (VM4).
+    with pytest.raises(ValueError, match="no selected ordinal"):
         ledger.confirm(proposal.proposal_id)
+
+    # Confirmed proposals cannot be re-confirmed (idempotency guard).
+    ledger.confirm(proposal.proposal_id, selected_ordinals=(1,))
+    with pytest.raises(ValueError, match="Cannot confirm"):
+        ledger.confirm(proposal.proposal_id, selected_ordinals=(1,))
 
     # A proposal from another base digest cannot be injected into a fresh chain.
     other = _vector(REPO_ROOT)
@@ -229,77 +486,6 @@ def test_ledger_fold_blocks_apply_without_confirm_and_broken_digest_chain(tmp_pa
     broken = events[-1].model_copy(update={"seq": 99})
     with pytest.raises(ValueError, match="Non-monotonic"):
         fold_events([*events[:-1], broken])
-
-
-@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
-def test_deferral_decay_expires_proposals_after_two_windows(tmp_path: Path) -> None:
-    """VM5: a proposal deferred twice expires and must return with fresh evidence."""
-    vector = _vector(REPO_ROOT)
-    root = tmp_path / "decay"
-    root.mkdir()
-    ledger = VectorMutationLedger(root)
-    ledger.initialize(vector)
-    ledger.propose(_mk_proposal(vector))
-
-    first = ledger.ingest_operator_signal(
-        OperatorSignal(phrase_confirmed=True), vector, note="window 1"
-    )
-    assert first["reaffirmed"] is True
-    assert first["deferred"] == ["VMP-0001"]
-    assert first["expired"] == []
-    assert ledger.state().status_of("VMP-0001") == ProposalStatus.PENDING
-
-    second = ledger.ingest_operator_signal(
-        OperatorSignal(phrase_confirmed=True), vector, note="window 2"
-    )
-    assert second["deferred"] == ["VMP-0001"]
-    assert second["expired"] == ["VMP-0001"]
-    assert ledger.state().status_of("VMP-0001") == ProposalStatus.EXPIRED
-    assert ledger.state().deferrals["VMP-0001"] == MAX_DEFERRALS
-
-
-@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
-def test_phrase_ratification_defers_but_never_blanket_confirms(tmp_path: Path) -> None:
-    """VM3: 'подтвердить вектор системы' ratifies the vector, it does not consent to mutations."""
-    vector = _vector(REPO_ROOT)
-    root = tmp_path / "phrase_only"
-    root.mkdir()
-    ledger = VectorMutationLedger(root)
-    ledger.initialize(vector)
-    ledger.propose(_mk_proposal(vector))
-
-    result = ledger.ingest_operator_signal(OperatorSignal(phrase_confirmed=True), vector)
-    state = ledger.state()
-    assert result["confirmed"] == []
-    assert state.status_of("VMP-0001") == ProposalStatus.PENDING
-    assert state.last_reaffirmed_digest == vector_profile_digest(vector)
-
-    # A checkbox in the SAME prompt takes precedence: no blanket deferral, and the ratified
-    # mutation is materialised atomically (never left dangling as an un-auditable wedge).
-    ledger.propose(_mk_proposal(vector, proposal_id="VMP-0002"))
-    mixed = ledger.ingest_operator_signal(
-        OperatorSignal(phrase_confirmed=True, checked_proposal_ids=("VMP-0001",)), vector
-    )
-    assert mixed["confirmed"] == ["VMP-0001"]
-    assert mixed["reaffirmed"] is False
-    state = ledger.state()
-    assert state.status_of("VMP-0001") == ProposalStatus.APPLIED
-    # The ledger is internally consistent against the vector it actually produced.
-    assert evaluate_ledger_deviations(state, _vector(ledger.repo_root)) == []
-
-
-@pytest.mark.isai_scope("isai://root#VectorMutationLedger")
-def test_checkbox_block_renders_informed_consent_evidence() -> None:
-    """VM2/VM3: the operator must see anchor, rationale, exact text and evidence digests."""
-    vector = _vector(REPO_ROOT)
-    proposal = _mk_proposal(vector)
-    block = render_proposal_checkboxes((proposal,))
-    assert "- [ ] **VMP-0001** `EDIT` CORE_OBJECTIVE[0]" in block
-    assert proposal.rationale in block
-    assert proposal.anchor_fingerprint[:12] in block
-    assert proposal.base_vector_digest[:12] in block
-    assert "подтвердить вектор системы" in block
-    assert render_proposal_checkboxes(()) == ""
 
 
 # ============================================================================
@@ -357,7 +543,8 @@ def test_stale_anchor_proposal_cannot_be_applied(tmp_path: Path) -> None:
     # Even when confirmed, the ceremony refuses to materialise a stale anchor: it re-derives the
     # mutation from the *live* vector, so the fingerprint check must be performed against a vector
     # whose prefix was shifted (simulating a foreign change inside the addressed sequence).
-    ledger.confirm("VMP-0001")
+    _open_batch(ledger, ("VMP-0001",))
+    ledger.confirm("VMP-0001", selected_ordinals=(1,))
     shifted_prefix = vector.model_copy(
         update={
             "anti_goals": (
@@ -380,7 +567,8 @@ def test_apply_ceremony_is_atomic_and_version_bump_is_enforced(tmp_path: Path) -
     vector = _vector(sandbox)
     ledger = _fresh_ledger(sandbox)
     ledger.propose(_mk_proposal(vector, anchor_kind=VectorAnchorKind.CORE_OBJECTIVE, anchor_index=0))
-    ledger.confirm("VMP-0001")
+    _open_batch(ledger, ("VMP-0001",))
+    ledger.confirm("VMP-0001", selected_ordinals=(1,))
 
     # The ceremony materialises the mutation itself (deterministic strategy), atomically.
     outcome = apply_confirmed_proposal(sandbox, "VMP-0001", summary="Test vector mutation.")
@@ -403,8 +591,18 @@ def test_apply_ceremony_is_atomic_and_version_bump_is_enforced(tmp_path: Path) -
     assert state.applied[-1]["after"] == vector_profile_digest(applied_vector)
     assert state.applied[-1]["before"] == vector_profile_digest(vector)
 
+    # VM5: an applied-but-unsealed mutation is *by design* an open deviation — the confirmed
+    # version must be the version of the last pull request. The audit therefore refuses until the
+    # Operator records the SEAL, and goes clean immediately after it.
+    unsealed = audit_repository(sandbox)
+    assert unsealed.valid is False
+    assert {issue.code for issue in unsealed.issues} == {"VECTOR_LEDGER_INVALID"}
+
+    VectorMutationLedger(sandbox).seal(_vector(sandbox), pr_ref="#TEST")
     report = audit_repository(sandbox)
-    assert report.valid is True, f"Post-apply audit failed: {report.issues}"
+    assert report.valid is True, f"Post-seal audit failed: {report.issues}"
+    assert VectorMutationLedger(sandbox).state().status_of("VMP-0001") == ProposalStatus.APPLIED
+    assert VectorMutationLedger(sandbox).state().last_sealed_pr_ref == "#TEST"
 
 
 @pytest.mark.isai_scope("isai://root#MasterVector")
@@ -442,6 +640,8 @@ def test_gate_v_clean_repository_emits_evidence_bound_status() -> None:
         "UNIVERSE",
         "TESTS",
         "SYSTEM_SUBFOLDERS",
+        # IL-1C v1.2: the text domain (`TE1..TE7` duties, H-TEXT-01..04) is part of Gate V.
+        "TEXT",
     }
 
 
@@ -559,24 +759,29 @@ def test_gate_v_is_read_only() -> None:
 
 
 # ============================================================================
-# TIER V2: NVF v1.1 integration & RSoC delivery
+# TIER V2: NVF v1.2 integration & RSoC delivery
 # ============================================================================
 
 
 @pytest.mark.isai_scope("isai://root#NeuroVascularFundamental", "isai://root#RSoCCompiler")
-def test_nvf_v11_vector_governance_is_ratified_and_anchored_in_rsoc() -> None:
-    """IL-1C v1.1 must be Operator-ratified and deliver VM1..VM8 in both Primacy and Recency slots."""
+def test_nvf_v12_vector_governance_and_text_engineering_are_anchored_in_rsoc() -> None:
+    """IL-1C v1.2 must be Operator-ratified and deliver VM1..VM8 + TE0..TE7 into the RSoC packet."""
     from isai.engine import compile_rsoc
     from isai.graph_index import load_repo_nvf
 
     nvf = load_repo_nvf(REPO_ROOT)
-    assert nvf.frame_id == "ISAI-NVF/1.1"
-    assert nvf.version == "1.1"
-    assert "VectorMutation=CHECKBOX_RATIFIED_LEDGER_ONLY" in nvf.mutability_law
+    assert nvf.frame_id == "ISAI-NVF/1.2"
+    assert nvf.version == "1.2"
+    assert "VectorMutation=NUMBERED_OPERATOR_TASK_LEDGER_ONLY" in nvf.mutability_law
     dsl = nvf.render_dsl()
     for rule in ("VM1.SingleSource:", "VM2.ProposalBinding:", "VM3.SignalSource:",
-                 "VM4.ApplyCeremony:", "VM5.DeferralDecay:", "VM6.DriftDetect:",
+                 "VM4.NumberedRatification:", "VM5.ConfirmedBaseline&Decay:", "VM6.DriftDetect:",
                  "VM7.GateV-PrePR:", "VM8.TurnBoundary:"):
+        assert rule in dsl
+    # IL-1C v1.2 carries the text-engineering duty set (TE0..TE7) as a first-class amendment.
+    for rule in ("TE0.LevelLaw:", "TE1.CarrierPurity:", "TE2.DLT-BPE:", "TE3.CommandTruth:",
+                 "TE4.FrameLaw:", "TE5.SalienceOrder:", "TE6.ChronicleRegister:",
+                 "TE7.VerifyCompile:"):
         assert rule in dsl
 
     events = read_chronicle(REPO_ROOT)
@@ -586,8 +791,13 @@ def test_nvf_v11_vector_governance_is_ratified_and_anchored_in_rsoc() -> None:
     packet = compile_rsoc(REPO_ROOT, "isai://root")
     head = packet["enforced_neuro_vascular_frame"]
     tail = packet["terminal_execution_guard"]
-    assert head["frame_id"] == "ISAI-NVF/1.1"
+    assert head["frame_id"] == "ISAI-NVF/1.2"
     assert len(head["vector_governance"]) == 8
+    # The text-engineering circuit is delivered as its own RSoC section, right after the NVF frame.
+    assert set(packet["enforced_text_engineering"]["duties"]) == {f"TE{i}" for i in range(8)}
+    assert list(packet.keys()).index("enforced_text_engineering") > list(packet.keys()).index(
+        "enforced_neuro_vascular_frame"
+    )
     assert tail["vector_mutation_law"] == nvf.mutability_law
     assert list(packet.keys())[-1] == "terminal_execution_guard"
 
@@ -639,7 +849,12 @@ def genesis_ok(root: Path) -> bool:
 
 
 class VectorGovernanceMachine(RuleBasedStateMachine):
-    """Generative lifecycle: propose -> confirm/reject/defer -> apply, with hard invariants."""
+    """
+    Generative lifecycle of the numbered protocol: propose -> batch -> ratify by numbers.
+
+    The machine outlaws the two historically observed wedge states: a CONFIRMED mutation that was
+    never applied, and an applied batch that left the ledger head off the live vector.
+    """
 
     def __init__(self) -> None:
         super().__init__()
@@ -651,9 +866,7 @@ class VectorGovernanceMachine(RuleBasedStateMachine):
         self.ledger = VectorMutationLedger(self.root)
         self.ledger.initialize(self.vector)
         self.proposals: list[str] = []
-        self.confirmed: set[str] = set()
         self.applied: set[str] = set()
-        self.rejected: set[str] = set()
         self._live = self.vector
 
     def teardown(self) -> None:
@@ -663,7 +876,6 @@ class VectorGovernanceMachine(RuleBasedStateMachine):
     def propose_new(self) -> None:
         state = self.ledger.state()
         pid = state.next_proposal_id()
-        # Bind the proposal to the append sentinel of the anti-goal sequence.
         proposal = _mk_proposal(
             self._live,
             proposal_id=pid,
@@ -675,41 +887,42 @@ class VectorGovernanceMachine(RuleBasedStateMachine):
         self.ledger.propose(proposal)
         self.proposals.append(pid)
 
-    @rule(pid=st.sampled_from(["VMP-0001", "VMP-0002", "VMP-0003", "VMP-0004"]))
-    def try_confirm(self, pid: str) -> None:
-        state = self.ledger.state()
-        if state.status_of(pid) == ProposalStatus.PENDING:
-            self.ledger.confirm(pid)
-            self.confirmed.add(pid)
-
-    @rule(pid=st.sampled_from(["VMP-0001", "VMP-0002", "VMP-0003", "VMP-0004"]))
-    def try_reject(self, pid: str) -> None:
-        state = self.ledger.state()
-        if state.status_of(pid) == ProposalStatus.PENDING:
-            self.ledger.reject(pid)
-            self.rejected.add(pid)
-
     @rule()
-    def reaffirm_window(self) -> None:
-        self.ledger.ingest_operator_signal(OperatorSignal(phrase_confirmed=True), self._live)
-
-    @rule()
-    def apply_confirmed(self) -> None:
-        available = sorted(self.confirmed - self.applied)
-        if not available:
+    def open_numbered_request(self) -> None:
+        pending = self.ledger.state().pending()
+        if not pending:
             return
-        pid = available[0]
-        outcome = apply_confirmed_proposal(
-            self.root, pid, summary=f"generative apply {pid}"
-        )
-        assert outcome.applied is True, outcome.reason
-        self.applied.add(pid)
-        self._live = _vector(self.root)
+        chosen = tuple(p.proposal_id for p in pending[:MAX_BATCH_SIZE])
+        state = self.ledger.state()
+        self.ledger.open_batch(chosen, base_vector_digest=state.ledger_head() or "")
+
+    @rule(ordinals=st.lists(st.integers(min_value=1, max_value=MAX_BATCH_SIZE), max_size=3))
+    def ratify_by_numbers(self, ordinals: list[int]) -> None:
+        batch = self.ledger.state().latest_batch()
+        signal = _task(*ordinals) if ordinals else _task()
+        result = self.ledger.ingest_operator_signal(signal, self._live)
+        if result["applied"]:
+            self._live = _vector(self.root)
+            self.applied.update(result["applied"])
+        # Every reported application must be visible in the live vector's ledger head.
+        assert self.ledger.state().ledger_head() == vector_profile_digest(self._live)
+        assert not self.ledger.state().confirmed(), "a ratified mutation was left unapplied (wedge)"
+        if batch is not None and not ordinals:
+            assert result["version_reaffirmed"] is True
+
+    @rule(ordinals=st.lists(st.integers(min_value=1, max_value=MAX_BATCH_SIZE), max_size=2))
+    def seal_current_version(self, ordinals: list[int]) -> None:
+        state = self.ledger.state()
+        if state.ledger_head() != vector_profile_digest(self._live):
+            return
+        if state.last_sealed_digest == state.ledger_head():
+            return
+        self.ledger.seal(self._live, pr_ref="#3")
+        assert self.ledger.state().unreleased_mutations() == ()
 
     @invariant()
     def statuses_are_terminal_or_pending(self) -> None:
-        state = self.ledger.state()
-        for pid, status in state.statuses.items():
+        for pid, status in self.ledger.state().statuses.items():
             assert status in {
                 ProposalStatus.PENDING,
                 ProposalStatus.CONFIRMED,
@@ -729,19 +942,22 @@ class VectorGovernanceMachine(RuleBasedStateMachine):
         assert previous == vector_profile_digest(self._live)
 
     @invariant()
-    def rejected_or_pending_never_applied(self) -> None:
-        state = self.ledger.state()
-        for pid in self.applied:
-            assert pid not in self.rejected
-            assert state.status_of(pid) == ProposalStatus.APPLIED
-        for pid in self.rejected:
-            assert pid not in self.applied
-
-    @invariant()
     def deferrals_never_exceed_policy(self) -> None:
         state = self.ledger.state()
         for pid, count in state.deferrals.items():
             assert count <= MAX_DEFERRALS + 1, f"{pid} exceeded deferral policy: {count}"
+
+    @invariant()
+    def no_mutation_is_ever_applied_without_a_numbered_task(self) -> None:
+        state = self.ledger.state()
+        # Every APPLIED event in the ledger must be one this machine ratified by numbers: an
+        # apply that nobody numbered is exactly the silent-consent failure VM3/VM4 exist to stop.
+        for item in state.applied:
+            assert item["proposal_id"] in self.applied, (
+                f"{item['proposal_id']} was applied without a numbered operator task"
+            )
+        for pid in self.applied:
+            assert state.status_of(pid) == ProposalStatus.APPLIED
 
 
 TEST_GOVERNANCE_MACHINE = VectorGovernanceMachine.TestCase

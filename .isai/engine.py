@@ -43,6 +43,7 @@ from isai.graph_index import (
     verify_node_py_ast_purity,
 )
 from isai.neuro_vascular import NeuroVascularFundamentalSpec
+from isai.text_engineering import text_engineering_packet
 from isai.protocol import (
     AuditIssue,
     AuditReport,
@@ -1617,6 +1618,7 @@ def compile_rsoc(
             "policy": " | ".join(GENESIS_CONSTITUTION.execution_policy),
         },
         "enforced_neuro_vascular_frame": repo_nvf.primacy_head_packet(),
+        "enforced_text_engineering": text_engineering_packet(),
         "master_vector_anchor": {
             "version": repo_vec.version,
             "north_star": repo_vec.north_star_statement,
@@ -1649,5 +1651,8 @@ def compile_rsoc(
         "linked_interface_stubs": linked_stubs,
         "operator_calibration": operator_slice,
         "distilled_knowledge": knowledge_slice,
-        "terminal_execution_guard": repo_nvf.recency_tail_packet(),
+        "terminal_execution_guard": {
+            **repo_nvf.recency_tail_packet(),
+            "text_engineering_recency": text_engineering_packet()["recency_guard"],
+        },
     }

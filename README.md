@@ -16,8 +16,8 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://root -->
-<!-- isai:spec_digest=4bcf842633aa334958716a91b7a6cb6fb9709c1c7ea3e34a4defee0d7d110f72 -->
-<!-- isai:interface_digest=d561a1e8c9e78c94cac522e2b07743a45464014b96b6940b2b54c7742ad042e8 -->
+<!-- isai:spec_digest=9d4845236a3150b93e3496b9d6a6f72119c1ffb34cfba4a5d1156d1013dcd1d8 -->
+<!-- isai:interface_digest=99ba0424edcffa64b22d5fe9eff0fa9a80666331ba935dbe62ae0ee64d5519d4 -->
 
 ## Паспорт узла `isai://root` — Корневой узел-драйвер, индекс гиперграфа и транзакционный инжектор связей ISAI
 
@@ -30,7 +30,8 @@
 - Субгенетический фундаментал /FUNDAMENTAL.md (IL-1C) синхронизирован с isai://root#NeuroVascularFundamental и ратифицирован в Chronicle.
 - Вектор развития /VISION.md синхронизирован с объектом isai://root#MasterVector.
 - Все связи, порты IOPortSpec (schema_refs), SymbolBindingSpec и кольца видимости верифицированы через 'isai audit'.
-- Команды 'isai nv', 'isai graph', 'isai link', 'isai rsoc' и 'isai recover' работают детерминированно и атомарно.
+- Команды 'isai nv', 'isai graph', 'isai link', 'isai rsoc', 'isai text' и 'isai recover' работают детерминированно и атомарно.
+- Каждый текст системных папок и файлов подписан уровнем TE0 и проходит 'isai text check' без отклонений (IL-1C [TEXT-ENGINEERING]).
 
 ### Функционал (`Capabilities`)
 - Графовая компиляция контекста 'isai rsoc' с доставкой 1-hop интерфейсных стабов соседей.
@@ -52,7 +53,7 @@
 
 ### Реестр владения и верифицируемых символов (`Ownership & Symbol Bindings`)
 - **Файлы узла (`owned_files`):** `README.md`, `FUNDAMENTAL.md`, `VISION.md`, `AGENTS.md`, `pyproject.toml`, `.gitignore`
-- **Служебные файлы (`system_files`):** `.isai/__init__.py`, `.isai/__main__.py`, `.isai/atomic_io.py`, `.isai/constitution.py`, `.isai/contracts.py`, `.isai/protocol.py`, `.isai/domain_models.py`, `.isai/neuro_vascular.py`, `.isai/vector.py`, `.isai/graph_index.py`, `.isai/engine.py`, `.isai/link_mutator.py`, `.isai/node.py`, `.isai/chronicle.jsonl`, `.isai/vector_ledger.py`, `.isai/health_checks.py`, `.isai/vector_ledger.jsonl`
+- **Служебные файлы (`system_files`):** `.isai/__init__.py`, `.isai/__main__.py`, `.isai/atomic_io.py`, `.isai/constitution.py`, `.isai/contracts.py`, `.isai/protocol.py`, `.isai/domain_models.py`, `.isai/neuro_vascular.py`, `.isai/vector.py`, `.isai/graph_index.py`, `.isai/engine.py`, `.isai/link_mutator.py`, `.isai/node.py`, `.isai/chronicle.jsonl`, `.isai/vector_ledger.py`, `.isai/health_checks.py`, `.isai/vector_ledger.jsonl`, `.isai/text_engineering.py`
 - **Экспортируемые сущности (`symbol_bindings`):**
   - `isai://root#GenesisKernel` (`python_attr` → `constitution.py:GENESIS_CONSTITUTION`, видимость: `PUBLIC`)
   - `isai://root#NeuroVascularFundamental` (`python_attr` → `neuro_vascular.py:NEURO_VASCULAR_FUNDAMENTAL`, видимость: `PUBLIC`)
@@ -68,6 +69,8 @@
   - `isai://root#VectorMutationLedger` (`python_attr` → `vector_ledger.py:VectorMutationLedger`, видимость: `PUBLIC`)
   - `isai://root#SystemHealthGate` (`python_attr` → `health_checks.py:evaluate_gate_v`, видимость: `PUBLIC`)
   - `isai://root#VectorMutationLedgerRecord` (`system_artifact` → `vector_ledger.jsonl`, видимость: `PUBLIC`)
+  - `isai://root#TextEngineering` (`python_attr` → `text_engineering.py:validate_text`, видимость: `PUBLIC`)
+  - `isai://root#TextReader` (`python_attr` → `text_engineering.py:TextLevel`, видимость: `PUBLIC`)
 
 ### Типизированные связи и Маршрутизация (`Typed Links & Router`)
 - **Типизированные связи (`links`):**
