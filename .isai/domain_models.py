@@ -158,7 +158,19 @@ class KnowledgeEntry(BaseModel):
     applicability_tags: tuple[str, ...] = Field(min_length=1)
     related_node_ref: EntityRef
     origin_tx_id: str = Field(min_length=1)
+    #: Chronicle revision in which this entry was **written**, not proof that it was checked.
+    #: The two were conflated until the embedding study showed the cost: `PAT_BIO_UNIVERSE` carried
+    #: revision 8 while having zero executable symbols, and `3.18x` in the same entry turned out to
+    #: be the *worst* of four correct cache strategies. Conflating "recorded" with "verified" is how
+    #: a catalog manufactures confidence, so the two now have separate fields.
     verified_revision: int = Field(ge=1)
+    #: How far the mechanism described here has actually been built. `PROSE` means the entry is a
+    #: design, never a claim that code exists; `MEASURED` means a reproducible artifact backs the
+    #: numbers; `IMPLEMENTED` means an executable symbol exists in the kernel.
+    maturity: Literal["PROSE", "MEASURED", "IMPLEMENTED"] = "PROSE"
+    #: Repository-relative path to the artifact that reproduces this entry's numbers, if any.
+    #: Empty means "no evidence was recorded" — which is honest, and now visible.
+    evidence_ref: str = ""
 
 
 class KnowledgeCatalogSpec(BaseModel):

@@ -1,0 +1,79 @@
+{
+  "by_kind": [
+    {
+      "kind": "symbol",
+      "count": 216,
+      "stubs": 24,
+      "stub_share": 0.1111,
+      "eff_all_median": 0.068298,
+      "eff_stub_median": 0.067944,
+      "eff_real_median": 0.068987,
+      "sloc_median": 1,
+      "sloc_eff_corr": 0.176
+    },
+    {
+      "kind": "passport_symbol",
+      "count": 27,
+      "stubs": 4,
+      "stub_share": 0.1481,
+      "eff_all_median": 0.032751,
+      "eff_stub_median": 0.02295,
+      "eff_real_median": 0.032871,
+      "sloc_median": 1,
+      "sloc_eff_corr": 0.392
+    },
+    {
+      "kind": "knowledge",
+      "count": 22,
+      "stubs": 0,
+      "stub_share": 0.0,
+      "eff_all_median": 0.124222,
+      "eff_stub_median": null,
+      "eff_real_median": 0.124222,
+      "sloc_median": 1,
+      "sloc_eff_corr": 0.0
+    },
+    {
+      "kind": "vector_element",
+      "count": 19,
+      "stubs": 4,
+      "stub_share": 0.2105,
+      "eff_all_median": 0.063165,
+      "eff_stub_median": 0.0,
+      "eff_real_median": 0.071208,
+      "sloc_median": 1,
+      "sloc_eff_corr": 0.935
+    },
+    {
+      "kind": "document",
+      "count": 9,
+      "stubs": 0,
+      "stub_share": 0.0,
+      "eff_all_median": 0.053569,
+      "eff_stub_median": null,
+      "eff_real_median": 0.053569,
+      "sloc_median": 63,
+      "sloc_eff_corr": 0.729
+    },
+    {
+      "kind": "node",
+      "count": 5,
+      "stubs": 0,
+      "stub_share": 0.0,
+      "eff_all_median": 0.033264,
+      "eff_stub_median": null,
+      "eff_real_median": 0.033264,
+      "sloc_median": 25
+    }
+  ],
+  "stub_vs_real": {
+    "stub_count": 32,
+    "real_count": 266,
+    "stub_eff": 0.058286,
+    "real_eff": 0.068543,
+    "stub_sloc_median": 1,
+    "real_sloc_median": 1,
+    "ratio": 1.176
+  },
+  "conclusion": "признак stub не объясняет эффективность лучше размера"
+}

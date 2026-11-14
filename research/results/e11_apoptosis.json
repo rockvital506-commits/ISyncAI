@@ -1,0 +1,174 @@
+{
+  "rows": [
+    {
+      "strategy": "NO_APOPTOSIS",
+      "mutations": 0,
+      "survival": 1.0,
+      "function": 1.0,
+      "false_kill": 0,
+      "noise_at_5": 0.0,
+      "context_bytes": 95,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "NO_APOPTOSIS",
+      "mutations": 30,
+      "survival": 1.0,
+      "function": 1.0,
+      "false_kill": 0,
+      "noise_at_5": 0.0,
+      "context_bytes": 436,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "NO_APOPTOSIS",
+      "mutations": 60,
+      "survival": 1.0,
+      "function": 1.0,
+      "false_kill": 0,
+      "noise_at_5": 0.0,
+      "context_bytes": 783,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "NO_APOPTOSIS",
+      "mutations": 120,
+      "survival": 1.0,
+      "function": 1.0,
+      "false_kill": 0,
+      "noise_at_5": 0.0,
+      "context_bytes": 1502,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "EAGER",
+      "mutations": 0,
+      "survival": 0.9,
+      "function": 1.0,
+      "false_kill": 1,
+      "noise_at_5": 0.0,
+      "context_bytes": 68,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "EAGER",
+      "mutations": 30,
+      "survival": 0.9,
+      "function": 1.0,
+      "false_kill": 1,
+      "noise_at_5": 0.0,
+      "context_bytes": 164,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "EAGER",
+      "mutations": 60,
+      "survival": 0.9,
+      "function": 1.0,
+      "false_kill": 1,
+      "noise_at_5": 0.0,
+      "context_bytes": 307,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "EAGER",
+      "mutations": 120,
+      "survival": 0.9,
+      "function": 1.0,
+      "false_kill": 1,
+      "noise_at_5": 0.0,
+      "context_bytes": 546,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "DISCRIMINATING",
+      "mutations": 0,
+      "survival": 1.0,
+      "function": 1.0,
+      "false_kill": 0,
+      "noise_at_5": 0.0,
+      "context_bytes": 78,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "DISCRIMINATING",
+      "mutations": 30,
+      "survival": 1.0,
+      "function": 1.0,
+      "false_kill": 0,
+      "noise_at_5": 0.0,
+      "context_bytes": 174,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "DISCRIMINATING",
+      "mutations": 60,
+      "survival": 1.0,
+      "function": 1.0,
+      "false_kill": 0,
+      "noise_at_5": 0.0,
+      "context_bytes": 317,
+      "garbage_retained": 0
+    },
+    {
+      "strategy": "DISCRIMINATING",
+      "mutations": 120,
+      "survival": 1.0,
+      "function": 1.0,
+      "false_kill": 0,
+      "noise_at_5": 0.0,
+      "context_bytes": 556,
+      "garbage_retained": 0
+    }
+  ],
+  "summary": {
+    "NO_APOPTOSIS": {
+      "mean_function": 1.0,
+      "total_false_kill": 0,
+      "worst_function": 1.0,
+      "worst_noise_at_5": 0.0,
+      "max_context_bytes": 1502
+    },
+    "EAGER": {
+      "mean_function": 1.0,
+      "total_false_kill": 4,
+      "worst_function": 1.0,
+      "worst_noise_at_5": 0.0,
+      "max_context_bytes": 546
+    },
+    "DISCRIMINATING": {
+      "mean_function": 1.0,
+      "total_false_kill": 0,
+      "worst_function": 1.0,
+      "worst_noise_at_5": 0.0,
+      "max_context_bytes": 556
+    }
+  },
+  "ranking": [
+    {
+      "strategy": "NO_APOPTOSIS",
+      "mean_function": 1.0,
+      "total_false_kill": 0,
+      "worst_function": 1.0,
+      "worst_noise_at_5": 0.0,
+      "max_context_bytes": 1502
+    },
+    {
+      "strategy": "DISCRIMINATING",
+      "mean_function": 1.0,
+      "total_false_kill": 0,
+      "worst_function": 1.0,
+      "worst_noise_at_5": 0.0,
+      "max_context_bytes": 556
+    },
+    {
+      "strategy": "EAGER",
+      "mean_function": 1.0,
+      "total_false_kill": 4,
+      "worst_function": 1.0,
+      "worst_noise_at_5": 0.0,
+      "max_context_bytes": 546
+    }
+  ],
+  "verdict": "DISCRIMINATING выигрывает: сохраняет функцию и не убивает живые гены"
+}

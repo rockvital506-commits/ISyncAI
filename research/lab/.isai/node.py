@@ -40,6 +40,12 @@ NODE = ISAINodeSpec(
         'e6_mini.py',
         'e7_plasmid.py',
         'e0_summary.py',
+        'e8_metrics.py',
+        'e9_granularity.py',
+        'e10_threshold.py',
+        'e11_apoptosis.py',
+        'e12_epoch.py',
+        'e13_phase1.py',
     ),
     system_files=(
         'node.py',

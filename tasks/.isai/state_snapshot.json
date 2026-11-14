@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.5",
   "revision": 12,
-  "timestamp_utc": "2026-11-14T15:26:47Z",
+  "timestamp_utc": "2026-11-14T16:13:56Z",
   "genesis_sha256": "4ba8961ae9426294f5b967ade6f5dadf0f648698591317859e8998a5d98482b9",
   "nvf_version": "1.2",
   "nvf_digest": "d5e519fd2e8b77aca1fd9d4f4941d0327a49eee34331ac8e65ffd5a8253fce3a",
@@ -11,12 +11,12 @@
   "open_handles": [],
   "node_spec_digests": {
     "isai://knowledge": "c3f203b8d0f61251762776c8e705996a52103b0a150cb811c4791205c63fe41b",
-    "isai://research": "55e0b7d2f7ff5568c4bee310fbe3e86a13f47a31e5770994491e45d1e1e235fd",
-    "isai://research/lab": "eb4ec4bef390a40546a289267f60c9fd333832b31dd529d16dd9cbd380a9e9bf",
-    "isai://research/results": "bd531c440adbb683443e536ce4bd050abe65209f4c5c77f0e1979beeda405089",
+    "isai://research": "defa374db1f223d1dd859af96bf5d8aed0b0eb42a1e0f8a2a3cde76a058e0df6",
+    "isai://research/lab": "c11935e78d6ad29562469ef127454207939630b268fb2344dc3f04fed660ca05",
+    "isai://research/results": "cd1b3d43a830cc46e79b0f29ddd775b968437c85c1f5a8536379fd8e8c37d3e4",
     "isai://root": "584a8fe8a365f8fa79e2f552a87a043b3644a8c370764281ef31cb169e44e30e",
     "isai://tasks": "c6bfc963b6def96988c40c7a0639f6fe9a52d15ba8fadc7bf3e1bdd9e072a1bb",
-    "isai://tests": "04301f5f15f1d384ba7b0466d3f7450e90f41b556c90ef512a182ccc73a005dc",
+    "isai://tests": "57c4f9288cb63371d9a53b13fa9089e773f4d5489e1d4dca50a2ca882e7e89db",
     "isai://user": "9d3a7be81298d5776efd9d11ccadca9c1ecd33919e844c7858ede12863066a7d"
   },
   "node_interface_digests": {

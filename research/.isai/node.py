@@ -32,6 +32,11 @@ NODE = ISAINodeSpec(
     owned_files=(
         'README.md',
         'FINDINGS.md',
+        'BIO-INVENTORY.md',
+        'BIO-CRITIQUE.md',
+        'CATALOG-CONTRADICTIONS.md',
+        'BIO-LEXICON.md',
+        'BIO-STRATEGY.md',
     ),
     system_files=(
         'node.py',

@@ -1,0 +1,55 @@
+{
+  "phase": 1,
+  "thresholds": {
+    "cache_hit_rate_min": 0.8,
+    "cache_stale_allowed": 0,
+    "apoptosis_false_kill_max": 0,
+    "apoptosis_context_bytes_max": 600,
+    "catalog_dangling_max": 0,
+    "granularity_law_ratio_min": 1.5
+  },
+  "decisions": [
+    {
+      "branch": "1-A",
+      "question": "подтверждается ли закон порога 3 SLOC",
+      "meso_over_nano": 1.06,
+      "threshold": 1.5,
+      "verdict": "REVOKE",
+      "action": "отозвать порог; заменить на признак stub"
+    },
+    {
+      "branch": "1-B",
+      "question": "какая стратегия инвалидации кэша допустима",
+      "chosen": "PER_PLASMID",
+      "hit_rate": 0.8752,
+      "threshold": 0.8,
+      "verdict": "PASS",
+      "global_epoch_rank": 3,
+      "admissible_count": 4
+    },
+    {
+      "branch": "1-C",
+      "question": "убивает ли различающий апоптоз живое",
+      "false_kill": 0,
+      "context_bytes": 556,
+      "eager_false_kill": 4,
+      "threshold_false_kill": 0,
+      "threshold_context_bytes": 600,
+      "verdict": "PASS"
+    },
+    {
+      "branch": "1-D",
+      "question": "есть ли зомби-записи в каталоге",
+      "entries": 22,
+      "dangling": 0,
+      "dangling_ids": [],
+      "verdict": "PASS"
+    }
+  ],
+  "summary": {
+    "branches": 4,
+    "resolved": 4,
+    "blocked": 0,
+    "phase_status": "COMPLETE"
+  }
+}

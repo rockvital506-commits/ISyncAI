@@ -1,0 +1,76 @@
+{
+  "profile": {
+    "plasmid_universe": 400,
+    "rounds": 40,
+    "mutations_per_round": 3
+  },
+  "rows": [
+    {
+      "strategy": "NO_CACHE",
+      "reads": 4000,
+      "evals": 4000,
+      "hit_rate": 0.0,
+      "evals_per_read": 1.0
+    },
+    {
+      "strategy": "GLOBAL_EPOCH",
+      "reads": 4000,
+      "evals": 3553,
+      "hit_rate": 0.1118,
+      "evals_per_read": 0.8882
+    },
+    {
+      "strategy": "PER_PLASMID",
+      "reads": 4000,
+      "evals": 499,
+      "hit_rate": 0.8752,
+      "evals_per_read": 0.1247
+    },
+    {
+      "strategy": "DEPENDENCY_DAG",
+      "reads": 4000,
+      "evals": 2610,
+      "hit_rate": 0.3475,
+      "evals_per_read": 0.6525
+    }
+  ],
+  "correctness": {
+    "NO_CACHE": {
+      "before": 10.0,
+      "after": 11.0,
+      "ok": true,
+      "stale_detected": false
+    },
+    "GLOBAL_EPOCH": {
+      "before": 10.0,
+      "after": 11.0,
+      "ok": true,
+      "stale_detected": false
+    },
+    "PER_PLASMID": {
+      "before": 10.0,
+      "after": 11.0,
+      "ok": true,
+      "stale_detected": false
+    },
+    "DEPENDENCY_DAG": {
+      "before": 10.0,
+      "after": 11.0,
+      "ok": true,
+      "stale_detected": false
+    }
+  },
+  "best_admissible": {
+    "strategy": "PER_PLASMID",
+    "reads": 4000,
+    "evals": 499,
+    "hit_rate": 0.8752,
+    "evals_per_read": 0.1247
+  },
+  "global_epoch_penalty": {
+    "hit_rate_global": 0.1118,
+    "hit_rate_dag": 0.3475,
+    "relative_gain": 3.11,
+    "guard": "некорректная стратегия не допускается даже при большем hit_rate"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "universe_entities": 298,
+  "metrics": [
+    {
+      "metric": "M1_HERITAGE_DENSITY",
+      "entities": 298,
+      "with_body": 254,
+      "name_only": 44,
+      "density": 0.8523,
+      "body_bytes_median": 165,
+      "body_bytes_p90": 788,
+      "note": "доля сущностей с фенотипом; name_only = адресуемо, но не разрешимо"
+    },
+    {
+      "metric": "M2_GRANULE_HEALTH",
+      "entities_with_lines": 294,
+      "below_3_sloc": 228,
+      "share_below_threshold": 0.7755,
+      "sloc_median": 1,
+      "note": "прецедент требует >=3 SLOC; метрика показывает, соблюдается ли он"
+    },
+    {
+      "metric": "M3_ADDRESS_DEPTH",
+      "mean_depth": 0.99,
+      "max_depth": 2,
+      "histogram": {
+        "0": 46,
+        "1": 209,
+        "2": 43
+      },
+      "note": "0 = имя и есть тело; больше = наследственность требует переходов"
+    },
+    {
+      "metric": "M4_APOPTOSIS_COVERAGE",
+      "reachable": 298,
+      "orphans": 0,
+      "coverage": 1.0,
+      "note": "доля сущностей с валидным адресом; сирота = кандидат на апоптоз"
+    },
+    {
+      "metric": "M5_RESOLVE_COST",
+      "entities": 298,
+      "full_resolve_ms": 0.018,
+      "per_entity_us": 0.06,
+      "note": "стоимость обхода всех тел; линейна по N"
+    },
+    {
+      "metric": "M6_EVIDENCE_RATIO",
+      "entries": 22,
+      "entries_with_numbers": 8,
+      "numeric_claims": 32,
+      "entries_with_artifact": 1,
+      "evidence_ratio": 0.125,
+      "note": "доля числовых записей, ссылающихся на воспроизводимый артефакт"
+    }
+  ]
+}

@@ -413,6 +413,38 @@ def build_bound_vocabulary(repo_root: Path) -> set[str]:
         if not pkg.is_dir() or DEFAULT_BOUNDARY_IGNORE.is_ignored(pkg.relative_to(repo_root)):
             continue
         module_files.extend(sorted(pkg.glob("*.py")))
+        # A node owns more than its manifest: `research/lab` declares `universe.py` and
+        # `e7_plasmid.py` in `owned_files`, so the classes they define are live system symbols.
+        # Scanning only `.isai/*.py` reported `EpochUniverse` as a phantom even though the node
+        # manifest names its file — the check was blind to everything a node owns but does not
+        # keep inside its `.isai` package. A declaration is the system's own statement of what is
+        # real, so it has to feed the vocabulary.
+        manifest = pkg / "node.py"
+        if manifest.is_file():
+            try:
+                tree = ast.parse(manifest.read_text(encoding="utf-8"), filename=str(manifest))
+            except SyntaxError:  # pragma: no cover - audit reports manifest syntax errors
+                tree = None
+            if tree is not None:
+                for node in ast.walk(tree):
+                    if (
+                        isinstance(node, ast.Call)
+                        and isinstance(node.func, ast.Name)
+                        and node.func.id == "ISAINodeSpec"
+                    ):
+                        for kw in node.keywords:
+                            if kw.arg != "owned_files" or not isinstance(kw.value, ast.Tuple):
+                                continue
+                            for elt in kw.value.elts:
+                                if not (
+                                    isinstance(elt, ast.Constant)
+                                    and isinstance(elt.value, str)
+                                    and elt.value.endswith(".py")
+                                ):
+                                    continue
+                                owned = pkg.parent / elt.value
+                                if owned.is_file() and owned not in module_files:
+                                    module_files.append(owned)
     for py_file in module_files:
         try:
             tree = ast.parse(py_file.read_text(encoding="utf-8"), filename=str(py_file))

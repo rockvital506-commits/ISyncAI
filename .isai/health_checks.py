@@ -347,6 +347,46 @@ def check_knowledge_domain(
                     evidence=", ".join(bad_tx),
                 )
             )
+            # H-KNOW-04: a numeric claim without an artifact is a *belief*, and the catalog must
+            # say so. This does not fail the build on prose — most entries legitimately describe
+            # kernel mechanisms. It fails only when an entry claims MEASURED maturity without the
+            # artifact that would let anyone re-derive its numbers.
+            measured_no_evidence = [
+                e.entry_id for e in catalog.entries if e.maturity == "MEASURED" and not e.evidence_ref
+            ]
+            results.append(
+                _ok(
+                    "H-KNOW-06",
+                    HealthDomain.KNOWLEDGE,
+                    "Every MEASURED entry names a reproducible artifact.",
+                )
+                if not measured_no_evidence
+                else _fail(
+                    "H-KNOW-06",
+                    HealthDomain.KNOWLEDGE,
+                    "Entries claim MEASURED maturity without an evidence artifact.",
+                    evidence=", ".join(measured_no_evidence),
+                )
+            )
+            dangling_evidence = [
+                e.entry_id
+                for e in catalog.entries
+                if e.evidence_ref and not (repo_root / e.evidence_ref).is_file()
+            ]
+            results.append(
+                _ok(
+                    "H-KNOW-07",
+                    HealthDomain.KNOWLEDGE,
+                    "Every declared evidence artifact exists on disk.",
+                )
+                if not dangling_evidence
+                else _fail(
+                    "H-KNOW-07",
+                    HealthDomain.KNOWLEDGE,
+                    "Entries point at evidence artifacts that do not exist.",
+                    evidence=", ".join(dangling_evidence),
+                )
+            )
             future_rev = [e.entry_id for e in catalog.entries if e.verified_revision > head_rev]
             results.append(
                 _ok("H-KNOW-03", HealthDomain.KNOWLEDGE, "Every entry revision is within the Chronicle horizon.")

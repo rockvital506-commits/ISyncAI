@@ -110,6 +110,19 @@ def main(argv: list[str] | None = None) -> int:
 
     vec_sub.add_parser("expire", help="Expire pending proposals that exhausted their deferral window")
 
+    vrev = vec_sub.add_parser(
+        "review",
+        help="Execute the VM8 PostPromptGate: audit vector, open the research window, rank proposals",
+    )
+    vrev.add_argument(
+        "--since",
+        default=None,
+        type=str,
+        help="Research window start (ISO-8601 or 'baseline'). Default: last APPLIED mutation or baseline.",
+    )
+    vrev.add_argument("--max-proposals", default=5, type=int, help="VM4 caps the batch at 5.")
+    vrev.add_argument("--json", action="store_true", help="Emit machine-readable output only.")
+
     # 'isai text' subcommands (ISAI-NVF v1.2 [TEXT-ENGINEERING] TE0..TE7)
     text_p = sub.add_parser("text", help="Read every system text offline and verify LLM-native engineering")
     text_sub = text_p.add_subparsers(dest="text_cmd", required=True)
@@ -363,6 +376,20 @@ def main(argv: list[str] | None = None) -> int:
             outcome = apply_confirmed_proposal(repo_root, args.proposal_id, vector, summary=args.summary)
             print(json.dumps(outcome.model_dump(mode="json"), ensure_ascii=False, indent=2))
             return 0 if outcome.applied else 1
+        if args.vector_cmd == "review":
+            from isai.vector_ledger import run_post_prompt_gate
+
+            state = ledger.state()
+            gate = run_post_prompt_gate(
+                repo_root=repo_root,
+                ledger=ledger,
+                vector=vector,
+                state=state,
+                since=args.since,
+                max_proposals=args.max_proposals,
+            )
+            print(json.dumps(gate, ensure_ascii=False, indent=2))
+            return 0 if gate["gate_status"] == "PASS" else 1
         if args.vector_cmd == "expire":
             state = ledger.state()
             expired = [

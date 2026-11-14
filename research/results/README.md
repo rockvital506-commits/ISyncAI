@@ -2,7 +2,7 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://research/results -->
-<!-- isai:spec_digest=bd531c440adbb683443e536ce4bd050abe65209f4c5c77f0e1979beeda405089 -->
+<!-- isai:spec_digest=cd1b3d43a830cc46e79b0f29ddd775b968437c85c1f5a8536379fd8e8c37d3e4 -->
 <!-- isai:interface_digest=1f7d923f701016d5ff0ea1c1789f65eecf74e827256c2fe7cd04f7eba9a24d5e -->
 
 ## Паспорт узла `isai://research/results` — Результаты измерений (Measurement Results)
@@ -22,7 +22,7 @@
 - **Выходы (`Outputs`):** `нет внешних выходов`
 
 ### Реестр владения и верифицируемых символов (`Ownership & Symbol Bindings`)
-- **Файлы узла (`owned_files`):** `README.md`, `e1_link_hit.json`, `e2_cost.json`, `e3_context.json`, `e5_scale.json`, `e6_mini.json`, `e7_plasmid.json`, `e0_summary.json`
+- **Файлы узла (`owned_files`):** `README.md`, `e1_link_hit.json`, `e2_cost.json`, `e3_context.json`, `e5_scale.json`, `e6_mini.json`, `e7_plasmid.json`, `e0_summary.json`, `e8_metrics.json`, `e9_granularity.json`, `e10_threshold.json`, `e11_apoptosis.json`, `e12_epoch.json`, `e13_phase1_acceptance.json`
 - **Служебные файлы (`system_files`):** `.isai/node.py`
 - **Экспортируемые сущности (`symbol_bindings`):**
   - `isai://research/results#MetricsArtifact` (`owned_artifact` → `e1_link_hit.json`, видимость: `PUBLIC`)

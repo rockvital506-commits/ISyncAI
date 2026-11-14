@@ -20,6 +20,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root",
             origin_tx_id="TX-0001",
             verified_revision=1,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_DOT_PACKAGE_AND_ISOLATED_LOADER",
@@ -34,6 +36,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root",
             origin_tx_id="TX-0001",
             verified_revision=1,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_RSOC_CONTROL_DATA_SPLIT",
@@ -48,6 +52,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root",
             origin_tx_id="TX-0001",
             verified_revision=1,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_SALSA_INTERFACE_EARLY_CUTOFF",
@@ -62,6 +68,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://tasks",
             origin_tx_id="TX-0001",
             verified_revision=1,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_DUAL_GATE_ISAI_PEP",
@@ -76,6 +84,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://tests",
             origin_tx_id="TX-0001",
             verified_revision=1,
+            maturity="PROSE",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_VERIFIED_SYMBOL_BINDINGS",
@@ -90,6 +100,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root",
             origin_tx_id="TX-0002",
             verified_revision=2,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_360_HYPERGRAPH_AND_PROSE_IMMUNITY",
@@ -104,6 +116,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://tests",
             origin_tx_id="TX-0002",
             verified_revision=2,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_ATOMIC_IO_AND_LEASE_RECOVERY",
@@ -118,6 +132,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://tasks",
             origin_tx_id="TX-0002",
             verified_revision=2,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_EAVT_VAET_BIDIRECTIONAL_INDEX",
@@ -132,6 +148,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#HypergraphIndex",
             origin_tx_id="TX-0003",
             verified_revision=3,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_BDCT_PORT_WIRING_AND_STRUCTURAL_DIGEST",
@@ -146,6 +164,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#ISAINodeSpec",
             origin_tx_id="TX-0003",
             verified_revision=3,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_TRANSACTIONAL_AST_LINK_MUTATOR_AND_STATEFUL_PBT",
@@ -160,6 +180,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#LinkInjector",
             origin_tx_id="TX-0003",
             verified_revision=3,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_SUB_GENESIS_IL1C_AND_ALGEDONIC_RATIFICATION",
@@ -175,6 +197,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#NeuroVascularFundamental",
             origin_tx_id="TX-0005",
             verified_revision=5,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_BIMODAL_RSOC_PRIMACY_RECENCY_SANDWICH",
@@ -190,6 +214,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#RSoCCompiler",
             origin_tx_id="TX-0005",
             verified_revision=5,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_EPHEMERAL_STAGING_SCAFFOLD_AND_SANDBOX_ISOLATION",
@@ -205,6 +231,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#LinkInjector",
             origin_tx_id="TX-0005",
             verified_revision=5,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_OPERADIC_PIPELINE_VS_HYPERGRAPH_BOUNDARY",
@@ -220,6 +248,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#ISAINodeSpec",
             origin_tx_id="TX-0007",
             verified_revision=7,
+            maturity="PROSE",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_TRIPLET_GENOTYPE_EPIGENOME_INTERFACE_HASH",
@@ -235,6 +265,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#HypergraphIndex",
             origin_tx_id="TX-0007",
             verified_revision=7,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_BIO_UNIVERSE_PYDANTIC_HOLON_EPOCH_RIBOSOME",
@@ -250,6 +282,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#ISAINodeSpec",
             origin_tx_id="TX-0008",
             verified_revision=8,
+            maturity="MEASURED",
+            evidence_ref="research/results/e7_plasmid.json",
         ),
         KnowledgeEntry(
             entry_id="PAT_GENE_GRANULARITY_CROSSOVER_AND_VAET_APOPTOSIS",
@@ -265,6 +299,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#RSoCCompiler",
             origin_tx_id="TX-0008",
             verified_revision=8,
+            maturity="MEASURED",
+            evidence_ref="research/results/e9_granularity.json",
         ),
         KnowledgeEntry(
             entry_id="PAT_DUAL_ZONE_LNTE_SHELL_AND_DEMATERIALIZATION_BARRIER",
@@ -280,6 +316,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://tasks#WatchdogService",
             origin_tx_id="TX-0009",
             verified_revision=9,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_CRYO_TRANSITIVE_APOPTOSIS_AND_AST_HOMOLOGY",
@@ -294,6 +332,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#HypergraphIndex",
             origin_tx_id="TX-0009",
             verified_revision=9,
+            maturity="PROSE",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_VECTOR_MUTATION_LEDGER_AND_CHECKBOX_RATIFICATION",
@@ -312,6 +352,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#VectorMutationLedger",
             origin_tx_id="TX-0009",
             verified_revision=9,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
         KnowledgeEntry(
             entry_id="PAT_PRE_PR_GATE_V_AND_ATOMIC_VECTOR_APPLY",
@@ -330,6 +372,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#SystemHealthGate",
             origin_tx_id="TX-0009",
             verified_revision=9,
+            maturity="IMPLEMENTED",
+            evidence_ref="",
         ),
     ),
 )

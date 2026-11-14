@@ -1969,3 +1969,115 @@ def evaluate_ledger_deviations(
         )
 
     return deviations
+
+
+# ---------------------------------------------------------------------------
+# VM8 PostPromptGate — the executable turn boundary
+# ---------------------------------------------------------------------------
+
+
+def run_post_prompt_gate(
+    *,
+    repo_root: Path,
+    ledger: "VectorMutationLedger",
+    vector: MasterVectorSpec,
+    state: "VectorLedgerState | None",
+    since: str | None = None,
+    max_proposals: int = MAX_BATCH_SIZE,
+) -> dict[str, Any]:
+    """
+    Execute the `VM8` `PostPromptGate` as code rather than as a DSL sentence.
+
+    The fundamental declared this chain (`AuditVector -> AuditResearchWindow -> RankProposals ->
+    CheckboxRequest`) with `GateSkipped=FATAL`, but nothing executed it: the rule could be skipped
+    silently because no detector existed. This function makes the gate a *refusal*: it re-derives
+    the vector audit, states the research window it is auditing, and refuses to hand out a numbered
+    request when the vector chain is broken.
+
+    Returns a dict with `gate_status` in `{"PASS", "BLOCKED"}`. `BLOCKED` is not an error — it is
+    the gate doing its job. Nothing here mutates the ledger; it only measures.
+
+    A ledger too corrupted to fold raises before any deviation can be computed. That case must
+    still be a *verdict*, not a traceback: a gate that crashes tells the caller nothing, and a
+    caller that treats a crash as "no result" is exactly how a skipped gate hides. Unreadable
+    ledger therefore reports `BLOCKED` with the parser's reason attached.
+    """
+    try:
+        state = ledger.state() if state is None else state
+        deviations = [d.model_dump(mode="json") for d in evaluate_ledger_deviations(state, vector)]
+    except Exception as exc:  # noqa: BLE001 - any fold failure is a blocked gate, never a skip
+        return {
+            "gate_status": "BLOCKED",
+            "gate": "VM8.PostPromptGate",
+            "steps": {
+                "1_audit_vector": {
+                    "ok": False,
+                    "version": vector.version,
+                    "digest": vector.spec_digest()[:16],
+                    "deviations": [{"code": "LEDGER_UNREADABLE", "message": str(exc)[:400]}],
+                },
+                "2_audit_research_window": {"since": since or "baseline", "applied_mutations": 0, "open_at": None},
+                "3_rank_proposals": [],
+                "4_checkbox_request": {
+                    "offered": 0,
+                    "capped_at": MAX_BATCH_SIZE,
+                    "empty_reason": "gate blocked before ranking",
+                },
+            },
+            "reason": f"vector ledger is unreadable; VM8 fails closed. {str(exc)[:200]}",
+        }
+
+    # 1. AuditVector: the vector chain must be contiguous and free of orphaned proposals.
+    #: Any deviation at all blocks the gate. This started as an allowlist of three codes and that
+    #: was a defect: a tampered chain surfaces as `LEDGER_NOT_INITIALIZED`, which the allowlist did
+    #: not name, so the gate returned PASS on a corrupted ledger. A post-prompt gate that passes on
+    #: corruption is worse than no gate — it manufactures confidence. Fail-closed by default.
+    vector_ok = not deviations
+
+    # 2. AuditResearchWindow: state which window the selection is drawn from, so a proposal can
+    #    never claim evidence it did not see. `baseline` means "since the ledger was anchored".
+    applied = list(state.applied)
+    window = {
+        "since": since or (applied[-1].get("digest") if applied and isinstance(applied[-1], dict) else "baseline"),
+        "applied_mutations": len(applied),
+        "open_at": state.research_window_open_at,
+    }
+
+    # 3. RankProposals: only PENDING proposals are offerable; the batch is capped by VM4.
+    pending = state.pending()
+    ranked = [
+        {
+            "proposal_id": p.proposal_id,
+            "ordinal": idx,
+            "risk": str(getattr(p, "risk", "LOW")),
+            "anchors": len(getattr(p, "anchors", ()) or ()),
+        }
+        for idx, p in enumerate(pending[: max(1, min(max_proposals, MAX_BATCH_SIZE))], start=1)
+    ]
+
+    gate_status = "PASS" if vector_ok else "BLOCKED"
+    return {
+        "gate_status": gate_status,
+        "gate": "VM8.PostPromptGate",
+        "steps": {
+            "1_audit_vector": {
+                "ok": vector_ok,
+                "version": vector.version,
+                "digest": vector.spec_digest()[:16],
+                "deviations": deviations,
+            },
+            "2_audit_research_window": window,
+            "3_rank_proposals": ranked,
+            "4_checkbox_request": {
+                "offered": len(ranked),
+                "capped_at": MAX_BATCH_SIZE,
+                "empty_reason": None if ranked else "no pending proposals in the current window",
+            },
+        },
+        "reason": None
+        if vector_ok
+        else (
+            "vector chain deviation detected; VM8 forbids offering mutations until it is resolved "
+            f"({', '.join(sorted({str(d.get('code')) for d in deviations}))})"
+        ),
+    }

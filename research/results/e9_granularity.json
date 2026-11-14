@@ -1,0 +1,66 @@
+{
+  "entities": 298,
+  "threshold_claim_sloc": 3,
+  "buckets": [
+    {
+      "bucket": "nano(1)",
+      "count": 221,
+      "share": 0.7416,
+      "tokens_median": 40,
+      "info_median": 2.916,
+      "efficiency_median": 0.067294
+    },
+    {
+      "bucket": "micro(2)",
+      "count": 11,
+      "share": 0.0369,
+      "tokens_median": 81,
+      "info_median": 7.74,
+      "efficiency_median": 0.100336
+    },
+    {
+      "bucket": "meso(3..25)",
+      "count": 55,
+      "share": 0.1846,
+      "tokens_median": 136,
+      "info_median": 9.782,
+      "efficiency_median": 0.071341
+    },
+    {
+      "bucket": "macro(>25)",
+      "count": 11,
+      "share": 0.0369,
+      "tokens_median": 1618,
+      "info_median": 91.117,
+      "efficiency_median": 0.044893
+    }
+  ],
+  "code_only_buckets": [
+    {
+      "bucket": "nano(1)",
+      "count": 166,
+      "efficiency_median": 0.066841,
+      "tokens_median": 39
+    },
+    {
+      "bucket": "micro(2)",
+      "count": 11,
+      "efficiency_median": 0.100336,
+      "tokens_median": 81
+    },
+    {
+      "bucket": "meso(3..25)",
+      "count": 39,
+      "efficiency_median": 0.086402,
+      "tokens_median": 118
+    }
+  ],
+  "precedent_test": {
+    "nano_efficiency": 0.067294,
+    "meso_efficiency": 0.071341,
+    "meso_over_nano": 1.06,
+    "precedent_holds": false,
+    "interpretation": "прецедент НЕ подтверждён как универсальный закон"
+  },
+  "share_below_3_sloc": 0.7785
+}

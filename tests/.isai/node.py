@@ -87,6 +87,7 @@ NODE = ISAINodeSpec(
         'test_vector_governance.py',
         'test_text_engineering.py',
         '_isai_sandbox.py',
+        'test_vm8_post_prompt_gate.py',
     ),
     system_files=(
         'node.py',

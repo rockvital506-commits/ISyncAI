@@ -2,7 +2,7 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://research/lab -->
-<!-- isai:spec_digest=eb4ec4bef390a40546a289267f60c9fd333832b31dd529d16dd9cbd380a9e9bf -->
+<!-- isai:spec_digest=c11935e78d6ad29562469ef127454207939630b268fb2344dc3f04fed660ca05 -->
 <!-- isai:interface_digest=687f66477a709687e11d218e295bec23e0e850733b28fc54f1593467076b09b5 -->
 
 ## Паспорт узла `isai://research/lab` — Измерительный стенд (Embedding Lab Harness)
@@ -25,7 +25,7 @@
 - **Выходы (`Outputs`):** `нет внешних выходов`
 
 ### Реестр владения и верифицируемых символов (`Ownership & Symbol Bindings`)
-- **Файлы узла (`owned_files`):** `README.md`, `universe.py`, `e1_link_hit.py`, `e2_cost.py`, `e3_context.py`, `e5_scale.py`, `e6_mini.py`, `e7_plasmid.py`, `e0_summary.py`
+- **Файлы узла (`owned_files`):** `README.md`, `universe.py`, `e1_link_hit.py`, `e2_cost.py`, `e3_context.py`, `e5_scale.py`, `e6_mini.py`, `e7_plasmid.py`, `e0_summary.py`, `e8_metrics.py`, `e9_granularity.py`, `e10_threshold.py`, `e11_apoptosis.py`, `e12_epoch.py`, `e13_phase1.py`
 - **Служебные файлы (`system_files`):** `.isai/node.py`
 - **Экспортируемые сущности (`symbol_bindings`):**
   - `isai://research/lab#UniverseLoader` (`owned_artifact` → `universe.py`, видимость: `PUBLIC`)
