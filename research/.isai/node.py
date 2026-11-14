@@ -37,6 +37,7 @@ NODE = ISAINodeSpec(
         'CATALOG-CONTRADICTIONS.md',
         'BIO-LEXICON.md',
         'BIO-STRATEGY.md',
+        'CORE-SPHERE.md',
     ),
     system_files=(
         'node.py',

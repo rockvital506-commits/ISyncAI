@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.5",
   "revision": 12,
-  "timestamp_utc": "2026-11-14T17:10:09Z",
+  "timestamp_utc": "2026-11-14T17:56:14Z",
   "genesis_sha256": "4ba8961ae9426294f5b967ade6f5dadf0f648698591317859e8998a5d98482b9",
   "nvf_version": "1.2",
   "nvf_digest": "d5e519fd2e8b77aca1fd9d4f4941d0327a49eee34331ac8e65ffd5a8253fce3a",
@@ -11,7 +11,7 @@
   "open_handles": [],
   "node_spec_digests": {
     "isai://knowledge": "c3f203b8d0f61251762776c8e705996a52103b0a150cb811c4791205c63fe41b",
-    "isai://research": "2d78e9716779f0a2c209524060dc863472e628cb9b3b261a2689812bdfa8ef63",
+    "isai://research": "9cb5843b0c786e04b2bee6c39bcb390ed207a55c095b448eab898db27ec0518e",
     "isai://research/lab": "c11935e78d6ad29562469ef127454207939630b268fb2344dc3f04fed660ca05",
     "isai://research/results": "cd1b3d43a830cc46e79b0f29ddd775b968437c85c1f5a8536379fd8e8c37d3e4",
     "isai://root": "584a8fe8a365f8fa79e2f552a87a043b3644a8c370764281ef31cb169e44e30e",
