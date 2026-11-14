@@ -88,6 +88,13 @@ def test_live_repository_passes_full_360_audit_and_idempotent_recover(tmp_path: 
         "isai://knowledge",
         "isai://tasks",
         "isai://tests",
+        # `research` — не декоративная папка, а узел с паспортом, родительским ребром и
+        # router-переходом от корня: он существует по тем же правилам, что и остальные
+        # кольца (`isai audit` проверяет его наравне). Канонический набор поэтому расширен
+        # явно, а не ослаблен до «любой узел допустим».
+        "isai://research",
+        "isai://research/lab",
+        "isai://research/results",
     }
     checked = set(report.checked_nodes)
     assert canonical_hives <= checked

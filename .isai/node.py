@@ -270,5 +270,11 @@ NODE = ISAINodeSpec(
             phase_mode=PhaseMode.FAST_READ,
             description='Запуск модульных, контрактных и генеративных кросс-тестов ядра.',
         ),
+        TransitionRule(
+            trigger='route_research',
+            target_ref='isai://research',
+            phase_mode=PhaseMode.STAGED_TRANSACTION,
+            description='Маршрутизация в дочерний узел isai://research.',
+        ),
     ),
 )

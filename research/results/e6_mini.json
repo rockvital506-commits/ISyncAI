@@ -1,0 +1,73 @@
+{
+  "genes_total": 12,
+  "genes_after_apoptosis": 10,
+  "apoptotic": [
+    "G_BROKEN",
+    "G_EMPTY"
+  ],
+  "tasks": 8,
+  "ranking": [
+    {
+      "system": "BIO_MINI",
+      "success": 5,
+      "total": 8,
+      "success_rate": 0.625,
+      "context_bytes": 109,
+      "latency_ms_mean": 0.6227,
+      "steps_mean": 1.0,
+      "recovery": 0.625,
+      "bytes_per_success": 21.8
+    },
+    {
+      "system": "FLAT_AGENT",
+      "success": 5,
+      "total": 8,
+      "success_rate": 0.625,
+      "context_bytes": 588,
+      "latency_ms_mean": 0.3672,
+      "steps_mean": 10.0,
+      "recovery": 0.625,
+      "bytes_per_success": 117.6
+    },
+    {
+      "system": "GRAPH_AGENT",
+      "success": 0,
+      "total": 8,
+      "success_rate": 0.0,
+      "context_bytes": 179,
+      "latency_ms_mean": 0.0063,
+      "steps_mean": 1.0,
+      "recovery": 0.0,
+      "bytes_per_success": 179.0
+    },
+    {
+      "system": "TOOL_AGENT",
+      "success": 0,
+      "total": 8,
+      "success_rate": 0.0,
+      "context_bytes": 505,
+      "latency_ms_mean": 0.003,
+      "steps_mean": 1.0,
+      "recovery": 0.0,
+      "bytes_per_success": 505.0
+    }
+  ],
+  "recovery": [
+    {
+      "system": "FLAT_AGENT",
+      "success_after_mutation": 0.625
+    },
+    {
+      "system": "TOOL_AGENT",
+      "success_after_mutation": 0.0
+    },
+    {
+      "system": "GRAPH_AGENT",
+      "success_after_mutation": 0.0
+    },
+    {
+      "system": "BIO_MINI",
+      "success_after_mutation": 0.625
+    }
+  ]
+}

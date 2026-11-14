@@ -16,8 +16,8 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://root -->
-<!-- isai:spec_digest=cd9e53b1d29e2b4d1653fb1e7377064c4571af0dceff5064467d3be4ca62ce7d -->
-<!-- isai:interface_digest=99ba0424edcffa64b22d5fe9eff0fa9a80666331ba935dbe62ae0ee64d5519d4 -->
+<!-- isai:spec_digest=584a8fe8a365f8fa79e2f552a87a043b3644a8c370764281ef31cb169e44e30e -->
+<!-- isai:interface_digest=0052880c1161f2a691f393c6959c764dc089d57a789155cbcf5b10ed05294d7e -->
 
 ## Паспорт узла `isai://root` — Корневой узел-драйвер, индекс гиперграфа и транзакционный инжектор связей ISAI
 
@@ -89,5 +89,6 @@
   - При `retrieve_or_distill_knowledge` → `isai://knowledge` [режим: `FAST_READ`] — Запрос практических паттернов перед планированием или дистилляция опыта закрытого таска.
   - При `execute_phased_task` → `isai://tasks` [режим: `STAGED_TRANSACTION`] — Запуск пользовательского таска/исследования в изолированном контуре стейджинга под надзором Watchdog.
   - При `verify_kernel_integrity` → `isai://tests` [режим: `FAST_READ`] — Запуск модульных, контрактных и генеративных кросс-тестов ядра.
+  - При `route_research` → `isai://research` [режим: `STAGED_TRANSACTION`] — Маршрутизация в дочерний узел isai://research.
 
 <!-- ISAI:SYNC:END -->

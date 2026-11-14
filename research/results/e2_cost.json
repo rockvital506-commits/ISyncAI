@@ -1,0 +1,73 @@
+{
+  "disk": {
+    "present": true,
+    "venv_bytes": 6299558433,
+    "site_packages_count": 84,
+    "heaviest": {
+      "nvidia": 3195890622,
+      "torch": 1204101329,
+      "triton": 1045134343,
+      "spacy": 125324406,
+      "transformers": 114952047,
+      "scipy": 111766490,
+      "sympy": 75158797,
+      "sklearn": 48086342,
+      "numpy": 42682159,
+      "blis": 40576435,
+      "cuda": 31516120,
+      "scipy.libs": 30877053
+    },
+    "torch_present": true,
+    "torch_bytes": 1204101329,
+    "numpy_bytes": 42682159,
+    "sklearn_bytes": 48086342
+  },
+  "cpu": {
+    "entities": 298,
+    "load_ms": 2477.45,
+    "fit_ms": 53.04,
+    "embed_all_ms": 105.59,
+    "embed_per_entity_ms": 0.3543,
+    "resolve_100_ms": 5.909,
+    "vocabulary_terms": 3533,
+    "dense_bytes_actual": 610304
+  },
+  "index_scaling": [
+    {
+      "entities": 298,
+      "dim": 512,
+      "dense_bytes": 610304,
+      "dense_mb": 0.61,
+      "inverted_bytes_est": 1700,
+      "inverted_mb": 0.0,
+      "ratio": 359.0
+    },
+    {
+      "entities": 1000,
+      "dim": 512,
+      "dense_bytes": 2048000,
+      "dense_mb": 2.05,
+      "inverted_bytes_est": 6993,
+      "inverted_mb": 0.01,
+      "ratio": 292.86
+    },
+    {
+      "entities": 10000,
+      "dim": 512,
+      "dense_bytes": 20480000,
+      "dense_mb": 20.48,
+      "inverted_bytes_est": 69993,
+      "inverted_mb": 0.07,
+      "ratio": 292.6
+    },
+    {
+      "entities": 100000,
+      "dim": 512,
+      "dense_bytes": 204800000,
+      "dense_mb": 204.8,
+      "inverted_bytes_est": 699993,
+      "inverted_mb": 0.7,
+      "ratio": 292.57
+    }
+  ]
+}

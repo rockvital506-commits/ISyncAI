@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.5",
   "revision": 12,
-  "timestamp_utc": "2026-11-14T14:34:18Z",
+  "timestamp_utc": "2026-11-14T15:26:47Z",
   "genesis_sha256": "4ba8961ae9426294f5b967ade6f5dadf0f648698591317859e8998a5d98482b9",
   "nvf_version": "1.2",
   "nvf_digest": "d5e519fd2e8b77aca1fd9d4f4941d0327a49eee34331ac8e65ffd5a8253fce3a",
@@ -11,14 +11,20 @@
   "open_handles": [],
   "node_spec_digests": {
     "isai://knowledge": "c3f203b8d0f61251762776c8e705996a52103b0a150cb811c4791205c63fe41b",
-    "isai://root": "cd9e53b1d29e2b4d1653fb1e7377064c4571af0dceff5064467d3be4ca62ce7d",
+    "isai://research": "55e0b7d2f7ff5568c4bee310fbe3e86a13f47a31e5770994491e45d1e1e235fd",
+    "isai://research/lab": "eb4ec4bef390a40546a289267f60c9fd333832b31dd529d16dd9cbd380a9e9bf",
+    "isai://research/results": "bd531c440adbb683443e536ce4bd050abe65209f4c5c77f0e1979beeda405089",
+    "isai://root": "584a8fe8a365f8fa79e2f552a87a043b3644a8c370764281ef31cb169e44e30e",
     "isai://tasks": "c6bfc963b6def96988c40c7a0639f6fe9a52d15ba8fadc7bf3e1bdd9e072a1bb",
     "isai://tests": "04301f5f15f1d384ba7b0466d3f7450e90f41b556c90ef512a182ccc73a005dc",
     "isai://user": "9d3a7be81298d5776efd9d11ccadca9c1ecd33919e844c7858ede12863066a7d"
   },
   "node_interface_digests": {
     "isai://knowledge": "f14da2d5c9dd1d5583fdb9e6a58adbcafe96e2df71ac8ba08453728a0a6e4917",
-    "isai://root": "99ba0424edcffa64b22d5fe9eff0fa9a80666331ba935dbe62ae0ee64d5519d4",
+    "isai://research": "18f22396dab0fa9600c72213e30e8b6f0f5c1b8defc0882663a407eb30bcc249",
+    "isai://research/lab": "687f66477a709687e11d218e295bec23e0e850733b28fc54f1593467076b09b5",
+    "isai://research/results": "1f7d923f701016d5ff0ea1c1789f65eecf74e827256c2fe7cd04f7eba9a24d5e",
+    "isai://root": "0052880c1161f2a691f393c6959c764dc089d57a789155cbcf5b10ed05294d7e",
     "isai://tasks": "6235e13f8e9d3421aedebfeae8b55e08450632fb61739acf6f98337d6765b000",
     "isai://tests": "d8caed2679ade058c0dfbf77f6446234beb8008770513d35eceb3add39521192",
     "isai://user": "116cf18fdfe073301accb2b8e7261b3632e3ed7c13b9630148313b827ed6d191"

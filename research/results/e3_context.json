@@ -1,0 +1,411 @@
+{
+  "nodes": [
+    {
+      "uri": "isai://knowledge",
+      "serialized_bytes": 44113,
+      "compile_ms": 25.217,
+      "leaves": 310,
+      "unique_leaves": 254,
+      "duplicate_leaves": 56,
+      "informative_bytes": 37525,
+      "duplicate_bytes": 1387,
+      "dedup_ratio": 0.0356,
+      "section_overhead_bytes": 5201,
+      "bimodal": {
+        "head_bytes": 8643,
+        "tail_bytes": 2133,
+        "shared_terms": 24,
+        "head_terms": 386,
+        "tail_terms": 84,
+        "overlap_ratio": 0.0538,
+        "sample_shared": [
+          "algedonic_",
+          "amendvia",
+          "before",
+          "bottleneck",
+          "conditionally_locked",
+          "dsl_sha",
+          "evidence",
+          "execute",
+          "frame_id",
+          "genesiskernel",
+          "handlecount",
+          "mastervector"
+        ]
+      },
+      "sections": {
+        "rsoc_schema": 7,
+        "requested_uri": 18,
+        "focused_symbol": 4,
+        "enforced_genesis": 418,
+        "enforced_neuro_vascular_frame": 8643,
+        "enforced_text_engineering": 794,
+        "master_vector_anchor": 1468,
+        "inherited_scope_invariants": 431,
+        "active_node_contract": 4444,
+        "linked_interface_stubs": 4345,
+        "operator_calibration": 2177,
+        "distilled_knowledge": 18894,
+        "terminal_execution_guard": 2133
+      }
+    },
+    {
+      "uri": "isai://research",
+      "serialized_bytes": 36654,
+      "compile_ms": 24.371,
+      "leaves": 226,
+      "unique_leaves": 190,
+      "duplicate_leaves": 36,
+      "informative_bytes": 32235,
+      "duplicate_bytes": 750,
+      "dedup_ratio": 0.0227,
+      "section_overhead_bytes": 3669,
+      "bimodal": {
+        "head_bytes": 8643,
+        "tail_bytes": 2133,
+        "shared_terms": 24,
+        "head_terms": 386,
+        "tail_terms": 84,
+        "overlap_ratio": 0.0538,
+        "sample_shared": [
+          "algedonic_",
+          "amendvia",
+          "before",
+          "bottleneck",
+          "conditionally_locked",
+          "dsl_sha",
+          "evidence",
+          "execute",
+          "frame_id",
+          "genesiskernel",
+          "handlecount",
+          "mastervector"
+        ]
+      },
+      "sections": {
+        "rsoc_schema": 7,
+        "requested_uri": 17,
+        "focused_symbol": 4,
+        "enforced_genesis": 418,
+        "enforced_neuro_vascular_frame": 8643,
+        "enforced_text_engineering": 794,
+        "master_vector_anchor": 1468,
+        "inherited_scope_invariants": 431,
+        "active_node_contract": 1329,
+        "linked_interface_stubs": 2,
+        "operator_calibration": 2177,
+        "distilled_knowledge": 18894,
+        "terminal_execution_guard": 2133
+      }
+    },
+    {
+      "uri": "isai://root",
+      "serialized_bytes": 52387,
+      "compile_ms": 25.313,
+      "leaves": 456,
+      "unique_leaves": 345,
+      "duplicate_leaves": 111,
+      "informative_bytes": 43101,
+      "duplicate_bytes": 1586,
+      "dedup_ratio": 0.0355,
+      "section_overhead_bytes": 7700,
+      "bimodal": {
+        "head_bytes": 8643,
+        "tail_bytes": 2133,
+        "shared_terms": 24,
+        "head_terms": 386,
+        "tail_terms": 84,
+        "overlap_ratio": 0.0538,
+        "sample_shared": [
+          "algedonic_",
+          "amendvia",
+          "before",
+          "bottleneck",
+          "conditionally_locked",
+          "dsl_sha",
+          "evidence",
+          "execute",
+          "frame_id",
+          "genesiskernel",
+          "handlecount",
+          "mastervector"
+        ]
+      },
+      "sections": {
+        "rsoc_schema": 7,
+        "requested_uri": 13,
+        "focused_symbol": 4,
+        "enforced_genesis": 418,
+        "enforced_neuro_vascular_frame": 8643,
+        "enforced_text_engineering": 794,
+        "master_vector_anchor": 1468,
+        "inherited_scope_invariants": 2,
+        "active_node_contract": 9309,
+        "linked_interface_stubs": 8188,
+        "operator_calibration": 2177,
+        "distilled_knowledge": 18894,
+        "terminal_execution_guard": 2133
+      }
+    },
+    {
+      "uri": "isai://tasks",
+      "serialized_bytes": 47306,
+      "compile_ms": 31.111,
+      "leaves": 356,
+      "unique_leaves": 281,
+      "duplicate_leaves": 75,
+      "informative_bytes": 39539,
+      "duplicate_bytes": 1591,
+      "dedup_ratio": 0.0387,
+      "section_overhead_bytes": 6176,
+      "bimodal": {
+        "head_bytes": 8643,
+        "tail_bytes": 2133,
+        "shared_terms": 24,
+        "head_terms": 386,
+        "tail_terms": 84,
+        "overlap_ratio": 0.0538,
+        "sample_shared": [
+          "algedonic_",
+          "amendvia",
+          "before",
+          "bottleneck",
+          "conditionally_locked",
+          "dsl_sha",
+          "evidence",
+          "execute",
+          "frame_id",
+          "genesiskernel",
+          "handlecount",
+          "mastervector"
+        ]
+      },
+      "sections": {
+        "rsoc_schema": 7,
+        "requested_uri": 14,
+        "focused_symbol": 4,
+        "enforced_genesis": 418,
+        "enforced_neuro_vascular_frame": 8643,
+        "enforced_text_engineering": 794,
+        "master_vector_anchor": 1468,
+        "inherited_scope_invariants": 431,
+        "active_node_contract": 6520,
+        "linked_interface_stubs": 5466,
+        "operator_calibration": 2177,
+        "distilled_knowledge": 18894,
+        "terminal_execution_guard": 2133
+      }
+    },
+    {
+      "uri": "isai://tests",
+      "serialized_bytes": 45218,
+      "compile_ms": 28.114,
+      "leaves": 350,
+      "unique_leaves": 269,
+      "duplicate_leaves": 81,
+      "informative_bytes": 37735,
+      "duplicate_bytes": 1693,
+      "dedup_ratio": 0.0429,
+      "section_overhead_bytes": 5790,
+      "bimodal": {
+        "head_bytes": 8643,
+        "tail_bytes": 2133,
+        "shared_terms": 24,
+        "head_terms": 386,
+        "tail_terms": 84,
+        "overlap_ratio": 0.0538,
+        "sample_shared": [
+          "algedonic_",
+          "amendvia",
+          "before",
+          "bottleneck",
+          "conditionally_locked",
+          "dsl_sha",
+          "evidence",
+          "execute",
+          "frame_id",
+          "genesiskernel",
+          "handlecount",
+          "mastervector"
+        ]
+      },
+      "sections": {
+        "rsoc_schema": 7,
+        "requested_uri": 14,
+        "focused_symbol": 4,
+        "enforced_genesis": 418,
+        "enforced_neuro_vascular_frame": 8643,
+        "enforced_text_engineering": 794,
+        "master_vector_anchor": 1468,
+        "inherited_scope_invariants": 431,
+        "active_node_contract": 5735,
+        "linked_interface_stubs": 4163,
+        "operator_calibration": 2177,
+        "distilled_knowledge": 18894,
+        "terminal_execution_guard": 2133
+      }
+    },
+    {
+      "uri": "isai://user",
+      "serialized_bytes": 43760,
+      "compile_ms": 27.418,
+      "leaves": 308,
+      "unique_leaves": 256,
+      "duplicate_leaves": 52,
+      "informative_bytes": 37319,
+      "duplicate_bytes": 1267,
+      "dedup_ratio": 0.0328,
+      "section_overhead_bytes": 5174,
+      "bimodal": {
+        "head_bytes": 8643,
+        "tail_bytes": 2133,
+        "shared_terms": 24,
+        "head_terms": 386,
+        "tail_terms": 84,
+        "overlap_ratio": 0.0538,
+        "sample_shared": [
+          "algedonic_",
+          "amendvia",
+          "before",
+          "bottleneck",
+          "conditionally_locked",
+          "dsl_sha",
+          "evidence",
+          "execute",
+          "frame_id",
+          "genesiskernel",
+          "handlecount",
+          "mastervector"
+        ]
+      },
+      "sections": {
+        "rsoc_schema": 7,
+        "requested_uri": 13,
+        "focused_symbol": 4,
+        "enforced_genesis": 418,
+        "enforced_neuro_vascular_frame": 8643,
+        "enforced_text_engineering": 794,
+        "master_vector_anchor": 1468,
+        "inherited_scope_invariants": 431,
+        "active_node_contract": 3968,
+        "linked_interface_stubs": 4473,
+        "operator_calibration": 2177,
+        "distilled_knowledge": 18894,
+        "terminal_execution_guard": 2133
+      }
+    }
+  ],
+  "aggregate": {
+    "serialized_bytes_total": 269438,
+    "informative_bytes_total": 227454,
+    "mean_dedup_ratio": 0.0347,
+    "mean_compile_ms": 26.924
+  },
+  "filtering": [
+    {
+      "query": "гиперграф индекс связей",
+      "total_leaf_bytes": 44687,
+      "kept_leaf_bytes": 1419,
+      "compression": 0.0318,
+      "filter_ms": 23.406,
+      "top": [
+        {
+          "path": "active_node_contract.title",
+          "score": 0.5355
+        },
+        {
+          "path": "distilled_knowledge[8].title",
+          "score": 0.3517
+        },
+        {
+          "path": "active_node_contract.capabilities[1]",
+          "score": 0.3492
+        }
+      ]
+    },
+    {
+      "query": "реестр хроники событий",
+      "total_leaf_bytes": 44687,
+      "kept_leaf_bytes": 1216,
+      "compression": 0.0272,
+      "filter_ms": 27.118,
+      "top": [
+        {
+          "path": "linked_interface_stubs[2].relevant_outputs[0].description",
+          "score": 0.5273
+        },
+        {
+          "path": "distilled_knowledge[1].title",
+          "score": 0.1686
+        },
+        {
+          "path": "active_node_contract.inputs[0].description",
+          "score": 0.1611
+        }
+      ]
+    },
+    {
+      "query": "результат набора контекста RSoC",
+      "total_leaf_bytes": 44687,
+      "kept_leaf_bytes": 1542,
+      "compression": 0.0345,
+      "filter_ms": 23.334,
+      "top": [
+        {
+          "path": "active_node_contract.inputs[0].description",
+          "score": 0.3696
+        },
+        {
+          "path": "linked_interface_stubs[3].relevant_inputs[1].description",
+          "score": 0.3306
+        },
+        {
+          "path": "active_node_contract.outputs[0].description",
+          "score": 0.299
+        }
+      ]
+    },
+    {
+      "query": "конституционный фрейм",
+      "total_leaf_bytes": 44687,
+      "kept_leaf_bytes": 1081,
+      "compression": 0.0242,
+      "filter_ms": 23.773,
+      "top": [
+        {
+          "path": "active_node_contract.links[0].rationale",
+          "score": 0.4387
+        },
+        {
+          "path": "enforced_neuro_vascular_frame.agent_calibration",
+          "score": 0.2519
+        },
+        {
+          "path": "distilled_knowledge[12].title",
+          "score": 0.2274
+        }
+      ]
+    },
+    {
+      "query": "мутации вектора",
+      "total_leaf_bytes": 44687,
+      "kept_leaf_bytes": 1990,
+      "compression": 0.0445,
+      "filter_ms": 24.178,
+      "top": [
+        {
+          "path": "active_node_contract.links[2].rationale",
+          "score": 0.3012
+        },
+        {
+          "path": "enforced_neuro_vascular_frame.vector_governance[2]",
+          "score": 0.2461
+        },
+        {
+          "path": "active_node_contract.success_criteria[2]",
+          "score": 0.229
+        }
+      ]
+    }
+  ]
+}

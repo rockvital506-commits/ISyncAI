@@ -1,0 +1,68 @@
+{
+  "rhombus": [
+    {
+      "depth": 3,
+      "width": 3,
+      "plasmids": 9,
+      "holons": 6,
+      "naive_nodes": 126,
+      "memoized_resolutions": 18,
+      "inflation_ratio": 7.0,
+      "naive_ms": 0.044,
+      "memo_ms": 0.019,
+      "speedup": 2.37,
+      "gene_evaluations": 3
+    },
+    {
+      "depth": 4,
+      "width": 4,
+      "plasmids": 16,
+      "holons": 8,
+      "naive_nodes": 360,
+      "memoized_resolutions": 24,
+      "inflation_ratio": 15.0,
+      "naive_ms": 0.108,
+      "memo_ms": 0.01,
+      "speedup": 10.51,
+      "gene_evaluations": 4
+    },
+    {
+      "depth": 5,
+      "width": 4,
+      "plasmids": 20,
+      "holons": 8,
+      "naive_nodes": 744,
+      "memoized_resolutions": 24,
+      "inflation_ratio": 31.0,
+      "naive_ms": 0.268,
+      "memo_ms": 0.01,
+      "speedup": 27.23,
+      "gene_evaluations": 4
+    },
+    {
+      "depth": 6,
+      "width": 5,
+      "plasmids": 30,
+      "holons": 10,
+      "naive_nodes": 1890,
+      "memoized_resolutions": 30,
+      "inflation_ratio": 63.0,
+      "naive_ms": 0.643,
+      "memo_ms": 0.012,
+      "speedup": 53.34,
+      "gene_evaluations": 5
+    }
+  ],
+  "epoch": {
+    "refresh_after_one_mutation_ms": 0.006,
+    "note": "epoch bump invalidates the whole cache; a per-plasmid epoch would be finer"
+  },
+  "cross_check_vs_catalog": {
+    "catalog_claims": {
+      "dag_inflation_x": 110.7,
+      "ribosome_cache_speedup_x": 3.18
+    },
+    "reproduced_inflation_max": 63.0,
+    "reproduced_speedup_max": 53.34
+  }
+}
