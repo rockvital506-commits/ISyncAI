@@ -73,12 +73,14 @@ def test_clean_ledger_passes(tmp_path: Path) -> None:
 def test_gate_names_all_four_steps(tmp_path: Path) -> None:
     """A gate that silently drops a step is the defect this whole module exists to prevent."""
     gate = _gate(_sandbox(tmp_path))
-    assert set(gate["steps"]) == {
+    # `3_batch` reports the numbering authority next to the ranking it governs; it is not a fifth
+    # step, it is the evidence for step 3. The four declared steps must all still be present.
+    assert {
         "1_audit_vector",
         "2_audit_research_window",
         "3_rank_proposals",
         "4_checkbox_request",
-    }
+    } <= set(gate["steps"])
     assert gate["gate"] == "VM8.PostPromptGate"
 
 
@@ -141,3 +143,36 @@ def test_blocked_gate_offers_nothing(tmp_path: Path) -> None:
     gate = _gate(root)
     assert gate["steps"]["4_checkbox_request"]["offered"] == 0
     assert gate["steps"]["4_checkbox_request"]["empty_reason"]
+
+
+@pytest.mark.isai_scope(
+    "isai://root#VectorMutationLedger",
+    "isai://root#MasterVector",
+    "isai://tests#VM8PostPromptGateSuite",
+)
+def test_gate_ordinals_match_the_batch_the_operator_reads(tmp_path: Path) -> None:
+    """
+    The gate must number mutations exactly as `isai vector pending` does.
+
+    The first implementation re-enumerated pending proposals in its own order while the batch kept
+    insertion order. With five proposals the two maps disagreed at ordinal 1 (`VMP-0002` versus
+    `VMP-0001`), so an operator task naming "1" would have applied a mutation they never selected.
+    A gate that certifies the wrong mutation is worse than no gate, so the batch is pinned as the
+    single numbering authority here.
+    """
+    from isai.vector_ledger import VectorMutationLedger, run_post_prompt_gate
+
+    root = _sandbox(tmp_path)
+    ledger = VectorMutationLedger(root)
+    state = ledger.state()
+    batch = state.latest_batch()
+    if batch is None:
+        pytest.skip("no numbered batch in the live ledger; nothing to compare")
+
+    gate = run_post_prompt_gate(
+        repo_root=root, ledger=ledger, vector=MASTER_VECTOR, state=state
+    )
+    assert gate["steps"]["3_batch"]["batch_id"] == batch.batch_id
+    reported = [(row["ordinal"], row["proposal_id"]) for row in gate["steps"]["3_rank_proposals"]]
+    expected = [(i, pid) for i, pid in enumerate(batch.proposal_ids, start=1)]
+    assert reported == expected

@@ -2043,17 +2043,33 @@ def run_post_prompt_gate(
         "open_at": state.research_window_open_at,
     }
 
-    # 3. RankProposals: only PENDING proposals are offerable; the batch is capped by VM4.
-    pending = state.pending()
-    ranked = [
-        {
-            "proposal_id": p.proposal_id,
-            "ordinal": idx,
-            "risk": str(getattr(p, "risk", "LOW")),
-            "anchors": len(getattr(p, "anchors", ()) or ()),
+    # 3. RankProposals: report the ordinals of the *live batch*, never a fresh ordering.
+    #
+    # This step originally re-enumerated `state.pending()` in its own order, which disagreed with
+    # the batch the Operator is actually shown (`isai vector pending`). On a five-proposal batch the
+    # two maps were `VMP-0002,0003,0001,0004,0005` versus `VMP-0001..0005`, so a task saying "1"
+    # would have applied a different mutation than the one the Operator read at position 1. A gate
+    # whose numbering differs from the request it guards is worse than no gate: it certifies the
+    # wrong mutation. The batch is the only numbering authority (`VM4` pins ordinals to it).
+    batch = state.latest_batch()
+    if batch is None:
+        ranked: list[dict[str, Any]] = []
+        batch_view = None
+    else:
+        ranked = [
+            {
+                "proposal_id": pid,
+                "ordinal": ordinal,
+                "risk": str(getattr(state.status_of(pid), "value", "PENDING")),
+                "anchors": 0,
+            }
+            for ordinal, pid in enumerate(batch.proposal_ids, start=1)
+        ][: max(1, min(max_proposals, MAX_BATCH_SIZE))]
+        batch_view = {
+            "batch_id": batch.batch_id,
+            "base_vector_digest": batch.base_vector_digest,
+            "total_ordinals": len(batch.proposal_ids),
         }
-        for idx, p in enumerate(pending[: max(1, min(max_proposals, MAX_BATCH_SIZE))], start=1)
-    ]
 
     gate_status = "PASS" if vector_ok else "BLOCKED"
     return {
@@ -2068,6 +2084,7 @@ def run_post_prompt_gate(
             },
             "2_audit_research_window": window,
             "3_rank_proposals": ranked,
+            "3_batch": batch_view,
             "4_checkbox_request": {
                 "offered": len(ranked),
                 "capped_at": MAX_BATCH_SIZE,
