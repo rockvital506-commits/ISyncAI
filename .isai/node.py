@@ -29,7 +29,8 @@ NODE = ISAINodeSpec(
         'Субгенетический фундаментал /FUNDAMENTAL.md (IL-1C) синхронизирован с isai://root#NeuroVascularFundamental и ратифицирован в Chronicle.',
         'Вектор развития /VISION.md синхронизирован с объектом isai://root#MasterVector.',
         "Все связи, порты IOPortSpec (schema_refs), SymbolBindingSpec и кольца видимости верифицированы через 'isai audit'.",
-        "Команды 'isai nv', 'isai graph', 'isai link', 'isai rsoc' и 'isai recover' работают детерминированно и атомарно.",
+        "Команды 'isai nv', 'isai graph', 'isai link', 'isai rsoc', 'isai text' и 'isai recover' работают детерминированно и атомарно.",
+        "Каждый текст системных папок и файлов подписан уровнем TE0 и проходит 'isai text check' без отклонений (IL-1C [TEXT-ENGINEERING]).",
     ),
     capabilities=(
         "Графовая компиляция контекста 'isai rsoc' с доставкой 1-hop интерфейсных стабов соседей.",
@@ -76,6 +77,7 @@ NODE = ISAINodeSpec(
         'FUNDAMENTAL.md',
         'VISION.md',
         'AGENTS.md',
+        'RETROSPECTIVE.md',
         'pyproject.toml',
         '.gitignore',
     ),
@@ -94,6 +96,10 @@ NODE = ISAINodeSpec(
         'link_mutator.py',
         'node.py',
         'chronicle.jsonl',
+        'vector_ledger.py',
+        'health_checks.py',
+        'vector_ledger.jsonl',
+        'text_engineering.py',
     ),
     symbol_bindings=(
         SymbolBindingSpec(
@@ -150,6 +156,31 @@ NODE = ISAINodeSpec(
             symbol='AtomicPersistence',
             kind=SymbolBindingKind.PYTHON_ATTR,
             target='atomic_io.py:atomic_transaction_batch',
+        ),
+        SymbolBindingSpec(
+            symbol='VectorMutationLedger',
+            kind=SymbolBindingKind.PYTHON_ATTR,
+            target='vector_ledger.py:VectorMutationLedger',
+        ),
+        SymbolBindingSpec(
+            symbol='SystemHealthGate',
+            kind=SymbolBindingKind.PYTHON_ATTR,
+            target='health_checks.py:evaluate_gate_v',
+        ),
+        SymbolBindingSpec(
+            symbol='VectorMutationLedgerRecord',
+            kind=SymbolBindingKind.SYSTEM_ARTIFACT,
+            target='vector_ledger.jsonl',
+        ),
+        SymbolBindingSpec(
+            symbol='TextEngineering',
+            kind=SymbolBindingKind.PYTHON_ATTR,
+            target='text_engineering.py:validate_text',
+        ),
+        SymbolBindingSpec(
+            symbol='TextReader',
+            kind=SymbolBindingKind.PYTHON_ATTR,
+            target='text_engineering.py:TextLevel',
         ),
     ),
     links=(
@@ -238,6 +269,12 @@ NODE = ISAINodeSpec(
             target_ref='isai://tests',
             phase_mode=PhaseMode.FAST_READ,
             description='Запуск модульных, контрактных и генеративных кросс-тестов ядра.',
+        ),
+        TransitionRule(
+            trigger='route_research',
+            target_ref='isai://research',
+            phase_mode=PhaseMode.STAGED_TRANSACTION,
+            description='Маршрутизация в дочерний узел isai://research.',
         ),
     ),
 )

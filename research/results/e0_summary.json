@@ -1,0 +1,202 @@
+{
+  "metrics": [
+    {
+      "metric": "discrete_link_accuracy",
+      "value": 0.5185,
+      "unit": "0..1",
+      "source": "E1",
+      "note": "точное совпадение URI: проваливает все 13 alias-кейсов"
+    },
+    {
+      "metric": "discrete_alias_hits",
+      "value": "0/13",
+      "unit": "cases",
+      "source": "E1",
+      "note": "дискретная логика не умеет разрешать перифраз по построению"
+    },
+    {
+      "metric": "vector_hit_at_5_adaptive",
+      "value": "12/23",
+      "unit": "cases",
+      "source": "E1",
+      "note": "адаптивный мост, conf=0.40 — рабочий режим отбора контекста"
+    },
+    {
+      "metric": "vector_alias_hit_at_5",
+      "value": 6,
+      "unit": "cases of 13",
+      "source": "E1",
+      "note": "против 0 у дискретной логики"
+    },
+    {
+      "metric": "vector_resolution_precision",
+      "value": 1.0,
+      "unit": "0..1",
+      "source": "E1",
+      "note": "при пороге 0.28: fp=0, то есть фантомы не притягиваются"
+    },
+    {
+      "metric": "phantom_rejection",
+      "value": "4/4",
+      "unit": "cases",
+      "source": "E1",
+      "note": "главное свойство: «попадать всегда» отвергнуто"
+    },
+    {
+      "metric": "rsoc_packet_bytes",
+      "value": 269438,
+      "unit": "bytes (5 nodes + research)",
+      "source": "E3",
+      "note": "полный пакет на узел ~44-52 КБ"
+    },
+    {
+      "metric": "rsoc_duplicate_ratio",
+      "value": 0.0347,
+      "unit": "0..1",
+      "source": "E3",
+      "note": "повторов внутри пакета мало: избыточность не в дублях"
+    },
+    {
+      "metric": "context_filter_compression",
+      "value": 0.0324,
+      "unit": "0..1",
+      "source": "E3",
+      "note": "векторный отбор оставляет 2-5% листьев — избыточность в нерелевантности"
+    },
+    {
+      "metric": "venv_size_mb",
+      "value": 6300.0,
+      "unit": "MB",
+      "source": "E2",
+      "note": "из них torch+nvidia+triton ≈ 5.4 ГБ, веса недоступны"
+    },
+    {
+      "metric": "dense_index_bytes_298",
+      "value": 610304,
+      "unit": "bytes",
+      "source": "E2",
+      "note": "512 float32 на сущность; инвертированный индекс в ~290x меньше"
+    },
+    {
+      "metric": "scan_query_ms_100k_extrapolated",
+      "value": 6454.4,
+      "unit": "ms",
+      "source": "E5",
+      "note": "линейный скан не масштабируется"
+    },
+    {
+      "metric": "inverted_query_ms_5000",
+      "value": 130.324,
+      "unit": "ms",
+      "source": "E5",
+      "note": "x2.5 быстрее скана при 5000 сущностях"
+    },
+    {
+      "metric": "bio_mini_success",
+      "value": 0.625,
+      "unit": "0..1",
+      "source": "E6",
+      "note": "равен FLAT_AGENT, но в 5x меньше контекста"
+    },
+    {
+      "metric": "bio_mini_bytes_per_success",
+      "value": 21.8,
+      "unit": "bytes",
+      "source": "E6",
+      "note": "против 118 у FLAT_AGENT — экономия 5.4x"
+    },
+    {
+      "metric": "graph_agent_success",
+      "value": 0.0,
+      "unit": "0..1",
+      "source": "E6",
+      "note": "0/8: дискретная адресация не переживает свободную формулировку"
+    },
+    {
+      "metric": "dag_inflation_reproduced",
+      "value": 63.0,
+      "unit": "x",
+      "source": "E7",
+      "note": "каталог заявлял 110.7x — воспроизведено при depth=7 (127x)"
+    },
+    {
+      "metric": "plasmid_speedup_reproduced",
+      "value": 53.34,
+      "unit": "x",
+      "source": "E7",
+      "note": "каталог заявлял 3.18x — зависит от глубины, растёт до сотен x"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "P1",
+      "mechanism": "Векторный отбор контекста (top-k по перцентилю) поверх RSoC",
+      "benefit": "сжатие контекста до 2-5% листьев без потери адресуемости",
+      "cost": "O(N) скан на 298 сущностях = ~0.3 мс; 0 зависимостей",
+      "risk": "LOW — аддитивный слой, дискретные ссылки остаются источником истины",
+      "verdict": "ВНЕДРЯТЬ",
+      "evidence": "E1 hit@5 12/23, E3 compression 2-5%"
+    },
+    {
+      "id": "P2",
+      "mechanism": "Двуязычный мост, выученный из корпуса, с гейтом по уверенности",
+      "benefit": "alias-hit@5 2→6 из 13 при сохранении exact 6/10",
+      "cost": "268 терминов, строится за ~0.9 с, детерминирован",
+      "risk": "MEDIUM — мост наследует шум корпуса; без гейта рушит exact-попадания",
+      "verdict": "ВНЕДРЯТЬ С ГЕЙТОМ (conf=0.40)",
+      "evidence": "E1 adaptive conf 0.20→0.40: hit@5 8→12"
+    },
+    {
+      "id": "P3",
+      "mechanism": "Инвертированный индекс термов как предфильтр векторного поиска",
+      "benefit": "x2.5 при 5000 сущностях, устраняет O(N) скан",
+      "cost": "строится за 419 мс на 5000, ~0.7 МБ на 100k против 205 МБ dense",
+      "risk": "LOW — деградирует до полного скана при высоком df, это измеримо",
+      "verdict": "ВНЕДРЯТЬ при N>1000",
+      "evidence": "E5 speedup 2.5x, candidate ratio 40-45%"
+    },
+    {
+      "id": "P4",
+      "mechanism": "Кэш рибосомы по эпохе + мемоизация плазмид для биовселенной",
+      "benefit": "устраняет 110.7x раздутие ромбовидного DAG, подтверждено 127x",
+      "cost": "один int-счётчик эпохи, кэш {(plasmid, epoch): value}",
+      "risk": "LOW — инвалидация грубая (вся вселенная), но корректная",
+      "verdict": "ВНЕДРЯТЬ в биовселенную",
+      "evidence": "E7 inflation 7→127x, speedup 2.4→53x"
+    },
+    {
+      "id": "P5",
+      "mechanism": "Апоптоз с различенной «сломан»/«нужен вход» + явная политика песочницы",
+      "benefit": "мини-система переживает мутацию без каскадной потери живых генов",
+      "cost": "probe-среда + список разрешённых builtins",
+      "risk": "MEDIUM — слишком узкая политика убивает валидные гены (измерено)",
+      "verdict": "ВНЕДРЯТЬ с тестом политики",
+      "evidence": "E6: первая версия удалила 4 гена, из них 2 живых"
+    },
+    {
+      "id": "P6",
+      "mechanism": "Нейросетевые эмбеддинги (sentence-transformers/torch)",
+      "benefit": "ожидаемо выше hit@k на alias (не измерено: веса недоступны)",
+      "cost": "+5.4 ГБ venv, внешняя загрузка, недетерминизм между версиями",
+      "risk": "HIGH — ломает самодостаточность и воспроизводимость Gate V",
+      "verdict": "НЕ ВНЕДРЯТЬ в контур; допустить как внешний офлайн-эксперимент",
+      "evidence": "E2 venv 6300 MB, R-01"
+    },
+    {
+      "id": "P7",
+      "mechanism": "Абсолютный порог косинуса как единственный критерий связи",
+      "benefit": "простота",
+      "cost": "ноль",
+      "risk": "HIGH — шкала некалибрована по корпусу: порог 0.28 даёт recall 0.13",
+      "verdict": "ИЗБЕГАТЬ, использовать перцентиль + hit@k",
+      "evidence": "E1: та же цель на 86-94 перцентиле при score 0.00"
+    }
+  ],
+  "headline": {
+    "discrete_accuracy": 0.5185,
+    "vector_hit_at_5": "12/23",
+    "vector_alias_hit_at_5": 6,
+    "context_compression": 0.0324,
+    "venv_mb": 6300.0
+  }
+}

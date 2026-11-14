@@ -64,8 +64,9 @@ def render_node_module(node: ISAINodeSpec, docstring: str | None = None) -> str:
     """
     doc = docstring or f"System Folder Object Manifest for `{node.node_id}`."
     imports: list[str] = ["ISAINodeSpec"]
-    if node.visibility != VisibilityScope.PUBLIC or True:
-        imports.append("VisibilityScope")
+    # `VisibilityScope` is always rendered: a node declares its own visibility explicitly, even
+    # when that value is the PUBLIC default, so no reader has to infer it.
+    imports.append("VisibilityScope")
     if node.inputs or node.outputs:
         imports.append("IOPortSpec")
     if node.port_wirings:

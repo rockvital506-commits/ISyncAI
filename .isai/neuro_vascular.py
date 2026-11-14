@@ -129,8 +129,8 @@ class NeuroVascularFundamentalSpec(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
 
     fundamental_id: EntityRef = "isai://root#NeuroVascularFundamental"
-    frame_id: str = "ISAI-NVF/1.0"
-    version: str = "1.0"
+    frame_id: str = "ISAI-NVF/1.2"
+    version: str = "1.2"
     tier: IntegrityLevel = IntegrityLevel.IL_1C_FUNDAMENTAL
     tier_token: str = "IL-1C_SUB_GENESIS"
     governed_by: EntityRef = "isai://root#GenesisKernel"
@@ -138,13 +138,18 @@ class NeuroVascularFundamentalSpec(BaseModel):
     agent_calibration: str = (
         "FiduSys-Novator & Graph-Chronitect | Mandate: Deterministic-Reflex >> LLM-Guess"
     )
-    mutability_law: str = "CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY]"
+    mutability_law: str = (
+        "CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY | "
+        "VectorMutation=NUMBERED_OPERATOR_TASK_LEDGER_ONLY]"
+    )
 
     lexicon_anchors: tuple[str, ...]
     nervous_rules: tuple[str, ...]
     spinal_reflexes: tuple[str, ...]
     nervous_tritier_rule: str
     vascular_rules: tuple[str, ...]
+    vector_governance_rules: tuple[str, ...]
+    text_engineering_rules: tuple[str, ...]
     precedents_summary: str
     bottleneck_guards_summary: str
     homeostasis_mode: str
@@ -188,6 +193,14 @@ class NeuroVascularFundamentalSpec(BaseModel):
         )
         for vrule in self.vascular_rules:
             lines.append(f"  - {vrule}")
+
+        lines.extend(["", "[VECTOR-GOVERNANCE :: GOAL-VECTOR MUTATION LEDGER & LIFECYCLE GATES]:"])
+        for vrule in self.vector_governance_rules:
+            lines.append(f"  - {vrule}")
+
+        lines.extend(["", "[TEXT-ENGINEERING :: LLM-NATIVE TEXT OF EVERY SYSTEM FOLDER & FILE]:"])
+        for trule in self.text_engineering_rules:
+            lines.append(f"  - {trule}")
 
         lines.extend(
             [
@@ -246,6 +259,8 @@ class NeuroVascularFundamentalSpec(BaseModel):
                 self.nervous_tritier_rule,
             ],
             "vascular_circuit": list(self.vascular_rules),
+            "vector_governance": list(self.vector_governance_rules),
+            "text_engineering": list(self.text_engineering_rules),
             "immune_memory": [self.precedents_summary, self.bottleneck_guards_summary],
         }
 
@@ -257,6 +272,7 @@ class NeuroVascularFundamentalSpec(BaseModel):
         return {
             "frame_id": self.frame_id,
             "dsl_sha256": self.dsl_sha256(),
+            "vector_mutation_law": self.mutability_law,
             "governance_routing": {
                 "homeostasis": self.homeostasis_mode,
                 "algedonic_escalation": self.algedonic_mode_header,
@@ -324,6 +340,58 @@ NEURO_VASCULAR_FUNDAMENTAL = NeuroVascularFundamentalSpec(
         "V3.Capillary-Salsa: VerifyPortSchemas[BROKEN_PORT_SCHEMA | INCOMPATIBLE_PORT_WIRING] | interface_digest := SHA256(ports + canonical_model_json_schema(schema_refs) + public_symbols + invariants + transitions) | Unchanged=>Salsa_EarlyCutoff; Changed=>CycleSafe_NHop_BFS",
         "V4.Venous-Lifecycle: MultiStepWork => Stage(tasks/TASK-<id>, EPHEMERAL_STAGING) + ISAI-PEP_v1[MaxIter=3, ConditionalResearch, GateA_Before_GateB] -> Promote[KnowledgeCatalogSpec.upsert + Calibrate(isai://user) + Append(isai://root#ChronicleLedger) + HandleCount==0]",
         "V5.Hemostasis-Recovery: Writes := .isai_tmp_* + fsync(file) + os.replace + fsync(dir) | CrashOrTornState => RUN `isai recover` (Idempotent: 0_Tx_On_Clean) | MissingVenv => Rehydrate(.venv) or PureLLM_Read(state_snapshot.json + node.py)",
+    ),
+    vector_governance_rules=(
+        "VM1.SingleSource: VectorState := deterministic_fold(.isai/vector_ledger.jsonl) | "
+        "SourceOfTruth := .isai/vector.py -> VISION.md:=projection | "
+        "SilentProposalDrop=FATAL | AppendOnlyTamper=FATAL",
+        "VM2.ProposalBinding: ∀Proposal: id + Anchor[kind,index] + anchor_fingerprint(SHA256) + "
+        "base_vector_digest + rationale(>=60ch) + evidence[>=1] + expected_benefit + risk | "
+        "StaleAnchorApply=FATAL | UnjustifiedCheckbox=FATAL",
+        "VM3.SignalSource: ConfirmationChannel := OPERATOR_TASK_ONLY (¬self-output) & "
+        "∀SignalLine: ¬FencedCode ∧ ¬InlineCode ∧ ¬BlockQuote ∧ ¬EmbeddedProse | "
+        "Task := standalone_control_line[подтвердить мутации вектора системы + numbers] | "
+        "CheckboxConsent=FORBIDDEN | LegacyPhrase=REFUSED | SelfConfirmation=FATAL",
+        "VM4.NumberedRatification: ImplementationRequest := numbered[1..5] mutations(each: anchor + "
+        "proposed_text + rationale(>=60ch) + evidence + risk) -> BATCH_PROPOSED(base=head) | "
+        "Task∧numbers => APPLY_EXACTLY_those_ordinals[atomic_compose_against_one_pre-image] | "
+        "Task∧¬numbers => RatifyVersion(apply_NOTHING) | UnlistedOrdinal=REFUSED | "
+        "ApplyWithoutConfirm=FATAL | ApplyWithoutLiveDigestChange=FATAL | VersionBump=REQUIRED",
+        "VM5.ConfirmedBaseline&Decay: ConfirmedVersion := version_of_last_PR(SEALED) | "
+        "¬Task => ConfirmedVersion_unchanged ∧ SelectionStartsFromIt | Applied∧¬SEALED => "
+        "UNRELEASED_RATIFIED_MUTATION=FATAL | DeferWindow=1_prompt | Deferrals>=2 => EXPIRED => "
+        "ReProposeWithFreshEvidence | OrphanPendingProposal=FATAL | Batch<=5_ranked",
+        "VM6.DriftDetect: ∀ChangedAnchor: ∃APPLIED(anchor) ∧ contiguous_digest_chain | "
+        "else UNCONFIRMED_VECTOR_DRIFT=FATAL | RawHandEdit(vector.py)=FORBIDDEN",
+        "VM7.GateV-PrePR: PrePR => `isai gate verify` over "
+        "[ROOT | TASKS | KNOWLEDGE | UNIVERSE | TESTS | .isai_Subfolders] | "
+        "CriticalDeviation => Neutralize -> Return_PrePR -> FullRerun(no_partial) | "
+        "StatusAssertedInProse=FATAL | Status:=NO_SYSTEMIC_DEVIATION only_by_tool_with_evidence_digest",
+        "VM8.TurnBoundary: PrePromptGate:=read(operator_task) -> "
+        "[¬task => HoldConfirmedVersion] ∨ [task∧¬numbers => RatifyVersion + DeferUnselected] ∨ "
+        "[task∧numbers => Compose -> Apply] -> ApplyGate | "
+        "PostPromptGate:=AuditVector -> AuditResearchWindow(since_last_APPLIED|BASELINE) -> "
+        "RankProposals(<=5) -> CheckboxRequest | GateSkipped=FATAL",
+    ),
+    text_engineering_rules=(
+        "TE0.LevelLaw: ∀SystemText: L(text):=DecodedBy ∈ {HumanRepr, Machine, Both} -> "
+        "Signature[L0|L1|L2|L3|L4|L5] | ¬Signature=TE_LEVEL_UNCLASSIFIED=FATAL",
+        "TE1.CarrierPurity: L1_CANON: str(py)≡DeclarativeData[¬behavioural_prose | ¬multi-clause_narrative] | "
+        "L2_TRANSCRIPT: Projection≡SHA256_Render(SourceOfTruth)[¬hand-edit | ¬sync_block_drift] | "
+        "HandEdit(L2)=FATAL",
+        "TE2.DLT-BPE: CanonLexicon[structured_tokens]: (CamelComposite ∨ SeparatedComposite ∨ "
+        "DomainAcronym[closed_set]) ∧ ∀Morpheme:[a-z0-9]{2,}(?:[-_][a-z0-9]{2,})* | "
+        "PhantomToken=FATAL | OpaqueUnicode=FATAL | MixedScriptToken=WARNING",
+        "TE3.CommandTruth: ∀`isai <cmd>` ∈ SystemText: ResolvableIn(CLI_ast) | PhantomCommand=FATAL | "
+        "StatusAssertedInProse=FORBIDDEN",
+        "TE4.FrameLaw: ∀NormativeText(L3|canon): BimodalU[PrimacyHead=priority ∧ mutability ∧ "
+        "digest | Middle=sectioned_core | RecencyPeak=STOP_tripwires] | ExplanatoryRedundancy=WARNING",
+        "TE5.SalienceOrder: RuleSequence := safety ∧ mutability ∧ digest ∧ refs -> operational -> "
+        "explanatory | ∀Section: role∈{DECIDE|EXECUTE|EXPLAIN} | BleedRole=Misplacement",
+        "TE6.ChronicleRegister: EventText:=ClosedTaxonomy[summary(>=1) + typed_summary{evidence | "
+        "blast_radius | next_action}] ∧ Freshness[what] + Lineage[why ∧ whence] | HedgingInEvent=FATAL",
+        "TE7.VerifyCompile: PrePR => `isai gate verify` over TE0..TE6 ∧ "
+        "ValidateTextOffline via `isai text check` | SilentTextDrift=FATAL",
     ),
     precedents_summary=(
         "Precedents[PREC-01..09]: Prefix586_HashSplit | LiveUTF8_CompileExec_NoPycCollision(PEP3147_mtime_size) | Physical_SymbolBinding | FenceSafe_ProseScan | ModelJsonSchema_CrossProcDeterminism | StripSYNC_FromProseVAET | ExtraBackupPaths_FullRollback | PreImport_ASTGate | VenvRehydrate_Or_SnapshotFallback"

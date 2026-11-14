@@ -16,8 +16,8 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://root -->
-<!-- isai:spec_digest=d09849bc6c63af66b231abb051d46a353d776518ca3c913f417c108b252cd1d3 -->
-<!-- isai:interface_digest=91e04b470e92f32de989a81c771b34f6891eac3ac66a6ebc43f3a87e37dda06a -->
+<!-- isai:spec_digest=584a8fe8a365f8fa79e2f552a87a043b3644a8c370764281ef31cb169e44e30e -->
+<!-- isai:interface_digest=0052880c1161f2a691f393c6959c764dc089d57a789155cbcf5b10ed05294d7e -->
 
 ## Паспорт узла `isai://root` — Корневой узел-драйвер, индекс гиперграфа и транзакционный инжектор связей ISAI
 
@@ -30,7 +30,8 @@
 - Субгенетический фундаментал /FUNDAMENTAL.md (IL-1C) синхронизирован с isai://root#NeuroVascularFundamental и ратифицирован в Chronicle.
 - Вектор развития /VISION.md синхронизирован с объектом isai://root#MasterVector.
 - Все связи, порты IOPortSpec (schema_refs), SymbolBindingSpec и кольца видимости верифицированы через 'isai audit'.
-- Команды 'isai nv', 'isai graph', 'isai link', 'isai rsoc' и 'isai recover' работают детерминированно и атомарно.
+- Команды 'isai nv', 'isai graph', 'isai link', 'isai rsoc', 'isai text' и 'isai recover' работают детерминированно и атомарно.
+- Каждый текст системных папок и файлов подписан уровнем TE0 и проходит 'isai text check' без отклонений (IL-1C [TEXT-ENGINEERING]).
 
 ### Функционал (`Capabilities`)
 - Графовая компиляция контекста 'isai rsoc' с доставкой 1-hop интерфейсных стабов соседей.
@@ -51,8 +52,8 @@
   - `audit_report` (`AuditReport`, гарантированный) [схемы: `isai.protocol:AuditReport`] — Детерминированный вердикт целостности всех колец IL-0..IL-3, портов и ссылок.
 
 ### Реестр владения и верифицируемых символов (`Ownership & Symbol Bindings`)
-- **Файлы узла (`owned_files`):** `README.md`, `FUNDAMENTAL.md`, `VISION.md`, `AGENTS.md`, `pyproject.toml`, `.gitignore`
-- **Служебные файлы (`system_files`):** `.isai/__init__.py`, `.isai/__main__.py`, `.isai/atomic_io.py`, `.isai/constitution.py`, `.isai/contracts.py`, `.isai/protocol.py`, `.isai/domain_models.py`, `.isai/neuro_vascular.py`, `.isai/vector.py`, `.isai/graph_index.py`, `.isai/engine.py`, `.isai/link_mutator.py`, `.isai/node.py`, `.isai/chronicle.jsonl`
+- **Файлы узла (`owned_files`):** `README.md`, `FUNDAMENTAL.md`, `VISION.md`, `AGENTS.md`, `RETROSPECTIVE.md`, `pyproject.toml`, `.gitignore`
+- **Служебные файлы (`system_files`):** `.isai/__init__.py`, `.isai/__main__.py`, `.isai/atomic_io.py`, `.isai/constitution.py`, `.isai/contracts.py`, `.isai/protocol.py`, `.isai/domain_models.py`, `.isai/neuro_vascular.py`, `.isai/vector.py`, `.isai/graph_index.py`, `.isai/engine.py`, `.isai/link_mutator.py`, `.isai/node.py`, `.isai/chronicle.jsonl`, `.isai/vector_ledger.py`, `.isai/health_checks.py`, `.isai/vector_ledger.jsonl`, `.isai/text_engineering.py`
 - **Экспортируемые сущности (`symbol_bindings`):**
   - `isai://root#GenesisKernel` (`python_attr` → `constitution.py:GENESIS_CONSTITUTION`, видимость: `PUBLIC`)
   - `isai://root#NeuroVascularFundamental` (`python_attr` → `neuro_vascular.py:NEURO_VASCULAR_FUNDAMENTAL`, видимость: `PUBLIC`)
@@ -65,6 +66,11 @@
   - `isai://root#RSoCCompiler` (`python_attr` → `engine.py:compile_rsoc`, видимость: `PUBLIC`)
   - `isai://root#ChronicleLedger` (`system_artifact` → `chronicle.jsonl`, видимость: `PUBLIC`)
   - `isai://root#AtomicPersistence` (`python_attr` → `atomic_io.py:atomic_transaction_batch`, видимость: `PUBLIC`)
+  - `isai://root#VectorMutationLedger` (`python_attr` → `vector_ledger.py:VectorMutationLedger`, видимость: `PUBLIC`)
+  - `isai://root#SystemHealthGate` (`python_attr` → `health_checks.py:evaluate_gate_v`, видимость: `PUBLIC`)
+  - `isai://root#VectorMutationLedgerRecord` (`system_artifact` → `vector_ledger.jsonl`, видимость: `PUBLIC`)
+  - `isai://root#TextEngineering` (`python_attr` → `text_engineering.py:validate_text`, видимость: `PUBLIC`)
+  - `isai://root#TextReader` (`python_attr` → `text_engineering.py:TextLevel`, видимость: `PUBLIC`)
 
 ### Типизированные связи и Маршрутизация (`Typed Links & Router`)
 - **Типизированные связи (`links`):**
@@ -83,5 +89,6 @@
   - При `retrieve_or_distill_knowledge` → `isai://knowledge` [режим: `FAST_READ`] — Запрос практических паттернов перед планированием или дистилляция опыта закрытого таска.
   - При `execute_phased_task` → `isai://tasks` [режим: `STAGED_TRANSACTION`] — Запуск пользовательского таска/исследования в изолированном контуре стейджинга под надзором Watchdog.
   - При `verify_kernel_integrity` → `isai://tests` [режим: `FAST_READ`] — Запуск модульных, контрактных и генеративных кросс-тестов ядра.
+  - При `route_research` → `isai://research` [режим: `STAGED_TRANSACTION`] — Маршрутизация в дочерний узел isai://research.
 
 <!-- ISAI:SYNC:END -->

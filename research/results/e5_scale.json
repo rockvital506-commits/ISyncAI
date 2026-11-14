@@ -1,0 +1,65 @@
+{
+  "rows": [
+    {
+      "entities": 100,
+      "index_bytes_est": 204800,
+      "inverted_terms": 632,
+      "inverted_build_ms": 6.95,
+      "scan_query_ms": 5.341,
+      "inverted_query_ms": 2.589,
+      "speedup": 2.06,
+      "mean_candidates": 47.1,
+      "candidate_ratio": 0.4715
+    },
+    {
+      "entities": 500,
+      "index_bytes_est": 1024000,
+      "inverted_terms": 2251,
+      "inverted_build_ms": 29.1,
+      "scan_query_ms": 34.266,
+      "inverted_query_ms": 12.284,
+      "speedup": 2.79,
+      "mean_candidates": 222.8,
+      "candidate_ratio": 0.4456
+    },
+    {
+      "entities": 1000,
+      "index_bytes_est": 2048000,
+      "inverted_terms": 3947,
+      "inverted_build_ms": 61.89,
+      "scan_query_ms": 51.468,
+      "inverted_query_ms": 25.027,
+      "speedup": 2.06,
+      "mean_candidates": 432.1,
+      "candidate_ratio": 0.4321
+    },
+    {
+      "entities": 2500,
+      "index_bytes_est": 5120000,
+      "inverted_terms": 7338,
+      "inverted_build_ms": 184.74,
+      "scan_query_ms": 167.497,
+      "inverted_query_ms": 60.23,
+      "speedup": 2.78,
+      "mean_candidates": 986.0,
+      "candidate_ratio": 0.3944
+    },
+    {
+      "entities": 5000,
+      "index_bytes_est": 10240000,
+      "inverted_terms": 11307,
+      "inverted_build_ms": 419.1,
+      "scan_query_ms": 322.722,
+      "inverted_query_ms": 130.324,
+      "speedup": 2.48,
+      "mean_candidates": 2274.9,
+      "candidate_ratio": 0.455
+    },
+    {
+      "entities": 100000,
+      "extrapolated_scan_query_ms": 6454.4,
+      "extrapolated_inverted_query_ms": 59.297,
+      "note": "candidates grow with document frequency; the inverted index wins only if df << N"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-"""CLI Entrypoint for ISyncAI (ISAI v0.2.5): audit | sync | recover | rsoc | nv | graph | link."""
+"""CLI Entrypoint for ISyncAI (ISAI v0.3.0): audit | sync | recover | rsoc | nv | vector | text | gate | graph | link."""
 
 from __future__ import annotations
 
@@ -15,8 +15,19 @@ from isai.engine import (
     read_chronicle,
     sync_repository,
 )
-from isai.graph_index import build_hypergraph_index, load_repo_nvf
+from isai.graph_index import build_hypergraph_index, load_repo_master_vector, load_repo_nvf
+from isai.health_checks import evaluate_gate_v
 from isai.link_mutator import LinkMutator
+from isai.protocol import utc_now_iso
+from isai.vector_ledger import (
+    CONFIRM_TASK_ANCHOR_FORMS,
+    VectorMutationLedger,
+    VectorMutationProposal,
+    apply_confirmed_proposal,
+    evaluate_ledger_deviations,
+    parse_operator_signal,
+    render_numbered_mutations,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -32,7 +43,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
-    sub.add_parser("audit", help="Run full 360° Ring 0..3 contract, IL-1C ratification, wiring & link audit")
+    sub.add_parser("audit", help="Run full 360° Ring 0..3 contract, IL-1C ratification, vector ledger, wiring & link audit")
     sub.add_parser("sync", help="Atomically project .isai/ contracts into README.md, FUNDAMENTAL.md, and VISION.md")
 
     rec_p = sub.add_parser("recover", help="Run deterministic Watchdog Crash Recovery")
@@ -56,6 +67,83 @@ def main(argv: list[str] | None = None) -> int:
     nv_sub = nv_p.add_subparsers(dest="nv_cmd", required=True)
     nv_sub.add_parser("show", help="Emit exact lossless symbolic ISAI-NVF DSL frame")
     nv_sub.add_parser("verify", help="Verify IL-1C digest against FUNDAMENTAL.md and Chronicle ratification")
+
+    # 'isai vector' subcommands (ISAI-NVF v1.1 [VECTOR-GOVERNANCE])
+    vec_p = sub.add_parser("vector", help="Audit, propose, ratify and apply Master Vector mutations")
+    vec_sub = vec_p.add_subparsers(dest="vector_cmd", required=True)
+
+    vec_sub.add_parser("init", help="Anchor the append-only vector mutation ledger (idempotent)")
+    vec_sub.add_parser("audit", help="Audit vector ledger chain, drift, numbered batches and confirmations")
+    vec_sub.add_parser("pending", help="Render the numbered implementation request for pending proposals")
+
+    vbt = vec_sub.add_parser("batch", help="Register (or refresh) the numbered implementation request over pending proposals")
+    vbt.add_argument(
+        "--id",
+        dest="proposal_ids",
+        action="append",
+        default=[],
+        help="Proposal id to include; the n-th --id becomes mutation number n (default: all pending, ranked by risk)",
+    )
+
+    vseal = vec_sub.add_parser("seal", help="Seal the live vector as the confirmed version of the last pull request")
+    vseal.add_argument("--pr", required=True, type=str, help="Pull-request reference (e.g. #3 or a PR URL)")
+    vseal.add_argument("--note", default=None, type=str)
+
+    vpr = vec_sub.add_parser("propose", help="Register a structured vector mutation proposal")
+    vpr.add_argument("--anchor-kind", required=True, type=str)
+    vpr.add_argument("--anchor-index", default=0, type=int)
+    vpr.add_argument("--anchor-label", required=True, type=str)
+    vpr.add_argument("--mutation-kind", required=True, choices=("ADD", "EDIT", "REMOVE"))
+    vpr.add_argument("--proposed-text", required=True, type=str)
+    vpr.add_argument("--rationale", required=True, type=str)
+    vpr.add_argument("--evidence", action="append", default=[], type=str)
+    vpr.add_argument("--expected-benefit", required=True, type=str)
+    vpr.add_argument("--risk", default="LOW", choices=("LOW", "MEDIUM", "HIGH"))
+
+    vsig = vec_sub.add_parser("signal", help="Ingest one operator prompt and apply the VM3/VM4 decision table")
+    vsig.add_argument("prompt_text", nargs="+", type=str)
+    vsig.add_argument("--note", default=None, type=str)
+
+    vap = vec_sub.add_parser("apply", help="Record a confirmed, already-materialised vector mutation")
+    vap.add_argument("proposal_id", type=str)
+    vap.add_argument("--summary", required=True, type=str)
+
+    vec_sub.add_parser("expire", help="Expire pending proposals that exhausted their deferral window")
+
+    vrev = vec_sub.add_parser(
+        "review",
+        help="Execute the VM8 PostPromptGate: audit vector, open the research window, rank proposals",
+    )
+    vrev.add_argument(
+        "--since",
+        default=None,
+        type=str,
+        help="Research window start (ISO-8601 or 'baseline'). Default: last APPLIED mutation or baseline.",
+    )
+    vrev.add_argument("--max-proposals", default=5, type=int, help="VM4 caps the batch at 5.")
+    vrev.add_argument("--json", action="store_true", help="Emit machine-readable output only.")
+
+    # 'isai bio' subcommands (bio-universe lexicon gate)
+    bio_p = sub.add_parser("bio", help="Verify the bio-universe lexicon against live symbols")
+    bio_sub = bio_p.add_subparsers(dest="bio_cmd", required=True)
+    bv = bio_sub.add_parser(
+        "validate",
+        help="Fail when a bio term names no live symbol or claims kernel maturity from the bench",
+    )
+    bv.add_argument("--json", action="store_true", help="Emit machine-readable output only.")
+    bio_sub.add_parser("lexicon", help="Render the lexicon from its spec (the .md is a projection)")
+
+    # 'isai text' subcommands (ISAI-NVF v1.2 [TEXT-ENGINEERING] TE0..TE7)
+    text_p = sub.add_parser("text", help="Read every system text offline and verify LLM-native engineering")
+    text_sub = text_p.add_subparsers(dest="text_cmd", required=True)
+    text_sub.add_parser("check", help="Verify TE0..TE6 duties across every system folder and file")
+    text_sub.add_parser("levels", help="Emit the TE0 level inventory (signature -> files)")
+    text_sub.add_parser("packet", help="Emit the compact [TEXT-ENGINEERING] RSoC slice")
+
+    # 'isai gate' subcommands (Pre-PR Gate V system health)
+    gate_p = sub.add_parser("gate", help="Run the pre-PR Gate V system health verification")
+    gate_sub = gate_p.add_subparsers(dest="gate_cmd", required=True)
+    gate_sub.add_parser("verify", help="Execute Gate V across root, tasks, knowledge, universe, tests & .isai subfolders")
 
     # 'isai graph' subcommands
     graph_p = sub.add_parser("graph", help="Query EAVT/VAET bidirectional hypergraph index")
@@ -186,6 +274,191 @@ def main(argv: list[str] | None = None) -> int:
             }
             print(json.dumps(payload, ensure_ascii=False, indent=2))
             return 0 if ratified_ok else 1
+
+    if args.command == "vector":
+        vector = load_repo_master_vector(repo_root)
+        ledger = VectorMutationLedger(repo_root)
+        if args.vector_cmd == "init":
+            if ledger.is_initialized():
+                print(json.dumps({"initialized": False, "reason": "ledger already anchored"}, indent=2))
+                return 0
+            event = ledger.initialize(vector, note="Genesis anchor of the vector mutation ledger.")
+            print(json.dumps(event.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            return 0
+        if args.vector_cmd == "audit":
+            state = ledger.state() if ledger.path.is_file() else None
+            payload: dict[str, object] = {
+                "ledger_initialized": bool(state and state.baseline_digest),
+                "events_count": state.events_count if state else 0,
+                "applied_mutations": [dict(item) for item in (state.applied if state else ())],
+                "pending": [p.proposal_id for p in (state.pending() if state else ())],
+                "confirmed": [p.proposal_id for p in (state.confirmed() if state else ())],
+                "deviations": [
+                    d.model_dump(mode="json")
+                    for d in (evaluate_ledger_deviations(state, vector) if state else ())
+                ],
+                "master_vector_version": vector.version,
+            }
+            print(json.dumps(payload, ensure_ascii=False, indent=2))
+            return 0
+        if args.vector_cmd == "pending":
+            from isai.vector_ledger import render_numbered_mutations as _render
+
+            state = ledger.state()
+            batch = state.latest_batch()
+            members = state.batch_members(batch.batch_id) if batch else state.pending()
+            print(_render(members, batch=batch) if members else "")
+            if state.confirmed_version_digest() is not None:
+                print(
+                    json.dumps(
+                        {
+                            "confirmed_version": vector.version
+                            if state.confirmed_version_digest() == vector.spec_digest()
+                            else state.last_sealed_version or state.baseline_version,
+                            "sealed_pr_ref": state.last_sealed_pr_ref,
+                            "unreleased_mutations": [i["proposal_id"] for i in state.unreleased_mutations()],
+                            "confirmation_task_anchor": CONFIRM_TASK_ANCHOR_FORMS[0],
+                        },
+                        ensure_ascii=False,
+                        indent=2,
+                    )
+                )
+            return 0
+
+        if args.vector_cmd == "batch":
+            from isai.vector_ledger import MAX_BATCH_SIZE
+
+            state = ledger.state()
+            head = state.ledger_head()
+            if args.proposal_ids:
+                chosen = tuple(args.proposal_ids)
+            else:
+                ranking = {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
+                chosen = tuple(
+                    p.proposal_id
+                    for p in sorted(
+                        state.pending(),
+                        key=lambda p: (ranking[p.risk_level.value], p.proposal_id),
+                    )[:MAX_BATCH_SIZE]
+                )
+            if not chosen:
+                print(json.dumps({"batch": None, "reason": "no pending proposals"}, ensure_ascii=False, indent=2))
+                return 0
+            event = ledger.open_batch(chosen, base_vector_digest=head or "")
+            print(json.dumps(event.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            print(render_numbered_mutations(state.batch_members(event.batch.batch_id), batch=event.batch))
+            return 0
+
+        if args.vector_cmd == "seal":
+            event = ledger.seal(vector, pr_ref=args.pr)
+            print(json.dumps(event.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            return 0
+        if args.vector_cmd == "propose":
+            from isai.vector_ledger import VectorAnchorKind, anchor_fingerprint, MutationKind
+
+            state = ledger.state()
+            kind = VectorAnchorKind(args.anchor_kind)
+            head = state.applied[-1]["after"] if state.applied else state.baseline_digest
+            proposal = VectorMutationProposal(
+                proposal_id=state.next_proposal_id(),
+                anchor_kind=kind,
+                anchor_index=args.anchor_index,
+                anchor_label=args.anchor_label,
+                mutation_kind=MutationKind(args.mutation_kind),
+                proposed_text=args.proposed_text,
+                rationale=args.rationale,
+                evidence_refs=tuple(args.evidence),
+                expected_benefit=args.expected_benefit,
+                risk_level=args.risk,
+                anchor_fingerprint=anchor_fingerprint(vector, kind, args.anchor_index),
+                base_vector_digest=head or "",
+                created_at_utc=utc_now_iso(),
+            )
+            ledger.propose(proposal)
+            print(json.dumps(proposal.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            return 0
+        if args.vector_cmd == "signal":
+            signal = parse_operator_signal(" ".join(args.prompt_text))
+            result = ledger.ingest_operator_signal(signal, vector, note=args.note)
+            print(json.dumps({"signal": signal.model_dump(mode="json"), **result}, ensure_ascii=False, indent=2))
+            return 0
+        if args.vector_cmd == "apply":
+            outcome = apply_confirmed_proposal(repo_root, args.proposal_id, vector, summary=args.summary)
+            print(json.dumps(outcome.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            return 0 if outcome.applied else 1
+        if args.vector_cmd == "review":
+            from isai.vector_ledger import run_post_prompt_gate
+
+            state = ledger.state()
+            gate = run_post_prompt_gate(
+                repo_root=repo_root,
+                ledger=ledger,
+                vector=vector,
+                state=state,
+                since=args.since,
+                max_proposals=args.max_proposals,
+            )
+            print(json.dumps(gate, ensure_ascii=False, indent=2))
+            return 0 if gate["gate_status"] == "PASS" else 1
+        if args.vector_cmd == "expire":
+            state = ledger.state()
+            expired = [
+                p.proposal_id
+                for p in state.pending()
+                if (state.deferrals or {}).get(p.proposal_id, 0) >= 2
+            ]
+            for pid in expired:
+                ledger.expire(pid, note="Deferral decay exceeded (VM5).")
+            print(json.dumps({"expired": expired}, ensure_ascii=False, indent=2))
+            return 0
+
+    if args.command == "bio":
+        lexicon_dir = repo_root / "research" / ".isai"
+        if str(lexicon_dir) not in sys.path:
+            sys.path.insert(0, str(lexicon_dir))
+        from bio_lexicon import BIO_LEXICON, render_lexicon_markdown, validate_lexicon
+        if args.bio_cmd == "lexicon":
+            print(render_lexicon_markdown(BIO_LEXICON))
+            return 0
+        findings = validate_lexicon(repo_root, BIO_LEXICON)
+        failures = [f for f in findings if not f.passed]
+        payload = {
+            "lexicon_ref": BIO_LEXICON.lexicon_ref,
+            "terms": len(BIO_LEXICON.entries),
+            "checks": len(findings),
+            "failures": len(failures),
+            "status": "BIO_VALID" if not failures else "BIO_DEVIATION_DETECTED",
+            "findings": [
+                {
+                    "check": f.check,
+                    "severity": f.severity,
+                    "passed": f.passed,
+                    "term": f.term,
+                    "message": f.message,
+                }
+                for f in findings
+            ],
+        }
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
+        return 0 if not failures else 1
+    if args.command == "text":
+        from isai.text_engineering import level_inventory, text_engineering_packet, validate_text
+
+        if args.text_cmd == "check":
+            report = validate_text(repo_root)
+            print(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            return 0 if report.valid else 1
+        if args.text_cmd == "levels":
+            print(json.dumps(level_inventory(repo_root), ensure_ascii=False, indent=2))
+            return 0
+        if args.text_cmd == "packet":
+            print(json.dumps(text_engineering_packet(), ensure_ascii=False, indent=2))
+            return 0
+
+    if args.command == "gate":
+        report = evaluate_gate_v(repo_root)
+        print(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+        return 0 if report.status == "NO_SYSTEMIC_DEVIATION" else 1
 
     if args.command == "graph":
         idx = build_hypergraph_index(repo_root)

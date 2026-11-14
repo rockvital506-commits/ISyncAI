@@ -9,6 +9,8 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
+from _isai_sandbox import quiesce_staging
+
 from isai.__main__ import main as isai_cli_main
 from isai.atomic_io import TEMP_ARTIFACT_PREFIX, atomic_write_text
 from isai.constitution import (
@@ -62,6 +64,7 @@ def _clone_repo_to_tmp(tmp_path: Path) -> Path:
         return ignored
 
     shutil.copytree(REPO_ROOT, dest, ignore=_ignore)
+    quiesce_staging(dest)
     return dest
 
 
@@ -79,13 +82,25 @@ def test_live_repository_passes_full_360_audit_and_idempotent_recover(tmp_path: 
     assert report.verified_symbols_count >= 16
     assert report.verified_port_wirings_count >= 5
     assert report.checked_markdown_files_count >= 7
-    assert set(report.checked_nodes) == {
+    canonical_hives = {
         "isai://root",
         "isai://user",
         "isai://knowledge",
         "isai://tasks",
         "isai://tests",
+        # `research` — не декоративная папка, а узел с паспортом, родительским ребром и
+        # router-переходом от корня: он существует по тем же правилам, что и остальные
+        # кольца (`isai audit` проверяет его наравне). Канонический набор поэтому расширен
+        # явно, а не ослаблен до «любой узел допустим».
+        "isai://research",
+        "isai://research/lab",
+        "isai://research/results",
     }
+    checked = set(report.checked_nodes)
+    assert canonical_hives <= checked
+    # Nothing may exist beyond the canonical hives except explicitly active staging tasks.
+    extra = checked - canonical_hives
+    assert all(node.startswith("isai://tasks/TASK-") for node in extra), extra
 
     # Verify recover idempotency on a clean clone (zero new Chronicle transactions)
     sandbox = _clone_repo_to_tmp(tmp_path)
