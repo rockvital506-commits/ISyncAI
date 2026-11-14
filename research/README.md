@@ -2,7 +2,7 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://research -->
-<!-- isai:spec_digest=defa374db1f223d1dd859af96bf5d8aed0b0eb42a1e0f8a2a3cde76a058e0df6 -->
+<!-- isai:spec_digest=2d78e9716779f0a2c209524060dc863472e628cb9b3b261a2689812bdfa8ef63 -->
 <!-- isai:interface_digest=18f22396dab0fa9600c72213e30e8b6f0f5c1b8defc0882663a407eb30bcc249 -->
 
 ## Паспорт узла `isai://research` — Лаборатория эмбеддинг-исследований (Embedding Research Lab)
@@ -23,7 +23,7 @@
 
 ### Реестр владения и верифицируемых символов (`Ownership & Symbol Bindings`)
 - **Файлы узла (`owned_files`):** `README.md`, `FINDINGS.md`, `BIO-INVENTORY.md`, `BIO-CRITIQUE.md`, `CATALOG-CONTRADICTIONS.md`, `BIO-LEXICON.md`, `BIO-STRATEGY.md`
-- **Служебные файлы (`system_files`):** `.isai/node.py`
+- **Служебные файлы (`system_files`):** `.isai/node.py`, `.isai/bio_lexicon.py`
 - **Экспортируемые сущности (`symbol_bindings`):**
   - `isai://research#ResearchDoc` (`owned_artifact` → `README.md`, видимость: `PUBLIC`)
 

@@ -123,6 +123,16 @@ def main(argv: list[str] | None = None) -> int:
     vrev.add_argument("--max-proposals", default=5, type=int, help="VM4 caps the batch at 5.")
     vrev.add_argument("--json", action="store_true", help="Emit machine-readable output only.")
 
+    # 'isai bio' subcommands (bio-universe lexicon gate)
+    bio_p = sub.add_parser("bio", help="Verify the bio-universe lexicon against live symbols")
+    bio_sub = bio_p.add_subparsers(dest="bio_cmd", required=True)
+    bv = bio_sub.add_parser(
+        "validate",
+        help="Fail when a bio term names no live symbol or claims kernel maturity from the bench",
+    )
+    bv.add_argument("--json", action="store_true", help="Emit machine-readable output only.")
+    bio_sub.add_parser("lexicon", help="Render the lexicon from its spec (the .md is a projection)")
+
     # 'isai text' subcommands (ISAI-NVF v1.2 [TEXT-ENGINEERING] TE0..TE7)
     text_p = sub.add_parser("text", help="Read every system text offline and verify LLM-native engineering")
     text_sub = text_p.add_subparsers(dest="text_cmd", required=True)
@@ -402,6 +412,35 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps({"expired": expired}, ensure_ascii=False, indent=2))
             return 0
 
+    if args.command == "bio":
+        lexicon_dir = repo_root / "research" / ".isai"
+        if str(lexicon_dir) not in sys.path:
+            sys.path.insert(0, str(lexicon_dir))
+        from bio_lexicon import BIO_LEXICON, render_lexicon_markdown, validate_lexicon
+        if args.bio_cmd == "lexicon":
+            print(render_lexicon_markdown(BIO_LEXICON))
+            return 0
+        findings = validate_lexicon(repo_root, BIO_LEXICON)
+        failures = [f for f in findings if not f.passed]
+        payload = {
+            "lexicon_ref": BIO_LEXICON.lexicon_ref,
+            "terms": len(BIO_LEXICON.entries),
+            "checks": len(findings),
+            "failures": len(failures),
+            "status": "BIO_VALID" if not failures else "BIO_DEVIATION_DETECTED",
+            "findings": [
+                {
+                    "check": f.check,
+                    "severity": f.severity,
+                    "passed": f.passed,
+                    "term": f.term,
+                    "message": f.message,
+                }
+                for f in findings
+            ],
+        }
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
+        return 0 if not failures else 1
     if args.command == "text":
         from isai.text_engineering import level_inventory, text_engineering_packet, validate_text
 

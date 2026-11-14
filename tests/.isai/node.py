@@ -89,6 +89,7 @@ NODE = ISAINodeSpec(
         '_isai_sandbox.py',
         'test_vm8_post_prompt_gate.py',
         'test_knowledge_maturity.py',
+        'test_bio_lexicon.py',
     ),
     system_files=(
         'node.py',

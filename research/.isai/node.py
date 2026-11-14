@@ -40,6 +40,7 @@ NODE = ISAINodeSpec(
     ),
     system_files=(
         'node.py',
+        'bio_lexicon.py',
     ),
     symbol_bindings=(
         SymbolBindingSpec(
