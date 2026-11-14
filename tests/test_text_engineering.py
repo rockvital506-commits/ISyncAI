@@ -284,6 +284,40 @@ def test_clean_sandbox_text_gate_is_green_and_gate_v_agrees(tmp_path: Path) -> N
 
 
 @pytest.mark.isai_scope("isai://root#TextEngineering")
+def test_prose_phantom_names_are_caught_without_a_suffix_escape_hatch(tmp_path: Path) -> None:
+    """
+    TE2 must catch a hallucinated component name in *authored prose*.
+
+    This is a regression test for a real hole in an earlier revision of the reader: binding was
+    only checked in the formal DSL bodies, so prose — where an invented name actually misleads a
+    reader — was never scanned at all. A second hole sat behind the first: a token that merely
+    *ended* in a canonical suffix (`...Gate`, `...Kernel`, `...Vector`) was accepted as "a bound
+    shape", which let every invented name of that form pass. Both are fixed; both are pinned here.
+    """
+    sandbox = _clone_repo_to_tmp(tmp_path)
+    agents = sandbox / "AGENTS.md"
+    original = agents.read_text(encoding="utf-8")
+    invented = (
+        "\n\nСлужба HallucinatedGate вместе с FakeKernel проверяет "
+        "QuantumFluxVector перед каждым прогоном.\n"
+    )
+    atomic_write_text(agents, original + invented)
+
+    report = validate_text(sandbox)
+    assert report.status == "TEXT_DEVIATION_DETECTED"
+    flagged = {f.message.split("'")[1] for f in report.findings if f.check == "TE2.DLT-BPE"}
+    assert {"HallucinatedGate", "FakeKernel", "QuantumFluxVector"} <= flagged, flagged
+
+    # And the same prose with real, bound names stays clean — the check is not a blanket ban.
+    atomic_write_text(
+        agents,
+        original
+        + "\n\nСлужба LinkInjector вместе с GenesisKernel проверяет MasterVector перед каждым прогоном.\n",
+    )
+    assert validate_text(sandbox).valid is True
+
+
+@pytest.mark.isai_scope("isai://root#TextEngineering")
 def test_lexicon_vocabulary_is_closed_and_grounded() -> None:
     """TE2: the bound vocabulary is derived from live code, commands, files and a closed acronym set."""
     vocabulary = build_bound_vocabulary(REPO_ROOT)

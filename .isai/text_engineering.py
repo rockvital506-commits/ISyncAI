@@ -188,6 +188,10 @@ DESIGN_LEXICON: dict[str, str] = {
     "PromoteRecord": "isai://root#ChronicleLedger (PROMOTE operation)",
     "SalienceOrder": "isai://root#TextEngineering (TE5)",
     "Signature": "isai://root#TextEngineering (TE0 signature of a text)",
+    # -- TE2's own vocabulary: the theory must be able to name its own atoms --
+    "CamelComposite": "isai://root#TextEngineering (TE2: UpperCamel token, e.g. VectorMutationLedger)",
+    "SeparatedComposite": "isai://root#TextEngineering (TE2: hyphen/snake token, e.g. zero-orphan-nodes)",
+    "DomainAcronym": "isai://root#TextEngineering (TE2: closed ALL-CAPS set of DOMAIN_ACRONYM_SET)",
     "SystemicCorpus": "isai://root#TextEngineering (the set of system folders and files)",
     "TextEngineering": "isai://root#TextEngineering",
     "VerifyCompile": "isai://root#TextEngineering (TE7)",
@@ -412,6 +416,13 @@ def build_bound_vocabulary(repo_root: Path) -> set[str]:
                 bound.add(node.target.id)
             elif isinstance(node, ast.arg) and node.arg:
                 bound.add(node.arg)
+            elif isinstance(node, ast.keyword) and node.arg:
+                # Declared symbol names travel as keyword arguments in the node manifests
+                # (`SymbolBindingSpec(symbol='LinkInjector', ...)`), so an AST walk that only
+                # collected class/function/assignment names would miss every bound symbol.
+                bound.add(node.arg)
+                if isinstance(node.value, ast.Constant) and isinstance(node.value.value, str):
+                    bound.add(node.value.value)
             elif isinstance(node, ast.ClassDef):
                 for member in node.body:
                     if isinstance(member, (ast.ClassDef, ast.FunctionDef)):
@@ -443,6 +454,24 @@ def build_bound_vocabulary(repo_root: Path) -> set[str]:
         bound.add(path.name)
         bound.add(path.stem.replace("_", ""))
         bound.add(path.stem.replace("test_", ""))
+    # Every `isai://<scope>#<Symbol>` address in the repository names a live node or symbol: the
+    # address itself is the reference, so a document that cites `isai://root#NeuroVascularFundamental`
+    # is naming something real even when the Python identifier differs in case or shape.
+    uri_re = re.compile(r"isai://[A-Za-z0-9_./-]+(?:#([A-Za-z0-9_]+))?")
+    for path in repo_root.rglob("*"):
+        if not path.is_file() or path.suffix not in TEXT_FILE_SUFFIXES:
+            continue
+        rel = path.relative_to(repo_root)
+        if DEFAULT_BOUNDARY_IGNORE.is_ignored(rel):
+            continue
+        try:
+            content = path.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError):  # pragma: no cover
+            continue
+        for match in uri_re.finditer(content):
+            symbol = match.group(1)
+            if symbol:
+                bound.add(symbol)
     bound.update(DOMAIN_ACRONYM_SET)
     bound.update(DSL_VERDICT_TOKENS)
     return bound
@@ -498,8 +527,6 @@ def _binds(token: str, vocabulary: set[str]) -> bool:
         return True
     lowered = {v.lower() for v in vocabulary}
     if token.lower() in lowered or flat.lower() in lowered:
-        return True
-    if any(token.endswith(suffix) for suffix in _BOUND_SHAPE_SUFFIXES):
         return True
     return False
 
@@ -1002,9 +1029,16 @@ def _check_l4_record(rel: str, text: str, repo_root: Path) -> list[TextFinding]:
     return findings
 
 
-def _check_l3_prose(rel: str, text: str) -> list[TextFinding]:
-    """`TE4.FrameLaw`: authored prose must be sectioned and fenced safely."""
+def _check_l3_prose(rel: str, text: str, vocabulary: set[str]) -> list[TextFinding]:
+    """
+    Authored prose: `TE2.DLT-BPE` lexical binding + `TE4.FrameLaw` framing.
+
+    Prose is precisely where a phantom name does the most damage: code that names a symbol it
+    never defines fails at import, while a paragraph that names a component nobody implemented
+    reads as fact. The lexicon check is therefore enforced here, not only in the DSL bodies.
+    """
     findings: list[TextFinding] = []
+    _check_prose_lexicon(rel, rel, text, vocabulary, findings)
     if len(text) > 1200 and not re.search(r"^#{1,6}\s", text, flags=re.MULTILINE):
         findings.append(
             _finding(
@@ -1066,7 +1100,7 @@ def validate_text(repo_root: Path, *, strict_domain_lexicon: bool = False) -> Te
         elif level == TextLevel.L4_RECORD:
             findings.extend(_check_l4_record(rel, text, root))
         elif level == TextLevel.L3_PROSE:
-            findings.extend(_check_l3_prose(rel, text))
+            findings.extend(_check_l3_prose(rel, text, vocabulary))
         if strict_domain_lexicon and level in (TextLevel.L1_CANON, TextLevel.L3_PROSE):
             for token in set(structured_tokens(text)):
                 if token.isupper() and len(token) >= 2 and token not in DOMAIN_ACRONYM_SET:
