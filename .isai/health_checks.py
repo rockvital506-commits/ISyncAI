@@ -311,6 +311,49 @@ def check_tasks_domain(repo_root: Path, nodes: dict[str, tuple[Path, Any]]) -> l
     return results
 
 
+def _declared_symbol_surface(repo_root: Path) -> set[str]:
+    """
+    Exactly the class, function and module-level constant names declared under `.isai/`.
+
+    Case-sensitive, no file stems, no derived forms. `IMPLEMENTED` is a claim about code that
+    exists, and a claim about code must resolve to code — not to a filename that resembles it.
+    """
+    import ast
+
+    from isai.constitution import DEFAULT_BOUNDARY_IGNORE
+
+    names: set[str] = set()
+    for pkg in sorted(repo_root.rglob(".isai")):
+        if not pkg.is_dir() or DEFAULT_BOUNDARY_IGNORE.is_ignored(pkg.relative_to(repo_root)):
+            continue
+        for py in sorted(pkg.glob("*.py")):
+            try:
+                tree = ast.parse(py.read_text(encoding="utf-8"), filename=str(py))
+            except SyntaxError:  # pragma: no cover - audit reports syntax errors separately
+                continue
+            for node in ast.walk(tree):
+                if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+                    names.add(node.name)
+                elif isinstance(node, ast.Assign):
+                    for target in node.targets:
+                        if isinstance(target, ast.Name):
+                            names.add(target.id)
+                elif isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
+                    names.add(node.target.id)
+        # A node's own declared python_attr bindings are code that exists in the repository.
+        manifest = pkg / "node.py"
+        if manifest.is_file():
+            try:
+                tree = ast.parse(manifest.read_text(encoding="utf-8"), filename=str(manifest))
+            except SyntaxError:  # pragma: no cover
+                continue
+            for node in ast.walk(tree):
+                if isinstance(node, ast.keyword) and node.arg == "symbol":
+                    if isinstance(node.value, ast.Constant) and isinstance(node.value.value, str):
+                        names.add(node.value.value)
+    return names
+
+
 def check_knowledge_domain(
     repo_root: Path,
     nodes: dict[str, tuple[Path, Any]],
@@ -385,6 +428,47 @@ def check_knowledge_domain(
                     HealthDomain.KNOWLEDGE,
                     "Entries point at evidence artifacts that do not exist.",
                     evidence=", ".join(dangling_evidence),
+                )
+            )
+            # H-KNOW-08: `IMPLEMENTED` must point at a live symbol. Without this check the maturity
+            # field is an honour system: an entry can claim a mechanism exists while the repository
+            # contains only words about it. `PAT_DUAL_ZONE_..._DEMATERIALIZATION_BARRIER` did exactly
+            # that — labelled IMPLEMENTED, with no `materialize`/`dematerialize` symbol anywhere.
+            #
+            # The check requires `primary_symbol` to be *declared*, not inferred from prose. A
+            # keyword scan was tried and passed on incidental identifiers (`spec_digest` is a
+            # parameter, `active_tasks` is a local), which is worse than no check at all: it would
+            # have certified the very entries that needed scrutiny.
+            # The vocabulary is deliberately *not* reused here. `build_bound_vocabulary` exists to
+            # answer "is this token pronounceable", so it also admits file stems and case-folded
+            # variants; that leniency let the phantom `QuantumLinkDaemon` pass, because `link_mutator`
+            # is a file stem and the lookup folds case. For a maturity claim we need exact identity
+            # with a declared symbol, so the surface is rebuilt strictly from AST declarations.
+            bound_symbols = _declared_symbol_surface(repo_root)
+            unbound: list[str] = []
+            unimplemented_claim: list[str] = []
+            for e in catalog.entries:
+                if e.maturity != "IMPLEMENTED":
+                    continue
+                if not e.primary_symbol:
+                    unimplemented_claim.append(e.entry_id)
+                elif e.primary_symbol not in bound_symbols:
+                    unbound.append(f"{e.entry_id}->{e.primary_symbol}")
+            results.append(
+                _ok(
+                    "H-KNOW-08",
+                    HealthDomain.KNOWLEDGE,
+                    "Every IMPLEMENTED entry declares a live primary symbol.",
+                )
+                if not unimplemented_claim and not unbound
+                else _fail(
+                    "H-KNOW-08",
+                    HealthDomain.KNOWLEDGE,
+                    "Entries claim IMPLEMENTED without a live primary symbol.",
+                    evidence="; ".join(
+                        (["no symbol: " + ", ".join(unimplemented_claim)] if unimplemented_claim else [])
+                        + (["unbound: " + ", ".join(unbound)] if unbound else [])
+                    ),
                 )
             )
             future_rev = [e.entry_id for e in catalog.entries if e.verified_revision > head_rev]

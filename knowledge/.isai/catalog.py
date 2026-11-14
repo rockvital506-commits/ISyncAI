@@ -21,6 +21,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0001",
             verified_revision=1,
             maturity="IMPLEMENTED",
+            primary_symbol="verify_genesis_header",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -37,6 +38,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0001",
             verified_revision=1,
             maturity="IMPLEMENTED",
+            primary_symbol="load_module_attr_isolated",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -52,7 +54,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root",
             origin_tx_id="TX-0001",
             verified_revision=1,
-            maturity="IMPLEMENTED",
+            maturity="PROSE",
+            primary_symbol="",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -69,6 +72,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0001",
             verified_revision=1,
             maturity="IMPLEMENTED",
+            primary_symbol="interface_digest",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -85,6 +89,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0001",
             verified_revision=1,
             maturity="PROSE",
+            primary_symbol="",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -101,6 +106,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0002",
             verified_revision=2,
             maturity="IMPLEMENTED",
+            primary_symbol="SymbolBindingSpec",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -117,6 +123,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0002",
             verified_revision=2,
             maturity="IMPLEMENTED",
+            primary_symbol="check_root_domain",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -133,6 +140,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0002",
             verified_revision=2,
             maturity="IMPLEMENTED",
+            primary_symbol="atomic_write_text",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -149,6 +157,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0003",
             verified_revision=3,
             maturity="IMPLEMENTED",
+            primary_symbol="HypergraphIndex",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -165,6 +174,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0003",
             verified_revision=3,
             maturity="IMPLEMENTED",
+            primary_symbol="PortWiringSpec",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -181,6 +191,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0003",
             verified_revision=3,
             maturity="IMPLEMENTED",
+            primary_symbol="LinkMutator",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -198,6 +209,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0005",
             verified_revision=5,
             maturity="IMPLEMENTED",
+            primary_symbol="NeuroVascularFundamental",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -215,6 +227,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0005",
             verified_revision=5,
             maturity="IMPLEMENTED",
+            primary_symbol="RSoCCompiler",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -232,6 +245,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0005",
             verified_revision=5,
             maturity="IMPLEMENTED",
+            primary_symbol="scaffold_node",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -249,6 +263,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0007",
             verified_revision=7,
             maturity="PROSE",
+            primary_symbol="",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -265,7 +280,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://root#HypergraphIndex",
             origin_tx_id="TX-0007",
             verified_revision=7,
-            maturity="IMPLEMENTED",
+            maturity="PROSE",
+            primary_symbol="",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -283,6 +299,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0008",
             verified_revision=8,
             maturity="MEASURED",
+            primary_symbol="EpochUniverse",
             evidence_ref="research/results/e7_plasmid.json",
         ),
         KnowledgeEntry(
@@ -300,6 +317,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0008",
             verified_revision=8,
             maturity="MEASURED",
+            primary_symbol="apoptosis",
             evidence_ref="research/results/e9_granularity.json",
         ),
         KnowledgeEntry(
@@ -316,7 +334,8 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             related_node_ref="isai://tasks#WatchdogService",
             origin_tx_id="TX-0009",
             verified_revision=9,
-            maturity="IMPLEMENTED",
+            maturity="PROSE",
+            primary_symbol="",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -333,6 +352,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0009",
             verified_revision=9,
             maturity="PROSE",
+            primary_symbol="",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -353,6 +373,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0009",
             verified_revision=9,
             maturity="IMPLEMENTED",
+            primary_symbol="VectorMutationLedger",
             evidence_ref="",
         ),
         KnowledgeEntry(
@@ -373,6 +394,7 @@ KNOWLEDGE_CATALOG = KnowledgeCatalogSpec(
             origin_tx_id="TX-0009",
             verified_revision=9,
             maturity="IMPLEMENTED",
+            primary_symbol="evaluate_gate_v",
             evidence_ref="",
         ),
     ),

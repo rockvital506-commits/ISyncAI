@@ -4,7 +4,7 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://tests -->
-<!-- isai:spec_digest=57c4f9288cb63371d9a53b13fa9089e773f4d5489e1d4dca50a2ca882e7e89db -->
+<!-- isai:spec_digest=3418315a96ed3ac3054069553a2925d5661bb43ed45f1966e77b5dd436fdf3ce -->
 <!-- isai:interface_digest=d8caed2679ade058c0dfbf77f6446234beb8008770513d35eceb3add39521192 -->
 
 ## Паспорт узла `isai://tests` — Контур самоверификации, контрактных кросс-тестов и генеративного фаззинга связей (Gate A Suite)
@@ -36,7 +36,7 @@
   - вход `rsoc_context_packet` ← `isai://root#RSoCCompiler` (выход `rsoc_packet`) — Кросс-тестирование графовой доставки linked_interface_stubs.
 
 ### Реестр владения и верифицируемых символов (`Ownership & Symbol Bindings`)
-- **Файлы узла (`owned_files`):** `README.md`, `test_isai_kernel.py`, `test_hypergraph_cross_links.py`, `test_neuro_vascular_fundamental.py`, `test_vector_governance.py`, `test_text_engineering.py`, `_isai_sandbox.py`, `test_vm8_post_prompt_gate.py`
+- **Файлы узла (`owned_files`):** `README.md`, `test_isai_kernel.py`, `test_hypergraph_cross_links.py`, `test_neuro_vascular_fundamental.py`, `test_vector_governance.py`, `test_text_engineering.py`, `_isai_sandbox.py`, `test_vm8_post_prompt_gate.py`, `test_knowledge_maturity.py`
 - **Служебные файлы (`system_files`):** `.isai/node.py`
 - **Экспортируемые сущности (`symbol_bindings`):**
   - `isai://tests#SelfVerificationSuite` (`owned_artifact` → `test_isai_kernel.py`, видимость: `PUBLIC`)

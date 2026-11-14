@@ -171,6 +171,13 @@ class KnowledgeEntry(BaseModel):
     #: Repository-relative path to the artifact that reproduces this entry's numbers, if any.
     #: Empty means "no evidence was recorded" — which is honest, and now visible.
     evidence_ref: str = ""
+    #: The one live symbol that *is* this mechanism, named explicitly rather than inferred.
+    #:
+    #: `maturity=IMPLEMENTED` used to be an honour-system claim: nothing checked that the entry
+    #: described code rather than a design. A keyword scan over the prose was tried first and
+    #: produced false passes — `spec_digest` is a parameter name, not a mechanism — so the binding
+    #: is declared here and verified by `H-KNOW-08`. An entry cannot buy `IMPLEMENTED` with wording.
+    primary_symbol: str = ""
 
 
 class KnowledgeCatalogSpec(BaseModel):
