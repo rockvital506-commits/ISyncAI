@@ -2,7 +2,7 @@
 
 Структурированное хранилище эмпирических паттернов, архитектурных решений, фактов о среде и антипаттернов (`isai://knowledge#EmpiricalCatalog`), дистиллированных из завершённых тасков и исследований симбиоза **ISAI**.
 
-## Реестр верифицированных единиц знаний (`rev=6`)
+## Реестр верифицированных единиц знаний (`rev=10`)
 
 | ID | Категория | Краткая суть | Узел | Транзакция |
 | :--- | :--- | :--- | :--- | :--- |
@@ -20,6 +20,14 @@
 | `PAT_SUB_GENESIS_IL1C_AND_ALGEDONIC_RATIFICATION` | `architecture_decision` | Условно-мутируемое кольцо `IL-1C` (`ISAI-NVF`) со сверкой `SHA-256` по `RATIFY_FUNDAMENTAL` и 6-шаговым Алгедоническим шлюзом | `isai://root#NeuroVascularFundamental` | `TX-0005` |
 | `PAT_BIMODAL_RSOC_PRIMACY_RECENCY_SANDWICH` | `pattern` | Бимодальная подача `IL-1C` в `RSoC v0.2.5`: `Primacy Head` сразу после `Genesis` + `terminal_execution_guard` в конце пакета | `isai://root#RSoCCompiler` | `TX-0005` |
 | `PAT_EPHEMERAL_STAGING_SCAFFOLD_AND_SANDBOX_ISOLATION` | `environment_fact` | Атомарная связка `scaffold-node` с `active_tasks` (`PREC-10`) и нормализация классов изолированного загрузчика (`PREC-11`) | `isai://root#LinkInjector` | `TX-0005` |
+| `PAT_OPERADIC_PIPELINE_VS_HYPERGRAPH_BOUNDARY` | `architecture_decision` | Граница операдной сборки конвейеров (`PRE/POST/AROUND/PARALLEL`) и гиперграфа `EAVT/VAET` (избежание `2^k`-раздутия DAG) | `isai://root#ISAINodeSpec` | `TX-0007` |
+| `PAT_TRIPLET_GENOTYPE_EPIGENOME_INTERFACE_HASH` | `pattern` | Триплетная идентификация: нормальная форма `ДНК` + `Эпигеном` параметров + `Интерфейс` для `Salsa Early-Cutoff` | `isai://root#HypergraphIndex` | `TX-0007` |
+| `PAT_BIO_UNIVERSE_PYDANTIC_HOLON_EPOCH_RIBOSOME` | `architecture_decision` | Био-Вселенная (`Atom/Gene/Plasmid/Ribosome`), эпохальный кэш `Holon`, дифф-шлюз эквивалентности и мемоизация `DAG` | `isai://root#ISAINodeSpec` | `TX-0008` |
+| `PAT_GENE_GRANULARITY_CROSSOVER_AND_VAET_APOPTOSIS` | `pattern` | Порог гранулярности генов (`>=3 SLOC`), `LNTE`-срез контекста (`-97.2%` токенов), `Chromosomes` и `VAET`-Апоптоз | `isai://root#RSoCCompiler` | `TX-0008` |
+| `PAT_DUAL_ZONE_LNTE_SHELL_AND_DEMATERIALIZATION_BARRIER` | `architecture_decision` | Чистые `LNTE`-папки `knowledge/`, отбор без материализации (`2668x`), Двухзонные таски (`-99.95%` токенов) и дематериализация | `isai://tasks#WatchdogService` | `TX-0009` |
+| `PAT_CRYO_TRANSITIVE_APOPTOSIS_AND_AST_HOMOLOGY` | `pattern` | Транзитивный `Cryo-Apoptosis`, `AST`-консолидация клонов (`-59.2%`) и зеркало двусторонних связей (`-100.5x` I/O) | `isai://root#HypergraphIndex` | `TX-0009` |
+| `PAT_VECTOR_MUTATION_LEDGER_AND_CHECKBOX_RATIFICATION` | `architecture_decision` | Append-only журнал мутаций вектора, чекбоксная ратификация из промпта (`30/30`), атомарная церемония применения (`0` зависших ратификаций на `1200` ходах) | `isai://root#VectorMutationLedger` | `TX-0009` |
+| `PAT_PRE_PR_GATE_V_AND_ATOMIC_VECTOR_APPLY` | `pattern` | Шлюз `Gate V` (`26` проверок / `6` доменов), мутационное тестирование `14/14` и побайтовый откат церемонии вектора | `isai://root#SystemHealthGate` | `TX-0009` |
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://knowledge -->

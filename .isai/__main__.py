@@ -1,4 +1,4 @@
-"""CLI Entrypoint for ISyncAI (ISAI v0.2.5): audit | sync | recover | rsoc | nv | graph | link."""
+"""CLI Entrypoint for ISyncAI (ISAI v0.3.0): audit | sync | recover | rsoc | nv | vector | gate | graph | link."""
 
 from __future__ import annotations
 
@@ -15,8 +15,18 @@ from isai.engine import (
     read_chronicle,
     sync_repository,
 )
-from isai.graph_index import build_hypergraph_index, load_repo_nvf
+from isai.graph_index import build_hypergraph_index, load_repo_master_vector, load_repo_nvf
+from isai.health_checks import evaluate_gate_v
 from isai.link_mutator import LinkMutator
+from isai.protocol import utc_now_iso
+from isai.vector_ledger import (
+    VectorMutationLedger,
+    VectorMutationProposal,
+    apply_confirmed_proposal,
+    evaluate_ledger_deviations,
+    parse_operator_signal,
+    render_proposal_checkboxes,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -32,7 +42,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
-    sub.add_parser("audit", help="Run full 360° Ring 0..3 contract, IL-1C ratification, wiring & link audit")
+    sub.add_parser("audit", help="Run full 360° Ring 0..3 contract, IL-1C ratification, vector ledger, wiring & link audit")
     sub.add_parser("sync", help="Atomically project .isai/ contracts into README.md, FUNDAMENTAL.md, and VISION.md")
 
     rec_p = sub.add_parser("recover", help="Run deterministic Watchdog Crash Recovery")
@@ -56,6 +66,40 @@ def main(argv: list[str] | None = None) -> int:
     nv_sub = nv_p.add_subparsers(dest="nv_cmd", required=True)
     nv_sub.add_parser("show", help="Emit exact lossless symbolic ISAI-NVF DSL frame")
     nv_sub.add_parser("verify", help="Verify IL-1C digest against FUNDAMENTAL.md and Chronicle ratification")
+
+    # 'isai vector' subcommands (ISAI-NVF v1.1 [VECTOR-GOVERNANCE])
+    vec_p = sub.add_parser("vector", help="Audit, propose, ratify and apply Master Vector mutations")
+    vec_sub = vec_p.add_subparsers(dest="vector_cmd", required=True)
+
+    vec_sub.add_parser("init", help="Anchor the append-only vector mutation ledger (idempotent)")
+    vec_sub.add_parser("audit", help="Audit vector ledger chain, drift and pending proposals")
+    vec_sub.add_parser("pending", help="Render the operator checkbox block for pending proposals")
+
+    vpr = vec_sub.add_parser("propose", help="Register a structured vector mutation proposal")
+    vpr.add_argument("--anchor-kind", required=True, type=str)
+    vpr.add_argument("--anchor-index", default=0, type=int)
+    vpr.add_argument("--anchor-label", required=True, type=str)
+    vpr.add_argument("--mutation-kind", required=True, choices=("ADD", "EDIT", "REMOVE"))
+    vpr.add_argument("--proposed-text", required=True, type=str)
+    vpr.add_argument("--rationale", required=True, type=str)
+    vpr.add_argument("--evidence", action="append", default=[], type=str)
+    vpr.add_argument("--expected-benefit", required=True, type=str)
+    vpr.add_argument("--risk", default="LOW", choices=("LOW", "MEDIUM", "HIGH"))
+
+    vsig = vec_sub.add_parser("signal", help="Ingest one operator prompt and apply the VM3 decision table")
+    vsig.add_argument("prompt_text", nargs="+", type=str)
+    vsig.add_argument("--note", default=None, type=str)
+
+    vap = vec_sub.add_parser("apply", help="Record a confirmed, already-materialised vector mutation")
+    vap.add_argument("proposal_id", type=str)
+    vap.add_argument("--summary", required=True, type=str)
+
+    vec_sub.add_parser("expire", help="Expire pending proposals that exhausted their deferral window")
+
+    # 'isai gate' subcommands (Pre-PR Gate V system health)
+    gate_p = sub.add_parser("gate", help="Run the pre-PR Gate V system health verification")
+    gate_sub = gate_p.add_subparsers(dest="gate_cmd", required=True)
+    gate_sub.add_parser("verify", help="Execute Gate V across root, tasks, knowledge, universe, tests & .isai subfolders")
 
     # 'isai graph' subcommands
     graph_p = sub.add_parser("graph", help="Query EAVT/VAET bidirectional hypergraph index")
@@ -186,6 +230,86 @@ def main(argv: list[str] | None = None) -> int:
             }
             print(json.dumps(payload, ensure_ascii=False, indent=2))
             return 0 if ratified_ok else 1
+
+    if args.command == "vector":
+        vector = load_repo_master_vector(repo_root)
+        ledger = VectorMutationLedger(repo_root)
+        if args.vector_cmd == "init":
+            if ledger.is_initialized():
+                print(json.dumps({"initialized": False, "reason": "ledger already anchored"}, indent=2))
+                return 0
+            event = ledger.initialize(vector, note="Genesis anchor of the vector mutation ledger.")
+            print(json.dumps(event.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            return 0
+        if args.vector_cmd == "audit":
+            state = ledger.state() if ledger.path.is_file() else None
+            payload: dict[str, object] = {
+                "ledger_initialized": bool(state and state.baseline_digest),
+                "events_count": state.events_count if state else 0,
+                "applied_mutations": [dict(item) for item in (state.applied if state else ())],
+                "pending": [p.proposal_id for p in (state.pending() if state else ())],
+                "confirmed": [p.proposal_id for p in (state.confirmed() if state else ())],
+                "deviations": [
+                    d.model_dump(mode="json")
+                    for d in (evaluate_ledger_deviations(state, vector) if state else ())
+                ],
+                "master_vector_version": vector.version,
+            }
+            print(json.dumps(payload, ensure_ascii=False, indent=2))
+            return 0
+        if args.vector_cmd == "pending":
+            state = ledger.state()
+            print(render_proposal_checkboxes(state.pending()))
+            return 0
+        if args.vector_cmd == "propose":
+            from isai.vector_ledger import VectorAnchorKind, anchor_fingerprint, MutationKind
+
+            state = ledger.state()
+            kind = VectorAnchorKind(args.anchor_kind)
+            head = state.applied[-1]["after"] if state.applied else state.baseline_digest
+            proposal = VectorMutationProposal(
+                proposal_id=state.next_proposal_id(),
+                anchor_kind=kind,
+                anchor_index=args.anchor_index,
+                anchor_label=args.anchor_label,
+                mutation_kind=MutationKind(args.mutation_kind),
+                proposed_text=args.proposed_text,
+                rationale=args.rationale,
+                evidence_refs=tuple(args.evidence),
+                expected_benefit=args.expected_benefit,
+                risk_level=args.risk,
+                anchor_fingerprint=anchor_fingerprint(vector, kind, args.anchor_index),
+                base_vector_digest=head or "",
+                created_at_utc=utc_now_iso(),
+            )
+            ledger.propose(proposal)
+            print(json.dumps(proposal.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            return 0
+        if args.vector_cmd == "signal":
+            signal = parse_operator_signal(" ".join(args.prompt_text))
+            result = ledger.ingest_operator_signal(signal, vector, note=args.note)
+            print(json.dumps({"signal": signal.model_dump(mode="json"), **result}, ensure_ascii=False, indent=2))
+            return 0
+        if args.vector_cmd == "apply":
+            outcome = apply_confirmed_proposal(repo_root, args.proposal_id, vector, summary=args.summary)
+            print(json.dumps(outcome.model_dump(mode="json"), ensure_ascii=False, indent=2))
+            return 0 if outcome.applied else 1
+        if args.vector_cmd == "expire":
+            state = ledger.state()
+            expired = [
+                p.proposal_id
+                for p in state.pending()
+                if (state.deferrals or {}).get(p.proposal_id, 0) >= 2
+            ]
+            for pid in expired:
+                ledger.expire(pid, note="Deferral decay exceeded (VM5).")
+            print(json.dumps({"expired": expired}, ensure_ascii=False, indent=2))
+            return 0
+
+    if args.command == "gate":
+        report = evaluate_gate_v(repo_root)
+        print(json.dumps(report.model_dump(mode="json"), ensure_ascii=False, indent=2))
+        return 0 if report.status == "NO_SYSTEMIC_DEVIATION" else 1
 
     if args.command == "graph":
         idx = build_hypergraph_index(repo_root)

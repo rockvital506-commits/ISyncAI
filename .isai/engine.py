@@ -1170,6 +1170,61 @@ def audit_repository(
                     )
                 )
 
+    # Enforce Vector-Mutation-Ledger traceability (ISAI-NVF v1.1 VM1..VM6)
+    ledger_deviations: tuple[object, ...] = ()
+    if repo_vec is not None:
+        try:
+            from isai.vector_ledger import (
+                VectorMutationLedger,
+                evaluate_ledger_deviations,
+            )
+
+            ledger = VectorMutationLedger(repo_root)
+            if not ledger.path.is_file():
+                issues.append(
+                    AuditIssue(
+                        code="VECTOR_LEDGER_MISSING",
+                        location=".isai/vector_ledger.jsonl",
+                        message=(
+                            "Vector mutation ledger is missing: mutations of the goal vector are "
+                            "untraceable (VM1). Initialise it with 'isai vector init'."
+                        ),
+                    )
+                )
+            else:
+                ledger_state = ledger.state()
+                ledger_deviations = tuple(
+                    evaluate_ledger_deviations(ledger_state, repo_vec)
+                )
+                code_map = {
+                    "ORPHAN_PENDING_PROPOSAL": "VECTOR_MUTATION_ORPHANED",
+                    "CONFIRMED_MUTATION_UNAPPLIED": "VECTOR_MUTATION_UNAPPLIED",
+                    "UNCONFIRMED_VECTOR_DRIFT": "VECTOR_DRIFT_UNCONFIRMED",
+                    "VECTOR_DIGEST_MISMATCH": "VECTOR_DRIFT_UNCONFIRMED",
+                    "STALE_PROPOSAL_ANCHOR": "VECTOR_PROPOSAL_STALE",
+                    "UNCONFIRMED_VERSION_BUMP": "VECTOR_DRIFT_UNCONFIRMED",
+                    "VERSION_NOT_BUMPED": "VECTOR_DRIFT_UNCONFIRMED",
+                    "LEDGER_NOT_INITIALIZED": "VECTOR_LEDGER_MISSING",
+                }
+                for deviation in ledger_deviations:
+                    if deviation.severity != "CRITICAL":
+                        continue
+                    issues.append(
+                        AuditIssue(
+                            code=code_map.get(deviation.code, "VECTOR_LEDGER_INVALID"),
+                            location=".isai/vector_ledger.jsonl",
+                            message=f"[{deviation.code}] {deviation.message}",
+                        )
+                    )
+        except Exception as exc:
+            issues.append(
+                AuditIssue(
+                    code="VECTOR_LEDGER_INVALID",
+                    location=".isai/vector_ledger.jsonl",
+                    message=f"Vector mutation ledger failed validation: {exc}",
+                )
+            )
+
     known_tx_ids = {e.tx_id for e in chronicle_events}
     known_pat_ids: set[str] = set()
 

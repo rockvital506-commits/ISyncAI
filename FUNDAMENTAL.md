@@ -1,21 +1,21 @@
 <!-- ISAI:NVF_SYNC:BEGIN -->
 <!-- isai:nvf_id=isai://root#NeuroVascularFundamental -->
-<!-- isai:nvf_version=1.0 -->
-<!-- isai:nvf_digest=caddffe2cbb2894bab6a6ff538dfdb610fe6be7ebfe8a2dc34a999c6f00dea10 -->
-<!-- isai:nvf_dsl_sha256=f5b1a1ca16ab955374d9f30eba6c8b868c177b88347e39ef630ef20116981d4c -->
+<!-- isai:nvf_version=1.1 -->
+<!-- isai:nvf_digest=79bcda9cb9610649f05f8cad3aaae82590dc96ff9a1108ea723e7d25e83831e8 -->
+<!-- isai:nvf_dsl_sha256=60f91d80b4b176133fbc38408db4e362142b2c53455270cfc687c133f46e5e41 -->
 
-# Субконституционный Нервно-Сосудистый Фундаментал (`ISAI-NVF/1.0`)
+# Субконституционный Нервно-Сосудистый Фундаментал (`ISAI-NVF/1.1`)
 
 > **Кольцо целостности:** `IL_1C_FUNDAMENTAL` (`IL-1C_SUB_GENESIS`) — подчинён исключительно `isai://root#GenesisKernel` (`IL_0_GENESIS`).
-> **Режим мутируемости:** `CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY]` (любая правка без ратифицированного Оператором события `RATIFY_FUNDAMENTAL` в `.isai/chronicle.jsonl` блокируется `isai audit`).
-> **Отпечаток DSL (`SHA-256`):** `f5b1a1ca16ab955374d9f30eba6c8b868c177b88347e39ef630ef20116981d4c`
+> **Режим мутируемости:** `CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY | VectorMutation=CHECKBOX_RATIFIED_LEDGER_ONLY]` (любая правка без ратифицированного Оператором события `RATIFY_FUNDAMENTAL` в `.isai/chronicle.jsonl` блокируется `isai audit`).
+> **Отпечаток DSL (`SHA-256`):** `60f91d80b4b176133fbc38408db4e362142b2c53455270cfc687c133f46e5e41`
 
 ```yaml
 # ISAI-NVF :: NEURO-VASCULAR FUNDAMENTAL
-[FRAME-ID]: ISAI-NVF/1.0 | TIER: IL-1C_SUB_GENESIS | GOVERNED-BY: isai://root#GenesisKernel
+[FRAME-ID]: ISAI-NVF/1.1 | TIER: IL-1C_SUB_GENESIS | GOVERNED-BY: isai://root#GenesisKernel
 [PRIORITY-ORDER]: IL-0_GENESIS >> IL-1C_NVF >> IL-1_KERNEL >> IL-2_CANONICAL >> IL-3_STAGING
 [AGENT-CALIBRATION]: FiduSys-Novator & Graph-Chronitect | Mandate: Deterministic-Reflex >> LLM-Guess
-[MUTABILITY-LAW]: CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY]
+[MUTABILITY-LAW]: CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY | VectorMutation=CHECKBOX_RATIFIED_LEDGER_ONLY]
 
 [LEXICON-ANCHORS]:
   - Nervous-Circuit := FractalTopology + EAVT_VAET_Index + SpinalReflexes + AST_LinkMutator + TriTier_GateA
@@ -44,6 +44,16 @@
   - V3.Capillary-Salsa: VerifyPortSchemas[BROKEN_PORT_SCHEMA | INCOMPATIBLE_PORT_WIRING] | interface_digest := SHA256(ports + canonical_model_json_schema(schema_refs) + public_symbols + invariants + transitions) | Unchanged=>Salsa_EarlyCutoff; Changed=>CycleSafe_NHop_BFS
   - V4.Venous-Lifecycle: MultiStepWork => Stage(tasks/TASK-<id>, EPHEMERAL_STAGING) + ISAI-PEP_v1[MaxIter=3, ConditionalResearch, GateA_Before_GateB] -> Promote[KnowledgeCatalogSpec.upsert + Calibrate(isai://user) + Append(isai://root#ChronicleLedger) + HandleCount==0]
   - V5.Hemostasis-Recovery: Writes := .isai_tmp_* + fsync(file) + os.replace + fsync(dir) | CrashOrTornState => RUN `isai recover` (Idempotent: 0_Tx_On_Clean) | MissingVenv => Rehydrate(.venv) or PureLLM_Read(state_snapshot.json + node.py)
+
+[VECTOR-GOVERNANCE :: GOAL-VECTOR MUTATION LEDGER & LIFECYCLE GATES]:
+  - VM1.SingleSource: VectorState := deterministic_fold(.isai/vector_ledger.jsonl) | SourceOfTruth := .isai/vector.py -> VISION.md:=projection | SilentProposalDrop=FATAL | AppendOnlyTamper=FATAL
+  - VM2.ProposalBinding: ∀Proposal: id + Anchor[kind,index] + anchor_fingerprint(SHA256) + base_vector_digest + rationale(>=60ch) + evidence[>=1] + expected_benefit + risk | StaleAnchorApply=FATAL | UnjustifiedCheckbox=FATAL
+  - VM3.SignalSource: ConfirmationChannel := OperatorPromptOnly (¬self-output) & ∀SignalLine: ¬FencedCode ∧ ¬InlineCode ∧ ¬QuotedProse | Phrase := standalone_control_line[подтвердить вектор системы] | Phrase=RatifyCurrentVectorOnly(¬blanket_mutation_consent) | SelfConfirmation=FATAL
+  - VM4.ApplyCeremony: CONFIRMED => mutate(.isai/vector.py) -> `isai vector apply` -> atomic[MUTATE_VECTOR + APPLIED + state_snapshot + VISION.md] | ApplyWithoutConfirm=FATAL | ApplyWithoutLiveDigestChange=FATAL | VersionBump=REQUIRED
+  - VM5.DeferralDecay: DeferWindow=1_prompt | Deferrals>=2 => EXPIRED => ReProposeWithFreshEvidence | OrphanPendingProposal=FATAL | ProposalBatch<=5_ranked
+  - VM6.DriftDetect: ∀ChangedAnchor: ∃APPLIED(anchor) ∧ contiguous_digest_chain | else UNCONFIRMED_VECTOR_DRIFT=FATAL | RawHandEdit(vector.py)=FORBIDDEN
+  - VM7.GateV-PrePR: PrePR => `isai gate verify` over [ROOT | TASKS | KNOWLEDGE | UNIVERSE | TESTS | .isai_Subfolders] | CriticalDeviation => Neutralize -> Return_PrePR -> FullRerun(no_partial) | StatusAssertedInProse=FATAL | Status:=NO_SYSTEMIC_DEVIATION only_by_tool_with_evidence_digest
+  - VM8.TurnBoundary: PrePromptGate:=read(prev_checkboxes ∪ phrase) -> [phrase∧¬boxes => RatifyVector + DeferPending] ∨ [boxes => Strategy -> Apply] -> ApplyGate | PostPromptGate:=AuditVector -> AuditResearchWindow(since_last_APPLIED|BASELINE) -> RankProposals(<=5) -> CheckboxRequest | GateSkipped=FATAL
 
 [IMMUNE-MEMORY :: PRECEDENTS & BOTTLENECK WATCH]:
   - Precedents[PREC-01..09]: Prefix586_HashSplit | LiveUTF8_CompileExec_NoPycCollision(PEP3147_mtime_size) | Physical_SymbolBinding | FenceSafe_ProseScan | ModelJsonSchema_CrossProcDeterminism | StripSYNC_FromProseVAET | ExtraBackupPaths_FullRollback | PreImport_ASTGate | VenvRehydrate_Or_SnapshotFallback

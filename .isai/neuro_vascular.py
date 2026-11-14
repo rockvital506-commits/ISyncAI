@@ -129,8 +129,8 @@ class NeuroVascularFundamentalSpec(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
 
     fundamental_id: EntityRef = "isai://root#NeuroVascularFundamental"
-    frame_id: str = "ISAI-NVF/1.0"
-    version: str = "1.0"
+    frame_id: str = "ISAI-NVF/1.1"
+    version: str = "1.1"
     tier: IntegrityLevel = IntegrityLevel.IL_1C_FUNDAMENTAL
     tier_token: str = "IL-1C_SUB_GENESIS"
     governed_by: EntityRef = "isai://root#GenesisKernel"
@@ -138,13 +138,17 @@ class NeuroVascularFundamentalSpec(BaseModel):
     agent_calibration: str = (
         "FiduSys-Novator & Graph-Chronitect | Mandate: Deterministic-Reflex >> LLM-Guess"
     )
-    mutability_law: str = "CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY]"
+    mutability_law: str = (
+        "CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY | "
+        "VectorMutation=CHECKBOX_RATIFIED_LEDGER_ONLY]"
+    )
 
     lexicon_anchors: tuple[str, ...]
     nervous_rules: tuple[str, ...]
     spinal_reflexes: tuple[str, ...]
     nervous_tritier_rule: str
     vascular_rules: tuple[str, ...]
+    vector_governance_rules: tuple[str, ...]
     precedents_summary: str
     bottleneck_guards_summary: str
     homeostasis_mode: str
@@ -187,6 +191,10 @@ class NeuroVascularFundamentalSpec(BaseModel):
             ]
         )
         for vrule in self.vascular_rules:
+            lines.append(f"  - {vrule}")
+
+        lines.extend(["", "[VECTOR-GOVERNANCE :: GOAL-VECTOR MUTATION LEDGER & LIFECYCLE GATES]:"])
+        for vrule in self.vector_governance_rules:
             lines.append(f"  - {vrule}")
 
         lines.extend(
@@ -246,6 +254,7 @@ class NeuroVascularFundamentalSpec(BaseModel):
                 self.nervous_tritier_rule,
             ],
             "vascular_circuit": list(self.vascular_rules),
+            "vector_governance": list(self.vector_governance_rules),
             "immune_memory": [self.precedents_summary, self.bottleneck_guards_summary],
         }
 
@@ -257,6 +266,7 @@ class NeuroVascularFundamentalSpec(BaseModel):
         return {
             "frame_id": self.frame_id,
             "dsl_sha256": self.dsl_sha256(),
+            "vector_mutation_law": self.mutability_law,
             "governance_routing": {
                 "homeostasis": self.homeostasis_mode,
                 "algedonic_escalation": self.algedonic_mode_header,
@@ -324,6 +334,33 @@ NEURO_VASCULAR_FUNDAMENTAL = NeuroVascularFundamentalSpec(
         "V3.Capillary-Salsa: VerifyPortSchemas[BROKEN_PORT_SCHEMA | INCOMPATIBLE_PORT_WIRING] | interface_digest := SHA256(ports + canonical_model_json_schema(schema_refs) + public_symbols + invariants + transitions) | Unchanged=>Salsa_EarlyCutoff; Changed=>CycleSafe_NHop_BFS",
         "V4.Venous-Lifecycle: MultiStepWork => Stage(tasks/TASK-<id>, EPHEMERAL_STAGING) + ISAI-PEP_v1[MaxIter=3, ConditionalResearch, GateA_Before_GateB] -> Promote[KnowledgeCatalogSpec.upsert + Calibrate(isai://user) + Append(isai://root#ChronicleLedger) + HandleCount==0]",
         "V5.Hemostasis-Recovery: Writes := .isai_tmp_* + fsync(file) + os.replace + fsync(dir) | CrashOrTornState => RUN `isai recover` (Idempotent: 0_Tx_On_Clean) | MissingVenv => Rehydrate(.venv) or PureLLM_Read(state_snapshot.json + node.py)",
+    ),
+    vector_governance_rules=(
+        "VM1.SingleSource: VectorState := deterministic_fold(.isai/vector_ledger.jsonl) | "
+        "SourceOfTruth := .isai/vector.py -> VISION.md:=projection | "
+        "SilentProposalDrop=FATAL | AppendOnlyTamper=FATAL",
+        "VM2.ProposalBinding: ∀Proposal: id + Anchor[kind,index] + anchor_fingerprint(SHA256) + "
+        "base_vector_digest + rationale(>=60ch) + evidence[>=1] + expected_benefit + risk | "
+        "StaleAnchorApply=FATAL | UnjustifiedCheckbox=FATAL",
+        "VM3.SignalSource: ConfirmationChannel := OperatorPromptOnly (¬self-output) & "
+        "∀SignalLine: ¬FencedCode ∧ ¬InlineCode ∧ ¬QuotedProse | "
+        "Phrase := standalone_control_line[подтвердить вектор системы] | "
+        "Phrase=RatifyCurrentVectorOnly(¬blanket_mutation_consent) | SelfConfirmation=FATAL",
+        "VM4.ApplyCeremony: CONFIRMED => mutate(.isai/vector.py) -> `isai vector apply` -> "
+        "atomic[MUTATE_VECTOR + APPLIED + state_snapshot + VISION.md] | "
+        "ApplyWithoutConfirm=FATAL | ApplyWithoutLiveDigestChange=FATAL | VersionBump=REQUIRED",
+        "VM5.DeferralDecay: DeferWindow=1_prompt | Deferrals>=2 => EXPIRED => ReProposeWithFreshEvidence | "
+        "OrphanPendingProposal=FATAL | ProposalBatch<=5_ranked",
+        "VM6.DriftDetect: ∀ChangedAnchor: ∃APPLIED(anchor) ∧ contiguous_digest_chain | "
+        "else UNCONFIRMED_VECTOR_DRIFT=FATAL | RawHandEdit(vector.py)=FORBIDDEN",
+        "VM7.GateV-PrePR: PrePR => `isai gate verify` over "
+        "[ROOT | TASKS | KNOWLEDGE | UNIVERSE | TESTS | .isai_Subfolders] | "
+        "CriticalDeviation => Neutralize -> Return_PrePR -> FullRerun(no_partial) | "
+        "StatusAssertedInProse=FATAL | Status:=NO_SYSTEMIC_DEVIATION only_by_tool_with_evidence_digest",
+        "VM8.TurnBoundary: PrePromptGate:=read(prev_checkboxes ∪ phrase) -> "
+        "[phrase∧¬boxes => RatifyVector + DeferPending] ∨ [boxes => Strategy -> Apply] -> ApplyGate | "
+        "PostPromptGate:=AuditVector -> AuditResearchWindow(since_last_APPLIED|BASELINE) -> "
+        "RankProposals(<=5) -> CheckboxRequest | GateSkipped=FATAL",
     ),
     precedents_summary=(
         "Precedents[PREC-01..09]: Prefix586_HashSplit | LiveUTF8_CompileExec_NoPycCollision(PEP3147_mtime_size) | Physical_SymbolBinding | FenceSafe_ProseScan | ModelJsonSchema_CrossProcDeterminism | StripSYNC_FromProseVAET | ExtraBackupPaths_FullRollback | PreImport_ASTGate | VenvRehydrate_Or_SnapshotFallback"

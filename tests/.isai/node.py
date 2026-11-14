@@ -84,6 +84,8 @@ NODE = ISAINodeSpec(
         'test_isai_kernel.py',
         'test_hypergraph_cross_links.py',
         'test_neuro_vascular_fundamental.py',
+        'test_vector_governance.py',
+        '_isai_sandbox.py',
     ),
     system_files=(
         'node.py',
@@ -103,6 +105,16 @@ NODE = ISAINodeSpec(
             symbol='NeuroVascularTestSuite',
             kind=SymbolBindingKind.OWNED_ARTIFACT,
             target='test_neuro_vascular_fundamental.py',
+        ),
+        SymbolBindingSpec(
+            symbol='VectorGovernanceTestSuite',
+            kind=SymbolBindingKind.OWNED_ARTIFACT,
+            target='test_vector_governance.py',
+        ),
+        SymbolBindingSpec(
+            symbol='SandboxQuiescenceHelper',
+            kind=SymbolBindingKind.OWNED_ARTIFACT,
+            target='_isai_sandbox.py',
         ),
     ),
     links=(

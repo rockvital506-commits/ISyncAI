@@ -94,6 +94,9 @@ NODE = ISAINodeSpec(
         'link_mutator.py',
         'node.py',
         'chronicle.jsonl',
+        'vector_ledger.py',
+        'health_checks.py',
+        'vector_ledger.jsonl',
     ),
     symbol_bindings=(
         SymbolBindingSpec(
@@ -150,6 +153,21 @@ NODE = ISAINodeSpec(
             symbol='AtomicPersistence',
             kind=SymbolBindingKind.PYTHON_ATTR,
             target='atomic_io.py:atomic_transaction_batch',
+        ),
+        SymbolBindingSpec(
+            symbol='VectorMutationLedger',
+            kind=SymbolBindingKind.PYTHON_ATTR,
+            target='vector_ledger.py:VectorMutationLedger',
+        ),
+        SymbolBindingSpec(
+            symbol='SystemHealthGate',
+            kind=SymbolBindingKind.PYTHON_ATTR,
+            target='health_checks.py:evaluate_gate_v',
+        ),
+        SymbolBindingSpec(
+            symbol='VectorMutationLedgerRecord',
+            kind=SymbolBindingKind.SYSTEM_ARTIFACT,
+            target='vector_ledger.jsonl',
         ),
     ),
     links=(

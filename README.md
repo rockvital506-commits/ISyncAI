@@ -16,8 +16,8 @@
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://root -->
-<!-- isai:spec_digest=d09849bc6c63af66b231abb051d46a353d776518ca3c913f417c108b252cd1d3 -->
-<!-- isai:interface_digest=91e04b470e92f32de989a81c771b34f6891eac3ac66a6ebc43f3a87e37dda06a -->
+<!-- isai:spec_digest=4bcf842633aa334958716a91b7a6cb6fb9709c1c7ea3e34a4defee0d7d110f72 -->
+<!-- isai:interface_digest=d561a1e8c9e78c94cac522e2b07743a45464014b96b6940b2b54c7742ad042e8 -->
 
 ## Паспорт узла `isai://root` — Корневой узел-драйвер, индекс гиперграфа и транзакционный инжектор связей ISAI
 
@@ -52,7 +52,7 @@
 
 ### Реестр владения и верифицируемых символов (`Ownership & Symbol Bindings`)
 - **Файлы узла (`owned_files`):** `README.md`, `FUNDAMENTAL.md`, `VISION.md`, `AGENTS.md`, `pyproject.toml`, `.gitignore`
-- **Служебные файлы (`system_files`):** `.isai/__init__.py`, `.isai/__main__.py`, `.isai/atomic_io.py`, `.isai/constitution.py`, `.isai/contracts.py`, `.isai/protocol.py`, `.isai/domain_models.py`, `.isai/neuro_vascular.py`, `.isai/vector.py`, `.isai/graph_index.py`, `.isai/engine.py`, `.isai/link_mutator.py`, `.isai/node.py`, `.isai/chronicle.jsonl`
+- **Служебные файлы (`system_files`):** `.isai/__init__.py`, `.isai/__main__.py`, `.isai/atomic_io.py`, `.isai/constitution.py`, `.isai/contracts.py`, `.isai/protocol.py`, `.isai/domain_models.py`, `.isai/neuro_vascular.py`, `.isai/vector.py`, `.isai/graph_index.py`, `.isai/engine.py`, `.isai/link_mutator.py`, `.isai/node.py`, `.isai/chronicle.jsonl`, `.isai/vector_ledger.py`, `.isai/health_checks.py`, `.isai/vector_ledger.jsonl`
 - **Экспортируемые сущности (`symbol_bindings`):**
   - `isai://root#GenesisKernel` (`python_attr` → `constitution.py:GENESIS_CONSTITUTION`, видимость: `PUBLIC`)
   - `isai://root#NeuroVascularFundamental` (`python_attr` → `neuro_vascular.py:NEURO_VASCULAR_FUNDAMENTAL`, видимость: `PUBLIC`)
@@ -65,6 +65,9 @@
   - `isai://root#RSoCCompiler` (`python_attr` → `engine.py:compile_rsoc`, видимость: `PUBLIC`)
   - `isai://root#ChronicleLedger` (`system_artifact` → `chronicle.jsonl`, видимость: `PUBLIC`)
   - `isai://root#AtomicPersistence` (`python_attr` → `atomic_io.py:atomic_transaction_batch`, видимость: `PUBLIC`)
+  - `isai://root#VectorMutationLedger` (`python_attr` → `vector_ledger.py:VectorMutationLedger`, видимость: `PUBLIC`)
+  - `isai://root#SystemHealthGate` (`python_attr` → `health_checks.py:evaluate_gate_v`, видимость: `PUBLIC`)
+  - `isai://root#VectorMutationLedgerRecord` (`system_artifact` → `vector_ledger.jsonl`, видимость: `PUBLIC`)
 
 ### Типизированные связи и Маршрутизация (`Typed Links & Router`)
 - **Типизированные связи (`links`):**

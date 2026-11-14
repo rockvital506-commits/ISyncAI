@@ -15,6 +15,8 @@ from hypothesis.stateful import RuleBasedStateMachine, invariant, rule
 from hypothesis import strategies as st
 from pydantic import ValidationError
 
+from _isai_sandbox import quiesce_staging
+
 from isai.__main__ import main as isai_cli_main
 from isai.atomic_io import atomic_write_text, repository_write_lock
 from isai.constitution import DEFAULT_BOUNDARY_IGNORE, GENESIS_CONSTITUTION
@@ -44,7 +46,10 @@ from isai.protocol import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-EXPECTED_NVF_V1_SHA256 = "f5b1a1ca16ab955374d9f30eba6c8b868c177b88347e39ef630ef20116981d4c"
+# IL-1C v1.1 digest (VECTOR-GOVERNANCE VM1..VM8 amendment, ratified in the Chronicle).
+EXPECTED_NVF_SHA256 = "60f91d80b4b176133fbc38408db4e362142b2c53455270cfc687c133f46e5e41"
+EXPECTED_NVF_LINES = 63
+EXPECTED_NVF_BYTES = 8579
 
 
 def _clone_repo_to_tmp(tmp_path: Path) -> Path:
@@ -60,6 +65,7 @@ def _clone_repo_to_tmp(tmp_path: Path) -> Path:
         return ignored
 
     shutil.copytree(REPO_ROOT, dest, ignore=_ignore)
+    quiesce_staging(dest)
     return dest
 
 
@@ -105,17 +111,17 @@ def _sample_task_manifest() -> TaskManifest:
 
 @pytest.mark.isai_scope("isai://root#NeuroVascularFundamental", "isai://root")
 def test_nvf_dsl_lossless_fidelity_and_cli_show_verify(capsys: pytest.CaptureFixture[str]) -> None:
-    """ISAI-NVF v1.0 must render byte-identically (53 lines, 6568 UTF-8 bytes) with 0% semantic loss."""
+    """ISAI-NVF v1.1 must render byte-identically (63 lines, 8579 UTF-8 bytes) with 0% semantic loss."""
     dsl = NEURO_VASCULAR_FUNDAMENTAL.render_dsl()
     lines = dsl.splitlines()
-    assert len(lines) == 53
-    assert len(dsl.encode("utf-8")) == 6568
-    assert NEURO_VASCULAR_FUNDAMENTAL.dsl_sha256() == EXPECTED_NVF_V1_SHA256
+    assert len(lines) == EXPECTED_NVF_LINES
+    assert len(dsl.encode("utf-8")) == EXPECTED_NVF_BYTES
+    assert NEURO_VASCULAR_FUNDAMENTAL.dsl_sha256() == EXPECTED_NVF_SHA256
 
     for mandatory_token in (
-        "[FRAME-ID]: ISAI-NVF/1.0 | TIER: IL-1C_SUB_GENESIS | GOVERNED-BY: isai://root#GenesisKernel",
+        "[FRAME-ID]: ISAI-NVF/1.1 | TIER: IL-1C_SUB_GENESIS | GOVERNED-BY: isai://root#GenesisKernel",
         "[PRIORITY-ORDER]: IL-0_GENESIS >> IL-1C_NVF >> IL-1_KERNEL >> IL-2_CANONICAL >> IL-3_STAGING",
-        "[MUTABILITY-LAW]: CONDITIONALLY_LOCKED[RoutineEdit=FATAL | AmendVia=ALGEDONIC_6STEP_ONLY]",
+        "VectorMutation=CHECKBOX_RATIFIED_LEDGER_ONLY",
         "[LEXICON-ANCHORS]:",
         "N1.Addressing:",
         "N7.Spinal-Reflexes:",
@@ -126,6 +132,9 @@ def test_nvf_dsl_lossless_fidelity_and_cli_show_verify(capsys: pytest.CaptureFix
         "Bottleneck-Guards[BN-01..06]:",
         "Mode-1.Homeostasis(Autonomous):",
         "Mode-2.Algedonic-Escalation(Operator-Gated):",
+        "VM1.SingleSource:",
+        "VM7.GateV-PrePR:",
+        "VM8.TurnBoundary:",
         "1.CONFIRM_DEVIATION",
         "6.AWAIT_OPERATOR_CONFIRMATION",
         "STOP-1[IL-0]:",
@@ -144,7 +153,7 @@ def test_nvf_dsl_lossless_fidelity_and_cli_show_verify(capsys: pytest.CaptureFix
     out_verify = json.loads(capsys.readouterr().out)
     assert rc_verify == 0
     assert out_verify["ratified_in_chronicle"] is True
-    assert out_verify["dsl_sha256"] == EXPECTED_NVF_V1_SHA256
+    assert out_verify["dsl_sha256"] == EXPECTED_NVF_SHA256
 
 
 @pytest.mark.isai_scope("isai://root#RSoCCompiler", "isai://root#NeuroVascularFundamental")
@@ -161,9 +170,10 @@ def test_bimodal_rsoc_primacy_head_and_recency_tail_ordering() -> None:
 
     head = packet["enforced_neuro_vascular_frame"]
     tail = packet["terminal_execution_guard"]
-    assert head["frame_id"] == "ISAI-NVF/1.0"
-    assert head["dsl_sha256"] == EXPECTED_NVF_V1_SHA256
+    assert head["frame_id"] == "ISAI-NVF/1.1"
+    assert head["dsl_sha256"] == EXPECTED_NVF_SHA256
     assert len(head["lexicon_anchors"]) == 5
+    assert len(head["vector_governance"]) == 8
     assert len(tail["governance_routing"]["algedonic_6step_sequence"]) == 6
     assert len(tail["recency_tripwires"]) == 4
 
@@ -476,7 +486,7 @@ class AlgedonicGovernanceMachine(RuleBasedStateMachine):
 
     @rule(approved=st.booleans(), valid_digest=st.booleans())
     def try_chronicle_ratification_event(self, approved: bool, valid_digest: bool) -> None:
-        digest = EXPECTED_NVF_V1_SHA256 if valid_digest else "short"
+        digest = EXPECTED_NVF_SHA256 if valid_digest else "short"
         if not approved or not valid_digest:
             with pytest.raises(ValidationError):
                 ChronicleEvent(
