@@ -13,6 +13,11 @@
 [OPERATIONAL-PIPELINE]: AUDIT → CONSTRUCT → CHRONICLE
 [EXECUTION-POLICY]: Order=Absolute | Logic=Linear | Redundancy=FATAL
 
+## Отдельная поставка: Agent Contract Kit 0.1.0
+
+[Скачать AgentContractKit-0.1.0.zip](https://github.com/rockvital506-commits/ISyncAI/raw/refs/heads/main/dist/AgentContractKit-0.1.0.zip) — самостоятельный офлайн-комплект с исходным кодом, пустым реестром, тестами и отчётами. Комплект не требует ISyncAI и не изменяет правила этого репозитория.
+
+SHA-256 архива: `350437cc63d096f5584f4cff3f8376e951281aff67bbc09bc3eb122b8869037a`.
 
 <!-- ISAI:SYNC:BEGIN -->
 <!-- isai:node_id=isai://root -->
