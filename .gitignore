@@ -10,5 +10,9 @@ __pycache__/
 *.egg-info/
 build/
 dist/
+# Versioned standalone distribution; other build outputs stay untracked.
+!/dist/
+/dist/*
+!/dist/AgentContractKit-0.1.0.zip
 .isai_tmp_*
 .isai_write.lock
