@@ -1,0 +1,251 @@
+{
+  "counts": {
+    "pass": 16
+  },
+  "iteration": "И-028",
+  "line": "base",
+  "ok": true,
+  "rows": [
+    {
+      "actual": {
+        "copilot_entry": "AGENTS.md",
+        "copilot_entry_shared": false,
+        "copilot_recommended": ".github/copilot-instructions.md",
+        "discovery_proven": [
+          false,
+          false
+        ],
+        "kilo_entry": "AGENTS.md"
+      },
+      "case": "карточки двух сред на одном проекте",
+      "expected": "вход AGENTS.md у обоих; у Copilot entry_shared false и рекомендованный файл; оба не заявляют обнаружение",
+      "id": "D1",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "of": 4,
+        "ours_at": [
+          3
+        ],
+        "rank": 3
+      },
+      "case": "стек instructions Kilo",
+      "expected": "старшинство 3 из 4, наш вход на позиции 3",
+      "id": "D2",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "gap": [
+          "Copilot Chat on github.com",
+          "inline suggestions"
+        ],
+        "ours_at": [
+          4
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "case": "стек instructions Copilot",
+      "expected": "порядок из пяти шагов, наш вход на позиции 4, два пробела покрытия",
+      "id": "D3",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "distinct_hashes": 1,
+        "entry_files": [
+          "AGENTS.md"
+        ]
+      },
+      "case": "обе среды читают один и тот же вход",
+      "expected": "AGENTS.md один, его sha256 не меняется между ходами",
+      "id": "D4",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "env_files": [
+          ".kilo/kilo.jsonc",
+          ".kilo/rules/x.md",
+          ".vscode/settings.json"
+        ],
+        "env_files_unchanged": true,
+        "health": "valid",
+        "observations": 2
+      },
+      "case": "шесть поочерёдных ходов",
+      "expected": "меняются только AGENTS.md и .agent-contract/**; настройки сред байт в байт",
+      "id": "D5",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "observations": 1
+      },
+      "case": "тождество при одинаковом environment",
+      "expected": "то же наблюдение от второй среды с теми же полями environment не создаёт новой записи",
+      "id": "D6",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "meaning": "одно событие под двумя расширениями даёт две записи",
+        "observations": 2
+      },
+      "case": "тождество при разном extension",
+      "expected": "то же наблюдение с environment.extension другой среды не склеивается: две записи",
+      "id": "D7",
+      "notes": "следствие: различие расширений — часть environment, а он сравнивается точно",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "observations": 3
+      },
+      "case": "два разных факта",
+      "expected": "наблюдения с разным числом в факте не склеиваются",
+      "id": "D8",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "copilot-first": "conflict",
+        "kilo-first": "conflict"
+      },
+      "case": "конфликт правил двух сред",
+      "expected": "пересечение требований отклоняется кодом conflict в обе стороны",
+      "id": "D9",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "forward": {
+          "health": "valid",
+          "observations": 2
+        },
+        "reverse": {
+          "health": "valid",
+          "observations": 2
+        },
+        "rules_equal": true
+      },
+      "case": "порядок сред не важен",
+      "expected": "обратный порядок даёт те же счётчики и то же здоровье контракта",
+      "id": "D10",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "github_dir": false,
+        "refusal": "second_entry"
+      },
+      "case": "второй вход в подключённом проекте",
+      "expected": "connect с entry_path .github/copilot-instructions.md отклоняется кодом second_entry",
+      "id": "D11",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "entry": "drift",
+        "entry_kept": true,
+        "health": "attention",
+        "update": "adapter_drift"
+      },
+      "case": "чужая правка входа",
+      "expected": "status attention, update adapter_drift, вход не перезаписан",
+      "id": "D12",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "environment_files_seen": [
+          ".kilo/kilo.jsonc",
+          ".kilo/rules/x.md",
+          ".vscode/settings.json"
+        ],
+        "github_instructions_created": false
+      },
+      "case": "конфигурация сред за все ходы",
+      "expected": "ни одной записи в .github/**, .vscode/**, .kilo/**, CLAUDE.md, GEMINI.md",
+      "id": "D13",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "entry_unchanged": true,
+        "github_dir": false,
+        "outcome": "no_change"
+      },
+      "case": "повторное подключение второй средой",
+      "expected": "connect в подключённом проекте проходит без второго входа и не меняет AGENTS.md",
+      "id": "D16",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "claude_memory_unchanged": true,
+        "connect_without_ack": "existing_sources",
+        "stubs": {
+          "antigravity": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "claude": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "cursor": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          }
+        }
+      },
+      "case": "заглушки и общее обнаружение",
+      "expected": "claude, cursor, antigravity: status stub без входа и покрытия; .claude/CLAUDE.md всё равно требует ack_existing",
+      "id": "D14",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "bytes": 1894,
+        "equal": true
+      },
+      "case": "идемпотентность повторного прохода",
+      "expected": "повторная запись тех же наблюдений не меняет checks.json ни на байт",
+      "id": "D15",
+      "notes": "",
+      "status": "pass"
+    }
+  ],
+  "version": "0.1.8"
+}
