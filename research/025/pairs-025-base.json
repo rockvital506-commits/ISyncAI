@@ -1,0 +1,163 @@
+{
+  "bytes_unchanged": true,
+  "corpus_sha256": "fc0dae27477a8a194bc83a6a4802735fcbdcaf32d90b43879d1c577af02607ae",
+  "different_pairs": 76,
+  "line": "base",
+  "merged": [
+    "E01-вар3",
+    "E01-изменён файл свидетельства",
+    "E02-вар3",
+    "E02-изменён файл свидетельства",
+    "E03-вар3",
+    "E03-изменён файл свидетельства",
+    "E04-вар3",
+    "E04-изменён файл свидетельства",
+    "E05-вар3",
+    "E05-изменён файл свидетельства",
+    "E06-вар3",
+    "E06-изменён файл свидетельства",
+    "E07-вар3",
+    "E07-изменён файл свидетельства",
+    "E08-вар3",
+    "E08-изменён файл свидетельства",
+    "E09-вар3",
+    "E09-изменён файл свидетельства",
+    "E10-вар3",
+    "E10-изменён файл свидетельства",
+    "E11-вар3",
+    "E11-изменён файл свидетельства",
+    "E12-вар3",
+    "E12-изменён файл свидетельства"
+  ],
+  "merged_count": 24,
+  "mismatches": [
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E01-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E02-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E03-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E04-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E05-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E06-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E07-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E08-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E09-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E10-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E11-изменён файл свидетельства",
+      "unchanged": true
+    },
+    {
+      "actual": "no_change",
+      "expected": "committed",
+      "files": [],
+      "label": false,
+      "observations": 1,
+      "pair": "E12-изменён файл свидетельства",
+      "unchanged": true
+    }
+  ],
+  "missed_merges": [],
+  "outcome": "fail",
+  "pairs": 112,
+  "release_pin": "f3557c8289e44cad11b0fee2a76f1e82c629f8181dc62d6045e4f84e58ab0fbe",
+  "repeat_pairs": 36,
+  "unexpected_merges": [
+    "E01-изменён файл свидетельства",
+    "E02-изменён файл свидетельства",
+    "E03-изменён файл свидетельства",
+    "E04-изменён файл свидетельства",
+    "E05-изменён файл свидетельства",
+    "E06-изменён файл свидетельства",
+    "E07-изменён файл свидетельства",
+    "E08-изменён файл свидетельства",
+    "E09-изменён файл свидетельства",
+    "E10-изменён файл свидетельства",
+    "E11-изменён файл свидетельства",
+    "E12-изменён файл свидетельства"
+  ],
+  "version": "0.1.5"
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-025. Тождество отделено от происхождения — 0.1.5</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--good);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--good)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-025. Тождество записи отделено от происхождения — выпуск 0.1.5</h1>
+<p class="lead">18 ноября 2026. По вашему выбору <b>Б</b>: сначала исправить тождество, адаптеры потом. Правило изменилось, значит выпуск новый и приёмка заново — на обоих стендах: настоящие журналы (И-023) и корпус 112 пар (И-024).</p>
+
+<div class="verdict">
+<strong>Настоящие повторы теперь склеиваются: 3 из 3, ложных склеек 0 из 40.</strong>
+Причина из И-023 устранена буквально: из улики снимается место — имя журнала и номер строки, — а изменчивое время (длительность прогона) перестаёт быть фактом. Содержание улики — отпечаток файла, «по памяти», счётчики — защищено по-прежнему.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.5</b></div>
+<div><span>Испытания</span><b>38 / 0 / 3</b></div>
+<div><span>Журналы: склеено</span><b class="good">3 / 3</b></div>
+<div><span>Ложных склеек</span><b class="good">0 / 40</b></div>
+<div><span>Приёмка</span><b>9 / 0 / 4</b></div>
+</div>
+
+<h2>Что именно изменилось в правиле</h2>
+<div class="wrap">
+<table>
+<tr><th>Было в 0.1.4</th><th>Стало в 0.1.5</th></tr>
+<tr><td><code>evidence</code> целиком участвовал в тождестве</td><td>из улики снимается место: имя журнала и <code>, строка N</code></td></tr>
+<tr><td>длительность прогона была фактом</td><td>изменчивое время не факт события</td></tr>
+<tr><td>отпечаток файла, «по памяти», «файл не открывался» — защита</td><td>защита не тронута</td></tr>
+<tr><td>допуск «0 добавленных содержательных слов»</td><td>не менялся</td></tr>
+</table>
+</div>
+<p>Смысл один и он измеренный: два прогона одного события не могут иметь одно место. Пока место входило в тождество, склейка настоящих повторов была невозможна в принципе.</p>
+
+<h2>Оба стенда</h2>
+<div class="wrap">
+<table>
+<tr><th>Стенд</th><th>До (0.1.4)</th><th>После (0.1.5)</th></tr>
+<tr><td>Журналы: склеено повторов</td><td class="bad">0 из 3</td><td class="good">3 из 3</td></tr>
+<tr><td>Журналы: ложных склеек</td><td class="good">0 из 40</td><td class="good">0 из 40</td></tr>
+<tr><td>Корпус: форменные склейки</td><td class="num">12</td><td class="num">12</td></tr>
+<tr><td>Корпус: пары «изменён файл свидетельства»</td><td>отказ</td><td class="warn">склейка — объявлено</td></tr>
+<tr><td>Корпус: прочие отказы</td><td class="num">64</td><td class="num">64</td></tr>
+<tr><td>Данные 0.1.4 под 0.1.5</td><td>—</td><td class="good">читаются, байты не менялись</td></tr>
+</table>
+</div>
+
+<div class="note">
+<b>Чего это стоило — и почему я не переписал ожидание.</b> Корпус поймал конфликт, которого не было видно ни в замысле, ни на журналах: пары «изменён файл свидетельства» отличаются только именем файла, а имя файла — место. Значит они теперь склеиваются, хотя корпус И-024 требовал отказа. Удержать оба ожидания нельзя: в записи «повтор из другого журнала» и «подменили файл свидетельства» неразличимы.
+</div>
+
+<div class="wrap">
+<table>
+<tr><th>Редакция правила</th><th>Журналы: склеено</th><th>Корпус: склеек</th><th>Расхождений с И-024</th></tr>
+<tr><td><b>A. Снимать место целиком</b> — выпущена</td><td class="num good">3 из 3</td><td class="num">24</td><td class="num warn">12</td></tr>
+<tr><td>B. Снимать только номер строки</td><td class="num bad">1 из 3</td><td class="num">12</td><td class="num good">0</td></tr>
+</table>
+</div>
+<p>Выбрана A: редакция B оставляет продукт безопасным и почти бесполезным — один настоящий повтор из трёх. Ожидание И-024 не переписано: оно лежит там же, где лежало, а рядом — объявленная замена (<code>EXPECTATIONS.json</code>). Цена названа прямо: продукт больше не замечает подмену файла свидетельства.</p>
+
+<h2>Приёмка</h2>
+<p><b>9 pass / 0 fail / 4 not run.</b> Провалившихся строк нет; изменение спецификации вынесено отдельной строкой, а не спрятано в примечании.</p>
+<div class="wrap">
+<table>
+<tr><th>Строка</th><th>Статус</th></tr>
+<tr><td>выпуск 0.1.5 собран и испытан (38 / 0 / 3, обе линии)</td><td class="good">pass</td></tr>
+<tr><td>настоящий повтор склеивается (3 из 3, 0 ложных из 40)</td><td class="good">pass</td></tr>
+<tr><td>то же на линии Edition</td><td class="good">pass</td></tr>
+<tr><td>форменные склейки корпуса сохранены (12)</td><td class="good">pass</td></tr>
+<tr><td>изменение спецификации объявлено (12 пар, ожидание И-024 не тронуто)</td><td class="good">pass</td></tr>
+<tr><td>остальные отказы корпуса сохранены (64)</td><td class="good">pass</td></tr>
+<tr><td>содержание улики защищено (отпечаток, «по памяти», счётчик)</td><td class="good">pass</td></tr>
+<tr><td>данные 0.1.4 читаются и не переписываются</td><td class="good">pass</td></tr>
+<tr><td>повтор из печати совпадает со сборкой</td><td class="good">pass</td></tr>
+<tr><td>обновление на месте командой <code>update</code></td><td>not run — трёхсторонние разрешения</td></tr>
+<tr><td>журналы заказчика, Windows и права, живые модели</td><td>not run — здесь недостижимо</td></tr>
+</table>
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-026 — адаптер Kilo.</b> Правило больше не трогаем: 0.1.5 — опора для адаптеров. Адаптер решает, что из журнала становится содержанием наблюдения, а что остаётся местом.</li>
+<li>Если захотите вернуть защиту «файл свидетельства» — это редакция B, она измерена: журналы 1 из 3, корпус 12 из 12. Пересборка одного правила, не новый цикл.</li>
+<li>Дальше по карте: адаптеры, уровни достоверности, управление правилами.</li>
+</ul>
+
+<h2>Границы, которые не прячу</h2>
+<ul>
+<li>Журналы — по-прежнему наши инструменты на коде третьих лиц, а не ваши журналы. Ваши остаются <code>not run</code>.</li>
+<li>Обновление существующего проекта на месте (<code>update</code> с разрешениями конфликтов) не проверялось.</li>
+<li>Стенд приёмки не был слепым: правила извлечения наблюдений из журналов фиксировались после того, как вывод инструментов был получен (оговорка И-023, повторена здесь).</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-025.zip</code>, 34 члена, 305 190 B, <code>a838ae86…</code>; повтор из печати дал те же шесть результатов — <code>identical: true</code>. Выпуск 0.1.5: база 90 027 B <code>1c0bbe27…</code>, Edition 90 072 B <code>a7d7862f…</code>; 0.1.0 внутри не тронут, 0.1.4 по-прежнему в поставке для перехода.
+</footer>
+</main>
+</body>
+</html>
