@@ -1,0 +1,64 @@
+{
+  "acceptance": {
+    "fail": 1,
+    "not run": 4,
+    "pass": 9,
+    "sha256": "fe67e548593462e59f58c91869dc833c51017634fb6f94c01ad67dd288bf4b1d"
+  },
+  "at": "2026-11-18",
+  "decision_023": "pending",
+  "finding": {
+    "cause": "поле evidence — текстовое, а имя файла и номер строки попадают в защищённые факты; два прогона одного события не могут иметь одну улику",
+    "counterfactual": "при выровненной улике оба повтора склеиваются; для повтора с длительностью нужно ещё снять число",
+    "effect": "ни один настоящий повтор не склеивается (0 из 2)",
+    "evidence": "DIAGNOSIS.json",
+    "id": "F1",
+    "title": "улика входит в сравнение как содержание"
+  },
+  "iteration": "023",
+  "journals": {
+    "authored_control": "authored-control",
+    "authored_in_acceptance": 0,
+    "count": 8,
+    "host": {
+      "machine": "x86_64",
+      "node": "v22.22.3",
+      "npm": "10.9.8",
+      "os_name": "Linux",
+      "pip": "23.0.1",
+      "python": "3.11.2",
+      "release": "6.1.158+"
+    },
+    "sha256": "48cd5cb161303a1d69f58bd25457e5b0d3866b0c45ae2f75055b8bbe67aec861"
+  },
+  "observations": {
+    "count": 41,
+    "facts_confirmed": 41,
+    "sha256": "5fd451830e73270e9ec2b6b790bf6f3fb9f791847ca1359a0bec0acad5040855"
+  },
+  "open": "решение владельца по F1: (А) адаптеры по карте, (Б) сначала исправить тождество записи, (В) оставить как есть. Журналы заказчика остаются not run.",
+  "page": {
+    "file": "Итерация-023.html",
+    "inside_seal": false,
+    "sha256": "18beb8df00fd801cac36da2a1fe3a31d1f3c75b27bdd3e06c207720d53b20e4b"
+  },
+  "pairs": {
+    "classes": {
+      "hard-negative": 20,
+      "random-negative": 20,
+      "repeat-form": 2,
+      "repeat-volatile": 1
+    },
+    "closest_negative_similarity": 0.9837,
+    "false_merges": 0,
+    "merged": 0,
+    "total": 43
+  },
+  "product": "0.1.4 (восстановленная линия)",
+  "product_change": false,
+  "replay_identical": true,
+  "replay_sha256": "4417b29b5caa2d693f89d59f1131e402e30f0c5f404870e57cb039f73ed31a87",
+  "seal": "AgentContractKit-Iteration-023.zip",
+  "seal_sha256": "27822621ed3ad0e4d706184553aaf17e56c4b1c9c1eefd95a3811b180e9c6190",
+  "subject": "приёмка 0.1.4 на настоящих журналах: происхождение вместо журнала заказчика"
+}

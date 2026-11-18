@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "authored_in_journals": 0,
+      "check": "журналы с происхождением",
+      "journals": 8
+    },
+    {
+      "authored_journals": 0,
+      "check": "написанный рукой журнал вне приёмки",
+      "detected": true
+    },
+    {
+      "cases": [
+        "build-error",
+        "npm-deprecated",
+        "npm-error",
+        "npm-vuln-total",
+        "pip-error",
+        "pytest-failed",
+        "pytest-summary"
+      ],
+      "check": "факты подтверждены строками журналов",
+      "observations": 41,
+      "verified": 41
+    }
+  ],
+  "iteration": "И-023",
+  "ok": true,
+  "problems": []
+}

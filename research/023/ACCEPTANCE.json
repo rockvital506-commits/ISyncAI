@@ -1,0 +1,394 @@
+{
+  "counts": {
+    "fail": 1,
+    "not run": 4,
+    "pass": 9
+  },
+  "iteration": "И-023",
+  "rows": [
+    {
+      "actual": {
+        "authored_in_journals": 0,
+        "check": "журналы с происхождением",
+        "journals": 8
+      },
+      "case": "журналы с происхождением",
+      "evidence": "VERIFY.json",
+      "expected": "8 журналов, у каждого команда, код возврата, время и отпечаток",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "authored_journals": 0,
+        "check": "написанный рукой журнал вне приёмки",
+        "detected": true
+      },
+      "case": "журнал, написанный рукой, вне приёмки",
+      "evidence": "VERIFY.json",
+      "expected": "контрольный журнал распознан и не попал в приёмку",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "cases": [
+          "build-error",
+          "npm-deprecated",
+          "npm-error",
+          "npm-vuln-total",
+          "pip-error",
+          "pytest-failed",
+          "pytest-summary"
+        ],
+        "check": "факты подтверждены строками журналов",
+        "observations": 41,
+        "verified": 41
+      },
+      "case": "наблюдения собраны из настоящих журналов",
+      "evidence": "observations.json",
+      "expected": "не меньше 40 наблюдений, каждый факт подтверждается указанной строкой",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "false_merges": 0,
+        "pairs": 40
+      },
+      "case": "ложных склеек нет, база",
+      "evidence": "pairs-023-base.json",
+      "expected": "на 40 парах «другое событие» (20 самых похожих, 20 выбранных отпечатком) — 0 склеек",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "false_merges": 0,
+        "pairs": 40
+      },
+      "case": "ложных склеек нет, Edition",
+      "evidence": "pairs-023-edition.json",
+      "expected": "то же на линии Edition",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "merged": 0,
+        "pairs": 2,
+        "refused": 2
+      },
+      "case": "повтор настоящего события склеивается",
+      "evidence": "pairs-023-base.json; причина — DIAGNOSIS.json",
+      "expected": "две записи одного и того же падения из двух прогонов дают no_change",
+      "limits": "",
+      "status": "fail"
+    },
+    {
+      "actual": {
+        "merged": 0,
+        "pairs": 1
+      },
+      "case": "повтор с изменчивым числом не склеивается",
+      "evidence": "pairs-023-base.json",
+      "expected": "две итоговые строки с разной длительностью не склеиваются (записано как факт)",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "merges": 0,
+        "merges_kept": true
+      },
+      "case": "склейка не переписывает файл наблюдений",
+      "evidence": "pairs-023-base.json",
+      "expected": "при no_change checks.json остаётся байт в байт",
+      "limits": "Склеек на настоящих журналах не было ни одной, поэтому свойство не проверялось. На корпусе И-024 оно проверено (12 склеек, байты не менялись).",
+      "status": "not run"
+    },
+    {
+      "actual": {
+        "pairs": 43,
+        "preserved": true
+      },
+      "case": "запись нового наблюдения сохраняет прежние",
+      "evidence": "pairs-023-base.json; pairs-023-edition.json",
+      "expected": "все прежние записи остаются в checks.json после новой записи",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "hard-negative": [
+          0,
+          0
+        ],
+        "random-negative": [
+          0,
+          0
+        ],
+        "repeat-form": [
+          0,
+          0
+        ],
+        "repeat-volatile": [
+          0,
+          0
+        ]
+      },
+      "case": "обе линии ведут себя одинаково",
+      "evidence": "pairs-023-base.json; pairs-023-edition.json",
+      "expected": "классы пар совпадают на base и Edition",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": [
+        {
+          "pair": "pytest-run1#L386 / pytest-run2#L385",
+          "variants": [
+            [
+              "как есть",
+              "committed"
+            ],
+            [
+              "улика выровнена",
+              "no_change"
+            ]
+          ]
+        },
+        {
+          "pair": "pip-build#L75 / pip-build#L92",
+          "variants": [
+            [
+              "как есть",
+              "committed"
+            ],
+            [
+              "улика выровнена",
+              "no_change"
+            ]
+          ]
+        },
+        {
+          "pair": "pytest-run1#L387 / pytest-run2#L386",
+          "variants": [
+            [
+              "как есть",
+              "committed"
+            ],
+            [
+              "улика выровнена",
+              "committed"
+            ],
+            [
+              "улика выровнена и длительность снята у обоих",
+              "no_change"
+            ]
+          ]
+        }
+      ],
+      "case": "причина отказа названа, а не угадана",
+      "evidence": "DIAGNOSIS.json",
+      "expected": "диагностика показывает, какое поле мешает склейке, и какой вариант её включает",
+      "limits": "Контрфактические варианты — диагностика, не приёмка: продукт не менялся.",
+      "status": "pass"
+    },
+    {
+      "actual": null,
+      "case": "журналы заказчика",
+      "evidence": "—",
+      "expected": "настоящие журналы вашей машины и ваших проектов",
+      "limits": "Журналов нет; заменены журналами настоящих инструментов здесь.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "Windows и права",
+      "evidence": "—",
+      "expected": "запуск и запись под Windows, ограниченные права",
+      "limits": "Стенд Linux, права обычные.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "живые модели",
+      "evidence": "—",
+      "expected": "поведение с подключённой моделью",
+      "limits": "Модель не подключалась, режим офлайн.",
+      "status": "not run"
+    }
+  ],
+  "sources": {
+    "authored": "authored-control",
+    "journals": [
+      {
+        "command": [
+          "pip3",
+          "download",
+          "-d",
+          "/tmp/isai023/out",
+          "flask==3.0.*",
+          "werkzeug<2"
+        ],
+        "cwd": "/tmp/isai023",
+        "exit_code": 1,
+        "finished": "2026-11-18T17:09:12+00:00",
+        "id": "pip-resolver",
+        "kind": "journal",
+        "log": "pip-resolver.log",
+        "log_bytes": 1139,
+        "log_lines": 25,
+        "log_sha256": "34bce11f7a0f483d60d360efc0fc7acbbfe61b6191690eea00af1347a352f094",
+        "note": "конфликт требований",
+        "started": "2026-11-18T17:09:11+00:00"
+      },
+      {
+        "command": [
+          "pip3",
+          "install",
+          "--no-cache-dir",
+          "--target",
+          "/tmp/isai023/t6",
+          "pycrypto==2.6.1"
+        ],
+        "cwd": "/tmp/isai023",
+        "exit_code": 1,
+        "finished": "2026-11-18T17:09:15+00:00",
+        "id": "pip-build",
+        "kind": "journal",
+        "log": "pip-build.log",
+        "log_bytes": 4700,
+        "log_lines": 106,
+        "log_sha256": "1177b67c2910bb4561ba097bc48714e5aaf4d6b8a0d8eead71046c9304a35143",
+        "note": "сборка из исходников",
+        "started": "2026-11-18T17:09:12+00:00"
+      },
+      {
+        "command": [
+          "python3",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "cwd": "/tmp/isai023/requests-2.32.3",
+        "exit_code": 1,
+        "finished": "2026-11-18T17:10:33+00:00",
+        "id": "pytest-run1",
+        "kind": "journal",
+        "log": "pytest-run1.log",
+        "log_bytes": 19886,
+        "log_lines": 409,
+        "log_sha256": "8612351a395398446cfc71bea60d35e13c95cfa0bf0618433f6df8f27ff81051",
+        "note": "первый прогон набора",
+        "started": "2026-11-18T17:09:15+00:00"
+      },
+      {
+        "command": [
+          "python3",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "cwd": "/tmp/isai023/requests-2.32.3",
+        "exit_code": 1,
+        "finished": "2026-11-18T17:11:52+00:00",
+        "id": "pytest-run2",
+        "kind": "journal",
+        "log": "pytest-run2.log",
+        "log_bytes": 18699,
+        "log_lines": 394,
+        "log_sha256": "80fb73ddd42b3e5862297a1bd3643aa575859a84af179a9b19cd7f09606ccd58",
+        "note": "второй прогон того же кода",
+        "started": "2026-11-18T17:10:33+00:00"
+      },
+      {
+        "command": [
+          "python3",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests/test_utils.py"
+        ],
+        "cwd": "/tmp/isai023/requests-2.32.3",
+        "exit_code": 0,
+        "finished": "2026-11-18T17:11:53+00:00",
+        "id": "pytest-utils",
+        "kind": "journal",
+        "log": "pytest-utils.log",
+        "log_bytes": 1437,
+        "log_lines": 16,
+        "log_sha256": "0be2bd64c14481e7e9323f5e4e0fbaafe4af8802e92a2f1a3946518ace662966",
+        "note": "другой набор того же проекта",
+        "started": "2026-11-18T17:11:52+00:00"
+      },
+      {
+        "command": [
+          "npm",
+          "install",
+          "--no-audit",
+          "--no-fund",
+          "gulp@3.9.1"
+        ],
+        "cwd": "/tmp/isai023/gulp",
+        "exit_code": 0,
+        "finished": "2026-11-18T17:11:55+00:00",
+        "id": "npm-install",
+        "kind": "journal",
+        "log": "npm-install.log",
+        "log_bytes": 1974,
+        "log_lines": 15,
+        "log_sha256": "95a8d082c8b82dace722d9712d5e2ec94e3521481d3a6d00681cfd92d6f3e0e8",
+        "note": "установка старого пакета",
+        "started": "2026-11-18T17:11:53+00:00"
+      },
+      {
+        "command": [
+          "npm",
+          "audit"
+        ],
+        "cwd": "/tmp/isai023/gulp",
+        "exit_code": 1,
+        "finished": "2026-11-18T17:11:56+00:00",
+        "id": "npm-audit",
+        "kind": "journal",
+        "log": "npm-audit.log",
+        "log_bytes": 4084,
+        "log_lines": 101,
+        "log_sha256": "6bddafb79cb795753279a297f219e7e866085d0ac651af283f2f0f67f79ee470",
+        "note": "проверка уязвимостей",
+        "started": "2026-11-18T17:11:55+00:00"
+      },
+      {
+        "command": [
+          "npm",
+          "ci"
+        ],
+        "cwd": "/tmp/isai023/nolock",
+        "exit_code": 1,
+        "finished": "2026-11-18T17:11:56+00:00",
+        "id": "npm-ci-nolock",
+        "kind": "journal",
+        "log": "npm-ci-nolock.log",
+        "log_bytes": 1186,
+        "log_lines": 24,
+        "log_sha256": "6294c81e6c3ca7507165f8cd63e369cd905f1aa9c6b5cf2c64799d7c16472861",
+        "note": "npm ci без замка",
+        "started": "2026-11-18T17:11:56+00:00"
+      }
+    ],
+    "observations": 41,
+    "pairs": 43,
+    "release": "0.1.4",
+    "release_pin": "3acb990c82d091f4341ea9057415196a9c6de02448c06d5986282e7c612e76e6"
+  }
+}

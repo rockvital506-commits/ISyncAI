@@ -1,0 +1,25 @@
+Collecting flask==3.0.*
+  Using cached flask-3.0.3-py3-none-any.whl (101 kB)
+Collecting werkzeug<2
+  Using cached Werkzeug-1.0.1-py2.py3-none-any.whl (298 kB)
+Collecting flask==3.0.*
+  Using cached flask-3.0.2-py3-none-any.whl (101 kB)
+  Using cached flask-3.0.1-py3-none-any.whl (101 kB)
+  Using cached flask-3.0.0-py3-none-any.whl (99 kB)
+
+The conflict is caused by:
+    The user requested werkzeug<2
+    flask 3.0.3 depends on Werkzeug>=3.0.0
+    The user requested werkzeug<2
+    flask 3.0.2 depends on Werkzeug>=3.0.0
+    The user requested werkzeug<2
+    flask 3.0.1 depends on Werkzeug>=3.0.0
+    The user requested werkzeug<2
+    flask 3.0.0 depends on Werkzeug>=3.0.0
+
+To fix this you could try to:
+1. loosen the range of package versions you've specified
+2. remove package versions to allow pip attempt to solve the dependency conflict
+
+ERROR: Cannot install flask==3.0.0, flask==3.0.1, flask==3.0.2, flask==3.0.3 and werkzeug<2 because these package versions have conflicting dependencies.
+ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts

@@ -1,0 +1,221 @@
+{
+  "authored": {
+    "id": "authored-control",
+    "log": "authored-control.log",
+    "log_sha256": "9c583434c4b75c993ffc5d706c8853c90c53b7082b6bbd4d38dc8aae30e4b580",
+    "note": "написан рукой, в приёмку не входит; контроль критерия происхождения"
+  },
+  "created": "2026-11-18T17:11:56+00:00",
+  "host": {
+    "machine": "x86_64",
+    "node": "v22.22.3",
+    "npm": "10.9.8",
+    "os_name": "Linux",
+    "pip": "23.0.1",
+    "python": "3.11.2",
+    "release": "6.1.158+"
+  },
+  "iteration": "И-023",
+  "journals": [
+    {
+      "command": [
+        "pip3",
+        "download",
+        "-d",
+        "/tmp/isai023/out",
+        "flask==3.0.*",
+        "werkzeug<2"
+      ],
+      "cwd": "/tmp/isai023",
+      "exit_code": 1,
+      "finished": "2026-11-18T17:09:12+00:00",
+      "id": "pip-resolver",
+      "kind": "journal",
+      "log": "pip-resolver.log",
+      "log_bytes": 1139,
+      "log_lines": 25,
+      "log_sha256": "34bce11f7a0f483d60d360efc0fc7acbbfe61b6191690eea00af1347a352f094",
+      "note": "конфликт требований",
+      "started": "2026-11-18T17:09:11+00:00"
+    },
+    {
+      "command": [
+        "pip3",
+        "install",
+        "--no-cache-dir",
+        "--target",
+        "/tmp/isai023/t6",
+        "pycrypto==2.6.1"
+      ],
+      "cwd": "/tmp/isai023",
+      "exit_code": 1,
+      "finished": "2026-11-18T17:09:15+00:00",
+      "id": "pip-build",
+      "kind": "journal",
+      "log": "pip-build.log",
+      "log_bytes": 4700,
+      "log_lines": 106,
+      "log_sha256": "1177b67c2910bb4561ba097bc48714e5aaf4d6b8a0d8eead71046c9304a35143",
+      "note": "сборка из исходников",
+      "started": "2026-11-18T17:09:12+00:00"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests"
+      ],
+      "cwd": "/tmp/isai023/requests-2.32.3",
+      "exit_code": 1,
+      "finished": "2026-11-18T17:10:33+00:00",
+      "id": "pytest-run1",
+      "kind": "journal",
+      "log": "pytest-run1.log",
+      "log_bytes": 19886,
+      "log_lines": 409,
+      "log_sha256": "8612351a395398446cfc71bea60d35e13c95cfa0bf0618433f6df8f27ff81051",
+      "note": "первый прогон набора",
+      "started": "2026-11-18T17:09:15+00:00"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests"
+      ],
+      "cwd": "/tmp/isai023/requests-2.32.3",
+      "exit_code": 1,
+      "finished": "2026-11-18T17:11:52+00:00",
+      "id": "pytest-run2",
+      "kind": "journal",
+      "log": "pytest-run2.log",
+      "log_bytes": 18699,
+      "log_lines": 394,
+      "log_sha256": "80fb73ddd42b3e5862297a1bd3643aa575859a84af179a9b19cd7f09606ccd58",
+      "note": "второй прогон того же кода",
+      "started": "2026-11-18T17:10:33+00:00"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_utils.py"
+      ],
+      "cwd": "/tmp/isai023/requests-2.32.3",
+      "exit_code": 0,
+      "finished": "2026-11-18T17:11:53+00:00",
+      "id": "pytest-utils",
+      "kind": "journal",
+      "log": "pytest-utils.log",
+      "log_bytes": 1437,
+      "log_lines": 16,
+      "log_sha256": "0be2bd64c14481e7e9323f5e4e0fbaafe4af8802e92a2f1a3946518ace662966",
+      "note": "другой набор того же проекта",
+      "started": "2026-11-18T17:11:52+00:00"
+    },
+    {
+      "command": [
+        "npm",
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "gulp@3.9.1"
+      ],
+      "cwd": "/tmp/isai023/gulp",
+      "exit_code": 0,
+      "finished": "2026-11-18T17:11:55+00:00",
+      "id": "npm-install",
+      "kind": "journal",
+      "log": "npm-install.log",
+      "log_bytes": 1974,
+      "log_lines": 15,
+      "log_sha256": "95a8d082c8b82dace722d9712d5e2ec94e3521481d3a6d00681cfd92d6f3e0e8",
+      "note": "установка старого пакета",
+      "started": "2026-11-18T17:11:53+00:00"
+    },
+    {
+      "command": [
+        "npm",
+        "audit"
+      ],
+      "cwd": "/tmp/isai023/gulp",
+      "exit_code": 1,
+      "finished": "2026-11-18T17:11:56+00:00",
+      "id": "npm-audit",
+      "kind": "journal",
+      "log": "npm-audit.log",
+      "log_bytes": 4084,
+      "log_lines": 101,
+      "log_sha256": "6bddafb79cb795753279a297f219e7e866085d0ac651af283f2f0f67f79ee470",
+      "note": "проверка уязвимостей",
+      "started": "2026-11-18T17:11:55+00:00"
+    },
+    {
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "cwd": "/tmp/isai023/nolock",
+      "exit_code": 1,
+      "finished": "2026-11-18T17:11:56+00:00",
+      "id": "npm-ci-nolock",
+      "kind": "journal",
+      "log": "npm-ci-nolock.log",
+      "log_bytes": 1186,
+      "log_lines": 24,
+      "log_sha256": "6294c81e6c3ca7507165f8cd63e369cd905f1aa9c6b5cf2c64799d7c16472861",
+      "note": "npm ci без замка",
+      "started": "2026-11-18T17:11:56+00:00"
+    }
+  ],
+  "line": "journals bench",
+  "setup": [
+    {
+      "command": [
+        "pip3",
+        "install",
+        "-q",
+        "--target",
+        "/tmp/isai023/deps",
+        "-r",
+        "requirements-dev.txt"
+      ],
+      "cwd": "/tmp/isai023/requests-2.32.3",
+      "exit_code": 0,
+      "finished": "2026-11-18T17:09:11+00:00",
+      "id": "setup-pip-deps",
+      "kind": "setup",
+      "log": "setup-pip-deps.log",
+      "log_bytes": 0,
+      "log_lines": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "note": "вход стенда",
+      "started": "2026-11-18T17:09:03+00:00"
+    }
+  ],
+  "sources": {
+    "gulp": {
+      "registry": "npm",
+      "spec": "gulp@3.9.1"
+    },
+    "requests": {
+      "path": "/tmp/isai023/requests-2.32.3",
+      "repo": "psf/requests",
+      "tag": "v2.32.3",
+      "tarball": "https://codeload.github.com/psf/requests/tar.gz/refs/tags/v2.32.3",
+      "tarball_sha256": "f665576fc02d02e7b7f21630b915d70c14288f48decf76fad89b16a9f3975c42"
+    }
+  }
+}

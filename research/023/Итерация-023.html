@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-023. Приёмка на настоящих журналах</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--bad);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--bad)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.choices{display:grid;gap:12px;margin:14px 0 8px}
+.choice{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.choice b{display:block;margin-bottom:4px}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-023. Приёмка 0.1.4 на настоящих журналах</h1>
+<p class="lead">18 ноября 2026. Журнала заказчика нет. Поэтому проверялось не «ваш журнал», а <b>происхождение</b> журнала: текст, который произвёл настоящий инструмент, а не мы для прохождения приёмки.</p>
+
+<div class="verdict">
+<strong>Строгость держится, а пользы нет: 0 ложных склеек из 40 пар — и 0 склеек настоящих повторов из 2.</strong>
+Причина найдена и измерена: поле улики (<code>файл, строка N</code>) входит в сравнение как содержание, а имя файла и номер строки ещё и защищены как факты. Два прогона одного события не могут иметь одну и ту же улику — значит правило отказывает всегда. На синтетическом корпусе И-024 этого не было видно: там пара делила улику.
+</div>
+
+<div class="kpi">
+<div><span>Журналов</span><b>8</b></div>
+<div><span>Наблюдений</span><b>41</b></div>
+<div><span>Ложных склеек</span><b class="good">0</b></div>
+<div><span>Склеек повторов</span><b class="bad">0 / 2</b></div>
+<div><span>Приёмка</span><b>9 / 1 / 4</b></div>
+</div>
+
+<h2>Чем заменён журнал заказчика</h2>
+<p>Восемь журналов — объединённый вывод настоящих команд, записанный как есть, с командой, кодом возврата, временем и отпечатком. Код третьих лиц, наше окружение (Linux, Python 3.11.2, Node 22.22.3).</p>
+<div class="wrap">
+<table>
+<tr><th>Журнал</th><th>Что делал инструмент</th><th>Код</th><th>Строк</th><th>Наблюдений</th></tr>
+<tr><td><code>pip-resolver</code></td><td>несовместимые требования <code>flask==3.0.*</code> и <code>werkzeug&lt;2</code></td><td class="num bad">1</td><td class="num">25</td><td class="num">2</td></tr>
+<tr><td><code>pip-build</code></td><td>сборка <code>pycrypto==2.6.1</code> из исходников</td><td class="num bad">1</td><td class="num">106</td><td class="num">2</td></tr>
+<tr><td><code>pytest-run1</code></td><td>набор <code>psf/requests</code> v2.32.3, первый прогон</td><td class="num bad">1</td><td class="num">409</td><td class="num">2</td></tr>
+<tr><td><code>pytest-run2</code></td><td>тот же набор, второй прогон того же кода</td><td class="num bad">1</td><td class="num">394</td><td class="num">2</td></tr>
+<tr><td><code>pytest-utils</code></td><td>только <code>tests/test_utils.py</code></td><td class="num good">0</td><td class="num">16</td><td class="num">1</td></tr>
+<tr><td><code>npm-install</code></td><td>установка <code>gulp@3.9.1</code>, 251 пакет</td><td class="num good">0</td><td class="num">15</td><td class="num">13</td></tr>
+<tr><td><code>npm-audit</code></td><td>проверка уязвимостей в этом дереве</td><td class="num bad">1</td><td class="num">101</td><td class="num">1</td></tr>
+<tr><td><code>npm-ci-nolock</code></td><td><code>npm ci</code> без замка</td><td class="num bad">1</td><td class="num">24</td><td class="num">18</td></tr>
+<tr><td><code>authored-control</code></td><td>написан рукой — вне приёмки</td><td>—</td><td class="num">9</td><td class="num">0</td></tr>
+</table>
+</div>
+<p>Независимая проверка заново прочитала журналы с диска, сверила отпечатки и нашла каждый факт дословно в указанной строке: <b>41 из 41</b>, расхождений нет. Написанный рукой журнал распознан по отсутствию происхождения и в приёмку не попал.</p>
+
+<h2>Что показало правило</h2>
+<div class="wrap">
+<table>
+<tr><th>Класс пар</th><th>Пар</th><th>Ожидание</th><th>Склеено</th><th>Итог</th></tr>
+<tr><td>Повтор с одинаковым текстом</td><td class="num">2</td><td>склейка</td><td class="num bad">0</td><td class="bad">предсказание не выполнено</td></tr>
+<tr><td>Повтор с разной длительностью</td><td class="num">1</td><td>отказ</td><td class="num">0</td><td class="good">как ожидалось</td></tr>
+<tr><td>Самые похожие разные события</td><td class="num">20</td><td>отказ</td><td class="num">0</td><td class="good">как ожидалось</td></tr>
+<tr><td>Разные события по отпечатку</td><td class="num">20</td><td>отказ</td><td class="num">0</td><td class="good">как ожидалось</td></tr>
+</table>
+</div>
+<p>Ближайшая пара «другое событие» — <code>glob@4.5.3</code> против <code>glob@3.1.21</code> — имеет сходство <b>0,984</b> и всё равно не склеена. То есть на живом тексте правило не разваливается. Оно просто не срабатывает там, где должно.</p>
+
+<h2>Почему повтор не склеился</h2>
+<p>Диагностика считает собственными сравнениями продукта, продукт не менялся. Контрфактические варианты помечены: они существуют только чтобы назвать причину.</p>
+<div class="wrap">
+<table>
+<tr><th>Пара</th><th>Что различается</th><th>Как есть</th><th>Улика выровнена</th><th>+ длительность снята</th></tr>
+<tr><td>падение теста, два прогона</td><td>только улика: 2 слова, сходство 0,667</td><td class="bad">не склеено</td><td class="good">склеено</td><td>—</td></tr>
+<tr><td>ошибка компилятора, две попытки сборки</td><td>только улика: 1 слово (<code>75</code> / <code>92</code>)</td><td class="bad">не склеено</td><td class="good">склеено</td><td>—</td></tr>
+<tr><td>итог тестов, два прогона</td><td>улика и длительность 77,89 с / 77,86 с</td><td class="bad">не склеено</td><td class="bad">не склеено</td><td class="good">склеено</td></tr>
+</table>
+</div>
+<p>Отсюда два требования к следующему шагу, и оба — про то, что должно попадать в запись: улика не может быть содержанием, а изменчивые числа (длительность) не могут быть фактами события.</p>
+
+<h2>Приёмка</h2>
+<p><b>9 pass / 1 fail / 4 not run.</b> Провал не замаскирован, четыре <code>not run</code> названы прямо.</p>
+<div class="wrap">
+<table>
+<tr><th>Строка</th><th>Статус</th></tr>
+<tr><td>8 журналов с происхождением</td><td class="good">pass</td></tr>
+<tr><td>журнал, написанный рукой, вне приёмки</td><td class="good">pass</td></tr>
+<tr><td>41 наблюдение, факты подтверждены строками</td><td class="good">pass</td></tr>
+<tr><td>ложных склеек нет (база и Edition)</td><td class="good">pass</td></tr>
+<tr><td>повтор настоящего события склеивается</td><td class="bad">fail — 0 из 2</td></tr>
+<tr><td>повтор с изменчивым числом не склеивается</td><td class="good">pass</td></tr>
+<tr><td>склейка не переписывает файл</td><td>not run — склеек не было</td></tr>
+<tr><td>прежние записи сохраняются</td><td class="good">pass — 43 из 43</td></tr>
+<tr><td>обе линии ведут себя одинаково</td><td class="good">pass</td></tr>
+<tr><td>причина отказа названа</td><td class="good">pass</td></tr>
+<tr><td>журналы заказчика, Windows и права, живые модели</td><td>not run — здесь недостижимо</td></tr>
+</table>
+</div>
+
+<h2>Что дальше — нужно ваше решение</h2>
+<div class="choices">
+<div class="choice"><b>А. Идти по карте: адаптеры (И-025…И-029)</b>Правило остаётся, находка уходит в адаптеры: адаптер решает, что в наблюдении содержание, а что происхождение и шум. Плюс: план не сдвигается. Минус: продукт ещё пять итераций не умеет склеивать настоящие повторы.</div>
+<div class="choice"><b>Б. Сначала исправить тождество</b>Вынести улику из сравнения (собирать источники в список) и научить запись отличать факт от изменчивого числа. Плюс: дедупликация начнёт работать на настоящих журналах. Минус: меняется выпущенное правило, нужен новый выпуск и повторная приёмка на корпусе.</div>
+<div class="choice"><b>В. Оставить как есть и записать ограничение</b>Признать, что 0.1.4 годится как строгий фильтр, но не как дедупликатор. Плюс: ничего не ломаем. Минус: главная обещанная польза не достигнута.</div>
+</div>
+
+<h2>Границы, которые не прячу</h2>
+<ul>
+<li>Журналы — наших инструментов и нашего окружения. Журналы вашей машины и ваших проектов, Windows, ограниченных прав и живых моделей остаются <code>not run</code>.</li>
+<li>Проверка не была слепой: правила извлечения писались после того, как вывод инструментов был впервые получен. Они покрывают все семь встретившихся типов строк и под ответ не подгонялись, но слепого этапа здесь не было — это записано до прогона.</li>
+<li>Свойство «склейка не переписывает файл» на настоящих журналах не проверялось: склеек не было. Оно остаётся проверенным на корпусе И-024.</li>
+<li>Продукт в этой итерации не менялся: находка идёт в отчёт и в следующую итерацию.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-023.zip</code>, 29 членов, 198 024 B, <code>27822621…</code>. Повтор из печати дал те же JSON: <code>identical: true</code> по всем пяти результатам. Продукт — 0.1.4, база <code>8d599d01…</code>, Edition <code>2d55b90f…</code>, без изменений.
+</footer>
+</main>
+</body>
+</html>
