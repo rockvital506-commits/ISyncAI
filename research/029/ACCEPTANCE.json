@@ -1,0 +1,501 @@
+{
+  "at": "2026-11-18",
+  "counts": {
+    "fail": 1,
+    "not run": 5,
+    "pass": 19
+  },
+  "iteration": "И-029",
+  "release": {
+    "tests": {
+      "base": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 49
+      },
+      "edition": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 49
+      }
+    },
+    "version": "0.1.9"
+  },
+  "rows": [
+    {
+      "actual": {
+        "base": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 49
+        },
+        "edition": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 49
+        }
+      },
+      "expected": "49 pass / 0 fail / 3 not run на обеих линиях",
+      "name": "выпуск 0.1.9 собран и испытан",
+      "note": "",
+      "source": "release-0.1.9/*/AgentContractLab/reports/CHECKS.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "pass": 16
+        },
+        "edition": {
+          "pass": 16
+        }
+      },
+      "expected": "16 проверок на каждой линии; шесть поочерёдных ходов дают одну запись",
+      "name": "стенд двух сред после решения Б",
+      "note": "",
+      "source": "dual-base.json; dual-edition.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "entry_hashes": 1,
+          "repeat_connect": "no_change",
+          "second_entry": "second_entry"
+        },
+        "edition": {
+          "entry_hashes": 1,
+          "repeat_connect": "no_change",
+          "second_entry": "second_entry"
+        }
+      },
+      "expected": "AGENTS.md один, отпечаток не меняется между ходами, второй вход отклоняется second_entry",
+      "name": "один вход на две среды",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "environment_files_seen": [
+            ".kilo/kilo.jsonc",
+            ".kilo/rules/x.md",
+            ".vscode/settings.json"
+          ],
+          "github_instructions_created": false
+        },
+        "edition": {
+          "environment_files_seen": [
+            ".kilo/kilo.jsonc",
+            ".kilo/rules/x.md",
+            ".vscode/settings.json"
+          ],
+          "github_instructions_created": false
+        }
+      },
+      "expected": "ни одного изменённого байта в .kilo/**, .kilo/kilo.jsonc, .vscode/settings.json, .github/**",
+      "name": "настройки сред не тронуты за все ходы",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "copilot-first": "conflict",
+          "kilo-first": "conflict"
+        },
+        "edition": {
+          "copilot-first": "conflict",
+          "kilo-first": "conflict"
+        }
+      },
+      "expected": "пересечение действующих требований отклоняется кодом conflict в обе стороны",
+      "name": "конфликт правил двух сред",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "forward": {
+            "health": "valid",
+            "observations": 1
+          },
+          "reverse": {
+            "health": "valid",
+            "observations": 1
+          },
+          "rules_equal": true
+        },
+        "edition": {
+          "forward": {
+            "health": "valid",
+            "observations": 1
+          },
+          "reverse": {
+            "health": "valid",
+            "observations": 1
+          },
+          "rules_equal": true
+        }
+      },
+      "expected": "обратный порядок ходов даёт те же счётчики, health и rules.json",
+      "name": "порядок сред не важен",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "different": 1,
+          "same": 1
+        },
+        "edition": {
+          "different": 1,
+          "same": 1
+        }
+      },
+      "expected": "повтор при одинаковом environment и при разном extension дают одну запись (D6 и D7)",
+      "name": "наблюдатель больше не разделяет событие",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "antigravity": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "claude": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "cursor": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          }
+        },
+        "edition": {
+          "antigravity": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "claude": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "cursor": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          }
+        }
+      },
+      "expected": "claude, cursor, antigravity: status stub, entry null, sources [], facts_checked_at null; наличие .claude/CLAUDE.md всё равно требует ack_existing",
+      "name": "заглушки не заявляют ни входа, ни покрытия",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "pass": 13
+        },
+        "edition": {
+          "pass": 13
+        }
+      },
+      "expected": "13 из 13 на обеих линиях",
+      "name": "адаптер Copilot не сломан правкой правила",
+      "note": "",
+      "source": "adapter-base.json; adapter-edition.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "obs-editor": 8,
+          "obs-extension": 8,
+          "obs-profile": 8
+        },
+        "edition": {
+          "obs-editor": 8,
+          "obs-extension": 8,
+          "obs-profile": 8
+        }
+      },
+      "expected": "пары, различающиеся extension, editor, версиями и profile, склеиваются",
+      "name": "наблюдатель выведен из сравнения: 24 из 24",
+      "note": "",
+      "source": "pairs-029-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "con-mode": 0,
+          "con-model": 0,
+          "con-os": 0,
+          "con-permissions": 0
+        },
+        "edition": {
+          "con-mode": 0,
+          "con-model": 0,
+          "con-os": 0,
+          "con-permissions": 0
+        }
+      },
+      "expected": "os, mode, model, permissions разделяют наблюдения",
+      "name": "условия сравниваются точно: 32 из 32",
+      "note": "",
+      "source": "pairs-029-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "obs-plus-condition": 0,
+          "obs-plus-fact": 0
+        },
+        "edition": {
+          "obs-plus-condition": 0,
+          "obs-plus-fact": 0
+        }
+      },
+      "expected": "пары «другое расширение и другой факт/условие» не склеиваются",
+      "name": "наблюдатель не отменяет факт и условия: 16 из 16",
+      "note": "",
+      "source": "pairs-029-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "merged": 3,
+          "missed": [
+            "0:obs-form",
+            "1:obs-form",
+            "2:obs-form",
+            "4:obs-form",
+            "5:obs-form"
+          ]
+        },
+        "edition": {
+          "merged": 3,
+          "missed": [
+            "0:obs-form",
+            "1:obs-form",
+            "2:obs-form",
+            "4:obs-form",
+            "5:obs-form"
+          ]
+        }
+      },
+      "expected": "пара «другое расширение и другая форма текста» склеивается (регистр, пунктуация, порядок слов)",
+      "name": "форма записи: ожидание 8 из 8 — не выполнено, находка F2",
+      "note": "причина измерена: точка в конце предложения входит в идентификатор (test_build. против test_build); решение о правке — за владельцем",
+      "source": "pairs-029-*.json",
+      "status": "fail"
+    },
+    {
+      "actual": {
+        "base": true,
+        "edition": true
+      },
+      "expected": "во всех склеенных парах файл остался байт в байт",
+      "name": "склейка не меняет checks.json",
+      "note": "",
+      "source": "pairs-029-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 49
+        },
+        "edition": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 49
+        }
+      },
+      "expected": "X33: 0.1.10 встаёт после 0.1.9, а не перед ним",
+      "name": "порядок выпусков упорядочен по версии",
+      "note": "находка F3 исправлена в 0.1.9",
+      "source": "reports/CHECKS.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "merged": 24,
+          "unexpected": 12
+        },
+        "edition": {
+          "merged": 24,
+          "unexpected": 12
+        }
+      },
+      "expected": "24 склейки (12 форменных и 12 объявленных в И-025), прочих 0, обе линии",
+      "name": "прежний корпус 112 пар не поехал",
+      "note": "",
+      "source": "pairs-028-base.json; pairs-028-edition.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "false": 0,
+          "merged": 3
+        },
+        "edition": {
+          "false": 0,
+          "merged": 3
+        }
+      },
+      "expected": "3 из 3 повторов склеены, ложных 0 из 40, обе линии",
+      "name": "журналы не поехали",
+      "note": "",
+      "source": "pairs-029-journals-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "new_version": "0.1.9",
+        "ok": true,
+        "old_data_reads": true,
+        "old_data_untouched": true,
+        "old_version": "0.1.8",
+        "repeat_kept_bytes": true
+      },
+      "expected": "старое читается, повтор не меняет байты, отличие факта даёт запись",
+      "name": "данные 0.1.8 читаются и не переписываются",
+      "note": "",
+      "source": "COMPAT.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": [
+          "0.1.0",
+          "0.1.4",
+          "0.1.5",
+          "0.1.6",
+          "0.1.7",
+          "0.1.8",
+          "0.1.9"
+        ],
+        "edition": [
+          "0.1.0",
+          "0.1.4",
+          "0.1.5",
+          "0.1.6",
+          "0.1.7",
+          "0.1.8",
+          "0.1.9"
+        ]
+      },
+      "expected": "releases/0.1.0, 0.1.4–0.1.9 в обеих линиях",
+      "name": "цепочка выпусков в поставке",
+      "note": "",
+      "source": "архивы 0.1.9",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "equal": {
+          "COMPAT.json": true,
+          "EXPECTATIONS.json": true,
+          "adapter-base.json": true,
+          "adapter-edition.json": true,
+          "dual-base.json": true,
+          "dual-edition.json": true,
+          "pairs-029-base.json": true,
+          "pairs-029-corpus112-base.json": true,
+          "pairs-029-corpus112-edition.json": true,
+          "pairs-029-edition.json": true,
+          "pairs-029-journals-base.json": true,
+          "pairs-029-journals-edition.json": true
+        },
+        "identical": true
+      },
+      "expected": "все результаты и файлы совпадают, identical true",
+      "name": "повтор из печати совпадает со сборкой",
+      "note": "",
+      "source": "REPLAY.json",
+      "status": "pass"
+    },
+    {
+      "actual": null,
+      "expected": "Kilo и Copilot поочерёдно читают AGENTS.md в открытом проекте",
+      "name": "живой VS Code с двумя расширениями",
+      "note": "Расширения здесь не запускаются: стенд имитирует раскладку и вызовы команд.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "среды действительно читают AGENTS.md",
+      "name": "загрузка инструкций в VS Code",
+      "note": "Уровни достоверности 2–3, И-031…И-032.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "kilo.jsonc и .github/copilot-instructions.md перекрывают AGENTS.md",
+      "name": "старшинство в живых средах",
+      "note": "Старшинство взято из документации сред и записано данными.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "поведение на другой файловой системе",
+      "name": "Windows и права",
+      "note": "Здесь только Linux.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "приёмка на данных владельца",
+      "name": "журналы заказчика",
+      "note": "Журналов у владельца нет.",
+      "source": "—",
+      "status": "not run"
+    }
+  ]
+}

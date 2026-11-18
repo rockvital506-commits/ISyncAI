@@ -1,0 +1,3778 @@
+{
+  "at": "2026-11-18",
+  "environment_keys": [
+    "os",
+    "editor",
+    "editor_version",
+    "extension",
+    "extension_version",
+    "mode",
+    "model",
+    "profile",
+    "permissions"
+  ],
+  "format": "observation-pairs",
+  "iteration": "И-029",
+  "pairs": [
+    {
+      "index": 0,
+      "kind": "obs-extension",
+      "label": true,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 0,
+      "kind": "obs-editor",
+      "label": true,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "cursor",
+          "editor_version": "2.7",
+          "extension": "kilo.kilo-code",
+          "extension_version": "1.2",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 0,
+      "kind": "obs-profile",
+      "label": true,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "ci"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 0,
+      "kind": "obs-form",
+      "label": true,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ПАДАЕТ TYPEERROR В TEST_BUILD",
+        "case": "Тесты сборки",
+        "conditions": "ЧИТАЛСЯ ЖУРНАЛ ТЕСТОВ КОМАНДА НЕ ЗАПУСКАЛАСЬ",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 0,
+      "kind": "con-os",
+      "label": false,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 0,
+      "kind": "con-mode",
+      "label": false,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "chat",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 0,
+      "kind": "con-model",
+      "label": false,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-b",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 0,
+      "kind": "con-permissions",
+      "label": false,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-only",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 0,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build. 424242",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 0,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "Тесты сборки",
+        "conditions": "Читался журнал тестов, команда не запускалась.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 17",
+        "expected": "Тесты проходят.",
+        "level": 3,
+        "limits": "Оценка по журналу, не запуск.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "obs-extension",
+      "label": true,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "obs-editor",
+      "label": true,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "cursor",
+          "editor_version": "2.7",
+          "extension": "kilo.kilo-code",
+          "extension_version": "1.2",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "obs-profile",
+      "label": true,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "ci"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "obs-form",
+      "label": true,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "КОД ВОЗВРАТА 2 ОТКАЗ PATH",
+        "case": "Запуск утилиты",
+        "conditions": "УТИЛИТА ЗАПУСКАЛАСЬ С ОТНОСИТЕЛЬНЫМ ПУТЁМ",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "con-os",
+      "label": false,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "con-mode",
+      "label": false,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "chat",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "con-model",
+      "label": false,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-b",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "con-permissions",
+      "label": false,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-only",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 424244, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 1,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 2, отказ path.",
+        "case": "Запуск утилиты",
+        "conditions": "Утилита запускалась с относительным путём.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "run.log, строка 1",
+        "expected": "Код возврата 0.",
+        "level": 3,
+        "limits": "Один запуск в изолированном каталоге.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "obs-extension",
+      "label": true,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "obs-editor",
+      "label": true,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "cursor",
+          "editor_version": "2.7",
+          "extension": "kilo.kilo-code",
+          "extension_version": "1.2",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "obs-profile",
+      "label": true,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "ci"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "obs-form",
+      "label": true,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ОТКАЗ SCHEMA: НЕИЗВЕСТНОЕ ПОЛЕ VERSION",
+        "case": "Проверка схемы",
+        "conditions": "ФАЙЛ СХЕМЫ ЧИТАЛСЯ КАК ДАННЫЕ",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "con-os",
+      "label": false,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "con-mode",
+      "label": false,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "chat",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "con-model",
+      "label": false,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-b",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "con-permissions",
+      "label": false,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-only",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ schema: неизвестное поле version. 424242",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 2,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ schema: неизвестное поле version.",
+        "case": "Проверка схемы",
+        "conditions": "Файл схемы читался как данные.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "schema.json, строка 3",
+        "expected": "Схема 1 принимается.",
+        "level": 1,
+        "limits": "Только разбор файла, миграция не выполнялась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "obs-extension",
+      "label": true,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "obs-editor",
+      "label": true,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "cursor",
+          "editor_version": "2.7",
+          "extension": "kilo.kilo-code",
+          "extension_version": "1.2",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "obs-profile",
+      "label": true,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "ci"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "obs-form",
+      "label": true,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "СБОРКА ПРЕРВАНА: TIMEOUT ПОСЛЕ 600 СЕКУНД",
+        "case": "Сборка образа",
+        "conditions": "ЧИТАЛСЯ ЖУРНАЛ СБОРКИ ОБРАЗА",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "con-os",
+      "label": false,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "con-mode",
+      "label": false,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "chat",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "con-model",
+      "label": false,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-b",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "con-permissions",
+      "label": false,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-only",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прервана: timeout после 424842 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 3,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прервана: timeout после 600 секунд.",
+        "case": "Сборка образа",
+        "conditions": "Читался журнал сборки образа.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "build.log, строка 812",
+        "expected": "Образ собран.",
+        "level": 2,
+        "limits": "Журнал сборки, без повторного запуска.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "obs-extension",
+      "label": true,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "obs-editor",
+      "label": true,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "cursor",
+          "editor_version": "2.7",
+          "extension": "kilo.kilo-code",
+          "extension_version": "1.2",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "obs-profile",
+      "label": true,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "ci"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "obs-form",
+      "label": true,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "IMPORTERROR: НЕТ МОДУЛЯ YAML",
+        "case": "Проверка зависимостей",
+        "conditions": "ПРОЧИТАН ВЫВОД УСТАНОВКИ ПАКЕТОВ",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "con-os",
+      "label": false,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "con-mode",
+      "label": false,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "chat",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "con-model",
+      "label": false,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-b",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "con-permissions",
+      "label": false,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-only",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ImportError: нет модуля yaml. 424242",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 4,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ImportError: нет модуля yaml.",
+        "case": "Проверка зависимостей",
+        "conditions": "Прочитан вывод установки пакетов.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "pip.log, строка 4",
+        "expected": "Все зависимости разрешаются.",
+        "level": 2,
+        "limits": "Только текст ошибки, сеть не использовалась.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "obs-extension",
+      "label": true,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "obs-editor",
+      "label": true,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "cursor",
+          "editor_version": "2.7",
+          "extension": "kilo.kilo-code",
+          "extension_version": "1.2",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "obs-profile",
+      "label": true,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "ci"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "obs-form",
+      "label": true,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "НАЙДЕНО 3 ПРЕДУПРЕЖДЕНИЯ В KIT/TOOLS",
+        "case": "Линтер",
+        "conditions": "ЛИНТЕР ЗАПУСКАЛСЯ ПО КАТАЛОГУ KIT",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "con-os",
+      "label": false,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "con-mode",
+      "label": false,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "chat",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "con-model",
+      "label": false,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-b",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "con-permissions",
+      "label": false,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-only",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Найдено 424245 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 5,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Найдено 3 предупреждения в kit/tools.",
+        "case": "Линтер",
+        "conditions": "Линтер запускался по каталогу kit.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "lint.log, строка 9",
+        "expected": "Замечаний нет.",
+        "level": 1,
+        "limits": "Один прогон линтера, правила не менялись.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "obs-extension",
+      "label": true,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "obs-editor",
+      "label": true,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "cursor",
+          "editor_version": "2.7",
+          "extension": "kilo.kilo-code",
+          "extension_version": "1.2",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "obs-profile",
+      "label": true,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "ci"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "obs-form",
+      "label": true,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ОТКАЗ EACCES ПРИ ЗАПИСИ",
+        "case": "Права файла",
+        "conditions": "ПРОВЕРЯЛАСЬ ЗАПИСЬ В ЗАЩИЩЁННЫЙ КАТАЛОГ",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "con-os",
+      "label": false,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "con-mode",
+      "label": false,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "chat",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "con-model",
+      "label": false,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-b",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "con-permissions",
+      "label": false,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-only",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ EACCES при записи. 424242",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 6,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ EACCES при записи.",
+        "case": "Права файла",
+        "conditions": "Проверялась запись в защищённый каталог.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "trace.log, строка 44",
+        "expected": "Файл доступен на чтение.",
+        "level": 2,
+        "limits": "Права менялись вручную до прогона.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "obs-extension",
+      "label": true,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "obs-editor",
+      "label": true,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "cursor",
+          "editor_version": "2.7",
+          "extension": "kilo.kilo-code",
+          "extension_version": "1.2",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "obs-profile",
+      "label": true,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "ci"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "obs-form",
+      "label": true,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "ОТКАЗ PENDING: НЕЗАВЕРШЁННАЯ ОПЕРАЦИЯ",
+        "case": "Обновление",
+        "conditions": "ЧИТАЛСЯ ЖУРНАЛ ОБНОВЛЕНИЯ",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "con-os",
+      "label": false,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "con-mode",
+      "label": false,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "chat",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "con-model",
+      "label": false,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-b",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "con-permissions",
+      "label": false,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-only",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ pending: незавершённая операция. 424242",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    },
+    {
+      "index": 7,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Отказ pending: незавершённая операция.",
+        "case": "Обновление",
+        "conditions": "Читался журнал обновления.",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "github.copilot",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "windows",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "update.log, строка 5",
+        "expected": "Обновление проходит.",
+        "level": 3,
+        "limits": "Оценка по журналу, обновление не повторялось.",
+        "status": "pass"
+      }
+    }
+  ]
+}
