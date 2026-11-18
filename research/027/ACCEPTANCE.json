@@ -1,0 +1,253 @@
+{
+  "counts": {
+    "not run": 5,
+    "pass": 9
+  },
+  "iteration": "И-027",
+  "release": {
+    "tests": {
+      "base": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 46
+      },
+      "edition": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 46
+      }
+    },
+    "version": "0.1.7"
+  },
+  "rows": [
+    {
+      "actual": {
+        "base": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 46
+        },
+        "edition": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 46
+        }
+      },
+      "case": "выпуск 0.1.7 собран и испытан",
+      "evidence": "release-0.1.7/{base,edition}/AgentContractLab/reports/CHECKS.json",
+      "expected": "46 pass / 0 fail / 3 not run на обеих линиях",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "pass": 13
+        },
+        "edition": {
+          "pass": 13
+        },
+        "ok": true
+      },
+      "case": "адаптер Copilot проверен независимо от регрессий комплекта",
+      "evidence": "adapter-base.json; adapter-edition.json",
+      "expected": "13 проверок: карточка, второй вход, неизвестная среда, семь раскладок, порядок, невыписывание, отсутствие заявленного обнаружения",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": [
+        {
+          "actual": {
+            "discovery_proven": false,
+            "entry": "AGENTS.md",
+            "entry_recommended": ".github/copilot-instructions.md",
+            "entry_shared": false,
+            "writes": false
+          },
+          "case": "карточка адаптера Copilot",
+          "expected": "вход AGENTS.md, рекомендованный средой .github/copilot-instructions.md, entry_shared false, старшинство 3 из 5, пробелы покрытия, ничего не пишет",
+          "notes": "",
+          "status": "pass"
+        },
+        {
+          "actual": {
+            "contents_read": false,
+            "discovery_proven": false,
+            "not_proven": [
+              "auto-discovery",
+              "content_was_read",
+              "behaviour_with_model"
+            ]
+          },
+          "case": "обнаружение не заявлено как проверенное",
+          "expected": "discovery_proven false, contents_read false, три непроверенных пункта",
+          "notes": "",
+          "status": "pass"
+        }
+      ],
+      "case": "карточка среды ничего не пишет и не читает",
+      "evidence": "adapter-base.json",
+      "expected": "adapter copilot: discovery_proven false, contents_read false, проект не изменён",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": [
+        {
+          "entry_exists": true,
+          "github_dir_exists": false,
+          "refusals": {
+            ".github/copilot-instructions.md": "second_entry",
+            ".github/instructions/any.instructions.md": "second_entry",
+            "CLAUDE.md": "second_entry",
+            "GEMINI.md": "second_entry"
+          }
+        }
+      ],
+      "case": "второй вход запрещён кодом отказа",
+      "evidence": "adapter-base.json",
+      "expected": "connect с entry_path, отличным от AGENTS.md, отклоняется как second_entry; с AGENTS.md вход создаётся, .github/ не появляется",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "case": "источники Copilot видны, но не читаются и не меняются",
+      "evidence": "adapter-base.json",
+      "expected": "семь раскладок: общий файл, path-specific, agents, skills, .vscode/settings.json, CLAUDE.md, GEMINI.md — подтверждение до входа, файлы байт в байт",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "merged": 24,
+          "other": 0,
+          "reclassified": 12
+        },
+        "edition": {
+          "merged": 24,
+          "other": 0,
+          "reclassified": 12
+        }
+      },
+      "case": "правило тождества не поехало: корпус",
+      "evidence": "pairs-027-base.json; pairs-027-edition.json",
+      "expected": "24 склейки (12 форменных и 12 объявленных в И-025), 0 прочих, обе линии",
+      "limits": "объявленная замена ожидания: находка F1 из И-023 несовместима с ожиданием «смена файла свидетельства создаёт …",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "false": 0,
+          "merged": 3
+        },
+        "edition": {
+          "false": 0,
+          "merged": 3
+        }
+      },
+      "case": "правило тождества не поехало: журналы",
+      "evidence": "pairs-027-journals-base.json; pairs-027-journals-edition.json",
+      "expected": "3 из 3 повторов склеены, 0 ложных из 40, обе линии",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "checks_bytes": 930,
+        "different_outcome": "committed",
+        "first_write": "committed",
+        "iteration": "И-025",
+        "new_version": "0.1.7",
+        "observations_after_status": 1,
+        "ok": true,
+        "old_data_reads": true,
+        "old_data_untouched": true,
+        "old_version": "0.1.6",
+        "records_written": 1,
+        "repeat_kept_bytes": true,
+        "repeat_outcome": "no_change"
+      },
+      "case": "данные 0.1.6 читаются и не переписываются",
+      "evidence": "COMPAT.json",
+      "expected": "файл наблюдений 0.1.6 читается 0.1.7; повтор не меняет байты",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "equal": {
+          "COMPAT.json": true,
+          "EXPECTATIONS.json": true,
+          "adapter-base.json": true,
+          "adapter-edition.json": true,
+          "pairs-027-base.json": true,
+          "pairs-027-edition.json": true,
+          "pairs-027-journals-base.json": true,
+          "pairs-027-journals-edition.json": true
+        },
+        "identical": true
+      },
+      "case": "повтор из печати совпадает со сборкой",
+      "evidence": "REPLAY.json",
+      "expected": "все запечатанные результаты — те же",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": null,
+      "case": "обнаружение в живом Copilot / VS Code",
+      "evidence": "—",
+      "expected": "Chat в VS Code загружает AGENTS.md и файлы инструкций",
+      "limits": "Плагина здесь нет; это уровни достоверности 2–3, И-030…И-032.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "старшинство в живом Copilot",
+      "evidence": "—",
+      "expected": "path-specific и общий файл перекрывают AGENTS.md; Chat на github.com его не читает",
+      "limits": "Старшинство и пробелы покрытия взяты из документации среды и записаны данными.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "журналы заказчика",
+      "evidence": "—",
+      "expected": "ваши журналы и проекты",
+      "limits": "Журналов нет.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "Windows и права",
+      "evidence": "—",
+      "expected": "Windows, ограниченные права",
+      "limits": "Стенд Linux.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "живые модели",
+      "evidence": "—",
+      "expected": "поведение с подключённой моделью",
+      "limits": "Режим офлайн.",
+      "status": "not run"
+    }
+  ]
+}

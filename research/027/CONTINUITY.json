@@ -1,0 +1,93 @@
+{
+  "acceptance": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 9,
+    "sha256": "7d815e1d5bfe0b31c26c81fd6e303785a899c8a4979ed46701bdf503ce7505ea"
+  },
+  "adapter": {
+    "checks": {
+      "base": {
+        "pass": 13
+      },
+      "edition": {
+        "pass": 13
+      }
+    },
+    "contents_read": false,
+    "coverage_gap": [
+      "Copilot Chat on github.com",
+      "inline suggestions"
+    ],
+    "discovery_proven": false,
+    "entry": "AGENTS.md",
+    "entry_recommended": ".github/copilot-instructions.md",
+    "entry_shared": false,
+    "name": "copilot",
+    "not_proven": [
+      "auto-discovery",
+      "content_was_read",
+      "behaviour_with_model"
+    ],
+    "priority_of": 5,
+    "priority_rank": 3,
+    "second_entry": "отказ на .github/copilot-instructions.md, CLAUDE.md, GEMINI.md, .github/instructions/*.instructions.md",
+    "sources": [
+      ".github/copilot-instructions.md",
+      ".github/instructions",
+      ".github/agents",
+      ".github/prompts",
+      ".github/skills",
+      ".vscode/settings.json",
+      "CLAUDE.md",
+      "GEMINI.md"
+    ],
+    "writes_into_environment": 0
+  },
+  "at": "2026-11-18",
+  "compat": {
+    "new_version": "0.1.7",
+    "not_rewritten": true,
+    "old_data_reads": true,
+    "old_version": "0.1.6"
+  },
+  "decision_027": "applied",
+  "iteration": "027",
+  "next": "И-028 адаптер Claude Code: отдельный файл и отдельная семантика",
+  "page": {
+    "file": "Итерация-027.html",
+    "inside_seal": false,
+    "sha256": "7b3ed64dd5d0ea73649edd6bdcbbd84c7d72c5a50e1832a76fbd34e95f8b0531"
+  },
+  "release": {
+    "ancestor_untouched": "0.1.0",
+    "base_bytes": 121456,
+    "base_sha256": "5a21ac9aa3d211739b03c604cddba3d177d33bb24fcf1c109b6d90b3ece7a6ed",
+    "edition_bytes": 121503,
+    "edition_sha256": "c67ca5d65f50c5bc56b77c13f126b4479b64ada81e9ef40301f02307fd319f83",
+    "previous_in_tree": [
+      "0.1.5",
+      "0.1.6"
+    ],
+    "tests": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 46
+    },
+    "version": "0.1.7"
+  },
+  "replay_identical": true,
+  "replay_sha256": "4b1e4ee8dea2b26743c1977e743201e603ef01bb0f504e253533d5db649a44ff",
+  "rule_changed": false,
+  "rule_unchanged": {
+    "corpus_merged": 24,
+    "corpus_reclassified": 12,
+    "corpus_uncovered_merged": 0,
+    "journals_false": 0,
+    "journals_merged": 3
+  },
+  "seal": "AgentContractKit-Iteration-027.zip",
+  "seal_bytes": 386371,
+  "seal_sha256": "4b1e4ee8dea2b26743c1977e743201e603ef01bb0f504e253533d5db649a44ff",
+  "subject": "адаптер GitHub Copilot / VS Code: инструкции вместо правил, запрет второго входа кодом отказа"
+}
