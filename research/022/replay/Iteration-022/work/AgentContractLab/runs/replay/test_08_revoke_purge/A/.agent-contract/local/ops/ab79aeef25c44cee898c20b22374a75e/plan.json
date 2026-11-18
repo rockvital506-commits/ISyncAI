@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-18T16:50:28Z",
+  "files": {
+    ".agent-contract/project/state.json": {
+      "after": "7973f5ded8d1bd3675ac624e8b6bfdae48de6efefb972d40495e4fc399983b46",
+      "before": "4b14aefd4bd38a0b9d4125e6d7f0a8270e45a4df0b4ec0a97cd0484883a8d0fe"
+    }
+  },
+  "format": 1,
+  "op": "create",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_08_revoke_purge/A",
+  "status": "committed",
+  "ticket": "6f0cd8a98a972dbc2bbc786f5f94be3e9d6a01ec0d524ef6094725566eeb821b",
+  "tx": "ab79aeef25c44cee898c20b22374a75e"
+}

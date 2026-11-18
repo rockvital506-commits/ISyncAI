@@ -1,0 +1,37 @@
+{
+  "entries": [
+    {
+      "basis": "acceptance fixture",
+      "contract": null,
+      "criterion": "observable output",
+      "id": "B-1",
+      "key": null,
+      "kind": "contract",
+      "reason": "isolated fixture",
+      "revision": 1,
+      "scope": ".",
+      "state": "active",
+      "text": "synthetic fixture",
+      "title": "fixture",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "value": null
+    },
+    {
+      "basis": "acceptance fixture",
+      "contract": null,
+      "criterion": "observable output",
+      "id": "B-1",
+      "key": null,
+      "kind": "contract",
+      "reason": "isolated fixture",
+      "revision": 1,
+      "scope": ".",
+      "state": "active",
+      "text": "other",
+      "title": "fixture",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "value": null
+    }
+  ],
+  "schema_version": 1
+}

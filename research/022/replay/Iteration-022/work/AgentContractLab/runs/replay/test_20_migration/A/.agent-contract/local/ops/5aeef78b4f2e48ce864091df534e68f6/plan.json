@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-18T16:50:29Z",
+  "files": {
+    ".agent-contract/project/state.json": {
+      "after": "f8ce95802d4b4f82ce4c2eeebbf19168280d315b952da8e0f1c0288157a7e4ef",
+      "before": "a72a3a9b05e3dc795a8863b6201d8c68a6583cba0dfa56c21315af9c974b852b"
+    }
+  },
+  "format": 1,
+  "op": "create",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_20_migration/A",
+  "status": "committed",
+  "ticket": "ac777b3cd2f581a1cccdab935d451262f9ba9d54f02d41e8205de5287e993569",
+  "tx": "5aeef78b4f2e48ce864091df534e68f6"
+}

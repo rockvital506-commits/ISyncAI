@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-18T16:50:30Z",
+  "files": {
+    ".agent-contract/project/state.json": {
+      "after": "5bbc1572f0824f708b34171ff84931264d1cbd03cedb6302606314df2d7374dc",
+      "before": "d7708378917dbcdc6b88adbc89b55058d361f3119ef7748fc9e2c27a253f5c1d"
+    }
+  },
+  "format": 1,
+  "op": "create",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_27_crlf/A",
+  "status": "restored",
+  "ticket": "e20c4a7970650c55db3d8c3603d6a15ff30606f77d04af35a6f15f5bbe5606ad",
+  "tx": "263bc88fe6094f8fbc3de1bd80cde1fc"
+}

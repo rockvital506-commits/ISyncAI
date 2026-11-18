@@ -1,0 +1,95 @@
+{
+  "adapter": null,
+  "base": {
+    "installed": {
+      "PROTOCOL.md": "9b1131e8c3af7a248a168ab143e4f48de6d0e0de6d91a3adf0fc407d9dcafa9a",
+      "START.md": "3fade1fe9e5a3635d6274c54df8d41fca72c8bdf5d412002fcecbab03c18f726",
+      "entry.txt": "d1e9a0e418f34edc9373ef0d5f99d60b9957b16f2c3cb626da33baa859be7781",
+      "rules.json": "caa20f07e81adb8a91aa9251be68569637c902602c30c34c57f5ef39501df43b",
+      "schema.json": "8912231acc234cd47e014d5c763688b75ab9d11ec8fd6df575b2f0e73af43b34"
+    },
+    "origin": "local:AgentContractKit",
+    "pin": "3acb990c82d091f4341ea9057415196a9c6de02448c06d5986282e7c612e76e6",
+    "version": "0.1.4"
+  },
+  "decisions": [
+    {
+      "at": "2026-11-18T16:50:28Z",
+      "op": "install",
+      "reason": "Установлен отдельно одобренный выпуск.",
+      "revision": 1,
+      "subject": "0.1.4"
+    },
+    {
+      "at": "2026-11-18T16:50:28Z",
+      "op": "create",
+      "reason": "isolated test",
+      "revision": 2,
+      "subject": "P-1"
+    },
+    {
+      "at": "2026-11-18T16:50:28Z",
+      "op": "create",
+      "reason": "isolated test",
+      "revision": 3,
+      "subject": "P-2"
+    },
+    {
+      "at": "2026-11-18T16:50:28Z",
+      "op": "transition",
+      "reason": "fixture",
+      "revision": 4,
+      "subject": "P-2"
+    },
+    {
+      "at": "2026-11-18T16:50:28Z",
+      "op": "transition",
+      "reason": "fixture",
+      "revision": 5,
+      "subject": "P-1"
+    },
+    {
+      "at": "2026-11-18T16:50:28Z",
+      "op": "purge",
+      "reason": "explicit test",
+      "revision": 6,
+      "subject": "P-2"
+    },
+    {
+      "at": "2026-11-18T16:50:28Z",
+      "op": "purge",
+      "reason": "explicit test",
+      "revision": 7,
+      "subject": "P-1"
+    },
+    {
+      "at": "2026-11-18T16:50:28Z",
+      "op": "create",
+      "reason": "isolated test",
+      "revision": 8,
+      "subject": "P-3"
+    }
+  ],
+  "entries": [
+    {
+      "basis": "test",
+      "contract": null,
+      "criterion": "exact output",
+      "id": "P-3",
+      "key": null,
+      "kind": "contract",
+      "reason": "isolated test",
+      "revision": 1,
+      "scope": ".",
+      "state": "active",
+      "text": "synthetic token",
+      "title": "fixture",
+      "updated_at": "2026-11-18T16:50:28Z",
+      "value": null
+    }
+  ],
+  "next_id": 4,
+  "retired": false,
+  "revision": 8,
+  "schema_version": 1
+}

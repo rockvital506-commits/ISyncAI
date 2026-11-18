@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-18T16:50:29Z",
+  "files": {
+    ".agent-contract/base/PROTOCOL.md": {
+      "after": "9b1131e8c3af7a248a168ab143e4f48de6d0e0de6d91a3adf0fc407d9dcafa9a",
+      "before": null
+    },
+    ".agent-contract/base/START.md": {
+      "after": "3fade1fe9e5a3635d6274c54df8d41fca72c8bdf5d412002fcecbab03c18f726",
+      "before": null
+    },
+    ".agent-contract/base/entry.txt": {
+      "after": "d1e9a0e418f34edc9373ef0d5f99d60b9957b16f2c3cb626da33baa859be7781",
+      "before": null
+    },
+    ".agent-contract/base/manifest.json": {
+      "after": "3acb990c82d091f4341ea9057415196a9c6de02448c06d5986282e7c612e76e6",
+      "before": null
+    },
+    ".agent-contract/base/rules.json": {
+      "after": "caa20f07e81adb8a91aa9251be68569637c902602c30c34c57f5ef39501df43b",
+      "before": null
+    },
+    ".agent-contract/base/schema.json": {
+      "after": "8912231acc234cd47e014d5c763688b75ab9d11ec8fd6df575b2f0e73af43b34",
+      "before": null
+    },
+    ".agent-contract/project/checks.json": {
+      "after": "867214183b597dbb205697bd94dd0669771cdf327e30d11d2be675a17450d8db",
+      "before": null
+    },
+    ".agent-contract/project/state.json": {
+      "after": "a72a3a9b05e3dc795a8863b6201d8c68a6583cba0dfa56c21315af9c974b852b",
+      "before": null
+    }
+  },
+  "format": 1,
+  "op": "install",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_14_no_leakage/B",
+  "status": "committed",
+  "ticket": "378f3a81f195e8722b85b2aa97a584279e43f1ef23a65a57ee4176f10a8291ca",
+  "tx": "dab4651eea284ff38019c38666733811"
+}

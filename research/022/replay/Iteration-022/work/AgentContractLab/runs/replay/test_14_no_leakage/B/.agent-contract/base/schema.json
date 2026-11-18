@@ -1,0 +1,44 @@
+{
+  "fields": [
+    "id",
+    "kind",
+    "contract",
+    "title",
+    "state",
+    "scope",
+    "text",
+    "basis",
+    "criterion",
+    "key",
+    "value",
+    "revision",
+    "updated_at",
+    "reason"
+  ],
+  "format": "agent-contract-fields",
+  "kinds": [
+    "contract",
+    "rule",
+    "constraint",
+    "protocol",
+    "preference"
+  ],
+  "schema_version": 1,
+  "scope": ". or relative subtree",
+  "structured_conflict": "equal non-null key + unequal value in intersecting effective scopes",
+  "transitions": {
+    "active": [
+      "suspended",
+      "revoked"
+    ],
+    "draft": [
+      "active",
+      "revoked"
+    ],
+    "revoked": [],
+    "suspended": [
+      "active",
+      "revoked"
+    ]
+  }
+}

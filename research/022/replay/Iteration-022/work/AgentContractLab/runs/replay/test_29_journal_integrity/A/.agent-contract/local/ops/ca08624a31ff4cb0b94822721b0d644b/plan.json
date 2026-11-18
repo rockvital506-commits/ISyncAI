@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-18T16:50:30Z",
+  "files": {
+    ".agent-contract/project/state.json": {
+      "after": "5bbc1572f0824f708b34171ff84931264d1cbd03cedb6302606314df2d7374dc",
+      "before": "32589a218e150a33c0ffc33467011b17bb539c05253f5925dc87c7b4b1857b31"
+    },
+    "unknown-target": {
+      "after": "3acb990c82d091f4341ea9057415196a9c6de02448c06d5986282e7c612e76e6",
+      "before": null
+    }
+  },
+  "format": 1,
+  "op": "create",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_29_journal_integrity/A",
+  "status": "committed",
+  "ticket": "ba3f1cca240140ff3873f6ad3d568116c65f2c3aa417c70658fc54d1b6d960e7",
+  "tx": "ca08624a31ff4cb0b94822721b0d644b"
+}

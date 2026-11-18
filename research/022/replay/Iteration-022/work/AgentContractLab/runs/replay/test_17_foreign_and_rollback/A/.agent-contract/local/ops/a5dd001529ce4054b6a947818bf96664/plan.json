@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-18T16:50:29Z",
+  "files": {
+    ".agent-contract/base/START.md": {
+      "after": "3b5d2ca733703e692c0fc75d30262d01823f50cfef6fcdb14de677e73afd3405",
+      "before": "3fade1fe9e5a3635d6274c54df8d41fca72c8bdf5d412002fcecbab03c18f726"
+    },
+    ".agent-contract/base/entry.txt": {
+      "after": "57f41bf8cd92703b7107e45dccb7eb6b67846b36207bc8420124f9eebf1c5f24",
+      "before": "d1e9a0e418f34edc9373ef0d5f99d60b9957b16f2c3cb626da33baa859be7781"
+    },
+    ".agent-contract/base/manifest.json": {
+      "after": "df08b6d2cc16a69f6e85ad475cb476e6465090330c5208cfc22c68a046ce60b8",
+      "before": "3acb990c82d091f4341ea9057415196a9c6de02448c06d5986282e7c612e76e6"
+    },
+    ".agent-contract/project/state.json": {
+      "after": "239209e95cd53c84472e47bd4b9df4111168a4c21425f658b5ac398561e811d5",
+      "before": "96cc62ef8be956f583db56bd3208cd4e66666411d52089d3e26b7b7deb29ef8a"
+    },
+    "AGENTS.md": {
+      "after": "57f41bf8cd92703b7107e45dccb7eb6b67846b36207bc8420124f9eebf1c5f24",
+      "before": "d1e9a0e418f34edc9373ef0d5f99d60b9957b16f2c3cb626da33baa859be7781"
+    }
+  },
+  "format": 1,
+  "op": "update",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_17_foreign_and_rollback/A",
+  "status": "restored",
+  "ticket": "6ad1158186b19f5a6330612eb1f73d5dd264cf2d721db6d1806e16bfa40827cd",
+  "tx": "a5dd001529ce4054b6a947818bf96664"
+}

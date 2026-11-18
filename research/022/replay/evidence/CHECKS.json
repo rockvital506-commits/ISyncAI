@@ -1,0 +1,532 @@
+{
+  "at": "2026-11-18T16:50:31Z",
+  "cases": [
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T01",
+      "conditions": "Отдельная синтетическая A/B/C: test_01_composition",
+      "evidence": {
+        "files": 8,
+        "missing": {
+          "path": ".agent-contract/base/manifest.json"
+        },
+        "pin": "3acb990c82d091f4341ea9057415196a9c6de02448c06d5986282e7c612e76e6"
+      },
+      "expected": "Чистая база имеет пустые реестры, проверяемый состав, отключённый адаптер; отсутствие файла блокирует чтение.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_01_composition"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T02",
+      "conditions": "Отдельная синтетическая A/B/C: test_02_links",
+      "evidence": {
+        "blocked": "START.md → no-such-file.md"
+      },
+      "expected": "Исправные ссылки разобраны; битая ссылка в новом выпуске не публикуется.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_02_links"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T03",
+      "conditions": "Отдельная синтетическая A/B/C: test_03_duplicate_keys_ids",
+      "evidence": {
+        "blocked": [
+          "B-1 twice",
+          "duplicate JSON field"
+        ]
+      },
+      "expected": "Повтор ID, в том числе с другим текстом, и повтор ключа JSON не разрешены.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_03_duplicate_keys_ids"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T04",
+      "conditions": "Отдельная синтетическая A/B/C: test_04_fail_closed",
+      "evidence": {
+        "untouched_sha256": "7cbaa49f2ee95bb046f916e0c7922c128122771e1e08650d52917a50b667e233"
+      },
+      "expected": "Неизвестные версия, состояние, поля и переход не вызывают потери данных.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_04_fail_closed"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T05",
+      "conditions": "Отдельная синтетическая A/B/C: test_05_decisions_and_types",
+      "evidence": {
+        "decision": {
+          "at": "2026-11-18T16:50:27Z",
+          "op": "create",
+          "reason": "testing",
+          "revision": 3,
+          "subject": "P-2"
+        },
+        "reviewed_paths": [
+          ".agent-contract/project/state.json"
+        ]
+      },
+      "expected": "Без согласия нет записи; подтверждённое добавление даёт одну запись и одно решение.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_05_decisions_and_types"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T06",
+      "conditions": "Отдельная синтетическая A/B/C: test_06_stale_plan",
+      "evidence": {
+        "id": "P-1",
+        "revision": 3,
+        "stale": "blocked"
+      },
+      "expected": "Изменение сохраняет ID; устаревший, чужой или изменённый план отклонён.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_06_stale_plan"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T07",
+      "conditions": "Отдельная синтетическая A/B/C: test_07_lifecycle",
+      "evidence": {
+        "active_counts": [
+          0,
+          1
+        ],
+        "child_rev": 1,
+        "sibling_scope": 0
+      },
+      "expected": "Приостановка и возобновление контракта скрывает/возвращает запись без изменения ребёнка.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_07_lifecycle"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T08",
+      "conditions": "Отдельная синтетическая A/B/C: test_08_revoke_purge",
+      "evidence": {
+        "new_id": "P-3"
+      },
+      "expected": "Отмена терминальна; физическое удаление требует отдельного разрешения и не сносит детей.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_08_revoke_purge"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T09",
+      "conditions": "Отдельная синтетическая A/B/C: test_09_ephemeral_intent",
+      "evidence": {
+        "changed_files": 0
+      },
+      "expected": "Разовое указание, гипотеза, предложение и обычное чтение не меняют ни одного байта.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_09_ephemeral_intent"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T10",
+      "conditions": "Отдельная синтетическая A/B/C: test_10_conflicts",
+      "evidence": {
+        "conflicting_ids": [
+          "P-2",
+          "P-3"
+        ]
+      },
+      "expected": "Конфликт на пересечении двух областей раскрывает обе записи, непересекающиеся не блокируются.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_10_conflicts"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T11",
+      "conditions": "Отдельная синтетическая A/B/C: test_11_connect_disconnect",
+      "evidence": {
+        "second_connect_diff": 0
+      },
+      "expected": "Один общий вход; повторное подключение не меняет дерево, чужой вход не присваивается.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_11_connect_disconnect"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T12-process",
+      "conditions": "Отдельная синтетическая A/B/C: test_12_cold_process",
+      "evidence": {
+        "control": "absent",
+        "editor_executed": false,
+        "fresh_process": true
+      },
+      "expected": "Новый процесс CLI читает ранее сохранённое состояние, C остаётся без контракта.",
+      "limits": "Не проверяет автообнаружение, чтение и соблюдение правил расширениями.",
+      "status": "pass",
+      "test": "test_12_cold_process"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T13",
+      "conditions": "Отдельная синтетическая A/B/C: test_13_transfer",
+      "evidence": {
+        "package_files": [
+          "manifest.json",
+          "START.md",
+          "PROTOCOL.md",
+          "schema.json",
+          "rules.json",
+          "entry.txt"
+        ]
+      },
+      "expected": "Второй проект имеет одобренную базу, собственную ревизию, пустые правила и отдельный вход.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_13_transfer"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T14",
+      "conditions": "Отдельная синтетическая A/B/C: test_14_no_leakage",
+      "evidence": {
+        "marker_hits_in_B": 0
+      },
+      "expected": "Локальная метка А и неразрешённый файл релиза не попадают в Б.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_14_no_leakage"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T15",
+      "conditions": "Отдельная синтетическая A/B/C: test_15_update_records",
+      "evidence": {
+        "conflict": "rules.json:B-2",
+        "installed": "0.1.6",
+        "preserved": "local text"
+      },
+      "expected": "Три версии: независимые добавления по ID сохраняются, конфликт одного ID не разрешается без выбора.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_15_update_records"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T16",
+      "conditions": "Отдельная синтетическая A/B/C: test_16_process_exit",
+      "evidence": {
+        "child_exit": 75,
+        "classes": {
+          ".agent-contract/base/PROTOCOL.md": "before",
+          ".agent-contract/base/START.md": "delete_requires_consent",
+          ".agent-contract/base/entry.txt": "before",
+          ".agent-contract/base/manifest.json": "delete_requires_consent",
+          ".agent-contract/base/rules.json": "before",
+          ".agent-contract/base/schema.json": "before",
+          ".agent-contract/project/checks.json": "before",
+          ".agent-contract/project/state.json": "before"
+        },
+        "retry": "valid"
+      },
+      "expected": "Реальное завершение изолированного процесса между записями оставляет диагностируемую pending-операцию.",
+      "limits": "Остановка процесса на данной ОС, не обрыв питания и не тест расширения.",
+      "status": "pass",
+      "test": "test_16_process_exit"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "T17",
+      "conditions": "Отдельная синтетическая A/B/C: test_17_foreign_and_rollback",
+      "evidence": {
+        "foreign_preserved": true,
+        "repeat": "no_change",
+        "restored_hashes": {
+          "PROTOCOL.md": "9b1131e8c3af7a248a168ab143e4f48de6d0e0de6d91a3adf0fc407d9dcafa9a",
+          "START.md": "3fade1fe9e5a3635d6274c54df8d41fca72c8bdf5d412002fcecbab03c18f726",
+          "entry.txt": "d1e9a0e418f34edc9373ef0d5f99d60b9957b16f2c3cb626da33baa859be7781",
+          "manifest.json": "3acb990c82d091f4341ea9057415196a9c6de02448c06d5986282e7c612e76e6",
+          "rules.json": "caa20f07e81adb8a91aa9251be68569637c902602c30c34c57f5ef39501df43b",
+          "schema.json": "8912231acc234cd47e014d5c763688b75ab9d11ec8fd6df575b2f0e73af43b34"
+        }
+      },
+      "expected": "Безопасные файлы восстановлены побайтово; посторонняя правка сохранена; повторное восстановление идемпотентно.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_17_foreign_and_rollback"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X01",
+      "conditions": "Отдельная синтетическая A/B/C: test_18_publish_trust",
+      "evidence": {
+        "occupied_release_replaced": false,
+        "pin_required": true
+      },
+      "expected": "Опубликованный выпуск воспроизводим, не перезаписывается; подмена данных и неверный пин обнаружены.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_18_publish_trust"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X02",
+      "conditions": "Отдельная синтетическая A/B/C: test_19_unknown_ancestor",
+      "evidence": {
+        "baseline": "unavailable, no write"
+      },
+      "expected": "Недоступный исходный выпуск не подменяет трёхстороннее сравнение двухсторонним.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_19_unknown_ancestor"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X03",
+      "conditions": "Отдельная синтетическая A/B/C: test_20_migration",
+      "evidence": {
+        "records": 2,
+        "source": 0,
+        "target": 1
+      },
+      "expected": "Миграция 0 → 1 сохраняет записи и отклоняет неизвестные поля без записи.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_20_migration"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X04",
+      "conditions": "Отдельная синтетическая A/B/C: test_21_completed_undo",
+      "evidence": {
+        "before_sha256": "f8ce95802d4b4f82ce4c2eeebbf19168280d315b952da8e0f1c0288157a7e4ef"
+      },
+      "expected": "Ошибочная завершённая операция откатывается по отдельному билету, но не поверх новой правки.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_21_completed_undo"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X05",
+      "conditions": "Отдельная синтетическая A/B/C: test_22_retire",
+      "evidence": {
+        "retired": true
+      },
+      "expected": "Чужая правка входа блокирует обновление и отключение; вывод из эксплуатации сохраняет историю.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_22_retire"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X06",
+      "conditions": "Отдельная синтетическая A/B/C: test_23_observations",
+      "evidence": {
+        "level": 1
+      },
+      "expected": "Статус наблюдения требует доказательства; чужая версия среды не получает успех автоматически.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_23_observations"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X07",
+      "conditions": "Отдельная синтетическая A/B/C: test_24_two_writers",
+      "evidence": {
+        "competing_exit": 2
+      },
+      "expected": "Конкурирующий процесс не применяет изменение во время удержания межпроцессной блокировки.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_24_two_writers"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X08",
+      "conditions": "Отдельная синтетическая A/B/C: test_25_paths",
+      "evidence": {
+        "rejected_examples": 12
+      },
+      "expected": "Выход из корня, UNC/drive, неоднозначные имена Windows и служебные пути не разрешены.",
+      "limits": "Лексическая проверка путей не заменяет тест Windows NTFS.",
+      "status": "pass",
+      "test": "test_25_paths"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X09",
+      "conditions": "Отдельная синтетическая A/B/C: test_26_links_boundary",
+      "evidence": {
+        "outside_unchanged": "3099b6c8cfec72b28f3150fc80c97025ae313d03dc9c72dc9a5556523b939456"
+      },
+      "expected": "Ссылки и hard links в управляемом дереве блокируют чтение/запись без касания другой папки.",
+      "limits": "Проверяется на доступной файловой системе; не тест конкурентной подмены каталога.",
+      "status": "pass",
+      "test": "test_26_links_boundary"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X10",
+      "conditions": "Отдельная синтетическая A/B/C: test_27_crlf",
+      "evidence": {
+        "restored_bytes_sha256": "d7708378917dbcdc6b88adbc89b55058d361f3119ef7748fc9e2c27a253f5c1d"
+      },
+      "expected": "Несовпадающие байты источника не считаются совпадающими, исходные CRLF при откате сохранены.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_27_crlf"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X11",
+      "conditions": "Отдельная синтетическая A/B/C: test_28_cross_layer",
+      "evidence": {
+        "project_untouched": true
+      },
+      "expected": "Обновление выявляет семантический конфликт между новым базовым и локальным слоем.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_28_cross_layer"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X12",
+      "conditions": "Отдельная синтетическая A/B/C: test_29_journal_integrity",
+      "evidence": {
+        "rejections": [
+          "backup",
+          "journal"
+        ]
+      },
+      "expected": "Повреждённая копия для восстановления не используется; несогласованные пути в журнале блокируются.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_29_journal_integrity"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X13",
+      "conditions": "Отдельная синтетическая A/B/C: test_30_update_versions",
+      "evidence": {
+        "version_before_rejected_update": "0.1.5"
+      },
+      "expected": "Одинаковая версия с другими байтами или понижение не принимаются, пустое обновление идемпотентно.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_30_update_versions"
+    },
+    {
+      "actual": "Нет Windows/NTFS в данном прогоне.",
+      "case": "X14",
+      "conditions": "Отдельная синтетическая A/B/C: test_31_windows_junction",
+      "evidence": {},
+      "expected": "Проверка reparse point отвергает каталог junction на доступной Windows.",
+      "limits": "Проверка только на Windows; вне Windows фиксируется not run.",
+      "status": "not run",
+      "test": "test_31_windows_junction"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X15",
+      "conditions": "Отдельная синтетическая A/B/C: test_32_existing_sources",
+      "evidence": {
+        "external_bytes_unchanged_after_connect": true
+      },
+      "expected": "Другие известные точки входа учитываются без чтения; изменение после предпросмотра аннулирует билет.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_32_existing_sources"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X16",
+      "conditions": "Отдельная синтетическая A/B/C: test_33_offline_candidates",
+      "evidence": {
+        "network": false,
+        "newer_candidates": 1,
+        "source_trusted_automatically": false
+      },
+      "expected": "Локальные кандидаты отличены от одобренных обновлений; UNC отклонён до обращения к ФС.",
+      "limits": "Только проверенные синтетические данные; не проверка поведения модели.",
+      "status": "pass",
+      "test": "test_33_offline_candidates"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X17",
+      "conditions": "Отдельная синтетическая A/B/C: test_40_exact_repeat",
+      "evidence": {},
+      "expected": "Точный повтор наблюдения не создаёт записи; изменение любого поля создаёт новую.",
+      "limits": "Правило 0.1.3: совпадение девяти полей целиком.",
+      "status": "pass",
+      "test": "test_40_exact_repeat"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X18",
+      "conditions": "Отдельная синтетическая A/B/C: test_41_semantic_repeat",
+      "evidence": {
+        "reworded_forms": 4
+      },
+      "expected": "Пересказ того же наблюдения не создаёт записи: регистр, пунктуация, словоформа, порядок слов.",
+      "limits": "Допуск измерен на корпусе И-020 (112 пар); проверяется правило, не поведение модели.",
+      "status": "pass",
+      "test": "test_41_semantic_repeat"
+    },
+    {
+      "actual": "Все утверждения сценария выполнены.",
+      "case": "X19",
+      "conditions": "Отдельная синтетическая A/B/C: test_42_semantic_boundary",
+      "evidence": {},
+      "expected": "Добавленное или снятое слово, другой факт или другая смысловая фраза создают новую запись.",
+      "limits": "Проверяется запрет склейки; близость текста сама по себе не склеивает.",
+      "status": "pass",
+      "test": "test_42_semantic_boundary"
+    },
+    {
+      "actual": "Сеанс расширения не запускался.",
+      "case": "T12-live",
+      "conditions": "Windows 11 / VS Code 1.146.0 / отдельный новый сеанс",
+      "evidence": null,
+      "expected": "Отдельные свидетельства обнаружения, чтения, выполнения и повторения.",
+      "limits": "Офлайн-раннер не обращается к редактору, аккаунту или модели.",
+      "status": "not run",
+      "test": "GitHub Copilot"
+    },
+    {
+      "actual": "Сеанс расширения не запускался.",
+      "case": "T12-live",
+      "conditions": "Windows 11 / VS Code 1.146.0 / отдельный новый сеанс",
+      "evidence": null,
+      "expected": "Отдельные свидетельства обнаружения, чтения, выполнения и повторения.",
+      "limits": "Офлайн-раннер не обращается к редактору, аккаунту или модели.",
+      "status": "not run",
+      "test": "Kilo Code"
+    }
+  ],
+  "duration_seconds": 3.529,
+  "environment": {
+    "editor_run": false,
+    "os": "Linux",
+    "python": "3.11.2"
+  },
+  "release_pin": "3acb990c82d091f4341ea9057415196a9c6de02448c06d5986282e7c612e76e6",
+  "tests_sha256": "b3fad7676481c153a65c234f4d28e55786cbe85484448eb1de7fd6c8911721c5",
+  "tool_sha256": "6e7249034aeb37ed71b7866f95d6df0abe38942086a7927d067309388260b433",
+  "totals": {
+    "fail": 0,
+    "inconclusive": 0,
+    "not run": 3,
+    "pass": 35
+  },
+  "version": "0.1.4"
+}

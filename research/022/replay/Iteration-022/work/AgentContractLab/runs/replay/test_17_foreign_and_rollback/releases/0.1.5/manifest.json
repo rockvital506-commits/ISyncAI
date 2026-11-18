@@ -1,0 +1,14 @@
+{
+  "adapter_version": 1,
+  "base_version": "0.1.5",
+  "files": {
+    "PROTOCOL.md": "9b1131e8c3af7a248a168ab143e4f48de6d0e0de6d91a3adf0fc407d9dcafa9a",
+    "START.md": "3b5d2ca733703e692c0fc75d30262d01823f50cfef6fcdb14de677e73afd3405",
+    "entry.txt": "57f41bf8cd92703b7107e45dccb7eb6b67846b36207bc8420124f9eebf1c5f24",
+    "rules.json": "caa20f07e81adb8a91aa9251be68569637c902602c30c34c57f5ef39501df43b",
+    "schema.json": "8912231acc234cd47e014d5c763688b75ab9d11ec8fd6df575b2f0e73af43b34"
+  },
+  "format": "agent-contract-release",
+  "origin": "local:test",
+  "schema_version": 1
+}

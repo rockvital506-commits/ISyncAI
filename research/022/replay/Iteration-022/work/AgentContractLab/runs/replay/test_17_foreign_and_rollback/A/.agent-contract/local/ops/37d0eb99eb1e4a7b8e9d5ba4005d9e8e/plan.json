@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-18T16:50:29Z",
+  "files": {
+    ".agent-contract/project/state.json": {
+      "after": "96cc62ef8be956f583db56bd3208cd4e66666411d52089d3e26b7b7deb29ef8a",
+      "before": "a72a3a9b05e3dc795a8863b6201d8c68a6583cba0dfa56c21315af9c974b852b"
+    },
+    "AGENTS.md": {
+      "after": "d1e9a0e418f34edc9373ef0d5f99d60b9957b16f2c3cb626da33baa859be7781",
+      "before": null
+    }
+  },
+  "format": 1,
+  "op": "connect",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_17_foreign_and_rollback/A",
+  "status": "committed",
+  "ticket": "0186edf10aafa0cc368bfd366ad9d1a46dfae4221a6002fc52c33c937309ee94",
+  "tx": "37d0eb99eb1e4a7b8e9d5ba4005d9e8e"
+}

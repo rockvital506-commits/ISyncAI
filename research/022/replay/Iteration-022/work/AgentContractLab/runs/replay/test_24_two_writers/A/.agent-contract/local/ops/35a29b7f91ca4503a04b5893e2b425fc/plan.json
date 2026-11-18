@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-18T16:50:30Z",
+  "files": {
+    ".agent-contract/project/state.json": {
+      "after": "d18c1c6c236d0cf79445df328280716614dbfa2ffc6a1b016dfcd2c2fb27d301",
+      "before": "32589a218e150a33c0ffc33467011b17bb539c05253f5925dc87c7b4b1857b31"
+    },
+    "AGENTS.md": {
+      "after": "d1e9a0e418f34edc9373ef0d5f99d60b9957b16f2c3cb626da33baa859be7781",
+      "before": null
+    }
+  },
+  "format": 1,
+  "op": "connect",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_24_two_writers/A",
+  "status": "committed",
+  "ticket": "83ea03c7212f3d03e85fd0bc4717894a664fe2a7c8c77596612d8312170923bd",
+  "tx": "35a29b7f91ca4503a04b5893e2b425fc"
+}

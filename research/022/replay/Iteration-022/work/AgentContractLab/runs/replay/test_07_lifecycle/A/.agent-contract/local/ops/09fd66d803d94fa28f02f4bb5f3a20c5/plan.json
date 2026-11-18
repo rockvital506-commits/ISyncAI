@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-18T16:50:28Z",
+  "files": {
+    ".agent-contract/project/state.json": {
+      "after": "d303b853ceacc56be7747037b74395b45a8e43c738d80a39ee23343b9b7e67c4",
+      "before": "4b14aefd4bd38a0b9d4125e6d7f0a8270e45a4df0b4ec0a97cd0484883a8d0fe"
+    }
+  },
+  "format": 1,
+  "op": "create",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_07_lifecycle/A",
+  "status": "committed",
+  "ticket": "69ee6bb29d2e578d8c72cd35fc14fe9e075b717137f337ee384af8621fb0c5c1",
+  "tx": "09fd66d803d94fa28f02f4bb5f3a20c5"
+}

@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-18T16:50:27Z",
+  "files": {
+    ".agent-contract/project/state.json": {
+      "after": "d1ea6cde83ec2e57d8b1c020924f3c4b1fab42a037469b76b642f4298c795b9e",
+      "before": "3e6bbfb56899b03521357741ed49400e11b25e7c2f35ad57b595ce4d8df821fa"
+    }
+  },
+  "format": 1,
+  "op": "edit",
+  "root": "/home/user/ISyncAI/research/022/replay/Iteration-022/work/AgentContractLab/runs/replay/test_06_stale_plan/A",
+  "status": "committed",
+  "ticket": "8597e6d048e25620a531ec09f450cad87638ef732e01394bc0c157b7a00d3a17",
+  "tx": "fe60d20cf781453d8f87ce30fcdf52f1"
+}

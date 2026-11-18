@@ -1,0 +1,185 @@
+{
+  "counts": {
+    "not run": 3,
+    "pass": 9
+  },
+  "rows": [
+    {
+      "actual": {
+        "X17": "pass",
+        "X18": "pass",
+        "X19": "pass",
+        "totals": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 35
+        }
+      },
+      "case": "испытания комплекта, base",
+      "evidence": "release-0.1.4/base/AgentContractLab/reports/CHECKS.json",
+      "expected": "35 pass / 0 fail / 3 not run",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "X17": "pass",
+        "X18": "pass",
+        "X19": "pass",
+        "totals": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 35
+        }
+      },
+      "case": "испытания комплекта, edition",
+      "evidence": "release-0.1.4/edition/AgentContractLab/reports/CHECKS.json",
+      "expected": "35 pass / 0 fail / 3 not run",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "outcome": "pass",
+        "plans": 16,
+        "steps": {
+          "connect": true,
+          "exact_repeat_inert": true,
+          "first_record": true,
+          "install_without_entry": true,
+          "local_records_not_transferred": true,
+          "meaning_change_writes": 2,
+          "repeat_after_update_inert": true,
+          "reworded_repeat_inert": true,
+          "transition_from": "0.1.0",
+          "transition_preserved_records": true
+        }
+      },
+      "case": "сквозная имитация, base",
+      "evidence": "release-0.1.4/base/AgentContractLab/reports/PIPELINE.json",
+      "expected": "pass: повтор и пересказ не пишут, изменение смысла пишет, переход сохраняет записи",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "outcome": "pass",
+        "plans": 16,
+        "steps": {
+          "connect": true,
+          "exact_repeat_inert": true,
+          "first_record": true,
+          "install_without_entry": true,
+          "local_records_not_transferred": true,
+          "meaning_change_writes": 2,
+          "repeat_after_update_inert": true,
+          "reworded_repeat_inert": true,
+          "transition_from": "0.1.0",
+          "transition_preserved_records": true
+        }
+      },
+      "case": "сквозная имитация, edition",
+      "evidence": "release-0.1.4/edition/AgentContractLab/reports/PIPELINE.json",
+      "expected": "pass: повтор и пересказ не пишут, изменение смысла пишет, переход сохраняет записи",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "bad": [],
+        "base_version": "0.1.4",
+        "count": 23,
+        "files": 23,
+        "manifest_equal": true,
+        "origin": "local:AgentContractKit"
+      },
+      "case": "ведомость и метаданные, base",
+      "evidence": "release-0.1.4/base/AgentContractLab/SHA256SUMS",
+      "expected": "23 отпечатка сходятся, манифест базы равен манифесту выпуска",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "bad": [],
+        "base_version": "0.1.4",
+        "count": 23,
+        "files": 23,
+        "manifest_equal": true,
+        "origin": "local:AgentContractKitISAIEdition"
+      },
+      "case": "ведомость и метаданные, edition",
+      "evidence": "release-0.1.4/edition/AgentContractLab/SHA256SUMS",
+      "expected": "23 отпечатка сходятся, манифест базы равен манифесту выпуска",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "differences": [],
+        "files": 6
+      },
+      "case": "предок 0.1.0 не переписан",
+      "evidence": "dist/AgentContractKit-0.1.0.zip",
+      "expected": "шесть файлов совпадают с исходным архивом байт в байт",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "bad": [],
+        "broken": null,
+        "members": 18,
+        "sums": 17
+      },
+      "case": "печать",
+      "evidence": "AgentContractKit-Iteration-022.zip",
+      "expected": "архив цел, все отпечатки членов сходятся",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "outcome": "pass",
+        "totals": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 35
+        },
+        "version": "0.1.4"
+      },
+      "case": "повтор из печати",
+      "evidence": "/home/user/ISyncAI/research/022/replay/evidence",
+      "expected": "испытания и имитация распакованного архива дают те же итоги, что и сборка",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": null,
+      "case": "настоящие журналы",
+      "evidence": "—",
+      "expected": "Вне площадки: принимаются в И-023.",
+      "limits": "Правило проверено на синтетических наблюдениях; реальные журналы не подавались.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "полный корпус 112 пар",
+      "evidence": "—",
+      "expected": "Вне площадки: корпус утрачен, восстанавливается и измеряется в И-024.",
+      "limits": "Здесь правило подтверждено только регрессиями X17–X19 и шагом имитации.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "Windows, права и живые расширения",
+      "evidence": "—",
+      "expected": "Вне площадки: как и в прежних выпусках.",
+      "limits": "Linux, синтетические проекты, без моделей.",
+      "status": "not run"
+    }
+  ]
+}
