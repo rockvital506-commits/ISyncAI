@@ -1,0 +1,100 @@
+{
+  "acceptance": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 12,
+    "sha256": "95fe6d1d0d452eceef8fa412d1480c36c64deddbb416e2172448fc5ea68667d2"
+  },
+  "adapter_check": {
+    "base": {
+      "pass": 13
+    },
+    "edition": {
+      "pass": 13
+    }
+  },
+  "at": "2026-11-18",
+  "compat": {
+    "new_version": "0.1.10",
+    "not_rewritten": true,
+    "old_data_reads": true,
+    "old_version": "0.1.9"
+  },
+  "corpora": {
+    "corpus112": {
+      "declared": 12,
+      "merged": 24,
+      "pairs": 112
+    },
+    "corpus80": {
+      "false": 0,
+      "form_merged": 8,
+      "missed": 0,
+      "pairs": 80
+    },
+    "journals": {
+      "false": 0,
+      "merged": 3
+    },
+    "punct": {
+      "false": 0,
+      "file": "pairs-030-corpus.json",
+      "missed": 0,
+      "pairs": 12,
+      "sha256": "388cd2d9edc7ce4c46a7c2c7670fa2886b81b0abf28ef6620b0a87d182be08d1"
+    }
+  },
+  "decision_030": "Б — снимать завершающую точку применено",
+  "dual": {
+    "checks": {
+      "base": {
+        "pass": 16
+      },
+      "edition": {
+        "pass": 16
+      }
+    }
+  },
+  "findings": {
+    "F4": "сборка сравнивала версии строкой (0.1.10 < 0.1.9): первый прогон молча пропустил правки 0.1.5–0.1.9; исправлено числовым сравнением, в приёмке — сортировкой по версии, X33 сделан версионно-независимым"
+  },
+  "iteration": "030",
+  "next": "И-031: адаптер Claude Code (сейчас заглушка status stub); затем Cursor и Antigravity, затем уровни достоверности",
+  "page": {
+    "file": "Итерация-030.html",
+    "inside_seal": false,
+    "sha256": "f90588b62e8965f4756bc00a6a6a1be8f4f553f2857d0f0c262150e09fb65297"
+  },
+  "release": {
+    "ancestor_untouched": "0.1.0",
+    "base_bytes": 167198,
+    "base_sha256": "840f6a5e8278abd060f8f9da58096604e5b99e879866022ce16a0d6c66984538",
+    "edition_bytes": 167284,
+    "edition_sha256": "0016406ee94460e6ecc05c0b1a1c96119bd9935152d0e023e9b31da7f969457a",
+    "previous_in_tree": [
+      "0.1.4",
+      "0.1.5",
+      "0.1.6",
+      "0.1.7",
+      "0.1.8",
+      "0.1.9"
+    ],
+    "tests": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 50
+    },
+    "version": "0.1.10"
+  },
+  "replay_identical": true,
+  "replay_sha256": "df870e3d18adb58b43a6935fc48ec993fe12a9d5add84e3b806f87af6a5291f7",
+  "rule_change": {
+    "preserve": "точки внутри имени (a.b, test_build.py, v1.0)",
+    "strip": "завершающие точки у идентификатора"
+  },
+  "rule_changed": true,
+  "seal": "AgentContractKit-Iteration-030.zip",
+  "seal_bytes": 523008,
+  "seal_sha256": "df870e3d18adb58b43a6935fc48ec993fe12a9d5add84e3b806f87af6a5291f7",
+  "subject": "правило и пунктуация: завершающая точка не входит в идентификатор (решение Б по F2)"
+}

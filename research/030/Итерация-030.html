@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-030. Точка и идентификатор — 0.1.10</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-030. Точка в конце предложения больше не факт</h1>
+<p class="lead">18 ноября 2026. Решение владельца по находке F2 — <b>Б</b>: снимать завершающую точку у идентификатора, точка внутри имени остаётся. Правка проверена тремя корпусами. Выпуск <b>0.1.10</b>.</p>
+
+<div class="verdict">
+<strong><code>test_build.</code> и <code>test_build</code> — один факт. <code>test_build.py</code> и <code>test_build</code> — по-прежнему разные.</strong>
+Корпус пунктуации 12 из 12, корпус И-029 впервые 80 из 80 (форма записи 8 из 8 вместо 3), корпус 112 пар и журналы не поехали.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.10</b></div>
+<div><span>Испытания</span><b>50 / 0 / 3</b></div>
+<div><span>Корпус пунктуации</span><b class="good">12 / 12</b></div>
+<div><span>Корпус И-029</span><b class="good">80 / 80</b></div>
+<div><span>Приёмка</span><b>12 / 0 / 5</b></div>
+</div>
+
+<h2>Три корпуса, как заявлено</h2>
+<table>
+<tr><th>Корпус</th><th class="num">Пар</th><th>Ожидание</th><th>Результат</th></tr>
+<tr><td>пунктуация И-030 (заморожен, <code>388cd2d9…</code>)</td><td class="num">12</td><td>6 склеек / 6 разделений</td><td class="good">12 из 12</td></tr>
+<tr><td>корпус И-029 (<code>842620d8…</code>)</td><td class="num">80</td><td>80 из 80, форма 8 из 8</td><td class="good">80 из 80, форма 8 из 8 (было 3)</td></tr>
+<tr><td>корпус И-020/И-024</td><td class="num">112</td><td>24 склейки, прочих 0</td><td class="good">24 (12 объявленных), прочих 0</td></tr>
+<tr><td>журналы И-023</td><td class="num">43</td><td>3 из 3, ложных 0 из 40</td><td class="good">3 из 3, ложных 0</td></tr>
+</table>
+
+<h2>Корпус пунктуации целиком</h2>
+<table>
+<tr><th>Пара</th><th>Метка</th><th>Результат</th></tr>
+<tr><td><code>test_build.</code> ↔ <code>test_build</code></td><td>склейка</td><td class="good">склеено</td></tr>
+<tr><td><code>a.b.</code> ↔ <code>a.b</code></td><td>склейка</td><td class="good">склеено</td></tr>
+<tr><td><code>TypeError.</code> ↔ <code>TypeError</code></td><td>склейка</td><td class="good">склеено</td></tr>
+<tr><td><code>v1.0.</code> ↔ <code>v1.0</code></td><td>склейка</td><td class="good">склеено</td></tr>
+<tr><td><code>test_build.py.</code> ↔ <code>test_build.py</code></td><td>склейка</td><td class="good">склеено</td></tr>
+<tr><td>две фразы, точка в конце</td><td>склейка</td><td class="good">склеено</td></tr>
+<tr><td><code>test_build.py</code> ↔ <code>test_build</code></td><td>не склейка</td><td class="good">разделено</td></tr>
+<tr><td><code>v1.1</code> ↔ <code>v1.0</code></td><td>не склейка</td><td class="good">разделено</td></tr>
+<tr><td><code>TypeError в test_build.</code> ↔ <code>AssertionError в test_io.</code></td><td>не склейка</td><td class="good">разделено</td></tr>
+<tr><td><code>a.b.c.</code> ↔ <code>a.b</code></td><td>не склейка</td><td class="good">разделено</td></tr>
+<tr><td><code>Код возврата 2.</code> ↔ <code>Кода возврата 3</code></td><td>не склейка</td><td class="good">разделено</td></tr>
+<tr><td><code>a.b.</code> ↔ <code>a_b</code></td><td>не склейка</td><td class="good">разделено</td></tr>
+</table>
+
+<h2>Находка F4: версия строкой</h2>
+<p>Сборка сравнивала версии строкой, а <code>'0.1.10' &lt; '0.1.9'</code>. Первый прогон выпуска поэтому молча пропустил все правки 0.1.5–0.1.9: вышло 35 испытаний вместо 50 и архив без правил. Поймано сверкой числа испытаний с ожидаемым — обязательным шагом после сборки.</p>
+<p>Исправлено числовым сравнением версий во всех проверках сборки. Тот же класс ошибки нашёлся ещё дважды — в моей приёмке (список каталогов сравнивался строкой, и цепочка выпусков была объявлена неполной) и в тесте X33, записанном под конкретный номер версии. Все три закрыты.</p>
+
+<div class="note">
+<b>Чего эта итерация не делает.</b> Она не запускает VS Code и расширения, не меняет условия и наблюдателя из И-029 и не касается адаптеров. Правка узкая: только завершающие точки. <code>not run</code> в приёмке — это <code>not run</code>.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li>По карте: <b>И-031 — адаптер Claude Code</b> (сейчас заглушка <code>status: stub</code>), затем Cursor и Antigravity, затем уровни достоверности.</li>
+<li>Открытых решений владельца по правилу нет: F1 закрыт решением Б в И-029, F2 — решением Б в И-030.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-030.zip</code>, 50 членов, 523 008 B, <code>df870e3d…</code>; повтор из печати совпал по всем четырнадцати результатам — <code>identical: true</code>. Выпуск 0.1.10: база 167 198 B <code>840f6a5e…</code>, Edition 167 284 B <code>0016406e…</code>; внутри 0.1.0 не тронут, цепочка 0.1.4–0.1.9 в поставке.
+</footer>
+</main>
+</body>
+</html>

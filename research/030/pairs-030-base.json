@@ -1,0 +1,74 @@
+{
+  "bytes_unchanged": true,
+  "corpus_sha256": "388cd2d9edc7ce4c46a7c2c7670fa2886b81b0abf28ef6620b0a87d182be08d1",
+  "false_merges": [],
+  "iteration": "И-030",
+  "kinds": {
+    "dot-dotted-name": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-exception": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-file": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-identifier": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-two-sentences": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-version": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-vs-underscore": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "name-changed": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "name-dotted-longer": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "name-version": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "name-with-extension": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "number-changed": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    }
+  },
+  "line": "base",
+  "missed_merges": [],
+  "outcome": "pass",
+  "pairs": 12,
+  "release_pin": "0c79523fc6d855323151be9231e3cd10d21fdba6a7eeee21bf78f2e614397561",
+  "version": "0.1.10"
+}
