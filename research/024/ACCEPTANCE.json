@@ -1,0 +1,180 @@
+{
+  "corpus_sha256": "fc0dae27477a8a194bc83a6a4802735fcbdcaf32d90b43879d1c577af02607ae",
+  "counts": {
+    "not run": 2,
+    "pass": 7
+  },
+  "rows": [
+    {
+      "actual": {
+        "cases": 12,
+        "different": 76,
+        "pairs": 112,
+        "repeats": 36,
+        "restored_in": "И-024 после утраты И-020",
+        "sha256": "fc0dae27477a8a194bc83a6a4802735fcbdcaf32d90b43879d1c577af02607ae"
+      },
+      "case": "корпус восстановлен",
+      "evidence": "measure.json",
+      "expected": "112 пар: 36 повторов, 76 разных событий, 12 случаев",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "containment": {
+          "band": null,
+          "highest": [
+            1.0,
+            "E12-сужено условие"
+          ],
+          "lowest": [
+            0.8621,
+            "E06-вар3"
+          ]
+        },
+        "dice": {
+          "band": null,
+          "highest": [
+            0.835,
+            "E06-снято ограничение"
+          ],
+          "lowest": [
+            0.4923,
+            "E03-вар2"
+          ]
+        },
+        "ratio": {
+          "band": null,
+          "highest": [
+            0.8451,
+            "E10-изменён идентификатор"
+          ],
+          "lowest": [
+            0.25,
+            "E01-вар3"
+          ]
+        },
+        "tokens_jaccard": {
+          "band": null,
+          "highest": [
+            0.75,
+            "E11-снято ограничение"
+          ],
+          "lowest": [
+            0.4444,
+            "E01-вар1"
+          ]
+        }
+      },
+      "case": "порога по проценту похожести не существует",
+      "evidence": "measure.json",
+      "expected": "у всех четырёх мер зазор между повтором и чужим событием отсутствует",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "0": {
+          "added_max": 0,
+          "chars_min": 0.85,
+          "false_merges": 0,
+          "repeats_found": 12
+        },
+        "1": {
+          "added_max": 1,
+          "chars_min": 0.85,
+          "false_merges": 1,
+          "repeats_found": 12
+        },
+        "2": {
+          "added_max": 2,
+          "chars_min": 0.85,
+          "false_merges": 13,
+          "repeats_found": 12
+        },
+        "3": {
+          "added_max": 3,
+          "chars_min": 0.85,
+          "false_merges": 18,
+          "repeats_found": 24
+        }
+      },
+      "case": "допустимое отклонение — 0 добавленных слов",
+      "evidence": "measure.json",
+      "expected": "при 0 добавленных словах 0 ложных склеек; при 2 — 13; при 3 — 18",
+      "limits": "Точка 0 — единственная с нулём ложных склеек на этом корпусе.",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "bytes_unchanged": true,
+        "merged": 12,
+        "mismatches": 0,
+        "missed": [],
+        "outcome": "pass",
+        "pairs": 112,
+        "unexpected": []
+      },
+      "case": "правило 0.1.4 совпадает с измерением, base",
+      "evidence": "pairs-base.json",
+      "expected": "12 склеек, все — «вар3»; 0 ложных; 0 пропущенных; байты не менялись",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "bytes_unchanged": true,
+        "merged": 12,
+        "mismatches": 0,
+        "missed": [],
+        "outcome": "pass",
+        "pairs": 112,
+        "unexpected": []
+      },
+      "case": "правило 0.1.4 совпадает с измерением, edition",
+      "evidence": "pairs-edition.json",
+      "expected": "12 склеек, все — «вар3»; 0 ложных; 0 пропущенных; байты не менялись",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "operations": 448,
+        "pairs": 112
+      },
+      "case": "записи прошли через план и билет",
+      "evidence": "pairs-base.json",
+      "expected": "на каждую из 112 пар — установка, подключение и две записи; всего 448 одобренных операций",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "measure_equal": true,
+        "pairs_equal": true
+      },
+      "case": "повтор из печати",
+      "evidence": "replay/",
+      "expected": "измерение и записи из запечатанного архива дают те же числа",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": null,
+      "case": "настоящие журналы",
+      "evidence": "—",
+      "expected": "Вне площадки: принимаются в И-023.",
+      "limits": "Корпус синтетический: 12 случаев, формулировки стенда. Реальные журналы не подавались.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "Windows, права и живые расширения",
+      "evidence": "—",
+      "expected": "Вне площадки: как и в прежних выпусках.",
+      "limits": "Linux, синтетические проекты, без моделей и сети.",
+      "status": "not run"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "bytes_unchanged": true,
+  "corpus_sha256": "fc0dae27477a8a194bc83a6a4802735fcbdcaf32d90b43879d1c577af02607ae",
+  "different_pairs": 76,
+  "line": "base",
+  "merged": [
+    "E01-вар3",
+    "E02-вар3",
+    "E03-вар3",
+    "E04-вар3",
+    "E05-вар3",
+    "E06-вар3",
+    "E07-вар3",
+    "E08-вар3",
+    "E09-вар3",
+    "E10-вар3",
+    "E11-вар3",
+    "E12-вар3"
+  ],
+  "merged_count": 12,
+  "mismatches": [],
+  "missed_merges": [],
+  "outcome": "pass",
+  "pairs": 112,
+  "release_pin": "7e7bb2a980dfc0d399145a924ede88a3483056cc771b4d824e8ea95919a3eabe",
+  "repeat_pairs": 36,
+  "unexpected_merges": [],
+  "version": "0.1.4"
+}
