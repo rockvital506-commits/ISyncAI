@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-042. Кто вправе менять правило — 0.1.22</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-042. Правило меняет только его владелец — и передаёт владение явно</h1>
+<p class="lead">18 ноября 2026. Двенадцатая итерация линии. Закрыт §10.1: у правила появился владелец, правка идёт от его имени, а передача владения требует отдельного согласия — как смена области в И-038. Выпуск <b>0.1.22</b>.</p>
+
+<div class="verdict">
+<strong>19 pass / 4 not run.</strong> Правка без <code>actor</code> и с чужим <code>actor</code> отклонена кодом <code>not_owner</code>; владелец правит и попадает в <code>changes</code>. Передача без <code>allow_owner</code> — отказ <code>owner</code> с «откуда и куда»; после передачи прежний владелец получает <code>not_owner</code>. Общее правило (<code>owner: null</code>) правит любой.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.22</b></div>
+<div><span>Испытания</span><b>75 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>19 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Что изменилось в правиле</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td>владелец правила</td><td><code>owner</code> — строка до 64 символов или <code>null</code> («общее правило»)</td></tr>
+<tr><td>правка</td><td><code>edit</code>/<code>transition</code>/<code>purge</code> требуют <code>actor</code>, равный владельцу</td></tr>
+<tr><td>чужой</td><td>отказ <code>not_owner</code> с <code>{owner, actor}</code></td></tr>
+<tr><td>передача владения</td><td><code>edit</code> с <code>fields.owner</code> требует <code>allow_owner</code>, иначе <code>owner</code> с <code>{from, to}</code></td></tr>
+<tr><td>общее правило</td><td><code>owner: null</code> — правит любой, <code>actor</code> не нужен</td></tr>
+<tr><td>совместимость</td><td><code>owner</code> необязателен: записи 0.1.21 читаются</td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code>, 6 сравнений</td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td>отпечатки до/после, <code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code>, <code>redacted</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, <code>owner</code> при передаче, потеря права</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений</td><td>4 команды × 3 прогона, <code>project_unchanged</code></td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок</td><td>3 чистых каталога: данные совпали без <code>at</code></td><td class="good">pass</td></tr>
+<tr><td>3M</td><td>модель прочитала</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>4</td><td>модель выполнила требование</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>5M</td><td>модель повторяет поведение</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F30.</b> Право без данных — догадка. Пока владельца не было в записи, «кто вправе» можно было только подразумевать. Теперь комплект сравнивает <code>actor</code> с <code>owner</code> и отказывает кодом.
+</div>
+
+<div class="note">
+<b>Находка F32.</b> Три сборки печати подряд дали одинаковые 45 членов и разный sha: в записи zip попадал момент файла. Теперь дата записей постоянная — две сборки совпали байт в байт, и «повтор совпал» стало сильнее.
+</div>
+
+<div class="note">
+<b>Находка F31.</b> Передача владения — тоже правка, но другая. Тихая смена <code>owner</code> была бы обходом: чужой «передал» бы себе право и правил. Поэтому передача требует <code>allow_owner</code>, идёт от имени текущего владельца и описывает назначение общему правилу тем же правилом.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-043</b> — что версионируется и когда проверять: календарь и границы версий.</li>
+<li>Дальше — миграция, метрики, права и Windows (И-044…И-050).</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-042.zip</code>, 45 членов, 1 109 240 B, <code>2ca334ab…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.22: база 409 528 B <code>65d00892…</code>, Edition 412 475 B <code>81a7741e…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.21. Данные 0.1.21 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>
