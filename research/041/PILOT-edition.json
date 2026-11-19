@@ -1,0 +1,583 @@
+{
+  "at": "2026-11-18",
+  "counts": {
+    "not run": 4,
+    "pass": 18
+  },
+  "items": [
+    {
+      "detail": "проект задаётся абсолютным путём; относительный путь по-прежнему не выходит из комплекта",
+      "evidence": {
+        "connect": "committed",
+        "install": "committed",
+        "state": ".agent-contract/project/state.json"
+      },
+      "expected": "install и connect проходят из консоли в раскладке шага 5",
+      "id": "P1",
+      "status": "pass",
+      "title": "Архив распакован в корень репозитория, установка без ручной правки"
+    },
+    {
+      "detail": "connect по-прежнему отказывает; brief отдаёт строку для своего файла и путь к START.md; запись проверок от адаптера не зависит",
+      "evidence": {
+        "brief_line": "Контракт этого проекта: открой [стартовый файл](.agent-contr",
+        "brief_mode": "foreign",
+        "connect_error": "foreign_entry",
+        "entry_mode": "foreign",
+        "foreign_untouched": true,
+        "recorded": "committed"
+      },
+      "expected": "документированный ручной вход вместо тупика; чужой файл не тронут",
+      "id": "P2",
+      "status": "pass",
+      "title": "Вход уже занят чужим AGENTS.md"
+    },
+    {
+      "detail": "правило названо данными: сравниваются os, mode, model, permissions; редактор и расширение — происхождение записи и не сравниваются. Поэтому смена участника не создаёт второго факта, а другая платформа или модель — создаёт: это объявленное следствие решения Б, а не провал",
+      "evidence": {
+        "after_other_model": 2,
+        "after_two_observers": 1,
+        "compared": [
+          "os",
+          "mode",
+          "model",
+          "permissions"
+        ],
+        "copilot": "no_change",
+        "copilot_notes": [
+          "Наблюдение совпадает с уже записанным (запись 1); новая запись не создаётся. Наблюдатель (редактор, расширение, версии) не сравнивается."
+        ],
+        "identity": "Событие — то, что видел такой-то участник: платформа, режим, модель и права входят в тождество, редактор и расширение — происхождение записи.",
+        "identity_rc": 0,
+        "ignored": [
+          "editor",
+          "editor_version",
+          "extension",
+          "extension_version",
+          "profile"
+        ],
+        "kilo": "committed",
+        "other_model": "committed"
+      },
+      "expected": "одна запись на событие при разных наблюдателях и двух записях при другой модели",
+      "id": "P3",
+      "status": "pass",
+      "title": "Одно событие, увиденное локально Kilo и Copilot"
+    },
+    {
+      "detail": "порядок владельца: сохранить входящую версию (git show :3:), оставить локальную (git checkout --ours), затем plan/apply merge и commit. merge только добавляет: известные наблюдения отбрасываются, ничего не удаляется",
+      "evidence": {
+        "after_repeat": 4,
+        "arena_health": "valid",
+        "arena_pull_rc": 0,
+        "arena_records": 4,
+        "cases": [
+          "сборка в облаке",
+          "сборка модуля",
+          "сборка отчёта"
+        ],
+        "cloud_outcome": "committed",
+        "conflicted": true,
+        "local_before": 3,
+        "local_outcome": "committed",
+        "merge_notes": [
+          {
+            "added": 1,
+            "deleted": 0,
+            "duplicates": 2,
+            "identity": "CONDITIONS",
+            "incoming": ".agent-contract/project/checks.incoming.json",
+            "writes_foreign": false
+          }
+        ],
+        "merge_outcome": "committed",
+        "merged": 4,
+        "pull_rc": 1,
+        "pushed": 0,
+        "pushed_after_merge": 0,
+        "repeat": "no_change",
+        "transfer_ok": true
+      },
+      "expected": "конфликт общего checks.json разрешается операцией merge без потери записей",
+      "id": "P4",
+      "status": "pass",
+      "title": "Состояние переживает git: слияние двух писателей"
+    },
+    {
+      "detail": "шаги не перечисление требований, а порядок: команда каждого шага запущена в том же проекте и вернула 0; права и поведение моделей в порядок не входят намеренно",
+      "evidence": {
+        "commands": [
+          "status",
+          "list",
+          "updates",
+          "identity",
+          "adapter",
+          "brief",
+          "plan",
+          "plan",
+          "plan",
+          "updates"
+        ],
+        "discovery_named": true,
+        "rights_not_changed": true,
+        "runs": [
+          {
+            "command": "status",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "1. **Обнаружение — не провер"
+          },
+          {
+            "command": "list",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "2. **Действующие правила.** "
+          },
+          {
+            "command": "updates",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "3. **Версии и происхождение."
+          },
+          {
+            "command": "identity",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "4. **Что считается одним соб"
+          },
+          {
+            "command": "adapter",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "5. **Ограничения среды.** `a"
+          },
+          {
+            "command": "brief",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "6. **Конфликты с чужими инст"
+          },
+          {
+            "command": "plan",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "7. **Показать до записи.** `"
+          },
+          {
+            "command": "plan",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "8. **Запись наблюдения.** `p"
+          },
+          {
+            "command": "plan",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "9. **Две машины.** `plan` и "
+          },
+          {
+            "command": "updates",
+            "error": null,
+            "named": true,
+            "rc": 0,
+            "step": "10. **Поддержка и коррекция "
+          }
+        ],
+        "steps": 10
+      },
+      "expected": "десять шагов по порядку, каждый назван командой, каждая команда проходит",
+      "id": "P5",
+      "status": "pass",
+      "title": "Первый промпт исполним буквально"
+    },
+    {
+      "detail": "Edition несёт docs/ПЕРВЫЙ-ЗАПУСК.md: тот же порядок, что в START.md, плюс как прогнать обкатку и что означает «условно пригодный»",
+      "evidence": {
+        "docs": true,
+        "docs_page": "ПЕРВЫЙ-ЗАПУСК.md",
+        "docs_steps": 10,
+        "files": 127,
+        "hints": [],
+        "line": "edition",
+        "steps": 10
+      },
+      "expected": "владелец находит порядок действий внутри архива",
+      "id": "P6",
+      "status": "pass",
+      "title": "В поставке есть инструкция обкатки"
+    },
+    {
+      "detail": "все шаги прошли консолью: установка, вход, ручной вход, запись, слияние",
+      "evidence": {
+        "hand_steps": []
+      },
+      "expected": "весь сценарий проходится консолью",
+      "id": "P7",
+      "status": "pass",
+      "title": "Ни один шаг не требует ручной правки поставки"
+    },
+    {
+      "detail": "состояние до повтора: 4; два вызова status: [(0, 4), (0, 4)]",
+      "evidence": {
+        "repeat": [
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ]
+      },
+      "expected": "два одинаковых вызова не меняют состояние",
+      "id": "P8",
+      "status": "pass",
+      "title": "Повторный прогон даёт тот же результат"
+    },
+    {
+      "detail": "наличие файлов — единственное, что измерено в этом пункте; содержимое не нужно",
+      "evidence": {
+        "layouts": [
+          {
+            "expected": [
+              "AGENTS.md"
+            ],
+            "found": [
+              "AGENTS.md"
+            ],
+            "layout": "entry",
+            "ok": true
+          },
+          {
+            "expected": [
+              ".github/copilot-instructions.md"
+            ],
+            "found": [
+              ".github/copilot-instructions.md"
+            ],
+            "layout": "copilot",
+            "ok": true
+          },
+          {
+            "expected": [
+              ".github/copilot-instructions.md",
+              "AGENTS.md"
+            ],
+            "found": [
+              ".github/copilot-instructions.md",
+              "AGENTS.md"
+            ],
+            "layout": "both",
+            "ok": true
+          }
+        ]
+      },
+      "expected": "объявленные входы перечислены, наличие измерено",
+      "id": "L1",
+      "status": "pass",
+      "title": "Уровень 1: файл есть и назван"
+    },
+    {
+      "detail": "имитатор среды дублирует порядок старшинства отдельным процессом; совпадение значит, что порядок в карточках исполним и однозначен",
+      "evidence": {
+        "cases": [
+          {
+            "environment": "kilo",
+            "imitator": "AGENTS.md",
+            "layout": "entry",
+            "ok": true,
+            "ours": "AGENTS.md"
+          },
+          {
+            "environment": "copilot",
+            "imitator": "AGENTS.md",
+            "layout": "entry",
+            "ok": true,
+            "ours": "AGENTS.md"
+          },
+          {
+            "environment": "kilo",
+            "imitator": null,
+            "layout": "copilot",
+            "ok": true,
+            "ours": null
+          },
+          {
+            "environment": "copilot",
+            "imitator": ".github/copilot-instructions.md",
+            "layout": "copilot",
+            "ok": true,
+            "ours": ".github/copilot-instructions.md"
+          },
+          {
+            "environment": "kilo",
+            "imitator": "AGENTS.md",
+            "layout": "both",
+            "ok": true,
+            "ours": "AGENTS.md"
+          },
+          {
+            "environment": "copilot",
+            "imitator": ".github/copilot-instructions.md",
+            "layout": "both",
+            "ok": true,
+            "ours": ".github/copilot-instructions.md"
+          }
+        ]
+      },
+      "expected": "две независимые реализации называют один и тот же вход на трёх раскладках",
+      "id": "L2",
+      "status": "pass",
+      "title": "Уровень 2: обнаружение по документированному порядку"
+    },
+    {
+      "detail": "прочитал комплект и имитатор читателя; что содержимое прочитала модель — отдельный уровень и он not run",
+      "evidence": {
+        "by_contract": "pass",
+        "by_model": "not run",
+        "imitator": {
+          "bytes": 380,
+          "lines": 1,
+          "marker_found": true,
+          "path": "AGENTS.md",
+          "sha256": "d1e9a0e418f34edc9373ef0d5f99d60b9957b16f2c3cb626da33baa859be7781"
+        },
+        "marker_found": true,
+        "path": "AGENTS.md",
+        "points_to": ".agent-contract/base/START.md",
+        "read": {
+          "bytes": 380,
+          "lines": 1,
+          "path": "AGENTS.md",
+          "sha256": "d1e9a0e418f34edc9373ef0d5f99d60b9957b16f2c3cb626da33baa859be7781"
+        }
+      },
+      "expected": "комплект и независимый читатель дают один отпечаток, размер и число строк; строка-указатель найдена",
+      "id": "L3",
+      "status": "pass",
+      "title": "Уровень 3: содержимое прочитано и опознано"
+    },
+    {
+      "detail": "содержимое чужого файла не запрашивается: известен только размер с диска",
+      "evidence": {
+        "bytes": 38,
+        "content": "not read (foreign)",
+        "path": "AGENTS.md",
+        "untouched": true
+      },
+      "expected": "посторонний AGENTS.md не читается и остаётся байт в байт",
+      "id": "L3F",
+      "status": "pass",
+      "title": "Уровень 3: чужой вход не читается"
+    },
+    {
+      "detail": "модели не вызываются: комплект не выдаёт своё чтение за чтение моделью",
+      "evidence": {
+        "content_proven": false,
+        "reason": "нет живой среды в песочнице"
+      },
+      "expected": "модель получила текст входа и действовала по нему",
+      "id": "L3M",
+      "status": "not run",
+      "title": "Уровень 3: модель прочитала содержимое"
+    },
+    {
+      "detail": "измерено комплектом: правка текста, возврат по журналу, отказ scope и согласие allow_scope; выполнение требования моделью — отдельный уровень и он not run",
+      "evidence": {
+        "after": "новый текст",
+        "before": "исходный текст",
+        "decision": [
+          {
+            "after": "новый текст",
+            "before": "исходный текст",
+            "field": "text"
+          }
+        ],
+        "immutable": "fields",
+        "restored": "исходный текст",
+        "revision": [
+          1,
+          2
+        ],
+        "scope": {
+          "after": "docs",
+          "before": "src"
+        },
+        "scope_decision": [
+          {
+            "after": "docs",
+            "before": "src",
+            "field": "scope"
+          }
+        ],
+        "scope_refusal": {
+          "from": "src",
+          "to": "docs"
+        }
+      },
+      "expected": "правка меняет запись, решение хранит «до/после», обратная правка возвращает текст; смена области без согласия отклонена",
+      "id": "L4C",
+      "status": "pass",
+      "title": "Уровень 4: изменение внесено и восстановимо по журналу"
+    },
+    {
+      "detail": "модели не вызываются: измерено, что изменение внесено и записано, а не что правило исполнено",
+      "evidence": {
+        "reason": "нет живой среды в песочнице"
+      },
+      "expected": "модель соблюдает правило после изменения",
+      "id": "L4",
+      "status": "not run",
+      "title": "Уровень 4: модель выполнила требование"
+    },
+    {
+      "detail": "измерено комплектом: отпечатки .agent-contract до и после совпали, kind rule — not_a_request, save — not_saved с направлением к create, серия через repeat ничего не изменила",
+      "evidence": {
+        "applies": "этот запуск",
+        "files_after": 22,
+        "files_before": 22,
+        "kind": "temporary",
+        "rule_refusal": "not_a_request",
+        "save_points_to": "create",
+        "save_refusal": "not_saved",
+        "series_identical": true,
+        "stored": false,
+        "unchanged": true,
+        "writes": false
+      },
+      "expected": "запрос исполняется один раз: проект не изменился, сохранение отклонено, правило оформляется отдельно",
+      "id": "L4Q",
+      "status": "pass",
+      "title": "Уровень 4: разовый запрос не сохраняется"
+    },
+    {
+      "detail": "измерено комплектом: revoked сохранил текст, purge убрал запись из entries, removed показал след без text/value, status назвал число следов",
+      "evidence": {
+        "after": 1,
+        "before": 0,
+        "in_entries": false,
+        "revoked": "revoked",
+        "status_removed": 1,
+        "text_kept": "временный текст",
+        "trace": {
+          "contract": "P-1",
+          "id": "P-3",
+          "kind": "rule",
+          "reason": "удаление",
+          "revision": 2,
+          "scope": "tmp",
+          "title": "временное правило"
+        }
+      },
+      "expected": "отменённая запись остаётся целиком, удалённая исчезает из реестра, но след остаётся без содержимого",
+      "id": "L4D",
+      "status": "pass",
+      "title": "Уровень 4: отмена сохраняет запись, удаление оставляет след"
+    },
+    {
+      "detail": "измерено комплектом: отказ secret с полем и видом образца, токена нет ни в деталях, ни в state; подложенный в state токен заменён меткой, ответ нёс redacted",
+      "evidence": {
+        "field": "text",
+        "kind": "github_token",
+        "printed": false,
+        "redacted": 1,
+        "refusal": "secret",
+        "stored_clean": true,
+        "value_not_echoed": true
+      },
+      "expected": "запись токена отклонена без пересказа значения, старый реестр читается с меткой [скрыто]",
+      "id": "L4S",
+      "status": "pass",
+      "title": "Уровень 4: секрет не записывается и не печатается"
+    },
+    {
+      "detail": "повторяется ответ комплекта, а не поведение расширения: behaviour_proven false",
+      "evidence": {
+        "identical": true,
+        "project_unchanged": true,
+        "series": [
+          {
+            "command": "status",
+            "differing": [],
+            "identical": true,
+            "runs": 3
+          },
+          {
+            "command": "identity",
+            "differing": [],
+            "identical": true,
+            "runs": 3
+          },
+          {
+            "command": "discovery",
+            "differing": [],
+            "identical": true,
+            "runs": 3
+          },
+          {
+            "command": "entry",
+            "differing": [],
+            "identical": true,
+            "runs": 3
+          }
+        ]
+      },
+      "expected": "четыре команды по три прогона совпадают, проект не изменился",
+      "id": "L5a",
+      "status": "pass",
+      "title": "Уровень 5: серия чтений даёт тот же ответ"
+    },
+    {
+      "detail": "сравнивались checks.json без поля at и отчёт status: ревизия, здоровье, режим входа",
+      "evidence": {
+        "revisions": [
+          2,
+          2,
+          2
+        ],
+        "unique": 1
+      },
+      "expected": "три независимых проекта после install/connect/record совпадают без времени",
+      "id": "L5b",
+      "status": "pass",
+      "title": "Уровень 5: серия установок в чистых каталогах"
+    },
+    {
+      "detail": "модели не вызываются: измерен повтор ответа комплекта, не поведение",
+      "evidence": {
+        "behavior_proven": false,
+        "reason": "нет живой среды в песочнице"
+      },
+      "expected": "модель в двух прогонах действует одинаково",
+      "id": "L5M",
+      "status": "not run",
+      "title": "Уровень 5: модель повторяет поведение"
+    },
+    {
+      "detail": "здесь расширения не запускаются, модели не вызываются: уровень 2 в смысле «среда нашла сама» остаётся not run, а команда discovery честно отвечает discovery_proven: false",
+      "evidence": {
+        "declared": "discovery_proven: false",
+        "reason": "нет живой среды в песочнице"
+      },
+      "expected": "расширение действительно находит и читает вход",
+      "id": "LIVE",
+      "status": "not run",
+      "title": "Живая среда: VS Code с Kilo и Copilot"
+    }
+  ],
+  "iteration": "И-041",
+  "limits": "живые расширения VS Code, модели, права и настоящий Windows не проверялись; environment объявляется вызывающим, а не измеряется",
+  "line": "edition",
+  "pack_version": "0.1.21",
+  "scope": "условная обкатка доступными средствами: процессы, копии поставки, git"
+}
