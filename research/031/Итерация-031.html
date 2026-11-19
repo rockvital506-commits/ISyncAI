@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-031. Комплект через свой интерфейс — 0.1.11</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-031. Комплект перестал быть проверенным только в теории</h1>
+<p class="lead">18 ноября 2026. Начало блока обкатки. Сценарий владельца пройден целиком моими средствами: отдельные процессы, копии поставки, два «компьютера» — каталоги и git. Живых расширений и моделей не было, поэтому комплект называется <b>условно пригодным</b>. Выпуск <b>0.1.11</b>.</p>
+
+<div class="verdict">
+<strong>Через консоль комплект не работал.</strong> Сравнение наблюдений падало с <code>NameError: CONDITIONS</code>, а команды <code>adapter</code> не существовало вовсе — при этом пятьдесят испытаний проходили. Теперь исправлено, и все три корпуса прогнаны именно тем вызовом, которым пользуется владелец.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.11</b></div>
+<div><span>Испытания</span><b>52 / 0 / 3</b></div>
+<div><span>Корпуса через консоль</span><b class="good">12 / 80 / 112</b></div>
+<div><span>Обкатка</span><b class="warn">1 pass / 7 fail</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Что было сломано и почему не замечали</h2>
+<table>
+<tr><th>Находка</th><th>Суть</th><th>История</th></tr>
+<tr><td>F5</td><td>определения <code>CONDITIONS</code>, <code>OBSERVER</code> и карточка Copilot дописаны в конец файла <b>после</b> выхода из программы → при запуске файлом их нет, сравнение наблюдений падает</td><td>с 0.1.9</td></tr>
+<tr><td>F6</td><td>команды <code>adapter</code> нет в списке команд консоли → карточки сред недостижимы</td><td>с 0.1.6</td></tr>
+<tr><td>причина</td><td>испытания вызывают внутреннюю функцию в том же процессе, минуя argparse и <code>__main__</code></td><td>—</td></tr>
+</table>
+<p>Правка: все определения перенесены до <code>main()</code>, <code>adapter</code> добавлен в консоль и читает <code>{"name": …}</code>. Регрессии: <b>X35</b> (карточка среды из консоли) и <b>X36</b> (файл ≡ импорт; после выхода из программы в файле ничего не остаётся).</p>
+
+<h2>Три корпуса — через опубликованную команду</h2>
+<table>
+<tr><th>Корпус</th><th class="num">Пар</th><th>Результат</th></tr>
+<tr><td>пунктуация И-030</td><td class="num">12</td><td class="good">6 склеек, 0 промахов, 0 ложных, байты не меняются</td></tr>
+<tr><td>И-029</td><td class="num">80</td><td class="good">32 склейки, ничего неожиданного</td></tr>
+<tr><td>И-020/И-024</td><td class="num">112</td><td class="good">24 склейки; 24 промаха и 12 ложных — ровно объявленные в И-025</td></tr>
+<tr><td>журналы И-023 (прежний стенд)</td><td class="num">43</td><td class="good">3 из 3 повторов, ложных 0 из 40</td></tr>
+</table>
+<p>Каждая пара — отдельный установленный проект и два отдельных процесса. Копировать установленный проект нельзя: журнал операций привязан к абсолютному пути (находка F8).</p>
+
+<h2>Матрица обкатки: честная стартовая точка</h2>
+<table>
+<tr><th>№</th><th>Пункт</th><th>Итог</th><th>Причина</th></tr>
+<tr><td>P1</td><td>архив в корне репозитория</td><td class="bad">fail</td><td>проект должен быть подкаталогом корня комплекта</td></tr>
+<tr><td>P2</td><td>вход занят чужим <code>AGENTS.md</code></td><td class="bad">fail</td><td>отказ <code>foreign_entry</code>; ручной вход не оформлен</td></tr>
+<tr><td>P3</td><td>одно событие на двух машинах</td><td class="bad">fail</td><td>две записи: <code>os</code> и <code>model</code> входят в условия</td></tr>
+<tr><td>P4</td><td>состояние через git</td><td class="bad">fail</td><td>журнал с абсолютным путём не переносится; двух писателей JSON не разводит</td></tr>
+<tr><td>P5</td><td>первый промпт</td><td class="bad">fail</td><td>9 действий из 10 покрыты командами, порядка шагов нет</td></tr>
+<tr><td>P6</td><td>инструкция в архиве</td><td class="bad">fail</td><td>ни <code>docs/</code>, ни порядка обкатки</td></tr>
+<tr><td>P7</td><td>без ручной правки поставки</td><td class="bad">fail</td><td>раскладку и вход пришлось искать вручную</td></tr>
+<tr><td>P8</td><td>повторяемость</td><td class="good">pass</td><td>два одинаковых вызова дают одно состояние</td></tr>
+</table>
+<p>Это не регресс, а первый замер сценария. До И-031 проверялось правило, а не работа.</p>
+
+<h2>Что это значит для вас</h2>
+<p>0.1.11 годится как <b>инструмент проверки</b> и как база для обкатки, но не как готовый рабочий комплект в вашем репозитории: P1, P2 и P4 упрутся в первые же десять минут. Порядок дальше — <b>И-032</b> (раскладка и вход), <b>И-033</b> (одно событие и две машины — там нужно ваше решение), <b>И-034</b> (первый промпт и документация издания). После них обкатка должна давать 8 из 8.</p>
+
+<div class="note">
+<b>Про «условно».</b> Живые VS Code, Kilo и Copilot не запускались; модели не вызывались — промпт исполнял скрипт; платформа подаётся как объявленные данные, а не измеряется. Всё это записано как <code>not run</code> и не выдается за проверку.
+</div>
+
+<h2>Адаптеры</h2>
+<p>Claude Code, Cursor и Antigravity остаются заглушками и <b>сняты с нумерации итераций</b> по вашему решению: имя известно, карточка отвечает <code>status: stub</code>, входа и покрытия нет. Три итерации, которые на них были заложены, из карты убраны; счёт пересчитан: осталось <b>52</b> элемента — 19 по комплекту и 33 по ядру.</p>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-031.zip</code>, 43 члена, 556 929 B, <code>e8c5122a…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.11: база 183 719 B <code>1bbbeac5…</code>, Edition 183 819 B <code>ee0a1c78…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.10.
+</footer>
+</main>
+</body>
+</html>
