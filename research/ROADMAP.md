@@ -72,7 +72,7 @@
 
 | № | Область | Элементы (по одному на итерацию) | Модуль |
 |---|---|---|---|
-| И‑052 … И‑058 | Контракты узлов | уровни и видимость; `IOPortSpec` и `schema_refs`; отпечаток типа; `PortWiringSpec`; `SymbolBindingSpec`; `EdgeLinkSpec`; `TransitionRule`; `RSoCDeliveryPolicy` | `contracts.py` |
+| И‑052 … И‑058 ◐ | Контракты узлов (И‑052 — в работе: исходная точка измерена, F56) | уровни и видимость; `IOPortSpec` и `schema_refs`; отпечаток типа; `PortWiringSpec`; `SymbolBindingSpec`; `EdgeLinkSpec`; `TransitionRule`; `RSoCDeliveryPolicy` | `contracts.py` |
 | И‑059 … И‑063 | Протокол фаз | фазы и гейты; критерии приёмки; `PatternSpec`; конверты и статусы; `HandleAccess`/TTL и `TaskManifest` | `protocol.py` |
 | И‑064 … И‑067 | Мутации связей | add/remove; wire/unwire портов; refactor символа и цели; scaffold/decommission | `link_mutator.py` |
 | И‑068 … И‑070 | Граф и индексация | EAVT/VAET-запросы; достижимость и затронутые тесты; 360°-аудит колец | `graph_index.py` |
