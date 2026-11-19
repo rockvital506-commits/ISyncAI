@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-037. Достоверность 5: повтор серии — 0.1.17</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-037. Уровень 5: повтор доказан для комплекта, не для модели</h1>
+<p class="lead">18 ноября 2026. Седьмая итерация обкатки. Появилась команда <code>repeat</code> — серия чтений, которая отвечает «совпало ли» и заодно доказывает, что повтор ничего не изменил. Повтор поведения модели остаётся <code>not run</code>. Выпуск <b>0.1.17</b>.</p>
+
+<div class="verdict">
+<strong>14 pass / 3 not run.</strong> Серия из четырёх команд по три прогона совпала до байта и не изменила проект. Три независимых проекта после <code>install</code> → <code>connect</code> → <code>record</code> дали одинаковые данные — различалось только поле времени <code>at</code>, и это объявлено. Пишущие операции <code>repeat</code> не выполняет: повтор записи — не серия, а решение.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.17</b></div>
+<div><span>Испытания</span><b>65 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>14 / 3</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Новая команда <code>repeat</code></h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td>только команды чтения</td><td><code>plan</code>, <code>apply</code> и прочие пишущие → отказ <code>repeat_write</code></td></tr>
+<tr><td><code>runs</code> 2…9</td><td>вне диапазона → отказ <code>runs</code></td></tr>
+<tr><td>1–8 запросов</td><td>пустой список → отказ <code>requests</code></td></tr>
+<tr><td>результат</td><td><code>identical</code>, <code>requests[].differing</code>, <code>project_unchanged</code>, <code>volatile</code> = время операции и mtime</td></tr>
+<tr><td>честность</td><td><code>behavior_proven: false</code>, <code>writes: false</code></td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code>, 6 сравнений</td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений</td><td>4 команды × 3 прогона, <code>project_unchanged</code></td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок</td><td>3 чистых каталога: данные совпали без <code>at</code></td><td class="good">pass</td></tr>
+<tr><td>3M</td><td>модель прочитала</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>5M</td><td>модель повторяет поведение</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F20.</b> «Повторяется» — тоже два утверждения: повтор ответа и повтор поведения. Первое измерено до байта, второе остаётся <code>not run</code>. <code>behavior_proven: false</code> стоит в каждом ответе <code>repeat</code>, чтобы ответ нельзя было пересказать как «модель ведёт себя стабильно».
+</div>
+
+<div class="note">
+<b>Находка F21.</b> Недетерминизм прятался только во времени: три чистых каталога различались исключительно полем <code>at</code>. Данные детерминированы, изменчивость объявлена. Если бы расхождение было в другом поле — это был бы провал, а не объяснение.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-038</b> — правила: изменение существующего. Своя процедура и свой отказ, проверяется на синтетических проектах.</li>
+<li>Дальше — разовый запрос, отмена и удаление, секреты, сопровождение, миграция, метрики, права и Windows (И-039…И-050).</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-037.zip</code>, 45 членов, 849 039 B, <code>e9cb6993…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.17: база 300 881 B <code>99657578…</code>, Edition 303 770 B <code>d461bf67…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.16. Приёмка <code>1c9a48f6…</code>.
+</footer>
+</main>
+</body>
+</html>
