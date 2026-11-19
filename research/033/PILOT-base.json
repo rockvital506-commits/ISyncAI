@@ -1,0 +1,206 @@
+{
+  "at": "2026-11-18",
+  "counts": {
+    "fail": 2,
+    "pass": 6
+  },
+  "items": [
+    {
+      "detail": "проект задаётся абсолютным путём; относительный путь по-прежнему не выходит из комплекта",
+      "evidence": {
+        "connect": "committed",
+        "install": "committed",
+        "state": ".agent-contract/project/state.json"
+      },
+      "expected": "install и connect проходят из консоли в раскладке шага 5",
+      "id": "P1",
+      "status": "pass",
+      "title": "Архив распакован в корень репозитория, установка без ручной правки"
+    },
+    {
+      "detail": "connect по-прежнему отказывает; brief отдаёт строку для своего файла и путь к START.md; запись проверок от адаптера не зависит",
+      "evidence": {
+        "brief_line": "Контракт этого проекта: открой [стартовый файл](.agent-contr",
+        "brief_mode": "foreign",
+        "connect_error": "foreign_entry",
+        "entry_mode": "foreign",
+        "foreign_untouched": true,
+        "recorded": "committed"
+      },
+      "expected": "документированный ручной вход вместо тупика; чужой файл не тронут",
+      "id": "P2",
+      "status": "pass",
+      "title": "Вход уже занят чужим AGENTS.md"
+    },
+    {
+      "detail": "правило названо данными: сравниваются os, mode, model, permissions; редактор и расширение — происхождение записи и не сравниваются. Поэтому смена участника не создаёт второго факта, а другая платформа или модель — создаёт: это объявленное следствие решения Б, а не провал",
+      "evidence": {
+        "after_other_model": 2,
+        "after_two_observers": 1,
+        "compared": [
+          "os",
+          "mode",
+          "model",
+          "permissions"
+        ],
+        "copilot": "no_change",
+        "copilot_notes": [
+          "Наблюдение совпадает с уже записанным (запись 1); новая запись не создаётся. Наблюдатель (редактор, расширение, версии) не сравнивается."
+        ],
+        "identity": "Событие — то, что видел такой-то участник: платформа, режим, модель и права входят в тождество, редактор и расширение — происхождение записи.",
+        "identity_rc": 0,
+        "ignored": [
+          "editor",
+          "editor_version",
+          "extension",
+          "extension_version",
+          "profile"
+        ],
+        "kilo": "committed",
+        "other_model": "committed"
+      },
+      "expected": "одна запись на событие при разных наблюдателях и двух записях при другой модели",
+      "id": "P3",
+      "status": "pass",
+      "title": "Одно событие, увиденное локально Kilo и Copilot"
+    },
+    {
+      "detail": "порядок владельца: сохранить входящую версию (git show :3:), оставить локальную (git checkout --ours), затем plan/apply merge и commit. merge только добавляет: известные наблюдения отбрасываются, ничего не удаляется",
+      "evidence": {
+        "after_repeat": 4,
+        "arena_health": "valid",
+        "arena_pull_rc": 0,
+        "arena_records": 4,
+        "cases": [
+          "сборка в облаке",
+          "сборка модуля",
+          "сборка отчёта"
+        ],
+        "cloud_outcome": "committed",
+        "conflicted": true,
+        "local_before": 3,
+        "local_outcome": "committed",
+        "merge_notes": [
+          {
+            "added": 1,
+            "deleted": 0,
+            "duplicates": 2,
+            "identity": "CONDITIONS",
+            "incoming": ".agent-contract/project/checks.incoming.json",
+            "writes_foreign": false
+          }
+        ],
+        "merge_outcome": "committed",
+        "merged": 4,
+        "pull_rc": 1,
+        "pushed": 0,
+        "pushed_after_merge": 0,
+        "repeat": "no_change",
+        "transfer_ok": true
+      },
+      "expected": "конфликт общего checks.json разрешается операцией merge без потери записей",
+      "id": "P4",
+      "status": "pass",
+      "title": "Состояние переживает git: слияние двух писателей"
+    },
+    {
+      "detail": "в тексте 10 действий, командой покрыто 9; порядок («сначала это, потом то») не описан, поддержка самой папки агентом — только через update/publish/restore",
+      "evidence": {
+        "actions": [
+          [
+            "открыть START.md",
+            true
+          ],
+          [
+            "открыть манифест и правила",
+            true
+          ],
+          [
+            "объяснить правила",
+            true
+          ],
+          [
+            "показать версии",
+            true
+          ],
+          [
+            "ограничения среды",
+            true
+          ],
+          [
+            "конфликты с другими инструкциями",
+            true
+          ],
+          [
+            "предложить вход",
+            true
+          ],
+          [
+            "показать разницу и дождаться согласия",
+            true
+          ],
+          [
+            "отличить обнаружение от проверенного поведения",
+            true
+          ],
+          [
+            "поддержка и коррекция самой папки",
+            false
+          ]
+        ],
+        "adapter_rank": 3,
+        "adapter_rc": 0,
+        "prompt_present": true
+      },
+      "expected": "весь ритуал первого обращения покрыт командами и порядком",
+      "id": "P5",
+      "status": "fail",
+      "title": "Первый промпт исполним буквально"
+    },
+    {
+      "detail": "в архиве нет ни каталога docs, ни файла с порядком обкатки: единственный текст — README, написанный для разработчика",
+      "evidence": {
+        "files": 78,
+        "hints": []
+      },
+      "expected": "владелец находит порядок действий внутри архива",
+      "id": "P6",
+      "status": "fail",
+      "title": "В поставке есть инструкция обкатки"
+    },
+    {
+      "detail": "все шаги прошли консолью: установка, вход, ручной вход, запись, слияние",
+      "evidence": {
+        "hand_steps": []
+      },
+      "expected": "весь сценарий проходится консолью",
+      "id": "P7",
+      "status": "pass",
+      "title": "Ни один шаг не требует ручной правки поставки"
+    },
+    {
+      "detail": "состояние до повтора: 4; два вызова status: [(0, 4), (0, 4)]",
+      "evidence": {
+        "repeat": [
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ]
+      },
+      "expected": "два одинаковых вызова не меняют состояние",
+      "id": "P8",
+      "status": "pass",
+      "title": "Повторный прогон даёт тот же результат"
+    }
+  ],
+  "iteration": "И-033",
+  "limits": "живые расширения VS Code, модели, права и настоящий Windows не проверялись; environment объявляется вызывающим, а не измеряется",
+  "line": "base",
+  "pack_version": "0.1.13",
+  "scope": "условная обкатка доступными средствами: процессы, копии поставки, git"
+}
