@@ -1,0 +1,193 @@
+{
+  "acceptance": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 10,
+    "sha256": "1094eff0191137114b651fbad203c02edd548bf631721212b6ab43cf24d2901e"
+  },
+  "at": "2026-11-18",
+  "compat": {
+    "new_version": "0.1.12",
+    "ok": true,
+    "old_data_reads": true,
+    "old_data_untouched": true,
+    "old_version": "0.1.11",
+    "repeat_kept_bytes": true
+  },
+  "corpora_via_cli": {
+    "corpus112": {
+      "base": {
+        "merged": 24,
+        "unexpected": 0
+      },
+      "edition": {
+        "merged": 24,
+        "unexpected": 0
+      }
+    },
+    "corpus80": {
+      "base": {
+        "merged": 32,
+        "pairs": 80,
+        "unexpected": 0
+      },
+      "edition": {
+        "merged": 32,
+        "pairs": 80,
+        "unexpected": 0
+      }
+    },
+    "punct": {
+      "base": {
+        "merged": 6,
+        "pairs": 12,
+        "unexpected": 0
+      },
+      "edition": {
+        "merged": 6,
+        "pairs": 12,
+        "unexpected": 0
+      }
+    }
+  },
+  "findings": {
+    "F12": "слияние одного checks.json двумя писателями не решается git: нужен формат с раздельными файлами или процедура слияния — И-033",
+    "F13": "environment объявляется вызывающим, а не измеряется: выводы о «двух машинах» — о данных, не о машинах",
+    "fixed": "P1 раскладка (абсолютный путь), P2 чужой вход (brief + entry_mode), F8 журнал из другого пути",
+    "open": "P3 (os/model в условиях), P5 (порядок первого промпта), P6 (docs в поставке)"
+  },
+  "iteration": "032",
+  "journals_import_stand": {
+    "base": {
+      "false": 0,
+      "merged": 3
+    },
+    "edition": {
+      "false": 0,
+      "merged": 3
+    }
+  },
+  "page": {
+    "file": "Итерация-032.html",
+    "inside_seal": false,
+    "sha256": "9ac2ca07b099aebd7c4e8bbc10964fb890ad25b867cbc186f9f3d8974801a748"
+  },
+  "pilot": {
+    "closed_this_iteration": [
+      "P1",
+      "P2",
+      "P7"
+    ],
+    "counts": {
+      "base": {
+        "fail": 4,
+        "pass": 4
+      },
+      "edition": {
+        "fail": 4,
+        "pass": 4
+      }
+    },
+    "interface": "опубликованная команда в отдельном процессе; проект — абсолютным путём",
+    "items": {
+      "base": [
+        {
+          "id": "P1",
+          "status": "pass"
+        },
+        {
+          "id": "P2",
+          "status": "pass"
+        },
+        {
+          "id": "P3",
+          "status": "fail"
+        },
+        {
+          "id": "P4",
+          "status": "fail"
+        },
+        {
+          "id": "P5",
+          "status": "fail"
+        },
+        {
+          "id": "P6",
+          "status": "fail"
+        },
+        {
+          "id": "P7",
+          "status": "pass"
+        },
+        {
+          "id": "P8",
+          "status": "pass"
+        }
+      ],
+      "edition": [
+        {
+          "id": "P1",
+          "status": "pass"
+        },
+        {
+          "id": "P2",
+          "status": "pass"
+        },
+        {
+          "id": "P3",
+          "status": "fail"
+        },
+        {
+          "id": "P4",
+          "status": "fail"
+        },
+        {
+          "id": "P5",
+          "status": "fail"
+        },
+        {
+          "id": "P6",
+          "status": "fail"
+        },
+        {
+          "id": "P7",
+          "status": "pass"
+        },
+        {
+          "id": "P8",
+          "status": "pass"
+        }
+      ]
+    }
+  },
+  "pilot_ready_when": "P1–P7 закрыты; сейчас закрыты P1, P2, P7, P8",
+  "plan": {
+    "adapters": "Claude Code, Cursor, Antigravity сняты с нумерации и остаются заглушками",
+    "order": [
+      "И-033 одно событие и две машины (решение владельца)",
+      "И-034 первый промпт и документация издания",
+      "далее правила/достоверность/сопровождение/метрики/права/Windows/живые модели (И-035…И-050)",
+      "ядро ISAI (И-051…И-083)"
+    ],
+    "remaining_core": 33,
+    "remaining_kit": 18,
+    "remaining_total": 51
+  },
+  "release": {
+    "base_bytes": 202199,
+    "base_sha256": "c9167cd84e044d719df8fcf8911da55a02abedc3f6857ef7bd426ee6e1de0f80",
+    "edition_bytes": 202315,
+    "edition_sha256": "66524c0d85784dd5c495c86bc6b8a97fd563bafcb79d7e14da3a361ba550eabf",
+    "tests": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 55
+    },
+    "version": "0.1.12"
+  },
+  "replay_identical": true,
+  "seal": "AgentContractKit-Iteration-032.zip",
+  "seal_bytes": 599516,
+  "seal_sha256": "f1295d1000b0308cf35c6e5029f5b3ce51c60be81a59e05d4089956254aa9935",
+  "subject": "обкатка: раскладка владельца, чужой вход, перенос состояния"
+}

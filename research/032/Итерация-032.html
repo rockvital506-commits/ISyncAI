@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-032. Раскладка, вход, перенос — 0.1.12</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-032. Комплект можно положить внутрь своего репозитория</h1>
+<p class="lead">18 ноября 2026. Вторая итерация обкатки. Сняты три тупика, в которые упирались первые десять минут работы: раскладка, занятый <code>AGENTS.md</code> и перенос состояния между машинами. Выпуск <b>0.1.12</b>.</p>
+
+<div class="verdict">
+<strong>Было 1 из 8, стало 4 из 8.</strong> Архив теперь лежит внутри репозитория, проект задаётся абсолютным путём; чужой <code>AGENTS.md</code> не мешает работать; состояние переносится через git без ручной чистки. Остались два «идейных» провала — они требуют вашего решения, а не кода.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.12</b></div>
+<div><span>Испытания</span><b>55 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">4 / 4</b></div>
+<div><span>Корпуса через консоль</span><b>12 · 80 · 112</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Что закрыто</h2>
+<table>
+<tr><th>Пункт</th><th>Было</th><th>Стало</th></tr>
+<tr><td>P1</td><td>проект обязан быть подкаталогом комплекта → ваш сценарий «архив в корне репозитория» невозможен</td><td class="good">проект задаётся абсолютным путём; относительный по-прежнему не выходит наружу</td></tr>
+<tr><td>P2</td><td>занятый <code>AGENTS.md</code> → отказ <code>foreign_entry</code>, «ручное чтение» только словами</td><td class="good">команда <code>brief</code> отдаёт строку для вашего файла и путь к <code>START.md</code>; <code>status</code> называет режим входа; чужой файл не тронут байт в байт</td></tr>
+<tr><td>P4 (перенос)</td><td>после <code>git clone</code> любая операция падала: журнал несёт абсолютный путь</td><td class="good">завершённые операции чужого корня читаются как история; <code>.agent-contract</code> переносится целиком</td></tr>
+<tr><td>P7</td><td>ручные обходы раскладки и входа</td><td class="good">весь сценарий проходится консолью</td></tr>
+</table>
+
+<h2>Матрица обкатки</h2>
+<table>
+<tr><th>№</th><th>Пункт</th><th>И-031</th><th>И-032</th><th>Почему</th></tr>
+<tr><td>P1</td><td>архив в корне репозитория</td><td class="bad">✗</td><td class="good">✓</td><td>абсолютный путь проекта</td></tr>
+<tr><td>P2</td><td>занятый AGENTS.md</td><td class="bad">✗</td><td class="good">✓</td><td>brief + режим входа</td></tr>
+<tr><td>P3</td><td>одно событие на двух машинах</td><td class="bad">✗</td><td class="bad">✗</td><td><code>os</code> и <code>model</code> в условиях — это правило, решает владелец</td></tr>
+<tr><td>P4</td><td>состояние через git</td><td class="bad">✗</td><td class="bad">✗</td><td>перенос проходит, слияние двух писателей в один JSON — нет</td></tr>
+<tr><td>P5</td><td>первый промпт</td><td class="bad">✗</td><td class="bad">✗</td><td>порядка шагов нет</td></tr>
+<tr><td>P6</td><td>инструкция в архиве</td><td class="bad">✗</td><td class="bad">✗</td><td>документов в поставке нет</td></tr>
+<tr><td>P7</td><td>без ручной правки поставки</td><td class="bad">✗</td><td class="good">✓</td><td>обходы не нужны</td></tr>
+<tr><td>P8</td><td>повторяемость</td><td class="good">✓</td><td class="good">✓</td><td>—</td></tr>
+</table>
+
+<h2>Два оставшихся провала требуют вашего решения</h2>
+<p><b>P3.</b> Одно событие, увиденное локально и облачным агентом, даёт две записи: <code>os</code> и <code>model</code> входят в условия сравнения. Формально это действующее правило, но в обкатке выглядит как потеря склейки. Выбор: событие как факт (убрать <code>os</code>/<code>model</code> из условий) или событие как «факт, увиденный такой-то моделью» (оставить).</p>
+<p><b>P4.</b> Два писателя правят один <code>checks.json</code> — git даёт конфликт содержимого. Варианты: раздельные файлы наблюдений либо процедура слияния внутри продукта.</p>
+
+<h2>Корпуса не поехали</h2>
+<table>
+<tr><th>Корпус</th><th class="num">Пар</th><th>Результат</th></tr>
+<tr><td>пунктуация</td><td class="num">12</td><td class="good">6 склеек, 0 промахов, 0 ложных</td></tr>
+<tr><td>И-029</td><td class="num">80</td><td class="good">32 склейки, ничего неожиданного</td></tr>
+<tr><td>И-020/И-024</td><td class="num">112</td><td class="good">24 склейки, прочих 0</td></tr>
+<tr><td>журналы (импорт)</td><td class="num">43</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+<p>Данные 0.1.11 читаются 0.1.12 и чтением не переписываются.</p>
+
+<div class="note">
+<b>Про «условно».</b> Живые VS Code, Kilo и Copilot не запускались; модели не вызывались; платформа подаётся как объявленные данные. Всё это записано как <code>not run</code>. «Чужой вход» проверен на синтетическом файле: он не читался и не менялся — это и есть предмет проверки.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-033</b> — одно событие и две машины: решение по P3 и форма хранения состояния по P4.</li>
+<li><b>И-034</b> — первый промпт как порядок шагов и документация внутри издания (P5, P6). После неё обкатка должна давать 8 из 8.</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками и в нумерации не участвуют.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-032.zip</code>, 43 члена, 599 516 B, <code>f1295d10…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.12: база 202 199 B <code>c9167cd8…</code>, Edition 202 315 B <code>66524c0d…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.11.
+</footer>
+</main>
+</body>
+</html>
