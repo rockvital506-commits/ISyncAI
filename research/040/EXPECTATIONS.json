@@ -1,0 +1,97 @@
+{
+  "acceptance_expected": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 10
+  },
+  "at": "2026-11-18",
+  "compat_expected": {
+    "new_version": "0.1.20",
+    "ok": true,
+    "old_version": "0.1.19"
+  },
+  "corpora_expected": {
+    "corpus112": {
+      "merged": 24,
+      "pairs": 112
+    },
+    "corpus80": {
+      "merged": 32,
+      "pairs": 80
+    },
+    "punct": {
+      "merged": 6,
+      "pairs": 12
+    }
+  },
+  "iteration": "И-040",
+  "journals_expected": {
+    "expected_repeats": 3,
+    "false_merges": 0,
+    "journals": 8,
+    "observations": 41,
+    "pairs": 43
+  },
+  "levels_expected": {
+    "not_run": [
+      "L3M",
+      "L4",
+      "L5M",
+      "LIVE"
+    ],
+    "pass": [
+      "L1",
+      "L2",
+      "L3",
+      "L3F",
+      "L4C",
+      "L4Q",
+      "L4D",
+      "L5a",
+      "L5b"
+    ]
+  },
+  "matrix_expectation": {
+    "after": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    },
+    "before": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    }
+  },
+  "note": "Ожидания записаны до прогона стенда. Матрица P1–P8 закрыта в И-034 и ведётся без изменения состава; уровни дополнены пунктом L4D (отмена сохраняет, удаление оставляет след).",
+  "preregistered": true,
+  "release": {
+    "new_rules": [
+      "X54: удаление оставляет след без содержимого",
+      "X55: отмена сохраняет запись и не создаёт след удаления"
+    ],
+    "tests_expected": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 71
+    },
+    "version": "0.1.20"
+  },
+  "subject": "отмена и удаление: со следом"
+}
