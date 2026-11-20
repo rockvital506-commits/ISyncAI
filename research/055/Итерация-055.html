@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-055. Калибровка: вопрос с известным ответом — 0.1.35</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-055. Проверка понимания, которую нельзя подсмотреть</h1>
+<p class="lead">18 ноября 2026. Четвёртая итерация фазы «пригодность к применению». Владелец мог проверить комплект сам, но проверить, <b>понимает</b> ли его агент тот же комплект так же, было нечем: вопроса с известным ответом не существовало. Теперь есть четыре, и ответ записывается <b>до</b> сравнения — подогнать его нельзя. Выпуск <b>0.1.35</b>.</p>
+
+<div class="verdict">
+<strong>33 pass / 4 not run.</strong> <code>kit/calibration.json</code> — четыре промпта <b>K1–K4</b>: шаги, ключи фактов, у каждого факта <code>command</code>/<code>payload</code>/<code>path</code> и <b>отпечаток</b> <code>sha256</code> значения. В поставке только отпечатки; прозаический эталон — <b>отдельным архивом</b>, который открывают после ответа. Новые уровни: <b>L8</b> — калибровка сошлась, <b>L9</b> — подгонка невозможна.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.35</b></div>
+<div><span>Испытания</span><b>102 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>33 / 4</b></div>
+<div><span>Приёмка</span><b>12 / 0 / 5</b></div>
+</div>
+
+<h2>В чём была трудность</h2>
+<table>
+<tr><th>Что</th><th>До 0.1.35</th><th>Чем плохо</th></tr>
+<tr><td>вопрос с известным ответом</td><td>нет</td><td>«агент вроде понял» — вера, а не проверка</td></tr>
+<tr><td>ответ</td><td>не записывается</td><td>подогнать постфактум ничего не стоит</td></tr>
+<tr><td>эталон</td><td>нет</td><td>нечего сверять</td></tr>
+<tr><td>эталон рядом с промптом</td><td>—</td><td>подсмотрел и «сдал»</td></tr>
+<tr><td>самоисправление</td><td>нет</td><td>агент либо ломает базу «для починки», либо молчит</td></tr>
+</table>
+
+<h2>Что появилось</h2>
+<table>
+<tr><th>Часть</th><th>Что делает</th></tr>
+<tr><td><code>kit/calibration.json</code></td><td>K1 установка, K2 права, K3 модели и обнаружение, K4 версия и журнал; у факта — <code>command</code>, <code>payload</code>, <code>path</code>, <code>sha256</code></td></tr>
+<tr><td><code>calibrate</code> (чтение)</td><td>список промптов, карточка, сравнение ответа по отпечаткам: <code>match</code>, <code>fields</code>, <code>facts_digest</code>, <code>reason</code>, <code>next</code>, отчёт</td></tr>
+<tr><td><code>op calibrate_answer</code></td><td>ответ пишется в <code>local/calibration/answers.json</code> <b>до</b> сравнения, с журналом; повтор — только <code>allow_repeat</code> и только если первый не сошёлся по данным, не более раза</td></tr>
+<tr><td><code>op fix</code></td><td>закрытый список: <code>checks</code> и <code>temp</code>; иное — отказ <code>fix_kind</code>, вне <code>TARGETS</code> — <code>fix_outside</code></td></tr>
+<tr><td>эталоны</td><td>отдельный архив <code>AgentContractKit-Calibration-0.1.35.zip</code>: <code>README.md</code> и <code>docs/ЭТАЛОНЫ-ПОСЛЕ.md</code></td></tr>
+</table>
+
+<h2>Уровни L8 и L9: что именно измерено</h2>
+<table>
+<tr><th>Шаг</th><th>Измерено</th><th>Итог</th></tr>
+<tr><td>L8 · ответы</td><td>факты K1–K4 собраны по живым ответам консоли и записаны через <code>plan</code>/<code>apply</code></td><td class="good">4 из 4</td></tr>
+<tr><td>L8 · сверка</td><td><code>match: true</code>, <code>next: done</code> у всех; отчёт <code>answered: 4</code>, <code>matched: 4</code></td><td class="good">pass</td></tr>
+<tr><td>L8 · неверный ответ</td><td><code>match: false</code>, <code>reason: data</code>, <code>next: repeat</code>; запись отклонена кодом <code>repeat_answer</code></td><td class="good">pass</td></tr>
+<tr><td>L9 · книга</td><td>у фактов только <code>command</code>, <code>payload</code>, <code>path</code>, <code>digest</code>; поля <code>value</code> нет</td><td class="good">pass</td></tr>
+<tr><td>L9 · утечка</td><td>проза эталонов — только в отдельном архиве; в 212 файлах поставки ни разу</td><td class="good">pass</td></tr>
+<tr><td>L9 · обратимость</td><td>отпечаток <code>status.health = "valid"</code> совпадает с объявленным, отпечаток другого значения — нет</td><td class="good">pass</td></tr>
+<tr><td>—</td><td>ответы живой модели, VS Code, ACL/NTFS</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0 на обеих линиях</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0</td></tr>
+<tr><td>данные 0.1.34 под 0.1.35</td><td class="good">читаются, чтением не переписываются — <code>ok: true</code></td></tr>
+</table>
+
+<div class="note">
+<b>Находка F66.</b> Эталон рядом с промптом — не проверка, а подсказка. Отпечаток решает задачу честно: сверить можно, восстановить нельзя. Отдельный архив добавляет второе условие — открывать после ответа.
+</div>
+
+<div class="note">
+<b>Находка F67.</b> Запись ответа до сравнения — не формальность: пока ответ не записан, его можно подогнать; после записи в журнале остаётся первая версия, а повтор разрешён только по правилу.
+</div>
+
+<div class="note">
+<b>Находка F68.</b> Книга промптов не может лежать в <code>base/</code>: там ровно шесть файлов контракта с отпечатками в манифесте. Положили в <code>kit/</code> — и «шесть файлов данных» осталось правдой.
+</div>
+
+<div class="note">
+<b>Находка F69.</b> Ответ калибровки — десятая запись комплекта, поэтому девять путей записи стали десятью. Это изменение прав, а не косметика: <code>access</code> измеряет и его.
+</div>
+
+<div class="note">
+<b>Чего нет.</b> Ответов живой модели — <code>not run</code>: проверено понимание комплекта, а не рассуждение модели. Стойкость отпечатка к перебору не обещается — обещано только, что значения в поставке нет.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-056</b> — README-вектор (≤ 24 КБ, каждое утверждение с якорем) и <code>TRACEABILITY.json</code>.</li>
+<li>Затем Edition: <b>И-057…И-059</b>.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-055.zip</code>, 46 членов  1 913 682 B  <code>6a7b72ef…</code>; повтор из печати совпал по всем результатам — <code>identical: true</code>. Выпуск 0.1.35: база 746 873 B <code>050987cd…</code> (213 членов), Edition 749 962 B <code>ea1df611…</code> (214 членов); отдельным архивом — <code>AgentContractKit-Calibration-0.1.35.zip</code> (2 файла). Внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.34.
+</footer>
+</main>
+</body>
+</html>
