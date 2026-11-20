@@ -5,12 +5,12 @@
 репозитория без установки пакета, скрипт кладёт рядом временный каталог со ссылкой `isai -> .isai`
 и запускает `pytest` с ним в PYTHONPATH.
 
-    python3 baseline.py            — прогон в репозитории и запись BASELINE.json
-    python3 baseline.py --compare  — плюс прогон в чистой копии без research/ и dist/
-    python3 baseline.py --dry-run  — только показать команду
+    python3 isai_baseline.py            — прогон в репозитории и запись ISAI-BASELINE.json
+    python3 isai_baseline.py --compare  — плюс прогон в чистой копии без research/ и dist/
+    python3 isai_baseline.py --dry-run  — только показать команду
 
 Зависимости прогона: pydantic>=2.7, pytest>=8, hypothesis>=6.100. Их наличие проверяется отдельно и
-попадает в BASELINE.json: отсутствие зависимости — это «not run», а не «pass».
+попадает в ISAI-BASELINE.json: отсутствие зависимости — это «not run», а не «pass».
 """
 from __future__ import annotations
 
@@ -50,7 +50,7 @@ def main() -> int:
         out = {'iteration': 'И-052', 'core_version': version(), 'ran': False, 'missing': missing,
                'modules': found, 'counts': {'pass': 0, 'fail': 0, 'not_run': 'all'},
                'note': 'Зависимости не установлены: прогон не выполнялся, провалом не считается.'}
-        (HERE / 'BASELINE.json').write_text(json.dumps(out, ensure_ascii=False, indent=2, sort_keys=True) + '\n',
+        (HERE / 'ISAI-BASELINE.json').write_text(json.dumps(out, ensure_ascii=False, indent=2, sort_keys=True) + '\n',
                                             encoding='utf-8')
         print(json.dumps({'ran': False, 'missing': missing}, ensure_ascii=False))
         return 0
@@ -68,7 +68,7 @@ def main() -> int:
             import shutil
             shutil.rmtree(copy, ignore_errors=True)
         out['clean_copy']['what'] = 'копия репозитория без research/, dist/ и .git' 
-    (HERE / 'BASELINE.json').write_text(json.dumps(out, ensure_ascii=False, indent=2, sort_keys=True) + '\n',
+    (HERE / 'ISAI-BASELINE.json').write_text(json.dumps(out, ensure_ascii=False, indent=2, sort_keys=True) + '\n',
                                         encoding='utf-8')
     print(json.dumps({'ran': True, 'counts': counts, 'failed': out['failed']}, ensure_ascii=False, indent=1))
     return 0
