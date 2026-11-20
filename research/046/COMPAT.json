@@ -1,0 +1,15 @@
+{
+  "checks_bytes": 931,
+  "different_outcome": "committed",
+  "first_write": "committed",
+  "iteration": "И-046",
+  "new_version": "0.1.26",
+  "observations_after_status": 1,
+  "ok": true,
+  "old_data_reads": true,
+  "old_data_untouched": true,
+  "old_version": "0.1.25",
+  "records_written": 1,
+  "repeat_kept_bytes": true,
+  "repeat_outcome": "no_change"
+}

@@ -1,0 +1,91 @@
+{
+  "equal": {
+    "COMPAT.json": true,
+    "EXPECTATIONS.json": true,
+    "adapter-base.json": true,
+    "adapter-edition.json": true,
+    "dual-base.json": true,
+    "dual-edition.json": true,
+    "pairs-028-base.json": true,
+    "pairs-028-edition.json": true,
+    "pairs-028-journals-base.json": true,
+    "pairs-028-journals-edition.json": true
+  },
+  "identical": true,
+  "iteration": "И-028",
+  "seal": "AgentContractKit-Iteration-028.zip",
+  "seal_sha256": "9eb8951c62de8dc81b0634e943bbda67b3b53c86b36c087ee4c918c7967ab0e7",
+  "steps": [
+    {
+      "exit": 0,
+      "line": "base",
+      "script": "dual_check.py",
+      "tail": [
+        "{\"pass\": 16} ok: True"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "base",
+      "script": "adapter_check.py",
+      "tail": [
+        "{\"pass\": 13} ok: True"
+      ]
+    },
+    {
+      "exit": 1,
+      "line": "base",
+      "script": "pairs_corpus.py",
+      "tail": [
+        "}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "base",
+      "script": "pairs_journals.py",
+      "tail": [
+        "ложных склеек: 0 не склеено повторов: 0"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "edition",
+      "script": "dual_check.py",
+      "tail": [
+        "{\"pass\": 16} ok: True"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "edition",
+      "script": "adapter_check.py",
+      "tail": [
+        "{\"pass\": 13} ok: True"
+      ]
+    },
+    {
+      "exit": 1,
+      "line": "edition",
+      "script": "pairs_corpus.py",
+      "tail": [
+        "}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "edition",
+      "script": "pairs_journals.py",
+      "tail": [
+        "ложных склеек: 0 не склеено повторов: 0"
+      ]
+    },
+    {
+      "exit": 0,
+      "script": "compat.py (данные 0.1.7 под 0.1.8)",
+      "tail": [
+        "}"
+      ]
+    }
+  ]
+}

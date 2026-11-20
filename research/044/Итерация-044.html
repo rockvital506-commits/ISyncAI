@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-044. Неизвестная версия: отказ с ответом — 0.1.24</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-044. Неизвестная версия — это не испорченная запись</h1>
+<p class="lead">18 ноября 2026. Четырнадцатая итерация линии. Закрыт §12.2: неизвестная схема проекта получила свой код и ответ «что нашли, что поддерживаем, чем вернуться». Выпуск <b>0.1.24</b>.</p>
+
+<div class="verdict">
+<strong>21 pass / 4 not run.</strong> <code>status</code> и <code>migrate</code> на схеме 2 отклонены кодом <code>unknown_schema</code> с <code>{found: 2, supported: [1], migrate: false}</code>. Проект не изменился ни на байт, а файл <code>before</code> из журнала операции вернул состояние байт в байт: <code>health: valid</code>.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.24</b></div>
+<div><span>Испытания</span><b>79 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>21 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Что изменилось в правиле</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td>неизвестная версия</td><td>отказ <code>unknown_schema</code> с <code>{found, supported, migrate, recover}</code></td></tr>
+<tr><td>что поддерживается</td><td>схема 1; миграция — только явный обменный формат 0 → 1</td></tr>
+<tr><td>миграция не угадывает</td><td><code>migrate</code> на версии вне 0/1 отклоняется тем же кодом</td></tr>
+<tr><td>данные</td><td>не переписаны: отказ до записи, чтение остаётся чтением</td></tr>
+<tr><td>путь назад</td><td>копия проекта или <code>local/ops/&lt;tx&gt;/before/.agent-contract/project/state.json</code></td></tr>
+<tr><td>порядок проверок</td><td>сначала «какая версия», потом «та ли форма»</td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code>, 6 сравнений</td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td>отпечатки до/после, <code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code>, <code>redacted</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, <code>owner</code> при передаче, потеря права</td><td class="good">pass</td></tr>
+<tr><td>4V</td><td>версия — содержимое, срок проверки — данные</td><td><code>same</code>, <code>revision</code> 1 → 2 → 2, <code>due</code> 1 → 0</td><td class="good">pass</td></tr>
+<tr><td>4X</td><td>неизвестная схема — отказ и возврат без потери</td><td><code>unknown_schema</code>, <code>migrate</code> отклонён, файл <code>before</code> вернул проект</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений</td><td>4 команды × 3 прогона, <code>project_unchanged</code></td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок</td><td>3 чистых каталога: данные совпали без <code>at</code></td><td class="good">pass</td></tr>
+<tr><td>3M</td><td>модель прочитала</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>4</td><td>модель выполнила требование</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>5M</td><td>модель повторяет поведение</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F36.</b> Один код на три разных случая прятал разницу. «Схема неизвестна или требует миграции» покрывала и «не число», и чужую версию, и свою в неверной форме. Теперь <code>unknown_schema</code> говорит «версия», а <code>schema</code> — «форма».
+</div>
+
+<div class="note">
+<b>Находка F37.</b> Возврат — то, что есть, а не то, что хотелось бы. Комплект не умеет откатывать чужую схему и не делает вид: путь назад — копия проекта или файл <code>before</code> из журнала, равный прежнему состоянию байт в байт.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-045</b> — миграция: частичный сбой, половина записи и половина файла (§12.3).</li>
+<li>Дальше — метрики, права и Windows (И-046…И-050).</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-044.zip</code>, 45 членов, 1 220 975 B, <code>780fe408…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.24: база 455 371 B <code>9644e3f9…</code>, Edition 458 324 B <code>9f6698d4…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.23. Данные 0.1.23 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

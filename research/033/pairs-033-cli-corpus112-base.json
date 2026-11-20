@@ -1,0 +1,1665 @@
+{
+  "at": "2026-11-18",
+  "bytes_unchanged": true,
+  "declared_false": [
+    "E01-изменён файл свидетельства",
+    "E02-изменён файл свидетельства",
+    "E03-изменён файл свидетельства",
+    "E04-изменён файл свидетельства",
+    "E05-изменён файл свидетельства",
+    "E06-изменён файл свидетельства",
+    "E07-изменён файл свидетельства",
+    "E08-изменён файл свидетельства",
+    "E09-изменён файл свидетельства",
+    "E10-изменён файл свидетельства",
+    "E11-изменён файл свидетельства",
+    "E12-изменён файл свидетельства"
+  ],
+  "declared_missed": [
+    "E01-вар1",
+    "E01-вар2",
+    "E02-вар1",
+    "E02-вар2",
+    "E03-вар1",
+    "E03-вар2",
+    "E04-вар1",
+    "E04-вар2",
+    "E05-вар1",
+    "E05-вар2",
+    "E06-вар1",
+    "E06-вар2",
+    "E07-вар1",
+    "E07-вар2",
+    "E08-вар1",
+    "E08-вар2",
+    "E09-вар1",
+    "E09-вар2",
+    "E10-вар1",
+    "E10-вар2",
+    "E11-вар1",
+    "E11-вар2",
+    "E12-вар1",
+    "E12-вар2"
+  ],
+  "false_merges": [
+    "E01-изменён файл свидетельства",
+    "E02-изменён файл свидетельства",
+    "E03-изменён файл свидетельства",
+    "E04-изменён файл свидетельства",
+    "E05-изменён файл свидетельства",
+    "E06-изменён файл свидетельства",
+    "E07-изменён файл свидетельства",
+    "E08-изменён файл свидетельства",
+    "E09-изменён файл свидетельства",
+    "E10-изменён файл свидетельства",
+    "E11-изменён файл свидетельства",
+    "E12-изменён файл свидетельства"
+  ],
+  "interface": "опубликованная команда в отдельном процессе",
+  "iteration": "И-033",
+  "kinds": {
+    "E01-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E01-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E01-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E01-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E01-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E01-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E01-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E01-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E01-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E02-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E02-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E02-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E02-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E02-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E02-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E02-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E02-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E02-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E03-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E03-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E03-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E03-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E03-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E03-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E03-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E03-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E03-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E04-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E04-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E04-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E04-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E04-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E04-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E04-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E04-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E04-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E05-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E05-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E05-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E05-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E05-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E05-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E05-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E05-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E05-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E06-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E06-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E06-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E06-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E06-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E06-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E06-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E06-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E06-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E07-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E07-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E07-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E07-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E07-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E07-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E07-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E07-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E07-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E08-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E08-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E08-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E08-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E08-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E08-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E08-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E08-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E08-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E09-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E09-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E09-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E09-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E09-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E09-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E09-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E09-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E09-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E10-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E10-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E10-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E10-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E10-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E10-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E10-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E10-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E10-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E11-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E11-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E11-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E11-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E11-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E11-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E11-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E11-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E11-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E12-вар1": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E12-вар2": {
+      "label_merge": 1,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E12-вар3": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E12-изменён идентификатор": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E12-изменён номер": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E12-изменён файл свидетельства": {
+      "label_merge": 0,
+      "merged": 1,
+      "pairs": 1
+    },
+    "E12-смягчено свидетельство": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E12-снято ограничение": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "E12-сужено условие": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "перекрёстно: другая среда": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "перекрёстно: другое дело": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "перекрёстно: другой ожидаемый результат": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "перекрёстно: другой статус": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    }
+  },
+  "line": "base",
+  "merged": 24,
+  "merges_labeled": 36,
+  "missed_merges": [
+    "E01-вар1",
+    "E01-вар2",
+    "E02-вар1",
+    "E02-вар2",
+    "E03-вар1",
+    "E03-вар2",
+    "E04-вар1",
+    "E04-вар2",
+    "E05-вар1",
+    "E05-вар2",
+    "E06-вар1",
+    "E06-вар2",
+    "E07-вар1",
+    "E07-вар2",
+    "E08-вар1",
+    "E08-вар2",
+    "E09-вар1",
+    "E09-вар2",
+    "E10-вар1",
+    "E10-вар2",
+    "E11-вар1",
+    "E11-вар2",
+    "E12-вар1",
+    "E12-вар2"
+  ],
+  "outcome": "pass",
+  "pairs": 112,
+  "rows": [
+    {
+      "bytes_unchanged": true,
+      "kind": "E01-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E01-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E01-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E01-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E01-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E01-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E01-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E01-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E01-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E02-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E02-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E02-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E02-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E02-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E02-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E02-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E02-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E02-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E03-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E03-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E03-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E03-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E03-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E03-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E03-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E03-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E03-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E04-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E04-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E04-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E04-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E04-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E04-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E04-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E04-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E04-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E05-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E05-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E05-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E05-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E05-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E05-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E05-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E05-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E05-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E06-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E06-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E06-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E06-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E06-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E06-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E06-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E06-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E06-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E07-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E07-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E07-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E07-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E07-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E07-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E07-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E07-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E07-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E08-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E08-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E08-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E08-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E08-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E08-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E08-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E08-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E08-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E09-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E09-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E09-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E09-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E09-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E09-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E09-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E09-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E09-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E10-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E10-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E10-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E10-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E10-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E10-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E10-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E10-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E10-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E11-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E11-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E11-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E11-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E11-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E11-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E11-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E11-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E11-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E12-вар1",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E12-вар2",
+      "label": true,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E12-вар3",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E12-изменён идентификатор",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E12-изменён номер",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E12-изменён файл свидетельства",
+      "label": false,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E12-снято ограничение",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E12-смягчено свидетельство",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "E12-сужено условие",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "перекрёстно: другой статус",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "перекрёстно: другая среда",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "перекрёстно: другой ожидаемый результат",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "перекрёстно: другое дело",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    }
+  ],
+  "set": "corpus112",
+  "unexpected": []
+}

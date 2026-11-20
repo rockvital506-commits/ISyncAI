@@ -1,0 +1,791 @@
+{
+  "at": "2026-11-18",
+  "bytes_unchanged": true,
+  "declared_false": [],
+  "declared_missed": [],
+  "false_merges": [],
+  "interface": "опубликованная команда в отдельном процессе",
+  "iteration": "И-052",
+  "kinds": {
+    "con-mode": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "con-model": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "con-os": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "con-permissions": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "obs-editor": {
+      "label_merge": 8,
+      "merged": 8,
+      "pairs": 8
+    },
+    "obs-extension": {
+      "label_merge": 8,
+      "merged": 8,
+      "pairs": 8
+    },
+    "obs-form": {
+      "label_merge": 8,
+      "merged": 8,
+      "pairs": 8
+    },
+    "obs-plus-condition": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "obs-plus-fact": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "obs-profile": {
+      "label_merge": 8,
+      "merged": 8,
+      "pairs": 8
+    }
+  },
+  "line": "base",
+  "merged": 32,
+  "merges_labeled": 32,
+  "missed_merges": [],
+  "outcome": "pass",
+  "pairs": 80,
+  "rows": [
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-extension",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-editor",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-profile",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-form",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-os",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-mode",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-model",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-permissions",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-extension",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-editor",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-profile",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-form",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-os",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-mode",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-model",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-permissions",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-extension",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-editor",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-profile",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-form",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-os",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-mode",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-model",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-permissions",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-extension",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-editor",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-profile",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-form",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-os",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-mode",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-model",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-permissions",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-extension",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-editor",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-profile",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-form",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-os",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-mode",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-model",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-permissions",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-extension",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-editor",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-profile",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-form",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-os",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-mode",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-model",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-permissions",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-extension",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-editor",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-profile",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-form",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-os",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-mode",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-model",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-permissions",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-extension",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-editor",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-profile",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-form",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-os",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-mode",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-model",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "con-permissions",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-fact",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "obs-plus-condition",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    }
+  ],
+  "set": "corpus80",
+  "unexpected": []
+}

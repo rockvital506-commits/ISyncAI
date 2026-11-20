@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-050. Чужая файловая система: регистр, длина, права — 0.1.30</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-050. Чужая файловая система</h1>
+<p class="lead">18 ноября 2026. Двадцатая итерация линии. §16: комплект попадает на другую машину — другой регистр, другие лимиты имён, другие права. Регистр <b>измеряется</b>, лимиты <b>объявляются</b>, и то и другое называется вслух. Выпуск <b>0.1.30</b>.</p>
+
+<div class="verdict">
+<strong>27 pass / 4 not run.</strong> <code>system</code> отвечает: <code>case_insensitive</code> — измерено чтением соседнего имени, <code>declared</code> — лимиты и зарезервированные имена, <code>proven</code> — что измерено, а что объявлено. Имя в другом регистре останавливает запись кодом <code>case</code>; компонент длиннее 255 байт — кодом <code>path</code>. <code>rights.files</code> показывает права файлов, а где их не измерить — <code>null</code>, а не догадку.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.30</b></div>
+<div><span>Испытания</span><b>91 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>27 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>В чём была трудность</h2>
+<table>
+<tr><th>Что</th><th>До 0.1.30</th><th>Чем плохо</th></tr>
+<tr><td>регистр</td><td>не проверялся</td><td>на NTFS <code>agents.md</code> и <code>AGENTS.md</code> — один файл: «создать рядом» значит «перезаписать»</td></tr>
+<tr><td>длина имени</td><td><code>rel</code> ограничивал только строку (1024)</td><td>компонент из 300 байт отвергается файловой системой уже после плана</td></tr>
+<tr><td>права файлов</td><td>не измерялись</td><td>владелец не знает, что комплект создал доступное на запись другим</td></tr>
+<tr><td>чужая ОС</td><td>не называлась</td><td>объявленное и измеренное смешивались в одном ответе</td></tr>
+</table>
+
+<h2>Что появилось</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td><code>system</code></td><td><code>os</code>, <code>sep</code>, <code>case_insensitive</code> (измерено), <code>probe</code>, <code>declared</code>, <code>proven</code></td></tr>
+<tr><td>регистр</td><td>отказ <code>case</code> с <code>{path, existing}</code> — на NTFS это один файл</td></tr>
+<tr><td>длина</td><td>отказ <code>path</code>, если компонент длиннее 255 байт (<code>{part, bytes, limit}</code>) — до записи</td></tr>
+<tr><td>права</td><td><code>rights.files</code>: <code>mode</code>, <code>world_writable</code>, <code>bytes</code>; на Windows режим <code>null</code></td></tr>
+<tr><td>измерено или объявлено</td><td><code>proven</code> делит ответ: <code>case_insensitive</code> — да, лимит пути и юникод — нет</td></tr>
+<tr><td>чтение не пишет</td><td><code>writes: false</code>; <code>system</code> и <code>rights</code> в списке чтения для <code>repeat</code></td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code></td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td><code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, передача с <code>allow_owner</code></td><td class="good">pass</td></tr>
+<tr><td>4V</td><td>версия — содержимое, срок — данные</td><td><code>same</code>, revision 1 → 2 → 2, <code>due</code> 1 → 0</td><td class="good">pass</td></tr>
+<tr><td>4X</td><td>неизвестная схема — отказ и возврат</td><td><code>unknown_schema</code>, файл <code>before</code> вернул проект</td><td class="good">pass</td></tr>
+<tr><td>4P</td><td>частичный сбой виден до восстановления</td><td>код 75, <code>pending_detail</code>, <code>foreign</code>, <code>restored</code></td><td class="good">pass</td></tr>
+<tr><td>4M</td><td>метрики считают по машине состояний</td><td><code>active</code> 1 → 0 → 1, <code>hidden [P-2]</code></td><td class="good">pass</td></tr>
+<tr><td>4T</td><td>контур машины: все пары и запреты входа</td><td>32 пары, 0 расхождений</td><td class="good">pass</td></tr>
+<tr><td>4K</td><td>два сценария рядом</td><td><code>changed</code> 90 против 30, delta, отказ <code>compare</code></td><td class="good">pass</td></tr>
+<tr><td>4R</td><td>права названы данными</td><td>9 путей записи, <code>foreign</code> останавливает изменения</td><td class="good">pass</td></tr>
+<tr><td><b>4F</b></td><td><b>чужая файловая система</b></td><td><code>case_insensitive</code> измерен, <code>proven</code> честный; <code>AGENTS.md</code> против <code>agents.md</code> — отказ <code>case</code>; 305 байт — отказ <code>path</code> с <code>limit 255</code>; права файлов измерены</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений</td><td>4 команды × 3 прогона, <code>project_unchanged</code></td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок</td><td>3 чистых каталога: данные совпали без <code>at</code></td><td class="good">pass</td></tr>
+<tr><td>3M, 4, 5M</td><td>модель читает и действует</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F51.</b> Регистр — свойство файловой системы, а не строки. Проверка «такого имени нет» по байтам отвечает «нет» там, где файловая система отвечает «есть». Поэтому регистр измеряется пробой, а не предполагается по <code>os.name</code>.
+</div>
+
+<div class="note">
+<b>Находка F52.</b> Лимит имени должен отказывать до записи. Прежний предел 1024 относился к строке; предел 255 байт относится к компоненту, и узнавать о нём из исключения файловой системы — значит узнать уже после плана.
+</div>
+
+<div class="note">
+<b>Находка F53.</b> Права не выдумываются. Там, где режим не измеряется (Windows), ответ <code>null</code>: пустое место честнее правдоподобного числа. <code>proven</code> существует ровно для того, чтобы это было видно в ответе, а не в отчёте.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-051</b> — живые модели: поведение модели не воспроизводимо, но проверяемо (§14 ур. 4).</li>
+<li>Дальше — ядро ISAI (И-052…И-084); адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-050.zip</code>, 45 членов, 1 517 482 B, <code>121c3b7e…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.30: база 592 550 B <code>848d5c30…</code>, Edition 595 585 B <code>9f8394ff…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.29. Данные 0.1.29 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

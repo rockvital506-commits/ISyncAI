@@ -1,0 +1,48 @@
+{
+  "iteration": "И-030",
+  "at": "2026-11-18",
+  "preregistered": true,
+  "decision": "Б — снимать завершающую точку у идентификатора; точка внутри имени сохраняется",
+  "note": "Ожидания записаны до прогона трёх корпусов и стендов, из решения владельца и правила, как оно описано в PROTOCOL.md. Метки корпусов после измерения не менялись.",
+  "corpora": {
+    "punct": {
+      "file": "pairs-030-corpus.json",
+      "pairs": 12,
+      "sha256": "388cd2d9edc7ce4c46a7c2c7670fa2886b81b0abf28ef6620b0a87d182be08d1",
+      "expected_merges": ["dot-identifier", "dot-dotted-name", "dot-exception", "dot-version",
+                          "dot-file", "dot-two-sentences"],
+      "expected_separates": ["name-with-extension", "name-version", "name-changed",
+                             "name-dotted-longer", "number-changed", "dot-vs-underscore"]
+    },
+    "corpus80": {
+      "file": "pairs-029-corpus.json",
+      "pairs": 80,
+      "sha256": "842620d8cf460f568df554f675f60758767a0cb8f585b8a03db4f5aea2f368cf",
+      "expected": "80 из 80: форма записи теперь склеивается (было 3 из 8), остальные виды не меняются"
+    },
+    "corpus112": {
+      "pairs": 112,
+      "expected": "не поехал: 24 склейки, из них 12 объявленных в И-025, прочих 0"
+    },
+    "journals": {
+      "pairs": 43,
+      "expected": "3 из 3 повторов склеены, ложных 0 из 40"
+    }
+  },
+  "checks": [
+    {"id": "P1", "name": "завершающая точка", "expected": "6 пар из 6 склеиваются"},
+    {"id": "P2", "name": "точка внутри имени", "expected": "6 пар из 6 не склеиваются (test_build.py против test_build, v1.1 против v1.0, a.b.c против a.b, a_b против a.b)"},
+    {"id": "P3", "name": "форма записи", "expected": "корпус И-029: 8 пар из 8 (было 3)"},
+    {"id": "R1", "name": "корпус 112 пар", "expected": "24 склейки, прочих 0"},
+    {"id": "R2", "name": "журналы", "expected": "3 из 3, ложных 0 из 40"},
+    {"id": "D1", "name": "стенд двух сред", "expected": "16 из 16: шесть ходов дают одну запись"},
+    {"id": "A1", "name": "адаптер Copilot", "expected": "13 из 13 на обеих линиях"},
+    {"id": "C1", "name": "данные 0.1.9", "expected": "читаются 0.1.10, чтением не переписываются"}
+  ],
+  "fail_means": [
+    "точка внутри имени перестала быть значимой (test_build.py склеился с test_build)",
+    "завершающая точка всё ещё разделяет событие",
+    "прежние корпуса поехали",
+    "склейка меняет checks.json"
+  ]
+}

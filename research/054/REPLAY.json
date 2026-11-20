@@ -1,0 +1,109 @@
+{
+  "equal": {
+    "COMPAT.json": true,
+    "EXPECTATIONS.json": true,
+    "PILOT-base.json": true,
+    "PILOT-edition.json": true,
+    "pairs-054-cli-corpus112-base.json": true,
+    "pairs-054-cli-corpus112-edition.json": true,
+    "pairs-054-cli-corpus80-base.json": true,
+    "pairs-054-cli-corpus80-edition.json": true,
+    "pairs-054-cli-punct-base.json": true,
+    "pairs-054-cli-punct-edition.json": true,
+    "pairs-054-journals-base.json": true,
+    "pairs-054-journals-edition.json": true
+  },
+  "identical": true,
+  "iteration": "И-054",
+  "seal": "AgentContractKit-Iteration-054.zip",
+  "seal_sha256": "ff6072d49b472e54adf773ea1f327c8bb6d668f89fef85eaf67092ce5ed9c7d9",
+  "steps": [
+    {
+      "exit": 0,
+      "line": "base",
+      "script": "pilot.py",
+      "tail": [
+        "{\"not run\": 4, \"pass\": 31}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "base",
+      "script": "pairs_cli.py",
+      "tail": [
+        "{\"set\": \"punct\", \"line\": \"base\", \"pairs\": 12, \"merged\": 6, \"unexpected\": [], \"bytes_unchanged\": true, \"outcome\": \"pass\"}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "base",
+      "script": "pairs_cli.py",
+      "tail": [
+        "{\"set\": \"corpus80\", \"line\": \"base\", \"pairs\": 80, \"merged\": 32, \"unexpected\": [], \"bytes_unchanged\": true, \"outcome\": \"pass\"}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "base",
+      "script": "pairs_cli.py",
+      "tail": [
+        "{\"set\": \"corpus112\", \"line\": \"base\", \"pairs\": 112, \"merged\": 24, \"unexpected\": [], \"bytes_unchanged\": true, \"outcome\": \"pass\"}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "base",
+      "script": "pairs_journals.py",
+      "tail": [
+        "ложных склеек: 0 не склеено повторов: 0"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "edition",
+      "script": "pilot.py",
+      "tail": [
+        "{\"not run\": 4, \"pass\": 31}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "edition",
+      "script": "pairs_cli.py",
+      "tail": [
+        "{\"set\": \"punct\", \"line\": \"edition\", \"pairs\": 12, \"merged\": 6, \"unexpected\": [], \"bytes_unchanged\": true, \"outcome\": \"pass\"}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "edition",
+      "script": "pairs_cli.py",
+      "tail": [
+        "{\"set\": \"corpus80\", \"line\": \"edition\", \"pairs\": 80, \"merged\": 32, \"unexpected\": [], \"bytes_unchanged\": true, \"outcome\": \"pass\"}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "edition",
+      "script": "pairs_cli.py",
+      "tail": [
+        "{\"set\": \"corpus112\", \"line\": \"edition\", \"pairs\": 112, \"merged\": 24, \"unexpected\": [], \"bytes_unchanged\": true, \"outcome\": \"pass\"}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "edition",
+      "script": "pairs_journals.py",
+      "tail": [
+        "ложных склеек: 0 не склеено повторов: 0"
+      ]
+    },
+    {
+      "exit": 0,
+      "script": "compat.py (данные 0.1.33 под 0.1.34)",
+      "tail": [
+        "}"
+      ]
+    }
+  ]
+}

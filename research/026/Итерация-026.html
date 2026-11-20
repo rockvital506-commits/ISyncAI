@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-026. Адаптер Kilo Code — 0.1.6</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-026. Адаптер Kilo Code: среда описана, второй реестр не создан</h1>
+<p class="lead">18 ноября 2026. Правило тождества не трогали — оно принято в И‑025. Предмет этой итерации среда: вход Kilo, её старшинство источников и её ограничения. Выпуск <b>0.1.6</b>.</p>
+
+<div class="verdict">
+<strong>Вход комплекта у Kilo не главный: он третий из четырёх.</strong>
+Выше стоят промпт агента и ключ <code>instructions</code> в проектном <code>kilo.jsonc</code>. Теперь комплект говорит это данными — карточкой среды, — видит все шесть раскладок Kilo без чтения их содержимого и не пишет в них ни байта.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.6</b></div>
+<div><span>Испытания</span><b>42 / 0 / 3</b></div>
+<div><span>Проверок адаптера</span><b class="good">11 / 11</b></div>
+<div><span>Записей в среду</span><b class="good">0</b></div>
+<div><span>Приёмка</span><b>8 / 0 / 5</b></div>
+</div>
+
+<h2>Что известно про среду — и что из этого следует</h2>
+<div class="wrap">
+<table>
+<tr><th>Свойство Kilo Code</th><th>Следствие для комплекта</th></tr>
+<tr><td>вход <code>AGENTS.md</code> в корне; <code>AGENT.md</code> — запасное имя; регистр обязателен</td><td>вход комплекта уже совпадает с входом среды</td></tr>
+<tr><td>старшинство: промпт агента → <code>instructions</code> в проектном <code>kilo.jsonc</code> → корневой <code>AGENTS.md</code> → глобальный <code>instructions</code></td><td>вход комплекта <b>третий из четырёх</b>; два источника старше него — конфигурация</td></tr>
+<tr><td>правила: <code>.kilo/rules/</code>, совместимость <code>.kilocode/rules/</code>, наследие <code>.kilocoderules</code></td><td>все три входят в обнаружение и не читаются</td></tr>
+<tr><td><code>AGENTS.md</code> защищён от записи агентом; правки — в новых задачах</td><td>комплект не может обещать «применено сейчас»</td></tr>
+<tr><td><code>AGENTS.md</code> в подкаталогах грузится по факту чтения файлов оттуда</td><td>обнаружение в подкаталогах — отдельный предмет</td></tr>
+</table>
+</div>
+<p>Источники: документация Kilo (<code>kilo.ai/docs/customize/agents-md</code>), описание каталогов правил (<code>deepwiki/Kilo-Org/kilocode</code>), обзор переноса с Cline. Снимок на 18.11.2026.</p>
+
+<h2>Что появилось в 0.1.6</h2>
+<div class="wrap">
+<table>
+<tr><th>Что</th><th>Как</th></tr>
+<tr><td>Карточка среды</td><td>команда <code>adapter kilo</code>: вход, запасное имя, таблица старшинства из четырёх пунктов, источники, <code>never_writes</code>, факты среды, <code>not_proven</code>, <code>discovery_proven: false</code>, <code>writes: false</code></td></tr>
+<tr><td>Обнаружение</td><td>в закрытый список добавлены <code>AGENT.md</code>, <code>.kilo/kilo.jsonc</code>, <code>.kilo/rules</code>, <code>.kilocoderules</code>; по-прежнему только <code>lstat</code></td></tr>
+<tr><td>Отказы</td><td>неизвестная среда → <code>adapter_unknown</code>; любой найденный источник требует <code>ack_existing</code> в порядке обнаружения → <code>existing_sources</code></td></tr>
+<tr><td>Запрет записи</td><td>ни <code>.kilo/**</code>, ни <code>.kilocode/**</code>, ни <code>kilo.jsonc</code>, ни <code>.kilocoderules</code></td></tr>
+<tr><td>Регрессии</td><td>X23 карточка, X24 источники, X25 запасное имя, X26 «адаптер не пишет конфигурацию»</td></tr>
+</table>
+</div>
+
+<h2>Независимая проверка адаптера (11 из 11)</h2>
+<div class="wrap">
+<table>
+<tr><th>Проверка</th><th>Результат</th></tr>
+<tr><td>карточка: вход, запасное имя, старшинство 3 из 4, ничего не пишет</td><td class="good">pass</td></tr>
+<tr><td>неизвестная среда → <code>adapter_unknown</code></td><td class="good">pass</td></tr>
+<tr><td>раскладка <code>.kilo/kilo.jsonc</code></td><td class="good">источник виден, подтверждение требуется, файл байт в байт</td></tr>
+<tr><td>раскладка <code>.kilo/rules/</code> (текущая)</td><td class="good">как каталог, содержимое не читается</td></tr>
+<tr><td>раскладка <code>.kilocode/rules/</code> (совместимость)</td><td class="good">как каталог</td></tr>
+<tr><td>раскладка <code>.kilocoderules</code> (наследие)</td><td class="good">как файл</td></tr>
+<tr><td>раскладка <code>AGENT.md</code> (запасное имя входа)</td><td class="good">требует подтверждения, не перезаписывается</td></tr>
+<tr><td>раскладка <code>kilo.jsonc</code> в корне</td><td class="good">требует подтверждения</td></tr>
+<tr><td>порядок подтверждения</td><td class="good">обратный порядок отклонён</td></tr>
+<tr><td>конфигурация среды не тронута (по всему дереву)</td><td class="good">изменён только <code>AGENTS.md</code></td></tr>
+<tr><td>обнаружение не заявлено как проверенное</td><td class="good"><code>discovery_proven: false</code>, три пункта <code>not_proven</code></td></tr>
+</table>
+</div>
+
+<h2>Правило не поехало</h2>
+<div class="wrap">
+<table>
+<tr><th>Стенд</th><th>И‑025 (0.1.5)</th><th>И‑026 (0.1.6)</th></tr>
+<tr><td>Корпус 112 пар: склеек</td><td class="num">24</td><td class="num">24 (12 форменных + 12 объявленных)</td></tr>
+<tr><td>Корпус: прочих склеек</td><td class="num good">0</td><td class="num good">0</td></tr>
+<tr><td>Журналы: склеено повторов</td><td class="num">3 из 3</td><td class="num">3 из 3</td></tr>
+<tr><td>Журналы: ложных</td><td class="num good">0 из 40</td><td class="num good">0 из 40</td></tr>
+<tr><td>Данные 0.1.5 под 0.1.6</td><td>—</td><td class="good">читаются, байты не менялись</td></tr>
+</table>
+</div>
+
+<div class="note">
+<b>Чего эта итерация не делает.</b> Она не запускает Kilo. Загрузка входа в редакторе, реальное старшинство <code>instructions</code> против <code>AGENTS.md</code> и чтение содержимого — это уровни достоверности 2 и 3 (И‑030…И‑032). Поэтому в карточке стоит <code>discovery_proven: false</code>: это поле ответа, а не оговорка в отчёте.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И‑027 — адаптер GitHub Copilot / VS Code.</b> У этой среды инструкции вместо правил, и вход другой — новая карточка, новый набор источников, тот же запрет на второй реестр.</li>
+<li>Дальше по карте: Claude Code, Cursor, Antigravity, затем уровни достоверности (И‑030…И‑032) и управление правилами.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-026.zip</code>, 37 членов, 346 592 B, <code>69aaac39…</code>; повтор из печати дал те же восемь результатов — <code>identical: true</code>. Выпуск 0.1.6: база 105 153 B <code>819781af…</code>, Edition 105 200 B <code>704b4637…</code>; внутри 0.1.0 не тронут, 0.1.4 и 0.1.5 остаются в поставке для перехода.
+</footer>
+</main>
+</body>
+</html>

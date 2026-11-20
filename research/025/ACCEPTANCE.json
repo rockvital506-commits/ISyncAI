@@ -1,0 +1,181 @@
+{
+  "counts": {
+    "not run": 4,
+    "pass": 9
+  },
+  "iteration": "И-025",
+  "release": {
+    "base_sha256": null,
+    "edition_sha256": null,
+    "version": "0.1.5"
+  },
+  "rows": [
+    {
+      "actual": {
+        "base": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 38
+        },
+        "edition": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 38
+        }
+      },
+      "case": "выпуск 0.1.5 собран и испытан",
+      "evidence": "release-0.1.5/{base,edition}/AgentContractLab/reports/CHECKS.json",
+      "expected": "38 pass / 0 fail / 3 not run на обеих линиях",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "false": 0,
+        "merged": 3,
+        "negatives": 40
+      },
+      "case": "настоящий повтор склеивается",
+      "evidence": "pairs-025-journals-base.json",
+      "expected": "3 из 3 (2 одинаковых и 1 с разной длительностью), 0 ложных из 40",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "false": 0,
+        "merged": 3
+      },
+      "case": "то же на линии Edition",
+      "evidence": "pairs-025-journals-edition.json",
+      "expected": "те же 3 склейки и 0 ложных",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "form_only": 12,
+        "merged_total": 24
+      },
+      "case": "форменные склейки корпуса сохранены",
+      "evidence": "pairs-025-base.json; pairs-025-edition.json",
+      "expected": "12 склеек «вар3» на обеих линиях",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "expected": {
+          "changed_evidence_file": 12,
+          "form_only": 12,
+          "other": 0,
+          "total": 24
+        },
+        "reclassified": 12
+      },
+      "case": "изменение спецификации объявлено",
+      "evidence": "EXPECTATIONS.json; ../024/pairs-base.json (не изменён)",
+      "expected": "12 пар «изменён файл свидетельства» теперь склеиваются, и это записано, а ожидание И-024 не переписано",
+      "limits": "Отменена одна защита — «подмена файла свидетельства». Цена измерена в DESIGN.md, альтернатива (снимать только номер строки) дала 12 склеек корпуса и 1 из 3 повторов.",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "expected": 64,
+        "merged_other": 0,
+        "mismatches": 12
+      },
+      "case": "остальные отказы корпуса сохранены",
+      "evidence": "pairs-025-base.json",
+      "expected": "64 пар «другое событие» по-прежнему не склеиваются",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "compat_different": "committed",
+        "corpus_identifier_refusals": 0,
+        "corpus_number_refusals": 0
+      },
+      "case": "содержание улики защищено",
+      "evidence": "pairs-025-base.json; COMPAT.json",
+      "expected": "отпечаток файла, «по памяти», другой счётчик — новое наблюдение",
+      "limits": "Отдельно проверены регрессии X20–X22 в испытаниях комплекта.",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "checks_bytes": 930,
+        "different_outcome": "committed",
+        "first_write": "committed",
+        "iteration": "И-025",
+        "new_version": "0.1.5",
+        "observations_after_status": 1,
+        "ok": true,
+        "old_data_reads": true,
+        "old_data_untouched": true,
+        "old_version": "0.1.4",
+        "records_written": 1,
+        "repeat_kept_bytes": true,
+        "repeat_outcome": "no_change"
+      },
+      "case": "данные 0.1.4 читаются и не переписываются",
+      "evidence": "COMPAT.json",
+      "expected": "файл наблюдений 0.1.4 читается 0.1.5 без изменений; повтор не меняет байты",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "equal": {
+          "COMPAT.json": true,
+          "EXPECTATIONS.json": true,
+          "pairs-025-base.json": true,
+          "pairs-025-edition.json": true,
+          "pairs-025-journals-base.json": true,
+          "pairs-025-journals-edition.json": true
+        },
+        "identical": true
+      },
+      "case": "повтор из печати совпадает со сборкой",
+      "evidence": "REPLAY.json",
+      "expected": "пять результатов и совместимость — те же",
+      "limits": "",
+      "status": "pass"
+    },
+    {
+      "actual": null,
+      "case": "обновление на месте (update)",
+      "evidence": "—",
+      "expected": "трёхстороннее сравнение с разрешениями",
+      "limits": "Отдельный предмет: нужно разрешение конфликтов данных.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "журналы заказчика",
+      "evidence": "—",
+      "expected": "ваши журналы и ваши проекты",
+      "limits": "Журналов нет; стенд И-023 — наши инструменты на коде третьих лиц.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "Windows и права",
+      "evidence": "—",
+      "expected": "Windows, ограниченные права",
+      "limits": "Стенд Linux.",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "case": "живые модели",
+      "evidence": "—",
+      "expected": "поведение с подключённой моделью",
+      "limits": "Режим офлайн.",
+      "status": "not run"
+    }
+  ]
+}

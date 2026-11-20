@@ -1,0 +1,107 @@
+{
+  "acceptance_expected": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 10
+  },
+  "at": "2026-11-18",
+  "compat_expected": {
+    "new_version": "0.1.30",
+    "ok": true,
+    "old_version": "0.1.29"
+  },
+  "corpora_expected": {
+    "corpus112": {
+      "merged": 24,
+      "pairs": 112
+    },
+    "corpus80": {
+      "merged": 32,
+      "pairs": 80
+    },
+    "punct": {
+      "merged": 6,
+      "pairs": 12
+    }
+  },
+  "iteration": "И-050",
+  "journals_expected": {
+    "expected_repeats": 3,
+    "false_merges": 0,
+    "journals": 8,
+    "observations": 41,
+    "pairs": 43
+  },
+  "levels_expected": {
+    "not_run": [
+      "L3M",
+      "L4",
+      "L5M",
+      "LIVE"
+    ],
+    "pass": [
+      "L1",
+      "L2",
+      "L3",
+      "L3F",
+      "L4C",
+      "L4Q",
+      "L4D",
+      "L4S",
+      "L4O",
+      "L4V",
+      "L4X",
+      "L4P",
+      "L4M",
+      "L4T",
+      "L4K",
+      "L4R",
+      "L4F",
+      "L5a",
+      "L5b"
+    ]
+  },
+  "matrix_expectation": {
+    "after": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    },
+    "before": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    }
+  },
+  "note": "Ожидания записаны до прогона стенда. Матрица P1–P8 ведётся без изменения состава; уровни дополнены пунктом L4F — чужая файловая система (регистр измерен, лимиты объявлены, имена и права).",
+  "preregistered": true,
+  "release": {
+    "new_rules": [
+      "X74: system измеряет регистр и объявляет лимиты, права файлов измерены",
+      "X75: имя в другом регистре останавливает запись кодом case, длинный компонент — кодом path"
+    ],
+    "tests_expected": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 91
+    },
+    "version": "0.1.30"
+  },
+  "subject": "чужая файловая система: регистр, длина, права"
+}

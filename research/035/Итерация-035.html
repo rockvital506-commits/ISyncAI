@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-035. Достоверность: обнаружение как данные — 0.1.15</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-035. Достоверность 1–5: обнаружение названо данными</h1>
+<p class="lead">18 ноября 2026. Пятая итерация обкатки. Матрица P1–P8 закрыта, работа перешла к уровням достоверности. Комплект теперь отвечает, какие входы есть в проекте и какой среда прочитает первой, — и честно говорит, что это обнаружение, а не проверка. Выпуск <b>0.1.15</b>.</p>
+
+<div class="verdict">
+<strong>Уровни 1, 2, 3 и 5 измерены; живая среда — <code>not run</code>.</strong> Порядок обнаружения исполняет отдельный процесс-имитатор, и он совпал с ответом комплекта на трёх раскладках и двух средах. Это доказывает, что порядок однозначен и исполним, — но не доказывает, что Kilo и Copilot ведут себя так же. Так и записано.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.15</b></div>
+<div><span>Испытания</span><b>61 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>12 / 1</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Новая команда</h2>
+<table>
+<tr><th>Поле <code>discovery</code></th><th>Что означает</th></tr>
+<tr><td><code>found</code></td><td>объявленные входы, которые реально есть в проекте — только наличие и имена</td></tr>
+<tr><td><code>order</code></td><td>документированный порядок старшинства с пометкой «есть/нет» у каждого шага</td></tr>
+<tr><td><code>chosen</code>, <code>chosen_rank</code></td><td>что среда прочитает первой; <code>null</code>, если входа нет</td></tr>
+<tr><td><code>levels</code></td><td>что измерено: уровень 1 — <code>pass</code>/<code>fail</code>, уровни 2, 3 и 5 — <code>not run</code></td></tr>
+<tr><td><code>discovery_proven</code></td><td><code>false</code>: обнаружение объявлено, а не доказано живой средой</td></tr>
+<tr><td><code>writes</code>, <code>contents_read</code></td><td><code>false</code>: команда ничего не пишет и не читает чужие файлы</td></tr>
+</table>
+<p>Заглушки — Claude Code, Cursor, Antigravity — отвечают <code>adapter_stub</code>: их порядок не сверялся, и выдумывать его комплект не станет.</p>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Как проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл существует</td><td>наличие объявленных входов на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>среда нашла файл по своему порядку</td><td>две независимые реализации: <code>discovery</code> и отдельный процесс-имитатор, 6 сравнений</td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td>имитатор читает названный файл, отпечаток совпадает с диском</td><td class="good">pass</td></tr>
+<tr><td>5</td><td>результат повторяется</td><td>три вызова <code>discovery</code> и три прогона имитатора</td><td class="good">pass</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются, модели не вызываются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Старшинство у сред разное — и это данные</h2>
+<p>Когда в проекте есть и <code>AGENTS.md</code>, и <code>.github/copilot-instructions.md</code>, Copilot читает сначала свой файл инструкций (ранг 3), а Kilo — <code>AGENTS.md</code> (ранг 3 в своём порядке). Комплект не выбирает «правильный» вход и не создаёт второй реестр: он показывает порядок каждой среды.</p>
+
+<h2>Матрица обкатки не изменилась</h2>
+<table>
+<tr><th>№</th><th>Пункт</th><th>И-034</th><th>И-035</th></tr>
+<tr><td>P1–P8</td><td>раскладка, вход, событие, слияние, промпт, документы, консоль, повтор</td><td class="good">8 / 0</td><td class="good">8 / 0</td></tr>
+</table>
+<table>
+<tr><th>Корпус</th><th class="num">Пар</th><th>Результат</th></tr>
+<tr><td>пунктуация</td><td class="num">12</td><td class="good">6 склеек, 0 промахов, 0 ложных</td></tr>
+<tr><td>И-029</td><td class="num">80</td><td class="good">32 склейки, ничего неожиданного</td></tr>
+<tr><td>И-020/И-024</td><td class="num">112</td><td class="good">24 склейки, прочих 0</td></tr>
+<tr><td>журналы (импорт)</td><td class="num">43</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F16.</b> Имитатор — не среда. Он доказывает, что порядок в карточках однозначен и исполним, но не доказывает, что расширение ведёт себя так же. Поэтому <code>discovery</code> отвечает <code>discovery_proven: false</code>, а пункт «живая среда» остаётся <code>not run</code>.
+</div>
+
+<div class="note">
+<b>Находка F17.</b> Старшинство различается между средами. Это не ошибка и не повод унифицировать: данные показывают порядок каждой среды, а выбор входа — за вами.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-036</b> — уровень 3: содержимое прочитано. Отличается от уровня 2 и тоже требует живой среды.</li>
+<li><b>И-037</b> — уровень 5: поведение повторяется от прогона к прогону.</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками и в нумерации не участвуют.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-035.zip</code>, 44 члена, 753 155 B, <code>38ffec71…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.15: база 260 934 B <code>45669e93…</code>, Edition 263 796 B <code>1a3d6a17…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.14.
+</footer>
+</main>
+</body>
+</html>

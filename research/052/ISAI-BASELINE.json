@@ -1,0 +1,41 @@
+{
+  "clean_copy": {
+    "error": 0,
+    "exit": 0,
+    "fail": 0,
+    "failed": [],
+    "pass": 28,
+    "skipped": 0,
+    "total": 28,
+    "what": "копия репозитория без research/, dist/ и .git"
+  },
+  "core_version": "0.2.5",
+  "counts": {
+    "error": 0,
+    "exit": 1,
+    "fail": 9,
+    "pass": 19,
+    "skipped": 0,
+    "total": 28
+  },
+  "errors": [],
+  "failed": [
+    "tests/test_hypergraph_cross_links.py::TestHypergraphStatefulLifecycle::runTest",
+    "tests/test_hypergraph_cross_links.py::test_link_mutator_full_lifecycle_cli_and_dry_run_isolation",
+    "tests/test_hypergraph_cross_links.py::test_transactional_refactor_renames_symbol_across_code_prose_and_preserves_genesis",
+    "tests/test_isai_kernel.py::test_crash_recovery_heals_multi_fault_chaos_and_restores_valid_audit",
+    "tests/test_isai_kernel.py::test_detects_unreachable_island_node",
+    "tests/test_isai_kernel.py::test_live_repository_passes_full_360_audit_and_idempotent_recover",
+    "tests/test_neuro_vascular_fundamental.py::test_link_mutator_blocks_il1c_refactor_backdoor_and_supports_ephemeral_task_scaffold",
+    "tests/test_neuro_vascular_fundamental.py::test_reentrant_advisory_write_lock_leaves_clean_audit_state",
+    "tests/test_neuro_vascular_fundamental.py::test_unratified_nvf_edit_blocked_until_operator_chronicle_ratification"
+  ],
+  "iteration": "И-052",
+  "modules": {
+    "hypothesis": "6.170.16",
+    "pydantic": "2.14.4",
+    "pytest": "9.2.0"
+  },
+  "note": "Исходная точка до правок: ядро прогоняется в этой машине впервые за линию.",
+  "ran": true
+}

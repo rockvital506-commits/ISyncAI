@@ -1,0 +1,95 @@
+{
+  "acceptance_expected": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 10
+  },
+  "at": "2026-11-18",
+  "compat_expected": {
+    "new_version": "0.1.18",
+    "ok": true,
+    "old_version": "0.1.17"
+  },
+  "corpora_expected": {
+    "corpus112": {
+      "merged": 24,
+      "pairs": 112
+    },
+    "corpus80": {
+      "merged": 32,
+      "pairs": 80
+    },
+    "punct": {
+      "merged": 6,
+      "pairs": 12
+    }
+  },
+  "iteration": "И-038",
+  "journals_expected": {
+    "expected_repeats": 3,
+    "false_merges": 0,
+    "journals": 8,
+    "observations": 41,
+    "pairs": 43
+  },
+  "levels_expected": {
+    "not_run": [
+      "L3M",
+      "L4",
+      "L5M",
+      "LIVE"
+    ],
+    "pass": [
+      "L1",
+      "L2",
+      "L3",
+      "L3F",
+      "L4C",
+      "L5a",
+      "L5b"
+    ]
+  },
+  "matrix_expectation": {
+    "after": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    },
+    "before": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    }
+  },
+  "note": "Ожидания записаны до прогона стенда. Матрица P1–P8 закрыта в И-034 и ведётся без изменения состава; уровни достоверности дополнены уровнем 4 в измеримой части.",
+  "preregistered": true,
+  "release": {
+    "new_rules": [
+      "X50: решение хранит «до/после» и восстанавливает прежний текст",
+      "X51: смена области требует согласия; прочие поля неизменяемы"
+    ],
+    "tests_expected": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 67
+    },
+    "version": "0.1.18"
+  },
+  "subject": "изменение существующего: своя процедура и свой отказ"
+}

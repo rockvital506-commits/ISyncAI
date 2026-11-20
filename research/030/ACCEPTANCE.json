@@ -1,0 +1,302 @@
+{
+  "at": "2026-11-18",
+  "counts": {
+    "not run": 5,
+    "pass": 12
+  },
+  "iteration": "И-030",
+  "release": {
+    "tests": {
+      "base": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 50
+      },
+      "edition": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 50
+      }
+    },
+    "version": "0.1.10"
+  },
+  "rows": [
+    {
+      "actual": {
+        "base": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 50
+        },
+        "edition": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 50
+        }
+      },
+      "expected": "50 pass / 0 fail / 3 not run на обеих линиях",
+      "name": "выпуск 0.1.10 собран и испытан",
+      "note": "находка F4: при первой сборке блоки правок не применились из-за строкового сравнения версий",
+      "source": "release-0.1.10/*/AgentContractLab/reports/CHECKS.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "dot-dotted-name": 1,
+          "dot-exception": 1,
+          "dot-file": 1,
+          "dot-identifier": 1,
+          "dot-two-sentences": 1,
+          "dot-version": 1
+        },
+        "edition": {
+          "dot-dotted-name": 1,
+          "dot-exception": 1,
+          "dot-file": 1,
+          "dot-identifier": 1,
+          "dot-two-sentences": 1,
+          "dot-version": 1
+        }
+      },
+      "expected": "test_build., a.b., TypeError., v1.0., test_build.py. и две фразы склеиваются",
+      "name": "завершающая точка не разделяет событие: 6 из 6",
+      "note": "",
+      "source": "pairs-030-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "dot-vs-underscore": 0,
+          "name-changed": 0,
+          "name-dotted-longer": 0,
+          "name-version": 0,
+          "name-with-extension": 0,
+          "number-changed": 0
+        },
+        "edition": {
+          "dot-vs-underscore": 0,
+          "name-changed": 0,
+          "name-dotted-longer": 0,
+          "name-version": 0,
+          "name-with-extension": 0,
+          "number-changed": 0
+        }
+      },
+      "expected": "test_build.py против test_build, v1.1 против v1.0, a.b.c против a.b, a_b против a.b — разделены",
+      "name": "точка внутри имени значима: 6 из 6",
+      "note": "",
+      "source": "pairs-030-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "false": 0,
+          "form": 8,
+          "missed": 0
+        },
+        "edition": {
+          "false": 0,
+          "form": 8,
+          "missed": 0
+        }
+      },
+      "expected": "форма записи стала склеиваться (8 из 8 против 3 из 8), остальные виды не изменились",
+      "name": "корпус И-029: 80 из 80",
+      "note": "",
+      "source": "pairs-030-corpus80-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "merged": 24,
+          "unexpected": 12
+        },
+        "edition": {
+          "merged": 24,
+          "unexpected": 12
+        }
+      },
+      "expected": "24 склейки, из них 12 объявленных в И-025, прочих 0",
+      "name": "прежний корпус 112 пар не поехал",
+      "note": "",
+      "source": "pairs-030-corpus112-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "false": 0,
+          "merged": 3
+        },
+        "edition": {
+          "false": 0,
+          "merged": 3
+        }
+      },
+      "expected": "3 из 3 повторов склеены, ложных 0 из 40",
+      "name": "журналы не поехали",
+      "note": "",
+      "source": "pairs-030-journals-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": true,
+        "edition": true
+      },
+      "expected": "во всех склеенных парах корпусов файл остался байт в байт",
+      "name": "склейка не меняет checks.json",
+      "note": "",
+      "source": "pairs-030-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "pass": 16
+        },
+        "edition": {
+          "pass": 16
+        }
+      },
+      "expected": "16 проверок на каждой линии, шесть поочерёдных ходов дают одну запись",
+      "name": "стенд двух сред",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "pass": 13
+        },
+        "edition": {
+          "pass": 13
+        }
+      },
+      "expected": "13 из 13 на обеих линиях",
+      "name": "адаптер Copilot не сломан правкой правила",
+      "note": "",
+      "source": "adapter-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "new_version": "0.1.10",
+        "ok": true,
+        "old_data_reads": true,
+        "old_data_untouched": true,
+        "old_version": "0.1.9",
+        "repeat_kept_bytes": true
+      },
+      "expected": "старое читается, повтор не меняет байты, отличие факта даёт запись",
+      "name": "данные 0.1.9 читаются и не переписываются",
+      "note": "",
+      "source": "COMPAT.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": [
+          "0.1.0",
+          "0.1.4",
+          "0.1.5",
+          "0.1.6",
+          "0.1.7",
+          "0.1.8",
+          "0.1.9",
+          "0.1.10"
+        ],
+        "edition": [
+          "0.1.0",
+          "0.1.4",
+          "0.1.5",
+          "0.1.6",
+          "0.1.7",
+          "0.1.8",
+          "0.1.9",
+          "0.1.10"
+        ]
+      },
+      "expected": "releases/0.1.0 и 0.1.4–0.1.10 в обеих линиях",
+      "name": "цепочка выпусков в поставке",
+      "note": "",
+      "source": "архивы 0.1.10",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "equal": {
+          "COMPAT.json": true,
+          "EXPECTATIONS.json": true,
+          "adapter-base.json": true,
+          "adapter-edition.json": true,
+          "dual-base.json": true,
+          "dual-edition.json": true,
+          "pairs-030-base.json": true,
+          "pairs-030-corpus112-base.json": true,
+          "pairs-030-corpus112-edition.json": true,
+          "pairs-030-corpus80-base.json": true,
+          "pairs-030-corpus80-edition.json": true,
+          "pairs-030-edition.json": true,
+          "pairs-030-journals-base.json": true,
+          "pairs-030-journals-edition.json": true
+        },
+        "identical": true
+      },
+      "expected": "все результаты и файлы совпадают, identical true",
+      "name": "повтор из печати совпадает со сборкой",
+      "note": "",
+      "source": "REPLAY.json",
+      "status": "pass"
+    },
+    {
+      "actual": null,
+      "expected": "Kilo и Copilot поочерёдно читают AGENTS.md в открытом проекте",
+      "name": "живой VS Code с двумя расширениями",
+      "note": "Расширения здесь не запускаются.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "среды действительно читают AGENTS.md",
+      "name": "загрузка инструкций в VS Code",
+      "note": "Уровни достоверности 2–3, И‑031…И‑032.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "kilo.jsonc и .github/copilot-instructions.md перекрывают AGENTS.md",
+      "name": "старшинство в живых средах",
+      "note": "Старшинство взято из документации сред и записано данными.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "поведение на другой файловой системе",
+      "name": "Windows и права",
+      "note": "Здесь только Linux.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "приёмка на данных владельца",
+      "name": "журналы заказчика",
+      "note": "Журналов у владельца нет.",
+      "source": "—",
+      "status": "not run"
+    }
+  ]
+}

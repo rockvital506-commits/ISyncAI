@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-049. Права: кто читает и кто пишет — 0.1.29</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-049. Границы, которые можно спросить</h1>
+<p class="lead">18 ноября 2026. Девятнадцатая итерация линии. §11: границы проекта объявлены данными — что комплект читает, куда пишет и чего не касается; чужая запись в служебном каталоге останавливает изменения. Выпуск <b>0.1.29</b>.</p>
+
+<div class="verdict">
+<strong>26 pass / 4 not run.</strong> <code>rights</code> называет <code>reads</code> и 9 путей <code>write_paths</code>, <code>never</code> и <code>roles</code>. Посторонний файл в <code>.agent-contract/</code> виден в <code>status</code> и <code>rights</code>, <code>list</code> продолжает работать, а <code>plan</code> отвечает отказом <code>foreign</code> с перечнем. <code>restore</code> и <code>undo</code> не блокируются. <code>metrics</code>, <code>due</code> и <code>rights</code> вошли в список чтения.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.29</b></div>
+<div><span>Испытания</span><b>89 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>26 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>В чём была трудность</h2>
+<table>
+<tr><th>Что</th><th>До 0.1.29</th><th>Чем плохо</th></tr>
+<tr><td>границы</td><td>подразумеваются кодом (<code>TARGETS</code>, <code>FILES</code>)</td><td>владелец не может спросить «куда ты пишешь»</td></tr>
+<tr><td>чужая запись в <code>.agent-contract</code></td><td>не замечается</td><td>изменения идут поверх непонятного файла</td></tr>
+<tr><td><code>metrics</code>, <code>due</code> в <code>repeat</code></td><td>отказ <code>repeat_write</code></td><td>это чтения, а список чтения их не знал</td></tr>
+</table>
+
+<h2>Что появилось</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td><code>rights</code></td><td><code>reads</code>, <code>write_paths</code> (9 путей), <code>never</code>, <code>roles</code>, <code>foreign</code></td></tr>
+<tr><td>посторонняя запись</td><td>отказ <code>foreign</code> с перечнем на <code>plan</code>/<code>apply</code></td></tr>
+<tr><td>чтение</td><td>продолжает работать: сначала надо понять, что это за файл</td></tr>
+<tr><td>восстановление</td><td><code>restore</code>/<code>undo</code> не блокируются</td></tr>
+<tr><td>видимость</td><td><code>status.foreign</code> — отказ не первый, кто об этом говорит</td></tr>
+<tr><td>вход операции</td><td><code>checks.incoming.json</code> — объявленный вход <code>merge</code>, не посторонний</td></tr>
+<tr><td>список чтения</td><td><code>metrics</code>, <code>due</code>, <code>rights</code>; <code>repeat</code> их принимает</td></tr>
+<tr><td>чтение не пишет</td><td><code>writes: false</code>, ни байта</td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code></td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td><code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, передача с <code>allow_owner</code></td><td class="good">pass</td></tr>
+<tr><td>4V</td><td>версия — содержимое, срок — данные</td><td><code>same</code>, <code>revision</code> 1 → 2 → 2, <code>due</code> 1 → 0</td><td class="good">pass</td></tr>
+<tr><td>4X</td><td>неизвестная схема — отказ и возврат</td><td><code>unknown_schema</code>, файл <code>before</code> вернул проект</td><td class="good">pass</td></tr>
+<tr><td>4P</td><td>частичный сбой виден до восстановления</td><td>код 75, <code>pending_detail</code>, <code>foreign</code>, <code>restored</code></td><td class="good">pass</td></tr>
+<tr><td>4M</td><td>метрики считают по машине состояний</td><td><code>active</code> 1 → 0 → 1, <code>hidden [P-2]</code></td><td class="good">pass</td></tr>
+<tr><td>4T</td><td>контур машины: все пары и запреты входа</td><td>32 пары, 0 расхождений</td><td class="good">pass</td></tr>
+<tr><td>4K</td><td>два сценария рядом</td><td><code>changed</code> 90 против 30, delta, отказ <code>compare</code></td><td class="good">pass</td></tr>
+<tr><td>4R</td><td>права названы данными</td><td>9 путей записи; <code>foreign</code> останавливает изменения, но не чтение; <code>repeat</code> на трёх чтениях</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений</td><td>4 команды × 3 прогона, <code>project_unchanged</code></td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок</td><td>3 чистых каталога: данные совпали без <code>at</code></td><td class="good">pass</td></tr>
+<tr><td>3M, 4, 5M</td><td>модель читает и действует</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F48.</b> Право чтения — список, и новые чтения в него не попали. <code>metrics</code> и <code>due</code> появились в 0.1.26 и 0.1.23, но <code>repeat</code> продолжал считать их записью: список чтения объявлен один раз и не растёт сам.
+</div>
+
+<div class="note">
+<b>Находка F49.</b> Посторонняя запись — повод остановиться, а не продолжить. Файл, которого комплект не создавал, не читается, но и не игнорируется: изменения ждут разбора, чтение работает, восстановление доступно.
+</div>
+
+<div class="note">
+<b>Находка F50.</b> Вход операции — не посторонний файл. <code>checks.incoming.json</code> кладёт владелец, чтобы слить журналы; по автору он чужой, по роли — объявленный вход <code>merge</code>. Граница проведена по роли, а не по авторству.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-050</b> — Windows, NTFS, права: другая файловая система и живая часть прав (§11, §16).</li>
+<li><b>И-051</b> — живые модели (§14 ур. 4).</li>
+<li>Дальше — ядро ISAI (И-052…И-084); адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-049.zip</code>, 45 членов, 1 458 582 B, <code>328514fe…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.29: база 569 467 B <code>27eb6c21…</code>, Edition 572 493 B <code>f602f5b9…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.28. Данные 0.1.28 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

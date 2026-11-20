@@ -1,0 +1,64 @@
+{
+  "bytes_unchanged": true,
+  "corpus_sha256": "842620d8cf460f568df554f675f60758767a0cb8f585b8a03db4f5aea2f368cf",
+  "false_merges": [],
+  "iteration": "И-030",
+  "kinds": {
+    "con-mode": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "con-model": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "con-os": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "con-permissions": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "obs-editor": {
+      "label_merge": 8,
+      "merged": 8,
+      "pairs": 8
+    },
+    "obs-extension": {
+      "label_merge": 8,
+      "merged": 8,
+      "pairs": 8
+    },
+    "obs-form": {
+      "label_merge": 8,
+      "merged": 8,
+      "pairs": 8
+    },
+    "obs-plus-condition": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "obs-plus-fact": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 8
+    },
+    "obs-profile": {
+      "label_merge": 8,
+      "merged": 8,
+      "pairs": 8
+    }
+  },
+  "line": "base",
+  "missed_merges": [],
+  "outcome": "pass",
+  "pairs": 80,
+  "release_pin": "0c79523fc6d855323151be9231e3cd10d21fdba6a7eeee21bf78f2e614397561",
+  "version": "0.1.10"
+}

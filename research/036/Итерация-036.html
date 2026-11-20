@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-036. Достоверность 3: содержимое прочитано — 0.1.16</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-036. Уровень 3: содержимое прочитано — и кем именно</h1>
+<p class="lead">18 ноября 2026. Шестая итерация обкатки. Уровень 3 распался на два разных утверждения: файл прочитан (это измеряется) и текст получила модель (это <code>not run</code>). Первое теперь названо данными. Выпуск <b>0.1.16</b>.</p>
+
+<div class="verdict">
+<strong>13 pass / 2 not run.</strong> Комплект читает собственный вход и опознаёт его по строке-указателю на <code>START.md</code>; независимый читатель даёт тот же отпечаток, размер и число строк. Чужой <code>AGENTS.md</code> не читается вовсе — известен только размер, а файл остаётся байт в байт.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.16</b></div>
+<div><span>Испытания</span><b>63 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>13 / 2</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Новая команда <code>entry</code></h2>
+<table>
+<tr><th>Случай</th><th>Что возвращает</th></tr>
+<tr><td>свой вход (адаптер подключён)</td><td><code>read {path, bytes, sha256, lines}</code>, <code>marker_found</code>, <code>points_to: .agent-contract/base/START.md</code>, превью 200 символов</td></tr>
+<tr><td>чужой вход (<code>AGENTS.md</code> не наш или <code>.github/copilot-instructions.md</code>)</td><td><code>read: null</code>, <code>content: "not read (foreign)"</code>, только размер с диска</td></tr>
+<tr><td>входа нет</td><td><code>path: null</code>, <code>levels.1_file_present: fail</code></td></tr>
+</table>
+<p>Уровни названы раздельно: <code>3_content_read_by_contract</code> — измерено, <code>3_content_read_by_model</code> — <code>not run</code>. Карточка всегда несёт <code>content_proven: false</code>: комплект не выдаёт своё чтение за чтение моделью.</p>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Как проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл существует</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>среда нашла по своему порядку</td><td><code>discovery</code> ≡ <code>stand_env.py</code>, 6 сравнений</td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code>: отпечаток, размер, строки, указатель</td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>чужой <code>AGENTS.md</code>: «not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>5</td><td>повтор даёт то же</td><td>три вызова <code>discovery</code> и три прогона имитатора</td><td class="good">pass</td></tr>
+<tr><td>3M</td><td>модель получила текст</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация 12 пар</td><td class="good">6 склеек, 0 промахов, 0 ложных</td></tr>
+<tr><td>И-029 80 пар</td><td class="good">32 склейки, ничего неожиданного</td></tr>
+<tr><td>112 пар</td><td class="good">24 склейки, прочих 0</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F18.</b> «Содержимое прочитано» — два разных факта: файл прочитан кем-то и текст получила именно модель. Первое измеряется, второе требует живой среды. Если их смешивать, любой отчёт об уровне 3 будет либо завышен, либо бесполезен.
+</div>
+
+<div class="note">
+<b>Находка F19.</b> Чужой вход не нужно читать, чтобы о нём знать: достаточно размера с диска. Граница «не читать» и «знать» держится одновременно — файл остаётся байт в байт, а работа продолжается.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-037</b> — уровень 5: поведение повторяется от прогона к прогону. Повтор ответа комплекта уже измерен; повтор поведения модели — нет.</li>
+<li>Дальше — управление правилами, миграция, метрики, права и Windows (И-038…И-050).</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-036.zip</code>, 45 членов, 801 690 B, <code>458ce23e…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.16: база 280 710 B <code>c202481d…</code>, Edition 283 574 B <code>6766719e…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.15. Приёмка <code>2787ee99…</code>.
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-039. Разовый запрос: не сохраняется и это измерено — 0.1.19</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-039. Запрос исполняется один раз — и не оставляет следа в реестре</h1>
+<p class="lead">18 ноября 2026. Девятая итерация линии. Закрыт §9.3: правило и разовый запрос разведены. Команда <code>session</code> больше не обещает «не сохраняется», а измеряет это отпечатком <code>.agent-contract</code> до и после, и отклоняет попытку сохранить запрос. Выпуск <b>0.1.19</b>.</p>
+
+<div class="verdict">
+<strong>16 pass / 4 not run.</strong> Отпечатки <code>.agent-contract</code> до и после запроса совпали. <code>save</code> отклонён кодом <code>not_saved</code> с направлением к <code>create</code>, <code>kind: "rule"</code> — кодом <code>not_a_request</code>. Серия запросов через <code>repeat</code> тоже ничего не изменила.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.19</b></div>
+<div><span>Испытания</span><b>69 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>16 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Что изменилось в правиле</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td>запрос исполняется один раз</td><td><code>stored: false</code>, <code>writes: false</code>, <code>rule_created: false</code>, <code>applies: "этот запуск"</code></td></tr>
+<tr><td>проект не изменился</td><td><code>project_unchanged</code> — отпечаток <code>.agent-contract</code> до и после</td></tr>
+<tr><td>сохранение запроса</td><td><code>persist</code>/<code>save</code> → отказ <code>not_saved</code> с направлением к <code>create</code></td></tr>
+<tr><td>запрос вместо правила</td><td><code>kind: "rule"</code> → отказ <code>not_a_request</code></td></tr>
+<tr><td>серия запросов</td><td><code>session</code> в <code>READ_ONLY</code>: <code>repeat</code> принимает её наравне с чтением</td></tr>
+<tr><td>текст</td><td>1…4000 символов; пустой или длинный — <code>field</code>, лишнее поле — <code>fields</code></td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code>, 6 сравнений</td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td>отпечатки до/после, <code>not_saved</code>, <code>not_a_request</code>, серия через <code>repeat</code></td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений</td><td>4 команды × 3 прогона, <code>project_unchanged</code></td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок</td><td>3 чистых каталога: данные совпали без <code>at</code></td><td class="good">pass</td></tr>
+<tr><td>3M</td><td>модель прочитала</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>4</td><td>модель выполнила требование</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>5M</td><td>модель повторяет поведение</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F24.</b> Объявленная неизменность — не измеренная. <code>persisted: false</code> было обещанием; теперь ответ несёт <code>project_unchanged</code>, посчитанный по отпечатку до и после, и стенд сравнивает файлы.
+</div>
+
+<div class="note">
+<b>Находка F25.</b> Запрос, который можно сохранить, — уже правило. Молчание при <code>save</code> было согласием; теперь это отказ <code>not_saved</code>, а <code>kind: "rule"</code> — <code>not_a_request</code>: у правила своя процедура, своя ревизия и своя причина.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-040</b> — правила: отмена и удаление. REVOKE/SUSPEND уже есть; удаления и следа нет.</li>
+<li>Дальше — секреты, сопровождение, миграция, метрики, права и Windows (И-041…И-050).</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-039.zip</code>, 45 членов, 951 183 B, <code>f8de2d13…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.19: база 342 773 B <code>e957299a…</code>, Edition 345 676 B <code>95987e50…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.18. Данные 0.1.18 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

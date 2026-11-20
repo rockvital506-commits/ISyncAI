@@ -1,0 +1,378 @@
+{
+  "at": "2026-11-18",
+  "counts": {
+    "not run": 5,
+    "pass": 14
+  },
+  "iteration": "И-028",
+  "release": {
+    "tests": {
+      "base": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 47
+      },
+      "edition": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 47
+      }
+    },
+    "version": "0.1.8"
+  },
+  "rows": [
+    {
+      "actual": {
+        "base": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 47
+        },
+        "edition": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 47
+        }
+      },
+      "expected": "47 pass / 0 fail / 3 not run на обеих линиях",
+      "name": "выпуск 0.1.8 собран и испытан",
+      "note": "",
+      "source": "release-0.1.8/*/AgentContractLab/reports/CHECKS.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "pass": 16
+        },
+        "edition": {
+          "pass": 16
+        }
+      },
+      "expected": "16 проверок на каждой линии: один вход, настройки сред, тождество, конфликт, порядок, заглушки",
+      "name": "две среды на одном проекте проверены стендом",
+      "note": "",
+      "source": "dual-base.json; dual-edition.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "entry_hashes": 1,
+          "repeat_connect": "no_change",
+          "second_entry": "second_entry"
+        },
+        "edition": {
+          "entry_hashes": 1,
+          "repeat_connect": "no_change",
+          "second_entry": "second_entry"
+        }
+      },
+      "expected": "AGENTS.md один, отпечаток не меняется между ходами, второй вход отклоняется second_entry",
+      "name": "один вход на две среды",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "environment_files_seen": [
+            ".kilo/kilo.jsonc",
+            ".kilo/rules/x.md",
+            ".vscode/settings.json"
+          ],
+          "github_instructions_created": false
+        },
+        "edition": {
+          "environment_files_seen": [
+            ".kilo/kilo.jsonc",
+            ".kilo/rules/x.md",
+            ".vscode/settings.json"
+          ],
+          "github_instructions_created": false
+        }
+      },
+      "expected": "ни одного изменённого байта в .kilo/**, .kilo/kilo.jsonc, .vscode/settings.json, .github/**",
+      "name": "настройки сред не тронуты за все ходы",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "copilot-first": "conflict",
+          "kilo-first": "conflict"
+        },
+        "edition": {
+          "copilot-first": "conflict",
+          "kilo-first": "conflict"
+        }
+      },
+      "expected": "пересечение действующих требований отклоняется кодом conflict в обе стороны",
+      "name": "конфликт правил двух сред",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "forward": {
+            "health": "valid",
+            "observations": 2
+          },
+          "reverse": {
+            "health": "valid",
+            "observations": 2
+          },
+          "rules_equal": true
+        },
+        "edition": {
+          "forward": {
+            "health": "valid",
+            "observations": 2
+          },
+          "reverse": {
+            "health": "valid",
+            "observations": 2
+          },
+          "rules_equal": true
+        }
+      },
+      "expected": "обратный порядок ходов даёт те же счётчики, health и rules.json",
+      "name": "порядок сред не важен",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "different": 2,
+          "same": 1
+        },
+        "edition": {
+          "different": 2,
+          "same": 1
+        }
+      },
+      "expected": "тождество склеивает повтор при одинаковом environment и не склеивает при разном extension",
+      "name": "находка F1 измерена: одно событие под двумя расширениями — две записи",
+      "note": "решение о правиле — за владельцем, в этой итерации не принималось",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "antigravity": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "claude": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "cursor": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          }
+        },
+        "edition": {
+          "antigravity": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "claude": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          },
+          "cursor": {
+            "entry": null,
+            "facts_checked_at": null,
+            "present": [],
+            "sources": [],
+            "status": "stub"
+          }
+        }
+      },
+      "expected": "claude, cursor, antigravity: status stub, entry null, sources [], facts_checked_at null; наличие .claude/CLAUDE.md всё равно требует ack_existing",
+      "name": "заглушки не заявляют ни входа, ни покрытия",
+      "note": "",
+      "source": "dual-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "pass": 13
+        },
+        "edition": {
+          "pass": 13
+        }
+      },
+      "expected": "13 из 13 на обеих линиях",
+      "name": "адаптер Copilot не сломан заглушками",
+      "note": "",
+      "source": "adapter-base.json; adapter-edition.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "merged": 24,
+          "unexpected": 12
+        },
+        "edition": {
+          "merged": 24,
+          "unexpected": 12
+        }
+      },
+      "expected": "24 склейки (12 форменных и 12 объявленных в И-025), прочих 0, обе линии",
+      "name": "правило тождества не поехало: корпус",
+      "note": "",
+      "source": "pairs-028-base.json; pairs-028-edition.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "false": 0,
+          "merged": 3
+        },
+        "edition": {
+          "false": 0,
+          "merged": 3
+        }
+      },
+      "expected": "3 из 3 повторов склеены, ложных 0 из 40, обе линии",
+      "name": "правило тождества не поехало: журналы",
+      "note": "",
+      "source": "pairs-028-journals-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "new_version": "0.1.8",
+        "ok": true,
+        "old_data_reads": true,
+        "old_data_untouched": true,
+        "old_version": "0.1.7",
+        "repeat_kept_bytes": true
+      },
+      "expected": "старое читается, повтор не меняет байты, отличие факта даёт запись",
+      "name": "данные 0.1.7 читаются и не переписываются",
+      "note": "",
+      "source": "COMPAT.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": [
+          "0.1.0",
+          "0.1.4",
+          "0.1.5",
+          "0.1.6",
+          "0.1.7",
+          "0.1.8"
+        ],
+        "edition": [
+          "0.1.0",
+          "0.1.4",
+          "0.1.5",
+          "0.1.6",
+          "0.1.7",
+          "0.1.8"
+        ]
+      },
+      "expected": "releases/0.1.0, 0.1.4, 0.1.5, 0.1.6, 0.1.7 и 0.1.8 в обеих линиях",
+      "name": "цепочка выпусков в поставке",
+      "note": "",
+      "source": "архивы 0.1.8",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "equal": {
+          "COMPAT.json": true,
+          "EXPECTATIONS.json": true,
+          "adapter-base.json": true,
+          "adapter-edition.json": true,
+          "dual-base.json": true,
+          "dual-edition.json": true,
+          "pairs-028-base.json": true,
+          "pairs-028-edition.json": true,
+          "pairs-028-journals-base.json": true,
+          "pairs-028-journals-edition.json": true
+        },
+        "identical": true
+      },
+      "expected": "все результаты и файлы совпадают, identical true",
+      "name": "повтор из печати совпадает со сборкой",
+      "note": "",
+      "source": "REPLAY.json",
+      "status": "pass"
+    },
+    {
+      "actual": null,
+      "expected": "Kilo и Copilot поочерёдно читают AGENTS.md в открытом проекте",
+      "name": "живой VS Code с двумя расширениями",
+      "note": "Расширения здесь не запускаются: стенд имитирует раскладку и вызовы команд.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "среды действительно читают AGENTS.md",
+      "name": "загрузка инструкций в VS Code",
+      "note": "Уровни достоверности 2–3, И-031…И-032.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "kilo.jsonc и .github/copilot-instructions.md перекрывают AGENTS.md",
+      "name": "старшинство в живых средах",
+      "note": "Старшинство взято из документации сред и записано данными.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "поведение на другой файловой системе",
+      "name": "Windows и права",
+      "note": "Здесь только Linux.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "приёмка на данных владельца",
+      "name": "журналы заказчика",
+      "note": "Журналов у владельца нет.",
+      "source": "—",
+      "status": "not run"
+    }
+  ]
+}

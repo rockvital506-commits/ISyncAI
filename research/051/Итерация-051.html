@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-051. Живые модели: ответ, который можно проверить — 0.1.31</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-051. Живые модели</h1>
+<p class="lead">18 ноября 2026. Двадцать первая итерация линии и последняя по комплекту. §14 уровень 4 спрашивает не «что модель сделала», а «можно ли это проверить». Комплект модель не вызывает: он проверяет записанный ответ. Выпуск <b>0.1.31</b>.</p>
+
+<div class="verdict">
+<strong>28 pass / 4 not run.</strong> <code>model</code> называет задачи, формат ответа, каталог записей и оценку каждой — <code>4_behavior_checked</code> измерен, <code>3_read_by_model</code> и <code>5_behavior_repeatable</code> честно <code>not run</code>, <code>live: false</code>. <code>verify</code> сверяет утверждение <code>{id, state, text}</code> с машиной состояний: <code>same</code>, <code>state_mismatch</code>, <code>text_mismatch</code>, <code>unknown_rule</code>; пустой ответ — отказ <code>answer</code>. Попутно исправлено: справочник отставал на семь выпусков.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.31</b></div>
+<div><span>Испытания</span><b>93 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>28 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>В чём была трудность</h2>
+<table>
+<tr><th>Что</th><th>До 0.1.31</th><th>Чем плохо</th></tr>
+<tr><td>ответ модели</td><td>не проверялся</td><td>«модель прочитала правила» — вера, а не измерение</td></tr>
+<tr><td>состояние в ответе</td><td>не сверялось с реестром</td><td>модель может назвать <code>active</code> то, что <code>draft</code></td></tr>
+<tr><td>ссылка на правило</td><td>не проверялась</td><td>ответ про <code>P-999</code> звучит так же уверенно</td></tr>
+<tr><td>уровень 4</td><td><code>not run</code> без причины</td><td>непонятно, чего именно не хватает</td></tr>
+</table>
+
+<h2>Что появилось</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td><code>model</code></td><td>задачи <code>explain</code>/<code>choose</code>/<code>refuse</code>, формат ответа, каталог <code>local/model/*.json</code>, оценка записей, <code>live: false</code></td></tr>
+<tr><td><code>verify</code></td><td>утверждение <code>{id, state, text}</code> против машины состояний</td></tr>
+<tr><td>ответы</td><td><code>same</code>, <code>state_mismatch</code> (включая <code>hidden</code>), <code>text_mismatch</code>, <code>unknown_rule</code></td></tr>
+<tr><td>пустой ответ</td><td>отказ <code>answer</code>: оценивать нечего</td></tr>
+<tr><td>уровни</td><td><code>4_behavior_checked</code> измерен по записям; <code>3_read_by_model</code> и <code>5_behavior_repeatable</code> — <code>not run</code></td></tr>
+<tr><td>чтения</td><td><code>model</code> и <code>verify</code> в списке чтения, <code>repeat</code> их принимает, проект не меняется</td></tr>
+<tr><td>входы</td><td><code>rights.inputs</code> называет записанные ответы входом владельца</td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code></td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td><code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, передача с <code>allow_owner</code></td><td class="good">pass</td></tr>
+<tr><td>4V</td><td>версия — содержимое, срок — данные</td><td><code>same</code>, revision 1 → 2 → 2, <code>due</code> 1 → 0</td><td class="good">pass</td></tr>
+<tr><td>4X</td><td>неизвестная схема — отказ и возврат</td><td><code>unknown_schema</code>, файл <code>before</code> вернул проект</td><td class="good">pass</td></tr>
+<tr><td>4P</td><td>частичный сбой виден до восстановления</td><td>код 75, <code>pending_detail</code>, <code>restored</code></td><td class="good">pass</td></tr>
+<tr><td>4M</td><td>метрики считают по машине состояний</td><td><code>active</code> 1 → 0 → 1, <code>hidden [P-2]</code></td><td class="good">pass</td></tr>
+<tr><td>4T</td><td>контур машины: все пары и запреты входа</td><td>32 пары, 0 расхождений</td><td class="good">pass</td></tr>
+<tr><td>4K</td><td>два сценария рядом</td><td><code>changed</code> 90 против 30, delta, отказ <code>compare</code></td><td class="good">pass</td></tr>
+<tr><td>4R</td><td>права названы данными</td><td>9 путей записи, <code>foreign</code> останавливает изменения</td><td class="good">pass</td></tr>
+<tr><td>4F</td><td>чужая файловая система</td><td>регистр измерен, лимиты объявлены, отказы <code>case</code> и <code>path</code></td><td class="good">pass</td></tr>
+<tr><td><b>4L</b></td><td><b>живые модели</b></td><td><code>model</code> оценил две записи (pass и fail), <code>verify</code> дал <code>pass</code>, <code>state_mismatch</code>, <code>unknown_rule</code>; пустой ответ — <code>answer</code>; чтения не изменили проект</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений даёт тот же ответ</td><td>четыре команды по три прогона</td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок в чистых каталогах</td><td>три проекта совпали без времени</td><td class="good">pass</td></tr>
+<tr><td>3M, 4, 5M</td><td>модель читает и действует</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F54.</b> Справочник отставал на семь выпусков. Разделы 0.1.24–0.1.30 были написаны в правках, но сборка дописывала `PROTOCOL.md` только до 0.1.23. Теперь цепочка собирается целиком, и сборка падает, если раздела текущего выпуска нет в поставке: документация проверяется тем же прогоном, что и код.
+</div>
+
+<div class="note">
+<b>Находка F55.</b> Уровень 4 отвечал <code>not run</code> без причины. Теперь он делится на два утверждения: «ответ проверен» (<code>4_behavior_checked</code> — измерено на записи) и «модель прочитала» (<code>3_read_by_model</code> — <code>not run</code>). Смешивать их значит выдавать одно за другое.
+</div>
+
+<div class="note">
+<b>Чего нет.</b> Вызова модели нет и не будет в офлайн-комплекте: <code>live: false</code>. Качество рассуждения не оценивается — проверяются факты, которые модель утверждает. Записи в стенде синтетические и названы такими.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li>Комплект закрыт: 30 итераций линии, выпуск 0.1.31, справочник цел.</li>
+<li><b>И-052…И-084</b> — ядро ISAI (33 элемента); следующий шаг — И-052.</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками по решению владельца.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-051.zip</code>, 45 членов, 1 589 924 B, <code>3648395f…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.31: база 623 393 B <code>068c4f6f…</code>, Edition 626 441 B <code>dd8933bc…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.30. Данные 0.1.30 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "acceptance": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 8,
+    "sha256": "0b464724b054dc5c65a6fb3bbcabc1a4f5c004f17ebadae91d94d55b43248770"
+  },
+  "adapter": {
+    "checks": {
+      "base": {
+        "pass": 11
+      },
+      "edition": {
+        "pass": 11
+      }
+    },
+    "contents_read": false,
+    "discovery_proven": false,
+    "entry": "AGENTS.md",
+    "entry_fallback": "AGENT.md",
+    "name": "kilo",
+    "not_proven": [
+      "auto-discovery",
+      "content_was_read",
+      "behaviour_with_model"
+    ],
+    "priority_of": 4,
+    "priority_rank": 3,
+    "sources": [
+      ".kilo/kilo.jsonc",
+      ".kilo/rules",
+      ".kilocode/rules",
+      ".kilocoderules",
+      "AGENT.md"
+    ],
+    "writes_into_environment": 0
+  },
+  "at": "2026-11-18",
+  "compat": {
+    "not_rewritten": true,
+    "old_data_reads": true
+  },
+  "decision_026": "applied",
+  "iteration": "026",
+  "next": "И-027 адаптер GitHub Copilot / VS Code: инструкции вместо правил",
+  "page": {
+    "file": "Итерация-026.html",
+    "inside_seal": false,
+    "sha256": "6727075da1ea886d34b896a724450a5436d201b98d625eb6c4ff01b6088bd560"
+  },
+  "release": {
+    "ancestor_untouched": "0.1.0",
+    "base_bytes": 105153,
+    "base_sha256": "819781afa8acadab04a3fc9c7870fbc4b6d36ce38e4c77596f1e3710b568f6bf",
+    "edition_bytes": 105200,
+    "edition_sha256": "704b46379776a0b5fd07047483d06a6a018e70f9c610af8e1fb1d77135ec6aed",
+    "previous_in_tree": [
+      "0.1.4",
+      "0.1.5"
+    ],
+    "tests": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 42
+    },
+    "version": "0.1.6"
+  },
+  "replay_identical": true,
+  "replay_sha256": "c42376b3d4fa1e0db5de0547736d715cb30a801382ac92031dbd488b1958a786",
+  "rule_changed": false,
+  "rule_unchanged": {
+    "corpus_merged": 24,
+    "corpus_reclassified": 12,
+    "journals_false": 0,
+    "journals_merged": 3
+  },
+  "seal": "AgentContractKit-Iteration-026.zip",
+  "seal_sha256": "69aaac3953b03a0287bd7031d12be12af5041a9e3ad6814d0dcefa26b57b830d",
+  "subject": "адаптер Kilo Code: карточка среды, старшинство, обнаружение без чтения, запрет записи"
+}

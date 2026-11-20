@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-024. Корпус восстановлен, правило подтверждено</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-024. Корпус восстановлен, правило 0.1.4 подтверждено на нём</h1>
+<p class="lead">18 ноября 2026. Корпус из 112 пар утрачен вместе с <code>dist/</code>; восстановлен по тем же правилам построения и измерен заново — уже на выпущенном 0.1.4, а не на прототипе.</p>
+
+<div class="verdict">
+<strong>12 склеек — ровно те, где отличается только форма записи. Ни одного чужого события.</strong>
+Порог по проценту похожести снова не существует: у всех четырёх мер «самый слабый повтор» ниже «самого близкого чужого события». Допустимое отклонение — 0 добавленных содержательных слов.
+</div>
+
+<div class="kpi">
+<div><span>Пар</span><b>112</b></div>
+<div><span>Склеено</span><b>12</b></div>
+<div><span>Ложных склеек</span><b class="good">0</b></div>
+<div><span>Приёмка</span><b>7 / 0 / 2</b></div>
+</div>
+
+<h2>Зазор у мер</h2>
+<div class="wrap">
+<table>
+<tr><th>Мера</th><th>Слабейший повтор</th><th>Ближайшее чужое</th><th>Зазор</th></tr>
+<tr><td>Dice по триграммам</td><td class="num">0,49</td><td class="num">0,84</td><td class="bad">нет</td></tr>
+<tr><td>Вложенность триграмм</td><td class="num">0,86</td><td class="num">1,00</td><td class="bad">нет</td></tr>
+<tr><td>Жаккар по словам</td><td class="num">0,44</td><td class="num">0,75</td><td class="bad">нет</td></tr>
+<tr><td><code>difflib</code> ratio</td><td class="num">0,25</td><td class="num">0,85</td><td class="bad">нет</td></tr>
+</table>
+</div>
+<p>Вывод И‑020 воспроизведён: добавленная фраза у повтора и у другого события выглядит одинаково, поэтому порог по проценту не разделяет их ни на одном значении.</p>
+
+<h2>Цена вариантов</h2>
+<div class="wrap">
+<table>
+<tr><th>Разрешено добавленных слов</th><th>Найдено повторов</th><th>Ложных склеек</th></tr>
+<tr><td><b>0 — выпущено в 0.1.4</b></td><td class="num">12</td><td class="num good"><b>0</b></td></tr>
+<tr><td>1</td><td class="num">12</td><td class="num bad">1</td></tr>
+<tr><td>2</td><td class="num">12</td><td class="num bad">13</td></tr>
+<tr><td>3</td><td class="num">24</td><td class="num bad">18</td></tr>
+</table>
+</div>
+<p>Единственная точка с нулём ложных склеек — 0 добавленных слов, то есть именно то правило, что выпущено.</p>
+
+<h2>Проверка через продукт</h2>
+<div class="wrap">
+<table>
+<tr><th>Линия</th><th>Пар</th><th>Склеек</th><th>Лишних</th><th>Пропущенных</th><th>Расхождений</th></tr>
+<tr><td>База</td><td class="num">112</td><td class="num">12</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+<tr><td>Edition</td><td class="num">112</td><td class="num">12</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+</table>
+</div>
+<p>112 отдельных проектов: установка, подключение входа и две записи на каждый — 448 одобренных операций через план и билет. При склейке <code>checks.json</code> остаётся байт в байт. Повтор из печати дал те же JSON, что и сборка.</p>
+
+<h2>Честные отличия от И‑020</h2>
+<ul>
+<li>Корпус восстановлен: тексты те же по построению, но не побайтово тот же файл. Отпечаток закреплён здесь — <code>fc0dae27…</code>, а не перенесён из И‑020.</li>
+<li>Числа защит иные: факты блокируют 35 пар (было 36), лексикон — 22 (было 26). Причина — пересборка формулировок; вывод не меняется, но подменять старые числа молча нельзя.</li>
+<li>Прогон через продукт идёт в одном процессе (8 секунд), а не через CLI-процесс на вызов (13 минут в И‑021). Продукт тот же, файлы настоящие, каждая запись одобрена отдельным планом.</li>
+</ul>
+
+<h2>Что осталось</h2>
+<div class="wrap">
+<table>
+<tr><th>№</th><th>Итерация</th><th>Что нужно</th></tr>
+<tr><td>И-023</td><td>Приёмка 0.1.4 на настоящих журналах — ваш выбор А</td><td>журнал или его обезличенная выгрузка и проект для записи</td></tr>
+</table>
+</div>
+<p>Статус: <code>decision_024: pending</code>. Продукт в этой итерации не менялся; правило подтверждено на восстановленном корпусе, настоящие журналы по-прежнему не проверены.</p>
+
+<footer>
+Печать: <code>AgentContractKit-Iteration-024.zip</code>, 14 членов, 166 735 B, SHA <code>32a25541…6b3c7</code>. Повтор: <code>REPLAY.json</code> (<code>79e6a0ad…</code>). Замысел: <code>DESIGN.md</code>; отчёт: <code>REPORT.md</code>; приёмка: <code>ACCEPTANCE.json</code> (вне печати — описывает печать); корпус: <code>../020/corpus.py</code>.
+</footer>
+</main>
+</body>
+</html>

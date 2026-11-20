@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-046. Метрики по машине состояний — 0.1.26</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-046. Считать реестр — льстить себе</h1>
+<p class="lead">18 ноября 2026. Шестнадцатая итерация линии. Закрыт §15: стоимость и шум считаются по машине состояний <code>draft → active ⇄ suspended → revoked</code>, а не по числу строк в реестре. Выпуск <b>0.1.26</b>.</p>
+
+<div class="verdict">
+<strong>23 pass / 4 not run.</strong> <code>metrics</code> отдаёт <code>active</code> 1 → 0 → 1 при паузе контракта, <code>hidden [P-2]</code> — правило активно, но контракт приостановлен, счёт совпал с <code>list</code>. <code>draft</code> и <code>suspended</code> — шум, <code>revoked</code> — отдельно, <code>transitions.by</code> — по истории решений. Чтение ничего не пишет.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.26</b></div>
+<div><span>Испытания</span><b>83 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>23 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Что изменилось в правиле</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td>действующее</td><td><code>active</code>-правило под <code>active</code>-контрактом, в пределах <code>target</code></td></tr>
+<tr><td>стоимость</td><td>байты текста в UTF-8 — и число правил рядом</td></tr>
+<tr><td>шум</td><td><code>draft</code> и <code>suspended</code>: реестр помнит, набор не применяет</td></tr>
+<tr><td>скрытое</td><td><code>hidden</code> с поимённым <code>ids</code>: правило активно, контракт — нет</td></tr>
+<tr><td>отменённое</td><td><code>revoked</code>: из набора выведено, в истории осталось</td></tr>
+<tr><td>переходы</td><td><code>transitions.by</code> — сколько раз какой переход случился</td></tr>
+<tr><td>проверки</td><td><code>review.never</code> и <code>review.overdue</code></td></tr>
+<tr><td>чтение</td><td><code>writes: false</code></td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code>, 6 сравнений</td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td>отпечатки до/после, <code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code>, <code>redacted</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, <code>owner</code> при передаче, потеря права</td><td class="good">pass</td></tr>
+<tr><td>4V</td><td>версия — содержимое, срок проверки — данные</td><td><code>same</code>, <code>revision</code> 1 → 2 → 2, <code>due</code> 1 → 0</td><td class="good">pass</td></tr>
+<tr><td>4X</td><td>неизвестная схема — отказ и возврат без потери</td><td><code>unknown_schema</code>, <code>migrate</code> отклонён, файл <code>before</code> вернул проект</td><td class="good">pass</td></tr>
+<tr><td>4P</td><td>частичный сбой виден до восстановления</td><td>обрыв процесса кодом 75, <code>pending_detail</code>, <code>restored</code>, усечённый файл <code>foreign</code></td><td class="good">pass</td></tr>
+<tr><td>4M</td><td>метрики считают по машине состояний</td><td><code>active</code> 1 → 0 → 1, <code>hidden [P-2]</code>, счёт совпал с <code>list</code></td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений</td><td>4 команды × 3 прогона, <code>project_unchanged</code></td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок</td><td>3 чистых каталога: данные совпали без <code>at</code></td><td class="good">pass</td></tr>
+<tr><td>3M</td><td>модель прочитала</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>4</td><td>модель выполнила требование</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>5M</td><td>модель повторяет поведение</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F40.</b> Считать реестр — льстить себе. <code>draft</code> и <code>suspended</code> лежат в реестре и попадают в «сколько у нас правил», но не действуют: метрика обязана считать по машине состояний, иначе она измеряет склад, а не работу.
+</div>
+
+<div class="note">
+<b>Находка F41.</b> Третий класс: не действие и не шум. <code>active</code>-правило под <code>suspended</code>-контрактом не действует, но и шумом не является — его отсекли состоянием родителя. Без <code>hidden</code> счёт расходится с <code>list</code>, и расхождение выглядит ошибкой комплекта.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-047</b> — права: кто читает и кто пишет, границы доступа к проекту (§11).</li>
+<li>Дальше — Windows и границы поставки (И-048…И-050).</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-046.zip</code>, 45 членов, 1 333 529 B, <code>fa661dec…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.26: база 500 768 B <code>26b851fb…</code>, Edition 503 767 B <code>b2b10b36…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.25. Данные 0.1.25 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

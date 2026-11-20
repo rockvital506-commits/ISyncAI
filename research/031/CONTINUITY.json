@@ -1,0 +1,190 @@
+{
+  "acceptance": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 10,
+    "sha256": "53e82f0ec5417afe33d3d048e7775325cea6d30437bbd5df758479e811f71b08"
+  },
+  "at": "2026-11-18",
+  "compat": {
+    "new_version": "0.1.11",
+    "ok": true,
+    "old_data_reads": true,
+    "old_data_untouched": true,
+    "old_version": "0.1.10",
+    "repeat_kept_bytes": true
+  },
+  "corpora_via_cli": {
+    "corpus112": {
+      "base": {
+        "merged": 24,
+        "unexpected": 0
+      },
+      "edition": {
+        "merged": 24,
+        "unexpected": 0
+      }
+    },
+    "corpus80": {
+      "base": {
+        "merged": 32,
+        "pairs": 80,
+        "unexpected": []
+      },
+      "edition": {
+        "merged": 32,
+        "pairs": 80,
+        "unexpected": []
+      }
+    },
+    "punct": {
+      "base": {
+        "merged": 6,
+        "pairs": 12,
+        "unexpected": []
+      },
+      "edition": {
+        "merged": 6,
+        "pairs": 12,
+        "unexpected": []
+      }
+    }
+  },
+  "findings": {
+    "F10": "первый промпт — перечисление требований, а не порядок; доступен только после install+connect",
+    "F11": "Edition +docs.1 не содержит документов",
+    "F8": "журнал операций содержит абсолютный путь root: после git clone операция отклоняется journal; переносятся base/ и project/, local/ — нет",
+    "F9": "os и model входят в CONDITIONS: локальное и облачное наблюдение одного события дают две записи",
+    "Fixed": "F5 порядок определений (NameError CONDITIONS), F6 adapter вне консоли"
+  },
+  "iteration": "031",
+  "journals_import_stand": {
+    "base": {
+      "false": 0,
+      "merged": 3
+    },
+    "edition": {
+      "false": 0,
+      "merged": 3
+    }
+  },
+  "page": {
+    "file": "Итерация-031.html",
+    "inside_seal": false,
+    "sha256": "6bda2d012d0033629e73406bfed88f8666e550cb15bc756555476c10a97fbcf2"
+  },
+  "pilot": {
+    "counts": {
+      "base": {
+        "fail": 7,
+        "pass": 1
+      },
+      "edition": {
+        "fail": 7,
+        "pass": 1
+      }
+    },
+    "interface": "опубликованная команда в отдельном процессе",
+    "items": {
+      "base": [
+        {
+          "id": "P1",
+          "status": "fail"
+        },
+        {
+          "id": "P2",
+          "status": "fail"
+        },
+        {
+          "id": "P3",
+          "status": "fail"
+        },
+        {
+          "id": "P4",
+          "status": "fail"
+        },
+        {
+          "id": "P5",
+          "status": "fail"
+        },
+        {
+          "id": "P6",
+          "status": "fail"
+        },
+        {
+          "id": "P7",
+          "status": "fail"
+        },
+        {
+          "id": "P8",
+          "status": "pass"
+        }
+      ],
+      "edition": [
+        {
+          "id": "P1",
+          "status": "fail"
+        },
+        {
+          "id": "P2",
+          "status": "fail"
+        },
+        {
+          "id": "P3",
+          "status": "fail"
+        },
+        {
+          "id": "P4",
+          "status": "fail"
+        },
+        {
+          "id": "P5",
+          "status": "fail"
+        },
+        {
+          "id": "P6",
+          "status": "fail"
+        },
+        {
+          "id": "P7",
+          "status": "fail"
+        },
+        {
+          "id": "P8",
+          "status": "pass"
+        }
+      ]
+    }
+  },
+  "pilot_ready_when": "P1–P7 закрыты и обкатка проходит целиком через консоль; условность — отсутствие живых расширений и моделей",
+  "plan": {
+    "adapters": "Claude Code, Cursor, Antigravity сняты с нумерации и остаются заглушками по решению владельца",
+    "order": [
+      "И-032 раскладка и вход",
+      "И-033 одно событие и две машины",
+      "И-034 первый промпт и документация издания",
+      "далее правила/достоверность/сопровождение/метрики/права/Windows/живые модели (И-035…И-050)",
+      "ядро ISAI (И-051…И-083)"
+    ],
+    "remaining_core": 33,
+    "remaining_kit": 19,
+    "remaining_total": 52
+  },
+  "release": {
+    "base_bytes": 183719,
+    "base_sha256": "1bbbeac58f96715f5e1c6908e3fff906da27606ef60baa3a35dd77c23aa71778",
+    "edition_bytes": 183819,
+    "edition_sha256": "ee0a1c78faa738bc32aa61d0c66316661f0e47f0894b8e40fb8812b20a73d44d",
+    "tests": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 52
+    },
+    "version": "0.1.11"
+  },
+  "replay_identical": true,
+  "seal": "AgentContractKit-Iteration-031.zip",
+  "seal_bytes": 556929,
+  "seal_sha256": "e8c5122a9fd1a3a3220afe84571ea185f8d39ff6d84055baeb43a2253a19d106",
+  "subject": "обкатка: комплект проверяется тем же интерфейсом, которым пользуется владелец"
+}

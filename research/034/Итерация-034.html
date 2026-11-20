@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-034. Первый запуск и документы — 0.1.14</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-034. Обкатка закрыта: 8 из 8</h1>
+<p class="lead">18 ноября 2026. Четвёртая итерация обкатки. Первый запрос стал порядком десяти шагов, каждый называет команду, и стенд запускает каждую из них в вашем проекте. Порядок обкатки теперь лежит внутри архива. Выпуск <b>0.1.14</b>.</p>
+
+<div class="verdict">
+<strong>Было 6 из 8, стало 8 из 8.</strong> Оба оставшихся провала были про текст, который читает владелец, а не про механику. Теперь первый запуск — не перечисление требований, а десять шагов с командами, и это проверено запуском, а не чтением. Пунктов «провал из-за недосмотра» в матрице больше нет.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.14</b></div>
+<div><span>Испытания</span><b>59 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Корпуса через консоль</span><b>12 · 80 · 112</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Что закрыто</h2>
+<table>
+<tr><th>Пункт</th><th>Было</th><th>Стало</th></tr>
+<tr><td>P5</td><td>первый запрос — перечисление требований в кавычках: «объясни», «предложи», «покажи». Ни один шаг не назван командой, порядка нет</td><td class="good">десять шагов по порядку: <code>status</code> → <code>list</code> → <code>updates</code> → <code>identity</code> → <code>adapter</code> → <code>brief</code> → <code>plan</code> → запись наблюдения → слияние двух машин → поддержка самой папки. Стенд разбирает текст и запускает команду каждого шага</td></tr>
+<tr><td>P6</td><td>в поставке не было ни <code>docs/</code>, ни инструкции обкатки</td><td class="good"><code>START.md</code> обеих линий несёт порядок разделом; Edition получает <code>docs/ПЕРВЫЙ-ЗАПУСК.md</code> — тот же порядок, команда прогона обкатки и объяснение «условно пригодного»</td></tr>
+</table>
+
+<h2>Матрица обкатки</h2>
+<table>
+<tr><th>№</th><th>Пункт</th><th>И-033</th><th>И-034</th><th>Почему</th></tr>
+<tr><td>P1</td><td>архив в корне репозитория</td><td class="good">✓</td><td class="good">✓</td><td>абсолютный путь проекта</td></tr>
+<tr><td>P2</td><td>занятый AGENTS.md</td><td class="good">✓</td><td class="good">✓</td><td><code>brief</code> + режим входа</td></tr>
+<tr><td>P3</td><td>одно событие, два участника</td><td class="good">✓</td><td class="good">✓</td><td>правило названо данными: <code>identity</code></td></tr>
+<tr><td>P4</td><td>два писателя через git</td><td class="good">✓</td><td class="good">✓</td><td>слияние внутри продукта: <code>merge</code></td></tr>
+<tr><td>P5</td><td>первый промпт</td><td class="bad">✗</td><td class="good">✓</td><td>десять шагов, каждая команда запущена</td></tr>
+<tr><td>P6</td><td>инструкция в архиве</td><td class="bad">✗</td><td class="good">✓</td><td><code>docs/</code> в Edition, раздел в базе</td></tr>
+<tr><td>P7</td><td>без ручной правки поставки</td><td class="good">✓</td><td class="good">✓</td><td>—</td></tr>
+<tr><td>P8</td><td>повторяемость</td><td class="good">✓</td><td class="good">✓</td><td>—</td></tr>
+</table>
+
+<h2>Порядок первого обращения</h2>
+<p>Так выглядит начало работы в любом проекте: каждый шаг — команда, которая проходит, и то, что она доказывает.</p>
+<ol>
+<li><code>status</code> — версия, ревизия, режим входа, здоровье профиля. Обнаружение файла средой — ещё не проверка.</li>
+<li><code>list</code> и <code>history</code> — действующий набор правил и что в нём менялось.</li>
+<li><code>updates</code> — установленная база и доступные обновления.</li>
+<li><code>identity</code> — что считается одним событием, а что происхождением записи.</li>
+<li><code>adapter --name &lt;среда&gt;</code> — карточка среды: путь входа, старшинство, названные пробелы.</li>
+<li><code>brief</code> — одна строка для вашего <code>AGENTS.md</code>, если вход уже занят. Чужой файл не трогается.</li>
+<li><code>plan</code> — список изменений и билет: ничего не записано до согласия.</li>
+<li><code>plan</code>/<code>apply</code> с <code>op: record_check</code> — наблюдение с вашим <code>environment</code>.</li>
+<li><code>plan</code>/<code>apply</code> с <code>op: merge</code> — слияние состояния двух машин.</li>
+<li><code>updates</code> и <code>update</code>/<code>publish</code>/<code>restore</code> — поддержка и коррекция самой папки.</li>
+</ol>
+<p>Права и глобальные настройки среды в этот порядок не входят намеренно: комплект их не меняет.</p>
+
+<h2>Корпуса не поехали</h2>
+<table>
+<tr><th>Корпус</th><th class="num">Пар</th><th>Результат</th></tr>
+<tr><td>пунктуация</td><td class="num">12</td><td class="good">6 склеек, 0 промахов, 0 ложных</td></tr>
+<tr><td>И-029</td><td class="num">80</td><td class="good">32 склейки, ничего неожиданного</td></tr>
+<tr><td>И-020/И-024</td><td class="num">112</td><td class="good">24 склейки, прочих 0</td></tr>
+<tr><td>журналы (импорт)</td><td class="num">43</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+<p>Числа те же, что в И-033: правка коснулась текста, а не правила. Данные 0.1.13 читаются 0.1.14 и чтением не переписываются.</p>
+
+<div class="note">
+<b>Находка F15.</b> «Исполним буквально» проверяет текст, а не читателя: стенд доказывает, что порядок исполним и каждая команда существует, но не доказывает, что модель прочитает порядок и пойдёт по нему. Чтение промпта моделью — уровень достоверности 2–3, для него нужен живой агент, и он остаётся <code>not run</code>.
+</div>
+
+<div class="note">
+<b>Про «условно».</b> Матрица закрыта, но пригодность по-прежнему условная: закрыты пункты, которые можно проверить доступными средствами. Живые VS Code, Kilo и Copilot, загрузка инструкций средой, поведение моделей, права, настоящий NTFS и журналы заказчика — <code>not run</code>, и это записано, а не переименовано в <code>pass</code>.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-035</b> — уровень достоверности 2: среда действительно обнаружила файл. Здесь нужен живой агент, а не синтетика; до тех пор пункт остаётся <code>not run</code>.</li>
+<li>Дальше — уровни 3 и 5, управление правилами, миграция, метрики, права и Windows (И-036…И-050).</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками и в нумерации не участвуют.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-034.zip</code>, 43 члена, 700 287 B, <code>3d412bb4…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.14: база 240 777 B <code>c0a332a8…</code>, Edition 243 622 B <code>18fa18eb…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.13. Приёмка <code>07bb508c…</code>.
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,570 @@
+{
+  "at": "2026-11-18",
+  "environment_keys": [
+    "os",
+    "editor",
+    "editor_version",
+    "extension",
+    "extension_version",
+    "mode",
+    "model",
+    "profile",
+    "permissions"
+  ],
+  "format": "observation-pairs",
+  "iteration": "И-030",
+  "pairs": [
+    {
+      "kind": "dot-identifier",
+      "label": true,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает TypeError в test_build",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "dot-dotted-name",
+      "label": true,
+      "left": {
+        "actual": "Разбор файла a.b.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Разбор файла a.b",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "dot-exception",
+      "label": true,
+      "left": {
+        "actual": "Пойман TypeError.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Пойман TypeError",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "dot-version",
+      "label": true,
+      "left": {
+        "actual": "Принята версия v1.0.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Принята версия v1.0",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "dot-file",
+      "label": true,
+      "left": {
+        "actual": "Модуль test_build.py не найден.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Модуль test_build.py не найден",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "dot-two-sentences",
+      "label": true,
+      "left": {
+        "actual": "Сборка прошла. Отчёт в build.log.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Сборка прошла. Отчёт в build.log",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "name-with-extension",
+      "label": false,
+      "left": {
+        "actual": "Модуль test_build.py не найден.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Модуль test_build не найден",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "name-version",
+      "label": false,
+      "left": {
+        "actual": "Принята версия v1.1.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Принята версия v1.0",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "name-changed",
+      "label": false,
+      "left": {
+        "actual": "Падает TypeError в test_build.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Падает AssertionError в test_io.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "name-dotted-longer",
+      "label": false,
+      "left": {
+        "actual": "Разбор файла a.b.c.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Разбор файла a.b",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "number-changed",
+      "label": false,
+      "left": {
+        "actual": "Код возврата 2.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Код возврата 3",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    },
+    {
+      "kind": "dot-vs-underscore",
+      "label": false,
+      "left": {
+        "actual": "Разбор файла a.b.",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      },
+      "right": {
+        "actual": "Разбор файла a_b",
+        "case": "сборка модуля",
+        "conditions": "Синтетический проект, одна и та же проверка",
+        "environment": {
+          "editor": "vscode",
+          "editor_version": "1.105",
+          "extension": "kilo.kilo-code",
+          "extension_version": "5.0",
+          "mode": "agent",
+          "model": "synthetic-a",
+          "os": "linux",
+          "permissions": "read-write",
+          "profile": "default"
+        },
+        "evidence": "tests.log, строка 12",
+        "expected": "Проверка проходит.",
+        "level": 1,
+        "limits": "Только синтетические данные.",
+        "status": "pass"
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "acceptance": {
+    "counts": {
+      "not run": 5,
+      "pass": 10
+    },
+    "sha256": "d05a0c66ac25832af123c3098198697abe325ffa115e491a9477bb6d712a442e"
+  },
+  "at": "2026-11-18",
+  "compat": {
+    "new_version": "0.1.23",
+    "ok": true,
+    "old_data_reads": true,
+    "old_data_untouched": true,
+    "old_version": "0.1.22",
+    "repeat_kept_bytes": true
+  },
+  "corpora_via_cli": {
+    "corpus112": {
+      "base": {
+        "merged": 24,
+        "pairs": 112
+      },
+      "edition": {
+        "merged": 24,
+        "pairs": 112
+      }
+    },
+    "corpus80": {
+      "base": {
+        "merged": 32,
+        "pairs": 80
+      },
+      "edition": {
+        "merged": 32,
+        "pairs": 80
+      }
+    },
+    "punct": {
+      "base": {
+        "merged": 6,
+        "pairs": 12
+      },
+      "edition": {
+        "merged": 6,
+        "pairs": 12
+      }
+    }
+  },
+  "findings": {
+    "F33": "версия — содержимое: revision растёт только от edit с изменениями",
+    "F34": "«правки нет» — тоже ответ: same в плане, no_change в apply",
+    "F35": "срок проверки — данные: review_days/review_by/reviewed_at, review и due",
+    "fixed": "§10.2–10.3 закрыты: версия содержимого, повтор, срок проверки, due; X60, X61",
+    "open": "живая среда, чтение/исполнение/повтор моделями, права, Windows — not run"
+  },
+  "iteration": "043",
+  "journals_import_stand": {
+    "base": {
+      "false": 0,
+      "merged": 3
+    },
+    "edition": {
+      "false": 0,
+      "merged": 3
+    }
+  },
+  "page": {
+    "file": "Итерация-043.html",
+    "inside_seal": false,
+    "sha256": "35f9c8458be552c82d5909e17ce521154572c85a86a6885ffe846aa95b497852"
+  },
+  "pilot": {
+    "counts": {
+      "base": {
+        "not run": 4,
+        "pass": 20
+      },
+      "edition": {
+        "not run": 4,
+        "pass": 20
+      }
+    },
+    "interface": "опубликованная команда в отдельном процессе; проект — абсолютным путём",
+    "levels": {
+      "base": {
+        "L1": "pass",
+        "L2": "pass",
+        "L3": "pass",
+        "L3F": "pass",
+        "L3M": "not run",
+        "L4": "not run",
+        "L4C": "pass",
+        "L4D": "pass",
+        "L4O": "pass",
+        "L4Q": "pass",
+        "L4S": "pass",
+        "L4V": "pass",
+        "L5M": "not run",
+        "L5a": "pass",
+        "L5b": "pass",
+        "LIVE": "not run",
+        "P1": "pass",
+        "P2": "pass",
+        "P3": "pass",
+        "P4": "pass",
+        "P5": "pass",
+        "P6": "pass",
+        "P7": "pass",
+        "P8": "pass"
+      },
+      "edition": {
+        "L1": "pass",
+        "L2": "pass",
+        "L3": "pass",
+        "L3F": "pass",
+        "L3M": "not run",
+        "L4": "not run",
+        "L4C": "pass",
+        "L4D": "pass",
+        "L4O": "pass",
+        "L4Q": "pass",
+        "L4S": "pass",
+        "L4V": "pass",
+        "L5M": "not run",
+        "L5a": "pass",
+        "L5b": "pass",
+        "LIVE": "not run",
+        "P1": "pass",
+        "P2": "pass",
+        "P3": "pass",
+        "P4": "pass",
+        "P5": "pass",
+        "P6": "pass",
+        "P7": "pass",
+        "P8": "pass"
+      }
+    },
+    "levels_meaning": {
+      "L1": "файл есть",
+      "L2": "порядок обнаружения",
+      "L3": "содержимое прочитано",
+      "L3F": "чужой вход не читается",
+      "L3M": "модель прочитала — not run",
+      "L4": "модель выполнила требование — not run",
+      "L4C": "изменение внесено и восстановимо по журналу",
+      "L4D": "отмена сохраняет, удаление оставляет след",
+      "L4O": "правило меняет только владелец",
+      "L4Q": "разовый запрос не сохраняется",
+      "L4S": "секрет не пишется и не печатается",
+      "L4V": "версия — содержимое, срок проверки — данные",
+      "L5M": "модель повторяет поведение — not run",
+      "L5a": "серия чтений совпала",
+      "L5b": "серия установок в чистых каталогах совпала",
+      "LIVE": "живая среда — not run"
+    },
+    "matrix": {
+      "base": {
+        "P1": "pass",
+        "P2": "pass",
+        "P3": "pass",
+        "P4": "pass",
+        "P5": "pass",
+        "P6": "pass",
+        "P7": "pass",
+        "P8": "pass"
+      },
+      "edition": {
+        "P1": "pass",
+        "P2": "pass",
+        "P3": "pass",
+        "P4": "pass",
+        "P5": "pass",
+        "P6": "pass",
+        "P7": "pass",
+        "P8": "pass"
+      }
+    },
+    "matrix_closed": true
+  },
+  "plan": {
+    "adapters": "Claude Code, Cursor, Antigravity сняты с нумерации и остаются заглушками",
+    "order": [
+      "И-044 миграция: неизвестная версия (§12.2)",
+      "далее частичный сбой, метрики, права (И-045…И-050)",
+      "ядро ISAI (И-051…И-083)"
+    ],
+    "remaining_core": 33,
+    "remaining_kit": 7,
+    "remaining_total": 40
+  },
+  "release": {
+    "base_bytes": 432966,
+    "base_sha256": "054b35021fe33c9e54fb2198b6b0a043a0175801140b373002af19315e135ed0",
+    "edition_bytes": 435922,
+    "edition_sha256": "8716ec26961e4802d530acb900cc8233c2aba4733bb5080f0a4f988e73f1a944",
+    "tests": {
+      "fail": 0,
+      "inconclusive": 0,
+      "not run": 3,
+      "pass": 77
+    },
+    "version": "0.1.23"
+  },
+  "replay_identical": true,
+  "seal": "AgentContractKit-Iteration-043.zip",
+  "seal_bytes": 1164583,
+  "seal_sha256": "953aecb7fb0eba1b8f46cac2239bed6418bd23f4f38d962f7ec6852822387ce1",
+  "subject": "что версионируется и когда проверять"
+}

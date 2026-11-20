@@ -1,0 +1,801 @@
+{
+  "classes": {
+    "hard-negative": {
+      "merged": 0,
+      "mismatches": [],
+      "pairs": 20,
+      "refused": 20
+    },
+    "random-negative": {
+      "merged": 0,
+      "mismatches": [],
+      "pairs": 20,
+      "refused": 20
+    },
+    "repeat-form": {
+      "merged": 0,
+      "mismatches": [
+        {
+          "klass": "repeat-form",
+          "left": "pip-build#L75",
+          "note": "одинаковый текст наблюдения",
+          "right": "pip-build#L92",
+          "similarity": 1.0
+        },
+        {
+          "klass": "repeat-form",
+          "left": "pytest-run1#L386",
+          "note": "одинаковый текст наблюдения",
+          "right": "pytest-run2#L385",
+          "similarity": 1.0
+        }
+      ],
+      "pairs": 2,
+      "refused": 2
+    },
+    "repeat-volatile": {
+      "merged": 0,
+      "mismatches": [],
+      "pairs": 1,
+      "refused": 1
+    }
+  },
+  "false_merges": [],
+  "journals": 8,
+  "line": "edition",
+  "merges_kept": true,
+  "missed_repeats": [
+    {
+      "klass": "repeat-form",
+      "left": "pip-build#L75",
+      "note": "одинаковый текст наблюдения",
+      "right": "pip-build#L92",
+      "similarity": 1.0
+    },
+    {
+      "klass": "repeat-form",
+      "left": "pytest-run1#L386",
+      "note": "одинаковый текст наблюдения",
+      "right": "pytest-run2#L385",
+      "similarity": 1.0
+    }
+  ],
+  "observations": 41,
+  "pairs": 43,
+  "preserved": true,
+  "release_pin": "7e7bb2a980dfc0d399145a924ede88a3483056cc771b4d824e8ea95919a3eabe",
+  "rows": [
+    {
+      "actual": "committed",
+      "expected": "no_change",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "repeat-form",
+        "left": "pip-build#L75",
+        "note": "одинаковый текст наблюдения",
+        "right": "pip-build#L92",
+        "similarity": 1.0
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "no_change",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "repeat-form",
+        "left": "pytest-run1#L386",
+        "note": "одинаковый текст наблюдения",
+        "right": "pytest-run2#L385",
+        "similarity": 1.0
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "repeat-volatile",
+        "left": "pytest-run1#L387",
+        "note": "счётчики те же, длительность разная",
+        "right": "pytest-run2#L386",
+        "similarity": 0.989
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-install#L10",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-install#L15",
+        "similarity": 0.9837
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-install#L13",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-install#L8",
+        "similarity": 0.9725
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-install#L12",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-install#L5",
+        "similarity": 0.9216
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-install#L5",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-install#L9",
+        "similarity": 0.8495
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-install#L12",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-install#L9",
+        "similarity": 0.8041
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-install#L7",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-install#L9",
+        "similarity": 0.7861
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-install#L5",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-install#L7",
+        "similarity": 0.776
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L14",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L15",
+        "similarity": 0.7598
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-install#L12",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-install#L7",
+        "similarity": 0.7435
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L12",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L9",
+        "similarity": 0.7368
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L10",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L12",
+        "similarity": 0.6842
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "pytest-run1#L387",
+        "note": "самые похожие пары с разным текстом",
+        "right": "pytest-utils#L15",
+        "similarity": 0.6711
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "pytest-run2#L386",
+        "note": "самые похожие пары с разным текстом",
+        "right": "pytest-utils#L15",
+        "similarity": 0.6711
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L10",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L9",
+        "similarity": 0.6667
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L1",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L10",
+        "similarity": 0.6341
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L1",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L9",
+        "similarity": 0.6341
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L1",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L12",
+        "similarity": 0.6047
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L10",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L23",
+        "similarity": 0.5902
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L18",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L19",
+        "similarity": 0.5823
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "hard-negative",
+        "left": "npm-ci-nolock#L10",
+        "note": "самые похожие пары с разным текстом",
+        "right": "npm-ci-nolock#L7",
+        "similarity": 0.566
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-install#L7",
+        "note": "выбор по отпечатку ключа",
+        "right": "pytest-utils#L15",
+        "similarity": 0.0699
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-ci-nolock#L5",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-install#L14",
+        "similarity": 0.2332
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-ci-nolock#L3",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-install#L12",
+        "similarity": 0.1658
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-install#L15",
+        "note": "выбор по отпечатку ключа",
+        "right": "pip-resolver#L25",
+        "similarity": 0.1766
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-ci-nolock#L17",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-install#L11",
+        "similarity": 0.0216
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-install#L8",
+        "note": "выбор по отпечатку ключа",
+        "right": "pip-resolver#L25",
+        "similarity": 0.1514
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-install#L10",
+        "note": "выбор по отпечатку ключа",
+        "right": "pytest-run2#L386",
+        "similarity": 0.1417
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-ci-nolock#L10",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-install#L10",
+        "similarity": 0.0136
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-install#L4",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-install#L5",
+        "similarity": 0.1994
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-install#L15",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-install#L5",
+        "similarity": 0.2027
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-ci-nolock#L15",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-ci-nolock#L24",
+        "similarity": 0.1773
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-ci-nolock#L1",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-install#L14",
+        "similarity": 0.0229
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-install#L4",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-install#L8",
+        "similarity": 0.3409
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-audit#L95",
+        "note": "выбор по отпечатку ключа",
+        "right": "pip-resolver#L24",
+        "similarity": 0.1345
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-ci-nolock#L19",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-ci-nolock#L5",
+        "similarity": 0.3014
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "pip-resolver#L24",
+        "note": "выбор по отпечатку ключа",
+        "right": "pytest-run2#L386",
+        "similarity": 0.1365
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-ci-nolock#L14",
+        "note": "выбор по отпечатку ключа",
+        "right": "pip-build#L92",
+        "similarity": 0.2353
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-ci-nolock#L18",
+        "note": "выбор по отпечатку ключа",
+        "right": "npm-ci-nolock#L21",
+        "similarity": 0.2252
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-install#L3",
+        "note": "выбор по отпечатку ключа",
+        "right": "pytest-run1#L387",
+        "similarity": 0.1311
+      },
+      "preserved": true
+    },
+    {
+      "actual": "committed",
+      "expected": "committed",
+      "files": [
+        ".agent-contract/project/checks.json"
+      ],
+      "kept": null,
+      "observations": 2,
+      "pair": {
+        "klass": "random-negative",
+        "left": "npm-install#L13",
+        "note": "выбор по отпечатку ключа",
+        "right": "pip-resolver#L24",
+        "similarity": 0.1948
+      },
+      "preserved": true
+    }
+  ],
+  "version": "0.1.4"
+}

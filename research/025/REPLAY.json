@@ -1,0 +1,55 @@
+{
+  "equal": {
+    "COMPAT.json": true,
+    "EXPECTATIONS.json": true,
+    "pairs-025-base.json": true,
+    "pairs-025-edition.json": true,
+    "pairs-025-journals-base.json": true,
+    "pairs-025-journals-edition.json": true
+  },
+  "identical": true,
+  "iteration": "И-025",
+  "seal": "AgentContractKit-Iteration-025.zip",
+  "seal_sha256": "a838ae86b26054904bbe92e7ae1e247bf755a3d0693b37a87a90c382ddf1d79c",
+  "steps": [
+    {
+      "exit": 1,
+      "line": "base",
+      "script": "pairs_corpus.py",
+      "tail": [
+        "}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "base",
+      "script": "pairs_journals.py",
+      "tail": [
+        "ложных склеек: 0 не склеено повторов: 0"
+      ]
+    },
+    {
+      "exit": 1,
+      "line": "edition",
+      "script": "pairs_corpus.py",
+      "tail": [
+        "}"
+      ]
+    },
+    {
+      "exit": 0,
+      "line": "edition",
+      "script": "pairs_journals.py",
+      "tail": [
+        "ложных склеек: 0 не склеено повторов: 0"
+      ]
+    },
+    {
+      "exit": 0,
+      "script": "compat.py (данные 0.1.4 под 0.1.5)",
+      "tail": [
+        "}"
+      ]
+    }
+  ]
+}

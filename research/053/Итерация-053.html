@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-053. Права: измеренные и объявленные — 0.1.33</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-053. Права измерены</h1>
+<p class="lead">18 ноября 2026. Вторая итерация фазы «пригодность к применению». <code>rights</code> называет девять путей записи — это договорённость. Факт другой: каталог может быть только для чтения. Теперь комплект это измеряет. Выпуск <b>0.1.33</b>.</p>
+
+<div class="verdict">
+<strong>30 pass / 4 not run.</strong> Команда <code>access</code> (чтение, <code>writes: false</code>) для каждого из девяти путей создаёт в каталоге <b>самого пути</b> файл <code>.agent-contract-probe-…</code>, пишет его, сбрасывает на диск и удаляет в той же операции. Ответ: <code>{путь: {writable, reason, errno}}</code>, <code>all_writable</code>, <code>left</code>, <code>measured: true</code>. Новый уровень <b>L4W</b>: на каталоге только для чтения честный <code>writable: false</code> с причиной <code>permission</code>.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.33</b></div>
+<div><span>Испытания</span><b>97 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>30 / 4</b></div>
+<div><span>Приёмка</span><b>11 / 0 / 5</b></div>
+</div>
+
+<h2>В чём была трудность</h2>
+<table>
+<tr><th>Что</th><th>До 0.1.33</th><th>Чем плохо</th></tr>
+<tr><td>право писать</td><td>объявлено списком из девяти путей</td><td>список говорит «можно», а <code>open</code> в этот момент — нельзя</td></tr>
+<tr><td>причина отказа</td><td>не называлась</td><td>падение в середине операции вместо отказа заранее</td></tr>
+<tr><td>каталог только для чтения</td><td>виден по факту сбоя</td><td>«пригодно к применению» выяснялось после попытки записи</td></tr>
+<tr><td>что делать при отказе</td><td>не сказано</td><td>непонятно, чьи это права — ОС, пользователя или раскладки</td></tr>
+</table>
+
+<h2>Что появилось</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td><code>access</code></td><td><code>paths</code> по девяти путям: <code>{writable, reason, errno}</code>; <code>all_writable</code>, <code>left</code>, <code>measured: true</code>, <code>probe</code></td></tr>
+<tr><td>проба</td><td>файл <code>.agent-contract-probe-…</code> в каталоге самого пути: создан, сброшен на диск, удалён в той же операции</td></tr>
+<tr><td>причины</td><td><code>null</code> — можно; <code>permission</code> — нет прав; <code>io</code> — иная ошибка; <code>no_directory</code> — каталога пути нет</td></tr>
+<tr><td>границы</td><td><code>writes: false</code>; данные проекта не читаются; право ОС комплект не выдаёт и не обходит</td></tr>
+<tr><td><code>rights</code></td><td><code>note</code> говорит прямо: объявление — не факт, факт даёт <code>access</code></td></tr>
+<tr><td>чтения</td><td><code>access</code> в списке чтения, <code>repeat</code> его принимает</td></tr>
+</table>
+
+<h2>Уровень L4W: что именно измерено</h2>
+<table>
+<tr><th>Шаг</th><th>Измерено</th><th>Итог</th></tr>
+<tr><td><code>access</code> на установленном проекте</td><td>9 путей, <code>all_writable: true</code>, <code>writes: false</code>, <code>left: []</code>, проект байт в байт прежний</td><td class="good">pass</td></tr>
+<tr><td>файлы пробы после вызова</td><td>не осталось ни одного <code>.agent-contract-probe-*</code></td><td class="good">pass</td></tr>
+<tr><td><code>chmod 555</code> корня проекта</td><td><code>AGENTS.md</code> → <code>writable: false</code>, <code>reason: permission</code>, <code>errno 13</code>; <code>all_writable: false</code></td><td class="good">pass</td></tr>
+<tr><td>файлы внутри <code>.agent-contract/</code></td><td>остались <code>writable: true</code> — права считаются по каталогу каждого пути, а не по проекту целиком</td><td class="good">pass</td></tr>
+<tr><td><code>repeat</code> (<code>access</code> ×2)</td><td><code>identical: true</code>, проект не изменён</td><td class="good">pass</td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code></td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td><code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, передача с <code>allow_owner</code></td><td class="good">pass</td></tr>
+<tr><td>4V</td><td>версия — содержимое, срок — данные</td><td><code>same</code>, revision 1 → 2 → 2, <code>due</code> 1 → 0</td><td class="good">pass</td></tr>
+<tr><td>4X</td><td>неизвестная схема — отказ и возврат</td><td><code>unknown_schema</code>, файл <code>before</code> вернул проект</td><td class="good">pass</td></tr>
+<tr><td>4P</td><td>частичный сбой виден до восстановления</td><td>код 75, <code>pending_detail</code>, <code>restored</code></td><td class="good">pass</td></tr>
+<tr><td>4M</td><td>метрики считают по машине состояний</td><td><code>active</code> 1 → 0 → 1, <code>hidden [P-2]</code></td><td class="good">pass</td></tr>
+<tr><td>4T</td><td>контур машины: все пары и запреты входа</td><td>32 пары, 0 расхождений</td><td class="good">pass</td></tr>
+<tr><td>4K</td><td>два сценария рядом</td><td><code>changed</code> 90 против 30, delta, отказ <code>compare</code></td><td class="good">pass</td></tr>
+<tr><td>4R</td><td>права названы данными</td><td>9 путей записи, <code>foreign</code> останавливает изменения</td><td class="good">pass</td></tr>
+<tr><td><b>4W</b></td><td><b>права измерены, а не объявлены</b></td><td>девять проб, <code>left</code> пуст; <code>chmod 555</code> → <code>permission</code>/<code>13</code> для <code>AGENTS.md</code></td><td class="good">pass</td></tr>
+<tr><td>4F</td><td>чужая файловая система</td><td>регистр измерен, лимиты объявлены, отказы <code>case</code> и <code>path</code></td><td class="good">pass</td></tr>
+<tr><td>4L</td><td>живые модели</td><td><code>model</code> оценил записи, <code>verify</code> сверил утверждения</td><td class="good">pass</td></tr>
+<tr><td>L6</td><td>развёртывание в корень</td><td>лаборатория внутри проекта: раскладка названа, установка и обновление идут, откат проходит</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений даёт тот же ответ</td><td>четыре команды по три прогона</td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок в чистых каталогах</td><td>три проекта совпали без времени</td><td class="good">pass</td></tr>
+<tr><td>3M, 4, 5M</td><td>модель читает и действует</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F60.</b> Право — это факт с моментом времени. <code>write_paths</code> отвечает «куда комплект вправе писать», <code>access</code> — «куда он может писать сейчас». Пока эти ответы не различались, пригодность проверялась попыткой записи, то есть уже после согласия владельца.
+</div>
+
+<div class="note">
+<b>Находка F61.</b> Проба внутри служебного каталога неверна для <code>AGENTS.md</code>: его каталог — корень проекта. Ответ «можно» там, где корень закрыт, был бы ровно тем враньём, от которого защищает §7. Поэтому проба идёт в каталоге каждого пути; имя своё, файл удаляется в той же операции, следы проверяются (<code>left</code>, тест X80).
+</div>
+
+<div class="note">
+<b>Находка F62.</b> Отказ по правам стал отказом заранее: последовательность «проверить → согласиться → выполнить» теперь возможна, и владелец видит <code>writable: false</code> до того, как комплект начнёт писать.
+</div>
+
+<div class="note">
+<b>Чего нет.</b> ACL и NTFS — <code>not run</code>: проверены биты прав POSIX и <code>chmod</code>. Смонтированный только для чтения диск и занятый файл дают <code>io</code>/<code>EROFS</code> по коду, но отдельным случаем не имитировались. Живая среда VS Code и поведение моделей — <code>not run</code>.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-054</b> — <code>docs/INIT-PROMPT.md</code> и уровень <b>L7</b>: инициализирующий промпт, который можно отправить агенту.</li>
+<li><b>И-055</b> — <code>calibrate</code>, промпты K1–K4 с эталонами отдельным архивом, уровни <b>L8</b>, <b>L9</b>.</li>
+<li><b>И-056</b> — README-вектор и <code>TRACEABILITY.json</code>; затем Edition: <b>И-057…И-059</b>.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-053.zip</code>, 45 членов, 1 737 233 B, <code>0be608b5…</code>; повтор из печати совпал по всем результатам — <code>identical: true</code>. Выпуск 0.1.33: база 678 688 B <code>f7657014…</code>, Edition 681 757 B <code>cfe533f7…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.32. Данные 0.1.32 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

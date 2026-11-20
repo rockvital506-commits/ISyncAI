@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-056. Памятка, которую можно проверить — 0.1.36</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-056. Памятка, которую можно проверить</h1>
+<p class="lead">18 ноября 2026. Пятая и последняя итерация фазы «пригодность к применению». README вырос до 34 530 байт и стал журналом выпусков: тридцать четыре раздела «Что изменилось» и ни одной проверяемой ссылки. Теперь это <b>вектор смысла</b> на 19 871 байт, где каждое утверждение заканчивается якорем, а сборка падает, если якорь ведёт в никуда. Выпуск <b>0.1.36</b>.</p>
+
+<div class="verdict">
+<strong>34 pass / 4 not run.</strong> Три входа в памятку — пользователь, агент, проверяющий; границы, смыслы файлов, команды и раздел «Чего нет». Якоря <code>[START: фраза]</code>, <code>[PROTOCOL: фраза]</code>, <code>[X84]</code>, <code>[K2]</code>, <code>[manifest]</code> — 60 различных, мёртвых 0. <code>TRACEABILITY.json</code> покрывает §2…§18. Новый уровень <b>L10</b>.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.36</b></div>
+<div><span>Испытания</span><b>105 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>34 / 4</b></div>
+<div><span>Приёмка</span><b>13 / 0 / 5</b></div>
+</div>
+
+<h2>В чём была трудность</h2>
+<table>
+<tr><th>Что</th><th>До 0.1.36</th><th>Чем плохо</th></tr>
+<tr><td>объём README</td><td>34 530 B</td><td>памятку не читают и не перечитывают</td></tr>
+<tr><td>назначение</td><td>журнал выпусков</td><td>история живёт в двух местах и расходится</td></tr>
+<tr><td>проверяемость утверждений</td><td>нет</td><td>README мог обещать больше, чем есть</td></tr>
+<tr><td>трассировка §2–§18</td><td>нет</td><td>нельзя ответить «где доказательство пункта»</td></tr>
+<tr><td>раздел «Чего нет»</td><td>нет</td><td><code>not run</code> жил только в отчётах автора</td></tr>
+</table>
+
+<h2>Что появилось</h2>
+<table>
+<tr><th>Часть</th><th>Что делает</th></tr>
+<tr><td><code>README.md</code></td><td>три входа, границы, смыслы файлов, команды, «Чего нет»; <b>19 871 B</b> при лимите 24 КБ</td></tr>
+<tr><td>якоря</td><td>60 различных ссылок; тест разрешает каждую в файле поставки и падает на мёртвой</td></tr>
+<tr><td><code>TRACEABILITY.json</code></td><td>§2…§18 → тема → артефакты → испытания → уровни → <code>covered</code></td></tr>
+<tr><td><code>X87</code></td><td>лимит 24 КБ, все якоря разрешаются, 84 строки с содержанием и ни одной без якоря</td></tr>
+<tr><td><code>X88</code></td><td>17 разделов §2…§18, артефакты и испытания существуют</td></tr>
+<tr><td><code>X89</code></td><td>«Чего нет» = фактический список <code>not run</code> (<code>X14</code>, <code>T12-live</code>)</td></tr>
+</table>
+
+<h2>Уровень L10: что именно измерено</h2>
+<table>
+<tr><th>Шаг</th><th>Измерено</th><th>Итог</th></tr>
+<tr><td>лимит</td><td>19 871 ≤ 24 576 B</td><td class="good">pass</td></tr>
+<tr><td>якоря</td><td>60 различных, мёртвых 0</td><td class="good">pass</td></tr>
+<tr><td>утверждения</td><td>84 строки с содержанием, без якоря — 0</td><td class="good">pass</td></tr>
+<tr><td>журнал</td><td><code>## Что изменилось в 0.1.</code> в README отсутствует</td><td class="good">pass</td></tr>
+<tr><td>трассировка</td><td>§2…§18 без пропусков, все артефакты, испытания и уровни существуют</td><td class="good">pass</td></tr>
+<tr><td>«Чего нет»</td><td>5 записей, коды совпадают с отчётом</td><td class="good">pass</td></tr>
+<tr><td>—</td><td>человек прочитал и понял; живая модель, VS Code, ACL/NTFS</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0 на обеих линиях</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0</td></tr>
+<tr><td>данные 0.1.35 под 0.1.36</td><td class="good">читаются, чтением не переписываются — <code>ok: true</code></td></tr>
+</table>
+
+<div class="note">
+<b>Находка F70.</b> Якорь без проверки — украшение, а не ссылка. Стоило тесту разрешать каждый якорь, как первая же сборка нашла три мёртвых: <code>releases/0.1.35</code> до копирования цепочки, оглавление и примеры формата в таблице.
+</div>
+
+<div class="note">
+<b>Находка F71.</b> README-журнал разрастался линейно: 34 530 B к 0.1.35, из них 27 800 — разделы «Что изменилось». Вектор занял 19 871 B и стал полнее: раньше в README не было ни «Чего нет», ни таблицы команд. История выпусков не потеряна — она в <code>releases/*/PROTOCOL.md</code> и <code>PROTOCOL.md</code>.
+</div>
+
+<div class="note">
+<b>Находка F72.</b> «Чего нет» нельзя писать по памяти: список <code>not run</code> определяется прогоном. Сборка сверяет коды из <code>CHECKS.json</code> с трассировкой, поэтому обещание «всё проверено» физически не проходит.
+</div>
+
+<div class="note">
+<b>Находка F73.</b> Список уровней в трассировке — второй реестр, если писать руками. Стенд сверяет уровни по собственному паспорту: первая же попытка задать <code>L1…L10</code> списком поймала 13 расхождений — уровни называются <code>L4W</code>, <code>L5a</code>, <code>L4K</code>.
+</div>
+
+<div class="note">
+<b>Чего нет.</b> Проверки «человек прочитал и понял» — <code>not run</code>: проверены якоря и покрытие, а не понимание. Ответы живой модели, VS Code с расширениями и ACL/NTFS — тоже <code>not run</code>.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li>Фаза пригодности Kit закрыта: <b>И-052…И-056</b>.</li>
+<li>Дальше Edition: <b>И-057</b> отбор контрактов ISAI, <b>И-058</b> встраивание, <b>И-059</b> совместимость и калибровка Edition.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-056.zip</code>, 46 членов, 1 996 441 B, <code>f78801e8…</code>; повтор из печати совпал по всем результатам — <code>identical: true</code>. Выпуск 0.1.36: база 774 894 B <code>e9f817c5…</code> (220 членов), Edition 777 985 B <code>44d64a49…</code> (221 член); отдельным архивом — <code>AgentContractKit-Calibration-0.1.36.zip</code>. Внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.35.
+</footer>
+</main>
+</body>
+</html>

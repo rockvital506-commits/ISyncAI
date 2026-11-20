@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-047. Контур машины состояний — 0.1.27</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-047. Считать реестр — льстить себе</h1>
+<p class="lead">18 ноября 2026. Семнадцатая итерация линии. Аудит A-001 прошёл все пройденные итерации взглядом машины состояний <code>draft → active ⇄ suspended → revoked</code>: переходы верны, дыры — на входе. Выпуск <b>0.1.27</b>.</p>
+
+<div class="verdict">
+<strong>24 pass / 4 not run.</strong> Все 32 пары переходов совпали с объявленной машиной. Три запрета входа работают: <code>create</code> под отменённым контрактом — <code>parent</code>, <code>active</code>-запись (создание и переход) под неактивным — <code>state</code>. <code>due</code> называет состояние, <code>hidden</code> делит причину и больше не считает «вне области» скрытым.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.27</b></div>
+<div><span>Испытания</span><b>85 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>24 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Что нашёл аудит</h2>
+<table>
+<tr><th>Что</th><th>Итог</th></tr>
+<tr><td>матрица переходов: 4 состояния × 4 цели × контракт/правило</td><td class="good">32 пары, 0 расхождений</td></tr>
+<tr><td>чтения под <code>suspended</code>-контрактом</td><td class="good"><code>list 0</code>, <code>hidden 1</code>, <code>noise 1</code></td></tr>
+<tr><td>чтения под <code>revoked</code>-контрактом и <code>retired</code></td><td class="good"><code>hidden 1</code>, <code>revoked 1</code>, <code>health retired</code></td></tr>
+<tr><td>пять инвариантов счёта</td><td class="good">все <code>true</code></td></tr>
+<tr><td>вход: <code>create</code>, <code>state</code>, активация</td><td class="bad">A1–A3: <code>ok</code> там, где должен быть отказ</td></tr>
+<tr><td>словарь чтений</td><td class="bad">A4, A5, A8: нет состояния, нет причины, <code>target</code> путается со скрытым</td></tr>
+<tr><td>корпуса и журналы</td><td class="warn">A7: состояний не касаются — вне области</td></tr>
+</table>
+
+<h2>Что изменилось в правиле</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td>мёртвая ветка</td><td><code>create</code> под <code>revoked</code>-контрактом — отказ <code>parent</code> с <code>{contract, state}</code></td></tr>
+<tr><td>действующая запись</td><td><code>active</code> под <code>draft</code>/<code>suspended</code>/<code>revoked</code> — отказ <code>state</code> с <code>{contract, parent_state}</code></td></tr>
+<tr><td>отложенная запись</td><td><code>draft</code> под неактивным контрактом создаётся: черновик ждёт возвращения</td></tr>
+<tr><td><code>due</code></td><td>каждая строка называет <code>state</code></td></tr>
+<tr><td><code>hidden</code></td><td><code>by_reason</code>: <code>parent_draft</code>, <code>parent_suspended</code>, <code>parent_revoked</code>, <code>retired</code></td></tr>
+<tr><td><code>hidden</code> и <code>target</code></td><td>вне области — не «скрыто»; <code>active</code> сужается по <code>target</code>, как прежде</td></tr>
+<tr><td>схема</td><td>не ужесточена: старые записи под неактивным контрактом читаются</td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code></td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td><code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, передача с <code>allow_owner</code></td><td class="good">pass</td></tr>
+<tr><td>4V</td><td>версия — содержимое, срок — данные</td><td><code>same</code>, <code>revision</code> 1 → 2 → 2, <code>due</code> 1 → 0</td><td class="good">pass</td></tr>
+<tr><td>4X</td><td>неизвестная схема — отказ и возврат</td><td><code>unknown_schema</code>, файл <code>before</code> вернул проект</td><td class="good">pass</td></tr>
+<tr><td>4P</td><td>частичный сбой виден до восстановления</td><td>код 75, <code>pending_detail</code>, <code>foreign</code>, <code>restored</code></td><td class="good">pass</td></tr>
+<tr><td>4M</td><td>метрики считают по машине состояний</td><td><code>active</code> 1 → 0 → 1, <code>hidden [P-2]</code></td><td class="good">pass</td></tr>
+<tr><td>4T</td><td>контур машины: все пары и запреты входа</td><td>32 пары, 0 расхождений; <code>state</code>/<code>state</code>/<code>parent</code>; <code>due.state</code>; <code>by_reason</code></td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений</td><td>4 команды × 3 прогона, <code>project_unchanged</code></td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок</td><td>3 чистых каталога: данные совпали без <code>at</code></td><td class="good">pass</td></tr>
+<tr><td>3M, 4, 5M</td><td>модель читает и действует</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F42.</b> Действие — свойство пары, а не записи. <code>active</code> само по себе ничего не значит: оно значит «действует» только под действующим контрактом. Проверять состояние записи без состояния родителя — читать половину ответа.
+</div>
+
+<div class="note">
+<b>Находка F43.</b> Чтение без причины заставляет выяснять сорт. <code>hidden</code> отвечал «сколько», и владелец шёл руками смотреть, какой контракт где. <code>by_reason</code> отвечает сразу; <code>due.state</code> — то же для проверок.
+</div>
+
+<div class="note">
+<b>Находка F44.</b> Покрытие матрицы — отдельное испытание. Тринадцать тестовых переходов выглядели как проверка машины, но пар не покрывали: дефекты входа жили рядом с зелёными тестами. 32 пары в <code>L4T</code> — дешёвая страховка.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-048</b> — метрики: сравнение двух сценариев (§15).</li>
+<li><b>И-049</b> — права: кто читает и кто пишет, границы доступа к проекту (§11).</li>
+<li>Дальше — Windows и живые модели (И-050, И-051); адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-047.zip</code>, 45 членов, 1 359 488 B, <code>3dfbcdc8…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.27: база 523 327 B <code>a412c511…</code>, Edition 526 325 B <code>4729530e…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.26. Данные 0.1.26 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,180 @@
+{
+  "counts": {
+    "pass": 13
+  },
+  "iteration": "И-030",
+  "line": "base",
+  "ok": true,
+  "rows": [
+    {
+      "actual": {
+        "discovery_proven": false,
+        "entry": "AGENTS.md",
+        "entry_recommended": ".github/copilot-instructions.md",
+        "entry_shared": false,
+        "writes": false
+      },
+      "case": "карточка адаптера Copilot",
+      "expected": "вход AGENTS.md, рекомендованный средой .github/copilot-instructions.md, entry_shared false, старшинство 3 из 5, пробелы покрытия, ничего не пишет",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "entry_exists": true,
+        "github_dir_exists": false,
+        "refusals": {
+          ".github/copilot-instructions.md": "second_entry",
+          ".github/instructions/any.instructions.md": "second_entry",
+          "CLAUDE.md": "second_entry",
+          "GEMINI.md": "second_entry"
+        }
+      },
+      "case": "второй вход запрещён кодом second_entry",
+      "expected": "любой путь, кроме AGENTS.md, отклонён; с AGENTS.md вход создан, .github/ не появился",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": "adapter_unknown",
+      "case": "неизвестная среда",
+      "expected": "отказ adapter_unknown",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          "file"
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: claude-fallback-root",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['CLAUDE.md']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          null
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: copilot-agents-dir",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['.github/agents']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          null
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: copilot-path-specific",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['.github/instructions']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          "file"
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: copilot-repo-wide",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['.github/copilot-instructions.md']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          null
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: copilot-skills-dir",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['.github/skills']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          "file"
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: gemini-fallback-root",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['GEMINI.md']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          "file"
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: vscode-settings",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['.vscode/settings.json']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "accepted": true,
+        "reversed_rejected": "existing_sources"
+      },
+      "case": "порядок подтверждения",
+      "expected": "обратный порядок отклонён, прямой принят",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed": [],
+        "entry_created": true
+      },
+      "case": "конфигурация среды не тронута",
+      "expected": "изменяется только AGENTS.md; .kilo/**, .kilocode/**, kilo.jsonc, .kilocoderules — байт в байт",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "contents_read": false,
+        "discovery_proven": false,
+        "not_proven": [
+          "auto-discovery",
+          "content_was_read",
+          "behaviour_with_model"
+        ]
+      },
+      "case": "обнаружение не заявлено как проверенное",
+      "expected": "discovery_proven false, contents_read false, три непроверенных пункта",
+      "notes": "",
+      "status": "pass"
+    }
+  ],
+  "version": "0.1.10"
+}

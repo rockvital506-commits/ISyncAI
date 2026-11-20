@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-028. Две среды на одном проекте — 0.1.8</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-028. Две среды на одном проекте: Kilo и Copilot поочерёдно</h1>
+<p class="lead">18 ноября 2026. Правило тождества не менялось. Адаптеры Claude Code, Cursor и Antigravity объявлены заглушками. Предмет — то, что раньше не проверялось: проект открыт в VS Code, включены оба расширения, обращения идут по очереди. Выпуск <b>0.1.8</b>.</p>
+
+<div class="verdict">
+<strong>Файлы выдержали: один вход, настройки сред не тронуты, порядок не важен.</strong>
+Не выдержало правило: <code>environment</code> сравнивается точно и содержит <code>extension</code>, поэтому одно и то же событие, увиденное двумя расширениями, даёт <b>две записи</b>. Шесть поочерёдных ходов дали 2 записи вместо одной.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.8</b></div>
+<div><span>Испытания</span><b>47 / 0 / 3</b></div>
+<div><span>Стенд двух сред</span><b class="good">16 / 16</b></div>
+<div><span>Заглушек</span><b>3</b></div>
+<div><span>Приёмка</span><b>14 / 0 / 5</b></div>
+</div>
+
+<h2>Сценарий</h2>
+<p>Проект открыт в VS Code, включены оба расширения. Человек задаёт задачу то одному, то другому; каждое читает инструкции проекта, а комплект ведёт один вход <code>AGENTS.md</code> и один реестр. Что проверялось:</p>
+<table>
+<tr><th>Ход</th><th>Что ожидается</th><th>Что получено</th></tr>
+<tr><td>Kilo → Copilot, одно и то же наблюдение</td><td>повтор не создаёт записи</td><td class="good">так и есть, если среда в записи не различается</td></tr>
+<tr><td>то же, но с разным <code>extension</code></td><td>—</td><td class="warn">две записи: наблюдатель входит в <code>environment</code></td></tr>
+<tr><td>шесть поочерёдных ходов</td><td>настройки сред целы, вход один</td><td class="good">2 записи, <code>.kilo/**</code>, <code>.vscode/**</code> байт в байт</td></tr>
+<tr><td>второе правило от второй среды</td><td>отказ <code>conflict</code></td><td class="good">отказ в обе стороны</td></tr>
+<tr><td>обратный порядок сред</td><td>тот же результат</td><td class="good">счётчики, health и <code>rules.json</code> совпадают</td></tr>
+<tr><td>чужой файл входа у Copilot</td><td>отказ <code>second_entry</code></td><td class="good">отказ, <code>.github/</code> не появился</td></tr>
+<tr><td>правка <code>AGENTS.md</code> вне контракта</td><td>остановка</td><td class="good"><code>attention</code> и <code>adapter_drift</code>, правка сохранена</td></tr>
+</table>
+
+<h2>Заглушки: имя без обещаний</h2>
+<table>
+<tr><th>Среда</th><th>Что отвечает карточка</th></tr>
+<tr><td>Claude Code</td><td><code>status: stub</code>, <code>entry: null</code>, <code>sources: []</code>, <code>facts_checked_at: null</code></td></tr>
+<tr><td>Cursor</td><td>то же</td></tr>
+<tr><td>Antigravity</td><td>то же</td></tr>
+</table>
+<p>Заглушка не заявляет ни входа, ни старшинства, ни покрытия; первый пункт <code>not_proven</code> — <code>adapter_implemented</code>. Отличие от <code>adapter_unknown</code> в том, что имя известно и ответ осмысленный. Обнаружение при этом общее: наличие <code>.claude/CLAUDE.md</code> по-прежнему требует подтверждения <code>ack_existing</code>.</p>
+
+<h2>Находки</h2>
+<table>
+<tr><th>№</th><th>Что найдено</th><th>Что сделано</th></tr>
+<tr><td>F1</td><td><code>environment</code> держит наблюдателя (<code>extension</code>, версии), а сравнивается точно: одно событие под двумя расширениями — две записи</td><td>измерено и объяснено; решение о правиле — за владельцем (варианты А/Б/В в отчёте)</td></tr>
+<tr><td>F2</td><td>в опубликованном 0.1.7 не было <code>releases/0.1.4</code>–<code>0.1.6</code>, хотя его <code>RELEASE.md</code> это обещал</td><td>цепочка восстановлена из опубликованных архивов; в <code>RELEASE.md</code> 0.1.7 добавлено исправление</td></tr>
+<tr><td>F3</td><td>комплект не помнит, какая среда подключена: в состоянии только путь и отпечаток входа</td><td>записано как ограничение; смена схемы — отдельная итерация</td></tr>
+</table>
+
+<div class="note">
+<b>Чего эта итерация не делает.</b> Она не запускает VS Code и не запускает расширения. «Открытый проект» — это раскладка файлов и вызовы команд комплекта от имени среды. Что среды передают модели и в каком порядке — уровни достоверности 2–4 и живые модели. Заглушки — не адаптеры: у трёх сред нет ни карточки фактов, ни обнаружения. <code>not run</code> в приёмке — это <code>not run</code>.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>Решение по F1:</b> оставить правило как есть (А), разделить наблюдателя и условия (Б) или нормализовать <code>environment</code> на входе (В). До решения правило не меняется.</li>
+<li>Дальше по карте: правило и <code>environment</code> (И‑029), адаптер Claude Code (И‑030, сейчас заглушка), Cursor, Antigravity, затем уровни достоверности.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-028.zip</code>, 40 членов, 409 290 B, <code>9eb8951c…</code>; повтор из печати совпал по всем десяти результатам — <code>identical: true</code>. Выпуск 0.1.8: база 136 423 B <code>154a76b3…</code>, Edition 136 498 B <code>25897d0e…</code>; внутри 0.1.0 не тронут, цепочка 0.1.4–0.1.7 возвращена в поставку.
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,189 @@
+{
+  "at": "2026-11-18",
+  "bytes_unchanged": true,
+  "declared_false": [],
+  "declared_missed": [],
+  "false_merges": [],
+  "interface": "опубликованная команда в отдельном процессе",
+  "iteration": "И-042",
+  "kinds": {
+    "dot-dotted-name": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-exception": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-file": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-identifier": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-two-sentences": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-version": {
+      "label_merge": 1,
+      "merged": 1,
+      "pairs": 1
+    },
+    "dot-vs-underscore": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "name-changed": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "name-dotted-longer": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "name-version": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "name-with-extension": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    },
+    "number-changed": {
+      "label_merge": 0,
+      "merged": 0,
+      "pairs": 1
+    }
+  },
+  "line": "edition",
+  "merged": 6,
+  "merges_labeled": 6,
+  "missed_merges": [],
+  "outcome": "pass",
+  "pairs": 12,
+  "rows": [
+    {
+      "bytes_unchanged": true,
+      "kind": "dot-identifier",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "dot-dotted-name",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "dot-exception",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "dot-version",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "dot-file",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "dot-two-sentences",
+      "label": true,
+      "left": "committed",
+      "merged": true,
+      "records": 1,
+      "right": "no_change"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "name-with-extension",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "name-version",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "name-changed",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "name-dotted-longer",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "number-changed",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    },
+    {
+      "bytes_unchanged": true,
+      "kind": "dot-vs-underscore",
+      "label": false,
+      "left": "committed",
+      "merged": false,
+      "records": 2,
+      "right": "committed"
+    }
+  ],
+  "set": "punct",
+  "unexpected": []
+}

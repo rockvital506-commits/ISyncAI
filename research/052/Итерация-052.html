@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-052. Развёртывание в корень: раскладка названа — 0.1.32</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-052. Развёртывание в корень</h1>
+<p class="lead">18 ноября 2026. Первая итерация фазы «пригодность к применению». Ваш сценарий: распаковать архив <b>в корень репозитория</b> и работать с этим корнем как с проектом. До сих пор комплект такой случай выдерживал, но нигде его не называл. Выпуск <b>0.1.32</b>.</p>
+
+<div class="verdict">
+<strong>29 pass / 4 not run.</strong> Новая команда <code>layout</code> (чтение, <code>writes: false</code>) называет раскладку: <code>lab_inside_project</code> — архив распакован внутрь проекта, <code>project_inside_lab</code>, <code>siblings</code>, <code>elsewhere</code>; вместе с путём лаборатории внутри проекта, служебным каталогом, входом и признаком установки. Если лаборатория внутри проекта — предупреждение о системе контроля версий. Стенд измеряет ваш сценарий целиком: уровень <b>L6</b>.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.32</b></div>
+<div><span>Испытания</span><b>95 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>29 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>В чём была трудность</h2>
+<table>
+<tr><th>Что</th><th>До 0.1.32</th><th>Чем плохо</th></tr>
+<tr><td>раскладка</td><td>не называлась</td><td>«распаковали правильно» и «распаковали не туда» выглядят одинаково: оба дают <code>status: absent</code></td></tr>
+<tr><td>лаборатория внутри проекта</td><td>не описана</td><td>непонятно, управляется ли <code>kit/</code>, что будет при переносе и при уборке</td></tr>
+<tr><td>предупреждения</td><td>не было</td><td>каталог лаборатории мог незаметно попасть в чужой репозиторий</td></tr>
+<tr><td>обновление и откат в этой раскладке</td><td>отдельно не измерялись</td><td>«работает» держалось на общем прогоне, а не на вашем случае</td></tr>
+</table>
+
+<h2>Что появилось</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td><code>layout</code></td><td><code>project</code>, <code>lab</code>, <code>relation</code>, <code>lab_relative</code>, <code>contract</code>, <code>entry</code>, <code>installed</code>, <code>supported</code>, <code>warnings</code>, <code>note</code>, <code>how</code></td></tr>
+<tr><td>четыре раскладки</td><td><code>lab_inside_project</code> (архив в корень), <code>project_inside_lab</code>, <code>siblings</code>, <code>elsewhere</code> — каждая названа и объяснена</td></tr>
+<tr><td>предупреждение</td><td><code>kit/</code>, <code>releases/</code>, <code>reports/</code> внутри проекта могут попасть в систему контроля версий — сказано, а не подразумевается</td></tr>
+<tr><td>границы</td><td>комплект пишет только <code>.agent-contract/</code> и <code>AGENTS.md</code>; файлы лаборатории контрактом не управляются</td></tr>
+<tr><td>чтения</td><td><code>layout</code> в списке чтения, <code>repeat</code> его принимает, проект не меняется</td></tr>
+<tr><td>документация</td><td>справочник, README и <code>RELEASE.md</code> называют раскладки и то, что «в корень» = <code>&lt;repo&gt;/AgentContractLab/</code></td></tr>
+</table>
+
+<h2>Уровень L6: что именно измерено</h2>
+<p>Стенд копирует собранную лабораторию в <code>&lt;проект&gt;/AgentContractLab</code> — то есть повторяет ваш сценарий целиком, — и дальше идёт по шагам.</p>
+<table>
+<tr><th>Шаг</th><th>Измерено</th><th>Итог</th></tr>
+<tr><td><code>layout</code> до установки</td><td><code>relation: lab_inside_project</code>, <code>lab_relative: AgentContractLab</code>, <code>installed: false</code>, <code>writes: false</code>, предупреждение о репозитории</td><td class="good">pass</td></tr>
+<tr><td><code>install</code> → <code>connect</code> → <code>create</code></td><td>три <code>committed</code>; <code>status: valid</code>, <code>entry_mode: owned</code></td><td class="good">pass</td></tr>
+<tr><td><code>updates</code></td><td><code>installed_version: 0.1.32</code></td><td class="good">pass</td></tr>
+<tr><td><code>update</code> той же версии</td><td>план без изменений, <code>outcome: no_change</code></td><td class="good">pass</td></tr>
+<tr><td><code>undo</code> создания правила</td><td><code>restored</code>, состояние снова <code>valid</code></td><td class="good">pass</td></tr>
+<tr><td>файлы корня</td><td>добавились только <code>.agent-contract</code> и <code>AGENTS.md</code></td><td class="good">pass</td></tr>
+<tr><td><code>repeat</code> (<code>layout</code>, <code>status</code>)</td><td><code>identical: true</code>, проект не изменился</td><td class="good">pass</td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code></td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td><code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, передача с <code>allow_owner</code></td><td class="good">pass</td></tr>
+<tr><td>4V</td><td>версия — содержимое, срок — данные</td><td><code>same</code>, revision 1 → 2 → 2, <code>due</code> 1 → 0</td><td class="good">pass</td></tr>
+<tr><td>4X</td><td>неизвестная схема — отказ и возврат</td><td><code>unknown_schema</code>, файл <code>before</code> вернул проект</td><td class="good">pass</td></tr>
+<tr><td>4P</td><td>частичный сбой виден до восстановления</td><td>код 75, <code>pending_detail</code>, <code>restored</code></td><td class="good">pass</td></tr>
+<tr><td>4M</td><td>метрики считают по машине состояний</td><td><code>active</code> 1 → 0 → 1, <code>hidden [P-2]</code></td><td class="good">pass</td></tr>
+<tr><td>4T</td><td>контур машины: все пары и запреты входа</td><td>32 пары, 0 расхождений</td><td class="good">pass</td></tr>
+<tr><td>4K</td><td>два сценария рядом</td><td><code>changed</code> 90 против 30, delta, отказ <code>compare</code></td><td class="good">pass</td></tr>
+<tr><td>4R</td><td>права названы данными</td><td>9 путей записи, <code>foreign</code> останавливает изменения</td><td class="good">pass</td></tr>
+<tr><td>4F</td><td>чужая файловая система</td><td>регистр измерен, лимиты объявлены, отказы <code>case</code> и <code>path</code></td><td class="good">pass</td></tr>
+<tr><td>4L</td><td>живые модели</td><td><code>model</code> оценил записи, <code>verify</code> сверил утверждения</td><td class="good">pass</td></tr>
+<tr><td><b>L6</b></td><td><b>развёртывание в корень</b></td><td>лаборатория внутри проекта: раскладка названа, установка и обновление идут, откат проходит, в корне только два файла</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений даёт тот же ответ</td><td>четыре команды по три прогона</td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок в чистых каталогах</td><td>три проекта совпали без времени</td><td class="good">pass</td></tr>
+<tr><td>3M, 4, 5M</td><td>модель читает и действует</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F57.</b> Раскладка — это данные, а не договорённость. Пока она не названа, «архив распакован верно» и «архив распакован не туда» неразличимы: оба дают <code>status: absent</code> на пустом проекте. Теперь первая команда отвечает, где что лежит, и это же попадает в <code>note</code> — что раскладка значит при переносе.
+</div>
+
+<div class="note">
+<b>Находка F58.</b> Предупреждение о системе контроля версий нужнее, чем кажется: «лаборатория внутри проекта» — единственная раскладка, где <code>kit/</code> и <code>releases/</code> попадают в чужой репозиторий по умолчанию.
+</div>
+
+<div class="note">
+<b>Находка F59.</b> Приёмка поймала дефект сборки: в поставке не хватало выпуска <b>0.1.31</b> — список предыдущих версий задан руками, и его забыли дополнить. Цепочка молча становилась короче. Исправлено и закрыто проверкой: сборка падает, если в поставке нет ни одного выпуска из списка.
+</div>
+
+<div class="note">
+<b>Чего нет.</b> Частичный сбой в раскладке «в корень» отдельно не имитировался: восстановление измерено в L4P на обычной раскладке, здесь — только <code>undo</code> завершённой операции. Настоящий Windows и права ACL — вне песочницы; живая среда VS Code и поведение моделей — <code>not run</code>.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-053</b> — <code>access</code>: права и запись изнутри каталога, включая пробную запись в <code>.agent-contract/</code>.</li>
+<li><b>И-054</b> — <code>docs/INIT-PROMPT.md</code> и уровень <b>L7</b>: инициализирующий промпт, который можно отправить агенту.</li>
+<li><b>И-055</b> — <code>calibrate</code>, промпты K1–K4 с эталонами отдельным архивом, уровни <b>L8</b>, <b>L9</b>.</li>
+<li><b>И-056</b> — README-вектор и <code>TRACEABILITY.json</code>; затем Edition: <b>И-057…И-059</b>.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-052.zip</code>, 45 членов, 1 664 360 B, <code>ff903bfe…</code>; повтор из печати совпал по всем результатам — <code>identical: true</code>. Выпуск 0.1.32: база 650 858 B <code>c79b577b…</code>, Edition 653 922 B <code>9cf741f3…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.31. Данные 0.1.31 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

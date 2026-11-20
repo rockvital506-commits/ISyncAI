@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-027. Адаптер GitHub Copilot / VS Code — 0.1.7</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-027. Адаптер GitHub Copilot / VS Code: запрет на второй реестр стал отказом</h1>
+<p class="lead">18 ноября 2026. Правило тождества не трогали — оно принято в И‑025 и проверено в И‑026. Предмет этой итерации — среда, у которой инструкции вместо правил и <b>свой</b> файл входа. Выпуск <b>0.1.7</b>.</p>
+
+<div class="verdict">
+<strong>Вход комплекта у Copilot не совпадает с входом среды и стоит четвёртым из пяти.</strong>
+Выше <code>AGENTS.md</code> — личные инструкции, path-specific файлы и общий <code>.github/copilot-instructions.md</code>. Раньше «второй реестр не создаём» было фразой в протоколе; в 0.1.7 это код отказа: запрос любого другого входа отклоняется как <code>second_entry</code>, и <code>.github/</code> в проекте не появляется.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.7</b></div>
+<div><span>Испытания</span><b>46 / 0 / 3</b></div>
+<div><span>Проверок адаптера</span><b class="good">13 / 13</b></div>
+<div><span>Чужих входов отклонено</span><b class="good">4 из 4</b></div>
+<div><span>Приёмка</span><b>9 / 0 / 5</b></div>
+</div>
+
+<h2>Что известно про среду — и чем она отличается от Kilo</h2>
+<div class="wrap">
+<table>
+<tr><th>Свойство GitHub Copilot</th><th>Следствие для комплекта</th></tr>
+<tr><td>общий файл репозитория — <code>.github/copilot-instructions.md</code></td><td>у среды есть «свой» вход, и он не наш: <code>entry_shared: false</code></td></tr>
+<tr><td>path-specific файлы <code>.github/instructions/**/*.instructions.md</code>, обязательный <code>applyTo</code></td><td>правила среды привязаны к путям; у комплекта такого механизма нет и не будет</td></tr>
+<tr><td>инструкции агента — <code>AGENTS.md</code> в любом каталоге, ближайший выигрывает; альтернативы <code>CLAUDE.md</code>, <code>GEMINI.md</code></td><td>наш вход здесь второй среди файлов репозитория и четвёртый в общем порядке</td></tr>
+<tr><td>порядок: личные → path-specific → общий → инструкции агента → организация</td><td>старшинство <b>3 из 5</b>, записано данными</td></tr>
+<tr><td><code>AGENTS.md</code> не читают Chat на github.com и встроенные подсказки</td><td>полного покрытия нет — два пробела названы в карточке, а не спрятаны</td></tr>
+<tr><td>CLI не определяет общего порядка и дедуплицирует наборы</td><td>вторая копия правила была бы не «страховкой», а расхождением</td></tr>
+<tr><td><code>AGENTS.md</code> вне корня рабочей области в VS Code по умолчанию выключен</td><td>обнаружение в подкаталогах — отдельный предмет, не заявляем</td></tr>
+</table>
+</div>
+<p>Источники: документация GitHub об инструкциях и <code>AGENTS.md</code>, changelog coding agent (28.08.2025), разборы порядка загрузки инструкций, описание Copilot CLI. Снимок на 18.11.2026.</p>
+
+<h2>Что появилось в 0.1.7</h2>
+<div class="wrap">
+<table>
+<tr><th>Что</th><th>Как</th></tr>
+<tr><td>Карточка среды</td><td><code>ADAPTERS['copilot']</code>: вход <code>AGENTS.md</code>, рекомендованный средой <code>.github/copilot-instructions.md</code>, <code>entry_shared: false</code>, старшинство 3 из 5, источники, два пробела покрытия, <code>never_writes</code>, <code>not_proven</code></td></tr>
+<tr><td>Запрет на второй вход</td><td><code>connect</code> принимает необязательный <code>entry_path</code>; всё, кроме <code>AGENTS.md</code>, отклоняется кодом <b><code>second_entry</code></b> с указанием запрошенного пути; карточка адаптера при отказе не создаётся</td></tr>
+<tr><td>Обнаружение</td><td>в закрытый список добавлены <code>.github/agents</code>, <code>.github/prompts</code>, <code>.github/skills</code>, <code>.vscode/settings.json</code>; по-прежнему только <code>lstat</code></td></tr>
+<tr><td>Запрет записи</td><td>ни <code>.github/**</code>, ни <code>.vscode/**</code>, ни <code>CLAUDE.md</code>, ни <code>GEMINI.md</code></td></tr>
+<tr><td>Регрессии</td><td>X27 <code>second_entry</code>, X28 карточка Copilot, X29 обнаружение и подтверждение, X30 «адаптер не пишет чужое»</td></tr>
+</table>
+</div>
+
+<h2>Независимая проверка адаптера (13 из 13)</h2>
+<div class="wrap">
+<table>
+<tr><th>Проверка</th><th>Результат</th></tr>
+<tr><td>карточка: вход, рекомендованный средой файл, старшинство 3 из 5, пробелы покрытия, ничего не пишет</td><td class="good">pass</td></tr>
+<tr><td>второй вход: <code>.github/copilot-instructions.md</code> → <code>second_entry</code></td><td class="good">pass</td></tr>
+<tr><td>второй вход: <code>CLAUDE.md</code> → <code>second_entry</code></td><td class="good">pass</td></tr>
+<tr><td>второй вход: <code>GEMINI.md</code> → <code>second_entry</code></td><td class="good">pass</td></tr>
+<tr><td>второй вход: path-specific <code>*.instructions.md</code> → <code>second_entry</code></td><td class="good">pass</td></tr>
+<tr><td>вход <code>AGENTS.md</code>: обычная работа, <code>.github/</code> не появляется</td><td class="good">pass</td></tr>
+<tr><td>раскладка общего файла инструкций</td><td class="good">источник виден, подтверждение требуется, файл байт в байт</td></tr>
+<tr><td>раскладка path-specific инструкций</td><td class="good">как каталог, содержимое не читается</td></tr>
+<tr><td>раскладки <code>.github/agents</code>, <code>.github/prompts</code>, <code>.github/skills</code></td><td class="good">видны без чтения</td></tr>
+<tr><td>раскладка <code>.vscode/settings.json</code></td><td class="good">требует подтверждения</td></tr>
+<tr><td>порядок подтверждения</td><td class="good">обратный порядок отклонён</td></tr>
+<tr><td>конфигурация среды не тронута (по всему дереву)</td><td class="good">изменён только <code>AGENTS.md</code></td></tr>
+<tr><td>обнаружение не заявлено как проверенное</td><td class="good"><code>discovery_proven: false</code>, три пункта <code>not_proven</code></td></tr>
+</table>
+</div>
+
+<h2>Правило не поехало</h2>
+<div class="wrap">
+<table>
+<tr><th>Стенд</th><th>И‑026 (0.1.6)</th><th>И‑027 (0.1.7)</th></tr>
+<tr><td>Корпус 112 пар: склеек</td><td class="num">24 (12 форменных + 12 объявленных)</td><td class="num">24 (12 форменных + 12 объявленных)</td></tr>
+<tr><td>Корпус: прочих склеек</td><td class="num good">0</td><td class="num good">0</td></tr>
+<tr><td>Журналы: склеено повторов</td><td class="num">3 из 3</td><td class="num">3 из 3</td></tr>
+<tr><td>Журналы: ложных</td><td class="num good">0 из 40</td><td class="num good">0 из 40</td></tr>
+<tr><td>Данные 0.1.6 под 0.1.7</td><td>—</td><td class="good">читаются, байты не менялись</td></tr>
+</table>
+</div>
+
+<div class="note">
+<b>Чего эта итерация не делает.</b> Она не запускает Copilot. Загрузка инструкций в VS Code, реальное старшинство наборов и поведение модели — уровни достоверности 2, 3 и 4 (И‑031…И‑032, И‑045). <code>excludeAgent</code> во front matter вне предмета: комплект path-specific файлы не пишет вовсе. <code>not run</code> в приёмке — это <code>not run</code>, а не «почти pass».
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И‑028 — адаптер Claude Code.</b> Отдельный файл и отдельная семантика: вход, порядок, свои ограничения записи.</li>
+<li>Дальше по карте: Cursor (И‑029), Antigravity (И‑030), затем уровни достоверности и управление правилами.</li>
+<li>Открытый вопрос, поднятый владельцем в этой итерации: экспорт вместо реестра — производная копия для сред без <code>AGENTS.md</code>. Это отдельная проверяемая поверхность, не правка на ходу.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-027.zip</code>, 37 членов, 386 371 B, <code>4b1e4ee8…</code>; повтор из печати дал те же восемь результатов — <code>identical: true</code>. Выпуск 0.1.7: база 121 456 B <code>5a21ac9a…</code>, Edition 121 503 B <code>c67ca5d6…</code>; внутри 0.1.0 не тронут, 0.1.6 остаётся в поставке для перехода.
+</footer>
+</main>
+</body>
+</html>

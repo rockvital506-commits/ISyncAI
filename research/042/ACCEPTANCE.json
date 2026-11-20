@@ -1,0 +1,295 @@
+{
+  "at": "2026-11-18",
+  "counts": {
+    "not run": 5,
+    "pass": 10
+  },
+  "iteration": "И-042",
+  "release": {
+    "tests": {
+      "base": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 75
+      },
+      "edition": {
+        "fail": 0,
+        "inconclusive": 0,
+        "not run": 3,
+        "pass": 75
+      }
+    },
+    "version": "0.1.22"
+  },
+  "rows": [
+    {
+      "actual": {
+        "base": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 75
+        },
+        "edition": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 75
+        }
+      },
+      "expected": "75 pass / 0 fail / 3 not run на обеих линиях",
+      "name": "выпуск 0.1.22 собран и испытан",
+      "note": "",
+      "source": "release-0.1.22/*/AgentContractLab/reports/CHECKS.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "X58": "pass",
+          "X59": "pass"
+        },
+        "edition": {
+          "X58": "pass",
+          "X59": "pass"
+        }
+      },
+      "expected": "X58 и X59 пройдены на обеих линиях",
+      "name": "правило меняет только владелец",
+      "note": "",
+      "source": "X48 серия чтений совпадает и ничего не меняет; X49 запись и диапазон отклоняются",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "bytes_unchanged": true,
+          "merged": 6,
+          "pairs": 12,
+          "unexpected": []
+        },
+        "edition": {
+          "bytes_unchanged": true,
+          "merged": 6,
+          "pairs": 12,
+          "unexpected": []
+        }
+      },
+      "expected": "12 пар, 6 склеек, 0 промахов и 0 ложных на обеих линиях",
+      "name": "корпус пунктуации через консоль",
+      "note": "",
+      "source": "pairs-042-cli-punct-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "merged": 32,
+          "pairs": 80,
+          "unexpected": []
+        },
+        "edition": {
+          "merged": 32,
+          "pairs": 80,
+          "unexpected": []
+        }
+      },
+      "expected": "80 пар, 32 склейки, ничего неожиданного",
+      "name": "корпус И-029 через консоль",
+      "note": "",
+      "source": "pairs-042-cli-corpus80-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "declared_false": 12,
+          "declared_missed": 24,
+          "merged": 24,
+          "unexpected": 0
+        },
+        "edition": {
+          "declared_false": 12,
+          "declared_missed": 24,
+          "merged": 24,
+          "unexpected": 0
+        }
+      },
+      "expected": "24 склейки, из них 12 объявленных в И-025, прочих 0",
+      "name": "корпус 112 пар через консоль",
+      "note": "",
+      "source": "pairs-042-cli-corpus112-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": {
+          "false": 0,
+          "merged": 3
+        },
+        "edition": {
+          "false": 0,
+          "merged": 3
+        }
+      },
+      "expected": "3 из 3 повторов склеены, ложных 0 из 40",
+      "name": "журналы (прежний стенд, импорт)",
+      "note": "перенос этого стенда на консоль — в следующей итерации",
+      "source": "pairs-042-journals-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "adapter_from_cli": true,
+        "counts": {
+          "base": {
+            "not run": 4,
+            "pass": 19
+          },
+          "edition": {
+            "not run": 4,
+            "pass": 19
+          }
+        }
+      },
+      "expected": "P1–P8 на обеих линиях: 8 pass / 0 fail, карточка среды доступна внутри прогона",
+      "name": "матрица обкатки измерена: 8 из 8",
+      "note": "P1–P8 закрыты; L1, L2, L3, L3F, L4C, L4Q, L4D, L4S, L4O, L5a, L5b измерены; выполнение требования моделью, чтение моделью, повтор моделью и живая среда — not run",
+      "source": "PILOT-*.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "new_version": "0.1.22",
+        "ok": true,
+        "old_data_reads": true,
+        "old_data_untouched": true,
+        "old_version": "0.1.21",
+        "repeat_kept_bytes": true
+      },
+      "expected": "старое читается, повтор не меняет байты, отличие факта даёт запись",
+      "name": "данные 0.1.21 читаются и не переписываются",
+      "note": "",
+      "source": "COMPAT.json",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "base": [
+          "0.1.0",
+          "0.1.4",
+          "0.1.5",
+          "0.1.6",
+          "0.1.7",
+          "0.1.8",
+          "0.1.9",
+          "0.1.10",
+          "0.1.11",
+          "0.1.12",
+          "0.1.13",
+          "0.1.14",
+          "0.1.15",
+          "0.1.16",
+          "0.1.17",
+          "0.1.18",
+          "0.1.19",
+          "0.1.20",
+          "0.1.21",
+          "0.1.22"
+        ],
+        "edition": [
+          "0.1.0",
+          "0.1.4",
+          "0.1.5",
+          "0.1.6",
+          "0.1.7",
+          "0.1.8",
+          "0.1.9",
+          "0.1.10",
+          "0.1.11",
+          "0.1.12",
+          "0.1.13",
+          "0.1.14",
+          "0.1.15",
+          "0.1.16",
+          "0.1.17",
+          "0.1.18",
+          "0.1.19",
+          "0.1.20",
+          "0.1.21",
+          "0.1.22"
+        ]
+      },
+      "expected": "releases/0.1.0 и 0.1.4–0.1.22 в обеих линиях",
+      "name": "цепочка выпусков в поставке",
+      "note": "",
+      "source": "архивы 0.1.22",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "equal": {
+          "COMPAT.json": true,
+          "EXPECTATIONS.json": true,
+          "PILOT-base.json": true,
+          "PILOT-edition.json": true,
+          "pairs-042-cli-corpus112-base.json": true,
+          "pairs-042-cli-corpus112-edition.json": true,
+          "pairs-042-cli-corpus80-base.json": true,
+          "pairs-042-cli-corpus80-edition.json": true,
+          "pairs-042-cli-punct-base.json": true,
+          "pairs-042-cli-punct-edition.json": true,
+          "pairs-042-journals-base.json": true,
+          "pairs-042-journals-edition.json": true
+        },
+        "identical": true
+      },
+      "expected": "все результаты и файлы совпадают, identical true",
+      "name": "повтор из печати совпадает со сборкой",
+      "note": "",
+      "source": "REPLAY.json",
+      "status": "pass"
+    },
+    {
+      "actual": null,
+      "expected": "Kilo и Copilot поочерёдно читают вход",
+      "name": "живой VS Code с двумя расширениями",
+      "note": "Расширения здесь не запускаются.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "среды действительно читают AGENTS.md",
+      "name": "загрузка инструкций в VS Code",
+      "note": "Уровни достоверности 2–3, отдельные итерации.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "модель следует правилам комплекта",
+      "name": "поведение моделей",
+      "note": "Стенд исполняет промпт буквально, а не изображает модель.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "поведение на другой файловой системе",
+      "name": "Windows и права",
+      "note": "Стенд подаёт платформу как объявленные данные, а не как факт машины.",
+      "source": "—",
+      "status": "not run"
+    },
+    {
+      "actual": null,
+      "expected": "приёмка на данных владельца",
+      "name": "журналы заказчика",
+      "note": "Журналов у владельца нет.",
+      "source": "—",
+      "status": "not run"
+    }
+  ]
+}

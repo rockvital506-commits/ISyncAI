@@ -1,0 +1,117 @@
+{
+  "acceptance": {
+    "not run": 2,
+    "pass": 7
+  },
+  "at": "2026-11-18",
+  "corpus": {
+    "cases": 12,
+    "different": 76,
+    "pairs": 112,
+    "path": "../020/corpus.py",
+    "repeats": 36,
+    "restored": true,
+    "sha256": "fc0dae27477a8a194bc83a6a4802735fcbdcaf32d90b43879d1c577af02607ae"
+  },
+  "decision_024": "pending",
+  "iteration": "024",
+  "measurement": {
+    "bands_absent": true,
+    "cost": [
+      {
+        "added_max": 0,
+        "false_merges": 0,
+        "repeats_found": 12
+      },
+      {
+        "added_max": 1,
+        "false_merges": 1,
+        "repeats_found": 12
+      },
+      {
+        "added_max": 2,
+        "false_merges": 13,
+        "repeats_found": 12
+      },
+      {
+        "added_max": 3,
+        "false_merges": 18,
+        "repeats_found": 24
+      }
+    ],
+    "guards": {
+      "critical": 4,
+      "facts": 35,
+      "lexicon": 22
+    },
+    "text_bands": {
+      "containment": {
+        "band": null,
+        "highest_different": [
+          1.0,
+          "E12-сужено условие"
+        ],
+        "lowest_repeat": [
+          0.8621,
+          "E06-вар3"
+        ]
+      },
+      "dice": {
+        "band": null,
+        "highest_different": [
+          0.835,
+          "E06-снято ограничение"
+        ],
+        "lowest_repeat": [
+          0.4923,
+          "E03-вар2"
+        ]
+      },
+      "ratio": {
+        "band": null,
+        "highest_different": [
+          0.8451,
+          "E10-изменён идентификатор"
+        ],
+        "lowest_repeat": [
+          0.25,
+          "E01-вар3"
+        ]
+      },
+      "tokens_jaccard": {
+        "band": null,
+        "highest_different": [
+          0.75,
+          "E11-снято ограничение"
+        ],
+        "lowest_repeat": [
+          0.4444,
+          "E01-вар1"
+        ]
+      }
+    }
+  },
+  "open": "И-023 — приёмка на настоящих журналах; нужен вход владельца (журнал или обезличенная выгрузка).",
+  "page": {
+    "file": "Итерация-024.html",
+    "inside_seal": false,
+    "sha256": "fdcc893197754775b0094fe046daed4d3b4e246345f34e1a19457d797eaa02eb"
+  },
+  "product": "0.1.4 (восстановленная линия)",
+  "product_change": false,
+  "product_check": {
+    "base": {
+      "merged": 12,
+      "mismatches": 0,
+      "unexpected": []
+    },
+    "edition": {
+      "merged": 12,
+      "unexpected": []
+    }
+  },
+  "replay_sha256": "79e6a0ade0f919d436ab88b2bd3211087438d4435f5a6d45e6cfaa730bc1ecc1",
+  "seal": "AgentContractKit-Iteration-024.zip",
+  "seal_sha256": "32a25541d315b31001ee68980aa8ca54a8c252186561df137c504f99eef6b3c7",
+  "subject": "восстановление корпуса 112 пар и повторное измерение правила на выпущенном 0.1.4"
+}

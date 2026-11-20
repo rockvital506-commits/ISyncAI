@@ -1,0 +1,110 @@
+{
+  "acceptance_expected": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 10
+  },
+  "at": "2026-11-18",
+  "compat_expected": {
+    "new_version": "0.1.33",
+    "ok": true,
+    "old_version": "0.1.32"
+  },
+  "corpora_expected": {
+    "corpus112": {
+      "merged": 24,
+      "pairs": 112
+    },
+    "corpus80": {
+      "merged": 32,
+      "pairs": 80
+    },
+    "punct": {
+      "merged": 6,
+      "pairs": 12
+    }
+  },
+  "iteration": "И-053",
+  "journals_expected": {
+    "expected_repeats": 3,
+    "false_merges": 0,
+    "journals": 8,
+    "observations": 41,
+    "pairs": 43
+  },
+  "levels_expected": {
+    "not_run": [
+      "L3M",
+      "L4",
+      "L5M",
+      "LIVE"
+    ],
+    "pass": [
+      "L1",
+      "L2",
+      "L3",
+      "L3F",
+      "L4C",
+      "L4Q",
+      "L4D",
+      "L4S",
+      "L4O",
+      "L4V",
+      "L4X",
+      "L4P",
+      "L4M",
+      "L4T",
+      "L4K",
+      "L4R",
+      "L4W",
+      "L4F",
+      "L4L",
+      "L6",
+      "L5a",
+      "L5b"
+    ]
+  },
+  "matrix_expectation": {
+    "after": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    },
+    "before": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    }
+  },
+  "note": "Ожидания записаны до прогона стенда. Новый пункт — L4W: права измеряются записью, а не объявляются. L7 (инициализирующий промпт) — И-054, L8/L9 (калибровка) — И-055.",
+  "preregistered": true,
+  "release": {
+    "new_rules": [
+      "X80: access измеряет девять путей записи, writes false, после вызова ничего не остаётся",
+      "X81: каталог только для чтения даёт writable false с причиной permission и errno 13"
+    ],
+    "tests_expected": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 97
+    },
+    "version": "0.1.33"
+  },
+  "subject": "права: измеренные и объявленные"
+}

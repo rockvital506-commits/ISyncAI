@@ -1,0 +1,230 @@
+{
+  "acceptance": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 10,
+    "sha256": "381f93e1ad4c90826400c7d03434cac9be4321d4d2bbd399621802be79ed060a"
+  },
+  "at": "2026-11-18",
+  "compat": {
+    "new_version": "0.1.13",
+    "ok": true,
+    "old_data_reads": true,
+    "old_data_untouched": true,
+    "old_version": "0.1.12",
+    "repeat_kept_bytes": true
+  },
+  "corpora_via_cli": {
+    "corpus112": {
+      "base": {
+        "merged": 24,
+        "pairs": 112,
+        "unexpected": 0
+      },
+      "edition": {
+        "merged": 24,
+        "pairs": 112,
+        "unexpected": 0
+      }
+    },
+    "corpus80": {
+      "base": {
+        "merged": 32,
+        "pairs": 80,
+        "unexpected": 0
+      },
+      "edition": {
+        "merged": 32,
+        "pairs": 80,
+        "unexpected": 0
+      }
+    },
+    "punct": {
+      "base": {
+        "merged": 6,
+        "pairs": 12,
+        "unexpected": 0
+      },
+      "edition": {
+        "merged": 6,
+        "pairs": 12,
+        "unexpected": 0
+      }
+    }
+  },
+  "findings": {
+    "F13": "environment объявляется вызывающим, а не измеряется: выводы о «двух машинах» — о данных, не о машинах",
+    "F14": "merge добавляет записи, но не сводит разногласия одного события: входящая запись с другим исходом отбрасывается как дубль",
+    "fixed": "P3 (правило названо данными: identity), P4 (слияние внутри продукта: merge), P7 (слияние не ручное)",
+    "open": "P5 (порядок первого промпта), P6 (docs в поставке) — И-034"
+  },
+  "iteration": "033",
+  "journals_import_stand": {
+    "base": {
+      "false": 0,
+      "merged": 3
+    },
+    "edition": {
+      "false": 0,
+      "merged": 3
+    }
+  },
+  "page": {
+    "file": "Итерация-033.html",
+    "inside_seal": false,
+    "sha256": "30fa05f138f174360d205ac823ac3f9c958b15ffc583ccb861f024f7cdd38234"
+  },
+  "pilot": {
+    "closed_this_iteration": [
+      "P3",
+      "P4",
+      "P7"
+    ],
+    "counts": {
+      "base": {
+        "fail": 2,
+        "pass": 6
+      },
+      "edition": {
+        "fail": 2,
+        "pass": 6
+      }
+    },
+    "decisions": {
+      "P3": "Б",
+      "P4": "Б"
+    },
+    "interface": "опубликованная команда в отдельном процессе; проект — абсолютным путём",
+    "items": {
+      "base": [
+        {
+          "id": "P1",
+          "status": "pass"
+        },
+        {
+          "id": "P2",
+          "status": "pass"
+        },
+        {
+          "id": "P3",
+          "status": "pass"
+        },
+        {
+          "id": "P4",
+          "status": "pass"
+        },
+        {
+          "id": "P5",
+          "status": "fail"
+        },
+        {
+          "id": "P6",
+          "status": "fail"
+        },
+        {
+          "id": "P7",
+          "status": "pass"
+        },
+        {
+          "id": "P8",
+          "status": "pass"
+        }
+      ],
+      "edition": [
+        {
+          "id": "P1",
+          "status": "pass"
+        },
+        {
+          "id": "P2",
+          "status": "pass"
+        },
+        {
+          "id": "P3",
+          "status": "pass"
+        },
+        {
+          "id": "P4",
+          "status": "pass"
+        },
+        {
+          "id": "P5",
+          "status": "fail"
+        },
+        {
+          "id": "P6",
+          "status": "fail"
+        },
+        {
+          "id": "P7",
+          "status": "pass"
+        },
+        {
+          "id": "P8",
+          "status": "pass"
+        }
+      ]
+    },
+    "p3_evidence": {
+      "compared": [
+        "os",
+        "mode",
+        "model",
+        "permissions"
+      ],
+      "ignored": [
+        "editor",
+        "editor_version",
+        "extension",
+        "extension_version",
+        "profile"
+      ],
+      "other_model_records": 2,
+      "two_observers_records": 1
+    },
+    "p4_evidence": {
+      "merge": [
+        {
+          "added": 1,
+          "deleted": 0,
+          "duplicates": 2,
+          "identity": "CONDITIONS",
+          "incoming": ".agent-contract/project/checks.incoming.json",
+          "writes_foreign": false
+        }
+      ],
+      "pull_conflicted": true,
+      "records_after": 4,
+      "repeat": "no_change"
+    }
+  },
+  "pilot_ready_when": "P1–P7 закрыты; сейчас закрыты P1, P2, P3, P4, P7, P8",
+  "plan": {
+    "adapters": "Claude Code, Cursor, Antigravity сняты с нумерации и остаются заглушками",
+    "order": [
+      "И-034 первый промпт и документация издания (P5, P6)",
+      "далее правила/достоверность/сопровождение/метрики/права/Windows/живые модели (И-035…И-050)",
+      "ядро ISAI (И-051…И-083)"
+    ],
+    "remaining_core": 33,
+    "remaining_kit": 17,
+    "remaining_total": 50
+  },
+  "release": {
+    "base_bytes": 220425,
+    "base_sha256": "51a242683978642c5b6ce40ee4f64eee9a0f9ea08b7830acda40c82cdfd6579a",
+    "edition_bytes": 220550,
+    "edition_sha256": "b3bb13f6a730e58263995caef7e7cc69103d3ae80df54d35fdb28b91fdc2d08a",
+    "tests": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 57
+    },
+    "version": "0.1.13"
+  },
+  "replay_identical": true,
+  "seal": "AgentContractKit-Iteration-033.zip",
+  "seal_bytes": 647486,
+  "seal_sha256": "0bd23dc17a68259ccb7057e9b13ad09ac38d0d2faf86b9f276a5bf57a12e389b",
+  "subject": "обкатка: единство события, слияние состояния двух писателей"
+}

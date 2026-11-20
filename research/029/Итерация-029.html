@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-029. Наблюдатель выведен из сравнения — 0.1.9</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-029. Наблюдатель выведен из сравнения: одно событие — одна запись</h1>
+<p class="lead">18 ноября 2026. Решение владельца по находке F1 — <b>Б</b>: разделить <code>environment</code>. Условия сравниваются точно, наблюдатель — нет, как место улики в 0.1.5. Выпуск <b>0.1.9</b>.</p>
+
+<div class="verdict">
+<strong>Шесть поочерёдных ходов Kilo и Copilot дают одну запись вместо двух.</strong>
+Наблюдатель (редактор, расширение, версии, профиль) больше не разделяет событие. Условия — ОС, режим, модель, права — разделяют по-прежнему: 32 пары из 32 остались разными. Ложных склеек нет ни одной.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.9</b></div>
+<div><span>Испытания</span><b>49 / 0 / 3</b></div>
+<div><span>Корпус, совпало</span><b class="good">75 / 80</b></div>
+<div><span>Ложных склеек</span><b class="good">0</b></div>
+<div><span>Приёмка</span><b>19 / 1 / 5</b></div>
+</div>
+
+<h2>Что именно изменилось в правиле</h2>
+<table>
+<tr><th>Часть <code>environment</code></th><th>Поля</th><th>Сравнивается</th></tr>
+<tr><td>Условия</td><td><code>os</code>, <code>mode</code>, <code>model</code>, <code>permissions</code></td><td class="good">да, точно</td></tr>
+<tr><td>Наблюдатель</td><td><code>editor</code>, <code>editor_version</code>, <code>extension</code>, <code>extension_version</code>, <code>profile</code></td><td class="warn">нет, как место улики</td></tr>
+</table>
+<p>Все девять полей по-прежнему обязательны: наблюдение без расширения или без модели отклоняется. Происхождение записи указывается, но не сравнивается. <code>profile</code> отнесён к наблюдателю — это решение внутри правила владельца, переносится одной строкой.</p>
+
+<h2>Замороженный корпус: 80 пар</h2>
+<p>Восемь базовых наблюдений × десять пар. Метки записаны из правила до прогона и после измерения не менялись.</p>
+<table>
+<tr><th>Вид пары</th><th>Метка</th><th class="num">Склеено</th><th>Итог</th></tr>
+<tr><td>другое расширение</td><td>склейка</td><td class="num">8 / 8</td><td class="good">совпало</td></tr>
+<tr><td>другой редактор и версии</td><td>склейка</td><td class="num">8 / 8</td><td class="good">совпало</td></tr>
+<tr><td>другой профиль</td><td>склейка</td><td class="num">8 / 8</td><td class="good">совпало</td></tr>
+<tr><td>другая ОС / режим / модель / права</td><td>не склейка</td><td class="num">0 / 32</td><td class="good">совпало</td></tr>
+<tr><td>другое расширение и другой факт</td><td>не склейка</td><td class="num">0 / 8</td><td class="good">совпало</td></tr>
+<tr><td>другое расширение и другие условия</td><td>не склейка</td><td class="num">0 / 8</td><td class="good">совпало</td></tr>
+<tr><td><b>другое расширение и другая форма текста</b></td><td>склейка</td><td class="num">3 / 8</td><td class="bad">не совпало — F2</td></tr>
+</table>
+
+<h2>Находки</h2>
+<table>
+<tr><th>№</th><th>Что найдено</th><th>Что сделано</th></tr>
+<tr><td>F2</td><td>точка в конце предложения попадает в идентификатор: <code>test_build.</code> против <code>test_build</code>, и факты считаются разными. Справочник обещает, что пунктуация не влияет</td><td>измерено на 5 парах из 8; решение о правке — за владельцем (варианты А/Б в отчёте)</td></tr>
+<tr><td>F3</td><td>каталог выпусков в <code>updates</code> сортировался как строки: <code>0.1.10</code> вставал перед <code>0.1.9</code></td><td class="good">исправлено: сортировка по версии, регрессия X33</td></tr>
+</table>
+
+<h2>Прежние корпуса не поехали</h2>
+<table>
+<tr><th>Стенд</th><th>И‑028 (0.1.8)</th><th>И‑029 (0.1.9)</th></tr>
+<tr><td>Корпус 112 пар: склеек</td><td class="num">24</td><td class="num">24 (12 + 12 объявленных)</td></tr>
+<tr><td>Корпус 112: прочих</td><td class="num good">0</td><td class="num good">0</td></tr>
+<tr><td>Журналы: склеено повторов</td><td class="num">3 из 3</td><td class="num">3 из 3</td></tr>
+<tr><td>Журналы: ложных</td><td class="num good">0 из 40</td><td class="num good">0 из 40</td></tr>
+<tr><td>Данные 0.1.8 под 0.1.9</td><td>—</td><td class="good">читаются, байты не менялись</td></tr>
+</table>
+
+<div class="note">
+<b>Чего эта итерация не делает.</b> Она не запускает VS Code и расширения. `profile` отнесён к наблюдателю по решению внутри правила — это можно переставить. Находка F2 (пунктуация в идентификаторе) не исправлена: это правка правила, и она ждёт решения владельца. <code>1 fail</code> в приёмке — это и есть F2, а не оговорка.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>Решение по F2:</b> оставить пунктуацию значимой (А) или снимать завершающую точку у идентификатора (Б). Совет — Б, с прогоном трёх корпусов.</li>
+<li>Дальше по карте: И‑030 — решение по F2, затем адаптер Claude Code (сейчас заглушка), Cursor, Antigravity, затем уровни достоверности.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-029.zip</code>, 45 членов, 480 664 B, <code>094ce311…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.9: база 152 057 B <code>674650c5…</code>, Edition 152 135 B <code>afdae3b9…</code>; внутри 0.1.0 не тронут, цепочка 0.1.4–0.1.8 в поставке.
+</footer>
+</main>
+</body>
+</html>

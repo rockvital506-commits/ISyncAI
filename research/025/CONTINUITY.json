@@ -1,0 +1,88 @@
+{
+  "acceptance": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 9,
+    "sha256": "ccc74123d4d7c863b8c7a4b8b6940d714d9af6e4f6c041521dec25619682fb6d"
+  },
+  "alternatives_measured": {
+    "A_place_removed": {
+      "corpus_diff_vs_024": 12,
+      "corpus_merged": 24,
+      "journals_merged": 3
+    },
+    "B_line_only": {
+      "corpus_diff_vs_024": 0,
+      "corpus_merged": 12,
+      "journals_merged": 1
+    }
+  },
+  "at": "2026-11-18",
+  "compat": {
+    "checks_bytes": 930,
+    "not_rewritten": true,
+    "old_data_reads": true
+  },
+  "corpus": {
+    "form_only": 12,
+    "merged": 24,
+    "pairs": 112,
+    "reclassified": 12,
+    "refused_negatives": 64,
+    "unexpected_other": 0
+  },
+  "decision_023": "b",
+  "decision_025": "applied",
+  "iteration": "025",
+  "journals": {
+    "before_0_1_4": {
+      "false": 0,
+      "merged": 0
+    },
+    "false_merges": 0,
+    "merged": {
+      "hard-negative": 0,
+      "random-negative": 0,
+      "repeat-form": 2,
+      "repeat-volatile": 1
+    },
+    "missed": 0,
+    "pairs": 43
+  },
+  "next": "И-026 адаптер Kilo; номера после 025 сдвинуты на одного",
+  "page": {
+    "file": "Итерация-025.html",
+    "inside_seal": false,
+    "sha256": "aebbe4993efb326dcefdb57b896a57031401bfedf382ee7bb808436fd1caf968"
+  },
+  "release": {
+    "ancestor_untouched": "0.1.0",
+    "base_bytes": 90027,
+    "base_sha256": "1c0bbe27b50b8abb77fadd89cc52c87e86140409fe3452b289ce7020800a5e0e",
+    "edition_bytes": 90072,
+    "edition_sha256": "a7d7862f7d746e0b7dd74fc3436ba342c6fc22aebf72d60ea757061955761463",
+    "previous_in_tree": "0.1.4",
+    "tests": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 38
+    },
+    "version": "0.1.5"
+  },
+  "replay_identical": true,
+  "replay_sha256": "f34d82d8344611084f0c7d3932e8fe8a614167f0cb8c55dfdcbb13ed3e9cff25",
+  "rule_change": {
+    "evidence": "место (журнал и номер строки) больше не участвует в тождестве",
+    "lost_protection": "подмена файла свидетельства не замечается",
+    "unchanged": [
+      "критические поля",
+      "закрытый лексикон",
+      "факты идентификаторов и чисел",
+      "0 добавленных слов"
+    ],
+    "volatile_time": "длительности и отметки не факт события"
+  },
+  "seal": "AgentContractKit-Iteration-025.zip",
+  "seal_sha256": "a838ae86b26054904bbe92e7ae1e247bf755a3d0693b37a87a90c382ddf1d79c",
+  "subject": "тождество записи отделено от происхождения (выбор владельца Б)"
+}

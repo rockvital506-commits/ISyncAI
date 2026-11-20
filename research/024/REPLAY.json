@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-18",
+  "command": "распаковать печать → распаковать packages/AgentContractKit-0.1.4.zip → python3 measure.py; python3 pairs_run.py --tree shipped/AgentContractLab",
+  "identical": {
+    "measure": true,
+    "pairs": true
+  },
+  "measure_sha256": "2b60a2d009a691d68b7cde3cb41af393440576e3e45646f67b7b44e950ba9d89",
+  "note": "Измерение и записи из запечатанного архива дали те же JSON, что и сборка.",
+  "pairs_sha256": "ca37648a8dc8b0f70b8bdf5f1b77790bdd770285c3d433acdda41b5b7087c162",
+  "replay_dir": "replay/Iteration-024",
+  "sealed_archive": "AgentContractKit-Iteration-024.zip",
+  "sealed_sha256": "32a25541d315b31001ee68980aa8ca54a8c252186561df137c504f99eef6b3c7",
+  "status": "pass"
+}

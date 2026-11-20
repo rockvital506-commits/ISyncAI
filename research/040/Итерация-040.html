@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-040. Отмена и удаление: запись остаётся, след остаётся — 0.1.20</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-040. Отмена сохраняет запись, удаление оставляет след — без содержимого</h1>
+<p class="lead">18 ноября 2026. Десятая итерация линии. Закрыт §9.4: у отмены и удаления свои процедуры и свой след. <code>purge</code> больше не стирает запись бесследно — она переходит в <code>tombstones</code>, видимые командой <code>removed</code>. Выпуск <b>0.1.20</b>.</p>
+
+<div class="verdict">
+<strong>17 pass / 4 not run.</strong> Отменённая запись осталась в реестре целиком, с текстом. Удалённая исчезла из <code>entries</code>, но след сохранил идентификатор, вид, область, заголовок, время, причину и ревизию. Текста, основания, ключа и значения в следе нет: удалённое удалено, корзины нет.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.20</b></div>
+<div><span>Испытания</span><b>71 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>17 / 4</b></div>
+<div><span>Приёмка</span><b>10 / 0 / 5</b></div>
+</div>
+
+<h2>Что изменилось в правиле</h2>
+<table>
+<tr><th>Правило</th><th>Ответ</th></tr>
+<tr><td>отмена</td><td><code>transition</code> → <code>revoked</code>: запись остаётся в реестре с текстом, но не действует</td></tr>
+<tr><td>удаление</td><td>только после отмены и с <code>allow_delete: true</code>; иначе <code>delete</code> / <code>fields</code></td></tr>
+<tr><td>след</td><td><code>purge</code> пишет в <code>tombstones</code>: <code>id</code>, <code>kind</code>, <code>contract</code>, <code>scope</code>, <code>title</code>, <code>at</code>, <code>reason</code>, <code>revision</code></td></tr>
+<tr><td>содержимое</td><td>в следе нет <code>text</code>, <code>basis</code>, <code>criterion</code>, <code>key</code>, <code>value</code></td></tr>
+<tr><td>видимость</td><td>команда <code>removed</code> (<code>count</code>, <code>removed</code>), число следов — в <code>status.removed</code></td></tr>
+<tr><td>совместимость</td><td><code>tombstones</code> необязательное поле: данные 0.1.19 читаются</td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code>, 6 сравнений</td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td>отпечатки до/после, <code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след без содержимого</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений</td><td>4 команды × 3 прогона, <code>project_unchanged</code></td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок</td><td>3 чистых каталога: данные совпали без <code>at</code></td><td class="good">pass</td></tr>
+<tr><td>3M</td><td>модель прочитала</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>4</td><td>модель выполнила требование</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>5M</td><td>модель повторяет поведение</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0, без изменений</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F26.</b> Удаление без следа — не удаление, а забывание. В журнале оставалась строка с идентификатором, по которой нельзя было сказать ни что это было, ни когда исчезло. След закрывает эту дыру, не превращаясь в корзину.
+</div>
+
+<div class="note">
+<b>Находка F27.</b> След — часть схемы, и он необязателен. Проект 0.1.19 без <code>tombstones</code> читается, а первое удаление его создаёт. Обратная совместимость не заявлена: проект со следами 0.1.19 не откроется, и это сказано в RELEASE.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-041</b> — секреты: нельзя ни писать в реестр, ни печатать.</li>
+<li>Дальше — сопровождение, миграция, метрики, права и Windows (И-042…И-050).</li>
+<li>Адаптеры Claude Code, Cursor, Antigravity остаются заглушками.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-040.zip</code>, 45 членов, 1 002 561 B, <code>58376b09…</code>; повтор из печати совпал по всем двенадцати результатам — <code>identical: true</code>. Выпуск 0.1.20: база 364 473 B <code>eefe2be3…</code>, Edition 367 401 B <code>46082b50…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.19. Данные 0.1.19 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>

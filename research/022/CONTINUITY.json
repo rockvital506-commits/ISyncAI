@@ -1,0 +1,48 @@
+{
+  "acceptance": {
+    "not run": 3,
+    "pass": 9
+  },
+  "ancestor": {
+    "AgentContractKit-0.1.0.zip": "350437cc63d096f5584f4cff3f8376e951281aff67bbc09bc3eb122b8869037a",
+    "preserved": true
+  },
+  "at": "2026-11-18",
+  "decision_022": "pending",
+  "iteration": "022",
+  "lost": {
+    "impact": "переход с 0.1.1–0.1.3 невозможен; байты выпусков не восстановимы",
+    "reason": "dist/ не попадает в git и в снимки рабочего пространства",
+    "versions": [
+      "0.1.1",
+      "0.1.2",
+      "0.1.3"
+    ]
+  },
+  "open": "И-023 — приёмка на настоящих журналах (нужен вход владельца); И-024 — восстановление корпуса 112 пар.",
+  "page": {
+    "file": "Итерация-022.html",
+    "inside_seal": false,
+    "note": "Страница — представление; печать содержит замысел, отчёт, выпуск, инструменты, свидетельства и архивы.",
+    "sha256": "e1a12412e4921c345cd50db742f01f4f2c114ce8bb78edbccd73d9bef6379fe1"
+  },
+  "pipeline": "pass",
+  "product": "0.1.4 (восстановленная линия)",
+  "product_change": true,
+  "release": {
+    "AgentContractKit-0.1.4.zip": {
+      "bytes": 75815,
+      "sha256": "8d599d01de566462d8a5f7ea1b37da2653acd39a78e3ebb8b785ff53131b1158"
+    },
+    "AgentContractKitISAIEdition-0.1.4+docs.1.zip": {
+      "bytes": 75835,
+      "sha256": "2d55b90fdbdcf79fa0f66a123b33a2ca1b9cb1d62539edfdd29e680b90a0987c"
+    }
+  },
+  "replay_sha256": "3bb742041be3872b2a2550ce56123881fa3955ad06a316bb030a652aa02c4324",
+  "seal": "AgentContractKit-Iteration-022.zip",
+  "seal_sha256": "07f37ad7ec493922c4963b30110f5739bac0d1590ce5fe25d8dd57329afbfb04",
+  "storage": "research/ — отслеживается git",
+  "subject": "восстановление линии 0.1.4 из 0.1.0",
+  "tests": "35 pass / 0 fail / 3 not run (обе линии)"
+}

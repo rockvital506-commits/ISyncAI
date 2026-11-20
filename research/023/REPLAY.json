@@ -1,0 +1,50 @@
+{
+  "equal": {
+    "DIAGNOSIS.json": true,
+    "VERIFY.json": true,
+    "observations.json": true,
+    "pairs-023-base.json": true,
+    "pairs-023-edition.json": true
+  },
+  "identical": true,
+  "iteration": "И-023",
+  "seal": "AgentContractKit-Iteration-023.zip",
+  "seal_sha256": "27822621ed3ad0e4d706184553aaf17e56c4b1c9c1eefd95a3811b180e9c6190",
+  "steps": [
+    {
+      "exit": 0,
+      "script": "extract.py",
+      "tail": [
+        "}"
+      ]
+    },
+    {
+      "exit": 0,
+      "script": "verify.py",
+      "tail": [
+        "проблем: 0 ok: True"
+      ]
+    },
+    {
+      "exit": 0,
+      "script": "pairs.py --line base",
+      "tail": [
+        "ложных склеек: 0 не склеено повторов: 2"
+      ]
+    },
+    {
+      "exit": 0,
+      "script": "pairs.py --line edition",
+      "tail": [
+        "ложных склеек: 0 не склеено повторов: 2"
+      ]
+    },
+    {
+      "exit": 0,
+      "script": "diagnose.py",
+      "tail": [
+        "  варианты: [('как есть', 'committed'), ('улика выровнена', 'committed'), ('улика выровнена и длительность снята у обоих', 'no_change')]"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-022. Линия 0.1.4 восстановлена</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{border:1px solid var(--line);border-radius:8px;background:#fff;padding:14px 16px;margin:0 0 18px}
+.note h3{margin:0 0 8px;font-size:1rem}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-022. Линия 0.1.4 восстановлена и запечатана</h1>
+<p class="lead">18 ноября 2026. Выпуски 0.1.1–0.1.3 и все печати 001–021 утрачены вместе с каталогом <code>dist/</code>. Линия выведена заново от уцелевшего 0.1.0; правило 0.1.4 сохранено.</p>
+
+<div class="verdict">
+<strong>Восстановлено: 0.1.4 с обоими правилами — побайтным и смысловым повтором.</strong>
+Обе линии собраны, испытания 35 / 0 / 3, сквозная имитация <code>pass</code>, предок 0.1.0 не переписан байт в байт, повтор из печати дал те же итоги.
+</div>
+
+<div class="kpi">
+<div><span>Испытания</span><b>35 / 0 / 3</b></div>
+<div><span>Приёмка</span><b>9 / 0 / 3</b></div>
+<div><span>Членов в печати</span><b>18</b></div>
+<div><span>Предок 0.1.0</span><b class="good">не изменён</b></div>
+</div>
+
+<h2>Выпуск</h2>
+<div class="wrap">
+<table>
+<tr><th>Линия</th><th>Архив</th><th>Байт</th><th>SHA-256</th></tr>
+<tr><td>База</td><td><code>research/release-0.1.4/AgentContractKit-0.1.4.zip</code></td><td class="num">75 815</td><td><code>8d599d01…53131b1158</code></td></tr>
+<tr><td>Edition</td><td><code>research/release-0.1.4/AgentContractKitISAIEdition-0.1.4+docs.1.zip</code></td><td class="num">75 835</td><td><code>2d55b90f…680b90a0987c</code></td></tr>
+</table>
+</div>
+
+<h2>Что проверено</h2>
+<div class="wrap">
+<table>
+<tr><th>Проверка</th><th>Ожидание до прогона</th><th>Результат</th></tr>
+<tr><td>Собственные испытания, каждая линия</td><td>35 pass / 0 fail / 3 not run</td><td class="good">35 / 0 / 3; X17–X19 — pass</td></tr>
+<tr><td>Сквозная имитация</td><td>повтор и пересказ не пишут, изменение смысла пишет</td><td class="good">pass, все шаги</td></tr>
+<tr><td>Ведомость и метаданные</td><td>23 отпечатка, манифест базы = манифест выпуска</td><td class="good">сходится</td></tr>
+<tr><td>Предок <code>releases/0.1.0/</code></td><td>шесть файлов как в исходном архиве</td><td class="good">байт в байт</td></tr>
+<tr><td>Переход 0.1.0 → 0.1.4</td><td>обе записи сохранены, повтор после обновления не пишет</td><td class="good">подтверждено имитацией</td></tr>
+<tr><td>Повтор из печати</td><td>те же итоги испытаний и имитации</td><td class="good">35 / 0 / 3, pass</td></tr>
+</table>
+</div>
+
+<h2>Чего больше нет</h2>
+<div class="note">
+<h3>Утрачено безвозвратно</h3>
+<ul>
+<li>Байты архивов 0.1.1–0.1.3 и исторические снимки <code>releases/0.1.1</code>–<code>releases/0.1.3</code> — переход с этих версий невозможен.</li>
+<li>Печати, записи повтора и приёмки итераций 001–021 — их отпечатки не восстановимы.</li>
+</ul>
+<h3>Почему это не повторится</h3>
+<p>Правило хранения изменено: печать, отчёты и архивы выпуска лежат в <code>research/</code>, который отслеживается git и попадает в снимки. <code>dist/</code> больше не хранилище исследования.</p>
+</div>
+
+<h2>Цена восстановления</h2>
+<ul>
+<li>Регрессии 0.1.0 жёстко знали свой номер в семи местах (<code>releases/0.1.0</code>, публикации <code>0.1.1</code>/<code>0.1.2</code>, ожидание <code>installed_version</code>). Теперь номер берётся из манифеста — иначе сборка падала на несовпадении каталога и версии.</li>
+<li>Имитация дополнительно проверяет переход именно с 0.1.0, потому что других предков в поставке нет.</li>
+</ul>
+
+<h2>Что дальше</h2>
+<div class="wrap">
+<table>
+<tr><th>№</th><th>Итерация</th><th>Что нужно</th></tr>
+<tr><td>И-023</td><td>Приёмка 0.1.4 на настоящих журналах — ваш выбор А</td><td>журнал или его обезличенная выгрузка и проект для записи</td></tr>
+<tr><td>И-024</td><td>Восстановление корпуса 112 пар и повторное измерение правила</td><td>ничего, кроме восстановленного выпуска</td></tr>
+</table>
+</div>
+<p>До И-024 приёмка правила опирается только на <code>X17</code>–<code>X19</code> и шаг имитации — это записано строкой <code>not run</code>, а не выдано за проверку. Статус: <code>decision_022: pending</code>.</p>
+
+<footer>
+Печать: <code>AgentContractKit-Iteration-022.zip</code>, 18 членов, 248 349 B, SHA <code>07f37ad7…afbfb04</code>. Повтор: <code>REPLAY.json</code> (<code>3bb74204…</code>). Замысел: <code>DESIGN.md</code>; отчёт: <code>REPORT.md</code>; приёмка: <code>ACCEPTANCE.json</code> (вне печати — она описывает печать); выпуск: <code>../release-0.1.4/RELEASE.md</code>.
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Генерируемое: пересобирается скриптами итераций
+release-*/base/
+release-*/edition/
+**/build/
+**/replay/
+__pycache__/

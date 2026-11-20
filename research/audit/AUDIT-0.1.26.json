@@ -1,0 +1,175 @@
+{
+  "activate_child_under_contract": {
+    "active": "ok",
+    "draft": "ok",
+    "revoked": "ok",
+    "suspended": "ok"
+  },
+  "allowed_expected": [
+    "active→revoked",
+    "active→suspended",
+    "draft→active",
+    "draft→revoked",
+    "suspended→active",
+    "suspended→revoked"
+  ],
+  "at": "2026-11-18",
+  "child_active_under_contract": {
+    "active": "ok",
+    "draft": "ok",
+    "revoked": "ok",
+    "suspended": "ok"
+  },
+  "child_under_contract": {
+    "active": "ok",
+    "draft": "ok",
+    "revoked": "ok",
+    "suspended": "ok"
+  },
+  "due_shape": {
+    "count": 2,
+    "fields": [
+      "id",
+      "never",
+      "overdue",
+      "owner",
+      "review_by",
+      "scope",
+      "title"
+    ],
+    "states": [
+      null
+    ]
+  },
+  "effect": {
+    "active": {
+      "list_active": 1,
+      "metrics_active": 1,
+      "metrics_hidden": 0,
+      "metrics_noise": 0,
+      "metrics_revoked": 0
+    },
+    "contract_revoked": {
+      "list_active": 0,
+      "metrics_active": 0,
+      "metrics_hidden": 1,
+      "metrics_noise": 0,
+      "metrics_revoked": 1
+    },
+    "contract_suspended": {
+      "list_active": 0,
+      "metrics_active": 0,
+      "metrics_hidden": 1,
+      "metrics_noise": 0,
+      "metrics_revoked": 0
+    },
+    "rule_suspended": {
+      "list_active": 0,
+      "metrics_active": 0,
+      "metrics_hidden": 0,
+      "metrics_noise": 1,
+      "metrics_revoked": 0
+    }
+  },
+  "hidden_shape": {
+    "by_reason": null,
+    "count": 1,
+    "fields": [
+      "bytes",
+      "count",
+      "ids",
+      "why"
+    ],
+    "ids": [
+      "P-3"
+    ]
+  },
+  "invariants": {
+    "active_le_by_state": true,
+    "hidden_le_active": true,
+    "noise_le_draft_suspended": true,
+    "revoked_eq_by_state": true,
+    "sum_states_eq_total": true
+  },
+  "matrix": {
+    "contract": {
+      "active→active": "transition",
+      "active→draft": "transition",
+      "active→revoked": "ok",
+      "active→suspended": "ok",
+      "draft→active": "ok",
+      "draft→draft": "transition",
+      "draft→revoked": "ok",
+      "draft→suspended": "transition",
+      "revoked→active": "transition",
+      "revoked→draft": "transition",
+      "revoked→revoked": "transition",
+      "revoked→suspended": "transition",
+      "suspended→active": "ok",
+      "suspended→draft": "transition",
+      "suspended→revoked": "ok",
+      "suspended→suspended": "transition"
+    },
+    "rule": {
+      "active→active": "transition",
+      "active→draft": "transition",
+      "active→revoked": "ok",
+      "active→suspended": "ok",
+      "draft→active": "ok",
+      "draft→draft": "transition",
+      "draft→revoked": "ok",
+      "draft→suspended": "transition",
+      "revoked→active": "transition",
+      "revoked→draft": "transition",
+      "revoked→revoked": "transition",
+      "revoked→suspended": "transition",
+      "suspended→active": "ok",
+      "suspended→draft": "transition",
+      "suspended→revoked": "ok",
+      "suspended→suspended": "transition"
+    }
+  },
+  "matrix_gaps": [],
+  "ops_by_state": {
+    "active": {
+      "due_contains": true,
+      "edit": "ok",
+      "purge": "delete",
+      "review": "ok"
+    },
+    "draft": {
+      "due_contains": true,
+      "edit": "ok",
+      "purge": "delete",
+      "review": "ok"
+    },
+    "revoked": {
+      "due_contains": false,
+      "edit": "edit",
+      "purge": "ok",
+      "review": "review"
+    },
+    "suspended": {
+      "due_contains": true,
+      "edit": "ok",
+      "purge": "delete",
+      "review": "ok"
+    }
+  },
+  "release": "0.1.26",
+  "retired": {
+    "list_active": 0,
+    "metrics_active": 0,
+    "metrics_hidden": 1,
+    "metrics_hidden_ids": [
+      "P-2"
+    ],
+    "status_health": "retired"
+  },
+  "states": [
+    "draft",
+    "active",
+    "suspended",
+    "revoked"
+  ]
+}

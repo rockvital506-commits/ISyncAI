@@ -1,0 +1,179 @@
+{
+  "critical_fields": [
+    "case",
+    "level",
+    "status",
+    "expected",
+    "environment"
+  ],
+  "iteration": "И-023",
+  "kind": "diagnosis",
+  "note": "продукт не менялся; контрфактические варианты помечены и в приёмку не входят",
+  "pairs": [
+    {
+      "comparison": {
+        "critical": {
+          "case": true,
+          "environment": true,
+          "expected": true,
+          "level": true,
+          "status": true
+        },
+        "facts_left": [
+          "386",
+          "run1.log"
+        ],
+        "facts_right": [
+          "2",
+          "385",
+          "run2.log"
+        ],
+        "same": {
+          "actual": true,
+          "conditions": true,
+          "evidence": false,
+          "limits": true
+        },
+        "same_observation": false,
+        "words": {
+          "actual": 0,
+          "conditions": 0,
+          "evidence": 2,
+          "limits": 0
+        },
+        "worst": {
+          "actual": 1.0,
+          "conditions": 1.0,
+          "evidence": 0.6667,
+          "limits": 1.0
+        }
+      },
+      "counterfactual": [
+        {
+          "outcome": "committed",
+          "variant": "как есть"
+        },
+        {
+          "outcome": "no_change",
+          "variant": "улика выровнена"
+        }
+      ],
+      "klass": "repeat-form",
+      "left": "pytest-run1#L386",
+      "right": "pytest-run2#L385"
+    },
+    {
+      "comparison": {
+        "critical": {
+          "case": true,
+          "environment": true,
+          "expected": true,
+          "level": true,
+          "status": true
+        },
+        "facts_left": [
+          "75"
+        ],
+        "facts_right": [
+          "92"
+        ],
+        "same": {
+          "actual": true,
+          "conditions": true,
+          "evidence": false,
+          "limits": true
+        },
+        "same_observation": false,
+        "words": {
+          "actual": 0,
+          "conditions": 0,
+          "evidence": 1,
+          "limits": 0
+        },
+        "worst": {
+          "actual": 1.0,
+          "conditions": 1.0,
+          "evidence": 0.0,
+          "limits": 1.0
+        }
+      },
+      "counterfactual": [
+        {
+          "outcome": "committed",
+          "variant": "как есть"
+        },
+        {
+          "outcome": "no_change",
+          "variant": "улика выровнена"
+        }
+      ],
+      "klass": "repeat-form",
+      "left": "pip-build#L75",
+      "right": "pip-build#L92"
+    },
+    {
+      "comparison": {
+        "critical": {
+          "case": true,
+          "environment": true,
+          "expected": true,
+          "level": true,
+          "status": true
+        },
+        "facts_left": [
+          "387",
+          "89",
+          "run1.log"
+        ],
+        "facts_right": [
+          "2",
+          "386",
+          "86",
+          "run2.log"
+        ],
+        "same": {
+          "actual": false,
+          "conditions": true,
+          "evidence": false,
+          "limits": true
+        },
+        "same_observation": false,
+        "words": {
+          "actual": 1,
+          "conditions": 0,
+          "evidence": 2,
+          "limits": 0
+        },
+        "worst": {
+          "actual": 0.6667,
+          "conditions": 1.0,
+          "evidence": 0.6667,
+          "limits": 1.0
+        }
+      },
+      "counterfactual": [
+        {
+          "outcome": "committed",
+          "variant": "как есть"
+        },
+        {
+          "outcome": "committed",
+          "variant": "улика выровнена"
+        },
+        {
+          "outcome": "no_change",
+          "variant": "улика выровнена и длительность снята у обоих"
+        }
+      ],
+      "klass": "repeat-volatile",
+      "left": "pytest-run1#L387",
+      "right": "pytest-run2#L386"
+    }
+  ],
+  "text_fields": [
+    "actual",
+    "evidence",
+    "limits",
+    "conditions"
+  ]
+}

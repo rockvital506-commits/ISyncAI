@@ -1,0 +1,156 @@
+{
+  "counts": {
+    "pass": 11
+  },
+  "iteration": "И-026",
+  "line": "edition",
+  "ok": true,
+  "rows": [
+    {
+      "actual": {
+        "discovery_proven": false,
+        "entry": "AGENTS.md",
+        "entry_fallback": "AGENT.md",
+        "sources": [
+          ".kilo/kilo.jsonc",
+          ".kilo/rules",
+          ".kilocode/rules",
+          ".kilocoderules",
+          "AGENT.md"
+        ],
+        "writes": false
+      },
+      "case": "карточка адаптера Kilo",
+      "expected": "вход, запасное имя, старшинство 3 из 4, источники, ничего не пишет",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": "adapter_unknown",
+      "case": "неизвестная среда",
+      "expected": "отказ adapter_unknown",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          "file"
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: kilo-entry-fallback",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['AGENT.md']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          "file"
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: kilo-project-config",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['.kilo/kilo.jsonc']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          "file"
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: kilo-root-config",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['kilo.jsonc']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          null
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: kilo-rules-compat",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['.kilocode/rules']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          null
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: kilo-rules-current",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['.kilo/rules']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed_outside_contract": [],
+        "detected": true,
+        "inventory_kind": [
+          "file"
+        ],
+        "refused": "existing_sources"
+      },
+      "case": "обнаружение и подтверждение: kilo-rules-legacy-file",
+      "expected": "источник виден без чтения, connect без подтверждения отклонён, файлы среды не изменены",
+      "notes": "подтверждено: ['.kilocoderules']",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "accepted": true,
+        "reversed_rejected": "existing_sources"
+      },
+      "case": "порядок подтверждения",
+      "expected": "обратный порядок отклонён, прямой принят",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "changed": [],
+        "entry_created": true
+      },
+      "case": "конфигурация среды не тронута",
+      "expected": "изменяется только AGENTS.md; .kilo/**, .kilocode/**, kilo.jsonc, .kilocoderules — байт в байт",
+      "notes": "",
+      "status": "pass"
+    },
+    {
+      "actual": {
+        "contents_read": false,
+        "discovery_proven": false,
+        "not_proven": [
+          "auto-discovery",
+          "content_was_read",
+          "behaviour_with_model"
+        ]
+      },
+      "case": "обнаружение не заявлено как проверенное",
+      "expected": "discovery_proven false, contents_read false, три непроверенных пункта",
+      "notes": "",
+      "status": "pass"
+    }
+  ],
+  "version": "0.1.6"
+}

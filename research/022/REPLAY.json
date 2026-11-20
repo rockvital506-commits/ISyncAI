@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-18",
+  "checks": {
+    "fail": 0,
+    "inconclusive": 0,
+    "not run": 3,
+    "pass": 35
+  },
+  "command": "распаковать печать → распаковать packages/AgentContractKit-0.1.4.zip → python3 -I -B kit/tests/test_contract.py --run-id replay; python3 pipeline_check.py --tree work/AgentContractLab",
+  "note": "Испытания и имитация из запечатанного архива дали те же итоги, что и сборка.",
+  "pipeline": "pass",
+  "replay_dir": "replay/Iteration-022",
+  "results_sha256": {
+    "CHECKS": "7ba48e574bc0e0b852620effa379ef7e87336072401713effd70fcab9c37d337",
+    "PIPELINE": "4885b250579e593525085caec47c8cd737afb02712d12816371b9ec7c5972a84"
+  },
+  "sealed_archive": "AgentContractKit-Iteration-022.zip",
+  "sealed_sha256": "07f37ad7ec493922c4963b30110f5739bac0d1590ce5fe25d8dd57329afbfb04",
+  "status": "pass"
+}

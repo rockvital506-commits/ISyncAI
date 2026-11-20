@@ -1,0 +1,106 @@
+{
+  "acceptance": {
+    "fail": 1,
+    "not run": 5,
+    "pass": 19,
+    "sha256": "8bded088d5d55da000acb30504d7825ee369d94ac1e6cc03eaa07f6a387ca3e1"
+  },
+  "adapter_check": {
+    "base": {
+      "pass": 13
+    },
+    "edition": {
+      "pass": 13
+    }
+  },
+  "at": "2026-11-18",
+  "compat": {
+    "new_version": "0.1.9",
+    "not_rewritten": true,
+    "old_data_reads": true,
+    "old_version": "0.1.8"
+  },
+  "corpus_029": {
+    "combos_separated": 16,
+    "conditions_separated": 32,
+    "false_merges": 0,
+    "file": "pairs-029-corpus.json",
+    "form_merged": 3,
+    "observer_merged": 24,
+    "pairs": 80,
+    "sha256": "842620d8cf460f568df554f675f60758767a0cb8f585b8a03db4f5aea2f368cf"
+  },
+  "decision_029": "Б — разделить environment применено",
+  "dual": {
+    "checks": {
+      "base": {
+        "pass": 16
+      },
+      "edition": {
+        "pass": 16
+      }
+    },
+    "records_from_six_turns": 1,
+    "turns": 6
+  },
+  "findings": {
+    "F2": "точка в конце предложения входит в идентификатор: форма записи не склеилась в 5 парах из 8; решение за владельцем",
+    "F3": "строковый порядок выпусков в updates исправлен (0.1.10 после 0.1.9), регрессия X33"
+  },
+  "iteration": "029",
+  "next": "И-030: решение по F2 (пунктуация в идентификаторе); адаптеры Claude Code, Cursor, Antigravity остаются заглушками",
+  "page": {
+    "file": "Итерация-029.html",
+    "inside_seal": false,
+    "sha256": "c50a0b9c0724ba4ed2c05156f16c5e644597fc486e6d96d269d8beda8233da02"
+  },
+  "regression": {
+    "corpus112_merged": 24,
+    "corpus112_unexpected": 12,
+    "journals_false": 0,
+    "journals_merged": 3
+  },
+  "release": {
+    "ancestor_untouched": "0.1.0",
+    "base_bytes": 152057,
+    "base_sha256": "674650c53714fcb552edc39ee1343bde7ba834e720fa42f1b7455d38904d92a0",
+    "edition_bytes": 152135,
+    "edition_sha256": "afdae3b9e4e6a78a661acfe7e4a7aa6d04dc2dc76184119f619e642562e7b16c",
+    "previous_in_tree": [
+      "0.1.4",
+      "0.1.5",
+      "0.1.6",
+      "0.1.7",
+      "0.1.8"
+    ],
+    "tests": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 49
+    },
+    "version": "0.1.9"
+  },
+  "replay_identical": true,
+  "replay_sha256": "094ce311a54eda0aefe86e0bb43551d5d571fe19f053eeb71d27d9c4e66ef19e",
+  "rule_change": {
+    "conditions": [
+      "os",
+      "mode",
+      "model",
+      "permissions"
+    ],
+    "note": "наблюдатель не сравнивается, как место улики в 0.1.5; все девять полей обязательны",
+    "observer": [
+      "editor",
+      "editor_version",
+      "extension",
+      "extension_version",
+      "profile"
+    ]
+  },
+  "rule_changed": true,
+  "seal": "AgentContractKit-Iteration-029.zip",
+  "seal_bytes": 480664,
+  "seal_sha256": "094ce311a54eda0aefe86e0bb43551d5d571fe19f053eeb71d27d9c4e66ef19e",
+  "subject": "правило и environment: наблюдатель выведен из сравнения (решение владельца Б)"
+}
