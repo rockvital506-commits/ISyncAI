@@ -1,0 +1,115 @@
+{
+  "acceptance_expected": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 10
+  },
+  "at": "2026-11-18",
+  "compat_expected": {
+    "new_version": "0.1.36",
+    "ok": true,
+    "old_version": "0.1.35"
+  },
+  "corpora_expected": {
+    "corpus112": {
+      "merged": 24,
+      "pairs": 112
+    },
+    "corpus80": {
+      "merged": 32,
+      "pairs": 80
+    },
+    "punct": {
+      "merged": 6,
+      "pairs": 12
+    }
+  },
+  "iteration": "И-056",
+  "journals_expected": {
+    "expected_repeats": 3,
+    "false_merges": 0,
+    "journals": 8,
+    "observations": 41,
+    "pairs": 43
+  },
+  "levels_expected": {
+    "not_run": [
+      "L3M",
+      "L4",
+      "L5M",
+      "LIVE"
+    ],
+    "pass": [
+      "L1",
+      "L2",
+      "L3",
+      "L3F",
+      "L4C",
+      "L4Q",
+      "L4D",
+      "L4S",
+      "L4O",
+      "L4V",
+      "L4X",
+      "L4P",
+      "L4M",
+      "L4T",
+      "L4K",
+      "L4R",
+      "L4W",
+      "L4F",
+      "L4L",
+      "L6",
+      "L7",
+      "L8",
+      "L9",
+      "L10",
+      "L5a",
+      "L5b"
+    ]
+  },
+  "matrix_expectation": {
+    "after": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    },
+    "before": {
+      "fail": [],
+      "pass": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    }
+  },
+  "note": "Ожидания записаны до прогона стенда. Новый пункт — L10 (README как данные). После И-056 фаза пригодности Kit закрыта; дальше Edition — И-057…И-059.",
+  "preregistered": true,
+  "release": {
+    "new_rules": [
+      "X87: README ≤ 24 КБ, каждый якорь разрешается, утверждений без якоря нет",
+      "X88: трассировка §2…§18 — артефакты и испытания существуют",
+      "X89: «Чего нет» называет тот же список not run, что и отчёт"
+    ],
+    "tests_expected": {
+      "fail": 0,
+      "not run": 3,
+      "pass": 105
+    },
+    "version": "0.1.36"
+  },
+  "subject": "README-вектор и трассировка"
+}
