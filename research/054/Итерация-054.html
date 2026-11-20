@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-054. Инициализирующий промпт: шаг, который можно проверить — 0.1.34</title>
+<style>
+:root{--ink:#1b1f23;--muted:#5b636b;--line:#d8dee4;--bg:#fbfcfd;--accent:#0b5cad;--good:#146c43;--bad:#a4262c;--warn:#8a5a00;--panel:#f2f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 6px}
+h2{font-size:1.3rem;margin:44px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:22px}
+.verdict{background:var(--panel);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px;margin:0 0 26px}
+.verdict strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.94rem;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#eef2f6;border-radius:4px;padding:1px 5px;font-size:.9em}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.kpi span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+ul{margin:0 0 14px;padding-left:22px}li{margin:4px 0}
+.note{background:#fff7e6;border-left:4px solid var(--warn);border-radius:6px;padding:14px 16px;margin:16px 0}
+footer{margin-top:48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+@media print{body{background:#fff}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>И-054. Промпт, который можно проверить</h1>
+<p class="lead">18 ноября 2026. Третья итерация фазы «пригодность к применению». Порядок первого обращения жил прозой в <code>START.md</code> и проверялся по ключевым словам: «в шаге названа команда» — да, названа. Теперь есть файл, который вставляют новому агенту, и его можно <b>исполнить</b>. Выпуск <b>0.1.34</b>.</p>
+
+<div class="verdict">
+<strong>31 pass / 4 not run.</strong> <code>docs/INIT-PROMPT.md</code> — в обеих линиях: что делать агенту, что запрещено, десять шагов с командой и смыслом, форма отчёта. В конце — машиночитаемый блок тех же шагов: <code>prompt_id: INIT</code>, <code>system_version</code>, <code>schema_version: 1</code>, <code>steps[]</code> с <code>command</code>/<code>request</code> и <code>expect</code> по ключам ответа. Новый уровень <b>L7</b>: промпт прочитан как данные и исполнен через опубликованную консоль — 10 из 10 ожиданий.
+</div>
+
+<div class="kpi">
+<div><span>Выпуск</span><b>0.1.34</b></div>
+<div><span>Испытания</span><b>99 / 0 / 3</b></div>
+<div><span>Обкатка</span><b class="good">8 / 0</b></div>
+<div><span>Уровни</span><b>31 / 4</b></div>
+<div><span>Приёмка</span><b>11 / 0 / 5</b></div>
+</div>
+
+<h2>В чём была трудность</h2>
+<table>
+<tr><th>Что</th><th>До 0.1.34</th><th>Чем плохо</th></tr>
+<tr><td>промпт для нового агента</td><td>нет</td><td>владелец пересказывает порядок своими словами</td></tr>
+<tr><td>проверка порядка</td><td>по ключевым словам</td><td>«названо» ≠ «выполнено»</td></tr>
+<tr><td>ожидание шага</td><td>в прозе</td><td>нельзя сверить ответ с объявленным</td></tr>
+<tr><td>версия промпта</td><td>нет</td><td>промпт расходится с базой молча</td></tr>
+</table>
+
+<h2>Десять шагов и их ожидания</h2>
+<table>
+<tr><th>№</th><th>Шаг</th><th>Команда</th><th>Ожидание</th></tr>
+<tr><td>1</td><td>Раскладка</td><td><code>layout</code></td><td><code>supported: true</code>, <code>writes: false</code></td></tr>
+<tr><td>2</td><td>Состояние до установки</td><td><code>status</code></td><td><code>health: absent</code></td></tr>
+<tr><td>3</td><td>Установка</td><td><code>plan</code>/<code>apply</code> <code>install</code></td><td><code>outcome: committed</code></td></tr>
+<tr><td>4</td><td>Состояние после установки</td><td><code>status</code></td><td><code>health: valid</code></td></tr>
+<tr><td>5</td><td>Вход</td><td><code>plan</code>/<code>apply</code> <code>connect</code></td><td><code>outcome: committed</code></td></tr>
+<tr><td>6</td><td>Действующий набор</td><td><code>list</code></td><td><code>active: []</code></td></tr>
+<tr><td>7</td><td>Права</td><td><code>access</code></td><td><code>all_writable: true</code>, <code>left: []</code></td></tr>
+<tr><td>8</td><td>Первое правило</td><td><code>plan</code>/<code>apply</code> <code>create</code></td><td><code>outcome: committed</code></td></tr>
+<tr><td>9</td><td>Наблюдение</td><td><code>plan</code>/<code>apply</code> <code>record_check</code></td><td><code>outcome: committed</code></td></tr>
+<tr><td>10</td><td>Поддержка</td><td><code>updates</code></td><td><code>installed_version: 0.1.34</code></td></tr>
+</table>
+
+<h2>Уровень L7: что именно измерено</h2>
+<table>
+<tr><th>Шаг проверки</th><th>Измерено</th><th>Итог</th></tr>
+<tr><td>чтение промпта</td><td>блок разобран как данные: <code>prompt_id: INIT</code>, <code>system_version: 0.1.34</code>, 10 шагов</td><td class="good">pass</td></tr>
+<tr><td>исполнение</td><td>шаги выполнены через опубликованную консоль на пустом проекте</td><td class="good">pass</td></tr>
+<tr><td>сверка</td><td>10 из 10 ожиданий совпали с ответами</td><td class="good">pass</td></tr>
+<tr><td>итог</td><td><code>status: valid</code>, <code>entry_mode: owned</code></td><td class="good">pass</td></tr>
+<tr><td>следы</td><td>в корне появились только <code>.agent-contract</code> и <code>AGENTS.md</code></td><td class="good">pass</td></tr>
+<tr><td><code>repeat</code></td><td><code>identical: true</code>, проект не изменён</td><td class="good">pass</td></tr>
+</table>
+
+<h2>Уровни достоверности</h2>
+<table>
+<tr><th>Уровень</th><th>Что означает</th><th>Проверено</th><th>Итог</th></tr>
+<tr><td>1</td><td>файл есть</td><td>наличие на трёх раскладках</td><td class="good">pass</td></tr>
+<tr><td>2</td><td>порядок обнаружения</td><td><code>discovery</code> ≡ <code>stand_env.py</code></td><td class="good">pass</td></tr>
+<tr><td>3</td><td>содержимое прочитано</td><td><code>entry</code> ≡ <code>stand_reader.py</code></td><td class="good">pass</td></tr>
+<tr><td>3F</td><td>чужой вход не читается</td><td>«not read (foreign)», файл байт в байт</td><td class="good">pass</td></tr>
+<tr><td>4C</td><td>изменение внесено и восстановимо</td><td>правка → «до/после» → возврат по журналу</td><td class="good">pass</td></tr>
+<tr><td>4Q</td><td>разовый запрос не сохраняется</td><td><code>not_saved</code>, <code>not_a_request</code></td><td class="good">pass</td></tr>
+<tr><td>4D</td><td>отмена сохраняет, удаление оставляет след</td><td>revoked сохранил текст, purge оставил след</td><td class="good">pass</td></tr>
+<tr><td>4S</td><td>секрет не пишется и не печатается</td><td>отказ <code>secret</code>, метка <code>[скрыто]</code></td><td class="good">pass</td></tr>
+<tr><td>4O</td><td>правило меняет только владелец</td><td><code>not_owner</code>, передача с <code>allow_owner</code></td><td class="good">pass</td></tr>
+<tr><td>4V</td><td>версия — содержимое, срок — данные</td><td><code>same</code>, revision 1 → 2 → 2, <code>due</code> 1 → 0</td><td class="good">pass</td></tr>
+<tr><td>4X</td><td>неизвестная схема — отказ и возврат</td><td><code>unknown_schema</code>, файл <code>before</code> вернул проект</td><td class="good">pass</td></tr>
+<tr><td>4P</td><td>частичный сбой виден до восстановления</td><td>код 75, <code>pending_detail</code>, <code>restored</code></td><td class="good">pass</td></tr>
+<tr><td>4M</td><td>метрики считают по машине состояний</td><td><code>active</code> 1 → 0 → 1, <code>hidden [P-2]</code></td><td class="good">pass</td></tr>
+<tr><td>4T</td><td>контур машины: все пары и запреты входа</td><td>32 пары, 0 расхождений</td><td class="good">pass</td></tr>
+<tr><td>4K</td><td>два сценария рядом</td><td><code>changed</code> 90 против 30, delta, отказ <code>compare</code></td><td class="good">pass</td></tr>
+<tr><td>4R</td><td>права названы данными</td><td>9 путей записи, <code>foreign</code> останавливает изменения</td><td class="good">pass</td></tr>
+<tr><td>4W</td><td>права измерены, а не объявлены</td><td>девять проб, <code>left</code> пуст; <code>chmod 555</code> → <code>permission</code></td><td class="good">pass</td></tr>
+<tr><td>4F</td><td>чужая файловая система</td><td>регистр измерен, лимиты объявлены, отказы <code>case</code> и <code>path</code></td><td class="good">pass</td></tr>
+<tr><td>4L</td><td>живые модели</td><td><code>model</code> оценил записи, <code>verify</code> сверил утверждения</td><td class="good">pass</td></tr>
+<tr><td>L6</td><td>развёртывание в корень</td><td>лаборатория внутри проекта: установка, обновление, откат</td><td class="good">pass</td></tr>
+<tr><td><b>L7</b></td><td><b>промпт исполнен буквально</b></td><td>10 шагов из <code>docs/INIT-PROMPT.md</code> на чистом проекте, каждое ожидание совпало</td><td class="good">pass</td></tr>
+<tr><td>5a</td><td>серия чтений даёт тот же ответ</td><td>четыре команды по три прогона</td><td class="good">pass</td></tr>
+<tr><td>5b</td><td>серия установок в чистых каталогах</td><td>три проекта совпали без времени</td><td class="good">pass</td></tr>
+<tr><td>3M, 4, 5M</td><td>модель читает и действует</td><td>модели не вызываются</td><td class="warn">not run</td></tr>
+<tr><td>—</td><td>живая среда: VS Code с Kilo и Copilot</td><td>расширения не запускаются</td><td class="warn">not run</td></tr>
+</table>
+
+<h2>Матрица обкатки и корпуса</h2>
+<table>
+<tr><th>Что</th><th>Результат</th></tr>
+<tr><td>P1–P8</td><td class="good">8 / 0; P6 теперь проходит и в базе — промпт есть в обеих линиях</td></tr>
+<tr><td>пунктуация · И-029 · 112 пар</td><td class="good">12/6 · 80/32 · 112/24, ничего неожиданного</td></tr>
+<tr><td>журналы</td><td class="good">3 из 3, ложных 0 из 40</td></tr>
+</table>
+
+<div class="note">
+<b>Находка F63.</b> Проверка порядка по ключевым словам ничего не доказывала: «шаг назван» и «шаг выполнен» — разные утверждения. Промпт стал данными, и теперь его можно исполнить и сверить.
+</div>
+
+<div class="note">
+<b>Находка F64.</b> Промпт без ожиданий — не промпт, а пожелание. Каждый шаг объявляет ключи ответа, поэтому расхождение версии, команды или результата ловит сборка (`X82`), а не читатель.
+</div>
+
+<div class="note">
+<b>Находка F65.</b> Базовая линия перестала отличаться от Edition наличием <code>docs/</code>: разница теперь только в <code>ПЕРВЫЙ-ЗАПУСК.md</code>. Обкатка <code>P6</code> поймала это сразу после сборки — и это же исправлено в этой итерации.
+</div>
+
+<div class="note">
+<b>Чего нет.</b> Промпт исполнен комплектом, а не живой моделью: поведение модели — <code>not run</code>. VS Code с расширениями, ACL/NTFS — <code>not run</code>.
+</div>
+
+<h2>Что дальше</h2>
+<ul>
+<li><b>И-055</b> — <code>calibrate</code>, промпты K1–K4, эталоны отдельным архивом, уровни <b>L8</b> и <b>L9</b>.</li>
+<li><b>И-056</b> — README-вектор и <code>TRACEABILITY.json</code>.</li>
+<li>Затем Edition: <b>И-057…И-059</b>.</li>
+</ul>
+
+<footer>
+Печать <code>AgentContractKit-Iteration-054.zip</code>, 45 членов, 1 814 423 B, <code>ff6072d4…</code>; повтор из печати совпал по всем результатам — <code>identical: true</code>. Выпуск 0.1.34: база 709 546 B <code>a0d3bd94…</code>, Edition 712 632 B <code>ad40b0e1…</code>; внутри неизменённый 0.1.0 и цепочка 0.1.4–0.1.33. Данные 0.1.33 читаются и чтением не переписываются (<code>ok: true</code>).
+</footer>
+</main>
+</body>
+</html>
