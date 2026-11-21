@@ -1,0 +1,800 @@
+{
+  "files": [
+    "kit/base/PROJECT-SPECIFICITY.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/project_specificity.py",
+    "kit/base/schema_v2.py",
+    "research/113/CASES.json",
+    "research/113/test_specificity.py"
+  ],
+  "inputs_sha256": {
+    "kit/base/PROJECT-SPECIFICITY.md": "88a73617256e39dd414f292acad4b1163052e8db2904d6116df7d19a6cd2020e",
+    "kit/base/SCHEMA-V2.md": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+    "kit/base/project_specificity.py": "5788c3860142217f17695efbc4124f87937a71bce14561456e06b9ae5c72f6af",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/113/CASES.json": "9cce96a11026c1a7c3b812b15fe79b279acf6aaaf8ddae651239fc14f5517976",
+    "research/113/test_specificity.py": "b086122ebb8c095615e68f06e1d43a02ea95844b8ff4cd3ca80ab99951f83aef"
+  },
+  "inputs_unchanged": true,
+  "rc": 0,
+  "result": {
+    "baseline": null,
+    "counts": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 35
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "F01",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "F02",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "F03",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "F04",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "F05",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D01",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "path",
+                "code": "posix_local",
+                "field": "basis"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D02",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "path",
+                "code": "windows_drive",
+                "field": "criterion"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D03",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "path",
+                "code": "unc_path",
+                "field": "text"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D04",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "path",
+                "code": "home_path",
+                "field": "value"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D05",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "path",
+                "code": "file_uri",
+                "field": "text"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D06",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "path",
+                "code": "project_prefix",
+                "field": "scope"
+              },
+              {
+                "category": "path",
+                "code": "project_prefix",
+                "field": "text"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D07",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "project_name",
+                "code": "known_project",
+                "field": "title"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D08",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "machine",
+                "code": "known_machine",
+                "field": "basis"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D09",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "project_name",
+                "code": "known_project",
+                "field": "id"
+              },
+              {
+                "category": "machine",
+                "code": "known_machine",
+                "field": "parent"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D10",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "machine",
+                "code": "known_machine",
+                "field": "text"
+              },
+              {
+                "category": "path",
+                "code": "posix_local",
+                "field": "text"
+              },
+              {
+                "category": "project_name",
+                "code": "known_project",
+                "field": "text"
+              }
+            ],
+            "outcome": "project_specific"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S01",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "secret",
+                "code": "credential_assignment",
+                "field": "text"
+              }
+            ],
+            "outcome": "possible_secret"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S02",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "secret",
+                "code": "credential_value",
+                "field": "value"
+              }
+            ],
+            "outcome": "possible_secret"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S03",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "secret",
+                "code": "private_key_header",
+                "field": "text"
+              }
+            ],
+            "outcome": "possible_secret"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S04",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "secret",
+                "code": "bearer_literal",
+                "field": "text"
+              }
+            ],
+            "outcome": "possible_secret"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S05",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "secret",
+                "code": "credential_assignment",
+                "field": "text"
+              }
+            ],
+            "outcome": "possible_secret"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S06",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [
+              {
+                "category": "project_name",
+                "code": "known_project",
+                "field": "title"
+              },
+              {
+                "category": "path",
+                "code": "posix_local",
+                "field": "text"
+              },
+              {
+                "category": "secret",
+                "code": "credential_assignment",
+                "field": "text"
+              }
+            ],
+            "outcome": "possible_secret"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S07",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N01",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N02",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N03",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N04",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "findings": [],
+            "outcome": "no_markers"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "E01",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "code": "invalid_entry",
+            "findings": [],
+            "outcome": "invalid_input"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "E02",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "code": "invalid_entry",
+            "findings": [],
+            "outcome": "invalid_input"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "E03",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "code": "invalid_entry",
+            "findings": [],
+            "outcome": "invalid_input"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "E04",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "code": "invalid_entry",
+            "findings": [],
+            "outcome": "invalid_input"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "E05",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "code": "invalid_entry",
+            "findings": [],
+            "outcome": "invalid_input"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "E06",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "code": "invalid_context",
+            "findings": [],
+            "outcome": "invalid_input"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "E07",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "code": "invalid_context",
+            "findings": [],
+            "outcome": "invalid_input"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "E08",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "code": "invalid_entry",
+            "findings": [],
+            "outcome": "invalid_input"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "E09",
+        "observation": {
+          "calls": 2,
+          "classification": {
+            "analysis_format": 1,
+            "code": "invalid_context",
+            "findings": [],
+            "outcome": "invalid_input"
+          },
+          "exceptions": 0,
+          "inputs_unchanged": true,
+          "io_events": 0,
+          "quiet": true,
+          "safe_shape": true,
+          "stable": true
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "tree_unchanged": true
+}

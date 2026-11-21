@@ -1,0 +1,483 @@
+{
+  "iteration": "И-113",
+  "metrics": {
+    "calls": 70,
+    "cases": 35,
+    "categories": [
+      "machine",
+      "path",
+      "project_name",
+      "secret"
+    ],
+    "io_events": 0,
+    "kinds": [
+      "constraint",
+      "contract",
+      "preference",
+      "protocol",
+      "rule"
+    ],
+    "outcomes": {
+      "invalid_input": 9,
+      "no_markers": 10,
+      "possible_secret": 6,
+      "project_specific": 10
+    },
+    "quiet_safe_all": true,
+    "unchanged_all": true,
+    "valid_entries": 26
+  },
+  "rows": [
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Общий договор без известных маркеров; не разрешение на перенос.",
+      "findings": [],
+      "id": "F01",
+      "kind": "contract",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Общий вид поведения и относительная область docs/review без заданной привязки.",
+      "findings": [],
+      "id": "F02",
+      "kind": "rule",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Публичный синтетический URL (включая путь и query) и указатель JSON не считаются путями машины.",
+      "findings": [],
+      "id": "F03",
+      "kind": "constraint",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Все четыре явные формы ссылки на переменную не являются буквальными секретами.",
+      "findings": [],
+      "id": "F04",
+      "kind": "protocol",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Нейтральная пара key/value не получает проектную метку только из-за вида.",
+      "findings": [],
+      "id": "F05",
+      "kind": "preference",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · пути; §3.1 · компоненты scope",
+      "criterion": "POSIX-путь в основании — привязка, даже если текст общий.",
+      "findings": [
+        {
+          "category": "path",
+          "code": "posix_local",
+          "field": "basis"
+        }
+      ],
+      "id": "D01",
+      "kind": "rule",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · пути; §3.1 · компоненты scope",
+      "criterion": "Дисковый путь Windows в критерии — привязка без открытия пути.",
+      "findings": [
+        {
+          "category": "path",
+          "code": "windows_drive",
+          "field": "criterion"
+        }
+      ],
+      "id": "D02",
+      "kind": "constraint",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · пути; §3.1 · компоненты scope",
+      "criterion": "Обратный UNC-путь отличим от сетевого URL.",
+      "findings": [
+        {
+          "category": "path",
+          "code": "unc_path",
+          "field": "text"
+        }
+      ],
+      "id": "D03",
+      "kind": "protocol",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · пути; §3.1 · компоненты scope",
+      "criterion": "Домашняя директория в value — привязка.",
+      "findings": [
+        {
+          "category": "path",
+          "code": "home_path",
+          "field": "value"
+        }
+      ],
+      "id": "D04",
+      "kind": "preference",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · пути; §3.1 · компоненты scope",
+      "criterion": "file:// — локальная привязка; не дублировать как POSIX-корень.",
+      "findings": [
+        {
+          "category": "path",
+          "code": "file_uri",
+          "field": "text"
+        }
+      ],
+      "id": "D05",
+      "kind": "contract",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · пути; §3.1 · компоненты scope",
+      "criterion": "Известный префикс с границей компонента обнаруживается в scope и в тексте.",
+      "findings": [
+        {
+          "category": "path",
+          "code": "project_prefix",
+          "field": "scope"
+        },
+        {
+          "category": "path",
+          "code": "project_prefix",
+          "field": "text"
+        }
+      ],
+      "id": "D06",
+      "kind": "rule",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · известные имена и машины",
+      "criterion": "Составная и разложенная формы известного имени совпадают после NFC и casefold.",
+      "findings": [
+        {
+          "category": "project_name",
+          "code": "known_project",
+          "field": "title"
+        }
+      ],
+      "id": "D07",
+      "kind": "contract",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · известные имена и машины",
+      "criterion": "Имя машины из явного списка — отдельная категория, регистр не важен.",
+      "findings": [
+        {
+          "category": "machine",
+          "code": "known_machine",
+          "field": "basis"
+        }
+      ],
+      "id": "D08",
+      "kind": "constraint",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · известные имена и машины",
+      "criterion": "Исходный ID и ссылка на родителя могут быть привязками; не возвращать их значения.",
+      "findings": [
+        {
+          "category": "project_name",
+          "code": "known_project",
+          "field": "id"
+        },
+        {
+          "category": "machine",
+          "code": "known_machine",
+          "field": "parent"
+        }
+      ],
+      "id": "D09",
+      "kind": "protocol",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Ф3 И‑113 · пути; §3.1 · компоненты scope",
+      "criterion": "Разные маркеры в одном поле дополняют друг друга, повторы свёрнуты, порядок фиксирован.",
+      "findings": [
+        {
+          "category": "machine",
+          "code": "known_machine",
+          "field": "text"
+        },
+        {
+          "category": "path",
+          "code": "posix_local",
+          "field": "text"
+        },
+        {
+          "category": "project_name",
+          "code": "known_project",
+          "field": "text"
+        }
+      ],
+      "id": "D10",
+      "kind": "preference",
+      "outcome": "project_specific"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Риск R9; AgentContractKit_memory §14",
+      "criterion": "Явное присвоение допускалось формой v2; анализ помечает значение, не возвращая его.",
+      "findings": [
+        {
+          "category": "secret",
+          "code": "credential_assignment",
+          "field": "text"
+        }
+      ],
+      "id": "S01",
+      "kind": "rule",
+      "outcome": "possible_secret"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Риск R9; AgentContractKit_memory §14",
+      "criterion": "Имя секрета в структурированном key связывает finding с value, не названием ключа.",
+      "findings": [
+        {
+          "category": "secret",
+          "code": "credential_value",
+          "field": "value"
+        }
+      ],
+      "id": "S02",
+      "kind": "preference",
+      "outcome": "possible_secret"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Риск R9; AgentContractKit_memory §14",
+      "criterion": "Достаточно заголовка закрытого ключа; настоящего ключа нет и он не запрашивается.",
+      "findings": [
+        {
+          "category": "secret",
+          "code": "private_key_header",
+          "field": "text"
+        }
+      ],
+      "id": "S03",
+      "kind": "contract",
+      "outcome": "possible_secret"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Риск R9; AgentContractKit_memory §14",
+      "criterion": "Явный bearer-литерал даёт фиксированный признак без значения.",
+      "findings": [
+        {
+          "category": "secret",
+          "code": "bearer_literal",
+          "field": "text"
+        }
+      ],
+      "id": "S04",
+      "kind": "protocol",
+      "outcome": "possible_secret"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Риск R9; AgentContractKit_memory §14",
+      "criterion": "Ссылка на переменную плюс суффикс не является чистой ссылкой и не исключается.",
+      "findings": [
+        {
+          "category": "secret",
+          "code": "credential_assignment",
+          "field": "text"
+        }
+      ],
+      "id": "S05",
+      "kind": "constraint",
+      "outcome": "possible_secret"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "Риск R9; AgentContractKit_memory §14",
+      "criterion": "Секрет имеет приоритет исхода, но не убирает остальные признаки и не дублирует повтор.",
+      "findings": [
+        {
+          "category": "project_name",
+          "code": "known_project",
+          "field": "title"
+        },
+        {
+          "category": "path",
+          "code": "posix_local",
+          "field": "text"
+        },
+        {
+          "category": "secret",
+          "code": "credential_assignment",
+          "field": "text"
+        }
+      ],
+      "id": "S06",
+      "kind": "rule",
+      "outcome": "possible_secret"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Структурированное поле с явной ссылкой не равно буквальному секрету.",
+      "findings": [],
+      "id": "S07",
+      "kind": "preference",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Похожая область, регистр scope и суффикс внутри другого пути не совпадают с явным префиксом.",
+      "findings": [],
+      "id": "N01",
+      "kind": "rule",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Более длинные токены и неизвестное имя узла не угадываются.",
+      "findings": [],
+      "id": "N02",
+      "kind": "protocol",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Слово API_KEY без значения и пустое присвоение не раскрывают значение.",
+      "findings": [],
+      "id": "N03",
+      "kind": "constraint",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "§3.5 · виды v2; И‑113 · нет наблюдаемой привязки",
+      "criterion": "Пустые явно переданные списки не означают, что неизвестное имя доказано переносимым.",
+      "findings": [],
+      "id": "N04",
+      "kind": "preference",
+      "outcome": "no_markers"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "И‑113 · узкий интерфейс; SCHEMA-V2.md",
+      "code": "invalid_entry",
+      "criterion": "Детектор принимает форму L2, а не профиль L1.",
+      "findings": [],
+      "id": "E01",
+      "kind": "contract",
+      "outcome": "invalid_input"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "И‑113 · узкий интерфейс; SCHEMA-V2.md",
+      "code": "invalid_entry",
+      "criterion": "Неизвестное имя поля не попадает в диагностику.",
+      "findings": [],
+      "id": "E02",
+      "kind": "rule",
+      "outcome": "invalid_input"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "И‑113 · узкий интерфейс; SCHEMA-V2.md",
+      "code": "invalid_entry",
+      "criterion": "У дочерней формы нужен ID родителя, но его существование данная проба не доказывает.",
+      "findings": [],
+      "id": "E03",
+      "kind": "rule",
+      "outcome": "invalid_input"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "И‑113 · узкий интерфейс; SCHEMA-V2.md",
+      "code": "invalid_entry",
+      "criterion": "Одиночный key без value — неверная форма, а не чистая запись.",
+      "findings": [],
+      "id": "E04",
+      "kind": "preference",
+      "outcome": "invalid_input"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "И‑113 · узкий интерфейс; SCHEMA-V2.md",
+      "code": "invalid_entry",
+      "criterion": "Запрещено принимать весь реестр или историю вместо одной записи.",
+      "findings": [],
+      "id": "E05",
+      "kind": "contract",
+      "outcome": "invalid_input"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "И‑113 · узкий интерфейс; SCHEMA-V2.md",
+      "code": "invalid_context",
+      "criterion": "Абсолютный префикс в контексте — неверный вход, не команда читать ФС.",
+      "findings": [],
+      "id": "E06",
+      "kind": "contract",
+      "outcome": "invalid_input"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "И‑113 · узкий интерфейс; SCHEMA-V2.md",
+      "code": "invalid_context",
+      "criterion": "Одиночная строка вместо списка имён — отказ без её эха.",
+      "findings": [],
+      "id": "E07",
+      "kind": "contract",
+      "outcome": "invalid_input"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "И‑113 · узкий интерфейс; SCHEMA-V2.md",
+      "code": "invalid_entry",
+      "criterion": "Превышение лимита тела не даёт no_markers.",
+      "findings": [],
+      "id": "E08",
+      "kind": "contract",
+      "outcome": "invalid_input"
+    },
+    {
+      "analysis_format": 1,
+      "basis": "И‑113 · узкий интерфейс; SCHEMA-V2.md",
+      "code": "invalid_context",
+      "criterion": "Превышение лимита числа подсказок не даёт no_markers.",
+      "findings": [],
+      "id": "E09",
+      "kind": "contract",
+      "outcome": "invalid_input"
+    }
+  ],
+  "source": "CHECKOUT.json; подтверждено CLEANROOM.json"
+}

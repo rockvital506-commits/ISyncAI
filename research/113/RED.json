@@ -1,0 +1,211 @@
+{
+  "baseline": "4fca43f067752649743870acdc7690259fe68cd1",
+  "casebook_sha256": "9cce96a11026c1a7c3b812b15fe79b279acf6aaaf8ddae651239fc14f5517976",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/113/test_specificity.py"
+  ],
+  "independent_baseline_match": true,
+  "rc": 1,
+  "result": {
+    "baseline": {
+      "control": "S01",
+      "exception": false,
+      "io_events": 0,
+      "missing": "kit/base/project_specificity.py",
+      "quiet": true,
+      "schema_accepted": true,
+      "unchanged": true
+    },
+    "counts": {
+      "fail": 35,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "F01",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "F02",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "F03",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "F04",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "F05",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D01",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D02",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D03",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D04",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D05",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D06",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D07",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D08",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D09",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D10",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S01",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S02",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S03",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S04",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S05",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S06",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S07",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N01",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N02",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N03",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N04",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "E01",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "E02",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "E03",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "E04",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "E05",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "E06",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "E07",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "E08",
+        "reason": "detector_missing",
+        "status": "fail"
+      },
+      {
+        "id": "E09",
+        "reason": "detector_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "test_sha256": "b086122ebb8c095615e68f06e1d43a02ea95844b8ff4cd3ca80ab99951f83aef"
+}
