@@ -1,0 +1,143 @@
+{
+  "format": 1,
+  "origin": {"baseline": "46d99ca9280f5fcf6856aefe12f573487b4a07dd", "iteration": "114", "case": "P01", "witness": {"entry_id": "L1-new-draft-114", "entry_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152", "control_sha256": "ba2244fd145eeb2a1b784bf79cd28d67cb6d08a033a1ea39bf14333afcc49a06", "profile_sha256": "ae353276cd0c4e4acdf983b136dacc94a3fea9cdd83b1182fac268d0d54d7354"}},
+  "fixtures": {
+    "system": {
+      "area": "L0",
+      "schema_version": 2,
+      "roots": [
+        "kit"
+      ],
+      "entries": [
+        {
+          "id": "C-sim-system",
+          "kind": "contract",
+          "parent": null,
+          "scope": ".",
+          "state": "active",
+          "authority": "system_release",
+          "title": "Контрольная запись",
+          "text": "Синтетическое условие стенда.",
+          "basis": "Фикстура И‑114",
+          "criterion": "Сверить форму."
+        }
+      ],
+      "release_version": "0.2.0-dev.115"
+    },
+    "projects": {
+      "cli": {
+        "registry": {
+          "area": "L2",
+          "schema_version": 2,
+          "roots": [
+            ".agent-contract"
+          ],
+          "entries": [
+            {
+              "id": "C-sim-cli",
+              "kind": "contract",
+              "parent": null,
+              "scope": "src/tool",
+              "state": "active",
+              "authority": "project_owner",
+              "title": "Контрольная запись",
+              "text": "Синтетическое условие стенда.",
+              "basis": "Фикстура И‑114",
+              "criterion": "Сверить форму."
+            },
+            {
+              "id": "R-sim-cli-result",
+              "kind": "rule",
+              "parent": "C-sim-cli",
+              "scope": "src/tool",
+              "state": "active",
+              "authority": "project_owner",
+              "title": "Контроль результата CLI",
+              "text": "CLI_FIXTURE_TEXT_115: Сверь код завершения.",
+              "basis": "Фикстура И‑114",
+              "criterion": "Сверить форму."
+            }
+          ],
+          "revision": 11
+        },
+        "asset": "CLI fixture: usage and result states.\n"
+      },
+      "docs": {
+        "registry": {
+          "area": "L2",
+          "schema_version": 2,
+          "roots": [
+            ".agent-contract"
+          ],
+          "entries": [
+            {
+              "id": "C-sim-docs",
+              "kind": "contract",
+              "parent": null,
+              "scope": "docs/site",
+              "state": "active",
+              "authority": "project_owner",
+              "title": "Контрольная запись",
+              "text": "Синтетическое условие стенда.",
+              "basis": "Фикстура И‑114",
+              "criterion": "Сверить форму."
+            },
+            {
+              "id": "R-sim-docs-links",
+              "kind": "rule",
+              "parent": "C-sim-docs",
+              "scope": "docs/site",
+              "state": "active",
+              "authority": "project_owner",
+              "title": "Оглавление",
+              "text": "DOCS_FIXTURE_TEXT_115: Сверь ссылки в оглавлении.",
+              "basis": "Фикстура И‑114",
+              "criterion": "Сверить форму."
+            },
+            {
+              "id": "R-sim-docs-examples",
+              "kind": "rule",
+              "parent": "C-sim-docs",
+              "scope": "docs/site/examples",
+              "state": "active",
+              "authority": "project_owner",
+              "title": "Примеры",
+              "text": "DOCS_EXAMPLES_ONLY_115: Сверь имена примеров.",
+              "basis": "Фикстура И‑114",
+              "criterion": "Сверить форму."
+            }
+          ],
+          "revision": 29
+        },
+        "asset": "# Documentation fixture\n\n[Examples](examples/index.md)\n"
+      }
+    }
+  },
+  "cases": [
+    {"id": "P01", "driver": "ordinary", "basis": "Ф3; P01 И‑114; И‑112", "criterion": "Две независимые пары. Тот же P01 в обоих каталогах, текст равен, действующим не стал. Контроли без кандидата.", "expected": {"outcome": "simulated", "where": null, "reason": null, "write_attempts": 24, "bootstrap_calls": 4, "list_calls": 14, "allocations": 1}},
+    {"id": "P02", "driver": "reordered", "basis": "П7 / детерминизм", "criterion": "Перестановка карт подсказок и проектов не меняет результат и порядок cli, docs.", "expected": {"outcome": "simulated", "where": null, "reason": null, "write_attempts": 24, "bootstrap_calls": 4, "list_calls": 14, "allocations": 1}},
+    {"id": "P03", "driver": "different_tail", "basis": "И‑112 / граница §0", "criterion": "Иной хвост START не меняет прочитанный префикс и результат развёртывания; хвост не является инструкцией.", "expected": {"outcome": "simulated", "where": null, "reason": null, "write_attempts": 24, "bootstrap_calls": 4, "list_calls": 14, "allocations": 1}},
+    {"id": "N01", "driver": "live", "basis": "Ф3 / только стенд", "criterion": "Рабочая цель не получает даже временной раскладки.", "expected": {"outcome": "simulation_failed", "where": "target", "reason": "stand_only", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N02", "driver": "no_id", "basis": "И‑114 / привязка записи", "criterion": "Нет ID в предъявленном свидетельстве.", "expected": {"outcome": "simulation_failed", "where": "witness", "reason": "shape", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N03", "driver": "bad_digest_type", "basis": "П9 / SHA‑256", "criterion": "Неверный тип отпечатка нельзя принять за строку.", "expected": {"outcome": "simulation_failed", "where": "witness", "reason": "shape", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N04", "driver": "changed_profile_bytes", "basis": "И‑114 / полный контейнер", "criterion": "Хвост профиля меняет байты и отвергается, даже если JSON тот же.", "expected": {"outcome": "simulation_failed", "where": "profiles", "reason": "profile_digest", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N05", "driver": "changed_control_bytes", "basis": "И‑114 / база плана", "criterion": "Хвост контрольного профиля меняет байты при равном JSON.", "expected": {"outcome": "simulation_failed", "where": "profiles", "reason": "control_digest", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N06", "driver": "different_entry_digest", "basis": "И‑114 / точный кандидат", "criterion": "Верные байты контейнера не заменяют отпечаток конкретной записи.", "expected": {"outcome": "simulation_failed", "where": "profiles", "reason": "entry_digest", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N07", "driver": "foreign_id", "basis": "И‑114 / явный ID", "criterion": "Другой ID не ищется по сходству и не подставляется.", "expected": {"outcome": "simulation_failed", "where": "profiles", "reason": "identity", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N08", "driver": "broken_history", "basis": "И‑110 / конечные отпечатки", "criterion": "Подмена записи журнала отклонена при совпадающем хеше заново предъявленного контейнера.", "expected": {"outcome": "simulation_failed", "where": "profiles", "reason": "profile_shape", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N09", "driver": "different_parent_body", "basis": "И‑114 / единственное добавление", "criterion": "Согласованный digest нового черновика не разрешает изменить прежний контракт.", "expected": {"outcome": "simulation_failed", "where": "profiles", "reason": "lineage", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N10", "driver": "different_order", "basis": "И‑114 / точная раскладка", "criterion": "Перестановка записей в профиле не равна единственному добавлению.", "expected": {"outcome": "simulation_failed", "where": "profiles", "reason": "lineage", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N11", "driver": "active_draft", "basis": "§3.5 / без активации", "criterion": "Даже согласованные новые отпечатки активной записи не делают её черновиком.", "expected": {"outcome": "simulation_failed", "where": "profiles", "reason": "identity", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N12", "driver": "foreign_profile_root", "basis": "A1 / фиксированная раскладка", "criterion": "Рабочий корень не подставляется вместо profiles/staged.", "expected": {"outcome": "simulation_failed", "where": "profiles", "reason": "roots", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N13", "driver": "duplicate_projects", "basis": "Д5 / разные проекты", "criterion": "Переупаковка одного L2 с иным форматированием не даёт два проекта.", "expected": {"outcome": "simulation_failed", "where": "projects", "reason": "same_fixture", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N14", "driver": "one_project", "basis": "Ф3 / две пары", "criterion": "Одного проекта недостаточно для успеха.", "expected": {"outcome": "simulation_failed", "where": "projects", "reason": "shape", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N15", "driver": "overlapping_root", "basis": "A1 / стандартные корни", "criterion": "Корень docs не заходит в L0; отказ до подготовки любой пары.", "expected": {"outcome": "simulation_failed", "where": "project/docs", "reason": "roots", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N16", "driver": "orphan_in_docs", "basis": "A4 / самостоятельная раскладка", "criterion": "Неверный родитель в одном L2 не маскируется рабочей первой парой.", "expected": {"outcome": "simulation_failed", "where": "project/docs", "reason": "registry", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N17", "driver": "wrong_system", "basis": "A2 / системная область", "criterion": "Документ другой области не становится L0.", "expected": {"outcome": "simulation_failed", "where": "system", "reason": "registry", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}},
+    {"id": "N18", "driver": "bad_start", "basis": "И‑112 / разбор §0", "criterion": "Неверная секция 0 даёт код отказа старта уже подготовленной копии; временные файлы убраны.", "expected": {"outcome": "simulation_failed", "where": "project/cli", "reason": "bootstrap", "write_attempts": 6, "bootstrap_calls": 1, "list_calls": 0, "allocations": 1}},
+    {"id": "N19", "driver": "read_denied", "basis": "П5 / обе пары обязательны", "criterion": "Инъекция отказа чтения START во второй установленной копии. Первый проект не засчитывается, все копии удалены.", "expected": {"outcome": "simulation_failed", "where": "project/docs", "reason": "bootstrap", "write_attempts": 24, "bootstrap_calls": 4, "list_calls": 10, "allocations": 1}},
+    {"id": "N20", "driver": "write_denied", "basis": "П5 / запрет частичного успеха", "criterion": "Инъекция отказа при создании первого файла второй контрольной копии. Внешних записей и неполного результата нет.", "expected": {"outcome": "simulation_failed", "where": "project/docs", "reason": "write", "write_attempts": 13, "bootstrap_calls": 2, "list_calls": 7, "allocations": 1}},
+    {"id": "N21", "driver": "listing_drift", "basis": "И‑110 / именно тот текст", "criterion": "Подмена результата штатного чтения в последнем запросе отклонена, успех первого проекта не выдаётся.", "expected": {"outcome": "simulation_failed", "where": "project/docs", "reason": "listing", "write_attempts": 24, "bootstrap_calls": 4, "list_calls": 14, "allocations": 1}},
+    {"id": "N22", "driver": "bad_asset", "basis": "§5 / материалы как данные", "criterion": "Проектный файл принимается только как явные байты, не путь для открытия.", "expected": {"outcome": "simulation_failed", "where": "project/docs", "reason": "fixture", "write_attempts": 0, "bootstrap_calls": 0, "list_calls": 0, "allocations": 0}}
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "baseline": "46d99ca9280f5fcf6856aefe12f573487b4a07dd",
+  "casebook_sha256": "4ca1c42633e1ac6caf4ac46a3816d7b323548cfaafca224d290736335c5e3455",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/115/test_simulation.py"
+  ],
+  "independent_baseline_match": true,
+  "pinned_inputs": {
+    "kit/base/OPERATION-PLAN.md": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+    "kit/base/PROMOTION.md": "bc4c08cc1eb588d04264c5e0bcc454bc7249c0ee0df078076c893c2bf1301629",
+    "kit/base/START.md": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+    "kit/base/bootstrap.py": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+    "kit/base/entry.txt": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+    "kit/base/operation_card.py": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+    "kit/base/operation_plan.py": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/project_specificity.py": "5788c3860142217f17695efbc4124f87937a71bce14561456e06b9ae5c72f6af",
+    "kit/base/promotion.py": "511e8c03dbc2996c1d705c497e3cce570c14ec23e7adac16516ff1c6f1c05db2",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/114/CASES.json": "997932d6418de56c2f3801005219da4bd25c1f489528269004ab2842dc5ce76d",
+    "research/114/PROMOTION.json": "3903f0dfc0738c5be8147e7a5eb355110b2834e6069db072f8b35a6f793323cb",
+    "research/114/test_promotion.py": "fb4c7ed6e8d63a35a50d2b9e172b3d9f731824ad1ead9c132308a781865ed32e"
+  },
+  "rc": 1,
+  "result": {
+    "control": {
+      "control_sha256": "ba2244fd145eeb2a1b784bf79cd28d67cb6d08a033a1ea39bf14333afcc49a06",
+      "entry_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152",
+      "fixtures_valid": 2,
+      "profile_sha256": "ae353276cd0c4e4acdf983b136dacc94a3fea9cdd83b1182fac268d0d54d7354",
+      "promotion_case": "P01",
+      "promotion_exact": true,
+      "working_port": "unknown_operation"
+    },
+    "counts": {
+      "fail": 25,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P02",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P03",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N01",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N02",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N03",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N04",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N05",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N06",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N07",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N08",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N09",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N10",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N11",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N12",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N13",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N14",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N15",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N16",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N17",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N18",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N19",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N20",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N21",
+        "reason": "simulation_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N22",
+        "reason": "simulation_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "test_sha256": "46066214ab6002a401a2f06d108efb384886446162ab88e3686a4b32dd3553d6"
+}
