@@ -1,0 +1,187 @@
+{
+  "id": "102",
+  "title": "Харнесс прогона",
+  "phase": "Ф0. Каркас программы",
+  "priority": "P0",
+  "date": "2026-11-18",
+  "branch": "arena/4e000a5e-isyncai",
+  "goal": "Выполнить П3–П8 одной командой: измерения, приёмка, отчёт, печать и страница без ручного переноса результатов.",
+  "hypothesis": "Измерения совпадут с И-101 целиком, а принятый отчёт будет совпадать со своей копией в архиве.",
+  "touches": ["research/strategy/harness/", "research/102/", "research/STRATEGY.md", "research/strategy/SYNC-LOG.md"],
+  "not_touched": [".isai/", "архив выпуска и исходники Kit", "research/101/ и эталоны И-101"],
+  "expected_codes": ["spec_invalid", "artifact_digest_mismatch", "adapter_unknown"],
+  "success": "Полные JSON совпадают с И-101; чистый запуск без калибровки и офлайн-регрессия выпуска проходят; 0 fail; повтор печати совпадает с сохранённым ZIP.",
+  "failure": "Несовпадение с эталоном, ложный pass при дефектной спецификации/пропавшем шаге или дрейф между отчётом и архивом.",
+  "rollback": "Отменить только коммит И-102; эталон и инструменты И-101 не изменялись.",
+  "artifact_zip": "research/release-0.1.36/AgentContractKit-0.1.36.zip",
+  "artifact_sha256": "e9f817c5286cea4bb4230ccd4f0fd307be3193ad3d46754d230cafc1bea66bf6",
+  "checks": [
+    {
+      "type": "json_equal",
+      "name": "harness_baseline_equals_i101",
+      "source": "baseline",
+      "reference": "research/strategy/BASELINE.json",
+      "basis": "Эталон инвентаря И-101 и свежий BASELINE.json",
+      "criterion": "Все поля совпадают, включая дерево, команды, операции и digest"
+    },
+    {
+      "type": "json_equal",
+      "name": "cleanroom_equals_i101",
+      "source": "cleanroom",
+      "reference": "research/101/CLEANROOM.json",
+      "basis": "Эталон чистой копии И-101 и свежий CLEANROOM.json",
+      "criterion": "Все стабильные поля совпадают, включая checkpoints_digest"
+    },
+    {
+      "type": "deterministic",
+      "name": "inventory_deterministic",
+      "source": "baseline",
+      "basis": "Две отдельные распаковки для инвентаря",
+      "criterion": "Повторный результат совпадает с сохранённым первичным"
+    },
+    {
+      "type": "deterministic",
+      "name": "cleanroom_deterministic",
+      "source": "cleanroom",
+      "basis": "Два независимых пустых проекта в CLEANROOM-пробе",
+      "criterion": "Повторный результат совпадает с сохранённым первичным"
+    },
+    {
+      "type": "steps",
+      "name": "cleanroom_steps_pass",
+      "expect": [
+        {"step": "1-status-before", "rc": 0, "health": "absent"},
+        {"step": "2-install", "rc": 0, "error": null},
+        {"step": "3-status-after-install", "rc": 0, "health": "valid", "entry_mode": "absent"},
+        {"step": "4-connect", "rc": 0, "error": null},
+        {"step": "5a-create-contract", "rc": 0, "error": null},
+        {"step": "5b-create-rule", "rc": 0, "error": null},
+        {"step": "6-list", "rc": 0, "contracts": 1, "active": 1, "ids": ["P-2", "P-1"]},
+        {"step": "7-adapter-arena", "rc": 2, "error": "adapter_unknown"},
+        {"step": "8-status-final", "rc": 0, "health": "valid"}
+      ],
+      "basis": "CLEANROOM.json в заново распакованном 0.1.36",
+      "criterion": "Все шаги присутствуют; коды, статусы и идентификаторы совпадают с ожиданиями"
+    },
+    {
+      "type": "surfaces_absent",
+      "name": "six_surfaces_absent",
+      "basis": "Реестры команд и операций в BASELINE.json",
+      "criterion": "Все шесть целевых поверхностей измерены, ни одна не представлена"
+    },
+    {
+      "type": "json_value",
+      "name": "kilo_documented",
+      "source": "baseline",
+      "path": "adapters.kilo.status",
+      "op": "==",
+      "value": "documented",
+      "basis": "Карточка Kilo в ADAPTERS выпуска",
+      "criterion": "Статус documented; это описание, не прогон среды"
+    },
+    {
+      "type": "json_value",
+      "name": "copilot_documented",
+      "source": "baseline",
+      "path": "adapters.copilot.status",
+      "op": "==",
+      "value": "documented",
+      "basis": "Карточка Copilot в ADAPTERS выпуска",
+      "criterion": "Статус documented; это описание, не прогон среды"
+    },
+    {
+      "type": "json_value",
+      "name": "arena_absent",
+      "source": "baseline",
+      "path": "absent_adapters",
+      "op": "==",
+      "value": ["arena"],
+      "basis": "BASELINE.json: absent_adapters",
+      "criterion": "Среди трёх целевых сред отсутствует только Arena"
+    },
+    {
+      "type": "json_value",
+      "name": "extension_stubs_unchanged",
+      "source": "baseline",
+      "path": "stub_adapters",
+      "op": "==",
+      "value": ["antigravity", "claude", "cursor"],
+      "basis": "BASELINE.json: stub_adapters",
+      "criterion": "Три будущие среды остались заглушками"
+    },
+    {
+      "type": "json_value",
+      "name": "release_suite_exit",
+      "source": "release_tests",
+      "path": "rc",
+      "op": "==",
+      "value": 0,
+      "basis": "Новый запуск kit/tests/test_contract.py",
+      "criterion": "Встроенный набор выпуска завершился без ошибки"
+    },
+    {
+      "type": "json_value",
+      "name": "release_suite_totals",
+      "source": "release_tests",
+      "path": "totals",
+      "op": "==",
+      "value": {"pass": 105, "fail": 0, "not run": 3, "inconclusive": 0},
+      "basis": "Новый RELEASE-TESTS.json и ожидание из research/release-0.1.36/RELEASE.md",
+      "criterion": "Покрытие 105/0/3 воспроизведено на офлайн-стенде без неопределённых результатов"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "text": "Черновая проверка принимала отсутствующий шаг, если для него ожидали null.",
+      "basis": "test_harness.py::test_missing_step_does_not_match_expected_null (красный до правки)",
+      "criterion": "Отсутствие шага/поля не равно полю со значением null",
+      "effect": "Проверяется наличие шага и каждого запрошенного поля"
+    },
+    {
+      "id": "F2",
+      "text": "Две одинаковые сборки чернового отчёта не гарантируют совпадение с конечным REPORT.md.",
+      "basis": "Первый ZIP отличался от итогового checkout ровно одним членом: research/102/REPORT.md",
+      "criterion": "test_final_report_sealed_and_repeat_is_read_only и test_repeat_detects_changed_inputs_or_archive",
+      "effect": "Сначала приёмка и конечный отчёт, потом печать; повтор сравнивает сохранённый ZIP и ничего не исправляет"
+    },
+    {
+      "id": "F3",
+      "text": "Число проверок само по себе не доказывает регрессию: сравнение результата с собой всегда проходит.",
+      "basis": "test_harness.py::test_invalid_specs_are_refused_without_writes (вариант tautology)",
+      "criterion": "Нет записи при самосравнении, дублированном имени или циклическом члене архива; rc 2",
+      "effect": "Пол проверок требует уникальных имён, основания, критерия и сравнения свежей пробы с отдельным эталоном"
+    },
+    {
+      "id": "F4",
+      "text": "Офлайн-набор выпуска и проверка живой среды — разные свидетельства.",
+      "basis": "RELEASE-TESTS.json: totals и not_run; ACCEPTANCE.json: отдельный список not_run",
+      "criterion": "Повторить kit/tests в отдельной распаковке и сверить пропуски, не прибавляя их к pass",
+      "effect": "Публикуются два независимых набора результатов; чистый сценарий по-прежнему не калибрует агента"
+    }
+  ],
+  "not_run": [
+    {"what": "Поведение моделей в Arena / Kilo / Copilot", "why": "Отдельные живые сеансы и повторения — И-125"},
+    {"what": "Автообнаружение и чтение AGENTS.md в Arena", "why": "Нужен отдельный эксперимент — И-124/И-125"},
+    {"what": "Локальная эксплуатация в Windows 11 / VS Code 1.146", "why": "Эта среда недоступна в данном прогоне — И-134"}
+  ],
+  "seal_members": [
+    "research/STRATEGY.md",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/BASELINE.json",
+    "research/101/CLEANROOM.json",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/run_iteration.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/SPEC-FORMAT.md",
+    "research/102/DESIGN.md",
+    "research/102/test_harness.py",
+    "research/102/ITERATION.json",
+    "research/102/BASELINE.json",
+    "research/102/CLEANROOM.json",
+    "research/102/RELEASE-TESTS.json",
+    "research/102/ACCEPTANCE.json",
+    "research/102/REPORT.md"
+  ],
+  "next": "И-103 — версии и совместимость: semver только L0, revision L1, матрица 0.1.x → 0.2.0 и политика git. Ф0 закрывается после И-103, не после И-102."
+}

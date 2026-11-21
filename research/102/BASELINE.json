@@ -1,0 +1,275 @@
+{
+  "absent_adapters": [
+    "arena"
+  ],
+  "adapters": {
+    "antigravity": {
+      "entry": null,
+      "of": null,
+      "rank": null,
+      "status": "stub",
+      "title": "Antigravity"
+    },
+    "claude": {
+      "entry": null,
+      "of": null,
+      "rank": null,
+      "status": "stub",
+      "title": "Claude Code"
+    },
+    "copilot": {
+      "entry": "AGENTS.md",
+      "of": 5,
+      "rank": 3,
+      "status": "documented",
+      "title": "GitHub Copilot / VS Code"
+    },
+    "cursor": {
+      "entry": null,
+      "of": null,
+      "rank": null,
+      "status": "stub",
+      "title": "Cursor"
+    },
+    "kilo": {
+      "entry": "AGENTS.md",
+      "of": 4,
+      "rank": 3,
+      "status": "documented",
+      "title": "Kilo Code"
+    }
+  },
+  "commands": [
+    "access",
+    "adapter",
+    "apply",
+    "brief",
+    "calibrate",
+    "discovery",
+    "due",
+    "entry",
+    "history",
+    "identity",
+    "inventory",
+    "layout",
+    "list",
+    "metrics",
+    "model",
+    "operations",
+    "pending",
+    "plan",
+    "removed",
+    "repeat",
+    "rights",
+    "session",
+    "status",
+    "system",
+    "updates",
+    "verify"
+  ],
+  "digest": "9d2cb89bf03cd58f616a34c05ddd047072f781b3ef3cbd67791f8c8239e09585",
+  "format": 1,
+  "not_run": [
+    {
+      "what": "поведение моделей в трёх средах",
+      "why": "требует отдельной сессии и N повторов; И-125"
+    },
+    {
+      "what": "чтение AGENTS.md в Arena",
+      "why": "публичной спецификации нет; И-124/И-125"
+    }
+  ],
+  "ops": [
+    "calibrate_answer",
+    "connect",
+    "create",
+    "disconnect",
+    "edit",
+    "fix",
+    "install",
+    "merge",
+    "migrate",
+    "purge",
+    "record_check",
+    "retire",
+    "review",
+    "transition",
+    "update"
+  ],
+  "release": "0.1.36",
+  "schema": {
+    "env_keys": [
+      "o",
+      "s",
+      " ",
+      "e",
+      "d",
+      "i",
+      "t",
+      "o",
+      "r",
+      " ",
+      "e",
+      "d",
+      "i",
+      "t",
+      "o",
+      "r",
+      "_",
+      "v",
+      "e",
+      "r",
+      "s",
+      "i",
+      "o",
+      "n",
+      " ",
+      "e",
+      "x",
+      "t",
+      "e",
+      "n",
+      "s",
+      "i",
+      "o",
+      "n",
+      " ",
+      "e",
+      "x",
+      "t",
+      "e",
+      "n",
+      "s",
+      "i",
+      "o",
+      "n",
+      "_",
+      "v",
+      "e",
+      "r",
+      "s",
+      "i",
+      "o",
+      "n",
+      " ",
+      "m",
+      "o",
+      "d",
+      "e",
+      " ",
+      "m",
+      "o",
+      "d",
+      "e",
+      "l",
+      " ",
+      "p",
+      "r",
+      "o",
+      "f",
+      "i",
+      "l",
+      "e",
+      " ",
+      "p",
+      "e",
+      "r",
+      "m",
+      "i",
+      "s",
+      "s",
+      "i",
+      "o",
+      "n",
+      "s"
+    ],
+    "targets": [
+      ".agent-contract/base/PROTOCOL.md",
+      ".agent-contract/base/START.md",
+      ".agent-contract/base/entry.txt",
+      ".agent-contract/base/manifest.json",
+      ".agent-contract/base/rules.json",
+      ".agent-contract/base/schema.json",
+      ".agent-contract/local/calibration/answers.json",
+      ".agent-contract/project/checks.json",
+      ".agent-contract/project/state.json",
+      "AGENTS.md"
+    ],
+    "transitions": {
+      "active": [
+        "suspended",
+        "revoked"
+      ],
+      "draft": [
+        "active",
+        "revoked"
+      ],
+      "revoked": [],
+      "suspended": [
+        "active",
+        "revoked"
+      ]
+    },
+    "types": [
+      "contract",
+      "rule",
+      "constraint",
+      "protocol",
+      "preference"
+    ]
+  },
+  "stub_adapters": [
+    "antigravity",
+    "claude",
+    "cursor"
+  ],
+  "surfaces": {
+    "bundle": {
+      "command_present": false,
+      "op_present": false,
+      "present": false,
+      "token_in_source_advisory": false
+    },
+    "bundle_verify": {
+      "command_present": false,
+      "op_present": false,
+      "present": false,
+      "token_in_source_advisory": true
+    },
+    "guard": {
+      "command_present": false,
+      "op_present": false,
+      "present": false,
+      "token_in_source_advisory": true
+    },
+    "promote": {
+      "command_present": false,
+      "op_present": false,
+      "present": false,
+      "token_in_source_advisory": false
+    },
+    "prompt": {
+      "command_present": false,
+      "op_present": false,
+      "present": false,
+      "token_in_source_advisory": true
+    },
+    "simulate": {
+      "command_present": false,
+      "op_present": false,
+      "present": false,
+      "token_in_source_advisory": false
+    }
+  },
+  "tree": {
+    "files": 220,
+    "tree_digest": "159de6bda79871f6c4128d1839e1fccb86ca298c54a75d9d87d65b0b185d9fdc"
+  },
+  "zip": {
+    "bytes": 774894,
+    "file": "AgentContractKit-0.1.36.zip",
+    "members": 220,
+    "sha256": "e9f817c5286cea4bb4230ccd4f0fd307be3193ad3d46754d230cafc1bea66bf6",
+    "uncompressed_bytes": 2375482
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "checks": [
+    {
+      "basis": "Эталон инвентаря И-101 и свежий BASELINE.json",
+      "check": "harness_baseline_equals_i101",
+      "criterion": "Все поля совпадают, включая дерево, команды, операции и digest",
+      "detail": {
+        "equal": true,
+        "reference": "research/strategy/BASELINE.json",
+        "source": "baseline"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "Эталон чистой копии И-101 и свежий CLEANROOM.json",
+      "check": "cleanroom_equals_i101",
+      "criterion": "Все стабильные поля совпадают, включая checkpoints_digest",
+      "detail": {
+        "equal": true,
+        "reference": "research/101/CLEANROOM.json",
+        "source": "cleanroom"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "Две отдельные распаковки для инвентаря",
+      "check": "inventory_deterministic",
+      "criterion": "Повторный результат совпадает с сохранённым первичным",
+      "detail": {
+        "runs": 2,
+        "source": "baseline"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "Два независимых пустых проекта в CLEANROOM-пробе",
+      "check": "cleanroom_deterministic",
+      "criterion": "Повторный результат совпадает с сохранённым первичным",
+      "detail": {
+        "runs": 2,
+        "source": "cleanroom"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json в заново распакованном 0.1.36",
+      "check": "cleanroom_steps_pass",
+      "criterion": "Все шаги присутствуют; коды, статусы и идентификаторы совпадают с ожиданиями",
+      "detail": {
+        "1-status-before": {
+          "got": {
+            "health": "absent",
+            "rc": 0,
+            "step": "1-status-before"
+          },
+          "ok": true
+        },
+        "2-install": {
+          "got": {
+            "error": null,
+            "rc": 0,
+            "step": "2-install"
+          },
+          "ok": true
+        },
+        "3-status-after-install": {
+          "got": {
+            "entry_mode": "absent",
+            "health": "valid",
+            "rc": 0,
+            "step": "3-status-after-install"
+          },
+          "ok": true
+        },
+        "4-connect": {
+          "got": {
+            "error": null,
+            "rc": 0,
+            "step": "4-connect"
+          },
+          "ok": true
+        },
+        "5a-create-contract": {
+          "got": {
+            "error": null,
+            "rc": 0,
+            "step": "5a-create-contract"
+          },
+          "ok": true
+        },
+        "5b-create-rule": {
+          "got": {
+            "error": null,
+            "rc": 0,
+            "step": "5b-create-rule"
+          },
+          "ok": true
+        },
+        "6-list": {
+          "got": {
+            "active": 1,
+            "contracts": 1,
+            "count": 2,
+            "ids": [
+              "P-2",
+              "P-1"
+            ],
+            "rc": 0,
+            "step": "6-list"
+          },
+          "ok": true
+        },
+        "7-adapter-arena": {
+          "got": {
+            "error": "adapter_unknown",
+            "rc": 2,
+            "step": "7-adapter-arena"
+          },
+          "ok": true
+        },
+        "8-status-final": {
+          "got": {
+            "health": "valid",
+            "rc": 0,
+            "revision": null,
+            "step": "8-status-final"
+          },
+          "ok": true
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "Реестры команд и операций в BASELINE.json",
+      "check": "six_surfaces_absent",
+      "criterion": "Все шесть целевых поверхностей измерены, ни одна не представлена",
+      "detail": {
+        "missing": [],
+        "not_absent": []
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "Карточка Kilo в ADAPTERS выпуска",
+      "check": "kilo_documented",
+      "criterion": "Статус documented; это описание, не прогон среды",
+      "detail": {
+        "op": "==",
+        "path": "adapters.kilo.status",
+        "value": "documented",
+        "want": "documented"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "Карточка Copilot в ADAPTERS выпуска",
+      "check": "copilot_documented",
+      "criterion": "Статус documented; это описание, не прогон среды",
+      "detail": {
+        "op": "==",
+        "path": "adapters.copilot.status",
+        "value": "documented",
+        "want": "documented"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "BASELINE.json: absent_adapters",
+      "check": "arena_absent",
+      "criterion": "Среди трёх целевых сред отсутствует только Arena",
+      "detail": {
+        "op": "==",
+        "path": "absent_adapters",
+        "value": [
+          "arena"
+        ],
+        "want": [
+          "arena"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "BASELINE.json: stub_adapters",
+      "check": "extension_stubs_unchanged",
+      "criterion": "Три будущие среды остались заглушками",
+      "detail": {
+        "op": "==",
+        "path": "stub_adapters",
+        "value": [
+          "antigravity",
+          "claude",
+          "cursor"
+        ],
+        "want": [
+          "antigravity",
+          "claude",
+          "cursor"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "Новый запуск kit/tests/test_contract.py",
+      "check": "release_suite_exit",
+      "criterion": "Встроенный набор выпуска завершился без ошибки",
+      "detail": {
+        "op": "==",
+        "path": "rc",
+        "value": 0,
+        "want": 0
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "Новый RELEASE-TESTS.json и ожидание из research/release-0.1.36/RELEASE.md",
+      "check": "release_suite_totals",
+      "criterion": "Покрытие 105/0/3 воспроизведено на офлайн-стенде без неопределённых результатов",
+      "detail": {
+        "op": "==",
+        "path": "totals",
+        "value": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 105
+        },
+        "want": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 105
+        }
+      },
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 3,
+    "pass": 12
+  },
+  "iteration": "И-102",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Поведение моделей в Arena / Kilo / Copilot",
+      "why": "Отдельные живые сеансы и повторения — И-125"
+    },
+    {
+      "status": "not run",
+      "what": "Автообнаружение и чтение AGENTS.md в Arena",
+      "why": "Нужен отдельный эксперимент — И-124/И-125"
+    },
+    {
+      "status": "not run",
+      "what": "Локальная эксплуатация в Windows 11 / VS Code 1.146",
+      "why": "Эта среда недоступна в данном прогоне — И-134"
+    }
+  ],
+  "outcome": "accepted",
+  "phase": "Ф0. Каркас программы"
+}
