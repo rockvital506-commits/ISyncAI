@@ -1,0 +1,79 @@
+{
+  "id": "109",
+  "title": "Дифф до записи: план и отдельный билет",
+  "date": "2026-11-18",
+  "branch": "arena/4e000a5e-isyncai",
+  "phase": "Ф2. Промпт-компилятор и диалог",
+  "priority": "P0",
+  "baseline": "1e6add9 · v1.10",
+  "target_inputs": [
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/109/CASES.json",
+    "research/109/test_plan.py"
+  ],
+  "seal_members": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-MATRIX.md",
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/PROFILE-JOURNAL.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/108/ACCEPTANCE.json",
+    "research/109/ACCEPTANCE.json",
+    "research/109/CASES.json",
+    "research/109/CHECKOUT.json",
+    "research/109/CLEANROOM.json",
+    "research/109/DESIGN.md",
+    "research/109/ITERATION.json",
+    "research/109/PLAN.json",
+    "research/109/REPORT.md",
+    "research/109/render109.py",
+    "research/109/run.py",
+    "research/109/test_plan.py",
+    "research/STRATEGY.md",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py"
+  ],
+  "case_counts": {
+    "negative": 29,
+    "positive": 5
+  },
+  "casebook_sha256": "5feeb12180fe858156098fd118c2562d423d17e6fffd6e94254f909076b49572",
+  "test_sha256": "889b53b300d38c4fcebac000967f44e1dac261d4c753719cff9f66e656e61c13",
+  "not_run": [
+    {
+      "what": "Исполнение остальных операций, изменение L2, диалог и bootstrap.",
+      "why": "И-110–И-112; проверен только карточный путь create rule/draft в L1."
+    },
+    {
+      "what": "Удостоверение владельца, реальная авторизация, параллельные писатели, ACL/NTFS, авария питания и восстановление.",
+      "why": "Временные Linux-фикстуры и один писатель. Подтверждение в тестах синтетическое."
+    },
+    {
+      "what": "Активация, разрешение конфликтов, регистрация R-2, перенос, миграция и живые адаптеры.",
+      "why": "Эта граница даёт черновик и журнал, не действующее правило, не перенос и не пригодность Kit."
+    },
+    {
+      "what": "Новые прогоны 0.1.36 и ISAI.",
+      "why": "Целевой порт не зависит от доноров; история остаётся в их снимках."
+    }
+  ],
+  "next": "И-110 — исполнители манипуляций register/list/edit/suspend/resume/revoke/delete в L1 и L2; не начата."
+}

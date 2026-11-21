@@ -1,0 +1,1152 @@
+{
+  "inputs_sha256": {
+    "kit/base/OPERATION-PLAN.md": "e5c02c4031c115af0b02b7db408c32ed55f1ab55e6d10f0e98680ec8d087ceab",
+    "kit/base/STORAGE-V2.md": "c5cdab0d2c51cb9dd96b8af6c0c6eccabe83fd0a48acbab0e4deb72c05b0eba3",
+    "kit/base/operation_card.py": "3eb1f1226ac8364c11edc688fd5607279d5e5d95d711e7f7ae5f837be979d9b7",
+    "kit/base/operation_plan.py": "9461b9dc1f0653caad68a0c3521fd1240a1cb2c11b73c35655a8888944bd1a68",
+    "kit/base/profile_journal.py": "0111f5534107aadd11c09adb9b80400e1a9c76998ac0294a9ce7d4559e384835",
+    "kit/base/registry_policy.py": "7e1f3f417799bb2015a72873570aa50497fe5f0553a1f0c480823f21808a7f4f",
+    "kit/base/registry_store.py": "3449c6bc41823c45b0ec7d56bd3e8de0a8107c1c77c54c78502839d20e7ef849",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/105/test_layout.py": "c8b62743faa20f01321e97f615d1cf0e55e62a2a5569f8f4ad26e26a6331b748",
+    "research/109/CASES.json": "5feeb12180fe858156098fd118c2562d423d17e6fffd6e94254f909076b49572",
+    "research/109/test_plan.py": "889b53b300d38c4fcebac000967f44e1dac261d4c753719cff9f66e656e61c13"
+  },
+  "rc": 0,
+  "result": {
+    "os": "Linux",
+    "rows": [
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N01-no-confirmation",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "confirmation_required",
+            "where": "confirmed_ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N02-false-confirmation",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "confirmation_required",
+            "where": "confirmed_ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N03-wrong-confirmation",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "confirmation_required",
+            "where": "confirmed_ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N04-ticket-removed",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "confirmation_required",
+            "where": "confirmed_ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N05-fabricated-ticket",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "ticket_unknown",
+            "where": "ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N06-foreign-session",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "ticket_unknown",
+            "where": "ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "10198032f112cc6ea14adcd093bec8f3ea6a01a916f7de32b6d57dcb7eab45fd",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "10198032f112cc6ea14adcd093bec8f3ea6a01a916f7de32b6d57dcb7eab45fd",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N07-replay",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "ticket_unknown",
+            "where": "ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N08-superseded",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "ticket_unknown",
+            "where": "ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N09-diff-edited",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "plan_mismatch",
+            "where": "plan"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N10-card-edited",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "plan_mismatch",
+            "where": "plan"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N11-path-edited",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "plan_mismatch",
+            "where": "plan"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N12-boolean-format",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "plan_mismatch",
+            "where": "plan"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N13-forged-card",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "card_mismatch",
+            "where": "card"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "10198032f112cc6ea14adcd093bec8f3ea6a01a916f7de32b6d57dcb7eab45fd",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "10198032f112cc6ea14adcd093bec8f3ea6a01a916f7de32b6d57dcb7eab45fd",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N14-no-change-apply",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "confirmation_required",
+            "where": "confirmed_ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N15-system",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N16-project",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N17-list",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N18-profile",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "profile_mismatch",
+            "where": "card/params/profile"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N19-parent",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "parent_missing",
+              "path": "/entries/2/parent",
+              "stage": "links"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N20-scope",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "scope_outside",
+              "path": "/entries/2/scope",
+              "stage": "links"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "e21f55de010a4938f4338d97e3be4a250be5d840233b4cb7d87a0db164dfd54a",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "e21f55de010a4938f4338d97e3be4a250be5d840233b4cb7d87a0db164dfd54a",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N21-stale-revision",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "stale_revision",
+            "where": "revision/from"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "e03d9517ea5c66f794ab995b104f194ceeffd460f2f18621fccc7d1face45fee",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "e03d9517ea5c66f794ab995b104f194ceeffd460f2f18621fccc7d1face45fee",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N22-stale-L1",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "stale_plan",
+            "where": "inputs/L1"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "45ee0f841fc5d14286390c22470395bbc16368818e373383677f0d8449f4a6a3"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "45ee0f841fc5d14286390c22470395bbc16368818e373383677f0d8449f4a6a3"
+          }
+        },
+        "id": "N23-stale-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "stale_plan",
+            "where": "inputs/L2"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "459958f9ba6b615bb459ea0bf2aef6bbd28a297c52e7d09be2258ac8b9187a1b",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "459958f9ba6b615bb459ea0bf2aef6bbd28a297c52e7d09be2258ac8b9187a1b",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N24-stale-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "stale_plan",
+            "where": "inputs/L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "4e428728d97c805f1d84388671099c07cd11bdcbf7c063151e4aca4927fc3392"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "4e428728d97c805f1d84388671099c07cd11bdcbf7c063151e4aca4927fc3392"
+          }
+        },
+        "id": "N25-conflict",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "rule_conflict",
+            "details": {
+              "conflicts": [
+                {
+                  "entries": [
+                    {
+                      "area": "L1",
+                      "id": "P-1",
+                      "scope": "docs",
+                      "text": "Нужны свидетельства.",
+                      "value": "required"
+                    },
+                    {
+                      "area": "L2",
+                      "id": "Q-other",
+                      "scope": "docs/guide",
+                      "text": "Свидетельства пропустить.",
+                      "value": "skip"
+                    }
+                  ],
+                  "key": "workflow.evidence",
+                  "scope": "docs/guide"
+                }
+              ]
+            },
+            "where": "entries"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N26-replace-failed",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "write_failed",
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 1,
+          "staged_matches_preview": true,
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N27-root-overlap",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "profile_root_conflict",
+            "where": "kit/pilot"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N28-kind",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "unsupported_entry",
+            "where": "L1"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "N29-null-plan",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "plan_mismatch",
+            "where": "plan"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "profile_untouched": true,
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "fce98628aa8f342ccdbef75122d08ae6e110170ad31b11a2b7e86afd6c8371ad",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "fce98628aa8f342ccdbef75122d08ae6e110170ad31b11a2b7e86afd6c8371ad",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "P01-dry-run",
+        "observed": {
+          "changed": [],
+          "dry_run": true,
+          "exact_preview": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "outcome": "planned",
+          "profile_untouched": true,
+          "replacements": 0,
+          "revision": {
+            "from": 4,
+            "to": 5
+          },
+          "staged_matches_preview": false,
+          "valid_ticket": true,
+          "write_event": false
+        },
+        "preview": {
+          "card": {
+            "card_format": 1,
+            "code": null,
+            "missing": [],
+            "operation": "create",
+            "outcome": "complete",
+            "params": {
+              "basis": "Нужна проверка",
+              "contract": "C-1",
+              "criterion": "Есть строка отчёта",
+              "entry_id": "Q-109",
+              "kind": "rule",
+              "profile": "Pilot",
+              "scope": "docs/guide",
+              "state": "draft",
+              "target": "L1",
+              "text": "Сохранить факты: без автоактивации. 🔎",
+              "title": "След диффа"
+            },
+            "questions": [],
+            "request": "Создай черновик правила Q-109 в профиле Pilot, по контракту C-1, область «docs/guide», название «След диффа», основание «Нужна проверка», критерий «Есть строка отчёта»: «Сохранить факты: без автоактивации. 🔎»"
+          },
+          "diff": {
+            "after_sha256": "6f7dcc7a64ecbabd78207c365cdce6245169289ad7400afffca31ebe79a1681e",
+            "before_sha256": "b7e62d7cb27dcc089c7a75805e12940bfcdc3e0a80e32e05b8fc121ee83b6669",
+            "file": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 4,
+              "to": 5
+            },
+            "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,62 @@\n-{\"area\": \"L1\", \"entries\": [{\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-109\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0431\\u0430\\u0439\\u0442\\u044b \\u0441\\u043e\\u0441\\u0442\\u043e\\u044f\\u043d\\u0438\\u044f.\", \"id\": \"C-1\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-1\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-109\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0431\\u0430\\u0439\\u0442\\u044b \\u0441\\u043e\\u0441\\u0442\\u043e\\u044f\\u043d\\u0438\\u044f.\", \"id\": \"P-1\", \"key\": \"workflow.evidence\", \"kind\": \"rule\", \"parent\": \"C-1\", \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u041d\\u0443\\u0436\\u043d\\u044b \\u0441\\u0432\\u0438\\u0434\\u0435\\u0442\\u0435\\u043b\\u044c\\u0441\\u0442\\u0432\\u0430.\", \"title\": \"P-1\", \"value\": \"required\"}], \"revision\": 4, \"roots\": [\"profiles/pilot\"], \"schema_version\": 2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_revision\": 4,\n+    \"decisions\": [\n+      {\n+        \"entry_id\": \"Q-109\",\n+        \"entry_sha256\": \"e167a84b5b17b49c15b52482644c180243ae0fd4c8c3728f027e2437a4c5abff\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 5\n+      }\n+    ]\n+  },\n+  \"profile_format\": 1,\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-109\",\n+        \"criterion\": \"Сверить байты состояния.\",\n+        \"id\": \"C-1\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-1\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-109\",\n+        \"criterion\": \"Сверить байты состояния.\",\n+        \"id\": \"P-1\",\n+        \"key\": \"workflow.evidence\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-1\",\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Нужны свидетельства.\",\n+        \"title\": \"P-1\",\n+        \"value\": \"required\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Нужна проверка\",\n+        \"criterion\": \"Есть строка отчёта\",\n+        \"id\": \"Q-109\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-1\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"draft\",\n+        \"text\": \"Сохранить факты: без автоактивации. 🔎\",\n+        \"title\": \"След диффа\"\n+      }\n+    ],\n+    \"revision\": 5,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  }\n+}\n"
+          },
+          "dry_run": true,
+          "inputs_sha256": {
+            "L0": "3a3039e8d63b798e3d685983cbf83f0fc60544e57b091337e47e29b288fe2e33",
+            "L1": "b7e62d7cb27dcc089c7a75805e12940bfcdc3e0a80e32e05b8fc121ee83b6669",
+            "L2": "f41c4f9222dc65c0ee23277088ecad71d8d98546979772fd1736a561261b4305"
+          },
+          "outcome": "planned",
+          "plan_format": 1
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "10198032f112cc6ea14adcd093bec8f3ea6a01a916f7de32b6d57dcb7eab45fd",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "P02-confirmed",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decisions": 1,
+          "entry_id": "Q-109",
+          "exact_saved_bytes": true,
+          "exact_status": true,
+          "journal_verified": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "outcome": "applied",
+          "profile_revision": 5,
+          "profile_untouched": false,
+          "project_revision": 7,
+          "replacements": 1,
+          "staged_matches_preview": true,
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "10198032f112cc6ea14adcd093bec8f3ea6a01a916f7de32b6d57dcb7eab45fd",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "10198032f112cc6ea14adcd093bec8f3ea6a01a916f7de32b6d57dcb7eab45fd",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "P03-no-change",
+        "observed": {
+          "changed": [],
+          "dry_run": true,
+          "exact_preview": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "outcome": "no_change",
+          "profile_untouched": true,
+          "replacements": 0,
+          "revision": {
+            "from": 5,
+            "to": 5
+          },
+          "staged_matches_preview": false,
+          "valid_ticket": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "P04-missing",
+        "observed": {
+          "changed": [],
+          "dry_run": true,
+          "exact_clarification": true,
+          "l0_l2_unchanged": true,
+          "missing": [
+            "profile",
+            "contract",
+            "scope",
+            "entry_id",
+            "state",
+            "title",
+            "basis",
+            "criterion"
+          ],
+          "ok": true,
+          "outcome": "missing_params",
+          "profile_untouched": true,
+          "questions": [
+            "profile",
+            "contract",
+            "scope"
+          ],
+          "replacements": 0,
+          "staged_matches_preview": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "10198032f112cc6ea14adcd093bec8f3ea6a01a916f7de32b6d57dcb7eab45fd",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          },
+          "before": {
+            "L0": "6935e2b9f2192724f30a1acccc22015bf8022f2c133b10d89a6cac585b064549",
+            "L0_manifest": "ba3f06748e836968b36c909f57a075ca1e2027979c30720b2acaf1b2d0233cdf",
+            "L1": "daf17d01f61349e950e9581f29188b6bd40c2dfd9a7b8fb93d9730cab9ee82be",
+            "L2": "57d367e5994ec8de741759fb692c648c8e8110cf85b5ea97f2f1387af76e6dd5"
+          }
+        },
+        "id": "P05-unread-note",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decisions": 1,
+          "entry_id": "Q-109",
+          "exact_saved_bytes": true,
+          "exact_status": true,
+          "journal_verified": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "outcome": "applied",
+          "profile_revision": 5,
+          "profile_untouched": false,
+          "project_revision": 7,
+          "replacements": 1,
+          "staged_matches_preview": true,
+          "write_event": true
+        }
+      }
+    ]
+  },
+  "sources_unchanged": true
+}

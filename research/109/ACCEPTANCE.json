@@ -1,0 +1,432 @@
+{
+  "checks": [
+    {
+      "basis": "DESIGN.md; CASES.json; test_plan.py; ITERATION.json",
+      "check": "frozen_cases",
+      "criterion": "Два SHA-256 П2 и список обязательных случаев совпали; критерии не извлекаются из продукта.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json",
+      "check": "checkout",
+      "criterion": "Каждый ID исполнен один раз, точны результат, код/путь/основание и типы. До допуска к записи нет аудируемых попыток; смена байтов совпадает с ожидаемыми путями и заменами.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json",
+      "check": "cleanroom",
+      "criterion": "Каждый ID исполнен один раз, точны результат, код/путь/основание и типы. До допуска к записи нет аудируемых попыток; смена байтов совпадает с ожидаемыми путями и заменами.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json: P01-dry-run; P02-confirmed",
+      "check": "preview_witness",
+      "criterion": "Опубликован точный дифф с хешами и ревизиями, без живого билета. Запись проверена по подготовленным байтам.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "isolated",
+      "criterion": "Ровно указанные неизменные входы без донорских данных, Git и ISAI.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "repeat",
+      "criterion": "Результаты независимых процессов совпали без публикации случайных билетов.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 6
+  },
+  "host_os": "Linux",
+  "iteration": "И-109",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Исполнение остальных операций, изменение L2, диалог и bootstrap.",
+      "why": "И-110–И-112; проверен только карточный путь create rule/draft в L1."
+    },
+    {
+      "status": "not run",
+      "what": "Удостоверение владельца, реальная авторизация, параллельные писатели, ACL/NTFS, авария питания и восстановление.",
+      "why": "Временные Linux-фикстуры и один писатель. Подтверждение в тестах синтетическое."
+    },
+    {
+      "status": "not run",
+      "what": "Активация, разрешение конфликтов, регистрация R-2, перенос, миграция и живые адаптеры.",
+      "why": "Эта граница даёт черновик и журнал, не действующее правило, не перенос и не пригодность Kit."
+    },
+    {
+      "status": "not run",
+      "what": "Новые прогоны 0.1.36 и ISAI.",
+      "why": "Целевой порт не зависит от доноров; история остаётся в их снимках."
+    }
+  ],
+  "outcome": "accepted",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "id": "N01-no-confirmation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N02-false-confirmation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N03-wrong-confirmation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N04-ticket-removed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N05-fabricated-ticket",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N06-foreign-session",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N07-replay",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N08-superseded",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N09-diff-edited",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N10-card-edited",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N11-path-edited",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N12-boolean-format",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N13-forged-card",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N14-no-change-apply",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N15-system",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N16-project",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N17-list",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N18-profile",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N19-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N20-scope",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N21-stale-revision",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N22-stale-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N23-stale-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N24-stale-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N25-conflict",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N26-replace-failed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N27-root-overlap",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N28-kind",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N29-null-plan",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P01-dry-run",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P02-confirmed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P03-no-change",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P04-missing",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P05-unread-note",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 34
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "id": "N01-no-confirmation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N02-false-confirmation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N03-wrong-confirmation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N04-ticket-removed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N05-fabricated-ticket",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N06-foreign-session",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N07-replay",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N08-superseded",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N09-diff-edited",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N10-card-edited",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N11-path-edited",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N12-boolean-format",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N13-forged-card",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N14-no-change-apply",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N15-system",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N16-project",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N17-list",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N18-profile",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N19-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N20-scope",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N21-stale-revision",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N22-stale-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N23-stale-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N24-stale-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N25-conflict",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N26-replace-failed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N27-root-overlap",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N28-kind",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N29-null-plan",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P01-dry-run",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P02-confirmed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P03-no-change",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P04-missing",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P05-unread-note",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 34
+      },
+      "rc": 0
+    }
+  }
+}

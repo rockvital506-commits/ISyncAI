@@ -1,0 +1,56 @@
+{
+  "iteration": "И-109",
+  "metrics": {
+    "applied_cases": [
+      "P02-confirmed",
+      "P05-unread-note"
+    ],
+    "failed_replacements": 1,
+    "refused_before_write": 28,
+    "writes_without_confirmation": 0
+  },
+  "preview": {
+    "card": {
+      "card_format": 1,
+      "code": null,
+      "missing": [],
+      "operation": "create",
+      "outcome": "complete",
+      "params": {
+        "basis": "Нужна проверка",
+        "contract": "C-1",
+        "criterion": "Есть строка отчёта",
+        "entry_id": "Q-109",
+        "kind": "rule",
+        "profile": "Pilot",
+        "scope": "docs/guide",
+        "state": "draft",
+        "target": "L1",
+        "text": "Сохранить факты: без автоактивации. 🔎",
+        "title": "След диффа"
+      },
+      "questions": [],
+      "request": "Создай черновик правила Q-109 в профиле Pilot, по контракту C-1, область «docs/guide», название «След диффа», основание «Нужна проверка», критерий «Есть строка отчёта»: «Сохранить факты: без автоактивации. 🔎»"
+    },
+    "diff": {
+      "after_sha256": "6f7dcc7a64ecbabd78207c365cdce6245169289ad7400afffca31ebe79a1681e",
+      "before_sha256": "b7e62d7cb27dcc089c7a75805e12940bfcdc3e0a80e32e05b8fc121ee83b6669",
+      "file": "profiles/pilot/registry.json",
+      "revision": {
+        "from": 4,
+        "to": 5
+      },
+      "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,62 @@\n-{\"area\": \"L1\", \"entries\": [{\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-109\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0431\\u0430\\u0439\\u0442\\u044b \\u0441\\u043e\\u0441\\u0442\\u043e\\u044f\\u043d\\u0438\\u044f.\", \"id\": \"C-1\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-1\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-109\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0431\\u0430\\u0439\\u0442\\u044b \\u0441\\u043e\\u0441\\u0442\\u043e\\u044f\\u043d\\u0438\\u044f.\", \"id\": \"P-1\", \"key\": \"workflow.evidence\", \"kind\": \"rule\", \"parent\": \"C-1\", \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u041d\\u0443\\u0436\\u043d\\u044b \\u0441\\u0432\\u0438\\u0434\\u0435\\u0442\\u0435\\u043b\\u044c\\u0441\\u0442\\u0432\\u0430.\", \"title\": \"P-1\", \"value\": \"required\"}], \"revision\": 4, \"roots\": [\"profiles/pilot\"], \"schema_version\": 2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_revision\": 4,\n+    \"decisions\": [\n+      {\n+        \"entry_id\": \"Q-109\",\n+        \"entry_sha256\": \"e167a84b5b17b49c15b52482644c180243ae0fd4c8c3728f027e2437a4c5abff\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 5\n+      }\n+    ]\n+  },\n+  \"profile_format\": 1,\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-109\",\n+        \"criterion\": \"Сверить байты состояния.\",\n+        \"id\": \"C-1\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-1\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-109\",\n+        \"criterion\": \"Сверить байты состояния.\",\n+        \"id\": \"P-1\",\n+        \"key\": \"workflow.evidence\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-1\",\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Нужны свидетельства.\",\n+        \"title\": \"P-1\",\n+        \"value\": \"required\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Нужна проверка\",\n+        \"criterion\": \"Есть строка отчёта\",\n+        \"id\": \"Q-109\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-1\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"draft\",\n+        \"text\": \"Сохранить факты: без автоактивации. 🔎\",\n+        \"title\": \"След диффа\"\n+      }\n+    ],\n+    \"revision\": 5,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  }\n+}\n"
+    },
+    "dry_run": true,
+    "inputs_sha256": {
+      "L0": "3a3039e8d63b798e3d685983cbf83f0fc60544e57b091337e47e29b288fe2e33",
+      "L1": "b7e62d7cb27dcc089c7a75805e12940bfcdc3e0a80e32e05b8fc121ee83b6669",
+      "L2": "f41c4f9222dc65c0ee23277088ecad71d8d98546979772fd1736a561261b4305"
+    },
+    "outcome": "planned",
+    "plan_format": 1
+  },
+  "source": "CHECKOUT.json: P01-dry-run",
+  "ticket_redacted": true
+}

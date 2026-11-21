@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И‑109 · План и билет</title><style>
+:root {color-scheme:light;--ink:#222b36;--muted:#52616f;--line:#dce5ec;--wash:#eef4f9;--accent:#204b71}
+* {box-sizing:border-box} body {margin:0;background:#fcfdff;color:var(--ink);font:1rem/1.55 system-ui,sans-serif}
+header {background:var(--wash);border-bottom:1px solid var(--line)} header>div,main {max-width:64rem;margin:auto;padding:1.4rem max(1rem,3vw)}
+h1 {font-size:clamp(2.05rem,4vw,3.3rem);line-height:1.08;text-wrap:balance;margin:.4em 0} h2 {margin-top:1.7em}
+a {color:var(--accent);text-underline-offset:.19em} .meta {color:var(--muted)} .status {font-weight:bold;color:#1b5e48}
+.cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.65rem} article {padding:.8rem 1rem;background:white;border:1px solid var(--line);border-radius:.5rem} article strong {display:block}
+blockquote {margin:.65rem 0;border-left:.24rem solid #91afc6;padding:.2rem .8rem} dl {display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem} dt {font-weight:650} dd {margin:0}
+summary {cursor:pointer;font-weight:bold} pre {background:var(--wash);border-radius:.45rem;padding:.75rem;white-space:pre-wrap;overflow-wrap:anywhere} code {overflow-wrap:anywhere}
+</style></head><body><header><div><p class="meta">И‑109 · Ф2. Промпт-компилятор и диалог · P0</p>
+<h1>Дифф до записи: план и отдельный билет</h1><p class="status">Проверки приняты</p>
+<p>Сначала карточка и точный dry-run. Затем отдельное подтверждение и сверка актуальности. При успехе — один файл чернового профиля L1.</p></div></header>
+<main><div class="cards">
+<article><a href="CHECKOUT.json">П3 · checkout</a><strong>34 pass / 0 fail / 0 not run</strong></article>
+<article><a href="CLEANROOM.json">П4 · чистая копия</a><strong>34 pass / 0 fail / 0 not run</strong></article>
+<article><a href="ACCEPTANCE.json">П5 · приёмка</a><strong>6 pass / 0 fail / 4 not run</strong></article></div>
+<h2>Фраза и дифф одного файла</h2><blockquote>Создай черновик правила Q-109 в профиле Pilot, по контракту C-1, область «docs/guide», название «След диффа», основание «Нужна проверка», критерий «Есть строка отчёта»: «Сохранить факты: без автоактивации. 🔎»</blockquote><dl><dt>Цель</dt><dd><code>profiles/pilot/registry.json</code></dd><dt>Ревизия L1</dt><dd>4 → 5</dd><dt>SHA‑256 после</dt><dd><code>6f7dcc7a64ecbabd78207c365cdce6245169289ad7400afffca31ebe79a1681e</code></dd></dl><details><summary>Показать точный дифф</summary><pre>--- a/profiles/pilot/registry.json
++++ b/profiles/pilot/registry.json
+@@ -1 +1,62 @@
+-{&quot;area&quot;: &quot;L1&quot;, &quot;entries&quot;: [{&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-109&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0431\u0430\u0439\u0442\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u044f.&quot;, &quot;id&quot;: &quot;C-1&quot;, &quot;kind&quot;: &quot;contract&quot;, &quot;parent&quot;: null, &quot;scope&quot;: &quot;docs&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0423\u0441\u043b\u043e\u0432\u0438\u044f \u0441\u0442\u0435\u043d\u0434\u0430.&quot;, &quot;title&quot;: &quot;C-1&quot;}, {&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-109&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0431\u0430\u0439\u0442\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u044f.&quot;, &quot;id&quot;: &quot;P-1&quot;, &quot;key&quot;: &quot;workflow.evidence&quot;, &quot;kind&quot;: &quot;rule&quot;, &quot;parent&quot;: &quot;C-1&quot;, &quot;scope&quot;: &quot;docs&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u041d\u0443\u0436\u043d\u044b \u0441\u0432\u0438\u0434\u0435\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430.&quot;, &quot;title&quot;: &quot;P-1&quot;, &quot;value&quot;: &quot;required&quot;}], &quot;revision&quot;: 4, &quot;roots&quot;: [&quot;profiles/pilot&quot;], &quot;schema_version&quot;: 2}
+\ No newline at end of file
++{
++  &quot;journal&quot;: {
++    &quot;base_revision&quot;: 4,
++    &quot;decisions&quot;: [
++      {
++        &quot;entry_id&quot;: &quot;Q-109&quot;,
++        &quot;entry_sha256&quot;: &quot;e167a84b5b17b49c15b52482644c180243ae0fd4c8c3728f027e2437a4c5abff&quot;,
++        &quot;operation&quot;: &quot;create&quot;,
++        &quot;profile_revision&quot;: 5
++      }
++    ]
++  },
++  &quot;profile_format&quot;: 1,
++  &quot;registry&quot;: {
++    &quot;area&quot;: &quot;L1&quot;,
++    &quot;entries&quot;: [
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-109&quot;,
++        &quot;criterion&quot;: &quot;Сверить байты состояния.&quot;,
++        &quot;id&quot;: &quot;C-1&quot;,
++        &quot;kind&quot;: &quot;contract&quot;,
++        &quot;parent&quot;: null,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Условия стенда.&quot;,
++        &quot;title&quot;: &quot;C-1&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-109&quot;,
++        &quot;criterion&quot;: &quot;Сверить байты состояния.&quot;,
++        &quot;id&quot;: &quot;P-1&quot;,
++        &quot;key&quot;: &quot;workflow.evidence&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-1&quot;,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Нужны свидетельства.&quot;,
++        &quot;title&quot;: &quot;P-1&quot;,
++        &quot;value&quot;: &quot;required&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Нужна проверка&quot;,
++        &quot;criterion&quot;: &quot;Есть строка отчёта&quot;,
++        &quot;id&quot;: &quot;Q-109&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-1&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;draft&quot;,
++        &quot;text&quot;: &quot;Сохранить факты: без автоактивации. 🔎&quot;,
++        &quot;title&quot;: &quot;След диффа&quot;
++      }
++    ],
++    &quot;revision&quot;: 5,
++    &quot;roots&quot;: [
++      &quot;profiles/pilot&quot;
++    ],
++    &quot;schema_version&quot;: 2
++  }
++}
+</pre></details><p><a href="PLAN.json">Наблюдавшийся план без билета</a> · <a href="../../kit/base/OPERATION-PLAN.md">Контракт сессии</a></p><h2>Без отдельного подтверждения — без записи</h2><p>Записей без подтверждения: <strong>0</strong>. Отказов до попытки записи: 28. Отдельный отказ <code>os.replace</code> не оставил записи, решения или временного файла.</p>
+<h2>Не выполнялось</h2><ul><li><strong>Исполнение остальных операций, изменение L2, диалог и bootstrap.</strong> И-110–И-112; проверен только карточный путь create rule/draft в L1.</li><li><strong>Удостоверение владельца, реальная авторизация, параллельные писатели, ACL/NTFS, авария питания и восстановление.</strong> Временные Linux-фикстуры и один писатель. Подтверждение в тестах синтетическое.</li><li><strong>Активация, разрешение конфликтов, регистрация R-2, перенос, миграция и живые адаптеры.</strong> Эта граница даёт черновик и журнал, не действующее правило, не перенос и не пригодность Kit.</li><li><strong>Новые прогоны 0.1.36 и ISAI.</strong> Целевой порт не зависит от доноров; история остаётся в их снимках.</li></ul>
+<h2>Печать и повтор</h2><p><a href="AgentContractKit-Iteration-109.zip">Архив с приёмкой</a> · 30 файлов · 438358 байт ·
+<a href="REPLAY.json">повтор: ok</a></p><p>SHA‑256 <code>21c6a38d347bf119edbddec798d7faf671dcf290d8d93e8464b18de1e5a3674a</code></p>
+<p><a href="REPORT.md">Отчёт и критерии</a> · <a href="DESIGN.md">Замысел</a> · <a href="../STRATEGY.md">Стратегия</a></p>
+<p class="meta">И-110 — исполнители манипуляций register/list/edit/suspend/resume/revoke/delete в L1 и L2; не начата.</p></main></body></html>

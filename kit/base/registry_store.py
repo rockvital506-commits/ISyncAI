@@ -31,8 +31,19 @@ class _Loaded:
     roots: dict
     files: dict
     documents: dict
-    profile_sha256: str
+    inputs_sha256: dict
+    profile_bytes: bytes
     journal: dict
+
+
+@dataclass(frozen=True)
+class CreatePreview:
+    """Снимок нативного плана и байтов для слоя карточек, без записи."""
+
+    store_plan: dict
+    inputs_sha256: dict
+    before: bytes
+    after: bytes
 
 
 def _declared_roots(layout):
@@ -93,8 +104,7 @@ def _load(layout):
             raise StoreError('profile_root_conflict', roots['L1'])
         identities.add(identity)
 
-    files, documents = {}, {}
-    profile_sha256 = journal = None
+    files, documents, inputs_sha256 = {}, {}, {}
     for area, suffix in _SUFFIX.items():
         rel = roots[area] + '/' + suffix
         path, _ = _existing(workspace, rel, registry=True)
@@ -105,7 +115,7 @@ def _load(layout):
         try:
             if area == 'L1':
                 document, journal = profile_journal.unpack_profile(schema_v2.parse_json(raw))
-                profile_sha256 = sha256(raw).hexdigest()
+                profile_bytes = raw
             else:
                 document = schema_v2.validate_json(raw, expected_area=area)
         except schema_v2.SchemaError as error:
@@ -114,7 +124,8 @@ def _load(layout):
         if document['roots'] != [roots[area]]:
             raise StoreError('root_mismatch', rel)
         files[area], documents[area] = path, document
-    return _Loaded(workspace, roots, files, documents, profile_sha256, journal)
+        inputs_sha256[area] = sha256(raw).hexdigest()
+    return _Loaded(workspace, roots, files, documents, inputs_sha256, profile_bytes, journal)
 
 
 def _status(current, profile):
@@ -178,7 +189,7 @@ def _plan(current, entry):
     if conflicts:
         raise StoreError('rule_conflict', 'entries', details={'conflicts': conflicts})
     plan.update(revision={'from': revision, 'to': candidate['revision']}, add=dict(entry))
-    ticket_input = {'workspace': str(current.workspace), 'profile_sha256': current.profile_sha256, 'plan': plan}
+    ticket_input = {'workspace': str(current.workspace), 'profile_sha256': current.inputs_sha256['L1'], 'plan': plan}
     plan['ticket'] = sha256(_wire(ticket_input)).hexdigest()
     return plan, candidate
 
@@ -188,6 +199,20 @@ def plan_create(layout, entry, *, target='L1'):
     check_operation('create', target=target)
     plan, _ = _plan(_load(layout), entry)
     return plan
+
+
+def _creation_bytes(candidate, journal):
+    profile = profile_journal.with_creation(candidate, journal)
+    return (json.dumps(profile, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + '\n').encode('utf-8')
+
+
+def preview_create(layout, entry, *, target='L1'):
+    """Сформировать точные будущие байты тем же путём, что и при записи."""
+    check_operation('create', target=target)
+    current = _load(layout)
+    plan, candidate = _plan(current, entry)
+    after = current.profile_bytes if candidate is None else _creation_bytes(candidate, current.journal)
+    return CreatePreview(plan, current.inputs_sha256, current.profile_bytes, after)
 
 
 def _replace(profile, raw, rel):
@@ -207,7 +232,7 @@ def _replace(profile, raw, rel):
         raise StoreError('write_failed', rel) from error
 
 
-def apply_create(layout, plan, *, confirmed_ticket):
+def apply_create(layout, plan, *, confirmed_ticket, preview=None):
     """Записать только актуальный план создания L1; вызов не удостоверяет владельца."""
     if type(plan) is not dict:
         raise StoreError('plan_mismatch', 'plan')
@@ -222,13 +247,20 @@ def apply_create(layout, plan, *, confirmed_ticket):
     if steps['from'] != current.documents['L1']['revision']:
         raise StoreError('stale_revision', 'revision/from')
     expected, candidate = _plan(current, plan.get('add'))
+    if preview is not None:
+        if type(preview) is not CreatePreview:
+            raise StoreError('plan_mismatch', 'preview')
+        for area, digest in sorted(current.inputs_sha256.items()):
+            if digest != preview.inputs_sha256.get(area):
+                raise StoreError('stale_plan', 'inputs/' + area)
     try:
         same = candidate is not None and _wire(plan) == _wire(expected)
     except (TypeError, ValueError, RecursionError):
         same = False
     if not same:
         raise StoreError('plan_mismatch', 'plan')
-    profile = profile_journal.with_creation(candidate, current.journal)
-    raw = (json.dumps(profile, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + '\n').encode('utf-8')
+    raw = _creation_bytes(candidate, current.journal)
+    if preview is not None and raw != preview.after:
+        raise StoreError('plan_mismatch', 'diff')
     _replace(current.files['L1'], raw, expected['registry'])
     return _status(current, candidate)
