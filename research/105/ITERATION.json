@@ -1,0 +1,67 @@
+{
+  "id": "105",
+  "title": "Раздельные корни и первая запись в L1",
+  "date": "2026-11-18",
+  "branch": "arena/4e000a5e-isyncai",
+  "phase": "Ф1. Модель данных",
+  "priority": "P0",
+  "baseline": "71f5b10 · v1.6",
+  "target_inputs": [
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/CASES.json",
+    "research/105/test_layout.py"
+  ],
+  "casebook_sha256": "c6dae7a6e41d1ceb73c109af0c19298d58ed876d0135fb3ed11b4edb2c8a8263",
+  "case_counts": {
+    "positive": 3,
+    "negative": 14
+  },
+  "seal_members": [
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/104/ACCEPTANCE.json",
+    "research/105/ACCEPTANCE.json",
+    "research/105/CASES.json",
+    "research/105/CHECKOUT.json",
+    "research/105/CLEANROOM.json",
+    "research/105/DESIGN.md",
+    "research/105/ITERATION.json",
+    "research/105/REPORT.md",
+    "research/105/render105.py",
+    "research/105/run.py",
+    "research/105/test_layout.py",
+    "research/STRATEGY.md",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py"
+  ],
+  "not_run": [
+    {
+      "what": "Десять регистраций, журнал с profile_revision и история no_change/устаревших планов.",
+      "why": "И-106; доказана одна запись, журнал не добавлен."
+    },
+    {
+      "what": "Полная таблица операций × область, причин отказа, конфликты и права вызывающего.",
+      "why": "И-107/И-116; проверен только узкий путь записи одного черновика в L1."
+    },
+    {
+      "what": "NTFS/junction/ACL, конкурентная замена путей, сбои питания и восстановление.",
+      "why": "Пробы на Linux, стабильное локальное дерево, один писатель. Инъекция отказа замены не моделирует сбой ФС."
+    },
+    {
+      "what": "Промпт и дозапрос, регистрация R-2, промоушен, установка, миграция и живые среды.",
+      "why": "Ф2–Ф3, Ф7–Ф8; синтетический T-2 — не пользовательская регистрация и не активация."
+    },
+    {
+      "what": "Новый нативный прогон донора 0.1.36.",
+      "why": "Сохранённые контрольные наблюдения И-103/И-104 достаточны для сравнения; не зависимость текущей приёмки."
+    }
+  ],
+  "next": "И-106 — десять регистраций в рабочем L1 и журнал решений с profile_revision; И-106 ещё не начата."
+}

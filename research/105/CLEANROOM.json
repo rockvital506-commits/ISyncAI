@@ -1,0 +1,525 @@
+{
+  "files_after": [
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/CASES.json",
+    "research/105/test_layout.py"
+  ],
+  "files_before": [
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/CASES.json",
+    "research/105/test_layout.py"
+  ],
+  "inputs_sha256": {
+    "kit/base/SCHEMA-V2.md": "625b043bb0a998ea5bba66e14cb1bcebc417b3fbba3fdce9bcf7b2a4b44b59e0",
+    "kit/base/STORAGE-V2.md": "9782fd332f011cb91b3969df64042c16539797951a6253c218f7599e42208e93",
+    "kit/base/registry_store.py": "c3e371162f2b19d98daf607b6cb4fe568f40cbba3c5fd469ab9207f2f2a0e3ac",
+    "kit/base/schema_v2.py": "5b1a66b91bb071aacaf1eb93cbc833edafce2f1523134cc4c122c4f381574ccc",
+    "research/105/CASES.json": "c6dae7a6e41d1ceb73c109af0c19298d58ed876d0135fb3ed11b4edb2c8a8263",
+    "research/105/test_layout.py": "c8b62743faa20f01321e97f615d1cf0e55e62a2a5569f8f4ad26e26a6331b748"
+  },
+  "rc": 0,
+  "result": {
+    "os": "Linux",
+    "rows": [
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "P01-status",
+        "observed": {
+          "changed": [],
+          "distinct_directories": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "status": {
+            "profile_revision": 0,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.105",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "16bc8a31badd4d9cdb5746a5044d029ea1e48fd602541aa97c89c83583a5d03c",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "P02-create",
+        "observed": {
+          "after": {
+            "profile_revision": 1,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.105",
+            "schema_version": 2
+          },
+          "before": {
+            "profile_revision": 0,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.105",
+            "schema_version": 2
+          },
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "diff": {
+            "added": {
+              "id": "T-2",
+              "kind": "rule",
+              "parent": "T-1",
+              "state": "draft"
+            },
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 0,
+              "to": 1
+            },
+            "target": "L1"
+          },
+          "exact_append": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "plan_changed": [],
+          "registry_replaced": true,
+          "returned_matches_readback": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "c7860cc4d09a0630a4360f3ff6b1c0ba95b2aebbdac980227c5e36cd9f4e01f4",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "c7860cc4d09a0630a4360f3ff6b1c0ba95b2aebbdac980227c5e36cd9f4e01f4",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "P03-explicit-root",
+        "observed": {
+          "changed": [],
+          "distinct_directories": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "status": {
+            "profile_revision": 0,
+            "profile_root": "kit-profile/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.105",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "b122df8357e2fdb1648eab0c8ff9af8c47300b91cc7ed1c2c77256fb3a84e057",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "f8f6c02307a6ae18105f4a5ddcfe624690c30807f3c48d8d16b19870d85e84e9",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "b122df8357e2fdb1648eab0c8ff9af8c47300b91cc7ed1c2c77256fb3a84e057",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "f8f6c02307a6ae18105f4a5ddcfe624690c30807f3c48d8d16b19870d85e84e9",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N01-within-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "profile_root_conflict",
+            "where": "kit/profiles/pilot"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "d30245806fbccfe9ba234d11d9aa5d6b7eb034f79c23105e284df5b39c02cc96",
+            "L2": "d2e499e3b4390f9a21e02af3c9b1aad509361e018c50d0ad504862491272018f"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "d30245806fbccfe9ba234d11d9aa5d6b7eb034f79c23105e284df5b39c02cc96",
+            "L2": "d2e499e3b4390f9a21e02af3c9b1aad509361e018c50d0ad504862491272018f"
+          }
+        },
+        "id": "N02-within-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "profile_root_conflict",
+            "where": ".agent-contract/profiles/pilot"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N03-write-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "159b28062be4ba530b27584a56bc5207df30a99d7e19fe0eea77251d762953d6",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "159b28062be4ba530b27584a56bc5207df30a99d7e19fe0eea77251d762953d6",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N04-roots-mismatch",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "root_mismatch",
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "519a9e4173f1b40593c379160474b2a4f501dfd553d19486d08f4fd6d2c33e7f",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "519a9e4173f1b40593c379160474b2a4f501dfd553d19486d08f4fd6d2c33e7f",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N05-area-mismatch",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_registry",
+            "schema": {
+              "code": "area_mismatch",
+              "path": "/area",
+              "stage": "shape"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "3b54033df1751fa60d9196f0112149da57b782aa86970aa27c036e6eb24f3ca7",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "3b54033df1751fa60d9196f0112149da57b782aa86970aa27c036e6eb24f3ca7",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N06-missing",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "missing_path",
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "734caa671df4afe79a83392294add15da383d5fdf9bc1e73f82f0c02afb70f81",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "734caa671df4afe79a83392294add15da383d5fdf9bc1e73f82f0c02afb70f81",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N07-root-symlink",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "unsafe_path",
+            "where": "profiles/pilot"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "8bebd1239597520187c4e6e17f93288c6f211b458bc5e52a530e5fcba349836d",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "8bebd1239597520187c4e6e17f93288c6f211b458bc5e52a530e5fcba349836d",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N08-file-symlink",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "unsafe_path",
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "61a2179332da64861e9d1508e0ec70ca445ffb47f9091053e2ef06035d21af2d",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "61a2179332da64861e9d1508e0ec70ca445ffb47f9091053e2ef06035d21af2d",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N09-file-hardlink",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "unsafe_path",
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N10-no-confirmation",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "confirmation_required",
+            "where": "confirmed_ticket"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N11-altered-plan",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "plan_mismatch",
+            "where": "plan"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N12-no-parent",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_entry",
+            "schema": {
+              "code": "parent_missing",
+              "path": "/entries/1/parent",
+              "stage": "links"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N13-active-entry",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "unsupported_entry",
+            "where": "L1"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          },
+          "before": {
+            "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+            "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+            "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+            "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+          }
+        },
+        "id": "N14-replace-denied",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "write_failed",
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false
+        }
+      }
+    ]
+  },
+  "sources_unchanged": true,
+  "whole_copy_unchanged": true
+}

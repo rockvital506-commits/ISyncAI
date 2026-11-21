@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-105 · Раздельные корни</title><style>
+:root {color-scheme:light;--bg:#fbfcfe;--muted:#415873;--line:#d9e4ef;--accent:#28528a;--ink:#152439}
+* {box-sizing:border-box} body {margin:0;font:1rem/1.55 system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header {background:#ecf4fe;border-bottom:1px solid var(--line)} header>div,main {max-width:66rem;margin:auto;padding:1.4rem max(1rem,3vw)}
+h1 {font-size:clamp(1.9rem,4vw,3rem);line-height:1.12;margin:.4rem 0} h2 {margin-top:1.8rem} a {color:var(--accent)}
+.meta {color:var(--muted)} .verdict {font-weight:700;color:#195844}
+.cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.75rem;margin:1rem 0}
+article {background:white;border:1px solid var(--line);border-radius:.65rem;padding:.8rem 1rem} article b {display:block}
+table {border-collapse:collapse;width:100%} th,td {padding:.48rem .6rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th {background:#eff5fd} code {overflow-wrap:anywhere}
+</style></head><body><header><div><p class="meta">И-105 · Ф1. Модель данных · P0</p>
+<h1>Раздельные корни и первая запись в L1</h1><p class="verdict">Прогон принят</p>
+<p>Реальные файлы L0, L1 и L2 на отдельной тестовой площадке. Без работы с пользовательскими реестрами.</p></div></header>
+<main><div class="cards">
+<article><b><a href="CHECKOUT.json">П3 · checkout</a></b>17 pass / 0 fail / 0 not run</article>
+<article><b><a href="CLEANROOM.json">П4 · без доноров</a></b>17 pass / 0 fail / 0 not run</article>
+<article><b><a href="ACCEPTANCE.json">П5 · приёмка</a></b>5 pass / 0 fail / 5 not run</article></div>
+<h2>Одна запись L1</h2><table><thead><tr><th scope="col">Поле</th><th scope="col">До</th><th scope="col">После</th></tr></thead><tbody><tr><td>L1 · profile_revision</td><td>0</td><td>1</td></tr><tr><td>L2 · project_revision</td><td>7</td><td>7</td></tr><tr><td>L0 · release_version</td><td>0.2.0-dev.105</td><td>0.2.0-dev.105</td></tr></tbody></table><p>Только <code>profiles/pilot/registry.json</code> изменился; байты и состав деревьев L0 и L2 прежние. T-2 сохранён как тестовый черновик.</p>
+<h2>Границы доказательства</h2><table><thead><tr><th scope="col">Не выполнялось</th><th scope="col">Почему</th></tr></thead><tbody><tr><td>Десять регистраций, журнал с profile_revision и история no_change/устаревших планов.</td><td>И-106; доказана одна запись, журнал не добавлен.</td></tr><tr><td>Полная таблица операций × область, причин отказа, конфликты и права вызывающего.</td><td>И-107/И-116; проверен только узкий путь записи одного черновика в L1.</td></tr><tr><td>NTFS/junction/ACL, конкурентная замена путей, сбои питания и восстановление.</td><td>Пробы на Linux, стабильное локальное дерево, один писатель. Инъекция отказа замены не моделирует сбой ФС.</td></tr><tr><td>Промпт и дозапрос, регистрация R-2, промоушен, установка, миграция и живые среды.</td><td>Ф2–Ф3, Ф7–Ф8; синтетический T-2 — не пользовательская регистрация и не активация.</td></tr><tr><td>Новый нативный прогон донора 0.1.36.</td><td>Сохранённые контрольные наблюдения И-103/И-104 достаточны для сравнения; не зависимость текущей приёмки.</td></tr></tbody></table>
+<h2>Печать и повтор</h2><p><a href="AgentContractKit-Iteration-105.zip">ZIP итерации</a> · 20 файлов · 254146 байт ·
+<a href="REPLAY.json">повтор: ok</a></p><p>SHA‑256 <code>29b69945d04323543b137c71ebd2a1285734d666d2c15ba2a840e55ddb2b3f4b</code></p>
+<p><a href="REPORT.md">Отчёт с диагностикой</a> · <a href="DESIGN.md">Замысел</a> · <a href="../../kit/base/STORAGE-V2.md">Описание хранилища</a></p>
+<p class="meta">И-106 — десять регистраций в рабочем L1 и журнал решений с profile_revision; И-106 ещё не начата.</p></main></body></html>

@@ -1,0 +1,22 @@
+{
+  "format": 1,
+  "cases": [
+    {"id": "P01-status", "basis": "§3.2; Ф1", "expected": {"ok": true, "changed": [], "l0_l2_unchanged": true, "status": {"schema_version": 2, "release_version": "0.2.0-dev.105", "profile_root": "profiles/pilot", "profile_revision": 0, "project_revision": 7}, "distinct_directories": true}},
+    {"id": "P02-create", "basis": "X02; Ф1", "expected": {"ok": true, "changed": ["profiles/pilot/registry.json"], "l0_l2_unchanged": true, "before": {"schema_version": 2, "release_version": "0.2.0-dev.105", "profile_root": "profiles/pilot", "profile_revision": 0, "project_revision": 7}, "after": {"schema_version": 2, "release_version": "0.2.0-dev.105", "profile_root": "profiles/pilot", "profile_revision": 1, "project_revision": 7}, "plan_changed": [], "diff": {"operation": "create", "target": "L1", "registry": "profiles/pilot/registry.json", "revision": {"from": 0, "to": 1}, "added": {"id": "T-2", "kind": "rule", "state": "draft", "parent": "T-1"}}, "exact_append": true, "returned_matches_readback": true, "registry_replaced": true}},
+    {"id": "P03-explicit-root", "basis": "A1; сравнение компонентов пути, не префикса имени", "expected": {"ok": true, "changed": [], "l0_l2_unchanged": true, "status": {"schema_version": 2, "release_version": "0.2.0-dev.105", "profile_root": "kit-profile/pilot", "profile_revision": 0, "project_revision": 7}, "distinct_directories": true}},
+    {"id": "N01-within-L0", "basis": "X01", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "profile_root_conflict", "where": "kit/profiles/pilot"}}},
+    {"id": "N02-within-L2", "basis": "X01; A1", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "profile_root_conflict", "where": ".agent-contract/profiles/pilot"}}},
+    {"id": "N03-write-L0", "basis": "X02; A2 (только путь И-105)", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "system_immutable", "where": "L0"}}},
+    {"id": "N04-roots-mismatch", "basis": "§3.1; внешняя привязка", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "root_mismatch", "where": "profiles/pilot/registry.json"}}},
+    {"id": "N05-area-mismatch", "basis": "§3.1; схема v2", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "invalid_registry", "where": "profiles/pilot/registry.json", "schema": {"stage": "shape", "code": "area_mismatch", "path": "/area"}}}},
+    {"id": "N06-missing", "basis": "§3.1; пустой ≠ отсутствующий", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "missing_path", "where": "profiles/pilot/registry.json"}}},
+    {"id": "N07-root-symlink", "basis": "ФС · символическая ссылка на корень", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "unsafe_path", "where": "profiles/pilot"}}},
+    {"id": "N08-file-symlink", "basis": "ФС · символическая ссылка на файл", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "unsafe_path", "where": "profiles/pilot/registry.json"}}},
+    {"id": "N09-file-hardlink", "basis": "ФС · два имени одного файла", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "unsafe_path", "where": "profiles/pilot/registry.json"}}},
+    {"id": "N10-no-confirmation", "basis": "§3.3 (техническая граница)", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "confirmation_required", "where": "confirmed_ticket"}}},
+    {"id": "N11-altered-plan", "basis": "§3.3 (техническая граница)", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "plan_mismatch", "where": "plan"}}},
+    {"id": "N12-no-parent", "basis": "A4; схема v2", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "invalid_entry", "where": "profiles/pilot/registry.json", "schema": {"stage": "links", "code": "parent_missing", "path": "/entries/1/parent"}}}},
+    {"id": "N13-active-entry", "basis": "§3.5; П1", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "unsupported_entry", "where": "L1"}}},
+    {"id": "N14-replace-denied", "basis": "П1; инъекция отказа замены", "expected": {"ok": false, "changed": [], "l0_l2_unchanged": true, "error": {"code": "write_failed", "where": "profiles/pilot/registry.json"}}}
+  ]
+}

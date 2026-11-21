@@ -1,0 +1,319 @@
+{
+  "checks": [
+    {
+      "basis": "DESIGN.md; CASES.json; ITERATION.json",
+      "check": "frozen_cases",
+      "criterion": "SHA-256 списка П2 и количество обязательных положительных и отрицательных случаев точно совпали.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json",
+      "check": "checkout",
+      "criterion": "Ровно один результат на каждый ID. Точные коды, пути, типы, статусы, списки правок и измерения деревьев; обязательный случай нельзя пропустить.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json",
+      "check": "cleanroom",
+      "criterion": "Ровно один результат на каждый ID. Точные коды, пути, типы, статусы, списки правок и измерения деревьев; обязательный случай нельзя пропустить.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json: target_inputs; CLEANROOM.json",
+      "check": "clean_inputs",
+      "criterion": "Чистая копия состоит только из входов, неизменна; нет ZIP донора, ISAI, Git или исследовательского харнесса.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "equal_and_unchanged",
+      "criterion": "Хеши источников идентичны; наблюдения на физических файлах совпали.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 5,
+    "pass": 5
+  },
+  "host_os": "Linux",
+  "iteration": "И-105",
+  "mutation": {
+    "digest": {
+      "after": {
+        "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+        "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+        "L1": "16bc8a31badd4d9cdb5746a5044d029ea1e48fd602541aa97c89c83583a5d03c",
+        "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+      },
+      "before": {
+        "L0": "c4a2a0ad9e75b530d11a7636f3b756b5d105262e8efafdecb2534ff3ccc8825c",
+        "L0_manifest": "593543a967a0469d107df4051a19fc9718baf98c3df60cf57ee4c3a4b61d4aff",
+        "L1": "6855b82a02602d6f97d46f73609accabd1e9cceae99aef5c297146fc1cfa21a8",
+        "L2": "481575925d3a9bf5d9f1a18a0a0ff350569e81df82b51e09da09fa12e2401013"
+      }
+    },
+    "id": "P02-create",
+    "observed": {
+      "after": {
+        "profile_revision": 1,
+        "profile_root": "profiles/pilot",
+        "project_revision": 7,
+        "release_version": "0.2.0-dev.105",
+        "schema_version": 2
+      },
+      "before": {
+        "profile_revision": 0,
+        "profile_root": "profiles/pilot",
+        "project_revision": 7,
+        "release_version": "0.2.0-dev.105",
+        "schema_version": 2
+      },
+      "changed": [
+        "profiles/pilot/registry.json"
+      ],
+      "diff": {
+        "added": {
+          "id": "T-2",
+          "kind": "rule",
+          "parent": "T-1",
+          "state": "draft"
+        },
+        "operation": "create",
+        "registry": "profiles/pilot/registry.json",
+        "revision": {
+          "from": 0,
+          "to": 1
+        },
+        "target": "L1"
+      },
+      "exact_append": true,
+      "l0_l2_unchanged": true,
+      "ok": true,
+      "plan_changed": [],
+      "registry_replaced": true,
+      "returned_matches_readback": true
+    }
+  },
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Десять регистраций, журнал с profile_revision и история no_change/устаревших планов.",
+      "why": "И-106; доказана одна запись, журнал не добавлен."
+    },
+    {
+      "status": "not run",
+      "what": "Полная таблица операций × область, причин отказа, конфликты и права вызывающего.",
+      "why": "И-107/И-116; проверен только узкий путь записи одного черновика в L1."
+    },
+    {
+      "status": "not run",
+      "what": "NTFS/junction/ACL, конкурентная замена путей, сбои питания и восстановление.",
+      "why": "Пробы на Linux, стабильное локальное дерево, один писатель. Инъекция отказа замены не моделирует сбой ФС."
+    },
+    {
+      "status": "not run",
+      "what": "Промпт и дозапрос, регистрация R-2, промоушен, установка, миграция и живые среды.",
+      "why": "Ф2–Ф3, Ф7–Ф8; синтетический T-2 — не пользовательская регистрация и не активация."
+    },
+    {
+      "status": "not run",
+      "what": "Новый нативный прогон донора 0.1.36.",
+      "why": "Сохранённые контрольные наблюдения И-103/И-104 достаточны для сравнения; не зависимость текущей приёмки."
+    }
+  ],
+  "outcome": "accepted",
+  "phase": "Ф1. Модель данных",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "id": "P01-status",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P02-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P03-explicit-root",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N01-within-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N02-within-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N03-write-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N04-roots-mismatch",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N05-area-mismatch",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N06-missing",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N07-root-symlink",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N08-file-symlink",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N09-file-hardlink",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N10-no-confirmation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N11-altered-plan",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N12-no-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N13-active-entry",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N14-replace-denied",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 17
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "id": "P01-status",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P02-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P03-explicit-root",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N01-within-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N02-within-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N03-write-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N04-roots-mismatch",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N05-area-mismatch",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N06-missing",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N07-root-symlink",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N08-file-symlink",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N09-file-hardlink",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N10-no-confirmation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N11-altered-plan",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N12-no-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N13-active-entry",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N14-replace-denied",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 17
+      },
+      "rc": 0
+    }
+  }
+}
