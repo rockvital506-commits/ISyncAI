@@ -1,0 +1,473 @@
+{
+  "controls": [
+    {
+      "basis": "И‑112 · П1, граница входа",
+      "criterion": "Пропавший указатель: не открывать START или реестры.",
+      "id": "S01",
+      "outcomes": [
+        "missing_path"
+      ]
+    },
+    {
+      "basis": "И‑112 · П1, граница входа",
+      "criterion": "Указатель на иной путь не открывается, даже если файл существует.",
+      "id": "S02",
+      "outcomes": [
+        "invalid_entrypoint"
+      ]
+    },
+    {
+      "basis": "И‑112 · П1, граница входа",
+      "criterion": "Правильный префикс с лишним хвостом не принимается; ≤длины указателя CRLF плюс 1 байт.",
+      "id": "S03",
+      "outcomes": [
+        "invalid_entrypoint"
+      ]
+    },
+    {
+      "basis": "И‑112 · П1, граница входа",
+      "criterion": "Указатель есть, файла нет: вход не считается доступным.",
+      "id": "S04",
+      "outcomes": [
+        "missing_path"
+      ]
+    },
+    {
+      "basis": "И‑112 · П1, граница входа",
+      "criterion": "Маркер за пределом 4096 байт: чтение прекращается в лимите; без запуска компилятора.",
+      "id": "S05",
+      "outcomes": [
+        "invalid_start_section"
+      ]
+    },
+    {
+      "basis": "И‑112 · П1, граница входа",
+      "criterion": "Битый UTF‑8 внутри §0 не заменяется молча.",
+      "id": "S06",
+      "outcomes": [
+        "invalid_start_section"
+      ]
+    },
+    {
+      "basis": "И‑112 · П1, граница входа",
+      "criterion": "Символьную ссылку на START не читать.",
+      "id": "S07",
+      "outcomes": [
+        "unsafe_path"
+      ]
+    },
+    {
+      "basis": "И‑112 · П1, граница входа",
+      "criterion": "Жёсткую ссылку на указатель не читать.",
+      "id": "S08",
+      "outcomes": [
+        "unsafe_path"
+      ]
+    },
+    {
+      "basis": "И‑112 · П1, граница входа",
+      "criterion": "CRLF допустим в обоих входах. После маркера ни байта, другой контракт/реестры не открываются.",
+      "id": "S09",
+      "outcomes": [
+        "ready"
+      ]
+    },
+    {
+      "basis": "И‑111; нет реестров",
+      "criterion": "Два уточнения: persistence и state; не считать адреса существующими, не читать порт.",
+      "id": "P01",
+      "outcomes": [
+        "ready",
+        "missing_params"
+      ]
+    },
+    {
+      "basis": "И‑111; нет реестров",
+      "criterion": "Фраза о временном режиме содержит команду как текст; non_registry без порта, диффа и билета.",
+      "id": "P02",
+      "outcomes": [
+        "ready",
+        "non_registry"
+      ]
+    },
+    {
+      "basis": "И‑108; явный адрес",
+      "criterion": "Не брать Pilot из доверенной привязки вместо явного имени в запросе.",
+      "id": "P03",
+      "outcomes": [
+        "ready",
+        "missing_params"
+      ]
+    },
+    {
+      "basis": "И‑109; адрес",
+      "criterion": "Другой профиль из фразы отклонить до порта.",
+      "id": "P04",
+      "outcomes": [
+        "ready",
+        "profile_mismatch"
+      ]
+    },
+    {
+      "basis": "A2",
+      "criterion": "Мутация неизменяемого L0 отклонена даже на неполной фразе.",
+      "id": "P05",
+      "outcomes": [
+        "ready",
+        "system_immutable"
+      ]
+    },
+    {
+      "basis": "A1",
+      "criterion": "Корень профиля внутри kit нельзя сделать целью; отказ до чтения каталога.",
+      "id": "P06",
+      "outcomes": [
+        "ready",
+        "profile_root_conflict"
+      ]
+    },
+    {
+      "basis": "A4; И‑108",
+      "criterion": "Если ссылка на родителя не указана, спросить contract без поиска в реестрах.",
+      "id": "P07",
+      "outcomes": [
+        "ready",
+        "missing_params"
+      ]
+    },
+    {
+      "basis": "A4; размещение родителя",
+      "criterion": "C-112 только в L2; дочерний L1 не может позаимствовать его.",
+      "id": "P08",
+      "outcomes": [
+        "ready",
+        "parent"
+      ]
+    },
+    {
+      "basis": "A4; вложенность scope",
+      "criterion": "docs2 не содержится в docs даже при существующем локальном родителе.",
+      "id": "P09",
+      "outcomes": [
+        "ready",
+        "parent"
+      ]
+    },
+    {
+      "basis": "A3",
+      "criterion": "Существующее противоречие L0/L1 видно с обеими сторонами; ни один слой не объявлен победителем.",
+      "id": "P10",
+      "outcomes": [
+        "ready",
+        "rule_conflict"
+      ]
+    },
+    {
+      "basis": "COMPATIBILITY.json; частичный v2",
+      "criterion": "Нет файла L2: не создать пустой, не предложить дифф и не заменить L1.",
+      "id": "P11",
+      "outcomes": [
+        "ready",
+        "missing_path"
+      ]
+    },
+    {
+      "basis": "COMPATIBILITY.json; старый формат",
+      "criterion": "Неподдержанная схема L1 не равна пустому файлу; без преобразования, диффа и билета.",
+      "id": "P12",
+      "outcomes": [
+        "ready",
+        "invalid_registry"
+      ]
+    },
+    {
+      "basis": "И‑108–111; state",
+      "criterion": "Явная регистрация без состояния требует уточнения; draft не подставляется.",
+      "id": "P13",
+      "outcomes": [
+        "ready",
+        "missing_params"
+      ]
+    },
+    {
+      "basis": "И‑109–111; точное согласие на дифф",
+      "criterion": "Даже показанный точный план без отдельного билета не даёт записи.",
+      "id": "C01",
+      "outcomes": [
+        "ready",
+        "planned",
+        "confirmation_required"
+      ]
+    },
+    {
+      "basis": "И‑109–111; точное согласие на дифф",
+      "criterion": "Иной билет при правильном диффе не разрешает запись.",
+      "id": "C02",
+      "outcomes": [
+        "ready",
+        "planned",
+        "confirmation_required"
+      ]
+    },
+    {
+      "basis": "И‑109–111; точное согласие на дифф",
+      "criterion": "С тем же билетом подменённый текст диффа отклонён до чтения файлов.",
+      "id": "C03",
+      "outcomes": [
+        "ready",
+        "planned",
+        "plan_mismatch"
+      ]
+    },
+    {
+      "basis": "И‑109–111; точное согласие на дифф",
+      "criterion": "L2 изменился после показа при прежней ревизии: повторное чтение → stale_plan; тот же билет далее ticket_unknown.",
+      "id": "C04",
+      "outcomes": [
+        "ready",
+        "planned",
+        "stale_plan",
+        "ticket_unknown"
+      ]
+    },
+    {
+      "basis": "И‑109–111; точное согласие на дифф",
+      "criterion": "Новый запрос временного режима отзывает старый билет; он не наследуется и не пишет.",
+      "id": "C05",
+      "outcomes": [
+        "ready",
+        "planned",
+        "non_registry",
+        "ticket_unknown"
+      ]
+    }
+  ],
+  "iteration": "И-112",
+  "metrics": {
+    "changed_by_product": {
+      "B01": [
+        "profiles/pilot/registry.json"
+      ]
+    },
+    "max_start_read_bytes": 4116,
+    "replacement_count": 1,
+    "steps": 3,
+    "unique_bootstrap_files": [
+      "kit/base/START.md",
+      "kit/base/entry.txt"
+    ],
+    "unread_start_tail_bytes": 728,
+    "write_attempt_cases": [
+      "B01"
+    ]
+  },
+  "source": "CHECKOUT.json; подтверждено CLEANROOM.json",
+  "witness": {
+    "changed": [
+      "profiles/pilot/registry.json"
+    ],
+    "files": [
+      ".agent-contract/project/registry.json",
+      "kit/base/OPERATION-CARD.md",
+      "kit/base/OPERATION-PLAN.md",
+      "kit/base/SCHEMA-V2.md",
+      "kit/base/START.md",
+      "kit/base/STORAGE-V2.md",
+      "kit/base/entry.txt",
+      "kit/base/registry.json",
+      "profiles/pilot/registry.json"
+    ],
+    "injected": [],
+    "steps": [
+      {
+        "changed": [],
+        "events": [
+          "read:kit/base/entry.txt",
+          "read:kit/base/START.md"
+        ],
+        "reads": [
+          {
+            "bytes": 20,
+            "file": "kit/base/entry.txt",
+            "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+          },
+          {
+            "bytes": 2363,
+            "file": "kit/base/START.md",
+            "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+          }
+        ],
+        "reply": {
+          "inputs": [
+            {
+              "bytes": 20,
+              "file": "kit/base/entry.txt",
+              "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+            },
+            {
+              "bytes": 2363,
+              "file": "kit/base/START.md",
+              "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+            }
+          ],
+          "outcome": "ready",
+          "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+        },
+        "step": "bootstrap"
+      },
+      {
+        "changed": [],
+        "events": [
+          "compile",
+          "verify-card",
+          "read:profiles/pilot/registry.json",
+          "read:kit/base/registry.json",
+          "read:.agent-contract/project/registry.json"
+        ],
+        "reads": [
+          {
+            "bytes": 85,
+            "file": "profiles/pilot/registry.json",
+            "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+          },
+          {
+            "bytes": 95,
+            "file": "kit/base/registry.json",
+            "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+          },
+          {
+            "bytes": 86,
+            "file": ".agent-contract/project/registry.json",
+            "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+          }
+        ],
+        "reply": {
+          "card": {
+            "card_format": 1,
+            "code": null,
+            "missing": [],
+            "operation": "create",
+            "outcome": "complete",
+            "params": {
+              "basis": "Проба И‑112",
+              "criterion": "В реестре один черновик",
+              "entry_id": "C-112",
+              "kind": "contract",
+              "profile": "Pilot",
+              "scope": "docs",
+              "state": "draft",
+              "target": "L1",
+              "text": "Согласуем порядок чтения.",
+              "title": "Первый договор"
+            },
+            "questions": [],
+            "request": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+          },
+          "diff": {
+            "after_sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed",
+            "before_sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+            "file": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 0,
+              "to": 1
+            },
+            "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,38 @@\n-{\"area\":\"L1\",\"entries\":[],\"revision\":0,\"roots\":[\"profiles/pilot\"],\"schema_version\":2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {},\n+    \"base_revision\": 0,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": \"86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a\",\n+        \"before_sha256\": null,\n+        \"entry_id\": \"C-112\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 1\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Проба И‑112\",\n+        \"criterion\": \"В реестре один черновик\",\n+        \"id\": \"C-112\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"draft\",\n+        \"text\": \"Согласуем порядок чтения.\",\n+        \"title\": \"Первый договор\"\n+      }\n+    ],\n+    \"revision\": 1,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+          },
+          "dry_run": true,
+          "inputs_sha256": {
+            "L0": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01",
+            "L1": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+            "L2": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+          },
+          "outcome": "planned",
+          "plan_format": 1,
+          "ticket_state": "issued"
+        },
+        "step": "phrase"
+      },
+      {
+        "changed": [
+          "profiles/pilot/registry.json"
+        ],
+        "events": [
+          "read:profiles/pilot/registry.json",
+          "read:kit/base/registry.json",
+          "read:.agent-contract/project/registry.json",
+          "stage:profiles/pilot",
+          "allocate:profiles/pilot/.registry-*.tmp",
+          "write:profiles/pilot/.registry-*.tmp",
+          "replace:profiles/pilot/.registry-*.tmp→profiles/pilot/registry.json"
+        ],
+        "reads": [
+          {
+            "bytes": 85,
+            "file": "profiles/pilot/registry.json",
+            "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+          },
+          {
+            "bytes": 95,
+            "file": "kit/base/registry.json",
+            "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+          },
+          {
+            "bytes": 86,
+            "file": ".agent-contract/project/registry.json",
+            "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+          }
+        ],
+        "reply": {
+          "outcome": "applied",
+          "status": {
+            "profile_revision": 1,
+            "profile_root": "profiles/pilot",
+            "project_revision": 0,
+            "release_version": "0.2.0-dev.112",
+            "schema_version": 2
+          }
+        },
+        "step": "confirmation"
+      }
+    ],
+    "stored": {
+      "document": {
+        "journal": {
+          "base_entries": {},
+          "base_revision": 0,
+          "decisions": [
+            {
+              "after_sha256": "86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a",
+              "before_sha256": null,
+              "entry_id": "C-112",
+              "operation": "create",
+              "profile_revision": 1
+            }
+          ]
+        },
+        "registry": {
+          "area": "L1",
+          "entries": [
+            {
+              "authority": "profile_owner",
+              "basis": "Проба И‑112",
+              "criterion": "В реестре один черновик",
+              "id": "C-112",
+              "kind": "contract",
+              "parent": null,
+              "scope": "docs",
+              "state": "draft",
+              "text": "Согласуем порядок чтения.",
+              "title": "Первый договор"
+            }
+          ],
+          "revision": 1,
+          "roots": [
+            "profiles/pilot"
+          ],
+          "schema_version": 2
+        },
+        "registry_format": 2
+      },
+      "sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed"
+    }
+  }
+}

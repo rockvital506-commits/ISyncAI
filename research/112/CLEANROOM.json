@@ -1,0 +1,2669 @@
+{
+  "files_after": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/START.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/bootstrap.py",
+    "kit/base/entry.txt",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/112/CASES.json",
+    "research/112/test_bootstrap.py"
+  ],
+  "files_before": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/START.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/bootstrap.py",
+    "kit/base/entry.txt",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/112/CASES.json",
+    "research/112/test_bootstrap.py"
+  ],
+  "inputs_sha256": {
+    "kit/base/OPERATION-CARD.md": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+    "kit/base/OPERATION-PLAN.md": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+    "kit/base/SCHEMA-V2.md": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+    "kit/base/START.md": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+    "kit/base/STORAGE-V2.md": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+    "kit/base/bootstrap.py": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+    "kit/base/entry.txt": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+    "kit/base/operation_card.py": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+    "kit/base/operation_plan.py": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/112/CASES.json": "ae9b52229e6ee7932d92a7729032055de02c30b7bc6e7d0d883ec6e7e20ec463",
+    "research/112/test_bootstrap.py": "156a3acbc86b49a862d9b5bfaa58e1ea409d6111e07d3d2d7a705c2df7334f1e"
+  },
+  "inputs_unchanged": true,
+  "rc": 0,
+  "result": {
+    "baseline": null,
+    "counts": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 28
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "B01",
+        "mismatches": [],
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 86,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                }
+              ],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": null,
+                  "missing": [],
+                  "operation": "create",
+                  "outcome": "complete",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "C-112",
+                    "kind": "contract",
+                    "profile": "Pilot",
+                    "scope": "docs",
+                    "state": "draft",
+                    "target": "L1",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  },
+                  "questions": [],
+                  "request": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "diff": {
+                  "after_sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed",
+                  "before_sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "file": "profiles/pilot/registry.json",
+                  "revision": {
+                    "from": 0,
+                    "to": 1
+                  },
+                  "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,38 @@\n-{\"area\":\"L1\",\"entries\":[],\"revision\":0,\"roots\":[\"profiles/pilot\"],\"schema_version\":2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {},\n+    \"base_revision\": 0,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": \"86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a\",\n+        \"before_sha256\": null,\n+        \"entry_id\": \"C-112\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 1\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Проба И‑112\",\n+        \"criterion\": \"В реестре один черновик\",\n+        \"id\": \"C-112\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"draft\",\n+        \"text\": \"Согласуем порядок чтения.\",\n+        \"title\": \"Первый договор\"\n+      }\n+    ],\n+    \"revision\": 1,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+                },
+                "dry_run": true,
+                "inputs_sha256": {
+                  "L0": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01",
+                  "L1": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "L2": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                },
+                "outcome": "planned",
+                "plan_format": 1,
+                "ticket_state": "issued"
+              },
+              "step": "phrase"
+            },
+            {
+              "changed": [
+                "profiles/pilot/registry.json"
+              ],
+              "events": [
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json",
+                "stage:profiles/pilot",
+                "allocate:profiles/pilot/.registry-*.tmp",
+                "write:profiles/pilot/.registry-*.tmp",
+                "replace:profiles/pilot/.registry-*.tmp→profiles/pilot/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 86,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                }
+              ],
+              "reply": {
+                "outcome": "applied",
+                "status": {
+                  "profile_revision": 1,
+                  "profile_root": "profiles/pilot",
+                  "project_revision": 0,
+                  "release_version": "0.2.0-dev.112",
+                  "schema_version": 2
+                }
+              },
+              "step": "confirmation"
+            }
+          ],
+          "stored": {
+            "document": {
+              "journal": {
+                "base_entries": {},
+                "base_revision": 0,
+                "decisions": [
+                  {
+                    "after_sha256": "86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a",
+                    "before_sha256": null,
+                    "entry_id": "C-112",
+                    "operation": "create",
+                    "profile_revision": 1
+                  }
+                ]
+              },
+              "registry": {
+                "area": "L1",
+                "entries": [
+                  {
+                    "authority": "profile_owner",
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "id": "C-112",
+                    "kind": "contract",
+                    "parent": null,
+                    "scope": "docs",
+                    "state": "draft",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  }
+                ],
+                "revision": 1,
+                "roots": [
+                  "profiles/pilot"
+                ],
+                "schema_version": 2
+              },
+              "registry_format": 2
+            },
+            "sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed"
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S01",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "missing_path",
+                  "where": "kit/base/entry.txt"
+                },
+                "outcome": "refused"
+              },
+              "step": "bootstrap"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S02",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/OTHER.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "37ce65abedb5b251323bb584aa1df7aba1ed7511bb19c06febe48f4d38d358dd"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "invalid_entrypoint",
+                  "where": "kit/base/entry.txt"
+                },
+                "outcome": "refused"
+              },
+              "step": "bootstrap"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S03",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt"
+              ],
+              "reads": [
+                {
+                  "bytes": 22,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "c17a49cdd7b9c06986fc96bf5e61d3dcfd4b3bf0e47ab646f2dd0c94a5db1b3c"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "invalid_entrypoint",
+                  "where": "kit/base/entry.txt"
+                },
+                "outcome": "refused"
+              },
+              "step": "bootstrap"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S04",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "missing_path",
+                  "where": "kit/base/START.md"
+                },
+                "outcome": "refused"
+              },
+              "step": "bootstrap"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S05",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 4096,
+                  "file": "kit/base/START.md",
+                  "sha256": "3266496fc16864150efe0a3d0993ed4f4a799fad3c5dc69be5dbd842ddb0765d"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "invalid_start_section",
+                  "where": "kit/base/START.md"
+                },
+                "outcome": "refused"
+              },
+              "step": "bootstrap"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S06",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2365,
+                  "file": "kit/base/START.md",
+                  "sha256": "266e0e21ed72043a0dfc733de1fc81cdf22a9d4c486d55b83ef330cc38abdd65"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "invalid_start_section",
+                  "where": "kit/base/START.md"
+                },
+                "outcome": "refused"
+              },
+              "step": "bootstrap"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S07",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/OTHER.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "unsafe_path",
+                  "where": "kit/base/START.md"
+                },
+                "outcome": "refused"
+              },
+              "step": "bootstrap"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S08",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/OTHER.txt",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "unsafe_path",
+                  "where": "kit/base/entry.txt"
+                },
+                "outcome": "refused"
+              },
+              "step": "bootstrap"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S09",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 21,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "4a43a94bc48b2760b81c2b5365fd52d1a37cd75abc33ca4f5e35871f3654349d"
+                },
+                {
+                  "bytes": 2373,
+                  "file": "kit/base/START.md",
+                  "sha256": "8f3e6815d50edf770b5c3a429ac0c2a53ae0ee8c1925102176ed96600573438b"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 21,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "4a43a94bc48b2760b81c2b5365fd52d1a37cd75abc33ca4f5e35871f3654349d"
+                  },
+                  {
+                    "bytes": 2373,
+                    "file": "kit/base/START.md",
+                    "sha256": "8f3e6815d50edf770b5c3a429ac0c2a53ae0ee8c1925102176ed96600573438b"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "8f3e6815d50edf770b5c3a429ac0c2a53ae0ee8c1925102176ed96600573438b"
+              },
+              "step": "bootstrap"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P01",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card"
+              ],
+              "reads": [],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": "missing_params",
+                  "missing": [
+                    {
+                      "field": "persistence",
+                      "reason": "absent"
+                    },
+                    {
+                      "field": "state",
+                      "reason": "absent"
+                    }
+                  ],
+                  "operation": "create",
+                  "outcome": "missing_params",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "C-112",
+                    "kind": "contract",
+                    "profile": "Pilot",
+                    "scope": "docs",
+                    "target": "L1",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  },
+                  "questions": [
+                    "persistence",
+                    "state"
+                  ],
+                  "request": "Оформи контракт C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "dry_run": true,
+                "outcome": "missing_params",
+                "plan_format": 1
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P02",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card"
+              ],
+              "reads": [],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": null,
+                  "missing": [],
+                  "operation": null,
+                  "outcome": "non_registry",
+                  "params": {
+                    "persistence": "temporary",
+                    "text": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                  },
+                  "questions": [],
+                  "request": "Временное указание: Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "dry_run": true,
+                "outcome": "non_registry",
+                "plan_format": 1
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P03",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card"
+              ],
+              "reads": [],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": "missing_params",
+                  "missing": [
+                    {
+                      "field": "profile",
+                      "reason": "absent"
+                    }
+                  ],
+                  "operation": "create",
+                  "outcome": "missing_params",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "C-112",
+                    "kind": "contract",
+                    "scope": "docs",
+                    "state": "draft",
+                    "target": "L1",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  },
+                  "questions": [
+                    "profile"
+                  ],
+                  "request": "Создай черновик контракта C-112 в L1, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "dry_run": true,
+                "outcome": "missing_params",
+                "plan_format": 1
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P04",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card"
+              ],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "profile_mismatch",
+                  "where": "card/params/profile"
+                },
+                "outcome": "refused"
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P05",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card"
+              ],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "system_immutable",
+                  "where": "L0"
+                },
+                "outcome": "refused"
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P06",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card"
+              ],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "profile_root_conflict",
+                  "where": "kit/base"
+                },
+                "outcome": "refused"
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P07",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card"
+              ],
+              "reads": [],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": "missing_params",
+                  "missing": [
+                    {
+                      "field": "contract",
+                      "reason": "absent"
+                    }
+                  ],
+                  "operation": "create",
+                  "outcome": "missing_params",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "R-112",
+                    "kind": "rule",
+                    "profile": "Pilot",
+                    "scope": "docs",
+                    "state": "draft",
+                    "target": "L1",
+                    "text": "Проверяй заголовок.",
+                    "title": "Первое правило"
+                  },
+                  "questions": [
+                    "contract"
+                  ],
+                  "request": "Создай черновик правила R-112 в профиле Pilot, область «docs», название «Первое правило», основание «Проба И‑112», критерий «В реестре один черновик»: «Проверяй заголовок.»"
+                },
+                "dry_run": true,
+                "outcome": "missing_params",
+                "plan_format": 1
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P08",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 512,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "a362993f4fd9012b3d7ddda8e3691296586710a588708086181b4fbd3667feeb"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "parent",
+                  "schema": {
+                    "code": "parent_missing",
+                    "path": "/entries/0/parent",
+                    "stage": "links"
+                  },
+                  "where": "profiles/pilot/registry.json"
+                },
+                "outcome": "refused"
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P09",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 511,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "d58bb3e53e23dc64d510ad8be4f349e2be84970e3466904e213b9a310bb979c6"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 86,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "parent",
+                  "schema": {
+                    "code": "scope_outside",
+                    "path": "/entries/1/scope",
+                    "stage": "links"
+                  },
+                  "where": "profiles/pilot/registry.json"
+                },
+                "outcome": "refused"
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P10",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 1051,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "6d2a8763b0fd4d31b7b6d503ef53812c907895a780dda505c80b9040ba64de98"
+                },
+                {
+                  "bytes": 1056,
+                  "file": "kit/base/registry.json",
+                  "sha256": "f198363566bb1fb2a1ce059d7de349a9e825ba5dd5a31df828e94f6055996f04"
+                },
+                {
+                  "bytes": 86,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "rule_conflict",
+                  "details": {
+                    "conflicts": [
+                      {
+                        "entries": [
+                          {
+                            "area": "L0",
+                            "id": "R-system",
+                            "scope": "docs",
+                            "text": "Системное условие стенда.",
+                            "value": "required"
+                          },
+                          {
+                            "area": "L1",
+                            "id": "R-profile",
+                            "scope": "docs",
+                            "text": "Профильное условие стенда.",
+                            "value": "skip"
+                          }
+                        ],
+                        "key": "workflow.review",
+                        "scope": "docs"
+                      }
+                    ]
+                  },
+                  "where": "entries"
+                },
+                "outcome": "refused"
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P11",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "missing_path",
+                  "where": ".agent-contract/project/registry.json"
+                },
+                "outcome": "refused"
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P12",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "3f36f5b4a0a0db1b82a7b313297c1a70257ab8805b54a1e4bc060464c5d163d8"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "invalid_registry",
+                  "schema": {
+                    "code": "schema_version",
+                    "path": "/schema_version",
+                    "stage": "shape"
+                  },
+                  "where": "profiles/pilot/registry.json"
+                },
+                "outcome": "refused"
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P13",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card"
+              ],
+              "reads": [],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": "missing_params",
+                  "missing": [
+                    {
+                      "field": "state",
+                      "reason": "absent"
+                    }
+                  ],
+                  "operation": "create",
+                  "outcome": "missing_params",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "C-112",
+                    "kind": "contract",
+                    "profile": "Pilot",
+                    "scope": "docs",
+                    "target": "L1",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  },
+                  "questions": [
+                    "state"
+                  ],
+                  "request": "Зарегистрируй контракт C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "dry_run": true,
+                "outcome": "missing_params",
+                "plan_format": 1
+              },
+              "step": "phrase"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C01",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 86,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                }
+              ],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": null,
+                  "missing": [],
+                  "operation": "create",
+                  "outcome": "complete",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "C-112",
+                    "kind": "contract",
+                    "profile": "Pilot",
+                    "scope": "docs",
+                    "state": "draft",
+                    "target": "L1",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  },
+                  "questions": [],
+                  "request": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "diff": {
+                  "after_sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed",
+                  "before_sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "file": "profiles/pilot/registry.json",
+                  "revision": {
+                    "from": 0,
+                    "to": 1
+                  },
+                  "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,38 @@\n-{\"area\":\"L1\",\"entries\":[],\"revision\":0,\"roots\":[\"profiles/pilot\"],\"schema_version\":2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {},\n+    \"base_revision\": 0,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": \"86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a\",\n+        \"before_sha256\": null,\n+        \"entry_id\": \"C-112\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 1\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Проба И‑112\",\n+        \"criterion\": \"В реестре один черновик\",\n+        \"id\": \"C-112\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"draft\",\n+        \"text\": \"Согласуем порядок чтения.\",\n+        \"title\": \"Первый договор\"\n+      }\n+    ],\n+    \"revision\": 1,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+                },
+                "dry_run": true,
+                "inputs_sha256": {
+                  "L0": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01",
+                  "L1": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "L2": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                },
+                "outcome": "planned",
+                "plan_format": 1,
+                "ticket_state": "issued"
+              },
+              "step": "phrase"
+            },
+            {
+              "changed": [],
+              "events": [],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "confirmation_required",
+                  "where": "confirmed_ticket"
+                },
+                "outcome": "refused"
+              },
+              "step": "confirmation"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C02",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 86,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                }
+              ],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": null,
+                  "missing": [],
+                  "operation": "create",
+                  "outcome": "complete",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "C-112",
+                    "kind": "contract",
+                    "profile": "Pilot",
+                    "scope": "docs",
+                    "state": "draft",
+                    "target": "L1",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  },
+                  "questions": [],
+                  "request": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "diff": {
+                  "after_sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed",
+                  "before_sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "file": "profiles/pilot/registry.json",
+                  "revision": {
+                    "from": 0,
+                    "to": 1
+                  },
+                  "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,38 @@\n-{\"area\":\"L1\",\"entries\":[],\"revision\":0,\"roots\":[\"profiles/pilot\"],\"schema_version\":2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {},\n+    \"base_revision\": 0,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": \"86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a\",\n+        \"before_sha256\": null,\n+        \"entry_id\": \"C-112\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 1\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Проба И‑112\",\n+        \"criterion\": \"В реестре один черновик\",\n+        \"id\": \"C-112\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"draft\",\n+        \"text\": \"Согласуем порядок чтения.\",\n+        \"title\": \"Первый договор\"\n+      }\n+    ],\n+    \"revision\": 1,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+                },
+                "dry_run": true,
+                "inputs_sha256": {
+                  "L0": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01",
+                  "L1": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "L2": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                },
+                "outcome": "planned",
+                "plan_format": 1,
+                "ticket_state": "issued"
+              },
+              "step": "phrase"
+            },
+            {
+              "changed": [],
+              "events": [],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "confirmation_required",
+                  "where": "confirmed_ticket"
+                },
+                "outcome": "refused"
+              },
+              "step": "confirmation"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C03",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 86,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                }
+              ],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": null,
+                  "missing": [],
+                  "operation": "create",
+                  "outcome": "complete",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "C-112",
+                    "kind": "contract",
+                    "profile": "Pilot",
+                    "scope": "docs",
+                    "state": "draft",
+                    "target": "L1",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  },
+                  "questions": [],
+                  "request": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "diff": {
+                  "after_sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed",
+                  "before_sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "file": "profiles/pilot/registry.json",
+                  "revision": {
+                    "from": 0,
+                    "to": 1
+                  },
+                  "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,38 @@\n-{\"area\":\"L1\",\"entries\":[],\"revision\":0,\"roots\":[\"profiles/pilot\"],\"schema_version\":2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {},\n+    \"base_revision\": 0,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": \"86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a\",\n+        \"before_sha256\": null,\n+        \"entry_id\": \"C-112\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 1\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Проба И‑112\",\n+        \"criterion\": \"В реестре один черновик\",\n+        \"id\": \"C-112\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"draft\",\n+        \"text\": \"Согласуем порядок чтения.\",\n+        \"title\": \"Первый договор\"\n+      }\n+    ],\n+    \"revision\": 1,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+                },
+                "dry_run": true,
+                "inputs_sha256": {
+                  "L0": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01",
+                  "L1": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "L2": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                },
+                "outcome": "planned",
+                "plan_format": 1,
+                "ticket_state": "issued"
+              },
+              "step": "phrase"
+            },
+            {
+              "changed": [],
+              "events": [],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "plan_mismatch",
+                  "where": "plan"
+                },
+                "outcome": "refused"
+              },
+              "step": "confirmation"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C04",
+        "mismatches": [],
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [
+            ".agent-contract/project/registry.json"
+          ],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 86,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                }
+              ],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": null,
+                  "missing": [],
+                  "operation": "create",
+                  "outcome": "complete",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "C-112",
+                    "kind": "contract",
+                    "profile": "Pilot",
+                    "scope": "docs",
+                    "state": "draft",
+                    "target": "L1",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  },
+                  "questions": [],
+                  "request": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "diff": {
+                  "after_sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed",
+                  "before_sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "file": "profiles/pilot/registry.json",
+                  "revision": {
+                    "from": 0,
+                    "to": 1
+                  },
+                  "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,38 @@\n-{\"area\":\"L1\",\"entries\":[],\"revision\":0,\"roots\":[\"profiles/pilot\"],\"schema_version\":2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {},\n+    \"base_revision\": 0,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": \"86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a\",\n+        \"before_sha256\": null,\n+        \"entry_id\": \"C-112\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 1\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Проба И‑112\",\n+        \"criterion\": \"В реестре один черновик\",\n+        \"id\": \"C-112\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"draft\",\n+        \"text\": \"Согласуем порядок чтения.\",\n+        \"title\": \"Первый договор\"\n+      }\n+    ],\n+    \"revision\": 1,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+                },
+                "dry_run": true,
+                "inputs_sha256": {
+                  "L0": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01",
+                  "L1": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "L2": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                },
+                "outcome": "planned",
+                "plan_format": 1,
+                "ticket_state": "issued"
+              },
+              "step": "phrase"
+            },
+            {
+              "changed": [],
+              "events": [
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 87,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "67c91fb9ece77ef99100a8feea8a672ed396cdb860a140c20b94e0d15b9b60c3"
+                }
+              ],
+              "reply": {
+                "error": {
+                  "code": "stale_plan",
+                  "where": "inputs/L2"
+                },
+                "outcome": "refused"
+              },
+              "step": "confirmation"
+            },
+            {
+              "changed": [],
+              "events": [],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "ticket_unknown",
+                  "where": "ticket"
+                },
+                "outcome": "refused"
+              },
+              "step": "replay"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C05",
+        "mismatches": [],
+        "observed": {
+          "changed": [],
+          "files": [
+            ".agent-contract/project/registry.json",
+            "kit/base/OPERATION-CARD.md",
+            "kit/base/OPERATION-PLAN.md",
+            "kit/base/SCHEMA-V2.md",
+            "kit/base/START.md",
+            "kit/base/STORAGE-V2.md",
+            "kit/base/entry.txt",
+            "kit/base/registry.json",
+            "profiles/pilot/registry.json"
+          ],
+          "injected": [],
+          "steps": [
+            {
+              "changed": [],
+              "events": [
+                "read:kit/base/entry.txt",
+                "read:kit/base/START.md"
+              ],
+              "reads": [
+                {
+                  "bytes": 20,
+                  "file": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                },
+                {
+                  "bytes": 2363,
+                  "file": "kit/base/START.md",
+                  "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                }
+              ],
+              "reply": {
+                "inputs": [
+                  {
+                    "bytes": 20,
+                    "file": "kit/base/entry.txt",
+                    "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e"
+                  },
+                  {
+                    "bytes": 2363,
+                    "file": "kit/base/START.md",
+                    "sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+                  }
+                ],
+                "outcome": "ready",
+                "section_sha256": "788419e19cd2c294e13c5c58c0b713168d695f4ba1d7c03a3f11802a03edcb33"
+              },
+              "step": "bootstrap"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card",
+                "read:profiles/pilot/registry.json",
+                "read:kit/base/registry.json",
+                "read:.agent-contract/project/registry.json"
+              ],
+              "reads": [
+                {
+                  "bytes": 85,
+                  "file": "profiles/pilot/registry.json",
+                  "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+                },
+                {
+                  "bytes": 95,
+                  "file": "kit/base/registry.json",
+                  "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+                },
+                {
+                  "bytes": 86,
+                  "file": ".agent-contract/project/registry.json",
+                  "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                }
+              ],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": null,
+                  "missing": [],
+                  "operation": "create",
+                  "outcome": "complete",
+                  "params": {
+                    "basis": "Проба И‑112",
+                    "criterion": "В реестре один черновик",
+                    "entry_id": "C-112",
+                    "kind": "contract",
+                    "profile": "Pilot",
+                    "scope": "docs",
+                    "state": "draft",
+                    "target": "L1",
+                    "text": "Согласуем порядок чтения.",
+                    "title": "Первый договор"
+                  },
+                  "questions": [],
+                  "request": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "diff": {
+                  "after_sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed",
+                  "before_sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "file": "profiles/pilot/registry.json",
+                  "revision": {
+                    "from": 0,
+                    "to": 1
+                  },
+                  "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,38 @@\n-{\"area\":\"L1\",\"entries\":[],\"revision\":0,\"roots\":[\"profiles/pilot\"],\"schema_version\":2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {},\n+    \"base_revision\": 0,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": \"86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a\",\n+        \"before_sha256\": null,\n+        \"entry_id\": \"C-112\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 1\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Проба И‑112\",\n+        \"criterion\": \"В реестре один черновик\",\n+        \"id\": \"C-112\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"draft\",\n+        \"text\": \"Согласуем порядок чтения.\",\n+        \"title\": \"Первый договор\"\n+      }\n+    ],\n+    \"revision\": 1,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+                },
+                "dry_run": true,
+                "inputs_sha256": {
+                  "L0": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01",
+                  "L1": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+                  "L2": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+                },
+                "outcome": "planned",
+                "plan_format": 1,
+                "ticket_state": "issued"
+              },
+              "step": "phrase"
+            },
+            {
+              "changed": [],
+              "events": [
+                "compile",
+                "verify-card"
+              ],
+              "reads": [],
+              "reply": {
+                "card": {
+                  "card_format": 1,
+                  "code": null,
+                  "missing": [],
+                  "operation": null,
+                  "outcome": "non_registry",
+                  "params": {
+                    "persistence": "temporary",
+                    "text": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                  },
+                  "questions": [],
+                  "request": "Временное указание: Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+                },
+                "dry_run": true,
+                "outcome": "non_registry",
+                "plan_format": 1
+              },
+              "step": "rephrase"
+            },
+            {
+              "changed": [],
+              "events": [],
+              "reads": [],
+              "reply": {
+                "error": {
+                  "code": "ticket_unknown",
+                  "where": "ticket"
+                },
+                "outcome": "refused"
+              },
+              "step": "confirmation"
+            }
+          ],
+          "stored": null
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "tree_unchanged": true
+}

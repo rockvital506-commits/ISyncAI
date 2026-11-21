@@ -1,0 +1,245 @@
+{
+  "baseline": "c5fec2473a89950a4c7dd1170825e031c44406ee",
+  "casebook_sha256": "ae9b52229e6ee7932d92a7729032055de02c30b7bc6e7d0d883ec6e7e20ec463",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/112/test_bootstrap.py"
+  ],
+  "rc": 1,
+  "replay_from_git_archive": true,
+  "result": {
+    "baseline": {
+      "direct_plan": {
+        "changed": [],
+        "events": [
+          "compile",
+          "verify-card",
+          "read:profiles/pilot/registry.json",
+          "read:kit/base/registry.json",
+          "read:.agent-contract/project/registry.json"
+        ],
+        "reads": [
+          {
+            "bytes": 85,
+            "file": "profiles/pilot/registry.json",
+            "sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528"
+          },
+          {
+            "bytes": 95,
+            "file": "kit/base/registry.json",
+            "sha256": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01"
+          },
+          {
+            "bytes": 86,
+            "file": ".agent-contract/project/registry.json",
+            "sha256": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+          }
+        ],
+        "reply": {
+          "card": {
+            "card_format": 1,
+            "code": null,
+            "missing": [],
+            "operation": "create",
+            "outcome": "complete",
+            "params": {
+              "basis": "Проба И‑112",
+              "criterion": "В реестре один черновик",
+              "entry_id": "C-112",
+              "kind": "contract",
+              "profile": "Pilot",
+              "scope": "docs",
+              "state": "draft",
+              "target": "L1",
+              "text": "Согласуем порядок чтения.",
+              "title": "Первый договор"
+            },
+            "questions": [],
+            "request": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+          },
+          "diff": {
+            "after_sha256": "2b6d60d95d320415ff6f09b2a1b8622d4fc3a5bedf768b4e9c121da2e0cb2aed",
+            "before_sha256": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+            "file": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 0,
+              "to": 1
+            },
+            "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,38 @@\n-{\"area\":\"L1\",\"entries\":[],\"revision\":0,\"roots\":[\"profiles/pilot\"],\"schema_version\":2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {},\n+    \"base_revision\": 0,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": \"86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a\",\n+        \"before_sha256\": null,\n+        \"entry_id\": \"C-112\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 1\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Проба И‑112\",\n+        \"criterion\": \"В реестре один черновик\",\n+        \"id\": \"C-112\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"draft\",\n+        \"text\": \"Согласуем порядок чтения.\",\n+        \"title\": \"Первый договор\"\n+      }\n+    ],\n+    \"revision\": 1,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+          },
+          "dry_run": true,
+          "inputs_sha256": {
+            "L0": "57800f5658cd873221caf953d1c5f30813fc17a23528d8f7a9d72e6d0298be01",
+            "L1": "0235dbd0f55a6478f265ca57ed32ec8c955fb32a81214e6fb8b5bdc69d514528",
+            "L2": "4ae8af4a3250c2920a6411eeecab1e20e5e7007948424b2fb5044f25684b2c6c"
+          },
+          "outcome": "planned",
+          "plan_format": 1,
+          "ticket_state": "issued"
+        },
+        "step": "direct-plan"
+      },
+      "direct_plan_matches": true,
+      "missing": [
+        "kit/base/entry.txt",
+        "kit/base/START.md",
+        "kit/base/bootstrap.py"
+      ]
+    },
+    "counts": {
+      "fail": 28,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "B01",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S01",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S02",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S03",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S04",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S05",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S06",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S07",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S08",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S09",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P01",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P02",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P03",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P04",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P05",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P06",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P07",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P08",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P09",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P10",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P11",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P12",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P13",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C01",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C02",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C03",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C04",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C05",
+        "reason": "bootstrap_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "test_sha256": "156a3acbc86b49a862d9b5bfaa58e1ea409d6111e07d3d2d7a705c2df7334f1e"
+}

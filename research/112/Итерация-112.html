@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И‑112 · Первый черновик</title><style>
+:root {color-scheme:light;--paper:#f9fbfa;--white:#fff;--ink:#142725;--fade:#52645f;--line:#cfdcd7;--hi:#135c4a;--mint:#e9f3ef}
+* {box-sizing:border-box} body {margin:0;background:var(--paper);color:var(--ink);font:1rem/1.58 system-ui,sans-serif}
+header {background:var(--mint);border-bottom:1px solid var(--line)} header>div,main {max-width:65rem;margin:auto;padding:1.5rem max(1rem,3vw)}
+h1 {font-size:clamp(2.15rem,5.4vw,4.1rem);line-height:1.03;letter-spacing:-.04em;margin:.18em 0 .3em;max-width:17ch;text-wrap:balance}
+h2 {line-height:1.2;margin:1.7em 0 .5em} .meta,small {color:var(--fade)} .verdict {color:#145541;font-weight:750}
+a {color:var(--hi);text-underline-offset:.17em} .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem}
+article,details,.paths li {background:var(--white);border:1px solid var(--line);border-radius:.6rem;padding:.85rem 1rem}
+.paths {counter-reset:phase;list-style:none;padding:0} .paths li::before {counter-increment:phase;content:"0" counter(phase);color:var(--hi);font:700 1.25rem/1 monospace}
+.paths li b,.paths li span,.paths li small,article strong {display:block} table {width:100%;border-collapse:collapse;background:var(--white)} th,td {text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:.5rem .7rem}
+blockquote {margin:1rem 0;border-left:3px solid var(--hi);padding:.4rem .9rem;background:var(--white)} details {margin:.75rem 0}
+summary {cursor:pointer;font-weight:650} pre,code {overflow-wrap:anywhere} pre {white-space:pre-wrap;background:var(--mint);padding:1rem}
+</style></head><body><header><div>
+<p class="meta">И‑112 · Ф2. Промпт-компилятор и диалог · P0</p>
+<h1>Первый черновик до чтения всего контракта</h1><p class="verdict">Проверки П5 приняты на фикстурах</p>
+<p>Старт не читает весь контракт и не пишет. Сохраняется только согласованный черновик.</p>
+</div></header><main>
+<div class="grid"><article><a href="CHECKOUT.json">П3 · checkout</a><strong>28 pass / 0 fail / 0 not run</strong></article>
+<article><a href="CLEANROOM.json">П4 · чистая копия</a><strong>28 pass / 0 fail / 0 not run</strong></article>
+<article><a href="ACCEPTANCE.json">П5 · приёмка</a><strong>7 pass / 0 fail / 4 not run</strong></article></div>
+<h2>Три шага в чистой копии</h2>
+<ol class="grid paths">
+<li><b>Старт</b><span><code>entry.txt</code> и только §0</span><small>2383 байта · без чтения реестров</small></li>
+<li><b>Фраза и dry-run</b><span>Компиляция → три реестра → дифф</span><small>Нет записи или автоматического согласия</small></li>
+<li><b>Согласие</b><span>Точный билет → <code>contract/draft</code></span><small>Одна замена · L1: 0 → 1 · L2: 0 → 0</small></li>
+</ol>
+<blockquote>Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»</blockquote>
+<h2>Какие данные действительно читались</h2>
+<p>Хвост <code>START.md</code> после §0 (728 байт) и документы полного контракта не открывались при старте.
+Открытие реестров наблюдалось только после компиляции фразы и после согласия. Импорты Python и подготовка стенда не входят в трассу.</p>
+<table><thead><tr><th>Шаг</th><th>Файл</th><th>Байт</th></tr></thead><tbody><tr><td>1. Старт</td><td><code>kit/base/entry.txt</code></td><td>20</td></tr><tr><td>1. Старт</td><td><code>kit/base/START.md</code></td><td>2363</td></tr><tr><td>2. Фраза и dry-run</td><td><code>profiles/pilot/registry.json</code></td><td>85</td></tr><tr><td>2. Фраза и dry-run</td><td><code>kit/base/registry.json</code></td><td>95</td></tr><tr><td>2. Фраза и dry-run</td><td><code>.agent-contract/project/registry.json</code></td><td>86</td></tr><tr><td>3. Согласие и запись</td><td><code>profiles/pilot/registry.json</code></td><td>85</td></tr><tr><td>3. Согласие и запись</td><td><code>kit/base/registry.json</code></td><td>95</td></tr><tr><td>3. Согласие и запись</td><td><code>.agent-contract/project/registry.json</code></td><td>86</td></tr></tbody></table>
+<p><a href="BOOTSTRAP.json">Полная трасса с SHA‑256</a> · <a href="REPORT.md">Отчёт и критерии</a></p>
+<details><summary>Точный дифф без билета</summary><pre>--- a/profiles/pilot/registry.json
++++ b/profiles/pilot/registry.json
+@@ -1 +1,38 @@
+-{&quot;area&quot;:&quot;L1&quot;,&quot;entries&quot;:[],&quot;revision&quot;:0,&quot;roots&quot;:[&quot;profiles/pilot&quot;],&quot;schema_version&quot;:2}
+\ No newline at end of file
++{
++  &quot;journal&quot;: {
++    &quot;base_entries&quot;: {},
++    &quot;base_revision&quot;: 0,
++    &quot;decisions&quot;: [
++      {
++        &quot;after_sha256&quot;: &quot;86c6ec747d3dcde542e9130eba2cb284ddba5ae6bd6efe747dacc83ed0438e6a&quot;,
++        &quot;before_sha256&quot;: null,
++        &quot;entry_id&quot;: &quot;C-112&quot;,
++        &quot;operation&quot;: &quot;create&quot;,
++        &quot;profile_revision&quot;: 1
++      }
++    ]
++  },
++  &quot;registry&quot;: {
++    &quot;area&quot;: &quot;L1&quot;,
++    &quot;entries&quot;: [
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Проба И‑112&quot;,
++        &quot;criterion&quot;: &quot;В реестре один черновик&quot;,
++        &quot;id&quot;: &quot;C-112&quot;,
++        &quot;kind&quot;: &quot;contract&quot;,
++        &quot;parent&quot;: null,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;draft&quot;,
++        &quot;text&quot;: &quot;Согласуем порядок чтения.&quot;,
++        &quot;title&quot;: &quot;Первый договор&quot;
++      }
++    ],
++    &quot;revision&quot;: 1,
++    &quot;roots&quot;: [
++      &quot;profiles/pilot&quot;
++    ],
++    &quot;schema_version&quot;: 2
++  },
++  &quot;registry_format&quot;: 2
++}
+</pre></details>
+<details><summary>Обязательные контроли</summary><br><table><thead><tr><th>ID</th><th>Критерий</th><th>Наблюдалось</th></tr></thead><tbody><tr><td>S01</td><td>Пропавший указатель: не открывать START или реестры.</td><td><code>missing_path</code></td></tr><tr><td>S02</td><td>Указатель на иной путь не открывается, даже если файл существует.</td><td><code>invalid_entrypoint</code></td></tr><tr><td>S03</td><td>Правильный префикс с лишним хвостом не принимается; ≤длины указателя CRLF плюс 1 байт.</td><td><code>invalid_entrypoint</code></td></tr><tr><td>S04</td><td>Указатель есть, файла нет: вход не считается доступным.</td><td><code>missing_path</code></td></tr><tr><td>S05</td><td>Маркер за пределом 4096 байт: чтение прекращается в лимите; без запуска компилятора.</td><td><code>invalid_start_section</code></td></tr><tr><td>S06</td><td>Битый UTF‑8 внутри §0 не заменяется молча.</td><td><code>invalid_start_section</code></td></tr><tr><td>S07</td><td>Символьную ссылку на START не читать.</td><td><code>unsafe_path</code></td></tr><tr><td>S08</td><td>Жёсткую ссылку на указатель не читать.</td><td><code>unsafe_path</code></td></tr><tr><td>S09</td><td>CRLF допустим в обоих входах. После маркера ни байта, другой контракт/реестры не открываются.</td><td><code>ready</code></td></tr><tr><td>P01</td><td>Два уточнения: persistence и state; не считать адреса существующими, не читать порт.</td><td><code>ready → missing_params</code></td></tr><tr><td>P02</td><td>Фраза о временном режиме содержит команду как текст; non_registry без порта, диффа и билета.</td><td><code>ready → non_registry</code></td></tr><tr><td>P03</td><td>Не брать Pilot из доверенной привязки вместо явного имени в запросе.</td><td><code>ready → missing_params</code></td></tr><tr><td>P04</td><td>Другой профиль из фразы отклонить до порта.</td><td><code>ready → profile_mismatch</code></td></tr><tr><td>P05</td><td>Мутация неизменяемого L0 отклонена даже на неполной фразе.</td><td><code>ready → system_immutable</code></td></tr><tr><td>P06</td><td>Корень профиля внутри kit нельзя сделать целью; отказ до чтения каталога.</td><td><code>ready → profile_root_conflict</code></td></tr><tr><td>P07</td><td>Если ссылка на родителя не указана, спросить contract без поиска в реестрах.</td><td><code>ready → missing_params</code></td></tr><tr><td>P08</td><td>C-112 только в L2; дочерний L1 не может позаимствовать его.</td><td><code>ready → parent</code></td></tr><tr><td>P09</td><td>docs2 не содержится в docs даже при существующем локальном родителе.</td><td><code>ready → parent</code></td></tr><tr><td>P10</td><td>Существующее противоречие L0/L1 видно с обеими сторонами; ни один слой не объявлен победителем.</td><td><code>ready → rule_conflict</code></td></tr><tr><td>P11</td><td>Нет файла L2: не создать пустой, не предложить дифф и не заменить L1.</td><td><code>ready → missing_path</code></td></tr><tr><td>P12</td><td>Неподдержанная схема L1 не равна пустому файлу; без преобразования, диффа и билета.</td><td><code>ready → invalid_registry</code></td></tr><tr><td>P13</td><td>Явная регистрация без состояния требует уточнения; draft не подставляется.</td><td><code>ready → missing_params</code></td></tr><tr><td>C01</td><td>Даже показанный точный план без отдельного билета не даёт записи.</td><td><code>ready → planned → confirmation_required</code></td></tr><tr><td>C02</td><td>Иной билет при правильном диффе не разрешает запись.</td><td><code>ready → planned → confirmation_required</code></td></tr><tr><td>C03</td><td>С тем же билетом подменённый текст диффа отклонён до чтения файлов.</td><td><code>ready → planned → plan_mismatch</code></td></tr><tr><td>C04</td><td>L2 изменился после показа при прежней ревизии: повторное чтение → stale_plan; тот же билет далее ticket_unknown.</td><td><code>ready → planned → stale_plan → ticket_unknown</code></td></tr><tr><td>C05</td><td>Новый запрос временного режима отзывает старый билет; он не наследуется и не пишет.</td><td><code>ready → planned → non_registry → ticket_unknown</code></td></tr></tbody></table></details>
+<h2>Что не проверялось</h2><ul><li><b>Установка кандидата 0.2.0, connect живого адаптера, автообнаружение и калибровка.</b> Подготовлены пустые валидные v2; чистая установка кандидата в COMPATIBILITY остаётся not run, релиз и пилоты отдельно.</li><li><b>Произвольный/многоходовый диалог, применение или активация черновика.</b> Предел ≤3 только у зафиксированного короткого сценария; проверяется регистрация в draft.</li><li><b>Владение, права ОС, Windows/ACL, параллельные писатели, сбой питания/восстановление.</b> Один локальный Python-процесс, синтетический билет, измерение на Linux.</li><li><b>Перенос, миграция, полное разрешение конфликтов, R‑2 и И‑113.</b> Не входят в согласованную поверхность И‑112.</li></ul>
+<h2>Печать и повтор</h2><p><a href="AgentContractKit-Iteration-112.zip">Скачать ZIP</a> · 32 файлов · 599682 байт · <a href="REPLAY.json">повтор: ok</a></p>
+<p>SHA‑256 <code>83943212b6b06b56ae10e4617b943d1d64b92ee3a79f5848ab002597551316fe</code></p>
+<p><a href="DESIGN.md">Замысел</a> · <a href="RED.json">Исходный контроль</a> · <a href="../STRATEGY.md">Стратегия</a></p>
+<p class="meta">Сверка №22 записана. П9 проверяется по коммиту И‑112 в <code>origin/arena/4e000a5e-isyncai</code>.</p>
+</main></body></html>

@@ -1,0 +1,234 @@
+{
+  "format": 1,
+  "phrases": {
+    "create": {
+      "request": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»",
+      "operation": "create",
+      "params": {
+        "kind": "contract",
+        "entry_id": "C-112",
+        "target": "L1",
+        "profile": "Pilot",
+        "scope": "docs",
+        "state": "draft",
+        "title": "Первый договор",
+        "basis": "Проба И‑112",
+        "criterion": "В реестре один черновик",
+        "text": "Согласуем порядок чтения."
+      },
+      "missing": [],
+      "outcome": "complete",
+      "code": null
+    },
+    "ambiguous": {
+      "request": "Оформи контракт C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»",
+      "operation": "create",
+      "params": {
+        "kind": "contract",
+        "entry_id": "C-112",
+        "target": "L1",
+        "profile": "Pilot",
+        "scope": "docs",
+        "title": "Первый договор",
+        "basis": "Проба И‑112",
+        "criterion": "В реестре один черновик",
+        "text": "Согласуем порядок чтения."
+      },
+      "missing": [
+        {
+          "field": "persistence",
+          "reason": "absent"
+        },
+        {
+          "field": "state",
+          "reason": "absent"
+        }
+      ],
+      "outcome": "missing_params",
+      "code": "missing_params"
+    },
+    "temporary": {
+      "request": "Временное указание: Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»",
+      "operation": null,
+      "params": {
+        "persistence": "temporary",
+        "text": "Создай черновик контракта C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»"
+      },
+      "missing": [],
+      "outcome": "non_registry",
+      "code": null
+    },
+    "no-profile": {
+      "request": "Создай черновик контракта C-112 в L1, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»",
+      "operation": "create",
+      "params": {
+        "kind": "contract",
+        "entry_id": "C-112",
+        "target": "L1",
+        "scope": "docs",
+        "state": "draft",
+        "title": "Первый договор",
+        "basis": "Проба И‑112",
+        "criterion": "В реестре один черновик",
+        "text": "Согласуем порядок чтения."
+      },
+      "missing": [
+        {
+          "field": "profile",
+          "reason": "absent"
+        }
+      ],
+      "outcome": "missing_params",
+      "code": "missing_params"
+    },
+    "other-profile": {
+      "request": "Создай черновик контракта C-112 в профиле Other, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»",
+      "operation": "create",
+      "params": {
+        "kind": "contract",
+        "entry_id": "C-112",
+        "target": "L1",
+        "profile": "Other",
+        "scope": "docs",
+        "state": "draft",
+        "title": "Первый договор",
+        "basis": "Проба И‑112",
+        "criterion": "В реестре один черновик",
+        "text": "Согласуем порядок чтения."
+      },
+      "missing": [],
+      "outcome": "complete",
+      "code": null
+    },
+    "system": {
+      "request": "Создай черновик контракта в L0: Не менять базу.",
+      "operation": "create",
+      "params": {
+        "state": "draft",
+        "kind": "contract",
+        "target": "L0",
+        "text": "Не менять базу."
+      },
+      "missing": [],
+      "outcome": "rejected",
+      "code": "system_immutable"
+    },
+    "no-parent": {
+      "request": "Создай черновик правила R-112 в профиле Pilot, область «docs», название «Первое правило», основание «Проба И‑112», критерий «В реестре один черновик»: «Проверяй заголовок.»",
+      "operation": "create",
+      "params": {
+        "kind": "rule",
+        "entry_id": "R-112",
+        "target": "L1",
+        "profile": "Pilot",
+        "scope": "docs",
+        "state": "draft",
+        "title": "Первое правило",
+        "basis": "Проба И‑112",
+        "criterion": "В реестре один черновик",
+        "text": "Проверяй заголовок."
+      },
+      "missing": [
+        {
+          "field": "contract",
+          "reason": "absent"
+        }
+      ],
+      "outcome": "missing_params",
+      "code": "missing_params"
+    },
+    "rule": {
+      "request": "Создай черновик правила R-112 в профиле Pilot под контрактом C-112, область «docs», название «Первое правило», основание «Проба И‑112», критерий «В реестре один черновик»: «Проверяй заголовок.»",
+      "operation": "create",
+      "params": {
+        "kind": "rule",
+        "entry_id": "R-112",
+        "target": "L1",
+        "profile": "Pilot",
+        "scope": "docs",
+        "state": "draft",
+        "title": "Первое правило",
+        "basis": "Проба И‑112",
+        "criterion": "В реестре один черновик",
+        "text": "Проверяй заголовок.",
+        "contract": "C-112"
+      },
+      "missing": [],
+      "outcome": "complete",
+      "code": null
+    },
+    "scope": {
+      "request": "Создай черновик правила R-112 в профиле Pilot под контрактом C-112, область «docs2», название «Первое правило», основание «Проба И‑112», критерий «В реестре один черновик»: «Проверяй заголовок.»",
+      "operation": "create",
+      "params": {
+        "kind": "rule",
+        "entry_id": "R-112",
+        "target": "L1",
+        "profile": "Pilot",
+        "scope": "docs2",
+        "state": "draft",
+        "title": "Первое правило",
+        "basis": "Проба И‑112",
+        "criterion": "В реестре один черновик",
+        "text": "Проверяй заголовок.",
+        "contract": "C-112"
+      },
+      "missing": [],
+      "outcome": "complete",
+      "code": null
+    },
+    "no-state": {
+      "request": "Зарегистрируй контракт C-112 в профиле Pilot, область «docs», название «Первый договор», основание «Проба И‑112», критерий «В реестре один черновик»: «Согласуем порядок чтения.»",
+      "operation": "create",
+      "params": {
+        "kind": "contract",
+        "entry_id": "C-112",
+        "target": "L1",
+        "profile": "Pilot",
+        "scope": "docs",
+        "title": "Первый договор",
+        "basis": "Проба И‑112",
+        "criterion": "В реестре один черновик",
+        "text": "Согласуем порядок чтения."
+      },
+      "missing": [
+        {
+          "field": "state",
+          "reason": "absent"
+        }
+      ],
+      "outcome": "missing_params",
+      "code": "missing_params"
+    }
+  },
+  "cases": [
+    {"id": "B01", "basis": "Ф2, §3.3; пустые валидные L0/L1/L2", "criterion": "Ровно три шага: §0 → фраза/точный dry-run → отдельно подтверждённая физическая запись contract/draft; одна замена, L1 0→1, один журнал, L0/L2 прежние.", "phrase": "create", "areas": ["L1", "L0", "L2"], "trial": "confirm"},
+    {"id": "S01", "basis": "И‑112 · П1, граница входа", "criterion": "Пропавший указатель: не открывать START или реестры.", "setup": "missing-entry", "startup_error": {"code": "missing_path", "where": "kit/base/entry.txt"}, "startup_files": []},
+    {"id": "S02", "basis": "И‑112 · П1, граница входа", "criterion": "Указатель на иной путь не открывается, даже если файл существует.", "setup": "other-pointer", "startup_error": {"code": "invalid_entrypoint", "where": "kit/base/entry.txt"}, "startup_files": ["kit/base/entry.txt"]},
+    {"id": "S03", "basis": "И‑112 · П1, граница входа", "criterion": "Правильный префикс с лишним хвостом не принимается; ≤длины указателя CRLF плюс 1 байт.", "setup": "oversize-entry", "startup_error": {"code": "invalid_entrypoint", "where": "kit/base/entry.txt"}, "startup_files": ["kit/base/entry.txt"]},
+    {"id": "S04", "basis": "И‑112 · П1, граница входа", "criterion": "Указатель есть, файла нет: вход не считается доступным.", "setup": "missing-start", "startup_error": {"code": "missing_path", "where": "kit/base/START.md"}, "startup_files": ["kit/base/entry.txt"]},
+    {"id": "S05", "basis": "И‑112 · П1, граница входа", "criterion": "Маркер за пределом 4096 байт: чтение прекращается в лимите; без запуска компилятора.", "setup": "section-cap", "startup_error": {"code": "invalid_start_section", "where": "kit/base/START.md"}, "startup_files": ["kit/base/entry.txt", "kit/base/START.md"]},
+    {"id": "S06", "basis": "И‑112 · П1, граница входа", "criterion": "Битый UTF‑8 внутри §0 не заменяется молча.", "setup": "bad-utf8", "startup_error": {"code": "invalid_start_section", "where": "kit/base/START.md"}, "startup_files": ["kit/base/entry.txt", "kit/base/START.md"]},
+    {"id": "S07", "basis": "И‑112 · П1, граница входа", "criterion": "Символьную ссылку на START не читать.", "setup": "start-symlink", "startup_error": {"code": "unsafe_path", "where": "kit/base/START.md"}, "startup_files": ["kit/base/entry.txt"]},
+    {"id": "S08", "basis": "И‑112 · П1, граница входа", "criterion": "Жёсткую ссылку на указатель не читать.", "setup": "entry-hardlink", "startup_error": {"code": "unsafe_path", "where": "kit/base/entry.txt"}, "startup_files": []},
+    {"id": "S09", "basis": "И‑112 · П1, граница входа", "criterion": "CRLF допустим в обоих входах. После маркера ни байта, другой контракт/реестры не открываются.", "setup": "crlf"},
+    {"id": "P01", "basis": "И‑111; нет реестров", "criterion": "Два уточнения: persistence и state; не считать адреса существующими, не читать порт.", "setup": "no-catalog", "phrase": "ambiguous"},
+    {"id": "P02", "basis": "И‑111; нет реестров", "criterion": "Фраза о временном режиме содержит команду как текст; non_registry без порта, диффа и билета.", "setup": "no-catalog", "phrase": "temporary"},
+    {"id": "P03", "basis": "И‑108; явный адрес", "criterion": "Не брать Pilot из доверенной привязки вместо явного имени в запросе.", "phrase": "no-profile"},
+    {"id": "P04", "basis": "И‑109; адрес", "criterion": "Другой профиль из фразы отклонить до порта.", "phrase": "other-profile", "plan_error": {"code": "profile_mismatch", "where": "card/params/profile"}},
+    {"id": "P05", "basis": "A2", "criterion": "Мутация неизменяемого L0 отклонена даже на неполной фразе.", "phrase": "system", "plan_error": {"code": "system_immutable", "where": "L0"}},
+    {"id": "P06", "basis": "A1", "criterion": "Корень профиля внутри kit нельзя сделать целью; отказ до чтения каталога.", "phrase": "create", "profile_root": "kit/base", "plan_error": {"code": "profile_root_conflict", "where": "kit/base"}},
+    {"id": "P07", "basis": "A4; И‑108", "criterion": "Если ссылка на родителя не указана, спросить contract без поиска в реестрах.", "phrase": "no-parent"},
+    {"id": "P08", "basis": "A4; размещение родителя", "criterion": "C-112 только в L2; дочерний L1 не может позаимствовать его.", "setup": "foreign-parent", "phrase": "rule", "areas": ["L1", "L0", "L2"], "plan_error": {"code": "parent", "where": "profiles/pilot/registry.json", "schema": {"stage": "links", "code": "parent_missing", "path": "/entries/0/parent"}}},
+    {"id": "P09", "basis": "A4; вложенность scope", "criterion": "docs2 не содержится в docs даже при существующем локальном родителе.", "setup": "local-parent", "phrase": "scope", "areas": ["L1", "L0", "L2"], "plan_error": {"code": "parent", "where": "profiles/pilot/registry.json", "schema": {"stage": "links", "code": "scope_outside", "path": "/entries/1/scope"}}},
+    {"id": "P10", "basis": "A3", "criterion": "Существующее противоречие L0/L1 видно с обеими сторонами; ни один слой не объявлен победителем.", "setup": "conflict", "phrase": "create", "areas": ["L1", "L0", "L2"], "plan_error": {"code": "rule_conflict", "where": "entries", "details": {"conflicts": [{"key": "workflow.review", "scope": "docs", "entries": [{"area": "L0", "id": "R-system", "scope": "docs", "value": "required", "text": "Системное условие стенда."}, {"area": "L1", "id": "R-profile", "scope": "docs", "value": "skip", "text": "Профильное условие стенда."}]}]}}},
+    {"id": "P11", "basis": "COMPATIBILITY.json; частичный v2", "criterion": "Нет файла L2: не создать пустой, не предложить дифф и не заменить L1.", "setup": "partial", "phrase": "create", "areas": ["L1", "L0"], "plan_error": {"code": "missing_path", "where": ".agent-contract/project/registry.json"}},
+    {"id": "P12", "basis": "COMPATIBILITY.json; старый формат", "criterion": "Неподдержанная схема L1 не равна пустому файлу; без преобразования, диффа и билета.", "setup": "old-schema", "phrase": "create", "areas": ["L1"], "plan_error": {"code": "invalid_registry", "where": "profiles/pilot/registry.json", "schema": {"stage": "shape", "code": "schema_version", "path": "/schema_version"}}},
+    {"id": "P13", "basis": "И‑108–111; state", "criterion": "Явная регистрация без состояния требует уточнения; draft не подставляется.", "phrase": "no-state"},
+    {"id": "C01", "basis": "И‑109–111; точное согласие на дифф", "criterion": "Даже показанный точный план без отдельного билета не даёт записи.", "phrase": "create", "areas": ["L1", "L0", "L2"], "trial": "withheld"},
+    {"id": "C02", "basis": "И‑109–111; точное согласие на дифф", "criterion": "Иной билет при правильном диффе не разрешает запись.", "phrase": "create", "areas": ["L1", "L0", "L2"], "trial": "foreign-ticket"},
+    {"id": "C03", "basis": "И‑109–111; точное согласие на дифф", "criterion": "С тем же билетом подменённый текст диффа отклонён до чтения файлов.", "phrase": "create", "areas": ["L1", "L0", "L2"], "trial": "changed-diff"},
+    {"id": "C04", "basis": "И‑109–111; точное согласие на дифф", "criterion": "L2 изменился после показа при прежней ревизии: повторное чтение → stale_plan; тот же билет далее ticket_unknown.", "phrase": "create", "areas": ["L1", "L0", "L2"], "trial": "drift"},
+    {"id": "C05", "basis": "И‑109–111; точное согласие на дифф", "criterion": "Новый запрос временного режима отзывает старый билет; он не наследуется и не пишет.", "phrase": "create", "areas": ["L1", "L0", "L2"], "trial": "new-phrase"}
+  ]
+}

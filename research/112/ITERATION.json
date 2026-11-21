@@ -1,0 +1,132 @@
+{
+  "baseline": "c5fec2473a89950a4c7dd1170825e031c44406ee",
+  "baseline_strategy": "v1.13",
+  "branch": "arena/4e000a5e-isyncai",
+  "case_ids": [
+    "B01",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12",
+    "P13",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05"
+  ],
+  "casebook_sha256": "ae9b52229e6ee7932d92a7729032055de02c30b7bc6e7d0d883ec6e7e20ec463",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/112/test_bootstrap.py"
+  ],
+  "id": "112",
+  "not_run": [
+    {
+      "what": "Установка кандидата 0.2.0, connect живого адаптера, автообнаружение и калибровка.",
+      "why": "Подготовлены пустые валидные v2; чистая установка кандидата в COMPATIBILITY остаётся not run, релиз и пилоты отдельно."
+    },
+    {
+      "what": "Произвольный/многоходовый диалог, применение или активация черновика.",
+      "why": "Предел ≤3 только у зафиксированного короткого сценария; проверяется регистрация в draft."
+    },
+    {
+      "what": "Владение, права ОС, Windows/ACL, параллельные писатели, сбой питания/восстановление.",
+      "why": "Один локальный Python-процесс, синтетический билет, измерение на Linux."
+    },
+    {
+      "what": "Перенос, миграция, полное разрешение конфликтов, R‑2 и И‑113.",
+      "why": "Не входят в согласованную поверхность И‑112."
+    }
+  ],
+  "phase": "Ф2. Промпт-компилятор и диалог",
+  "priority": "P0",
+  "probe_instrumentation": {
+    "correction": "Python 3.11: open каталога для custom opener NamedTemporaryFile — стадия подготовки, не отдельный изменённый файл. Трасса различает stage, mkstemp, open временного файла и replace; критерии и CASES.json те же.",
+    "initial_green_attempt": {
+      "case": "B01",
+      "counts": {
+        "fail": 1,
+        "not run": 0,
+        "pass": 27
+      },
+      "reason": "Несогласованный путь записи: profiles/pilot"
+    },
+    "initial_probe_sha256": "63783bcdbdad3b70b702307fe9830651f34f807d8d883322dd4fa80d707c7751"
+  },
+  "seal_members": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/START.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/bootstrap.py",
+    "kit/base/entry.txt",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/112/ACCEPTANCE.json",
+    "research/112/BOOTSTRAP.json",
+    "research/112/CASES.json",
+    "research/112/CHECKOUT.json",
+    "research/112/CLEANROOM.json",
+    "research/112/DESIGN.md",
+    "research/112/ITERATION.json",
+    "research/112/RED.json",
+    "research/112/REPORT.md",
+    "research/112/render112.py",
+    "research/112/run.py",
+    "research/112/test_bootstrap.py",
+    "research/STRATEGY.md",
+    "research/strategy/COMPATIBILITY.json",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py"
+  ],
+  "target_inputs": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/START.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/bootstrap.py",
+    "kit/base/entry.txt",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/112/CASES.json",
+    "research/112/test_bootstrap.py"
+  ],
+  "test_sha256": "156a3acbc86b49a862d9b5bfaa58e1ea409d6111e07d3d2d7a705c2df7334f1e",
+  "title": "Первый черновик до чтения всего контракта"
+}
