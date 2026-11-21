@@ -71,8 +71,8 @@ class PlanSession:
         self._pending = None
         card = _checked_card(card)
         result = {'plan_format': PLAN_FORMAT, 'dry_run': True, 'card': card}
-        if card['outcome'] == 'missing_params':
-            return dict(result, outcome='missing_params')
+        if card['outcome'] in ('missing_params', 'non_registry'):
+            return dict(result, outcome=card['outcome'])
         if card['outcome'] == 'rejected':
             code = card['code']
             raise StoreError(code, 'L0' if code == 'system_immutable' else 'card/params/contract')

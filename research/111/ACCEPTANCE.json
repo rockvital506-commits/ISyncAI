@@ -1,0 +1,438 @@
+{
+  "checks": [
+    {
+      "basis": "DESIGN.md; CASES.json; test_intent.py; ITERATION.json; RED.json",
+      "check": "frozen_cases",
+      "criterion": "Хеши П2 совпали; до изменений полный «Сделай черновик» давал план вместо вопроса о режиме.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json",
+      "check": "checkout",
+      "criterion": "Каждый ID ровно один раз: точные исход, диагностика, JSON-типы, байты, статус, решения и физические эффекты.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json",
+      "check": "cleanroom",
+      "criterion": "Каждый ID ровно один раз: точные исход, диагностика, JSON-типы, байты, статус, решения и физические эффекты.",
+      "status": "pass"
+    },
+    {
+      "basis": "CASES.json (NL01–NL20); CHECKOUT.json; CLEANROOM.json",
+      "check": "intent_corpus",
+      "criterion": "Ровно 20 фраз, четыре режима различимы; неясный режим даёт вопрос о режиме, незаписываемый не читает и не получает билет. В трёх этапах нет побочных изменений, замен или попыток записи на корпусе.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json: NL01, NL02 и NL20",
+      "check": "masked_witnesses",
+      "criterion": "Точные диффы по обоим слоям и контроль слов режима в данных; SHA-256, функции вывода и поля без билета.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "isolated",
+      "criterion": "В чистой копии ровно указанные входы, без Git/ISAI/донора, все побайтно прежние.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "repeat",
+      "criterion": "Два изолированных процесса дали равные обязательные наблюдения и входные хеши.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 7
+  },
+  "host_os": "Linux",
+  "iteration": "И-111",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Диалог с памятью и произвольный русский язык, исполнение временного указания, подтверждение гипотез, активация черновика.",
+      "why": "Измерена консервативная грамматика и граница реестра, не поведение модели."
+    },
+    {
+      "status": "not run",
+      "what": "Bootstrap, R-2, перенос, миграция, X07/X08 и полный конфликтный разбор.",
+      "why": "Следующие итерации; живые данные не использованы."
+    },
+    {
+      "status": "not run",
+      "what": "Права владельца/ОС, живые адаптеры, параллельные писатели, ACL/NTFS, сбой питания.",
+      "why": "Временные Linux-фикстуры и один писатель; согласие в положительных контролях синтетическое."
+    },
+    {
+      "status": "not run",
+      "what": "Свежие прогоны донора 0.1.36 и ISAI.",
+      "why": "Их код и пакеты не входят в чистую копию целевой пробы."
+    }
+  ],
+  "outcome": "accepted",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "id": "NL01",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL02",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL03",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL04",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL05",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL06",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL07",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL08",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL09",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL10",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL11",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL12",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL13",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL14",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL15",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL16",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL17",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL18",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL19",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL20",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C01",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C02",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C03",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C04",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C05",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C06",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C07",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C08",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C09",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C10",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C11",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C12",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C13",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C14",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 34
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "id": "NL01",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL02",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL03",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL04",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL05",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL06",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL07",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL08",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL09",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL10",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL11",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL12",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL13",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL14",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL15",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL16",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL17",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL18",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL19",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "NL20",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C01",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C02",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C03",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C04",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C05",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C06",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C07",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C08",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C09",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C10",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C11",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C12",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C13",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "C14",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 34
+      },
+      "rc": 0
+    }
+  }
+}

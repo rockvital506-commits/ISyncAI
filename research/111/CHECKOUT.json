@@ -1,0 +1,3227 @@
+{
+  "inputs_sha256": {
+    "kit/base/OPERATION-CARD.md": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+    "kit/base/OPERATION-PLAN.md": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+    "kit/base/operation_card.py": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+    "kit/base/operation_plan.py": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/105/test_layout.py": "c8b62743faa20f01321e97f615d1cf0e55e62a2a5569f8f4ad26e26a6331b748",
+    "research/110/test_actions.py": "8392a00fe820d060d94985771b573afa69f7348d63d33fef7ee0c0e3e68914eb",
+    "research/111/CASES.json": "a93f433a9aabe0dfa40a8f909ed11fd6669612e91ebbf9c4551869f6cfd8e536",
+    "research/111/test_intent.py": "cdb4e0a7bf238c34788222a6839b58b3b3643aee9652baf58bc4fc6e3608e40d"
+  },
+  "rc": 0,
+  "result": {
+    "os": "Linux",
+    "rows": [
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL01",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "confirmation_required",
+              "where": "confirmed_ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "create",
+                "outcome": "complete",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "permanent",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Зарегистрируй черновик постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "planned"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL01",
+              "ticket_issued": true
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        },
+        "preview": {
+          "card": {
+            "card_format": 1,
+            "code": null,
+            "missing": [],
+            "operation": "create",
+            "outcome": "complete",
+            "params": {
+              "basis": "Нужны свидетельства",
+              "contract": "C-A",
+              "criterion": "Ссылка указана",
+              "entry_id": "R-111",
+              "kind": "rule",
+              "persistence": "permanent",
+              "profile": "Pilot",
+              "scope": "docs/guide",
+              "state": "draft",
+              "target": "L1",
+              "text": "Перед выводом сверяй ссылки.",
+              "title": "Сверка"
+            },
+            "questions": [],
+            "request": "Зарегистрируй черновик постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+          },
+          "diff": {
+            "after_sha256": "8d3cae59a70def86a22faa922319d4ed79362481bbd60829b143c9e3cf1402d5",
+            "before_sha256": "5b6653abed0752d4784eaf51788fac1634e3b58341a21c8812023a21f21cd88c",
+            "file": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 4,
+              "to": 5
+            },
+            "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,60 @@\n-{\"area\": \"L1\", \"entries\": [{\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-A\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-A\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-A\", \"kind\": \"rule\", \"parent\": \"C-A\", \"scope\": \"docs/guide\", \"state\": \"active\", \"text\": \"\\u0418\\u0441\\u0445\\u043e\\u0434\\u043d\\u043e\\u0435 \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u043e.\", \"title\": \"R-A\"}], \"revision\": 4, \"roots\": [\"profiles/pilot\"], \"schema_version\": 2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_revision\": 4,\n+    \"decisions\": [\n+      {\n+        \"entry_id\": \"R-111\",\n+        \"entry_sha256\": \"dcb248dca4dcdae1f6feda93839764d20f207263d9ce652af437bd6e118cf8f3\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 5\n+      }\n+    ]\n+  },\n+  \"profile_format\": 1,\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-A\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-A\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"R-A\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-A\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"active\",\n+        \"text\": \"Исходное правило.\",\n+        \"title\": \"R-A\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Нужны свидетельства\",\n+        \"criterion\": \"Ссылка указана\",\n+        \"id\": \"R-111\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-A\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"draft\",\n+        \"text\": \"Перед выводом сверяй ссылки.\",\n+        \"title\": \"Сверка\"\n+      }\n+    ],\n+    \"revision\": 5,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  }\n+}\n"
+          },
+          "dry_run": true,
+          "inputs_sha256": {
+            "L0": "c38e410f9f243bc893ba0938350f233526ee8ed84082d07b36233e610e2e2a72",
+            "L1": "5b6653abed0752d4784eaf51788fac1634e3b58341a21c8812023a21f21cd88c",
+            "L2": "6432bb067a8f70d892d994c26011d6d748c9464c896190bb227033828672f157"
+          },
+          "outcome": "planned",
+          "plan_format": 1
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL02",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "confirmation_required",
+              "where": "confirmed_ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "edit",
+                "outcome": "complete",
+                "params": {
+                  "entry_id": "R-A",
+                  "kind": "rule",
+                  "persistence": "permanent",
+                  "target": "L2",
+                  "text": "Сверяй ссылку и указывай основание."
+                },
+                "questions": [],
+                "request": "Измени правило R-A в проекте на постоянной основе: «Сверяй ссылку и указывай основание.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "planned"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL02",
+              "ticket_issued": true
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        },
+        "preview": {
+          "card": {
+            "card_format": 1,
+            "code": null,
+            "missing": [],
+            "operation": "edit",
+            "outcome": "complete",
+            "params": {
+              "entry_id": "R-A",
+              "kind": "rule",
+              "persistence": "permanent",
+              "target": "L2",
+              "text": "Сверяй ссылку и указывай основание."
+            },
+            "questions": [],
+            "request": "Измени правило R-A в проекте на постоянной основе: «Сверяй ссылку и указывай основание.»"
+          },
+          "diff": {
+            "after_sha256": "3a32476118e1fe5435a7dc6773a7744d304b75d64b6760bac0e52d7363a1ba9f",
+            "before_sha256": "6432bb067a8f70d892d994c26011d6d748c9464c896190bb227033828672f157",
+            "file": ".agent-contract/project/registry.json",
+            "revision": {
+              "from": 7,
+              "to": 8
+            },
+            "unified": "--- a/.agent-contract/project/registry.json\n+++ b/.agent-contract/project/registry.json\n@@ -1 +1,53 @@\n-{\"area\": \"L2\", \"entries\": [{\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-A\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-A\"}, {\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-A\", \"kind\": \"rule\", \"parent\": \"C-A\", \"scope\": \"docs/guide\", \"state\": \"active\", \"text\": \"\\u0418\\u0441\\u0445\\u043e\\u0434\\u043d\\u043e\\u0435 \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u043e.\", \"title\": \"R-A\"}], \"revision\": 7, \"roots\": [\".agent-contract\"], \"schema_version\": 2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {\n+      \"C-A\": \"06d6469fd5c43f45a4657bf76295ee016cf0364432d91ccf89a810e380f071bc\",\n+      \"R-A\": \"77b6247398e71764058d2c6c500ad566e6e482f6333990018b96548b922f1b8b\"\n+    },\n+    \"base_revision\": 7,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": \"32ecefee54388eda9a762aa6e6dbdd86b689e928e887f829ffaf4fdb63012fe0\",\n+        \"before_sha256\": \"77b6247398e71764058d2c6c500ad566e6e482f6333990018b96548b922f1b8b\",\n+        \"entry_id\": \"R-A\",\n+        \"operation\": \"edit\",\n+        \"project_revision\": 8\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L2\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"project_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-A\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-A\"\n+      },\n+      {\n+        \"authority\": \"project_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"R-A\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-A\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"active\",\n+        \"text\": \"Сверяй ссылку и указывай основание.\",\n+        \"title\": \"R-A\"\n+      }\n+    ],\n+    \"revision\": 8,\n+    \"roots\": [\n+      \".agent-contract\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+          },
+          "dry_run": true,
+          "inputs_sha256": {
+            "L0": "c38e410f9f243bc893ba0938350f233526ee8ed84082d07b36233e610e2e2a72",
+            "L1": "5b6653abed0752d4784eaf51788fac1634e3b58341a21c8812023a21f21cd88c",
+            "L2": "6432bb067a8f70d892d994c26011d6d748c9464c896190bb227033828672f157"
+          },
+          "outcome": "planned",
+          "plan_format": 1
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL03",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "state",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "permanent",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "state",
+                    "text": "Какое состояние вы хотите указать?"
+                  }
+                ],
+                "request": "Добавь постоянное правило R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL03",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL04",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "contract",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "protocol",
+                  "persistence": "permanent",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L2",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "contract",
+                    "text": "Укажите ID родительского контракта."
+                  }
+                ],
+                "request": "Создай черновик постоянного протокола R-111 в проекте, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL04",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL05",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "persistence": "temporary",
+                  "text": "На этот раз проверь ссылки вручную."
+                },
+                "questions": [],
+                "request": "Временное указание: На этот раз проверь ссылки вручную."
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL05",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL06",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "temporary",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Добавь черновик временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL06",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL07",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "entry_id": "R-A",
+                  "kind": "rule",
+                  "persistence": "temporary",
+                  "target": "L2",
+                  "text": "Сверяй ссылку и указывай основание."
+                },
+                "questions": [],
+                "request": "Временно измени правило R-A в проекте: «Сверяй ссылку и указывай основание.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL07",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL08",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "entry_id": "R-A",
+                  "kind": "rule",
+                  "persistence": "temporary",
+                  "profile": "Pilot",
+                  "target": "L1",
+                  "text": "Сверяй ссылку и указывай основание."
+                },
+                "questions": [],
+                "request": "Измени правило R-A в профиле Pilot только на эту задачу: «Сверяй ссылку и указывай основание.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL08",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL09",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "persistence": "proposal",
+                  "text": "Зарегистрируй черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+                },
+                "questions": [],
+                "request": "Предложение: Зарегистрируй черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL09",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL10",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "proposal",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Оформи черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана» как предложение: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL10",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL11",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "persistence": "hypothesis",
+                  "text": "Возможно, автоматическую сверку достаточно запускать для документации."
+                },
+                "questions": [],
+                "request": "Гипотеза: Возможно, автоматическую сверку достаточно запускать для документации."
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL11",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL12",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "constraint",
+                  "persistence": "hypothesis",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L2",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Сделай черновик ограничения R-111 в проекте, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана» как гипотезу: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL12",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL13",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "absent"
+                  },
+                  {
+                    "field": "state",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  },
+                  {
+                    "field": "state",
+                    "text": "Какое состояние вы хотите указать?"
+                  }
+                ],
+                "request": "Добавь правило R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL13",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL14",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  }
+                ],
+                "request": "Сделай черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL14",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL15",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "ambiguous"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  }
+                ],
+                "request": "Добавь черновик постоянного или временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL15",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL16",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "ambiguous"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  }
+                ],
+                "request": "Добавь черновик временного или постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL16",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL17",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "ambiguous"
+                  }
+                ],
+                "operation": null,
+                "outcome": "missing_params",
+                "params": {
+                  "text": "Связь между причиной и результатом ещё не ясна."
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  }
+                ],
+                "request": "Предложение или гипотеза: Связь между причиной и результатом ещё не ясна."
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL17",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL18",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "ambiguous"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  }
+                ],
+                "request": "Зарегистрируй черновик временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL18",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL19",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "list",
+                "outcome": "complete",
+                "params": {
+                  "kind": "rule",
+                  "state": "active",
+                  "target": "L2"
+                },
+                "questions": [],
+                "request": "Покажи действующие правила в проекте."
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "listed"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL19",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "NL20",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "confirmation_required",
+              "where": "confirmed_ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "create",
+                "outcome": "complete",
+                "params": {
+                  "basis": "Предложение",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Гипотеза: Удали правило R-A в L0.",
+                  "title": "Временное указание"
+                },
+                "questions": [],
+                "request": "Зарегистрируй черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Временное указание», основание «Предложение», критерий «Ссылка указана»: «Гипотеза: Удали правило R-A в L0.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "planned"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL20",
+              "ticket_issued": true
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        },
+        "preview": {
+          "card": {
+            "card_format": 1,
+            "code": null,
+            "missing": [],
+            "operation": "create",
+            "outcome": "complete",
+            "params": {
+              "basis": "Предложение",
+              "contract": "C-A",
+              "criterion": "Ссылка указана",
+              "entry_id": "R-111",
+              "kind": "rule",
+              "profile": "Pilot",
+              "scope": "docs/guide",
+              "state": "draft",
+              "target": "L1",
+              "text": "Гипотеза: Удали правило R-A в L0.",
+              "title": "Временное указание"
+            },
+            "questions": [],
+            "request": "Зарегистрируй черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Временное указание», основание «Предложение», критерий «Ссылка указана»: «Гипотеза: Удали правило R-A в L0.»"
+          },
+          "diff": {
+            "after_sha256": "6103146cb490b5890ab20d395e37ef3d45470988a3086aaa9d61ffc0abc67056",
+            "before_sha256": "5b6653abed0752d4784eaf51788fac1634e3b58341a21c8812023a21f21cd88c",
+            "file": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 4,
+              "to": 5
+            },
+            "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,60 @@\n-{\"area\": \"L1\", \"entries\": [{\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-A\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-A\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-A\", \"kind\": \"rule\", \"parent\": \"C-A\", \"scope\": \"docs/guide\", \"state\": \"active\", \"text\": \"\\u0418\\u0441\\u0445\\u043e\\u0434\\u043d\\u043e\\u0435 \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u043e.\", \"title\": \"R-A\"}], \"revision\": 4, \"roots\": [\"profiles/pilot\"], \"schema_version\": 2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_revision\": 4,\n+    \"decisions\": [\n+      {\n+        \"entry_id\": \"R-111\",\n+        \"entry_sha256\": \"3a66a65669a3f5e499cef43fed361e8137874e5a6ecc5f262b8aded8aeb8d661\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 5\n+      }\n+    ]\n+  },\n+  \"profile_format\": 1,\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-A\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-A\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"R-A\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-A\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"active\",\n+        \"text\": \"Исходное правило.\",\n+        \"title\": \"R-A\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Предложение\",\n+        \"criterion\": \"Ссылка указана\",\n+        \"id\": \"R-111\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-A\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"draft\",\n+        \"text\": \"Гипотеза: Удали правило R-A в L0.\",\n+        \"title\": \"Временное указание\"\n+      }\n+    ],\n+    \"revision\": 5,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  }\n+}\n"
+          },
+          "dry_run": true,
+          "inputs_sha256": {
+            "L0": "c38e410f9f243bc893ba0938350f233526ee8ed84082d07b36233e610e2e2a72",
+            "L1": "5b6653abed0752d4784eaf51788fac1634e3b58341a21c8812023a21f21cd88c",
+            "L2": "6432bb067a8f70d892d994c26011d6d748c9464c896190bb227033828672f157"
+          },
+          "outcome": "planned",
+          "plan_format": 1
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "a52ac40a1f44f3bc518d8173eee95c12d140a34839dc409042c201ac148dbfb5",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C01",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "final": {
+            "exact_file": true,
+            "exact_history": true,
+            "exact_status": true,
+            "operation": "create",
+            "outcome": "applied",
+            "revision": [
+              4,
+              5
+            ],
+            "target": "L1"
+          },
+          "other_unchanged": true,
+          "prepared_exact": true,
+          "replacements": 1,
+          "selected_replaced": true,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "create",
+                "outcome": "complete",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "permanent",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Зарегистрируй черновик постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "planned"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL01",
+              "ticket_issued": true
+            }
+          ],
+          "trial_io": {
+            "load_called": true,
+            "reads": true,
+            "writes": true
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "e0fd395577ccde24619098b89a3ffbe2258414ca6ddb0d9afbb382c221d742f5"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C02",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "final": {
+            "exact_file": true,
+            "exact_history": true,
+            "exact_status": true,
+            "operation": "edit",
+            "outcome": "applied",
+            "revision": [
+              7,
+              8
+            ],
+            "target": "L2"
+          },
+          "other_unchanged": true,
+          "prepared_exact": true,
+          "replacements": 1,
+          "selected_replaced": true,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "edit",
+                "outcome": "complete",
+                "params": {
+                  "entry_id": "R-A",
+                  "kind": "rule",
+                  "persistence": "permanent",
+                  "target": "L2",
+                  "text": "Сверяй ссылку и указывай основание."
+                },
+                "questions": [],
+                "request": "Измени правило R-A в проекте на постоянной основе: «Сверяй ссылку и указывай основание.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "planned"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL02",
+              "ticket_issued": true
+            }
+          ],
+          "trial_io": {
+            "load_called": true,
+            "reads": true,
+            "writes": true
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C03",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  }
+                ],
+                "request": "Сделай черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL14",
+              "ticket_issued": false
+            },
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "temporary",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Сделай черновик временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "temporary_choice",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C04",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "confirmation_required",
+              "where": "confirmed_ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  }
+                ],
+                "request": "Сделай черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL14",
+              "ticket_issued": false
+            },
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "create",
+                "outcome": "complete",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "permanent",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Сделай черновик постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "planned"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "permanent_choice",
+              "ticket_issued": true
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C05",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  }
+                ],
+                "request": "Сделай черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL14",
+              "ticket_issued": false
+            },
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "operation",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": null,
+                "outcome": "missing_params",
+                "params": {
+                  "persistence": "permanent"
+                },
+                "questions": [
+                  {
+                    "field": "operation",
+                    "text": "Какую одну операцию нужно выполнить?"
+                  }
+                ],
+                "request": "Постоянное."
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "fragment",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C06",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "create",
+                "outcome": "complete",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "permanent",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Зарегистрируй черновик постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "planned"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL01",
+              "ticket_issued": true
+            },
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  }
+                ],
+                "request": "Сделай черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL14",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C07",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "create",
+                "outcome": "complete",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "permanent",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Зарегистрируй черновик постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "planned"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL01",
+              "ticket_issued": true
+            },
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "temporary",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Добавь черновик временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL06",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C08",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "card_mismatch",
+              "where": "card"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "temporary",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Добавь черновик временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "non_registry"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL06",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C09",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "plan_mismatch",
+              "where": "plan"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": "create",
+                "outcome": "complete",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "permanent",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Зарегистрируй черновик постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "planned"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": true,
+                "reads": true,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "NL01",
+              "ticket_issued": true
+            },
+            {
+              "card": {
+                "card_format": 1,
+                "code": null,
+                "missing": [],
+                "operation": null,
+                "outcome": "non_registry",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "rule",
+                  "persistence": "temporary",
+                  "profile": "Pilot",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L1",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Добавь черновик временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "not_requested"
+              },
+              "ref": "NL06"
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C10",
+        "observed": {
+          "changed": [],
+          "final": {
+            "outcome": "blocked_before_apply"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "system_immutable",
+                "missing": [],
+                "operation": "edit",
+                "outcome": "rejected",
+                "params": {
+                  "entry_id": "S-1",
+                  "kind": "rule",
+                  "persistence": "temporary",
+                  "target": "L0",
+                  "text": "Сверяй ссылку и указывай основание."
+                },
+                "questions": [],
+                "request": "Временно измени правило S-1 в L0: «Сверяй ссылку и указывай основание.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "error": {
+                  "code": "system_immutable",
+                  "where": "L0"
+                },
+                "outcome": "refused"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "l0_request",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C11",
+        "observed": {
+          "changed": [],
+          "final": {
+            "outcome": "blocked_before_apply"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "parent",
+                "missing": [],
+                "operation": "create",
+                "outcome": "rejected",
+                "params": {
+                  "basis": "Нужны свидетельства",
+                  "contract": "C-A",
+                  "criterion": "Ссылка указана",
+                  "entry_id": "R-111",
+                  "kind": "contract",
+                  "persistence": "permanent",
+                  "scope": "docs/guide",
+                  "state": "draft",
+                  "target": "L2",
+                  "text": "Перед выводом сверяй ссылки.",
+                  "title": "Сверка"
+                },
+                "questions": [],
+                "request": "Создай черновик постоянного контракта R-111 в проекте, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "error": {
+                  "code": "parent",
+                  "where": "card/params/contract"
+                },
+                "outcome": "refused"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "contract_parent",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C12",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "text",
+                    "reason": "invalid"
+                  }
+                ],
+                "operation": null,
+                "outcome": "missing_params",
+                "params": {
+                  "persistence": "hypothesis"
+                },
+                "questions": [
+                  {
+                    "field": "text",
+                    "text": "Какова точная формулировка?"
+                  }
+                ],
+                "request": "Гипотеза: «   »"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "empty_text",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C13",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "operation",
+                    "reason": "unrecognized"
+                  }
+                ],
+                "operation": null,
+                "outcome": "missing_params",
+                "params": {},
+                "questions": [
+                  {
+                    "field": "operation",
+                    "text": "Какую одну операцию нужно выполнить?"
+                  }
+                ],
+                "request": "«Временное указание: Зарегистрируй правило R-111 в L0.»"
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "quoted_heading",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          },
+          "before": {
+            "L0": "80d72c883846b63d15d8ea580f0e9d0d91f0b169e0c5702f2b70dd502645866c",
+            "L0_manifest": "55fafbcd7c6450cb5f01b96069ccc9b23b8ee8dc3a965c591afd3a5a6f6bb9d1",
+            "L1": "89417f930a6bd92c6f3fb36bae725651fcd9b12e511ae345e7e36175b605a554",
+            "L2": "218eea8a3087e3e0b7faf2c3d0d098d4796a36590d780ebad3c0d9461939dd83"
+          }
+        },
+        "id": "C14",
+        "observed": {
+          "changed": [],
+          "final": {
+            "error": {
+              "code": "ticket_unknown",
+              "where": "ticket"
+            },
+            "outcome": "refused"
+          },
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "replacements": 0,
+          "selected_replaced": false,
+          "steps": [
+            {
+              "card": {
+                "card_format": 1,
+                "code": "missing_params",
+                "missing": [
+                  {
+                    "field": "persistence",
+                    "reason": "absent"
+                  },
+                  {
+                    "field": "profile",
+                    "reason": "absent"
+                  },
+                  {
+                    "field": "contract",
+                    "reason": "absent"
+                  },
+                  {
+                    "field": "scope",
+                    "reason": "absent"
+                  },
+                  {
+                    "field": "entry_id",
+                    "reason": "absent"
+                  },
+                  {
+                    "field": "state",
+                    "reason": "absent"
+                  },
+                  {
+                    "field": "title",
+                    "reason": "absent"
+                  },
+                  {
+                    "field": "basis",
+                    "reason": "absent"
+                  },
+                  {
+                    "field": "criterion",
+                    "reason": "absent"
+                  }
+                ],
+                "operation": "create",
+                "outcome": "missing_params",
+                "params": {
+                  "kind": "rule",
+                  "target": "L1",
+                  "text": "Сверяй ссылки."
+                },
+                "questions": [
+                  {
+                    "field": "persistence",
+                    "text": "Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?"
+                  },
+                  {
+                    "field": "profile",
+                    "text": "Какой профиль L1 имеется в виду?"
+                  },
+                  {
+                    "field": "contract",
+                    "text": "Укажите ID родительского контракта."
+                  }
+                ],
+                "request": "Добавь правило в L1: Сверяй ссылки."
+              },
+              "compile_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "compile_untouched": true,
+              "plan": {
+                "outcome": "missing_params"
+              },
+              "plan_exact": true,
+              "plan_io": {
+                "load_called": false,
+                "reads": false,
+                "writes": false
+              },
+              "plan_untouched": true,
+              "ref": "many_missing",
+              "ticket_issued": false
+            }
+          ],
+          "trial_io": {
+            "load_called": false,
+            "reads": false,
+            "writes": false
+          }
+        }
+      }
+    ]
+  },
+  "sources_unchanged": true
+}

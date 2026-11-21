@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И‑111 · Режим фразы</title><style>
+:root {color-scheme:light;--ink:#211c32;--muted:#574e67;--line:#ddd7e8;--wash:#f1edf7;--accent:#594287}
+* {box-sizing:border-box} body {margin:0;background:#fdfcfe;color:var(--ink);font:1rem/1.55 system-ui,sans-serif}
+header {background:var(--wash);border-bottom:1px solid var(--line)} header>div,main {max-width:64rem;margin:auto;padding:1.5rem max(1rem,3vw)}
+h1 {font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.08;text-wrap:balance;margin:.25em 0} h2 {margin:1.75rem 0 .6rem}
+.meta {color:var(--muted)} .verdict {font-weight:700;color:#215a49} a {color:var(--accent);text-underline-offset:.18em}
+.cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.75rem}
+article,details {background:white;padding:.75rem 1rem;border:1px solid var(--line);border-radius:.5rem} article strong {display:block} details {margin:.55rem 0}
+summary {cursor:pointer;font-weight:650} summary .meta {display:inline-block;margin-left:.65rem;font-weight:450}
+blockquote {margin:.6rem 0;border-left:.22rem solid var(--line);padding:0 .8rem} pre {padding:.85rem;background:var(--wash);white-space:pre-wrap}
+pre,code {overflow-wrap:anywhere} li {margin:.35rem 0}
+</style></head><body><header><div>
+<p class="meta">И‑111 · Ф2. Промпт-компилятор и диалог · P0 · 2026-11-21</p>
+<h1>Режим фразы: постоянное, временное, предложение, гипотеза</h1><p class="verdict">Проверки приняты на фикстурах</p>
+<p>Неясный режим — уточнить. Незаносимое в реестр — не записывать. Явное изменение — показать дифф, затем получить отдельное согласие.</p>
+</div></header><main>
+<div class="cards"><article><a href="CHECKOUT.json">П3 · checkout</a><strong>34 pass / 0 fail / 0 not run</strong></article>
+<article><a href="CLEANROOM.json">П4 · чистая копия</a><strong>34 pass / 0 fail / 0 not run</strong></article>
+<article><a href="ACCEPTANCE.json">П5 · приёмка</a><strong>7 pass / 0 fail / 4 not run</strong></article></div>
+<h2>Вопрос вместо догадки</h2><blockquote>Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?</blockquote><p>6 неясных запросов дали вопрос о режиме. Временное, предложение и гипотеза не дошли до загрузки реестров. Выбор можно уточнить полной новой фразой; он не заменяет согласие на дифф.</p>
+<h2>Корпус</h2><p>Ложных записей: <strong>0</strong> на 20 фразах. Отдельно проверены две согласованные записи L1/L2.</p>
+<details><summary>NL01 · Постоянное <span class="meta">Дифф</span></summary><p class="meta">Явная постоянная регистрация L1 в draft; только дифф, не активация. · <code>permanent</code></p><blockquote>Зарегистрируй черновик постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote></details><details><summary>NL02 · Постоянное <span class="meta">Дифф</span></summary><p class="meta">Явная постоянная правка L2; квалификатор после цели. · <code>permanent</code></p><blockquote>Измени правило R-A в проекте на постоянной основе: «Сверяй ссылку и указывай основание.»</blockquote></details><details><summary>NL03 · Постоянное <span class="meta">Уточнение</span></summary><p class="meta">Постоянное не подставляет состояние. · <code>permanent</code></p><blockquote>Добавь постоянное правило R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote><ul><li>Какое состояние вы хотите указать?</li></ul></details><details><summary>NL04 · Постоянное <span class="meta">Уточнение</span></summary><p class="meta">Даже одна локальная кандидатура не заменяет явно названный контракт. · <code>permanent</code></p><blockquote>Создай черновик постоянного протокола R-111 в проекте, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote><ul><li>Укажите ID родительского контракта.</li></ul></details><details><summary>NL05 · Временное <span class="meta">Вне реестра</span></summary><p class="meta">Временное указание для задачи остаётся вне реестра. · <code>temporary</code></p><blockquote>Временное указание: На этот раз проверь ссылки вручную.</blockquote></details><details><summary>NL06 · Временное <span class="meta">Вне реестра</span></summary><p class="meta">Полный набор параметров и слово «черновик» не перевешивают явное временное. · <code>temporary</code></p><blockquote>Добавь черновик временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote></details><details><summary>NL07 · Временное <span class="meta">Вне реестра</span></summary><p class="meta">Даже с явным ID временная правка не заменяет сохранённую запись. · <code>temporary</code></p><blockquote>Временно измени правило R-A в проекте: «Сверяй ссылку и указывай основание.»</blockquote></details><details><summary>NL08 · Временное <span class="meta">Вне реестра</span></summary><p class="meta">«Только на эту задачу» ограничивает режим, а не scope реестра. · <code>temporary</code></p><blockquote>Измени правило R-A в профиле Pilot только на эту задачу: «Сверяй ссылку и указывай основание.»</blockquote></details><details><summary>NL09 · Предложение <span class="meta">Вне реестра</span></summary><p class="meta">Вложенная полная команда остаётся текстом предложения. · <code>proposal</code></p><blockquote>Предложение: Зарегистрируй черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote></details><details><summary>NL10 · Предложение <span class="meta">Вне реестра</span></summary><p class="meta">Помеченная как предложение формулировка не регистрируется даже с готовыми полями. · <code>proposal</code></p><blockquote>Оформи черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана» как предложение: «Перед выводом сверяй ссылки.»</blockquote></details><details><summary>NL11 · Гипотеза <span class="meta">Вне реестра</span></summary><p class="meta">Явная гипотеза не принимается за факт или правило. · <code>hypothesis</code></p><blockquote>Гипотеза: Возможно, автоматическую сверку достаточно запускать для документации.</blockquote></details><details><summary>NL12 · Гипотеза <span class="meta">Вне реестра</span></summary><p class="meta">Черновик как гипотеза остаётся обсуждаемым текстом. · <code>hypothesis</code></p><blockquote>Сделай черновик ограничения R-111 в проекте, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана» как гипотезу: «Перед выводом сверяй ссылки.»</blockquote></details><details><summary>NL13 · Неясный режим <span class="meta">Уточнение</span></summary><p class="meta">На общей фразе нужно выяснить режим; состояние остаётся отдельным реквизитом.</p><blockquote>Добавь правило R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote><ul><li>Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?</li><li>Какое состояние вы хотите указать?</li></ul></details><details><summary>NL14 · Неясный режим <span class="meta">Уточнение</span></summary><p class="meta">«Сделай черновик» с готовыми полями: подготовка текста или запись?</p><blockquote>Сделай черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote><ul><li>Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?</li></ul></details><details><summary>NL15 · Неясный режим <span class="meta">Уточнение</span></summary><p class="meta">Конкурирующие режимы не разрешаются первым словом; вопрос о режиме.</p><blockquote>Добавь черновик постоянного или временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote><ul><li>Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?</li></ul></details><details><summary>NL16 · Неясный режим <span class="meta">Уточнение</span></summary><p class="meta">Конкурирующие режимы не разрешаются первым словом; вопрос о режиме.</p><blockquote>Добавь черновик временного или постоянного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote><ul><li>Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?</li></ul></details><details><summary>NL17 · Неясный режим <span class="meta">Уточнение</span></summary><p class="meta">Не выбирать даже между двумя незаписываемыми режимами.</p><blockquote>Предложение или гипотеза: Связь между причиной и результатом ещё не ясна.</blockquote><ul><li>Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?</li></ul></details><details><summary>NL18 · Неясный режим <span class="meta">Уточнение</span></summary><p class="meta">Явное «зарегистрируй» не снимает противоречие с временным.</p><blockquote>Зарегистрируй черновик временного правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Сверка», основание «Нужны свидетельства», критерий «Ссылка указана»: «Перед выводом сверяй ссылки.»</blockquote><ul><li>Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?</li></ul></details><details><summary>NL19 · Граница грамматики <span class="meta">Просмотр</span></summary><p class="meta">Просмотр действующих правил не требует режима и не является их активацией.</p><blockquote>Покажи действующие правила в проекте.</blockquote></details><details><summary>NL20 · Граница грамматики <span class="meta">Дифф</span></summary><p class="meta">Слова режима в названии, основании и теле — данные, не управляющая часть.</p><blockquote>Зарегистрируй черновик правила R-111 в профиле Pilot, по контракту C-A, область «docs/guide», название «Временное указание», основание «Предложение», критерий «Ссылка указана»: «Гипотеза: Удали правило R-A в L0.»</blockquote></details>
+<h2>Диффы без билетов</h2><p><a href="INTENTS.json">Карточки и наблюдения</a> · <a href="../../kit/base/OPERATION-CARD.md">Грамматика</a></p><details><summary>NL01 · profiles/pilot/registry.json</summary><p>SHA‑256 после: <code>8d3cae59a70def86a22faa922319d4ed79362481bbd60829b143c9e3cf1402d5</code></p><pre>--- a/profiles/pilot/registry.json
++++ b/profiles/pilot/registry.json
+@@ -1 +1,60 @@
+-{&quot;area&quot;: &quot;L1&quot;, &quot;entries&quot;: [{&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;C-A&quot;, &quot;kind&quot;: &quot;contract&quot;, &quot;parent&quot;: null, &quot;scope&quot;: &quot;docs&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0423\u0441\u043b\u043e\u0432\u0438\u044f \u0441\u0442\u0435\u043d\u0434\u0430.&quot;, &quot;title&quot;: &quot;C-A&quot;}, {&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;R-A&quot;, &quot;kind&quot;: &quot;rule&quot;, &quot;parent&quot;: &quot;C-A&quot;, &quot;scope&quot;: &quot;docs/guide&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0418\u0441\u0445\u043e\u0434\u043d\u043e\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e.&quot;, &quot;title&quot;: &quot;R-A&quot;}], &quot;revision&quot;: 4, &quot;roots&quot;: [&quot;profiles/pilot&quot;], &quot;schema_version&quot;: 2}
+\ No newline at end of file
++{
++  &quot;journal&quot;: {
++    &quot;base_revision&quot;: 4,
++    &quot;decisions&quot;: [
++      {
++        &quot;entry_id&quot;: &quot;R-111&quot;,
++        &quot;entry_sha256&quot;: &quot;dcb248dca4dcdae1f6feda93839764d20f207263d9ce652af437bd6e118cf8f3&quot;,
++        &quot;operation&quot;: &quot;create&quot;,
++        &quot;profile_revision&quot;: 5
++      }
++    ]
++  },
++  &quot;profile_format&quot;: 1,
++  &quot;registry&quot;: {
++    &quot;area&quot;: &quot;L1&quot;,
++    &quot;entries&quot;: [
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;C-A&quot;,
++        &quot;kind&quot;: &quot;contract&quot;,
++        &quot;parent&quot;: null,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Условия стенда.&quot;,
++        &quot;title&quot;: &quot;C-A&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;R-A&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-A&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Исходное правило.&quot;,
++        &quot;title&quot;: &quot;R-A&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Нужны свидетельства&quot;,
++        &quot;criterion&quot;: &quot;Ссылка указана&quot;,
++        &quot;id&quot;: &quot;R-111&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-A&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;draft&quot;,
++        &quot;text&quot;: &quot;Перед выводом сверяй ссылки.&quot;,
++        &quot;title&quot;: &quot;Сверка&quot;
++      }
++    ],
++    &quot;revision&quot;: 5,
++    &quot;roots&quot;: [
++      &quot;profiles/pilot&quot;
++    ],
++    &quot;schema_version&quot;: 2
++  }
++}
+</pre></details><details><summary>NL02 · .agent-contract/project/registry.json</summary><p>SHA‑256 после: <code>3a32476118e1fe5435a7dc6773a7744d304b75d64b6760bac0e52d7363a1ba9f</code></p><pre>--- a/.agent-contract/project/registry.json
++++ b/.agent-contract/project/registry.json
+@@ -1 +1,53 @@
+-{&quot;area&quot;: &quot;L2&quot;, &quot;entries&quot;: [{&quot;authority&quot;: &quot;project_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;C-A&quot;, &quot;kind&quot;: &quot;contract&quot;, &quot;parent&quot;: null, &quot;scope&quot;: &quot;docs&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0423\u0441\u043b\u043e\u0432\u0438\u044f \u0441\u0442\u0435\u043d\u0434\u0430.&quot;, &quot;title&quot;: &quot;C-A&quot;}, {&quot;authority&quot;: &quot;project_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;R-A&quot;, &quot;kind&quot;: &quot;rule&quot;, &quot;parent&quot;: &quot;C-A&quot;, &quot;scope&quot;: &quot;docs/guide&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0418\u0441\u0445\u043e\u0434\u043d\u043e\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e.&quot;, &quot;title&quot;: &quot;R-A&quot;}], &quot;revision&quot;: 7, &quot;roots&quot;: [&quot;.agent-contract&quot;], &quot;schema_version&quot;: 2}
+\ No newline at end of file
++{
++  &quot;journal&quot;: {
++    &quot;base_entries&quot;: {
++      &quot;C-A&quot;: &quot;06d6469fd5c43f45a4657bf76295ee016cf0364432d91ccf89a810e380f071bc&quot;,
++      &quot;R-A&quot;: &quot;77b6247398e71764058d2c6c500ad566e6e482f6333990018b96548b922f1b8b&quot;
++    },
++    &quot;base_revision&quot;: 7,
++    &quot;decisions&quot;: [
++      {
++        &quot;after_sha256&quot;: &quot;32ecefee54388eda9a762aa6e6dbdd86b689e928e887f829ffaf4fdb63012fe0&quot;,
++        &quot;before_sha256&quot;: &quot;77b6247398e71764058d2c6c500ad566e6e482f6333990018b96548b922f1b8b&quot;,
++        &quot;entry_id&quot;: &quot;R-A&quot;,
++        &quot;operation&quot;: &quot;edit&quot;,
++        &quot;project_revision&quot;: 8
++      }
++    ]
++  },
++  &quot;registry&quot;: {
++    &quot;area&quot;: &quot;L2&quot;,
++    &quot;entries&quot;: [
++      {
++        &quot;authority&quot;: &quot;project_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;C-A&quot;,
++        &quot;kind&quot;: &quot;contract&quot;,
++        &quot;parent&quot;: null,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Условия стенда.&quot;,
++        &quot;title&quot;: &quot;C-A&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;project_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;R-A&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-A&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Сверяй ссылку и указывай основание.&quot;,
++        &quot;title&quot;: &quot;R-A&quot;
++      }
++    ],
++    &quot;revision&quot;: 8,
++    &quot;roots&quot;: [
++      &quot;.agent-contract&quot;
++    ],
++    &quot;schema_version&quot;: 2
++  },
++  &quot;registry_format&quot;: 2
++}
+</pre></details><details><summary>NL20 · profiles/pilot/registry.json</summary><p>SHA‑256 после: <code>6103146cb490b5890ab20d395e37ef3d45470988a3086aaa9d61ffc0abc67056</code></p><pre>--- a/profiles/pilot/registry.json
++++ b/profiles/pilot/registry.json
+@@ -1 +1,60 @@
+-{&quot;area&quot;: &quot;L1&quot;, &quot;entries&quot;: [{&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;C-A&quot;, &quot;kind&quot;: &quot;contract&quot;, &quot;parent&quot;: null, &quot;scope&quot;: &quot;docs&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0423\u0441\u043b\u043e\u0432\u0438\u044f \u0441\u0442\u0435\u043d\u0434\u0430.&quot;, &quot;title&quot;: &quot;C-A&quot;}, {&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;R-A&quot;, &quot;kind&quot;: &quot;rule&quot;, &quot;parent&quot;: &quot;C-A&quot;, &quot;scope&quot;: &quot;docs/guide&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0418\u0441\u0445\u043e\u0434\u043d\u043e\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e.&quot;, &quot;title&quot;: &quot;R-A&quot;}], &quot;revision&quot;: 4, &quot;roots&quot;: [&quot;profiles/pilot&quot;], &quot;schema_version&quot;: 2}
+\ No newline at end of file
++{
++  &quot;journal&quot;: {
++    &quot;base_revision&quot;: 4,
++    &quot;decisions&quot;: [
++      {
++        &quot;entry_id&quot;: &quot;R-111&quot;,
++        &quot;entry_sha256&quot;: &quot;3a66a65669a3f5e499cef43fed361e8137874e5a6ecc5f262b8aded8aeb8d661&quot;,
++        &quot;operation&quot;: &quot;create&quot;,
++        &quot;profile_revision&quot;: 5
++      }
++    ]
++  },
++  &quot;profile_format&quot;: 1,
++  &quot;registry&quot;: {
++    &quot;area&quot;: &quot;L1&quot;,
++    &quot;entries&quot;: [
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;C-A&quot;,
++        &quot;kind&quot;: &quot;contract&quot;,
++        &quot;parent&quot;: null,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Условия стенда.&quot;,
++        &quot;title&quot;: &quot;C-A&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;R-A&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-A&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Исходное правило.&quot;,
++        &quot;title&quot;: &quot;R-A&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Предложение&quot;,
++        &quot;criterion&quot;: &quot;Ссылка указана&quot;,
++        &quot;id&quot;: &quot;R-111&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-A&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;draft&quot;,
++        &quot;text&quot;: &quot;Гипотеза: Удали правило R-A в L0.&quot;,
++        &quot;title&quot;: &quot;Временное указание&quot;
++      }
++    ],
++    &quot;revision&quot;: 5,
++    &quot;roots&quot;: [
++      &quot;profiles/pilot&quot;
++    ],
++    &quot;schema_version&quot;: 2
++  }
++}
+</pre></details>
+<h2>Не выполнялось</h2><ul><li><strong>Диалог с памятью и произвольный русский язык, исполнение временного указания, подтверждение гипотез, активация черновика.</strong> Измерена консервативная грамматика и граница реестра, не поведение модели.</li><li><strong>Bootstrap, R-2, перенос, миграция, X07/X08 и полный конфликтный разбор.</strong> Следующие итерации; живые данные не использованы.</li><li><strong>Права владельца/ОС, живые адаптеры, параллельные писатели, ACL/NTFS, сбой питания.</strong> Временные Linux-фикстуры и один писатель; согласие в положительных контролях синтетическое.</li><li><strong>Свежие прогоны донора 0.1.36 и ISAI.</strong> Их код и пакеты не входят в чистую копию целевой пробы.</li></ul>
+<h2>Печать и повтор</h2><p><a href="AgentContractKit-Iteration-111.zip">ZIP с приёмкой</a> · 31 файлов · 767186 байт ·
+<a href="REPLAY.json">повтор: ok</a></p><p>SHA‑256 <code>5ef33c459ee49c6324294c886d3ae32280f4c77ef714537f1026b6d1a27dea0d</code></p>
+<p><a href="REPORT.md">Отчёт и критерии</a> · <a href="DESIGN.md">Замысел</a> · <a href="../STRATEGY.md">Стратегия</a></p>
+<p class="meta">И-112 — bootstrap до чтения всего контракта: `kit/base/entry.txt`, `START.md §0`, create по фразе за ≤3 шага; не начата.</p></main></body></html>

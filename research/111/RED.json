@@ -1,0 +1,483 @@
+{
+  "iteration": "И-111",
+  "phase": "П2 до изменения Kit",
+  "base_commit": "7ba1c7ebc226de34368541382a65f673a50f28d6",
+  "rc": 1,
+  "host_os": "Linux",
+  "casebook_sha256": "a93f433a9aabe0dfa40a8f909ed11fd6669612e91ebbf9c4551869f6cfd8e536",
+  "test_sha256": "cdb4e0a7bf238c34788222a6839b58b3b3643aee9652baf58bc4fc6e3608e40d",
+  "counts": {
+    "pass": 8,
+    "fail": 26,
+    "not run": 0
+  },
+  "rows": [
+    {
+      "id": "NL01",
+      "status": "pass",
+      "issue": null,
+      "plan": [
+        "planned"
+      ],
+      "missing": [
+        []
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL02",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL03",
+      "status": "pass",
+      "issue": null,
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "state"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL04",
+      "status": "pass",
+      "issue": null,
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "contract"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL05",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL06",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL07",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL08",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL09",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL10",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL11",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL12",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL13",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "state"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL14",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "planned"
+      ],
+      "missing": [
+        []
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL15",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL16",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL17",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL18",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL19",
+      "status": "pass",
+      "issue": null,
+      "plan": [
+        "listed"
+      ],
+      "missing": [
+        []
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "NL20",
+      "status": "pass",
+      "issue": null,
+      "plan": [
+        "planned"
+      ],
+      "missing": [
+        []
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C01",
+      "status": "pass",
+      "issue": null,
+      "plan": [
+        "planned"
+      ],
+      "missing": [
+        []
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C02",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [],
+      "missing": [],
+      "probe_error": "Отдельное согласие только на независимо сверенный dry-run"
+    },
+    {
+      "id": "C03",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "planned",
+        "missing_params"
+      ],
+      "missing": [
+        [],
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C04",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "planned",
+        "planned"
+      ],
+      "missing": [
+        [],
+        []
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C05",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "planned",
+        "missing_params"
+      ],
+      "missing": [
+        [],
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C06",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "planned",
+        "planned"
+      ],
+      "missing": [
+        [],
+        []
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C07",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "planned",
+        "missing_params"
+      ],
+      "missing": [
+        [],
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C08",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C09",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "planned",
+        "not_requested"
+      ],
+      "missing": [
+        [],
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C10",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [],
+      "missing": [],
+      "probe_error": "Запрет должен сработать до apply"
+    },
+    {
+      "id": "C11",
+      "status": "pass",
+      "issue": null,
+      "plan": [
+        "refused"
+      ],
+      "missing": [
+        []
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C12",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C13",
+      "status": "pass",
+      "issue": null,
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "operation"
+        ]
+      ],
+      "probe_error": null
+    },
+    {
+      "id": "C14",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "plan": [
+        "missing_params"
+      ],
+      "missing": [
+        [
+          "profile",
+          "contract",
+          "scope",
+          "entry_id",
+          "state",
+          "title",
+          "basis",
+          "criterion"
+        ]
+      ],
+      "probe_error": null
+    }
+  ]
+}

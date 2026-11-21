@@ -1,0 +1,82 @@
+{
+  "id": "111",
+  "title": "Режим фразы: постоянное, временное, предложение, гипотеза",
+  "phase": "Ф2. Промпт-компилятор и диалог",
+  "priority": "P0",
+  "date": "2026-11-21",
+  "branch": "arena/4e000a5e-isyncai",
+  "baseline": "7ba1c7e · v1.12",
+  "target_inputs": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/110/test_actions.py",
+    "research/111/CASES.json",
+    "research/111/test_intent.py"
+  ],
+  "seal_members": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-MATRIX.md",
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/REGISTRY-JOURNAL.md",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/110/ACCEPTANCE.json",
+    "research/110/test_actions.py",
+    "research/111/ACCEPTANCE.json",
+    "research/111/CASES.json",
+    "research/111/CHECKOUT.json",
+    "research/111/CLEANROOM.json",
+    "research/111/DESIGN.md",
+    "research/111/INTENTS.json",
+    "research/111/ITERATION.json",
+    "research/111/RED.json",
+    "research/111/REPORT.md",
+    "research/111/render111.py",
+    "research/111/run.py",
+    "research/111/test_intent.py",
+    "research/STRATEGY.md",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py"
+  ],
+  "case_counts": {
+    "nl": 20,
+    "control": 14
+  },
+  "casebook_sha256": "a93f433a9aabe0dfa40a8f909ed11fd6669612e91ebbf9c4551869f6cfd8e536",
+  "test_sha256": "cdb4e0a7bf238c34788222a6839b58b3b3643aee9652baf58bc4fc6e3608e40d",
+  "not_run": [
+    {
+      "what": "Диалог с памятью и произвольный русский язык, исполнение временного указания, подтверждение гипотез, активация черновика.",
+      "why": "Измерена консервативная грамматика и граница реестра, не поведение модели."
+    },
+    {
+      "what": "Bootstrap, R-2, перенос, миграция, X07/X08 и полный конфликтный разбор.",
+      "why": "Следующие итерации; живые данные не использованы."
+    },
+    {
+      "what": "Права владельца/ОС, живые адаптеры, параллельные писатели, ACL/NTFS, сбой питания.",
+      "why": "Временные Linux-фикстуры и один писатель; согласие в положительных контролях синтетическое."
+    },
+    {
+      "what": "Свежие прогоны донора 0.1.36 и ISAI.",
+      "why": "Их код и пакеты не входят в чистую копию целевой пробы."
+    }
+  ],
+  "next": "И-112 — bootstrap до чтения всего контракта: `kit/base/entry.txt`, `START.md §0`, create по фразе за ≤3 шага; не начата."
+}

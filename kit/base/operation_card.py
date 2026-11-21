@@ -21,7 +21,24 @@ _KINDS = {word: kind for kind, words in {
     'protocol': ('протокол', 'протокола', 'протоколы', 'протоколов'),
     'preference': ('предпочтение', 'предпочтения', 'предпочтений'),
 }.items() for word in words}
-# Грамматическая подсказка → (поле, вид значения). Константы обозначают явно названные области.
+# Режим высказывания, не состояние записи. Только в управляющей части, вне цитат и тела.
+_PERSISTENCE = {
+    **{(word,): 'permanent' for word in ('постоянное', 'постоянный', 'постоянного', 'постоянно')},
+    **{(word,): 'temporary' for word in ('временное', 'временный', 'временного', 'временно')},
+    ('на', 'постоянной', 'основе'): 'permanent',
+    ('на', 'эту', 'задачу'): 'temporary',
+    ('на', 'текущую', 'задачу'): 'temporary',
+    ('только', 'на', 'эту', 'задачу'): 'temporary',
+    ('как', 'предложение'): 'proposal',
+    ('как', 'гипотезу'): 'hypothesis',
+}
+_LEADING_MODES = {('временное', 'указание'): 'temporary', ('постоянное', 'правило'): 'permanent',
+                  ('предложение',): 'proposal', ('гипотеза',): 'hypothesis', **_PERSISTENCE}
+_NON_REGISTRY = frozenset(('temporary', 'proposal', 'hypothesis'))
+_REGISTER_VERBS = frozenset(('зарегистрируй', 'запиши'))
+_UNSPECIFIC_CREATE = frozenset(('оформи', 'сделай'))
+
+# Грамматическая подсказка → (поле, вид значения). Константы: явно названная область или режим.
 _CLAUSES = {
     **{('в', area.lower()): ('target', area) for area in ('L0', 'L1', 'L2')},
     ('в', 'проект'): ('target', 'L2'),
@@ -41,9 +58,11 @@ _CLAUSES = {
     ('с', 'основанием'): ('basis', 'literal'),
     ('критерий',): ('criterion', 'literal'),
     ('с', 'критерием'): ('criterion', 'literal'),
+    **{phrase: ('persistence', mode) for phrase, mode in _PERSISTENCE.items()},
 }
 _QUESTIONS = {
     'operation': 'Какую одну операцию нужно выполнить?',
+    'persistence': 'Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?',
     'target': 'К какой области относится запрос?',
     'profile': 'Какой профиль L1 имеется в виду?',
     'kind': 'Какого вида новая запись?',
@@ -103,11 +122,25 @@ def _split(request):
     return tokens, body
 
 
-def _mark(words, pos):
-    for phrase, slot in _CLAUSES.items():
+def _marker(table, words, pos):
+    for phrase, slot in table.items():
         if words[pos:pos + len(phrase)] == phrase:
             return len(phrase), slot
     return None
+
+
+def _mark(words, pos):
+    return _marker(_CLAUSES, words, pos)
+
+
+def _take_modes(words, pos, claims, table=_PERSISTENCE):
+    while (match := _marker(table, words, pos)) is not None:
+        width, mode = match
+        claims.setdefault('persistence', []).append(mode)
+        pos += width
+        if pos < len(words) and words[pos] in _CONNECTORS and _marker(table, words, pos + 1) is not None:
+            pos += 1
+    return pos
 
 
 def _value(token, form):
@@ -138,10 +171,10 @@ def _arguments(tokens, words, pos, operation, claims):
             if (field, form) == ('target', 'L1') or previous[1:] == ('target', 'L1'):
                 # У альтернативы «в L1» профиль не назван; соседний вариант его не заполняет.
                 claims.setdefault('profile', []).append(_ABSENT)
-        if group != 'target' and operation != 'create':
+        if group != 'target' and operation != 'create' and (operation, field) != ('edit', 'persistence'):
             raise _Unclear('unrecognized')
         pos += width
-        if field == 'target':
+        if field in ('target', 'persistence'):
             claims.setdefault(field, []).append(form)
         else:
             if field == 'profile':
@@ -159,19 +192,32 @@ def _arguments(tokens, words, pos, operation, claims):
         previous = (group, field, form)
 
 
+def _body_text(body):
+    if re.fullmatch(_QUOTED, body):
+        body = body[1:-1]
+    return body if body.strip() else _INVALID
+
+
 def _extract(request):
     tokens, body = _split(request)
     words = tuple(token.word for token in tokens)
     start = int(bool(words) and words[0] == 'пожалуйста')
     if start == len(words):
         raise _Unclear('absent')
-    operation = _VERBS.get(words[start])
-    if operation is None:
+    claims = {}
+    pos = _take_modes(words, start, claims, _LEADING_MODES)
+    if pos == len(words):
+        # Отдельный заголовок: ни глагол, ни реквизиты из тела не становятся командой.
+        if body is not None:
+            claims['text'] = [_body_text(body)]
+        return None, claims, None
+    verb = words[pos]
+    operation = _VERBS.get(verb)
+    if operation is None or (claims and operation not in ('create', 'edit')):
         raise _Unclear('unrecognized')
-    pos = start + 1
+    pos += 1
     if any(word in _VERBS for word in words[pos:]):
         raise _Unclear('ambiguous')
-    claims = {}
 
     def take(*choices):
         nonlocal pos
@@ -187,12 +233,16 @@ def _extract(request):
         if take('действующее', 'действующие', 'действующего', 'действующих'):
             claims['state'] = ['active']
     elif operation == 'create':
+        pos = _take_modes(words, pos, claims)
         if take('черновик'):
             claims['state'] = ['draft']
-        if take('постоянное', 'постоянный', 'постоянного'):
-            claims['persistence'] = ['permanent']
+        pos = _take_modes(words, pos, claims)
     else:
-        take('это', 'этот', 'эту')  # Только грамматическая форма, не ссылка на последнюю запись.
+        if operation == 'edit':
+            pos = _take_modes(words, pos, claims)
+        take('это', 'этот', 'эту')  # Грамматическая форма, не ссылка на последнюю запись.
+        if operation == 'edit':
+            pos = _take_modes(words, pos, claims)
     if pos < len(words) and words[pos] in _KINDS:
         claims['kind'] = [_KINDS[words[pos]]]
         pos += 1
@@ -204,14 +254,12 @@ def _extract(request):
     if body is not None:
         if operation not in ('create', 'edit'):
             raise _Unclear('unrecognized')
-        if re.fullmatch(_QUOTED, body):
-            body = body[1:-1]
-        claims['text'] = [body if body.strip() else _INVALID]
-    return operation, claims
+        claims['text'] = [_body_text(body)]
+    return operation, claims, verb
 
 
-def _card(request, operation, params, missing, *, refusal=None):
-    outcome = 'rejected' if refusal else 'missing_params' if missing else 'complete'
+def _card(request, operation, params, missing, *, refusal=None, non_registry=False):
+    outcome = 'rejected' if refusal else 'missing_params' if missing else 'non_registry' if non_registry else 'complete'
     return {'card_format': CARD_FORMAT, 'request': request, 'operation': operation, 'params': params,
             'missing': missing, 'questions': [{'field': row['field'], 'text': _QUESTIONS[row['field']]} for row in missing[:3]],
             'outcome': outcome, 'code': refusal or ('missing_params' if missing else None)}
@@ -223,7 +271,7 @@ def compile_prompt(request):
         raise TypeError('request: ожидается строка')
     request.encode('utf-8')  # Сохраняем весь исходный текст в JSON, не заменяя непредставимые символы.
     try:
-        operation, claims = _extract(request)
+        operation, claims, verb = _extract(request)
     except _Unclear as error:
         return _card(request, None, {}, [{'field': 'operation', 'reason': str(error)}])
 
@@ -239,6 +287,11 @@ def compile_prompt(request):
         else:
             params[field] = values[0]
 
+    # «Зарегистрируй … временно» не является ни явным запросом записи, ни чистым временным указанием.
+    if verb in _REGISTER_VERBS and any(mode in _NON_REGISTRY for mode in claims.get('persistence', ())):
+        params.pop('persistence', None)
+        unresolved['persistence'] = 'ambiguous'
+
     target, kind = params.get('target'), params.get('kind')
     if target != 'L1':
         params.pop('profile', None)
@@ -250,15 +303,29 @@ def compile_prompt(request):
     if operation == 'create' and kind == 'contract' and 'contract' in claims:
         return _card(request, operation, params, [], refusal='parent')
 
-    required = {'target'} | ({'profile'} if target == 'L1' else set())
-    if operation == 'create':
-        required.update(('kind', 'scope', 'entry_id', 'state', 'title', 'text', 'basis', 'criterion'))
-        if kind is not None and kind != 'contract':
-            required.add('contract')
-    elif operation != 'list' or params.get('view') == 'text':
-        required.add('entry_id')
-    if operation == 'edit':
-        required.add('text')
+    if params.get('persistence') in _NON_REGISTRY:
+        # Не требуем адреса записи, когда регистрации нет. Тело по-прежнему не исполняется.
+        missing = [] if 'text' in params else [{'field': 'text', 'reason': unresolved.get('text', 'absent')}]
+        return _card(request, None, params, missing, non_registry=True)
+
+    required = set()
+    if operation is None:
+        if 'persistence' not in unresolved:
+            required.add('operation')
+    else:
+        required.add('target')
+        if target == 'L1':
+            required.add('profile')
+        if operation == 'create':
+            required.update(('kind', 'scope', 'entry_id', 'state', 'title', 'text', 'basis', 'criterion'))
+            if kind is not None and kind != 'contract':
+                required.add('contract')
+            if verb not in _REGISTER_VERBS and (verb in _UNSPECIFIC_CREATE or 'state' not in params):
+                required.add('persistence')
+        elif operation != 'list' or params.get('view') == 'text':
+            required.add('entry_id')
+        if operation == 'edit':
+            required.add('text')
     missing = [{'field': field, 'reason': unresolved.get(field, 'absent')} for field in _QUESTIONS
                if field in unresolved or (field in required and field not in params)]
     return _card(request, operation, params, missing)
