@@ -1,0 +1,780 @@
+{
+  "inputs_sha256": {
+    "kit/base/OPERATION-MATRIX.md": "ef69d7253e1633575f7206299ca7bcc8fe41352c1dbbbbad7893dddb0b592aaa",
+    "kit/base/PROFILE-JOURNAL.md": "9f2d691c31927e51f8e669227be23ec77ffd61921313109a28f4cf2db4c0abfb",
+    "kit/base/PROJECT-SPECIFICITY.md": "88a73617256e39dd414f292acad4b1163052e8db2904d6116df7d19a6cd2020e",
+    "kit/base/PROMOTION.md": "bc4c08cc1eb588d04264c5e0bcc454bc7249c0ee0df078076c893c2bf1301629",
+    "kit/base/REGISTRY-JOURNAL.md": "1e101b27f4b48b892be8fcfd43fb39290411b030258c44f1d4de62c88ae21e52",
+    "kit/base/SCHEMA-V2.md": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+    "kit/base/STORAGE-V2.md": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/project_specificity.py": "5788c3860142217f17695efbc4124f87937a71bce14561456e06b9ae5c72f6af",
+    "kit/base/promotion.py": "511e8c03dbc2996c1d705c497e3cce570c14ec23e7adac16516ff1c6f1c05db2",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/114/CASES.json": "997932d6418de56c2f3801005219da4bd25c1f489528269004ab2842dc5ce76d",
+    "research/114/test_promotion.py": "fb4c7ed6e8d63a35a50d2b9e172b3d9f731824ad1ead9c132308a781865ed32e"
+  },
+  "inputs_unchanged": true,
+  "rc": 0,
+  "result": {
+    "control": {
+      "source_v2": true,
+      "staged_profile_v2": true,
+      "working_port": "unknown_operation"
+    },
+    "counts": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 33
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "observation": {
+          "allocations": 1,
+          "findings": [
+            {
+              "category": "machine",
+              "code": "known_machine",
+              "field": "text"
+            },
+            {
+              "category": "path",
+              "code": "posix_local",
+              "field": "text"
+            },
+            {
+              "category": "project_name",
+              "code": "known_project",
+              "field": "text"
+            },
+            {
+              "category": "secret",
+              "code": "credential_assignment",
+              "field": "text"
+            }
+          ],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 1,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": {
+            "from": 3,
+            "to": 4
+          },
+          "stage_empty": true,
+          "steps": [
+            "project_specific:proposal",
+            "planned",
+            "staged"
+          ],
+          "write_attempts": 1
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P02",
+        "observation": {
+          "allocations": 1,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 1,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": {
+            "from": 3,
+            "to": 4
+          },
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "staged"
+          ],
+          "write_attempts": 1
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P03",
+        "observation": {
+          "allocations": 1,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 1,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": {
+            "from": 3,
+            "to": 4
+          },
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "staged"
+          ],
+          "write_attempts": 1
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P04",
+        "observation": {
+          "allocations": 1,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 1,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": {
+            "from": 3,
+            "to": 4
+          },
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "staged"
+          ],
+          "write_attempts": 1
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P05",
+        "observation": {
+          "allocations": 1,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 1,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": {
+            "from": 3,
+            "to": 4
+          },
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "staged"
+          ],
+          "write_attempts": 1
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P06",
+        "observation": {
+          "allocations": 1,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 1,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": {
+            "from": 3,
+            "to": 4
+          },
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "planned",
+            "staged"
+          ],
+          "write_attempts": 1
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P07",
+        "observation": {
+          "allocations": 1,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 1,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": {
+            "from": 4,
+            "to": 5
+          },
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "staged"
+          ],
+          "write_attempts": 1
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R01",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "promote_unverified:target"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R02",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "promote_unverified:confirmation"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R03",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "promote_unverified:confirmation"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R04",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "planned",
+            "promote_unverified:confirmation"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R05",
+        "observation": {
+          "allocations": 0,
+          "findings": [
+            {
+              "category": "machine",
+              "code": "known_machine",
+              "field": "text"
+            },
+            {
+              "category": "path",
+              "code": "posix_local",
+              "field": "text"
+            },
+            {
+              "category": "project_name",
+              "code": "known_project",
+              "field": "text"
+            },
+            {
+              "category": "secret",
+              "code": "credential_assignment",
+              "field": "text"
+            }
+          ],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "project_specific:proposal",
+            "promote_unverified:confirmation"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R06",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "promote_unverified:plan"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R07",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "promote_unverified:plan"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R08",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "promote_unverified:plan"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R09",
+        "observation": {
+          "allocations": 1,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 1,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": {
+            "from": 3,
+            "to": 4
+          },
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "staged",
+            "promote_unverified:confirmation"
+          ],
+          "write_attempts": 1
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R10",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "promote_unverified:confirmation"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S01",
+        "observation": {
+          "allocations": 0,
+          "findings": [
+            {
+              "category": "path",
+              "code": "project_prefix",
+              "field": "scope"
+            }
+          ],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "project_specific:proposal"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S02",
+        "observation": {
+          "allocations": 0,
+          "findings": [
+            {
+              "category": "project_name",
+              "code": "known_project",
+              "field": "title"
+            }
+          ],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "project_specific:proposal"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S03",
+        "observation": {
+          "allocations": 0,
+          "findings": [
+            {
+              "category": "path",
+              "code": "posix_local",
+              "field": "basis"
+            }
+          ],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "project_specific:proposal"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S04",
+        "observation": {
+          "allocations": 0,
+          "findings": [
+            {
+              "category": "secret",
+              "code": "credential_value",
+              "field": "value"
+            }
+          ],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "project_specific:proposal"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V01",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "promote_conflict:entry"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V02",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "promote_conflict:entry"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V03",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "promote_conflict:entries"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V04",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "parent:proposal"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V05",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "parent:proposal"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V06",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "parent:proposal"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V07",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "invalid_entry:source"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V08",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "invalid_entry:proposal"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V09",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "invalid_context:context"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V10",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "invalid_profile:staged_profile"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V11",
+        "observation": {
+          "allocations": 0,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "invalid_profile:staged_profile"
+          ],
+          "write_attempts": 0
+        },
+        "status": "pass"
+      },
+      {
+        "id": "V12",
+        "observation": {
+          "allocations": 1,
+          "findings": [],
+          "inputs_unchanged": true,
+          "io_violations": 0,
+          "other_validated": 0,
+          "protected_trees_unchanged": true,
+          "quiet": true,
+          "revision": null,
+          "stage_empty": true,
+          "steps": [
+            "planned",
+            "write_failed:stage",
+            "promote_unverified:confirmation"
+          ],
+          "write_attempts": 1
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "stderr_empty": true
+}

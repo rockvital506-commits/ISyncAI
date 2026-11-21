@@ -1,0 +1,197 @@
+{
+  "baseline": "ad432235a14457145de58c35b723ea85ec3a9187",
+  "casebook_sha256": "997932d6418de56c2f3801005219da4bd25c1f489528269004ab2842dc5ce76d",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/114/test_promotion.py"
+  ],
+  "independent_baseline_match": true,
+  "rc": 1,
+  "result": {
+    "control": {
+      "source_v2": true,
+      "staged_profile_v2": true,
+      "working_port": "unknown_operation"
+    },
+    "counts": {
+      "fail": 33,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P02",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P03",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P04",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P05",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P06",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P07",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R01",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R02",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R03",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R04",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R05",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R06",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R07",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R08",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R09",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R10",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S01",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S02",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S03",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S04",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V01",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V02",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V03",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V04",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V05",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V06",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V07",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V08",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V09",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V10",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V11",
+        "reason": "promotion_missing",
+        "status": "fail"
+      },
+      {
+        "id": "V12",
+        "reason": "promotion_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "test_sha256": "fb4c7ed6e8d63a35a50d2b9e172b3d9f731824ad1ead9c132308a781865ed32e"
+}

@@ -1,0 +1,781 @@
+{
+  "basis": "CHECKOUT.json и CLEANROOM.json; отпечатки сверены с независимым оракулом test_promotion.py",
+  "iteration": "И-114",
+  "metrics": {
+    "all_cleaned": true,
+    "cases": 33,
+    "cross_project_readbacks": 8,
+    "inputs_unchanged_all": true,
+    "io_violations": 0,
+    "protected_trees_unchanged_all": true,
+    "refusals_by_code": {
+      "invalid_context": 1,
+      "invalid_entry": 2,
+      "invalid_profile": 2,
+      "parent": 3,
+      "project_specific": 6,
+      "promote_conflict": 3,
+      "promote_unverified": 11,
+      "write_failed": 1
+    },
+    "staged": 8,
+    "validated_kinds": [
+      "constraint",
+      "contract",
+      "preference",
+      "protocol",
+      "rule"
+    ],
+    "write_attempts": 9
+  },
+  "rows": [
+    {
+      "allocations": 1,
+      "basis": "И‑113 / четыре категории; Ф3",
+      "candidate_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152",
+      "criterion": "Повтор с явной редакцией снимает все четыре маркера. Точно этот protocol/draft и одно решение читаются в другом проекте.",
+      "findings": [
+        {
+          "category": "machine",
+          "code": "known_machine",
+          "field": "text"
+        },
+        {
+          "category": "path",
+          "code": "posix_local",
+          "field": "text"
+        },
+        {
+          "category": "project_name",
+          "code": "known_project",
+          "field": "text"
+        },
+        {
+          "category": "secret",
+          "code": "credential_assignment",
+          "field": "text"
+        }
+      ],
+      "id": "P01",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 1,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": {
+        "from": 3,
+        "to": 4
+      },
+      "stage_empty": true,
+      "steps": [
+        "project_specific:proposal",
+        "planned",
+        "staged"
+      ],
+      "write_attempts": 1
+    },
+    {
+      "allocations": 1,
+      "basis": "v2 / форма contract",
+      "candidate_sha256": "1faed8ff6f788dab106c3b8f02e2b31efc45d7249e79a0454f3b649531d69476",
+      "criterion": "Новый contract/draft не наследует активность исходника, parent = null.",
+      "findings": [],
+      "id": "P02",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "contract",
+      "other_validated": 1,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": {
+        "from": 3,
+        "to": 4
+      },
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "staged"
+      ],
+      "write_attempts": 1
+    },
+    {
+      "allocations": 1,
+      "basis": "A3 / key,value,scope",
+      "candidate_sha256": "56701de84c272337c9778508a981a7efa67cab86502610dbc7926a1103b2e554",
+      "criterion": "Равные значения в общей области не считаются противоречием; запись и пара полей сохранены.",
+      "findings": [],
+      "id": "P03",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "rule",
+      "other_validated": 1,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": {
+        "from": 3,
+        "to": 4
+      },
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "staged"
+      ],
+      "write_attempts": 1
+    },
+    {
+      "allocations": 1,
+      "basis": "A3 / разные ветви scope",
+      "candidate_sha256": "63cf6a6ad7d2b0acdcdfbda6e35c5eaaa25fc8aa933d1db9b26debdfd9d7b07d",
+      "criterion": "Различающиеся значения в разных ветвях docs не дают ложного конфликта.",
+      "findings": [],
+      "id": "P04",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "constraint",
+      "other_validated": 1,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": {
+        "from": 3,
+        "to": 4
+      },
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "staged"
+      ],
+      "write_attempts": 1
+    },
+    {
+      "allocations": 1,
+      "basis": "И‑113 / ссылка вместо значения",
+      "candidate_sha256": "3392961e64b5f13afd4354a88b762eb5a1e58dfd58a7aa7891a315de77fbb802",
+      "criterion": "Ссылка на переменную в явной редакции допустима; это не выдача рабочего допуска.",
+      "findings": [],
+      "id": "P05",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "preference",
+      "other_validated": 1,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": {
+        "from": 3,
+        "to": 4
+      },
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "staged"
+      ],
+      "write_attempts": 1
+    },
+    {
+      "allocations": 1,
+      "basis": "П7 / отпечаток кандидата",
+      "candidate_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152",
+      "criterion": "Перестановка ключей и вариация исходных привязок не меняют точное добавление, хеш и журнал; билеты разные.",
+      "findings": [],
+      "id": "P06",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 1,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": {
+        "from": 3,
+        "to": 4
+      },
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "planned",
+        "staged"
+      ],
+      "write_attempts": 1
+    },
+    {
+      "allocations": 1,
+      "basis": "И‑106/110 / чтение формата 1",
+      "candidate_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152",
+      "criterion": "Переход 4→5 сохраняет одно известное решение и базовый отпечаток, добавляет ровно одно create.",
+      "findings": [],
+      "id": "P07",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 1,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": {
+        "from": 4,
+        "to": 5
+      },
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "staged"
+      ],
+      "write_attempts": 1
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.3 / точное согласие на стенд",
+      "criterion": "Запрос live при валидных данных не получает плана, не открывает профиль и не пишет.",
+      "findings": [],
+      "id": "R01",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "promote_unverified:target"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.3 / точное согласие на стенд",
+      "criterion": "Чистая редакция и выданный план не разрешают запись без отдельно переданного билета.",
+      "findings": [],
+      "id": "R02",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "promote_unverified:confirmation"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.3 / точное согласие на стенд",
+      "criterion": "Ошибочный билет не даёт доступа к стенду.",
+      "findings": [],
+      "id": "R03",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "promote_unverified:confirmation"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.3 / точное согласие на стенд",
+      "criterion": "Новая полная редакция отзывает предыдущий билет.",
+      "findings": [],
+      "id": "R04",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "planned",
+        "promote_unverified:confirmation"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.3 / точное согласие на стенд",
+      "criterion": "Даже отказ новой редакции отзывает прежний билет.",
+      "findings": [
+        {
+          "category": "machine",
+          "code": "known_machine",
+          "field": "text"
+        },
+        {
+          "category": "path",
+          "code": "posix_local",
+          "field": "text"
+        },
+        {
+          "category": "project_name",
+          "code": "known_project",
+          "field": "text"
+        },
+        {
+          "category": "secret",
+          "code": "credential_assignment",
+          "field": "text"
+        }
+      ],
+      "id": "R05",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "project_specific:proposal",
+        "promote_unverified:confirmation"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.3 / точное согласие на стенд",
+      "criterion": "Подмена тела кандидата при правильном билете не пишет.",
+      "findings": [],
+      "id": "R06",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "promote_unverified:plan"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.3 / точное согласие на стенд",
+      "criterion": "Подмена пути на контрольный рабочий профиль не открывает его.",
+      "findings": [],
+      "id": "R07",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "promote_unverified:plan"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.3 / точное согласие на стенд",
+      "criterion": "Подмена отпечатка при правильном билете не пишет.",
+      "findings": [],
+      "id": "R08",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "promote_unverified:plan"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 1,
+      "basis": "§3.3 / точное согласие на стенд",
+      "candidate_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152",
+      "criterion": "Первое согласие даёт одну запись; повтор не создаёт новый файл.",
+      "findings": [],
+      "id": "R09",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 1,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": {
+        "from": 3,
+        "to": 4
+      },
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "staged",
+        "promote_unverified:confirmation"
+      ],
+      "write_attempts": 1
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.3 / точное согласие на стенд",
+      "criterion": "Билет не действует в другой сессии.",
+      "findings": [],
+      "id": "R10",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "promote_unverified:confirmation"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "И‑113 / сверка всех полей",
+      "criterion": "Локальная область из явно переданного контекста не переносится.",
+      "findings": [
+        {
+          "category": "path",
+          "code": "project_prefix",
+          "field": "scope"
+        }
+      ],
+      "id": "S01",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "project_specific:proposal"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "И‑113 / сверка всех полей",
+      "criterion": "Известное имя отмечается и в названии, независимо от регистра.",
+      "findings": [
+        {
+          "category": "project_name",
+          "code": "known_project",
+          "field": "title"
+        }
+      ],
+      "id": "S02",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "project_specific:proposal"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "И‑113 / сверка всех полей",
+      "criterion": "Проектная ссылка в основании блокирует кандидата, не копируя основание в отказ.",
+      "findings": [
+        {
+          "category": "path",
+          "code": "posix_local",
+          "field": "basis"
+        }
+      ],
+      "id": "S03",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "project_specific:proposal"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "И‑113 / сверка всех полей",
+      "criterion": "Помеченный буквальный синтетический литерал в паре блокирует черновик.",
+      "findings": [
+        {
+          "category": "secret",
+          "code": "credential_value",
+          "field": "value"
+        }
+      ],
+      "id": "S04",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "project_specific:proposal"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "A3 / ID",
+      "criterion": "Даже идентичный существующий ID не заменяется и не добавляет ещё одно решение.",
+      "findings": [],
+      "id": "V01",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "promote_conflict:entry"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "И‑110 / выведенный ID",
+      "criterion": "ID, выведенный до текущего состояния, не возобновляется.",
+      "findings": [],
+      "id": "V02",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "promote_conflict:entry"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "A3 / узкая проверка L1",
+      "criterion": "Действующая пара с другим значением и пересечением scope отклоняет предложение, не раскрывая чужую запись.",
+      "findings": [],
+      "id": "V03",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "promote_conflict:entries"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "A4 / ссылка",
+      "criterion": "Недостающий целевой контракт не подставляется.",
+      "findings": [],
+      "id": "V04",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "parent:proposal"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "A4 / вид",
+      "criterion": "Существующая не-contract запись не становится родителем.",
+      "findings": [],
+      "id": "V05",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "parent:proposal"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "A4 / компоненты",
+      "criterion": "Соседняя ветвь с общим строковым префиксом не вложена.",
+      "findings": [],
+      "id": "V06",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "parent:proposal"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "v2 / власть области",
+      "criterion": "Вход с authority L1 не принимается за запись L2.",
+      "findings": [],
+      "id": "V07",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "invalid_entry:source"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "§3.5 / draft",
+      "criterion": "Присланное поле state не может активировать черновик.",
+      "findings": [],
+      "id": "V08",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "invalid_entry:proposal"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "И‑113 / явные подсказки",
+      "criterion": "Неверный тип в контексте не превращается в отсутствие маркеров.",
+      "findings": [],
+      "id": "V09",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "invalid_context:context"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "A1 / стенд отдельно",
+      "criterion": "Объявленный корень рабочего профиля не допускается в роли стенда.",
+      "findings": [],
+      "id": "V10",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "invalid_profile:staged_profile"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 0,
+      "basis": "И‑106/110 / проверка журнала",
+      "criterion": "Неверный отпечаток известного решения отвергает вход, историю не переписываем.",
+      "findings": [],
+      "id": "V11",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "invalid_profile:staged_profile"
+      ],
+      "write_attempts": 0
+    },
+    {
+      "allocations": 1,
+      "basis": "П5 / поверхность записи",
+      "criterion": "При инъекции отказа создания — одна попытка, уборка каталога, ни файла, ни повторного шанса по прежнему билету.",
+      "findings": [],
+      "id": "V12",
+      "inputs_unchanged": true,
+      "io_violations": 0,
+      "kind": "protocol",
+      "other_validated": 0,
+      "protected_trees_unchanged": true,
+      "quiet": true,
+      "revision": null,
+      "stage_empty": true,
+      "steps": [
+        "planned",
+        "write_failed:stage",
+        "promote_unverified:confirmation"
+      ],
+      "write_attempts": 1
+    }
+  ]
+}
