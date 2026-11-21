@@ -7,8 +7,9 @@ from pathlib import Path
 import stat
 import tempfile
 
-from . import profile_journal, schema_v2
+from . import profile_journal, registry_policy, schema_v2
 from .profile_journal import canonical_bytes as _wire
+from .registry_policy import StoreError, check_operation, operation_matrix
 
 
 @dataclass(frozen=True)
@@ -17,18 +18,6 @@ class Layout:
 
     workspace: Path
     profile_root: str
-
-
-class StoreError(ValueError):
-    def __init__(self, code, where, *, schema=None):
-        self.code, self.where, self.schema = code, where, schema
-        super().__init__(f'{code} at {where}')
-
-    def diagnostic(self):
-        result = {'code': self.code, 'where': self.where}
-        if self.schema is not None:
-            result['schema'] = {'stage': self.schema.stage, 'code': self.schema.code, 'path': self.schema.path}
-        return result
 
 
 # Проверяемая цель L1 первая: алиас её файла диагностируется на выбранном профиле.
@@ -145,11 +134,15 @@ def profile_history(layout):
     return _load(layout).journal
 
 
-def _require_profile(target):
-    if target == 'L0':
-        raise StoreError('system_immutable', 'L0')
-    if target != 'L1':
-        raise StoreError('unsupported_target', 'target')
+def read_registry(layout, *, target):
+    """Читать проверенный реестр области, не вычисляя действующий набор правил."""
+    check_operation('read', target=target)
+    return _load(layout).documents[target]
+
+
+def report_conflicts(layout):
+    """Показать структурные противоречия в реестрах, не решая их и не меняя файлы."""
+    return registry_policy.find_conflicts(_load(layout).documents)
 
 
 def _plan(current, entry):
@@ -168,7 +161,12 @@ def _plan(current, entry):
     try:
         schema_v2.validate_registry(candidate, expected_area='L1')
     except schema_v2.SchemaError as error:
-        raise StoreError('invalid_entry', rel, schema=error) from error
+        path = f'/entries/{index}'
+        parent_error = (
+            error.path == path + '/parent'
+            or (error.stage == 'links' and error.code == 'scope_outside' and error.path == path + '/scope')
+        )
+        raise StoreError('parent' if parent_error else 'invalid_entry', rel, schema=error) from error
     if entry['kind'] != 'rule' or entry['state'] != 'draft':
         raise StoreError('unsupported_entry', 'L1')
     plan = {'operation': 'create', 'target': 'L1', 'registry': rel}
@@ -176,6 +174,9 @@ def _plan(current, entry):
         if _wire(previous) != _wire(entry):
             raise StoreError('entry_exists', rel)
         return dict(plan, revision={'from': revision, 'to': revision}, outcome='no_change', entry_id=entry['id']), None
+    conflicts = registry_policy.find_conflicts(current.documents)
+    if conflicts:
+        raise StoreError('rule_conflict', 'entries', details={'conflicts': conflicts})
     plan.update(revision={'from': revision, 'to': candidate['revision']}, add=dict(entry))
     ticket_input = {'workspace': str(current.workspace), 'profile_sha256': current.profile_sha256, 'plan': plan}
     plan['ticket'] = sha256(_wire(ticket_input)).hexdigest()
@@ -184,7 +185,7 @@ def _plan(current, entry):
 
 def plan_create(layout, entry, *, target='L1'):
     """Показать добавление одной записи и переход ревизии без записи."""
-    _require_profile(target)
+    check_operation('create', target=target)
     plan, _ = _plan(_load(layout), entry)
     return plan
 
@@ -210,7 +211,7 @@ def apply_create(layout, plan, *, confirmed_ticket):
     """Записать только актуальный план создания L1; вызов не удостоверяет владельца."""
     if type(plan) is not dict:
         raise StoreError('plan_mismatch', 'plan')
-    _require_profile(plan.get('target'))
+    check_operation('create', target=plan.get('target'))
     if type(confirmed_ticket) is not str or plan.get('ticket') != confirmed_ticket:
         raise StoreError('confirmation_required', 'confirmed_ticket')
     current = _load(layout)

@@ -1,0 +1,76 @@
+{
+  "id": "107",
+  "title": "Допуск операций: L0, L1, L2 и коды A1–A4",
+  "date": "2026-11-18",
+  "branch": "arena/4e000a5e-isyncai",
+  "phase": "Ф1. Модель данных",
+  "priority": "P0",
+  "baseline": "23b320b · v1.8",
+  "target_inputs": [
+    "kit/base/OPERATION-MATRIX.md",
+    "kit/base/PROFILE-JOURNAL.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/107/CASES.json",
+    "research/107/test_policy.py"
+  ],
+  "seal_members": [
+    "kit/base/OPERATION-MATRIX.md",
+    "kit/base/PROFILE-JOURNAL.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/106/ACCEPTANCE.json",
+    "research/107/ACCEPTANCE.json",
+    "research/107/CASES.json",
+    "research/107/CHECKOUT.json",
+    "research/107/CLEANROOM.json",
+    "research/107/DESIGN.md",
+    "research/107/ITERATION.json",
+    "research/107/MATRIX.json",
+    "research/107/REPORT.md",
+    "research/107/render107.py",
+    "research/107/run.py",
+    "research/107/test_policy.py",
+    "research/STRATEGY.md",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py"
+  ],
+  "case_counts": {
+    "positive": 10,
+    "negative": 38,
+    "matrix": 24
+  },
+  "casebook_sha256": "fd556ee68da3f6868fa1c1e66c522bbae307dc2c3e5258670736b758fc5972be",
+  "not_run": [
+    {
+      "what": "Пользовательские операции list/edit/suspend/resume/revoke/delete, запись L2, карточка, общий plan/apply и CLI.",
+      "why": "Ф2 (И-108–И-112). Для planned проверен только явный отказ, не обработчик."
+    },
+    {
+      "what": "Применение правил, разрешение конфликтов, declared priorities, промоушен, перенос и регистрация R-2.",
+      "why": "Ф3 / Ф8. Принят только структурный отчёт о противоречии по явным key/value и стоп записи."
+    },
+    {
+      "what": "Права пользователя и среды, ACL/NTFS, параллельная запись, сбой питания, миграция и живые адаптеры.",
+      "why": "Проверен текущий порт Kit на временных Linux-деревьях, не ограничения ОС и не установка."
+    },
+    {
+      "what": "Новый запуск нативных 0.1.36 и ISAI.",
+      "why": "Исторический контроль отдельно; нет зависимости целевой матрицы."
+    }
+  ],
+  "next": "И-108 — карточка операции и дозапрос missing[] на 12 формулировках; И-108 ещё не начата.",
+  "test_sha256": "154946561a0633c67e155fdfc16ee5c8f1bd545835a99f2de5399974ef779cfb"
+}

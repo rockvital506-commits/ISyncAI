@@ -1,0 +1,123 @@
+{
+  "cells": {
+    "available": 4,
+    "forbidden": 6,
+    "planned": 14
+  },
+  "iteration": "И-107",
+  "matrix": {
+    "create": {
+      "L0": {
+        "code": "system_immutable",
+        "state": "forbidden"
+      },
+      "L1": {
+        "code": null,
+        "state": "available"
+      },
+      "L2": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      }
+    },
+    "delete": {
+      "L0": {
+        "code": "system_immutable",
+        "state": "forbidden"
+      },
+      "L1": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      },
+      "L2": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      }
+    },
+    "edit": {
+      "L0": {
+        "code": "system_immutable",
+        "state": "forbidden"
+      },
+      "L1": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      },
+      "L2": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      }
+    },
+    "list": {
+      "L0": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      },
+      "L1": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      },
+      "L2": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      }
+    },
+    "read": {
+      "L0": {
+        "code": null,
+        "state": "available"
+      },
+      "L1": {
+        "code": null,
+        "state": "available"
+      },
+      "L2": {
+        "code": null,
+        "state": "available"
+      }
+    },
+    "resume": {
+      "L0": {
+        "code": "system_immutable",
+        "state": "forbidden"
+      },
+      "L1": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      },
+      "L2": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      }
+    },
+    "revoke": {
+      "L0": {
+        "code": "system_immutable",
+        "state": "forbidden"
+      },
+      "L1": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      },
+      "L2": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      }
+    },
+    "suspend": {
+      "L0": {
+        "code": "system_immutable",
+        "state": "forbidden"
+      },
+      "L1": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      },
+      "L2": {
+        "code": "operation_unavailable",
+        "state": "planned"
+      }
+    }
+  },
+  "source": "kit/base/registry_policy.py:operation_matrix"
+}

@@ -1,0 +1,1619 @@
+{
+  "inputs_sha256": {
+    "kit/base/OPERATION-MATRIX.md": "9dd2a11b66274607d44d1dac0c3e7631f3dbdf58e12053224aa9a16c90cf2a5f",
+    "kit/base/PROFILE-JOURNAL.md": "441064aff2521a9dca4e098791530f918837fa08c73fb3e96aec37c1a8ade357",
+    "kit/base/SCHEMA-V2.md": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+    "kit/base/STORAGE-V2.md": "616b18ab4d577aa34751d2a04e1f66fb8295fd2af772dc6d94b813412e270ad5",
+    "kit/base/profile_journal.py": "0111f5534107aadd11c09adb9b80400e1a9c76998ac0294a9ce7d4559e384835",
+    "kit/base/registry_policy.py": "7e1f3f417799bb2015a72873570aa50497fe5f0553a1f0c480823f21808a7f4f",
+    "kit/base/registry_store.py": "cb8c2bb4198b87e7c7c9de8cf49e9ec0af29934dfc3c900eb818b0a5cce76383",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/105/test_layout.py": "c8b62743faa20f01321e97f615d1cf0e55e62a2a5569f8f4ad26e26a6331b748",
+    "research/107/CASES.json": "fd556ee68da3f6868fa1c1e66c522bbae307dc2c3e5258670736b758fc5972be",
+    "research/107/test_policy.py": "154946561a0633c67e155fdfc16ee5c8f1bd545835a99f2de5399974ef779cfb"
+  },
+  "rc": 0,
+  "result": {
+    "matrix": {
+      "create": {
+        "L0": {
+          "code": "system_immutable",
+          "state": "forbidden"
+        },
+        "L1": {
+          "code": null,
+          "state": "available"
+        },
+        "L2": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        }
+      },
+      "delete": {
+        "L0": {
+          "code": "system_immutable",
+          "state": "forbidden"
+        },
+        "L1": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        },
+        "L2": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        }
+      },
+      "edit": {
+        "L0": {
+          "code": "system_immutable",
+          "state": "forbidden"
+        },
+        "L1": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        },
+        "L2": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        }
+      },
+      "list": {
+        "L0": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        },
+        "L1": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        },
+        "L2": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        }
+      },
+      "read": {
+        "L0": {
+          "code": null,
+          "state": "available"
+        },
+        "L1": {
+          "code": null,
+          "state": "available"
+        },
+        "L2": {
+          "code": null,
+          "state": "available"
+        }
+      },
+      "resume": {
+        "L0": {
+          "code": "system_immutable",
+          "state": "forbidden"
+        },
+        "L1": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        },
+        "L2": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        }
+      },
+      "revoke": {
+        "L0": {
+          "code": "system_immutable",
+          "state": "forbidden"
+        },
+        "L1": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        },
+        "L2": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        }
+      },
+      "suspend": {
+        "L0": {
+          "code": "system_immutable",
+          "state": "forbidden"
+        },
+        "L1": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        },
+        "L2": {
+          "code": "operation_unavailable",
+          "state": "planned"
+        }
+      }
+    },
+    "os": "Linux",
+    "rows": [
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-read-L0",
+        "observed": {
+          "area_read": "L0",
+          "changed": [],
+          "exact_read": true,
+          "ids": [
+            "S-1"
+          ],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true,
+          "route": {
+            "code": null,
+            "state": "available"
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-read-L1",
+        "observed": {
+          "area_read": "L1",
+          "changed": [],
+          "exact_read": true,
+          "ids": [
+            "T-1",
+            "T-ref"
+          ],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true,
+          "route": {
+            "code": null,
+            "state": "available"
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-read-L2",
+        "observed": {
+          "area_read": "L2",
+          "changed": [],
+          "exact_read": true,
+          "ids": [
+            "P-1"
+          ],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true,
+          "route": {
+            "code": null,
+            "state": "available"
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-create-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "cc56d372e9652df5051cc4c5b9cd4a812524468fc64d64647c1bee7ec0e0377e",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-create-L1",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "conflicts_after": [],
+          "entry_id": "T-new",
+          "exact_transition": true,
+          "journal": [
+            [
+              1,
+              "T-new"
+            ]
+          ],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "plan_read_only": true,
+          "profile_revision": [
+            0,
+            1
+          ],
+          "project_revision": [
+            7,
+            7
+          ],
+          "registry_untouched": false,
+          "route": {
+            "code": null,
+            "state": "available"
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-create-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-list-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-list-L1",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-list-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-edit-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-edit-L1",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-edit-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-suspend-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-suspend-L1",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-suspend-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-resume-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-resume-L1",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-resume-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-revoke-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-revoke-L1",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-revoke-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-delete-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-delete-L1",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "M-delete-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "c1a638be0dcedd74894e00134d68b4de5bf1ad187c8e0857dabbdf8c27fee3d5",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "c1a638be0dcedd74894e00134d68b4de5bf1ad187c8e0857dabbdf8c27fee3d5",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "c1a638be0dcedd74894e00134d68b4de5bf1ad187c8e0857dabbdf8c27fee3d5",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "c1a638be0dcedd74894e00134d68b4de5bf1ad187c8e0857dabbdf8c27fee3d5",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A1-equal",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "profile_root_conflict",
+            "where": "kit"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "796e5c8568a56f676c0ee61ebb9252a9c729aa7a25aad3639c51fd7b6190e6da",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "8890b17dd8119956400ccebcd4d699791c5d8a72c99d5511f8f47378ea8e94fc",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "796e5c8568a56f676c0ee61ebb9252a9c729aa7a25aad3639c51fd7b6190e6da",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "8890b17dd8119956400ccebcd4d699791c5d8a72c99d5511f8f47378ea8e94fc",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A1-system-nested",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "profile_root_conflict",
+            "where": "kit/pilot"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "561b62762c008a78341bae9d11d0a40b7347aaba3575e78dbf44b1d681000629",
+            "L2": "dc1efd743cf19df7c900a5c4add3da47e8da380da9f299303530643dcd1a71f4"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "561b62762c008a78341bae9d11d0a40b7347aaba3575e78dbf44b1d681000629",
+            "L2": "dc1efd743cf19df7c900a5c4add3da47e8da380da9f299303530643dcd1a71f4"
+          }
+        },
+        "id": "A1-project-nested",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "profile_root_conflict",
+            "where": ".agent-contract/pilot"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A2-claim-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "N-claim-L1",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_entry",
+            "schema": {
+              "code": "authority_area",
+              "path": "/entries/2/authority",
+              "stage": "shape"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A2-apply-L0",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "N-apply-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "N-unknown-operation",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "unknown_operation",
+            "where": "operation"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "N-unknown-area",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "unknown_area",
+            "where": "target"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A4-no-field",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "missing_field",
+              "path": "/entries/2/parent",
+              "stage": "shape"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A4-null",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "type",
+              "path": "/entries/2/parent",
+              "stage": "shape"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A4-dangling",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "parent_missing",
+              "path": "/entries/2/parent",
+              "stage": "links"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A4-wrong-kind",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "parent_kind",
+              "path": "/entries/2/parent",
+              "stage": "links"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A4-foreign",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "parent_missing",
+              "path": "/entries/2/parent",
+              "stage": "links"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A4-scope",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "scope_outside",
+              "path": "/entries/2/scope",
+              "stage": "links"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A4-contract-parent",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "parent_forbidden",
+              "path": "/entries/2/parent",
+              "stage": "shape"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "cbdafe4456e4d8f57534e4a65ed51ace85a8097a95012ff5f911c160ce86772f",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "cbdafe4456e4d8f57534e4a65ed51ace85a8097a95012ff5f911c160ce86772f",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "A3-plan",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "rule_conflict",
+            "details": {
+              "conflicts": [
+                {
+                  "entries": [
+                    {
+                      "area": "L0",
+                      "id": "S-key",
+                      "scope": ".",
+                      "text": "Синтетическая формулировка S-key: required.",
+                      "value": "required"
+                    },
+                    {
+                      "area": "L1",
+                      "id": "T-key",
+                      "scope": "docs",
+                      "text": "Синтетическая формулировка T-key: skip.",
+                      "value": "skip"
+                    }
+                  ],
+                  "key": "workflow.evidence",
+                  "scope": "docs"
+                }
+              ]
+            },
+            "where": "entries"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "96dc04ac1a2386cc7962590c0c0f5916a2888d8ac36cfa49b8246885b015c915",
+            "L2": "013eeb5043350c396581b3a4222be7fb82385e9456d7c7ad1238b6db32ec8e6c"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "96dc04ac1a2386cc7962590c0c0f5916a2888d8ac36cfa49b8246885b015c915",
+            "L2": "013eeb5043350c396581b3a4222be7fb82385e9456d7c7ad1238b6db32ec8e6c"
+          }
+        },
+        "id": "A3-apply-drift",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "rule_conflict",
+            "details": {
+              "conflicts": [
+                {
+                  "entries": [
+                    {
+                      "area": "L1",
+                      "id": "T-key",
+                      "scope": "docs",
+                      "text": "Синтетическая формулировка T-key: required.",
+                      "value": "required"
+                    },
+                    {
+                      "area": "L2",
+                      "id": "P-key",
+                      "scope": "docs/guide",
+                      "text": "Синтетическая формулировка P-key: skip.",
+                      "value": "skip"
+                    }
+                  ],
+                  "key": "workflow.evidence",
+                  "scope": "docs/guide"
+                }
+              ]
+            },
+            "where": "entries"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "cbdafe4456e4d8f57534e4a65ed51ace85a8097a95012ff5f911c160ce86772f",
+            "L2": "8937a64a44f17a21ccc3267721587412cae8a13a13544dc5b543561dd849e4fe"
+          },
+          "before": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "cbdafe4456e4d8f57534e4a65ed51ace85a8097a95012ff5f911c160ce86772f",
+            "L2": "8937a64a44f17a21ccc3267721587412cae8a13a13544dc5b543561dd849e4fe"
+          }
+        },
+        "id": "P-A3-report",
+        "observed": {
+          "changed": [],
+          "conflicts": [
+            {
+              "entries": [
+                {
+                  "area": "L0",
+                  "id": "S-key",
+                  "scope": ".",
+                  "text": "Синтетическая формулировка S-key: required.",
+                  "value": "required"
+                },
+                {
+                  "area": "L1",
+                  "id": "T-key",
+                  "scope": "docs",
+                  "text": "Синтетическая формулировка T-key: skip.",
+                  "value": "skip"
+                }
+              ],
+              "key": "workflow.evidence",
+              "scope": "docs"
+            },
+            {
+              "entries": [
+                {
+                  "area": "L1",
+                  "id": "T-key",
+                  "scope": "docs",
+                  "text": "Синтетическая формулировка T-key: skip.",
+                  "value": "skip"
+                },
+                {
+                  "area": "L2",
+                  "id": "P-key",
+                  "scope": "docs/guide",
+                  "text": "Синтетическая формулировка P-key: required.",
+                  "value": "required"
+                }
+              ],
+              "key": "workflow.evidence",
+              "scope": "docs/guide"
+            }
+          ],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "96dc04ac1a2386cc7962590c0c0f5916a2888d8ac36cfa49b8246885b015c915",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "96dc04ac1a2386cc7962590c0c0f5916a2888d8ac36cfa49b8246885b015c915",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "P-A3-equal",
+        "observed": {
+          "changed": [],
+          "conflicts": [],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "96dc04ac1a2386cc7962590c0c0f5916a2888d8ac36cfa49b8246885b015c915",
+            "L2": "a75f0ff60e51380367d2b53410fb309431afe897204dda27ae2f0c350c0de064"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "96dc04ac1a2386cc7962590c0c0f5916a2888d8ac36cfa49b8246885b015c915",
+            "L2": "a75f0ff60e51380367d2b53410fb309431afe897204dda27ae2f0c350c0de064"
+          }
+        },
+        "id": "P-A3-siblings",
+        "observed": {
+          "changed": [],
+          "conflicts": [],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "2de781ee1da7e47f844ec77d6e2e05140442d9836983429273306bb744873e44",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "2de781ee1da7e47f844ec77d6e2e05140442d9836983429273306bb744873e44",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "P-A3-inactive",
+        "observed": {
+          "changed": [],
+          "conflicts": [],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "ea006d5470536313c1ac81023ede06cca882fb091bcb45557c8e27d681ef9ae4",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "f8f75138ccc434729c0bf1b91a059cc59d27b5a45f0a70caaf503b39742c95c4",
+            "L0_manifest": "c88e9b98fe9f3bf1fbd37135baf46bdd2025ade4746eff98605d773fb6171d08",
+            "L1": "e22266b13fa01e30193b77553bf198d7a0cea7f7d8ab2376fb86017529aea6be",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "P-A3-draft-write",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "conflicts_after": [],
+          "entry_id": "T-new",
+          "exact_transition": true,
+          "journal": [
+            [
+              1,
+              "T-new"
+            ]
+          ],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "plan_read_only": true,
+          "profile_revision": [
+            0,
+            1
+          ],
+          "project_revision": [
+            7,
+            7
+          ],
+          "registry_untouched": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e45608c1209dc1e5b2433f0093ced006bca0b42e00eb33ff34906c0acf98e808",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          },
+          "before": {
+            "L0": "0e3554e7731ba55ba282a6f7e1d03fe5e9d8ee2ae7a2987e3a0b05af6a10ec52",
+            "L0_manifest": "60eba4322e7adcb2303d38e7871d9a76ddfeee46105fa6af2878a54136e56d4e",
+            "L1": "e45608c1209dc1e5b2433f0093ced006bca0b42e00eb33ff34906c0acf98e808",
+            "L2": "9e3953f50518f9baafe2cff473c4cc8d62b2282af8c7e0afd451afaa720b1a1d"
+          }
+        },
+        "id": "P-A3-same-area",
+        "observed": {
+          "changed": [],
+          "conflicts": [
+            {
+              "entries": [
+                {
+                  "area": "L1",
+                  "id": "T-key",
+                  "scope": "docs",
+                  "text": "Синтетическая формулировка T-key: required.",
+                  "value": "required"
+                },
+                {
+                  "area": "L1",
+                  "id": "T-other",
+                  "scope": "docs/guide",
+                  "text": "Синтетическая формулировка T-other: skip.",
+                  "value": "skip"
+                }
+              ],
+              "key": "workflow.evidence",
+              "scope": "docs/guide"
+            }
+          ],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true
+        }
+      }
+    ]
+  },
+  "sources_unchanged": true
+}

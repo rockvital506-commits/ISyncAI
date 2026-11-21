@@ -1,0 +1,572 @@
+{
+  "checks": [
+    {
+      "basis": "DESIGN.md; CASES.json; test_policy.py; ITERATION.json",
+      "check": "frozen_cases",
+      "criterion": "Хеши замороженных ожиданий и теста, уникальность ID, количество случаев и полнота ячеек совпали.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json",
+      "check": "checkout",
+      "criterion": "Все обязательные ID ровно один раз. Точные исход, причина, путь, тип, состав и байты.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json",
+      "check": "cleanroom",
+      "criterion": "Все обязательные ID ровно один раз. Точные исход, причина, путь, тип, состав и байты.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json: result.matrix; CASES.json: cell",
+      "check": "operation_matrix",
+      "criterion": "Исполняемая матрица совпала со всеми независимыми ожиданиями: нет подмены available, planned и forbidden.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "isolated",
+      "criterion": "Только указанные входы; нет донора, ISAI, Git и остатков записи в копии.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "repeat",
+      "criterion": "Хеши исходных входов, матрица и все наблюдения двух процессов совпали.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 6
+  },
+  "host_os": "Linux",
+  "iteration": "И-107",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Пользовательские операции list/edit/suspend/resume/revoke/delete, запись L2, карточка, общий plan/apply и CLI.",
+      "why": "Ф2 (И-108–И-112). Для planned проверен только явный отказ, не обработчик."
+    },
+    {
+      "status": "not run",
+      "what": "Применение правил, разрешение конфликтов, declared priorities, промоушен, перенос и регистрация R-2.",
+      "why": "Ф3 / Ф8. Принят только структурный отчёт о противоречии по явным key/value и стоп записи."
+    },
+    {
+      "status": "not run",
+      "what": "Права пользователя и среды, ACL/NTFS, параллельная запись, сбой питания, миграция и живые адаптеры.",
+      "why": "Проверен текущий порт Kit на временных Linux-деревьях, не ограничения ОС и не установка."
+    },
+    {
+      "status": "not run",
+      "what": "Новый запуск нативных 0.1.36 и ISAI.",
+      "why": "Исторический контроль отдельно; нет зависимости целевой матрицы."
+    }
+  ],
+  "outcome": "accepted",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "id": "M-read-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-read-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-read-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-create-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-create-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-create-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A1-equal",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A1-system-nested",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A1-project-nested",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A2-claim-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N-claim-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A2-apply-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N-apply-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N-unknown-operation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N-unknown-area",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-no-field",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-null",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-dangling",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-wrong-kind",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-foreign",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-scope",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-contract-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A3-plan",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A3-apply-drift",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-report",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-equal",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-siblings",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-inactive",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-draft-write",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-same-area",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 48
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "id": "M-read-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-read-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-read-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-create-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-create-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-create-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A1-equal",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A1-system-nested",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A1-project-nested",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A2-claim-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N-claim-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A2-apply-L0",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N-apply-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N-unknown-operation",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N-unknown-area",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-no-field",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-null",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-dangling",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-wrong-kind",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-foreign",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-scope",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A4-contract-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A3-plan",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "A3-apply-drift",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-report",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-equal",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-siblings",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-inactive",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-draft-write",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-A3-same-area",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 48
+      },
+      "rc": 0
+    }
+  }
+}
