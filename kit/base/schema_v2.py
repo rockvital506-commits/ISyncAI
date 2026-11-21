@@ -195,15 +195,20 @@ def _reject_constant(_token):
     raise SchemaError('parse', 'non_finite', '')
 
 
-def validate_json(data, *, expected_area=None):
-    """Прочитать строгий UTF-8 JSON и вернуть исходные разобранные данные после проверки."""
+def parse_json(data):
+    """Общий строгий разбор UTF-8 JSON, ещё без схемы конкретного документа."""
     _need(type(data) in (str, bytes), 'type', '', 'parse')
     try:
         text = data.decode('utf-8') if type(data) is bytes else data
-        parsed = json.loads(text, object_pairs_hook=_unique_object, parse_constant=_reject_constant)
+        return json.loads(text, object_pairs_hook=_unique_object, parse_constant=_reject_constant)
     except SchemaError:
         raise
     except (ValueError, RecursionError) as error:
         raise SchemaError('parse', 'invalid_json', '') from error
+
+
+def validate_json(data, *, expected_area=None):
+    """Прочитать строгий UTF-8 JSON и вернуть исходные разобранные данные после проверки."""
+    parsed = parse_json(data)
     validate_registry(parsed, expected_area=expected_area)
     return parsed

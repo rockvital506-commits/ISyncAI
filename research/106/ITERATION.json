@@ -1,0 +1,69 @@
+{
+  "id": "106",
+  "title": "Десять регистраций L1 и журнал решений",
+  "date": "2026-11-18",
+  "branch": "arena/4e000a5e-isyncai",
+  "phase": "Ф1. Модель данных",
+  "priority": "P0",
+  "baseline": "8e03563 · v1.7",
+  "target_inputs": [
+    "kit/base/PROFILE-JOURNAL.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/106/CASES.json",
+    "research/106/test_history.py"
+  ],
+  "seal_members": [
+    "kit/base/PROFILE-JOURNAL.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/ACCEPTANCE.json",
+    "research/105/test_layout.py",
+    "research/106/ACCEPTANCE.json",
+    "research/106/CASES.json",
+    "research/106/CHECKOUT.json",
+    "research/106/CLEANROOM.json",
+    "research/106/DESIGN.md",
+    "research/106/ITERATION.json",
+    "research/106/REPORT.md",
+    "research/106/render106.py",
+    "research/106/run.py",
+    "research/106/test_history.py",
+    "research/STRATEGY.md",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py"
+  ],
+  "case_counts": {
+    "positive": 13,
+    "negative": 8
+  },
+  "casebook_sha256": "bc989c2f0a0dff456ad1f3d11bc52adfd0ab578d42f0847111cef7e24c5dc782",
+  "not_run": [
+    {
+      "what": "Полная таблица операций × область и диагностики A1–A4; разрешение конфликтов и история промоушена.",
+      "why": "И-107 и И-116; проверен только create отдельного чернового rule."
+    },
+    {
+      "what": "Журнал применения правил L2, пользовательский диалог, регистрация R-2 и перенос профиля.",
+      "why": "Ф2–Ф3 и Ф8; хранится локальный след принятых регистраций L1, не история работы проекта."
+    },
+    {
+      "what": "Права среды, конкурентные писатели, NTFS, восстановление после сбоя питания, миграция.",
+      "why": "Обычное временное Linux-дерево с одним писателем. Контролируемый отказ os.replace не аварийное восстановление."
+    },
+    {
+      "what": "Новый нативный прогон 0.1.36 и живые адаптеры.",
+      "why": "Контроль И-103/И-104 исторический; донор и ISAI не нужны целевому прогону."
+    }
+  ],
+  "next": "И-107 — коды A1–A4 и матрица «операция × область»; И-107 ещё не начата."
+}

@@ -1,0 +1,1152 @@
+{
+  "inputs_sha256": {
+    "kit/base/PROFILE-JOURNAL.md": "441064aff2521a9dca4e098791530f918837fa08c73fb3e96aec37c1a8ade357",
+    "kit/base/SCHEMA-V2.md": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+    "kit/base/STORAGE-V2.md": "e8e6216ddedc5df5254e3347b45199b644e9bb95e686e995ebb8c52a385e5fbb",
+    "kit/base/profile_journal.py": "0111f5534107aadd11c09adb9b80400e1a9c76998ac0294a9ce7d4559e384835",
+    "kit/base/registry_store.py": "e70597ce17763f7fa28440d0749a1a18ff335e225470952b0cead82d37d3d91d",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/105/test_layout.py": "c8b62743faa20f01321e97f615d1cf0e55e62a2a5569f8f4ad26e26a6331b748",
+    "research/106/CASES.json": "bc989c2f0a0dff456ad1f3d11bc52adfd0ab578d42f0847111cef7e24c5dc782",
+    "research/106/test_history.py": "00f1d2dd5cd067c3bbcdcf34269ad5c467879ec404d5903573689cbec77f04f2"
+  },
+  "rc": 0,
+  "result": {
+    "last_profile": {
+      "journal": {
+        "base_revision": 0,
+        "decisions": [
+          {
+            "entry_id": "Q-01",
+            "entry_sha256": "0f22e005c2b8348280c789f806548322b8defc6aef1921e7c15d67f06a6dffcc",
+            "operation": "create",
+            "profile_revision": 1
+          },
+          {
+            "entry_id": "Q-02",
+            "entry_sha256": "bf3a0ee52f0ab0c8c41a8fe4866994bb15afee2d91706d865f1a8ad751ebef4c",
+            "operation": "create",
+            "profile_revision": 2
+          },
+          {
+            "entry_id": "Q-03",
+            "entry_sha256": "e137db13388ea8044ef19454e7430e9b64fe28eeaf56c0b1cfa78edcb4c82f2e",
+            "operation": "create",
+            "profile_revision": 3
+          },
+          {
+            "entry_id": "Q-04",
+            "entry_sha256": "804f0b5554fa69ae5b76a53b63a68dd2c6b4046915ed04e0fdf765e2e0df6598",
+            "operation": "create",
+            "profile_revision": 4
+          },
+          {
+            "entry_id": "Q-05",
+            "entry_sha256": "f2ba438b99016bdfe153a3a74c680fe49f4f3653b3384b4620ac7dc3c93d1e08",
+            "operation": "create",
+            "profile_revision": 5
+          },
+          {
+            "entry_id": "Q-06",
+            "entry_sha256": "7f570de55c7c7fb2e9d2cea639fb792a580026e4185628202ae710d1a9c12279",
+            "operation": "create",
+            "profile_revision": 6
+          },
+          {
+            "entry_id": "Q-07",
+            "entry_sha256": "4ae7ef41228dbcffb663be879c387e54d7f03d96cba3d6e3f5331da48a0cb587",
+            "operation": "create",
+            "profile_revision": 7
+          },
+          {
+            "entry_id": "Q-08",
+            "entry_sha256": "e70419dca647006581b53cc414771b888fd9b6d1bc3e3a25b3de7932e65b53db",
+            "operation": "create",
+            "profile_revision": 8
+          },
+          {
+            "entry_id": "Q-09",
+            "entry_sha256": "497899ed047ffa8842c66653f59311462f9a181b9231f8759445a33e3e6353f2",
+            "operation": "create",
+            "profile_revision": 9
+          },
+          {
+            "entry_id": "Q-10",
+            "entry_sha256": "30c39eee9bbc9b183c5d8d07cd9d742e8f7558fc636a8fb8b60a739844111d2d",
+            "operation": "create",
+            "profile_revision": 10
+          }
+        ]
+      },
+      "profile_format": 1,
+      "registry": {
+        "area": "L1",
+        "entries": [
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-0",
+            "kind": "contract",
+            "parent": null,
+            "scope": ".",
+            "state": "active",
+            "text": "Синтетическая запись Q-0.",
+            "title": "Тест Q-0"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-01",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-01.",
+            "title": "Тест Q-01"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-02",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-02.",
+            "title": "Тест Q-02"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-03",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-03.",
+            "title": "Тест Q-03"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-04",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-04.",
+            "title": "Тест Q-04"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-05",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-05.",
+            "title": "Тест Q-05"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-06",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-06.",
+            "title": "Тест Q-06"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-07",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-07.",
+            "title": "Тест Q-07"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-08",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-08.",
+            "title": "Тест Q-08"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-09",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-09.",
+            "title": "Тест Q-09"
+          },
+          {
+            "authority": "profile_owner",
+            "basis": "Фикстура И-106, не пользовательское решение.",
+            "criterion": "Одно решение на одну запись.",
+            "id": "Q-10",
+            "kind": "rule",
+            "parent": "Q-0",
+            "scope": "docs",
+            "state": "draft",
+            "text": "Синтетическая запись Q-10.",
+            "title": "Тест Q-10"
+          }
+        ],
+        "revision": 10,
+        "roots": [
+          "profiles/pilot"
+        ],
+        "schema_version": 2
+      }
+    },
+    "os": "Linux",
+    "profile_file_sha256": [
+      "2b1232ec05f7605b6fefdef7e958e0394bdfe22da3d86caa9516459af6a72d06",
+      "4e17d8f4031e951a7fc0e68d33900a5464f6e3e7c8e63bda8b0d623f3ee44d93",
+      "f0aaac1244863abbba29adbf1869b99a6d042348337be6b5a8e560ca59e3da41",
+      "b2714ae6353dbf586f48a950ae7a951d5f9b141a29e38af6a9d8d57b416ed89b",
+      "6213aea0d5d945e96c894b8a241ebbfd5409f648f1abbb9b611c062d230576df",
+      "7db86be4ce6eef34eabfe4977ec5b937fb858a06f2727b359310805958ae0abe",
+      "d22596aa50ff96699d5152f34781405d0fb7b18a64abfc0110ec6d3935315a77",
+      "ad0a05c03ecf8c32a80bbd5e712b634ffef323977109b2f47726cda1117a61bc",
+      "df72aa41a06f5d65bf31217df40caaeebfceab56c2760f36fd26975c74286c8c",
+      "6ed40ddde6743a331d966d83241613e97b4535e1eeaacf2930eb2703f54d397a",
+      "246f1085a1130225c14945ff1855fb1399ec20f26998800bc68c86bba86d819d"
+    ],
+    "rows": [
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "a36583b317f297de55fdb2f336756a22c9d298c632ae512597334ab01487ece5",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "a36583b317f297de55fdb2f336756a22c9d298c632ae512597334ab01487ece5",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P00-initial",
+        "observed": {
+          "bare": true,
+          "base_revision": 0,
+          "changed": [],
+          "decision_revisions": [],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true,
+          "status": {
+            "profile_revision": 0,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "795dba03ed1a8d23b75420d33fbf72532bd6767fc4f9a87e321868651c4945f6",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "a36583b317f297de55fdb2f336756a22c9d298c632ae512597334ab01487ece5",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P01-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1
+          ],
+          "diff": {
+            "entry_id": "Q-01",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 0,
+              "to": 1
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 1,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "8800aa59fdd81f53f90450d95ea071920dd2cc2a710e2d3a1a6b93451eef2bae",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "795dba03ed1a8d23b75420d33fbf72532bd6767fc4f9a87e321868651c4945f6",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P02-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1,
+            2
+          ],
+          "diff": {
+            "entry_id": "Q-02",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 1,
+              "to": 2
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 2,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "4c6e90a1dec0808746d2292c079de559dea37fa18244daaf5cc9d7c12bbaa0ff",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "8800aa59fdd81f53f90450d95ea071920dd2cc2a710e2d3a1a6b93451eef2bae",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P03-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1,
+            2,
+            3
+          ],
+          "diff": {
+            "entry_id": "Q-03",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 2,
+              "to": 3
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 3,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "4980915d1241f93a1d6bba242e6b3cf78a6b2d7f5dd88cbe2e2daa25137b700e",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "4c6e90a1dec0808746d2292c079de559dea37fa18244daaf5cc9d7c12bbaa0ff",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P04-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "diff": {
+            "entry_id": "Q-04",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 3,
+              "to": 4
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 4,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "88701f8b900f23b716f26a837953d978a70c6f929625051c36c3b07711195467",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "4980915d1241f93a1d6bba242e6b3cf78a6b2d7f5dd88cbe2e2daa25137b700e",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P05-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "diff": {
+            "entry_id": "Q-05",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 4,
+              "to": 5
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 5,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "dd7c2323e6bf31f35d71f1bc2248e74580fd61fde965064955cee23bd443da86",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "88701f8b900f23b716f26a837953d978a70c6f929625051c36c3b07711195467",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P06-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "diff": {
+            "entry_id": "Q-06",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 5,
+              "to": 6
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 6,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "482a82a6e9fd8be93ea04c8698cac37c2ab81045f3d470a1535c9f0f7c6a958c",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "dd7c2323e6bf31f35d71f1bc2248e74580fd61fde965064955cee23bd443da86",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P07-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "diff": {
+            "entry_id": "Q-07",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 6,
+              "to": 7
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 7,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "2067a6d104121802a017da4d166cbfe3bf8d59e41bf4862242971e264c897fc0",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "482a82a6e9fd8be93ea04c8698cac37c2ab81045f3d470a1535c9f0f7c6a958c",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P08-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "diff": {
+            "entry_id": "Q-08",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 7,
+              "to": 8
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 8,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "4feea3f8cee6cd1231ab5fbbb9801104219ff2435e6084ff8f404931f56ecca3",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "2067a6d104121802a017da4d166cbfe3bf8d59e41bf4862242971e264c897fc0",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P09-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "diff": {
+            "entry_id": "Q-09",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 8,
+              "to": 9
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 9,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "4feea3f8cee6cd1231ab5fbbb9801104219ff2435e6084ff8f404931f56ecca3",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P10-create",
+        "observed": {
+          "base_revision": 0,
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "decision_revisions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "diff": {
+            "entry_id": "Q-10",
+            "operation": "create",
+            "registry": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 9,
+              "to": 10
+            },
+            "target": "L1"
+          },
+          "exact_persisted_pair": true,
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "one_replacement": true,
+          "plan_unchanged": true,
+          "registry_untouched": false,
+          "returned_matches_readback": true,
+          "status": {
+            "profile_revision": 10,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P11-no-change",
+        "observed": {
+          "base_revision": 0,
+          "changed": [],
+          "decision_revisions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true,
+          "requests": [
+            {
+              "entry_id": "Q-10",
+              "operation": "create",
+              "outcome": "no_change",
+              "registry": "profiles/pilot/registry.json",
+              "revision": {
+                "from": 10,
+                "to": 10
+              },
+              "target": "L1"
+            },
+            {
+              "entry_id": "Q-10",
+              "operation": "create",
+              "outcome": "no_change",
+              "registry": "profiles/pilot/registry.json",
+              "revision": {
+                "from": 10,
+                "to": 10
+              },
+              "target": "L1"
+            }
+          ],
+          "status": {
+            "profile_revision": 10,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "N01-old-plan",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "stale_revision",
+            "where": "revision/from"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "N02-used-ticket",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "stale_revision",
+            "where": "revision/from"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "N04-occupied-id",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "entry_exists",
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "c2bd8cee269b506cd113a6619095767bd9d0095b02535d69cd20e839261b93e2",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "N05-replace-failed",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "write_failed",
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "e8737cfdfc80c49753989e3d4d04eff0713aadab96489318abb8b03a6f9fd9ec",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "e8737cfdfc80c49753989e3d4d04eff0713aadab96489318abb8b03a6f9fd9ec",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "P12-existing-base",
+        "observed": {
+          "bare": true,
+          "base_revision": 4,
+          "changed": [],
+          "decision_revisions": [],
+          "l0_l2_unchanged": true,
+          "ok": true,
+          "registry_untouched": true,
+          "status": {
+            "profile_revision": 4,
+            "profile_root": "profiles/pilot",
+            "project_revision": 7,
+            "release_version": "0.2.0-dev.106",
+            "schema_version": 2
+          }
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "baef3fc6244c0abc5a9933680c5b0759e2194148d3b87f2379ac1517b47fb1c5",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "baef3fc6244c0abc5a9933680c5b0759e2194148d3b87f2379ac1517b47fb1c5",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "N03-byte-drift",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "plan_mismatch",
+            "where": "plan"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "65b0433d9f23775d6ca70ea6941ec1c62cde530035a4296afadee1b94a8aa6da",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "65b0433d9f23775d6ca70ea6941ec1c62cde530035a4296afadee1b94a8aa6da",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "N06-missing-decision",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_history",
+            "schema": {
+              "code": "length",
+              "path": "/journal/decisions",
+              "stage": "history"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "1376ed9061e002422b752fa94e4876040940a9e541bca225a645f19dc8f1c40b",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "1376ed9061e002422b752fa94e4876040940a9e541bca225a645f19dc8f1c40b",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "N07-entry-digest",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_history",
+            "schema": {
+              "code": "entry_digest",
+              "path": "/journal/decisions/0/entry_sha256",
+              "stage": "history"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "e3ea12e5e04a9d3b2a1c8edcda67ef914398266e9184bd05af726e7bb503563b",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          },
+          "before": {
+            "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+            "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+            "L1": "e3ea12e5e04a9d3b2a1c8edcda67ef914398266e9184bd05af726e7bb503563b",
+            "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+          }
+        },
+        "id": "N08-bool-revision",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_history",
+            "schema": {
+              "code": "sequence",
+              "path": "/journal/decisions/0/profile_revision",
+              "stage": "history"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "l0_l2_unchanged": true,
+          "ok": false,
+          "registry_untouched": true
+        }
+      }
+    ]
+  },
+  "sources_unchanged": true
+}

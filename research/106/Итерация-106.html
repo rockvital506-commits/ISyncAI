@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>И-106 · Журнал и ревизии L1</title><style>
+:root {color-scheme:light;--paper:#fcfbf8;--ink:#252422;--muted:#5d6268;--line:#dddcd6;--accent:#285278}
+* {box-sizing:border-box} body {margin:0;background:var(--paper);color:var(--ink);font:1rem/1.55 system-ui,sans-serif}
+header {background:#edf3f5;border-bottom:1px solid var(--line)} header>div,main {max-width:65rem;margin:auto;padding:1.3rem max(1rem,3vw)}
+h1 {font-size:clamp(2rem,4vw,3rem);line-height:1.12;margin:.35em 0} h2 {margin-top:1.9rem} a {color:var(--accent)}
+.meta {color:var(--muted)} .verdict {font-weight:700;color:#0e5948}
+.cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:.7rem} article {background:white;padding:1rem;border:1px solid var(--line);border-radius:.6rem} article strong {display:block}
+table {width:100%;border-collapse:collapse} th,td {padding:.55rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);overflow-wrap:anywhere} th {background:#edf3f5} code {overflow-wrap:anywhere}
+</style></head><body><header><div><p class="meta">И-106 · Ф1. Модель данных · P0</p>
+<h1>Десять регистраций L1 и журнал решений</h1><p class="verdict">Прогон принят</p>
+<p>Локальный журнал принятых регистраций. Только тестовые профили; без активации, переноса и миграции.</p></div></header>
+<main><div class="cards"><article><strong><a href="CHECKOUT.json">П3 · checkout</a></strong>21 pass / 0 fail / 0 not run</article>
+<article><strong><a href="CLEANROOM.json">П4 · без доноров</a></strong>21 pass / 0 fail / 0 not run</article>
+<article><strong><a href="ACCEPTANCE.json">П5 · приёмка</a></strong>6 pass / 0 fail / 4 not run</article></div>
+<h2>Одна история L1</h2><p><strong>0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10</strong></p><table><thead><tr><th scope="col">Показатель</th><th scope="col">Измерено</th></tr></thead><tbody><tr><td>Принятые решения</td><td>10</td></tr><tr><td>Разные хеши файла L1</td><td>11</td></tr><tr><td>SemVer L0 · неизменен</td><td>0.2.0-dev.106</td></tr><tr><td>Ревизия L2 · неизменна</td><td>7</td></tr></tbody></table><p>Байты L0 и L2 сохранились на каждой точке. Два <code>no_change</code> не переписали профиль; старые планы отклонены.</p>
+<h2>Не выполнялось</h2><table><thead><tr><th scope="col">Работа</th><th scope="col">Почему</th></tr></thead><tbody><tr><td>Полная таблица операций × область и диагностики A1–A4; разрешение конфликтов и история промоушена.</td><td>И-107 и И-116; проверен только create отдельного чернового rule.</td></tr><tr><td>Журнал применения правил L2, пользовательский диалог, регистрация R-2 и перенос профиля.</td><td>Ф2–Ф3 и Ф8; хранится локальный след принятых регистраций L1, не история работы проекта.</td></tr><tr><td>Права среды, конкурентные писатели, NTFS, восстановление после сбоя питания, миграция.</td><td>Обычное временное Linux-дерево с одним писателем. Контролируемый отказ os.replace не аварийное восстановление.</td></tr><tr><td>Новый нативный прогон 0.1.36 и живые адаптеры.</td><td>Контроль И-103/И-104 исторический; донор и ISAI не нужны целевому прогону.</td></tr></tbody></table>
+<h2>Печать и повтор</h2><p><a href="AgentContractKit-Iteration-106.zip">Архив итерации</a> · 23 файлов · 338945 байт ·
+<a href="REPLAY.json">повтор: ok</a></p><p>SHA‑256 <code>62f2c05bfe4d2abfb64ad70cdb08b1cba59a8e087784fe8fd9efa385069f0783</code></p>
+<p><a href="REPORT.md">Отчёт и десять решений</a> · <a href="DESIGN.md">Замысел</a> · <a href="../../kit/base/PROFILE-JOURNAL.md">Контракт журнала</a></p>
+<p class="meta">И-107 — коды A1–A4 и матрица «операция × область»; И-107 ещё не начата.</p></main></body></html>

@@ -1,4 +1,4 @@
-"""Внутреннее хранилище v2: раздельные корни, status и одна операция записи L1."""
+"""Внутреннее хранилище v2: раздельные корни и согласованные регистрации L1."""
 from dataclasses import dataclass
 from hashlib import sha256
 import json
@@ -7,7 +7,8 @@ from pathlib import Path
 import stat
 import tempfile
 
-from . import schema_v2
+from . import profile_journal, schema_v2
+from .profile_journal import canonical_bytes as _wire
 
 
 @dataclass(frozen=True)
@@ -42,6 +43,7 @@ class _Loaded:
     files: dict
     documents: dict
     profile_sha256: str
+    journal: dict
 
 
 def _declared_roots(layout):
@@ -103,7 +105,7 @@ def _load(layout):
         identities.add(identity)
 
     files, documents = {}, {}
-    profile_sha256 = None
+    profile_sha256 = journal = None
     for area, suffix in _SUFFIX.items():
         rel = roots[area] + '/' + suffix
         path, _ = _existing(workspace, rel, registry=True)
@@ -112,15 +114,18 @@ def _load(layout):
         except OSError as error:
             raise StoreError('io_error', rel) from error
         try:
-            document = schema_v2.validate_json(raw, expected_area=area)
+            if area == 'L1':
+                document, journal = profile_journal.unpack_profile(schema_v2.parse_json(raw))
+                profile_sha256 = sha256(raw).hexdigest()
+            else:
+                document = schema_v2.validate_json(raw, expected_area=area)
         except schema_v2.SchemaError as error:
-            raise StoreError('invalid_registry', rel, schema=error) from error
+            code = 'invalid_history' if error.stage == 'history' else 'invalid_registry'
+            raise StoreError(code, rel, schema=error) from error
         if document['roots'] != [roots[area]]:
             raise StoreError('root_mismatch', rel)
         files[area], documents[area] = path, document
-        if area == 'L1':
-            profile_sha256 = sha256(raw).hexdigest()
-    return _Loaded(workspace, roots, files, documents, profile_sha256)
+    return _Loaded(workspace, roots, files, documents, profile_sha256, journal)
 
 
 def _status(current, profile):
@@ -135,8 +140,9 @@ def status(layout):
     return _status(current, current.documents['L1'])
 
 
-def _wire(value):
-    return json.dumps(value, ensure_ascii=True, sort_keys=True, separators=(',', ':'), allow_nan=False).encode('ascii')
+def profile_history(layout):
+    """Прочитать проверенный журнал регистраций выбранного профиля без записи."""
+    return _load(layout).journal
 
 
 def _require_profile(target):
@@ -148,16 +154,29 @@ def _require_profile(target):
 
 def _plan(current, entry):
     old = current.documents['L1']
+    revision = old['revision']
     rel = current.files['L1'].relative_to(current.workspace).as_posix()
-    candidate = dict(old, entries=[*old['entries'], entry], revision=old['revision'] + 1)
+    entries = list(old['entries'])
+    index = len(entries)
+    if type(entry) is dict and type(entry.get('id')) is str:
+        index = next((i for i, row in enumerate(entries) if row['id'] == entry['id']), index)
+    previous = entries[index] if index < len(entries) else None
+    # Для повтора с уже занятым ID проверяем новый объект в его прежнем месте,
+    # иначе штатная проверка duplicate_id не даст различить no_change и новое тело.
+    entries[index:index + 1] = [entry]
+    candidate = dict(old, entries=entries, revision=revision + 1)
     try:
         schema_v2.validate_registry(candidate, expected_area='L1')
     except schema_v2.SchemaError as error:
         raise StoreError('invalid_entry', rel, schema=error) from error
     if entry['kind'] != 'rule' or entry['state'] != 'draft':
         raise StoreError('unsupported_entry', 'L1')
-    plan = {'operation': 'create', 'target': 'L1', 'registry': rel,
-            'revision': {'from': old['revision'], 'to': candidate['revision']}, 'add': dict(entry)}
+    plan = {'operation': 'create', 'target': 'L1', 'registry': rel}
+    if previous is not None:
+        if _wire(previous) != _wire(entry):
+            raise StoreError('entry_exists', rel)
+        return dict(plan, revision={'from': revision, 'to': revision}, outcome='no_change', entry_id=entry['id']), None
+    plan.update(revision={'from': revision, 'to': candidate['revision']}, add=dict(entry))
     ticket_input = {'workspace': str(current.workspace), 'profile_sha256': current.profile_sha256, 'plan': plan}
     plan['ticket'] = sha256(_wire(ticket_input)).hexdigest()
     return plan, candidate
@@ -195,13 +214,20 @@ def apply_create(layout, plan, *, confirmed_ticket):
     if type(confirmed_ticket) is not str or plan.get('ticket') != confirmed_ticket:
         raise StoreError('confirmation_required', 'confirmed_ticket')
     current = _load(layout)
+    steps = plan.get('revision')
+    if (type(steps) is not dict or steps.keys() != {'from', 'to'} or type(steps['from']) is not int
+            or type(steps['to']) is not int or steps['from'] < 0 or steps['to'] != steps['from'] + 1):
+        raise StoreError('plan_mismatch', 'plan')
+    if steps['from'] != current.documents['L1']['revision']:
+        raise StoreError('stale_revision', 'revision/from')
     expected, candidate = _plan(current, plan.get('add'))
     try:
-        same = _wire(plan) == _wire(expected)
+        same = candidate is not None and _wire(plan) == _wire(expected)
     except (TypeError, ValueError, RecursionError):
         same = False
     if not same:
         raise StoreError('plan_mismatch', 'plan')
-    raw = (json.dumps(candidate, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + '\n').encode('utf-8')
+    profile = profile_journal.with_creation(candidate, current.journal)
+    raw = (json.dumps(profile, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + '\n').encode('utf-8')
     _replace(current.files['L1'], raw, expected['registry'])
     return _status(current, candidate)

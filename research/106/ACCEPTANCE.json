@@ -1,0 +1,326 @@
+{
+  "checks": [
+    {
+      "basis": "DESIGN.md; CASES.json; ITERATION.json",
+      "check": "frozen_cases",
+      "criterion": "Список П2, его SHA-256, ID и количества совпали.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json",
+      "check": "checkout",
+      "criterion": "Каждый обязательный ID ровно один раз, тип, исход, затронутый путь и диагноз точны; пропуски не принимаются.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json",
+      "check": "cleanroom",
+      "criterion": "Каждый обязательный ID ровно один раз, тип, исход, затронутый путь и диагноз точны; пропуски не принимаются.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json: rows, last_profile",
+      "check": "ten_with_history",
+      "criterion": "Десять регистраций, 11 непрерывных точек и хешей L1, десять точных решений, неизменные L0/L2. Повторы X03 и отказ замены не меняют десятое состояние.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "isolated",
+      "criterion": "Ровно названные неизменные файлы; нет Git, ISAI и ZIP 0.1.36.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "repeat",
+      "criterion": "Байты входов не менялись; оба результата совпали.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 6
+  },
+  "host_os": "Linux",
+  "iteration": "И-106",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Полная таблица операций × область и диагностики A1–A4; разрешение конфликтов и история промоушена.",
+      "why": "И-107 и И-116; проверен только create отдельного чернового rule."
+    },
+    {
+      "status": "not run",
+      "what": "Журнал применения правил L2, пользовательский диалог, регистрация R-2 и перенос профиля.",
+      "why": "Ф2–Ф3 и Ф8; хранится локальный след принятых регистраций L1, не история работы проекта."
+    },
+    {
+      "status": "not run",
+      "what": "Права среды, конкурентные писатели, NTFS, восстановление после сбоя питания, миграция.",
+      "why": "Обычное временное Linux-дерево с одним писателем. Контролируемый отказ os.replace не аварийное восстановление."
+    },
+    {
+      "status": "not run",
+      "what": "Новый нативный прогон 0.1.36 и живые адаптеры.",
+      "why": "Контроль И-103/И-104 исторический; донор и ISAI не нужны целевому прогону."
+    }
+  ],
+  "outcome": "accepted",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "id": "P00-initial",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P01-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P02-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P03-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P04-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P05-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P06-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P07-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P08-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P09-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P10-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P11-no-change",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P12-existing-base",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N01-old-plan",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N02-used-ticket",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N03-byte-drift",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N04-occupied-id",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N05-replace-failed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N06-missing-decision",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N07-entry-digest",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N08-bool-revision",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 21
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "id": "P00-initial",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P01-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P02-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P03-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P04-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P05-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P06-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P07-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P08-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P09-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P10-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P11-no-change",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P12-existing-base",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N01-old-plan",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N02-used-ticket",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N03-byte-drift",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N04-occupied-id",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N05-replace-failed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N06-missing-decision",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N07-entry-digest",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N08-bool-revision",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 21
+      },
+      "rc": 0
+    }
+  },
+  "series": {
+    "decisions": 10,
+    "distinct_l1_file_hashes": 11,
+    "fixed_digests": {
+      "L0": "9cd06c94566e4e21fba2c1ec1399c7a6fb6d4115530d79a8c395dd64177971a4",
+      "L0_manifest": "ba03ea81ce6cb3175ff904c969bec203b25daff41d2d8fe2240703b7a7ada6a2",
+      "L2": "b7e2ac4d672c1096f402ebc2ded2e92a08586526f1fb44ed1eccba2cb62f4e98"
+    },
+    "project_revision": 7,
+    "release_version": "0.2.0-dev.106",
+    "revisions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+}
