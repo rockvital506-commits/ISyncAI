@@ -1,0 +1,2378 @@
+{
+  "copy_unchanged": true,
+  "files_after": [
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/REGISTRY-JOURNAL.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/110/CASES.json",
+    "research/110/test_actions.py"
+  ],
+  "files_before": [
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/REGISTRY-JOURNAL.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/110/CASES.json",
+    "research/110/test_actions.py"
+  ],
+  "inputs_sha256": {
+    "kit/base/OPERATION-PLAN.md": "cec10ec4d08d58e6a1cad4a096f85dfeddbc2818824d400fbf978132b0a4749d",
+    "kit/base/REGISTRY-JOURNAL.md": "1e101b27f4b48b892be8fcfd43fb39290411b030258c44f1d4de62c88ae21e52",
+    "kit/base/STORAGE-V2.md": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+    "kit/base/operation_card.py": "3eb1f1226ac8364c11edc688fd5607279d5e5d95d711e7f7ae5f837be979d9b7",
+    "kit/base/operation_plan.py": "e7e3f18c1d6a4a7ba6deedff5fdb04808c4e62819059b3e00113de8e8e77ff0d",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/105/test_layout.py": "c8b62743faa20f01321e97f615d1cf0e55e62a2a5569f8f4ad26e26a6331b748",
+    "research/110/CASES.json": "87c24f449f957f7734a143a877af1ad8fd0f835759d0c56ef0a35bbe3af4d002",
+    "research/110/test_actions.py": "8392a00fe820d060d94985771b573afa69f7348d63d33fef7ee0c0e3e68914eb"
+  },
+  "rc": 0,
+  "result": {
+    "os": "Linux",
+    "rows": [
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "66ddca00299b06588494a7b60ec71d91dcdf5c929d43275c4874546a952d84ce",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-create-L1",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "entry_id": "N-110",
+          "entry_kind": "rule",
+          "entry_state": "draft",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "profile:1",
+          "history": [
+            "create"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            4,
+            5
+          ],
+          "write_event": true
+        },
+        "preview": {
+          "card": {
+            "card_format": 1,
+            "code": null,
+            "missing": [],
+            "operation": "create",
+            "outcome": "complete",
+            "params": {
+              "basis": "Фикстура И-110",
+              "contract": "C-A",
+              "criterion": "Сверить запись и историю.",
+              "entry_id": "N-110",
+              "kind": "rule",
+              "profile": "Pilot",
+              "scope": "docs/guide",
+              "state": "draft",
+              "target": "L1",
+              "text": "Черновик без активации.",
+              "title": "N-110"
+            },
+            "questions": [],
+            "request": "Зарегистрируй черновик правила N-110 в профиле Pilot, по контракту C-A, область «docs/guide», название «N-110», основание «Фикстура И-110», критерий «Сверить запись и историю.»: «Черновик без активации.»"
+          },
+          "diff": {
+            "after_sha256": "78ad2c63359f398ea81ab3ed0a03f2b4a8ae8828562a082a036c7c0f676332c9",
+            "before_sha256": "f28de0d4468faa2e4fb7287e6ea37eae127fa4cc84af80f33451b3b68c85caed",
+            "file": "profiles/pilot/registry.json",
+            "revision": {
+              "from": 4,
+              "to": 5
+            },
+            "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,84 @@\n-{\"area\": \"L1\", \"entries\": [{\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-A\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-A\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-A\", \"kind\": \"rule\", \"parent\": \"C-A\", \"scope\": \"docs/guide\", \"state\": \"active\", \"text\": \"\\u0418\\u0441\\u0445\\u043e\\u0434\\u043d\\u043e\\u0435 \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u043e.\", \"title\": \"R-A\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-off\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"suspended\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-off\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-hidden\", \"kind\": \"rule\", \"parent\": \"C-off\", \"scope\": \"docs/guide\", \"state\": \"active\", \"text\": \"\\u041d\\u0435 \\u043f\\u043e\\u043a\\u0430\\u0437\\u044b\\u0432\\u0430\\u0442\\u044c.\", \"title\": \"R-hidden\"}], \"revision\": 4, \"roots\": [\"profiles/pilot\"], \"schema_version\": 2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_revision\": 4,\n+    \"decisions\": [\n+      {\n+        \"entry_id\": \"N-110\",\n+        \"entry_sha256\": \"9629f6c134837961dbb29041e212342c0cfb82f34d0300f7a0bfa0181eede8a3\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 5\n+      }\n+    ]\n+  },\n+  \"profile_format\": 1,\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-A\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-A\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"R-A\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-A\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"active\",\n+        \"text\": \"Исходное правило.\",\n+        \"title\": \"R-A\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-off\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"suspended\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-off\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"R-hidden\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-off\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"active\",\n+        \"text\": \"Не показывать.\",\n+        \"title\": \"R-hidden\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"N-110\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-A\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"draft\",\n+        \"text\": \"Черновик без активации.\",\n+        \"title\": \"N-110\"\n+      }\n+    ],\n+    \"revision\": 5,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  }\n+}\n"
+          },
+          "dry_run": true,
+          "inputs_sha256": {
+            "L0": "c88fa1a2492bbf59e34771210d62d578adcfd3e58bd97383ab578c00284236bb",
+            "L1": "f28de0d4468faa2e4fb7287e6ea37eae127fa4cc84af80f33451b3b68c85caed",
+            "L2": "19800e69f4f2ff97f3d02c227c81709041c01194a2508cad6333aae142a08ebf"
+          },
+          "outcome": "planned",
+          "plan_format": 1
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-list-L1",
+        "observed": {
+          "changed": [],
+          "exact_list": true,
+          "ids": [
+            "R-A"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "listed",
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "text_view": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "1de3730ac27be325a0d85660df75ce636d13ce4d27a94f06a457c7c03a3f6a68",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-edit-L1",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": "rule",
+          "entry_state": "active",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "edit"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            4,
+            5
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "e7f1f28079c51967a5b84fb95d2871d8185b108f940273e54fa1e93b7047015b",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-suspend-L1",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": "rule",
+          "entry_state": "suspended",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "suspend"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            4,
+            5
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "0ec8cb657fcba4e3d8c54b1b5d93af3da6937cf18eb2d77bd8748e512087d568",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "d97d13fa1f11fb31e1e58d0d3237c872a2cec19e84ee4d614739a783c1e05c98",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-resume-L1",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": "rule",
+          "entry_state": "active",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "resume"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            4,
+            5
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "4f3758c2de98495abbdd337ff757f191a24fd571503d7aa0991cb581cba43bc1",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-revoke-L1",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": "rule",
+          "entry_state": "revoked",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "revoke"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            4,
+            5
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "e8ccf6f7df5c1c49599be4c98b596925f7a0a7aec846a76d6c3ce2c27a24eb4c",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "6ae5f01e23be6d5b42690eb9853376152438f8bc59f61a120f12106d01c0895a",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-delete-L1",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": null,
+          "entry_state": null,
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "delete"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            4,
+            5
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-text-L1",
+        "observed": {
+          "changed": [],
+          "exact_list": true,
+          "ids": [
+            "R-A"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "listed",
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "text_view": true,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "fa087d88b261b0062c6c7b99adebe2883c8d9f3064ae33a9c0282104f91e02f7"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-create-L2",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "entry_id": "N-110",
+          "entry_kind": "rule",
+          "entry_state": "draft",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "create"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            7,
+            8
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-list-L2",
+        "observed": {
+          "changed": [],
+          "exact_list": true,
+          "ids": [
+            "R-A"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "listed",
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "text_view": false,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "dffa05079ddda9dc02b2375158c20a3633897f94ab59fdeac79c6325d3e24e7c"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-edit-L2",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": "rule",
+          "entry_state": "active",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "edit"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            7,
+            8
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "59815bf26977eaee530c860803b66b054d50912db77c6fbc5a52c4c44b82d3a2"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-suspend-L2",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": "rule",
+          "entry_state": "suspended",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "suspend"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            7,
+            8
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "c4d951618db7cb5db596aa91be50cc9ce2dbe9af3dcfcd5feb46b79f5682502d"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "639316ab52f7918cd61eb2e7e039f9aca8c5fe7770efdf30286fcd60d1e74251"
+          }
+        },
+        "id": "M-resume-L2",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": "rule",
+          "entry_state": "active",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "resume"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            7,
+            8
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "dfc1b9dab0e74299d4e15db0c12a83746b974b63bf58bccd82a384d2b13116a1"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "M-revoke-L2",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": "rule",
+          "entry_state": "revoked",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "revoke"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            7,
+            8
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "2ffd5327fd3132434f759e0bf61fb9c5f72368f09ebef25236b20d9e05199c76"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8ed5db56d80cd53da8d3d34f1d3dc38df9c65b10bd64b5554841e12673175c07"
+          }
+        },
+        "id": "M-delete-L2",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": null,
+          "entry_state": null,
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "delete"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            7,
+            8
+          ],
+          "write_event": true
+        },
+        "preview": {
+          "card": {
+            "card_format": 1,
+            "code": null,
+            "missing": [],
+            "operation": "delete",
+            "outcome": "complete",
+            "params": {
+              "entry_id": "R-A",
+              "kind": "rule",
+              "target": "L2"
+            },
+            "questions": [],
+            "request": "Удали правило R-A в проекте."
+          },
+          "diff": {
+            "after_sha256": "977445ccf4ab7471a193c3e3828767106740966d92c6cb232464db764fb6b1e0",
+            "before_sha256": "a37434fc648e013f8cba472950d7fb36e9e8c0d957b628f3e948550ff510340b",
+            "file": ".agent-contract/project/registry.json",
+            "revision": {
+              "from": 7,
+              "to": 8
+            },
+            "unified": "--- a/.agent-contract/project/registry.json\n+++ b/.agent-contract/project/registry.json\n@@ -1 +1,67 @@\n-{\"area\": \"L2\", \"entries\": [{\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-A\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-A\"}, {\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-A\", \"kind\": \"rule\", \"parent\": \"C-A\", \"scope\": \"docs/guide\", \"state\": \"revoked\", \"text\": \"\\u0418\\u0441\\u0445\\u043e\\u0434\\u043d\\u043e\\u0435 \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u043e.\", \"title\": \"R-A\"}, {\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-off\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"suspended\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-off\"}, {\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-hidden\", \"kind\": \"rule\", \"parent\": \"C-off\", \"scope\": \"docs/guide\", \"state\": \"active\", \"text\": \"\\u041d\\u0435 \\u043f\\u043e\\u043a\\u0430\\u0437\\u044b\\u0432\\u0430\\u0442\\u044c.\", \"title\": \"R-hidden\"}], \"revision\": 7, \"roots\": [\".agent-contract\"], \"schema_version\": 2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {\n+      \"C-A\": \"06d6469fd5c43f45a4657bf76295ee016cf0364432d91ccf89a810e380f071bc\",\n+      \"C-off\": \"b6aa8930b9895cbb64fcb8f0933372fbc8faef929c39c43945245ece0523f9f3\",\n+      \"R-A\": \"c1166ad6024559d8989571ecf23097b254b22a0c6302022e56455f0209a2282d\",\n+      \"R-hidden\": \"eac5cfb3c0607d47dfc92869b24cc9032b46c00f09229bd22588cd3fba8c6a94\"\n+    },\n+    \"base_revision\": 7,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": null,\n+        \"before_sha256\": \"c1166ad6024559d8989571ecf23097b254b22a0c6302022e56455f0209a2282d\",\n+        \"entry_id\": \"R-A\",\n+        \"operation\": \"delete\",\n+        \"project_revision\": 8\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L2\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"project_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-A\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-A\"\n+      },\n+      {\n+        \"authority\": \"project_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-off\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"suspended\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-off\"\n+      },\n+      {\n+        \"authority\": \"project_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"R-hidden\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-off\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"active\",\n+        \"text\": \"Не показывать.\",\n+        \"title\": \"R-hidden\"\n+      }\n+    ],\n+    \"revision\": 8,\n+    \"roots\": [\n+      \".agent-contract\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+          },
+          "dry_run": true,
+          "inputs_sha256": {
+            "L0": "c88fa1a2492bbf59e34771210d62d578adcfd3e58bd97383ab578c00284236bb",
+            "L1": "f28de0d4468faa2e4fb7287e6ea37eae127fa4cc84af80f33451b3b68c85caed",
+            "L2": "a37434fc648e013f8cba472950d7fb36e9e8c0d957b628f3e948550ff510340b"
+          },
+          "outcome": "planned",
+          "plan_format": 1
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-text-L2",
+        "observed": {
+          "changed": [],
+          "exact_list": true,
+          "ids": [
+            "R-A"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "listed",
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "text_view": true,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-repeat-edit",
+        "observed": {
+          "changed": [],
+          "exact_no_change": true,
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "no_change",
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "revision": [
+            4,
+            4
+          ],
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8ed5db56d80cd53da8d3d34f1d3dc38df9c65b10bd64b5554841e12673175c07"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8ed5db56d80cd53da8d3d34f1d3dc38df9c65b10bd64b5554841e12673175c07"
+          }
+        },
+        "id": "P-repeat-revoke",
+        "observed": {
+          "changed": [],
+          "exact_no_change": true,
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "no_change",
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "revision": [
+            7,
+            7
+          ],
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "fcaf13a380ed24e2672145cbe8908517a459bde781836520d5a071b73bd7e191",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "6496456e5d67bda8adc685c7b62c232455df546f259557a38f75d4bbda4410b0",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-legacy-edit",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "entry_id": "R-A",
+          "entry_kind": "rule",
+          "entry_state": "draft",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "create",
+            "edit"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            4,
+            5
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ba71c3afd467fabbaa9dd891358902c2914bddcdf27cfa587fae6f0610da8b55",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-register-contract",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "entry_id": "N-110",
+          "entry_kind": "contract",
+          "entry_state": "draft",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "create"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            4,
+            5
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "2e1206edcf935cf7acbf95a7b6bcad3698ff5d15e1166b309ab4cb241c4f7bb4",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-register-constraint",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "entry_id": "N-110",
+          "entry_kind": "constraint",
+          "entry_state": "draft",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "create"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            4,
+            5
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "784b46aca5b9577e1021755542cdf6c8726d18782f497ab678462742d3f8285d"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-register-protocol",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "entry_id": "N-110",
+          "entry_kind": "protocol",
+          "entry_state": "draft",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "create"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            7,
+            8
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "664a1d7f4878b176f7dd2f6c9ffdd8610edf017c86c79cfbff6d5c40397f5c3c"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-register-preference",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "entry_id": "N-110",
+          "entry_kind": "preference",
+          "entry_state": "draft",
+          "exact_diff": true,
+          "exact_file": true,
+          "exact_history": true,
+          "exact_status": true,
+          "format": "registry:2",
+          "history": [
+            "create"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "applied",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 1,
+          "revision": [
+            7,
+            8
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N01-no-ticket-L1",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "confirmation_required",
+            "where": "confirmed_ticket"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N02-no-ticket-L2",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "confirmation_required",
+            "where": "confirmed_ticket"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N03-delete-active",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_transition",
+            "details": {
+              "entry_id": "R-A",
+              "operation": "delete",
+              "state": "active"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8ed5db56d80cd53da8d3d34f1d3dc38df9c65b10bd64b5554841e12673175c07"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8ed5db56d80cd53da8d3d34f1d3dc38df9c65b10bd64b5554841e12673175c07"
+          }
+        },
+        "id": "N04-delete-no-consent",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "delete_confirmation_required",
+            "where": "allow_delete"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "6ae5f01e23be6d5b42690eb9853376152438f8bc59f61a120f12106d01c0895a",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "6ae5f01e23be6d5b42690eb9853376152438f8bc59f61a120f12106d01c0895a",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N05-delete-int-consent",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "delete_confirmation_required",
+            "where": "allow_delete"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "6ac5886dcf1f4adf68817135429d1e790ca17c4320a7bc7509039852c50530cc"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "6ac5886dcf1f4adf68817135429d1e790ca17c4320a7bc7509039852c50530cc"
+          }
+        },
+        "id": "N06-delete-contract",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "details": {
+              "children": [
+                "R-A"
+              ],
+              "reason": "contract_has_children"
+            },
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "959ddd21970c509d34070a56aa68b78452f57fa2562c79aa041553019b92cec6",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "959ddd21970c509d34070a56aa68b78452f57fa2562c79aa041553019b92cec6",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N07-resume-draft",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_transition",
+            "details": {
+              "entry_id": "R-A",
+              "operation": "resume",
+              "state": "draft"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8ed5db56d80cd53da8d3d34f1d3dc38df9c65b10bd64b5554841e12673175c07"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8ed5db56d80cd53da8d3d34f1d3dc38df9c65b10bd64b5554841e12673175c07"
+          }
+        },
+        "id": "N08-resume-revoked",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_transition",
+            "details": {
+              "entry_id": "R-A",
+              "operation": "resume",
+              "state": "revoked"
+            },
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "cf73f32a9cb4b7d49e6b0bc55e2ba9c35029c2ba29a788582ae1a6841992f3b6"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "cf73f32a9cb4b7d49e6b0bc55e2ba9c35029c2ba29a788582ae1a6841992f3b6"
+          }
+        },
+        "id": "N09-suspend-draft",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_transition",
+            "details": {
+              "entry_id": "R-A",
+              "operation": "suspend",
+              "state": "draft"
+            },
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "6ae5f01e23be6d5b42690eb9853376152438f8bc59f61a120f12106d01c0895a",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "6ae5f01e23be6d5b42690eb9853376152438f8bc59f61a120f12106d01c0895a",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N10-edit-revoked",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_transition",
+            "details": {
+              "entry_id": "R-A",
+              "operation": "edit",
+              "state": "revoked"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "5393fd3f291dd9ad1664dd4b87342611407d5180a5a7405b251ba35a96b2d11b"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "5393fd3f291dd9ad1664dd4b87342611407d5180a5a7405b251ba35a96b2d11b"
+          }
+        },
+        "id": "N11-resume-parent",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "details": {
+              "contract": "C-A",
+              "reason": "parent_inactive"
+            },
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N12-kind",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "entry_kind_mismatch",
+            "where": "profiles/pilot/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8b9bbd8407b72fa19f51b6fc2810b8d53609debb42eba541d7c3133871f4e022"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8b9bbd8407b72fa19f51b6fc2810b8d53609debb42eba541d7c3133871f4e022"
+          }
+        },
+        "id": "N13-foreign",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "entry_not_found",
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "4cfae4bede25e5ce1a55c5635a7a1ab241dd0483804e266a1f50cf156f7cb45b"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "4cfae4bede25e5ce1a55c5635a7a1ab241dd0483804e266a1f50cf156f7cb45b"
+          }
+        },
+        "id": "N14-parent",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "parent_missing",
+              "path": "/entries/4/parent",
+              "stage": "links"
+            },
+            "where": "profiles/pilot/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N15-scope",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "parent",
+            "schema": {
+              "code": "scope_outside",
+              "path": "/entries/4/scope",
+              "stage": "links"
+            },
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N16-system",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "system_immutable",
+            "where": "L0"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N17-list-system",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "operation_unavailable",
+            "where": "operation"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "6dbe0754edd70aa49c8405cbd89f15c8bca7ed8c4333d2e7f2dc7fa92607e422"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "6dbe0754edd70aa49c8405cbd89f15c8bca7ed8c4333d2e7f2dc7fa92607e422"
+          }
+        },
+        "id": "N18-stale",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "stale_plan",
+            "where": "inputs/L2"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N19-tampered",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "plan_mismatch",
+            "where": "plan"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "1c6a6edacd799119ba8ad671b652dc9322a86420ffbafca96dfac00ef9d72df1"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "1c6a6edacd799119ba8ad671b652dc9322a86420ffbafca96dfac00ef9d72df1"
+          }
+        },
+        "id": "N20-prospective-conflict",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "rule_conflict",
+            "details": {
+              "conflicts": [
+                {
+                  "entries": [
+                    {
+                      "area": "L0",
+                      "id": "S-key",
+                      "scope": "docs",
+                      "text": "Системное значение.",
+                      "value": "required"
+                    },
+                    {
+                      "area": "L2",
+                      "id": "R-A",
+                      "scope": "docs/guide",
+                      "text": "Исходное правило.",
+                      "value": "skip"
+                    }
+                  ],
+                  "key": "workflow.evidence",
+                  "scope": "docs/guide"
+                }
+              ]
+            },
+            "where": "entries"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N21-write-failed",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "write_failed",
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": true,
+          "registry_untouched": true,
+          "replacements": 1,
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "d49ce871190df2118b698bfbbe36a6e547316a1fdb97e65c29af8e50f149aa18"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "d49ce871190df2118b698bfbbe36a6e547316a1fdb97e65c29af8e50f149aa18"
+          }
+        },
+        "id": "N22-history",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_history",
+            "schema": {
+              "code": "final_entries",
+              "path": "/journal/decisions",
+              "stage": "history"
+            },
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "19daa6bd7022eae10a3f91581954018ae2709cd2d4c908aa27717257d7308c2c"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "19daa6bd7022eae10a3f91581954018ae2709cd2d4c908aa27717257d7308c2c"
+          }
+        },
+        "id": "N23-retired",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "entry_retired",
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ff771ffc38001927d413077c400ed4a786c474b842b41b2c03b85fa05df8913f",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ff771ffc38001927d413077c400ed4a786c474b842b41b2c03b85fa05df8913f",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N24-occupied",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "entry_exists",
+            "where": "profiles/pilot/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "1d3c6c2955efb646ac2ea24c7c27db91429948acac22e566cfd8d1fae96eabed",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "6496456e5d67bda8adc685c7b62c232455df546f259557a38f75d4bbda4410b0",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-chain-L1",
+        "observed": {
+          "changed": [
+            "profiles/pilot/registry.json"
+          ],
+          "exact_steps": true,
+          "history": [
+            "create",
+            "edit",
+            "revoke",
+            "delete",
+            "create"
+          ],
+          "ok": true,
+          "operations": [
+            "edit",
+            "revoke",
+            "delete",
+            "create"
+          ],
+          "other_unchanged": true,
+          "outcome": "applied_chain",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 4,
+          "revision": [
+            4,
+            8
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "1555d9bbeaf369be06e785485618f101b055c6bbc343bbf8c5ca0494e25d2161"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-chain-L2",
+        "observed": {
+          "changed": [
+            ".agent-contract/project/registry.json"
+          ],
+          "exact_steps": true,
+          "history": [
+            "edit",
+            "suspend",
+            "resume",
+            "revoke",
+            "delete",
+            "create"
+          ],
+          "ok": true,
+          "operations": [
+            "edit",
+            "suspend",
+            "resume",
+            "revoke",
+            "delete",
+            "create"
+          ],
+          "other_unchanged": true,
+          "outcome": "applied_chain",
+          "prepared_exact": true,
+          "registry_untouched": false,
+          "replacements": 6,
+          "revision": [
+            7,
+            13
+          ],
+          "write_event": true
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "bd8a1f5105c73970f0cf8861a976d86d07497f67af34275b2feddb431ef039c8"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "bd8a1f5105c73970f0cf8861a976d86d07497f67af34275b2feddb431ef039c8"
+          }
+        },
+        "id": "P-repeat-create",
+        "observed": {
+          "changed": [],
+          "exact_no_change": true,
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "no_change",
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "revision": [
+            7,
+            7
+          ],
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "639316ab52f7918cd61eb2e7e039f9aca8c5fe7770efdf30286fcd60d1e74251"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "639316ab52f7918cd61eb2e7e039f9aca8c5fe7770efdf30286fcd60d1e74251"
+          }
+        },
+        "id": "P-repeat-suspend",
+        "observed": {
+          "changed": [],
+          "exact_no_change": true,
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "no_change",
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "revision": [
+            7,
+            7
+          ],
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-repeat-resume",
+        "observed": {
+          "changed": [],
+          "exact_no_change": true,
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "no_change",
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "revision": [
+            4,
+            4
+          ],
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "P-missing",
+        "observed": {
+          "changed": [],
+          "exact_clarification": true,
+          "missing": [
+            "profile",
+            "contract",
+            "scope",
+            "entry_id",
+            "state",
+            "title",
+            "basis",
+            "criterion"
+          ],
+          "ok": true,
+          "other_unchanged": true,
+          "outcome": "missing_params",
+          "prepared_exact": false,
+          "questions": [
+            "profile",
+            "contract",
+            "scope"
+          ],
+          "read_events": 0,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "1699d2f3f430dc4117f96017ebb0aaf91a5cd01c7ca8a1e7265a89211e96d4c8"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "1699d2f3f430dc4117f96017ebb0aaf91a5cd01c7ca8a1e7265a89211e96d4c8"
+          }
+        },
+        "id": "N25-target-revision",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "stale_revision",
+            "where": "revision/from"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "d0d09ec182e01572bf3cff6053cc56a1a34589683f4950c4c12cd6cdfdd1392f",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "d0d09ec182e01572bf3cff6053cc56a1a34589683f4950c4c12cd6cdfdd1392f",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N26-L0-drift",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "stale_plan",
+            "where": "inputs/L0"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N27-foreign-session",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "ticket_unknown",
+            "where": "ticket"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "e8ccf6f7df5c1c49599be4c98b596925f7a0a7aec846a76d6c3ce2c27a24eb4c",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "e8ccf6f7df5c1c49599be4c98b596925f7a0a7aec846a76d6c3ce2c27a24eb4c",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N28-replay-delete",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "ticket_unknown",
+            "where": "ticket"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8ed5db56d80cd53da8d3d34f1d3dc38df9c65b10bd64b5554841e12673175c07"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "8ed5db56d80cd53da8d3d34f1d3dc38df9c65b10bd64b5554841e12673175c07"
+          }
+        },
+        "id": "N29-only-allow-delete",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "confirmation_required",
+            "where": "confirmed_ticket"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "a79647e5af2796f51af4e3236056e652f96be38e0f692123f3e25d95abf3edc4"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "a79647e5af2796f51af4e3236056e652f96be38e0f692123f3e25d95abf3edc4"
+          }
+        },
+        "id": "N30-chain-tampered",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "invalid_history",
+            "schema": {
+              "code": "entry_chain",
+              "path": "/journal/decisions/0/before_sha256",
+              "stage": "history"
+            },
+            "where": ".agent-contract/project/registry.json"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N31-layout",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "profile_root_conflict",
+            "where": "kit/pilot"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N32-profile-binding",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "profile_mismatch",
+            "where": "card/params/profile"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      },
+      {
+        "digest": {
+          "after": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          },
+          "before": {
+            "L0": "2151484f9fcbbed1f99ead92394b1d05b582e8b10d05d429eb0f2c547965dd24",
+            "L0_manifest": "c6a1bdefa0408534e7125baef014e81300190ec2c257379c35aadc688d43d23b",
+            "L1": "ad34f8aaea0f1d3eda05ff475148024d87e05ccd3e8cc837b46f999f68a35545",
+            "L2": "21f1442db69974b0546d35090de89b22fb144c21a377d0fc011377caa591b746"
+          }
+        },
+        "id": "N33-forged-authority",
+        "observed": {
+          "changed": [],
+          "error": {
+            "code": "card_mismatch",
+            "where": "card"
+          },
+          "ok": false,
+          "other_unchanged": true,
+          "prepared_exact": false,
+          "registry_untouched": true,
+          "replacements": 0,
+          "write_event": false
+        }
+      }
+    ]
+  },
+  "sources_unchanged": true
+}

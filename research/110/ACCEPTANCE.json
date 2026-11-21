@@ -1,0 +1,718 @@
+{
+  "checks": [
+    {
+      "basis": "DESIGN.md; CASES.json; test_actions.py; ITERATION.json; RED.json",
+      "check": "frozen_cases",
+      "criterion": "Хеши обязательного П2 совпали; контроль до изменения Kit завершился отказами при том же списке ячеек.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json",
+      "check": "checkout",
+      "criterion": "Каждый ID ровно один раз: точные исход, диагностика, JSON-типы, байты, статус, решения и физические эффекты.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json",
+      "check": "cleanroom",
+      "criterion": "Каждый ID ровно один раз: точные исход, диагностика, JSON-типы, байты, статус, решения и физические эффекты.",
+      "status": "pass"
+    },
+    {
+      "basis": "CASES.json (M-*); CHECKOUT.json; CLEANROOM.json",
+      "check": "execution_matrix",
+      "criterion": "7×2: чтение без диффа, билета и записи; все 12 мутационных ячеек с точным планом и одной заменой, не только допуск.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json: M-create-L1 и M-delete-L2",
+      "check": "masked_witnesses",
+      "criterion": "Показаны точные диффы регистрации и purge с привязкой к SHA-256, ревизиям и файлам, без опубликованных билетов.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "isolated",
+      "criterion": "В чистой копии ровно указанные входы, без Git/ISAI/донора, все побайтно прежние.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "repeat",
+      "criterion": "Два изолированных процесса дали равные обязательные наблюдения и входные хеши.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 7
+  },
+  "host_os": "Linux",
+  "iteration": "И-110",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Неоднозначность постоянного, временного, предложения и гипотезы; bootstrap.",
+      "why": "И-111–И-112. И-110 принимает текущую узкую карточку."
+    },
+    {
+      "status": "not run",
+      "what": "Выдача прав, аутентификация владельца, живые среды, несколько писателей, ACL/NTFS, авария питания.",
+      "why": "Linux, временные фикстуры и один писатель. Согласия синтетические, отказ замены моделируется."
+    },
+    {
+      "status": "not run",
+      "what": "Активация черновика, полное разрешение конфликтов (X07/X08), R-2, перенос, миграция, внешний purge.",
+      "why": "Не выводятся из переходов одного файла, проверок A1–A4 и хешей сохранённых решений."
+    },
+    {
+      "status": "not run",
+      "what": "Свежая приёмка доноров 0.1.36 и ISAI.",
+      "why": "Не входят в чистую копию; историческая приёмка остаётся в исходных снимках."
+    }
+  ],
+  "outcome": "accepted",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "id": "M-create-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-text-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-create-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-text-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-edit",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-revoke",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-legacy-edit",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-register-contract",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-register-constraint",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-register-protocol",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-register-preference",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N01-no-ticket-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N02-no-ticket-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N03-delete-active",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N04-delete-no-consent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N05-delete-int-consent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N06-delete-contract",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N07-resume-draft",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N08-resume-revoked",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N09-suspend-draft",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N10-edit-revoked",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N11-resume-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N12-kind",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N13-foreign",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N14-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N15-scope",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N16-system",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N17-list-system",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N18-stale",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N19-tampered",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N20-prospective-conflict",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N21-write-failed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N22-history",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N23-retired",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N24-occupied",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-chain-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-chain-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-suspend",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-resume",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-missing",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N25-target-revision",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N26-L0-drift",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N27-foreign-session",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N28-replay-delete",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N29-only-allow-delete",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N30-chain-tampered",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N31-layout",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N32-profile-binding",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N33-forged-authority",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 62
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "id": "M-create-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-text-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-create-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-list-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-edit-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-suspend-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-resume-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-revoke-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "M-delete-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-text-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-edit",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-revoke",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-legacy-edit",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-register-contract",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-register-constraint",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-register-protocol",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-register-preference",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N01-no-ticket-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N02-no-ticket-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N03-delete-active",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N04-delete-no-consent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N05-delete-int-consent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N06-delete-contract",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N07-resume-draft",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N08-resume-revoked",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N09-suspend-draft",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N10-edit-revoked",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N11-resume-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N12-kind",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N13-foreign",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N14-parent",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N15-scope",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N16-system",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N17-list-system",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N18-stale",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N19-tampered",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N20-prospective-conflict",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N21-write-failed",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N22-history",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N23-retired",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N24-occupied",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-chain-L1",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-chain-L2",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-create",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-suspend",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-repeat-resume",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "P-missing",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N25-target-revision",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N26-L0-drift",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N27-foreign-session",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N28-replay-delete",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N29-only-allow-delete",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N30-chain-tampered",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N31-layout",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N32-profile-binding",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "id": "N33-forged-authority",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 62
+      },
+      "rc": 0
+    }
+  }
+}

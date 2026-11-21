@@ -1,0 +1,344 @@
+{
+  "chains": {
+    "L1": {
+      "changed": [
+        "profiles/pilot/registry.json"
+      ],
+      "exact_steps": true,
+      "history": [
+        "create",
+        "edit",
+        "revoke",
+        "delete",
+        "create"
+      ],
+      "ok": true,
+      "operations": [
+        "edit",
+        "revoke",
+        "delete",
+        "create"
+      ],
+      "other_unchanged": true,
+      "outcome": "applied_chain",
+      "prepared_exact": true,
+      "registry_untouched": false,
+      "replacements": 4,
+      "revision": [
+        4,
+        8
+      ],
+      "write_event": true
+    },
+    "L2": {
+      "changed": [
+        ".agent-contract/project/registry.json"
+      ],
+      "exact_steps": true,
+      "history": [
+        "edit",
+        "suspend",
+        "resume",
+        "revoke",
+        "delete",
+        "create"
+      ],
+      "ok": true,
+      "operations": [
+        "edit",
+        "suspend",
+        "resume",
+        "revoke",
+        "delete",
+        "create"
+      ],
+      "other_unchanged": true,
+      "outcome": "applied_chain",
+      "prepared_exact": true,
+      "registry_untouched": false,
+      "replacements": 6,
+      "revision": [
+        7,
+        13
+      ],
+      "write_event": true
+    }
+  },
+  "iteration": "И-110",
+  "matrix": {
+    "create": {
+      "L1": {
+        "changed": [
+          "profiles/pilot/registry.json"
+        ],
+        "id": "M-create-L1",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          4,
+          5
+        ],
+        "state": "draft"
+      },
+      "L2": {
+        "changed": [
+          ".agent-contract/project/registry.json"
+        ],
+        "id": "M-create-L2",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          7,
+          8
+        ],
+        "state": "draft"
+      }
+    },
+    "delete": {
+      "L1": {
+        "changed": [
+          "profiles/pilot/registry.json"
+        ],
+        "id": "M-delete-L1",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          4,
+          5
+        ],
+        "state": null
+      },
+      "L2": {
+        "changed": [
+          ".agent-contract/project/registry.json"
+        ],
+        "id": "M-delete-L2",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          7,
+          8
+        ],
+        "state": null
+      }
+    },
+    "edit": {
+      "L1": {
+        "changed": [
+          "profiles/pilot/registry.json"
+        ],
+        "id": "M-edit-L1",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          4,
+          5
+        ],
+        "state": "active"
+      },
+      "L2": {
+        "changed": [
+          ".agent-contract/project/registry.json"
+        ],
+        "id": "M-edit-L2",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          7,
+          8
+        ],
+        "state": "active"
+      }
+    },
+    "list": {
+      "L1": {
+        "changed": [],
+        "id": "M-list-L1",
+        "outcome": "listed",
+        "replacements": 0,
+        "revision": null,
+        "state": null
+      },
+      "L2": {
+        "changed": [],
+        "id": "M-list-L2",
+        "outcome": "listed",
+        "replacements": 0,
+        "revision": null,
+        "state": null
+      }
+    },
+    "resume": {
+      "L1": {
+        "changed": [
+          "profiles/pilot/registry.json"
+        ],
+        "id": "M-resume-L1",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          4,
+          5
+        ],
+        "state": "active"
+      },
+      "L2": {
+        "changed": [
+          ".agent-contract/project/registry.json"
+        ],
+        "id": "M-resume-L2",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          7,
+          8
+        ],
+        "state": "active"
+      }
+    },
+    "revoke": {
+      "L1": {
+        "changed": [
+          "profiles/pilot/registry.json"
+        ],
+        "id": "M-revoke-L1",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          4,
+          5
+        ],
+        "state": "revoked"
+      },
+      "L2": {
+        "changed": [
+          ".agent-contract/project/registry.json"
+        ],
+        "id": "M-revoke-L2",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          7,
+          8
+        ],
+        "state": "revoked"
+      }
+    },
+    "suspend": {
+      "L1": {
+        "changed": [
+          "profiles/pilot/registry.json"
+        ],
+        "id": "M-suspend-L1",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          4,
+          5
+        ],
+        "state": "suspended"
+      },
+      "L2": {
+        "changed": [
+          ".agent-contract/project/registry.json"
+        ],
+        "id": "M-suspend-L2",
+        "outcome": "applied",
+        "replacements": 1,
+        "revision": [
+          7,
+          8
+        ],
+        "state": "suspended"
+      }
+    }
+  },
+  "metrics": {
+    "cells": 14,
+    "failed_replacements": 1,
+    "no_change": 5,
+    "read_only_lists": 4,
+    "refused_before_write": 32,
+    "successful_replacements": 27,
+    "writes_without_confirmation": 0
+  },
+  "previews": {
+    "M-create-L1": {
+      "card": {
+        "card_format": 1,
+        "code": null,
+        "missing": [],
+        "operation": "create",
+        "outcome": "complete",
+        "params": {
+          "basis": "Фикстура И-110",
+          "contract": "C-A",
+          "criterion": "Сверить запись и историю.",
+          "entry_id": "N-110",
+          "kind": "rule",
+          "profile": "Pilot",
+          "scope": "docs/guide",
+          "state": "draft",
+          "target": "L1",
+          "text": "Черновик без активации.",
+          "title": "N-110"
+        },
+        "questions": [],
+        "request": "Зарегистрируй черновик правила N-110 в профиле Pilot, по контракту C-A, область «docs/guide», название «N-110», основание «Фикстура И-110», критерий «Сверить запись и историю.»: «Черновик без активации.»"
+      },
+      "diff": {
+        "after_sha256": "78ad2c63359f398ea81ab3ed0a03f2b4a8ae8828562a082a036c7c0f676332c9",
+        "before_sha256": "f28de0d4468faa2e4fb7287e6ea37eae127fa4cc84af80f33451b3b68c85caed",
+        "file": "profiles/pilot/registry.json",
+        "revision": {
+          "from": 4,
+          "to": 5
+        },
+        "unified": "--- a/profiles/pilot/registry.json\n+++ b/profiles/pilot/registry.json\n@@ -1 +1,84 @@\n-{\"area\": \"L1\", \"entries\": [{\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-A\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-A\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-A\", \"kind\": \"rule\", \"parent\": \"C-A\", \"scope\": \"docs/guide\", \"state\": \"active\", \"text\": \"\\u0418\\u0441\\u0445\\u043e\\u0434\\u043d\\u043e\\u0435 \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u043e.\", \"title\": \"R-A\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-off\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"suspended\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-off\"}, {\"authority\": \"profile_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-hidden\", \"kind\": \"rule\", \"parent\": \"C-off\", \"scope\": \"docs/guide\", \"state\": \"active\", \"text\": \"\\u041d\\u0435 \\u043f\\u043e\\u043a\\u0430\\u0437\\u044b\\u0432\\u0430\\u0442\\u044c.\", \"title\": \"R-hidden\"}], \"revision\": 4, \"roots\": [\"profiles/pilot\"], \"schema_version\": 2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_revision\": 4,\n+    \"decisions\": [\n+      {\n+        \"entry_id\": \"N-110\",\n+        \"entry_sha256\": \"9629f6c134837961dbb29041e212342c0cfb82f34d0300f7a0bfa0181eede8a3\",\n+        \"operation\": \"create\",\n+        \"profile_revision\": 5\n+      }\n+    ]\n+  },\n+  \"profile_format\": 1,\n+  \"registry\": {\n+    \"area\": \"L1\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-A\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-A\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"R-A\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-A\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"active\",\n+        \"text\": \"Исходное правило.\",\n+        \"title\": \"R-A\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-off\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"suspended\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-off\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"R-hidden\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-off\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"active\",\n+        \"text\": \"Не показывать.\",\n+        \"title\": \"R-hidden\"\n+      },\n+      {\n+        \"authority\": \"profile_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"N-110\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-A\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"draft\",\n+        \"text\": \"Черновик без активации.\",\n+        \"title\": \"N-110\"\n+      }\n+    ],\n+    \"revision\": 5,\n+    \"roots\": [\n+      \"profiles/pilot\"\n+    ],\n+    \"schema_version\": 2\n+  }\n+}\n"
+      },
+      "dry_run": true,
+      "inputs_sha256": {
+        "L0": "c88fa1a2492bbf59e34771210d62d578adcfd3e58bd97383ab578c00284236bb",
+        "L1": "f28de0d4468faa2e4fb7287e6ea37eae127fa4cc84af80f33451b3b68c85caed",
+        "L2": "19800e69f4f2ff97f3d02c227c81709041c01194a2508cad6333aae142a08ebf"
+      },
+      "outcome": "planned",
+      "plan_format": 1
+    },
+    "M-delete-L2": {
+      "card": {
+        "card_format": 1,
+        "code": null,
+        "missing": [],
+        "operation": "delete",
+        "outcome": "complete",
+        "params": {
+          "entry_id": "R-A",
+          "kind": "rule",
+          "target": "L2"
+        },
+        "questions": [],
+        "request": "Удали правило R-A в проекте."
+      },
+      "diff": {
+        "after_sha256": "977445ccf4ab7471a193c3e3828767106740966d92c6cb232464db764fb6b1e0",
+        "before_sha256": "a37434fc648e013f8cba472950d7fb36e9e8c0d957b628f3e948550ff510340b",
+        "file": ".agent-contract/project/registry.json",
+        "revision": {
+          "from": 7,
+          "to": 8
+        },
+        "unified": "--- a/.agent-contract/project/registry.json\n+++ b/.agent-contract/project/registry.json\n@@ -1 +1,67 @@\n-{\"area\": \"L2\", \"entries\": [{\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-A\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"active\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-A\"}, {\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-A\", \"kind\": \"rule\", \"parent\": \"C-A\", \"scope\": \"docs/guide\", \"state\": \"revoked\", \"text\": \"\\u0418\\u0441\\u0445\\u043e\\u0434\\u043d\\u043e\\u0435 \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u043e.\", \"title\": \"R-A\"}, {\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"C-off\", \"kind\": \"contract\", \"parent\": null, \"scope\": \"docs\", \"state\": \"suspended\", \"text\": \"\\u0423\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0435\\u043d\\u0434\\u0430.\", \"title\": \"C-off\"}, {\"authority\": \"project_owner\", \"basis\": \"\\u0424\\u0438\\u043a\\u0441\\u0442\\u0443\\u0440\\u0430 \\u0418-110\", \"criterion\": \"\\u0421\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0438 \\u0438\\u0441\\u0442\\u043e\\u0440\\u0438\\u044e.\", \"id\": \"R-hidden\", \"kind\": \"rule\", \"parent\": \"C-off\", \"scope\": \"docs/guide\", \"state\": \"active\", \"text\": \"\\u041d\\u0435 \\u043f\\u043e\\u043a\\u0430\\u0437\\u044b\\u0432\\u0430\\u0442\\u044c.\", \"title\": \"R-hidden\"}], \"revision\": 7, \"roots\": [\".agent-contract\"], \"schema_version\": 2}\n\\ No newline at end of file\n+{\n+  \"journal\": {\n+    \"base_entries\": {\n+      \"C-A\": \"06d6469fd5c43f45a4657bf76295ee016cf0364432d91ccf89a810e380f071bc\",\n+      \"C-off\": \"b6aa8930b9895cbb64fcb8f0933372fbc8faef929c39c43945245ece0523f9f3\",\n+      \"R-A\": \"c1166ad6024559d8989571ecf23097b254b22a0c6302022e56455f0209a2282d\",\n+      \"R-hidden\": \"eac5cfb3c0607d47dfc92869b24cc9032b46c00f09229bd22588cd3fba8c6a94\"\n+    },\n+    \"base_revision\": 7,\n+    \"decisions\": [\n+      {\n+        \"after_sha256\": null,\n+        \"before_sha256\": \"c1166ad6024559d8989571ecf23097b254b22a0c6302022e56455f0209a2282d\",\n+        \"entry_id\": \"R-A\",\n+        \"operation\": \"delete\",\n+        \"project_revision\": 8\n+      }\n+    ]\n+  },\n+  \"registry\": {\n+    \"area\": \"L2\",\n+    \"entries\": [\n+      {\n+        \"authority\": \"project_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-A\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"active\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-A\"\n+      },\n+      {\n+        \"authority\": \"project_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"C-off\",\n+        \"kind\": \"contract\",\n+        \"parent\": null,\n+        \"scope\": \"docs\",\n+        \"state\": \"suspended\",\n+        \"text\": \"Условия стенда.\",\n+        \"title\": \"C-off\"\n+      },\n+      {\n+        \"authority\": \"project_owner\",\n+        \"basis\": \"Фикстура И-110\",\n+        \"criterion\": \"Сверить запись и историю.\",\n+        \"id\": \"R-hidden\",\n+        \"kind\": \"rule\",\n+        \"parent\": \"C-off\",\n+        \"scope\": \"docs/guide\",\n+        \"state\": \"active\",\n+        \"text\": \"Не показывать.\",\n+        \"title\": \"R-hidden\"\n+      }\n+    ],\n+    \"revision\": 8,\n+    \"roots\": [\n+      \".agent-contract\"\n+    ],\n+    \"schema_version\": 2\n+  },\n+  \"registry_format\": 2\n+}\n"
+      },
+      "dry_run": true,
+      "inputs_sha256": {
+        "L0": "c88fa1a2492bbf59e34771210d62d578adcfd3e58bd97383ab578c00284236bb",
+        "L1": "f28de0d4468faa2e4fb7287e6ea37eae127fa4cc84af80f33451b3b68c85caed",
+        "L2": "a37434fc648e013f8cba472950d7fb36e9e8c0d957b628f3e948550ff510340b"
+      },
+      "outcome": "planned",
+      "plan_format": 1
+    }
+  },
+  "source": "CHECKOUT.json"
+}

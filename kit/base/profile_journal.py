@@ -11,7 +11,7 @@ def canonical_bytes(value):
     return json.dumps(value, ensure_ascii=True, sort_keys=True, separators=(',', ':'), allow_nan=False).encode('ascii')
 
 
-def _entry_digest(entry):
+def entry_digest(entry):
     return sha256(canonical_bytes(entry)).hexdigest()
 
 
@@ -54,7 +54,7 @@ def unpack_profile(document):
         _require(row['operation'] == 'create' and entry['kind'] == 'rule' and entry['state'] == 'draft',
                  'operation', at + '/operation')
         _require(row['entry_id'] == entry['id'], 'entry_id', at + '/entry_id')
-        _require(row['entry_sha256'] == _entry_digest(entry), 'entry_digest', at + '/entry_sha256')
+        _require(row['entry_sha256'] == entry_digest(entry), 'entry_digest', at + '/entry_sha256')
     return registry, journal
 
 
@@ -62,6 +62,6 @@ def with_creation(registry, previous):
     """Собрать пару для одной принятой операции; сама функция не пишет."""
     entry = registry['entries'][-1]
     decision = {'operation': 'create', 'entry_id': entry['id'], 'profile_revision': registry['revision'],
-                'entry_sha256': _entry_digest(entry)}
+                'entry_sha256': entry_digest(entry)}
     return {'profile_format': PROFILE_FORMAT, 'registry': registry,
             'journal': {'base_revision': previous['base_revision'], 'decisions': [*previous['decisions'], decision]}}

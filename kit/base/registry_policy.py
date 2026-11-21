@@ -18,16 +18,17 @@ class StoreError(ValueError):
 
 _AREAS = ('L0', 'L1', 'L2')
 # operation: (мутация по модели, области с реализованным путём в порте).
-# Действие «регистрация» называется create. Внутреннее read не обещает list из Ф2.
+# «Регистрация» называется create. Внутреннее read не подменяет пользовательский list.
+_MUTABLE = ('L1', 'L2')
 _OPERATIONS = {
     'read': (False, _AREAS),
-    'create': (True, ('L1',)),
-    'list': (False, ()),
-    'edit': (True, ()),
-    'suspend': (True, ()),
-    'resume': (True, ()),
-    'revoke': (True, ()),
-    'delete': (True, ()),
+    'create': (True, _MUTABLE),
+    'list': (False, _MUTABLE),
+    'edit': (True, _MUTABLE),
+    'suspend': (True, _MUTABLE),
+    'resume': (True, _MUTABLE),
+    'revoke': (True, _MUTABLE),
+    'delete': (True, _MUTABLE),
 }
 
 
@@ -69,15 +70,20 @@ def _shared_scope(left, right):
     return None
 
 
+def active_entries(document):
+    """Фильтр одного реестра, не объединение политик и не исполнение текста."""
+    entries = document['entries']
+    parents = {row['id'] for row in entries if row['kind'] == 'contract' and row['state'] == 'active'}
+    return [row for row in entries if row['state'] == 'active'
+            and (row['kind'] == 'contract' or row['parent'] in parents)]
+
+
 def find_conflicts(documents):
     """Пары противоречий в проверенных реестрах; никаких эффективных записей или решений."""
     by_key = {}
     for area in _AREAS:
-        entries = documents[area]['entries']
-        active_parents = {row['id'] for row in entries if row['kind'] == 'contract' and row['state'] == 'active'}
-        for row in sorted(entries, key=lambda item: item['id']):
-            if (row['kind'] != 'contract' and row['state'] == 'active'
-                    and row['parent'] in active_parents and 'key' in row):
+        for row in sorted(active_entries(documents[area]), key=lambda item: item['id']):
+            if row['kind'] != 'contract' and 'key' in row:
                 description = {'area': area, **{field: row[field] for field in ('id', 'scope', 'value', 'text')}}
                 by_key.setdefault(row['key'], []).append(description)
 

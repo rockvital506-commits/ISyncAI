@@ -1,4 +1,4 @@
-"""Одна карточка → read-only дифф → отдельное подтверждение → существующий порт записи."""
+"""Карточка: просмотр либо точный дифф и согласованная запись L1/L2."""
 from dataclasses import dataclass
 from difflib import diff_bytes, unified_diff
 from hashlib import sha256
@@ -18,7 +18,7 @@ PLAN_FORMAT = 1
 class _Pending:
     ticket: str
     shown: bytes
-    preview: registry_store.CreatePreview
+    preview: registry_store._ActionPreview
 
 
 def _same_json(got, expected):
@@ -46,14 +46,14 @@ def _checked_card(card):
 
 
 def _diff(preview):
-    native = preview.store_plan
-    rel = native['registry']
+    rel = preview.registry
     before, after = preview.before, preview.after
     lines = diff_bytes(unified_diff, list(BytesIO(before)), list(BytesIO(after)),
                        fromfile=('a/' + rel).encode('utf-8'), tofile=('b/' + rel).encode('utf-8'))
     display = b''.join(line if line.endswith(b'\n') else line + b'\n\\ No newline at end of file\n' for line in lines)
-    return {'file': rel, 'revision': dict(native['revision']), 'before_sha256': sha256(before).hexdigest(),
-            'after_sha256': sha256(after).hexdigest(), 'unified': display.decode('utf-8')}
+    return {'file': rel, 'revision': {'from': preview.from_revision, 'to': preview.to_revision},
+            'before_sha256': sha256(before).hexdigest(), 'after_sha256': sha256(after).hexdigest(),
+            'unified': display.decode('utf-8')}
 
 
 class PlanSession:
@@ -79,24 +79,21 @@ class PlanSession:
         operation, params = card['operation'], card['params']
         target = params['target']
         check_operation(operation, target=target)
-        # Даже расширение матрицы не подключает новый исполнитель автоматически.
-        if (operation, target) != ('create', 'L1'):
-            raise StoreError('operation_unavailable', 'operation')
-        if params['profile'] != self._profile_id:
+        if target == 'L1' and params['profile'] != self._profile_id:
             raise StoreError('profile_mismatch', 'card/params/profile')
-        entry = {k: params[k] for k in ('kind', 'state', 'scope', 'title', 'text', 'basis', 'criterion')}
-        entry.update(id=params['entry_id'], parent=params.get('contract'), authority='profile_owner')
-        preview = registry_store.preview_create(self._layout, entry, target=target)
+        if operation == 'list':
+            return dict(result, outcome='listed', result=registry_store._list_entries(self._layout, params))
+        preview = registry_store._preview_action(self._layout, operation, params)
         result.update(diff=_diff(preview), inputs_sha256=dict(preview.inputs_sha256))
-        if preview.store_plan.get('outcome') == 'no_change':
+        if preview.from_revision == preview.to_revision:
             return dict(result, outcome='no_change')
         ticket = token_hex(32)
         result.update(outcome='planned', ticket=ticket)
         self._pending = _Pending(ticket, canonical_bytes(result), preview)
         return result
 
-    def apply(self, plan, *, confirmed_ticket=None):
-        """Писать только по отдельно переданному билету именно этого выданного плана."""
+    def apply(self, plan, *, confirmed_ticket=None, allow_delete=False):
+        """Писать только по отдельному билету на этот план; для удаления нужно также allow_delete."""
         if type(confirmed_ticket) is not str or not confirmed_ticket:
             raise StoreError('confirmation_required', 'confirmed_ticket')
         if type(plan) is not dict:
@@ -110,7 +107,5 @@ class PlanSession:
             raise StoreError('plan_mismatch', 'plan')
         # После проверки расходуется одна попытка. Ни сбой, ни дрейф не создают новую выдачу автоматически.
         self._pending = None
-        preview = pending.preview
-        native = preview.store_plan
-        status = registry_store.apply_create(self._layout, native, confirmed_ticket=native['ticket'], preview=preview)
+        status = registry_store._apply_action(self._layout, pending.preview, allow_delete=allow_delete)
         return {'outcome': 'applied', 'status': status}

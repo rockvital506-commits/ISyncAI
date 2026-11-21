@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И‑110 · Манипуляции в L1 и L2</title><style>
+:root {color-scheme:light;--ink:#14233a;--muted:#4a5b70;--line:#d7e2e9;--wash:#edf5f7;--accent:#165b60}
+* {box-sizing:border-box} body {margin:0;background:#fcfdfe;color:var(--ink);font:1rem/1.56 system-ui,sans-serif}
+header {background:var(--wash);border-bottom:1px solid var(--line)} header>div,main {max-width:65rem;margin:auto;padding:1.5rem max(1rem,3vw)}
+h1 {font-size:clamp(2rem,4.5vw,3.45rem);line-height:1.1;text-wrap:balance;margin:.25em 0} h2 {margin:1.75rem 0 .6rem}
+.meta {color:var(--muted)} .verdict {font-weight:720;color:#15574b} a {color:var(--accent);text-underline-offset:.18em}
+.cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.75rem}
+article,details {background:white;padding:.8rem 1rem;border:1px solid var(--line);border-radius:.45rem} article strong {display:block} details {margin:.6rem 0}
+table {width:100%;border-collapse:collapse;text-align:left} td,th {padding:.45rem .65rem;border-bottom:1px solid var(--line);vertical-align:top} th {background:var(--wash)}
+summary {cursor:pointer;font-weight:650} blockquote {margin:.7rem 0;border-left:3px solid var(--line);padding:0 .7rem}
+pre {padding:.85rem;background:var(--wash);white-space:pre-wrap} pre,code {overflow-wrap:anywhere} li {margin:.4rem 0}
+</style></head><body><header><div>
+<p class="meta">И‑110 · Ф2. Промпт-компилятор и диалог · P0 · 2026-11-21</p>
+<h1>Семь действий в L1 и L2: точный дифф и история</h1><p class="verdict">Проверки приняты на фикстурах</p>
+<p>Просмотр — без записи. Мутация — только после отдельного подтверждения точного диффа. Изменение, ревизия и решение сохраняются вместе.</p>
+</div></header><main>
+<div class="cards"><article><a href="CHECKOUT.json">П3 · checkout</a><strong>62 pass / 0 fail / 0 not run</strong></article>
+<article><a href="CLEANROOM.json">П4 · чистая копия</a><strong>62 pass / 0 fail / 0 not run</strong></article>
+<article><a href="ACCEPTANCE.json">П5 · приёмка</a><strong>7 pass / 0 fail / 4 not run</strong></article></div>
+<h2>Матрица исполненных действий</h2><table><thead><tr><th scope="col">Действие</th><th scope="col">L1 · профиль</th><th scope="col">L2 · проект</th></tr></thead><tbody><tr><td>Регистрация · create</td><td>4 → 5 · draft</td><td>7 → 8 · draft</td></tr><tr><td>Просмотр · list</td><td>прочитан каталог, 0 замен</td><td>прочитан каталог, 0 замен</td></tr><tr><td>Правка текста · edit</td><td>4 → 5 · active</td><td>7 → 8 · active</td></tr><tr><td>Приостановка · suspend</td><td>4 → 5 · suspended</td><td>7 → 8 · suspended</td></tr><tr><td>Возобновление · resume</td><td>4 → 5 · active</td><td>7 → 8 · active</td></tr><tr><td>Отмена · revoke</td><td>4 → 5 · revoked</td><td>7 → 8 · revoked</td></tr><tr><td>Удаление · delete</td><td>4 → 5 · запись удалена</td><td>7 → 8 · запись удалена</td></tr></tbody></table>
+<p>Записей без подтверждения: <strong>0</strong>. L0 неизменён.</p>
+<h2>Отмена и физическое удаление</h2><p>Отмена оставляет запись и текст. Удаление после отмены требует своего согласия помимо билета на дифф.
+Затронут только текущий реестр, а не Git и не резервные копии. Локальный журнал сохраняет ID и отпечатки решений.</p>
+<h2>Два точных диффа</h2><p>Синтетические примеры без билетов · <a href="ACTIONS.json">наблюдения и цепочки</a>.</p><details><summary>M-create-L1 · 4 → 5</summary><blockquote>Зарегистрируй черновик правила N-110 в профиле Pilot, по контракту C-A, область «docs/guide», название «N-110», основание «Фикстура И-110», критерий «Сверить запись и историю.»: «Черновик без активации.»</blockquote><p><code>profiles/pilot/registry.json</code><br>SHA‑256 после: <code>78ad2c63359f398ea81ab3ed0a03f2b4a8ae8828562a082a036c7c0f676332c9</code></p><pre>--- a/profiles/pilot/registry.json
++++ b/profiles/pilot/registry.json
+@@ -1 +1,84 @@
+-{&quot;area&quot;: &quot;L1&quot;, &quot;entries&quot;: [{&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;C-A&quot;, &quot;kind&quot;: &quot;contract&quot;, &quot;parent&quot;: null, &quot;scope&quot;: &quot;docs&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0423\u0441\u043b\u043e\u0432\u0438\u044f \u0441\u0442\u0435\u043d\u0434\u0430.&quot;, &quot;title&quot;: &quot;C-A&quot;}, {&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;R-A&quot;, &quot;kind&quot;: &quot;rule&quot;, &quot;parent&quot;: &quot;C-A&quot;, &quot;scope&quot;: &quot;docs/guide&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0418\u0441\u0445\u043e\u0434\u043d\u043e\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e.&quot;, &quot;title&quot;: &quot;R-A&quot;}, {&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;C-off&quot;, &quot;kind&quot;: &quot;contract&quot;, &quot;parent&quot;: null, &quot;scope&quot;: &quot;docs&quot;, &quot;state&quot;: &quot;suspended&quot;, &quot;text&quot;: &quot;\u0423\u0441\u043b\u043e\u0432\u0438\u044f \u0441\u0442\u0435\u043d\u0434\u0430.&quot;, &quot;title&quot;: &quot;C-off&quot;}, {&quot;authority&quot;: &quot;profile_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;R-hidden&quot;, &quot;kind&quot;: &quot;rule&quot;, &quot;parent&quot;: &quot;C-off&quot;, &quot;scope&quot;: &quot;docs/guide&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u041d\u0435 \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c.&quot;, &quot;title&quot;: &quot;R-hidden&quot;}], &quot;revision&quot;: 4, &quot;roots&quot;: [&quot;profiles/pilot&quot;], &quot;schema_version&quot;: 2}
+\ No newline at end of file
++{
++  &quot;journal&quot;: {
++    &quot;base_revision&quot;: 4,
++    &quot;decisions&quot;: [
++      {
++        &quot;entry_id&quot;: &quot;N-110&quot;,
++        &quot;entry_sha256&quot;: &quot;9629f6c134837961dbb29041e212342c0cfb82f34d0300f7a0bfa0181eede8a3&quot;,
++        &quot;operation&quot;: &quot;create&quot;,
++        &quot;profile_revision&quot;: 5
++      }
++    ]
++  },
++  &quot;profile_format&quot;: 1,
++  &quot;registry&quot;: {
++    &quot;area&quot;: &quot;L1&quot;,
++    &quot;entries&quot;: [
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;C-A&quot;,
++        &quot;kind&quot;: &quot;contract&quot;,
++        &quot;parent&quot;: null,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Условия стенда.&quot;,
++        &quot;title&quot;: &quot;C-A&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;R-A&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-A&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Исходное правило.&quot;,
++        &quot;title&quot;: &quot;R-A&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;C-off&quot;,
++        &quot;kind&quot;: &quot;contract&quot;,
++        &quot;parent&quot;: null,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;suspended&quot;,
++        &quot;text&quot;: &quot;Условия стенда.&quot;,
++        &quot;title&quot;: &quot;C-off&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;R-hidden&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-off&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Не показывать.&quot;,
++        &quot;title&quot;: &quot;R-hidden&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;profile_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;N-110&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-A&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;draft&quot;,
++        &quot;text&quot;: &quot;Черновик без активации.&quot;,
++        &quot;title&quot;: &quot;N-110&quot;
++      }
++    ],
++    &quot;revision&quot;: 5,
++    &quot;roots&quot;: [
++      &quot;profiles/pilot&quot;
++    ],
++    &quot;schema_version&quot;: 2
++  }
++}
+</pre></details><details><summary>M-delete-L2 · 7 → 8</summary><blockquote>Удали правило R-A в проекте.</blockquote><p><code>.agent-contract/project/registry.json</code><br>SHA‑256 после: <code>977445ccf4ab7471a193c3e3828767106740966d92c6cb232464db764fb6b1e0</code></p><pre>--- a/.agent-contract/project/registry.json
++++ b/.agent-contract/project/registry.json
+@@ -1 +1,67 @@
+-{&quot;area&quot;: &quot;L2&quot;, &quot;entries&quot;: [{&quot;authority&quot;: &quot;project_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;C-A&quot;, &quot;kind&quot;: &quot;contract&quot;, &quot;parent&quot;: null, &quot;scope&quot;: &quot;docs&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u0423\u0441\u043b\u043e\u0432\u0438\u044f \u0441\u0442\u0435\u043d\u0434\u0430.&quot;, &quot;title&quot;: &quot;C-A&quot;}, {&quot;authority&quot;: &quot;project_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;R-A&quot;, &quot;kind&quot;: &quot;rule&quot;, &quot;parent&quot;: &quot;C-A&quot;, &quot;scope&quot;: &quot;docs/guide&quot;, &quot;state&quot;: &quot;revoked&quot;, &quot;text&quot;: &quot;\u0418\u0441\u0445\u043e\u0434\u043d\u043e\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e.&quot;, &quot;title&quot;: &quot;R-A&quot;}, {&quot;authority&quot;: &quot;project_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;C-off&quot;, &quot;kind&quot;: &quot;contract&quot;, &quot;parent&quot;: null, &quot;scope&quot;: &quot;docs&quot;, &quot;state&quot;: &quot;suspended&quot;, &quot;text&quot;: &quot;\u0423\u0441\u043b\u043e\u0432\u0438\u044f \u0441\u0442\u0435\u043d\u0434\u0430.&quot;, &quot;title&quot;: &quot;C-off&quot;}, {&quot;authority&quot;: &quot;project_owner&quot;, &quot;basis&quot;: &quot;\u0424\u0438\u043a\u0441\u0442\u0443\u0440\u0430 \u0418-110&quot;, &quot;criterion&quot;: &quot;\u0421\u0432\u0435\u0440\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c \u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u044e.&quot;, &quot;id&quot;: &quot;R-hidden&quot;, &quot;kind&quot;: &quot;rule&quot;, &quot;parent&quot;: &quot;C-off&quot;, &quot;scope&quot;: &quot;docs/guide&quot;, &quot;state&quot;: &quot;active&quot;, &quot;text&quot;: &quot;\u041d\u0435 \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c.&quot;, &quot;title&quot;: &quot;R-hidden&quot;}], &quot;revision&quot;: 7, &quot;roots&quot;: [&quot;.agent-contract&quot;], &quot;schema_version&quot;: 2}
+\ No newline at end of file
++{
++  &quot;journal&quot;: {
++    &quot;base_entries&quot;: {
++      &quot;C-A&quot;: &quot;06d6469fd5c43f45a4657bf76295ee016cf0364432d91ccf89a810e380f071bc&quot;,
++      &quot;C-off&quot;: &quot;b6aa8930b9895cbb64fcb8f0933372fbc8faef929c39c43945245ece0523f9f3&quot;,
++      &quot;R-A&quot;: &quot;c1166ad6024559d8989571ecf23097b254b22a0c6302022e56455f0209a2282d&quot;,
++      &quot;R-hidden&quot;: &quot;eac5cfb3c0607d47dfc92869b24cc9032b46c00f09229bd22588cd3fba8c6a94&quot;
++    },
++    &quot;base_revision&quot;: 7,
++    &quot;decisions&quot;: [
++      {
++        &quot;after_sha256&quot;: null,
++        &quot;before_sha256&quot;: &quot;c1166ad6024559d8989571ecf23097b254b22a0c6302022e56455f0209a2282d&quot;,
++        &quot;entry_id&quot;: &quot;R-A&quot;,
++        &quot;operation&quot;: &quot;delete&quot;,
++        &quot;project_revision&quot;: 8
++      }
++    ]
++  },
++  &quot;registry&quot;: {
++    &quot;area&quot;: &quot;L2&quot;,
++    &quot;entries&quot;: [
++      {
++        &quot;authority&quot;: &quot;project_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;C-A&quot;,
++        &quot;kind&quot;: &quot;contract&quot;,
++        &quot;parent&quot;: null,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Условия стенда.&quot;,
++        &quot;title&quot;: &quot;C-A&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;project_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;C-off&quot;,
++        &quot;kind&quot;: &quot;contract&quot;,
++        &quot;parent&quot;: null,
++        &quot;scope&quot;: &quot;docs&quot;,
++        &quot;state&quot;: &quot;suspended&quot;,
++        &quot;text&quot;: &quot;Условия стенда.&quot;,
++        &quot;title&quot;: &quot;C-off&quot;
++      },
++      {
++        &quot;authority&quot;: &quot;project_owner&quot;,
++        &quot;basis&quot;: &quot;Фикстура И-110&quot;,
++        &quot;criterion&quot;: &quot;Сверить запись и историю.&quot;,
++        &quot;id&quot;: &quot;R-hidden&quot;,
++        &quot;kind&quot;: &quot;rule&quot;,
++        &quot;parent&quot;: &quot;C-off&quot;,
++        &quot;scope&quot;: &quot;docs/guide&quot;,
++        &quot;state&quot;: &quot;active&quot;,
++        &quot;text&quot;: &quot;Не показывать.&quot;,
++        &quot;title&quot;: &quot;R-hidden&quot;
++      }
++    ],
++    &quot;revision&quot;: 8,
++    &quot;roots&quot;: [
++      &quot;.agent-contract&quot;
++    ],
++    &quot;schema_version&quot;: 2
++  },
++  &quot;registry_format&quot;: 2
++}
+</pre></details>
+<h2>Не выполнялось</h2><ul><li><strong>Неоднозначность постоянного, временного, предложения и гипотезы; bootstrap.</strong> И-111–И-112. И-110 принимает текущую узкую карточку.</li><li><strong>Выдача прав, аутентификация владельца, живые среды, несколько писателей, ACL/NTFS, авария питания.</strong> Linux, временные фикстуры и один писатель. Согласия синтетические, отказ замены моделируется.</li><li><strong>Активация черновика, полное разрешение конфликтов (X07/X08), R-2, перенос, миграция, внешний purge.</strong> Не выводятся из переходов одного файла, проверок A1–A4 и хешей сохранённых решений.</li><li><strong>Свежая приёмка доноров 0.1.36 и ISAI.</strong> Не входят в чистую копию; историческая приёмка остаётся в исходных снимках.</li></ul>
+<h2>Печать и повтор</h2><p><a href="AgentContractKit-Iteration-110.zip">ZIP с приёмкой</a> · 33 файлов · 619194 байт ·
+<a href="REPLAY.json">повтор: ok</a></p><p>SHA‑256 <code>35d0977f555296bd0d9713bf5c418b2c345b7219c9511a8c02077c97586c6f01</code></p>
+<p><a href="REPORT.md">Отчёт и критерии</a> · <a href="DESIGN.md">Замысел</a> · <a href="../STRATEGY.md">Стратегия</a></p>
+<p class="meta">И-111 — неоднозначность постоянного / временного / предложения / гипотезы, 20 фраз; не начата.</p></main></body></html>

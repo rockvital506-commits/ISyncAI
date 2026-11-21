@@ -1,0 +1,139 @@
+{
+  "iteration": "И-110",
+  "phase": "П2 (до изменения Kit)",
+  "base_commit": "57d70217016e1ea0e37924cb2b66a3ba1a3bf8af",
+  "host_os": "Linux",
+  "rc": 1,
+  "casebook_sha256": "87c24f449f957f7734a143a877af1ad8fd0f835759d0c56ef0a35bbe3af4d002",
+  "test_sha256": "8392a00fe820d060d94985771b573afa69f7348d63d33fef7ee0c0e3e68914eb",
+  "counts": {
+    "pass": 6,
+    "fail": 56,
+    "not run": 0
+  },
+  "observed_matrix": [
+    {
+      "id": "M-create-L1",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": "module 'kit.base.registry_store' has no attribute 'registry_history'"
+    },
+    {
+      "id": "M-list-L1",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-edit-L1",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-suspend-L1",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-resume-L1",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-revoke-L1",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-delete-L1",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-create-L2",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-list-L2",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-edit-L2",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-suspend-L2",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-resume-L2",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-revoke-L2",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    },
+    {
+      "id": "M-delete-L2",
+      "status": "fail",
+      "issue": "observation_mismatch",
+      "diagnostic": {
+        "code": "operation_unavailable",
+        "where": "operation"
+      }
+    }
+  ]
+}

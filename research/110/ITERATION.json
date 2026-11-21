@@ -1,0 +1,84 @@
+{
+  "id": "110",
+  "title": "Семь действий в L1 и L2: точный дифф и история",
+  "date": "2026-11-21",
+  "branch": "arena/4e000a5e-isyncai",
+  "phase": "Ф2. Промпт-компилятор и диалог",
+  "priority": "P0",
+  "baseline": "57d7021 · v1.11",
+  "target_inputs": [
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/REGISTRY-JOURNAL.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/110/CASES.json",
+    "research/110/test_actions.py"
+  ],
+  "seal_members": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-MATRIX.md",
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/PROFILE-JOURNAL.md",
+    "kit/base/REGISTRY-JOURNAL.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/109/ACCEPTANCE.json",
+    "research/110/ACCEPTANCE.json",
+    "research/110/ACTIONS.json",
+    "research/110/CASES.json",
+    "research/110/CHECKOUT.json",
+    "research/110/CLEANROOM.json",
+    "research/110/DESIGN.md",
+    "research/110/ITERATION.json",
+    "research/110/RED.json",
+    "research/110/REPORT.md",
+    "research/110/render110.py",
+    "research/110/run.py",
+    "research/110/test_actions.py",
+    "research/STRATEGY.md",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py"
+  ],
+  "case_counts": {
+    "negative": 33,
+    "positive": 29
+  },
+  "casebook_sha256": "87c24f449f957f7734a143a877af1ad8fd0f835759d0c56ef0a35bbe3af4d002",
+  "test_sha256": "8392a00fe820d060d94985771b573afa69f7348d63d33fef7ee0c0e3e68914eb",
+  "not_run": [
+    {
+      "what": "Неоднозначность постоянного, временного, предложения и гипотезы; bootstrap.",
+      "why": "И-111–И-112. И-110 принимает текущую узкую карточку."
+    },
+    {
+      "what": "Выдача прав, аутентификация владельца, живые среды, несколько писателей, ACL/NTFS, авария питания.",
+      "why": "Linux, временные фикстуры и один писатель. Согласия синтетические, отказ замены моделируется."
+    },
+    {
+      "what": "Активация черновика, полное разрешение конфликтов (X07/X08), R-2, перенос, миграция, внешний purge.",
+      "why": "Не выводятся из переходов одного файла, проверок A1–A4 и хешей сохранённых решений."
+    },
+    {
+      "what": "Свежая приёмка доноров 0.1.36 и ISAI.",
+      "why": "Не входят в чистую копию; историческая приёмка остаётся в исходных снимках."
+    }
+  ],
+  "next": "И-111 — неоднозначность постоянного / временного / предложения / гипотезы, 20 фраз; не начата."
+}

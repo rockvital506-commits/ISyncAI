@@ -1,4 +1,4 @@
-"""Внутреннее хранилище v2: раздельные корни и согласованные регистрации L1."""
+"""Внутреннее хранилище v2: раздельные корни и согласованные манипуляции L1/L2."""
 from dataclasses import dataclass
 from hashlib import sha256
 import json
@@ -7,7 +7,7 @@ from pathlib import Path
 import stat
 import tempfile
 
-from . import profile_journal, registry_policy, schema_v2
+from . import profile_journal, registry_journal, registry_policy, schema_v2
 from .profile_journal import canonical_bytes as _wire
 from .registry_policy import StoreError, check_operation, operation_matrix
 
@@ -32,8 +32,8 @@ class _Loaded:
     files: dict
     documents: dict
     inputs_sha256: dict
-    profile_bytes: bytes
-    journal: dict
+    raw: dict
+    journals: dict
 
 
 @dataclass(frozen=True)
@@ -41,6 +41,25 @@ class CreatePreview:
     """Снимок нативного плана и байтов для слоя карточек, без записи."""
 
     store_plan: dict
+    inputs_sha256: dict
+    before: bytes
+    after: bytes
+
+
+@dataclass(frozen=True)
+class _Change:
+    candidate: dict
+    prior: dict | None
+    replacement: dict | None
+
+
+@dataclass(frozen=True)
+class _ActionPreview:
+    operation: str
+    params: dict
+    registry: str
+    from_revision: int
+    to_revision: int
     inputs_sha256: dict
     before: bytes
     after: bytes
@@ -104,7 +123,7 @@ def _load(layout):
             raise StoreError('profile_root_conflict', roots['L1'])
         identities.add(identity)
 
-    files, documents, inputs_sha256 = {}, {}, {}
+    files, documents, inputs_sha256, raw_by_area, journals = {}, {}, {}, {}, {}
     for area, suffix in _SUFFIX.items():
         rel = roots[area] + '/' + suffix
         path, _ = _existing(workspace, rel, registry=True)
@@ -113,11 +132,10 @@ def _load(layout):
         except OSError as error:
             raise StoreError('io_error', rel) from error
         try:
-            if area == 'L1':
-                document, journal = profile_journal.unpack_profile(schema_v2.parse_json(raw))
-                profile_bytes = raw
-            else:
+            if area == 'L0':
                 document = schema_v2.validate_json(raw, expected_area=area)
+            else:
+                document, journals[area] = registry_journal.unpack_registry(schema_v2.parse_json(raw), area=area)
         except schema_v2.SchemaError as error:
             code = 'invalid_history' if error.stage == 'history' else 'invalid_registry'
             raise StoreError(code, rel, schema=error) from error
@@ -125,24 +143,32 @@ def _load(layout):
             raise StoreError('root_mismatch', rel)
         files[area], documents[area] = path, document
         inputs_sha256[area] = sha256(raw).hexdigest()
-    return _Loaded(workspace, roots, files, documents, inputs_sha256, profile_bytes, journal)
+        raw_by_area[area] = raw
+    return _Loaded(workspace, roots, files, documents, inputs_sha256, raw_by_area, journals)
 
 
-def _status(current, profile):
+def _status(current, *, target=None, revision=None):
+    values = {area: revision if area == target else current.documents[area]['revision'] for area in ('L1', 'L2')}
     return {'schema_version': schema_v2.SCHEMA_VERSION, 'release_version': current.documents['L0']['release_version'],
-            'profile_root': current.roots['L1'], 'profile_revision': profile['revision'],
-            'project_revision': current.documents['L2']['revision']}
+            'profile_root': current.roots['L1'], 'profile_revision': values['L1'], 'project_revision': values['L2']}
 
 
 def status(layout):
     """Свежее чтение v2. Не создаёт и не исправляет отсутствующие данные."""
-    current = _load(layout)
-    return _status(current, current.documents['L1'])
+    return _status(_load(layout))
+
+
+def registry_history(layout, *, target):
+    """Прочитать локальный журнал L1/L2 в его проверенной форме, без записи."""
+    check_operation('read', target=target)
+    if target == 'L0':
+        raise StoreError('operation_unavailable', 'operation')
+    return _load(layout).journals[target]
 
 
 def profile_history(layout):
-    """Прочитать проверенный журнал регистраций выбранного профиля без записи."""
-    return _load(layout).journal
+    """Прочитать проверенный журнал выбранного профиля без записи."""
+    return registry_history(layout, target='L1')
 
 
 def read_registry(layout, *, target):
@@ -156,73 +182,229 @@ def report_conflicts(layout):
     return registry_policy.find_conflicts(_load(layout).documents)
 
 
-def _plan(current, entry):
-    old = current.documents['L1']
-    revision = old['revision']
-    rel = current.files['L1'].relative_to(current.workspace).as_posix()
-    entries = list(old['entries'])
+def _rel(current, target):
+    return current.files[target].relative_to(current.workspace).as_posix()
+
+
+def _validated_candidate(current, target, entries, index):
+    old = current.documents[target]
+    candidate = dict(old, entries=entries, revision=old['revision'] + 1)
+    try:
+        schema_v2.validate_registry(candidate, expected_area=target)
+    except schema_v2.SchemaError as error:
+        path = f'/entries/{index}'
+        parent_error = (error.path == path + '/parent'
+                        or (error.stage == 'links' and error.code == 'scope_outside' and error.path == path + '/scope'))
+        raise StoreError('parent' if parent_error else 'invalid_entry', _rel(current, target), schema=error) from error
+    return candidate
+
+
+def _check_conflicts(documents):
+    conflicts = registry_policy.find_conflicts(documents)
+    if conflicts:
+        raise StoreError('rule_conflict', 'entries', details={'conflicts': conflicts})
+
+
+def _change(current, target, candidate, prior, replacement):
+    _check_conflicts(current.documents)
+    _check_conflicts({**current.documents, target: candidate})
+    return _Change(candidate, prior, replacement)
+
+
+def _propose_create(current, target, entry, *, rule_only=False):
+    entries = list(current.documents[target]['entries'])
     index = len(entries)
     if type(entry) is dict and type(entry.get('id')) is str:
         index = next((i for i, row in enumerate(entries) if row['id'] == entry['id']), index)
-    previous = entries[index] if index < len(entries) else None
-    # Для повтора с уже занятым ID проверяем новый объект в его прежнем месте,
-    # иначе штатная проверка duplicate_id не даст различить no_change и новое тело.
+    prior = entries[index] if index < len(entries) else None
+    # Сначала проверяем и возможный повтор, не превращая его в duplicate_id.
     entries[index:index + 1] = [entry]
-    candidate = dict(old, entries=entries, revision=revision + 1)
-    try:
-        schema_v2.validate_registry(candidate, expected_area='L1')
-    except schema_v2.SchemaError as error:
-        path = f'/entries/{index}'
-        parent_error = (
-            error.path == path + '/parent'
-            or (error.stage == 'links' and error.code == 'scope_outside' and error.path == path + '/scope')
-        )
-        raise StoreError('parent' if parent_error else 'invalid_entry', rel, schema=error) from error
-    if entry['kind'] != 'rule' or entry['state'] != 'draft':
-        raise StoreError('unsupported_entry', 'L1')
-    plan = {'operation': 'create', 'target': 'L1', 'registry': rel}
-    if previous is not None:
-        if _wire(previous) != _wire(entry):
-            raise StoreError('entry_exists', rel)
+    candidate = _validated_candidate(current, target, entries, index)
+    if entry['state'] != 'draft' or (rule_only and entry['kind'] != 'rule'):
+        raise StoreError('unsupported_entry', target)
+    if prior is not None:
+        if _wire(prior) != _wire(entry):
+            raise StoreError('entry_exists', _rel(current, target))
+        return None
+    if registry_journal.is_retired(current.journals[target], entry['id']):
+        raise StoreError('entry_retired', _rel(current, target))
+    return _change(current, target, candidate, prior, entry)
+
+
+_TRANSITIONS = {'suspend': ({'active'}, 'suspended'), 'resume': ({'suspended'}, 'active'),
+                'revoke': ({'draft', 'active', 'suspended'}, 'revoked')}
+
+
+def _locate(entries, params, rel):
+    for i, row in enumerate(entries):
+        if row['id'] == params['entry_id']:
+            if params.get('kind', row['kind']) != row['kind']:
+                raise StoreError('entry_kind_mismatch', rel)
+            return i, row
+    raise StoreError('entry_not_found', rel)
+
+
+def _propose_existing(current, operation, target, params):
+    entries = list(current.documents[target]['entries'])
+    rel = _rel(current, target)
+    index, prior = _locate(entries, params, rel)
+    state = prior['state']
+
+    def invalid_transition():
+        return StoreError('invalid_transition', rel, details={'entry_id': prior['id'], 'operation': operation,
+                                                              'state': state})
+
+    if operation == 'edit':
+        if state == 'revoked':
+            raise invalid_transition()
+        if prior['text'] == params['text']:
+            return None
+        replacement = dict(prior, text=params['text'])
+    elif operation == 'delete':
+        if state != 'revoked':
+            raise invalid_transition()
+        children = sorted(row['id'] for row in entries if row['parent'] == prior['id'])
+        if children:
+            raise StoreError('parent', rel, details={'reason': 'contract_has_children', 'children': children})
+        replacement = None
+    else:
+        allowed, new_state = _TRANSITIONS[operation]
+        if state == new_state:
+            return None
+        if state not in allowed:
+            raise invalid_transition()
+        if operation == 'resume' and prior['parent'] is not None:
+            parent = next(row for row in entries if row['id'] == prior['parent'])
+            if parent['state'] != 'active':
+                raise StoreError('parent', rel, details={'reason': 'parent_inactive', 'contract': parent['id']})
+        replacement = dict(prior, state=new_state)
+    entries[index:index + 1] = [] if replacement is None else [replacement]
+    candidate = _validated_candidate(current, target, entries, index)
+    return _change(current, target, candidate, prior, replacement)
+
+
+def _mutation_bytes(current, operation, target, change):
+    journal = current.journals[target]
+    if target == 'L1' and operation == 'create' and change.replacement['kind'] == 'rule' and 'base_entries' not in journal:
+        packed = profile_journal.with_creation(change.candidate, journal)
+    else:
+        packed = registry_journal.with_change(change.candidate, current.documents[target], journal,
+                                              operation=operation, before=change.prior, after=change.replacement)
+    return (json.dumps(packed, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + '\n').encode('utf-8')
+
+
+def _list_entries(layout, params):
+    target = params['target']
+    current = _load(layout)
+    document = current.documents[target]
+    rows = document['entries']
+    if 'entry_id' in params:
+        _, row = _locate(rows, params, _rel(current, target))
+        rows = [row]
+    state = params.get('state')
+    if state == 'active':
+        active = {row['id'] for row in registry_policy.active_entries(document)}
+        rows = [row for row in rows if row['id'] in active]
+    elif state is not None:
+        rows = [row for row in rows if row['state'] == state]
+    if 'kind' in params:
+        rows = [row for row in rows if row['kind'] == params['kind']]
+    fields = ('id', 'text') if params.get('view') == 'text' else ('id', 'kind', 'state', 'parent', 'scope', 'title')
+    return {'target': target, 'revision': document['revision'],
+            'entries': [{key: row[key] for key in fields} for row in rows]}
+
+
+def _prepare_action(current, operation, params):
+    target = params['target']
+    if operation == 'create':
+        entry = {k: params[k] for k in ('kind', 'state', 'scope', 'title', 'text', 'basis', 'criterion')}
+        # Метка из проверенного маршрута, не свидетельство полномочий.
+        entry.update(id=params['entry_id'], parent=params.get('contract'),
+                     authority={'L1': 'profile_owner', 'L2': 'project_owner'}[target])
+        change = _propose_create(current, target, entry)
+    else:
+        change = _propose_existing(current, operation, target, params)
+    revision, before = current.documents[target]['revision'], current.raw[target]
+    after = before if change is None else _mutation_bytes(current, operation, target, change)
+    return _ActionPreview(operation, dict(params), _rel(current, target), revision,
+                          revision if change is None else change.candidate['revision'], current.inputs_sha256, before, after)
+
+
+def _preview_action(layout, operation, params):
+    """Внутренний путь из проверенной карточки, без выдачи полномочий или записи."""
+    return _prepare_action(_load(layout), operation, params)
+
+
+def _check_inputs(current, preview):
+    for area, digest in sorted(current.inputs_sha256.items()):
+        if digest != preview.inputs_sha256.get(area):
+            raise StoreError('stale_plan', 'inputs/' + area)
+
+
+def _apply_action(layout, preview, *, allow_delete=False):
+    """Только после проверки отдельного билета в PlanSession."""
+    operation, params = preview.operation, preview.params
+    target = params['target']
+    check_operation(operation, target=target)
+    if operation == 'delete' and allow_delete is not True:
+        raise StoreError('delete_confirmation_required', 'allow_delete')
+    current = _load(layout)
+    if current.documents[target]['revision'] != preview.from_revision:
+        raise StoreError('stale_revision', 'revision/from')
+    prepared = _prepare_action(current, operation, params)
+    _check_inputs(current, preview)
+    if (prepared.registry != preview.registry or prepared.to_revision != preview.to_revision
+            or prepared.to_revision != prepared.from_revision + 1
+            or prepared.before != preview.before or prepared.after != preview.after):
+        raise StoreError('plan_mismatch', 'diff')
+    _replace(current.files[target], prepared.after, prepared.registry)
+    return _status(current, target=target, revision=prepared.to_revision)
+
+
+def _native_create(target):
+    check_operation('create', target=target)
+    if target != 'L1':
+        # Нативный интерфейс И-105–109 остаётся L1-only. L2 только через карточку.
+        raise StoreError('operation_unavailable', 'operation')
+
+
+def _plan(current, entry):
+    revision = current.documents['L1']['revision']
+    change = _propose_create(current, 'L1', entry, rule_only=True)
+    plan = {'operation': 'create', 'target': 'L1', 'registry': _rel(current, 'L1')}
+    if change is None:
         return dict(plan, revision={'from': revision, 'to': revision}, outcome='no_change', entry_id=entry['id']), None
-    conflicts = registry_policy.find_conflicts(current.documents)
-    if conflicts:
-        raise StoreError('rule_conflict', 'entries', details={'conflicts': conflicts})
-    plan.update(revision={'from': revision, 'to': candidate['revision']}, add=dict(entry))
+    plan.update(revision={'from': revision, 'to': change.candidate['revision']}, add=dict(entry))
     ticket_input = {'workspace': str(current.workspace), 'profile_sha256': current.inputs_sha256['L1'], 'plan': plan}
     plan['ticket'] = sha256(_wire(ticket_input)).hexdigest()
-    return plan, candidate
+    return plan, change
 
 
 def plan_create(layout, entry, *, target='L1'):
-    """Показать добавление одной записи и переход ревизии без записи."""
-    check_operation('create', target=target)
+    """Совместимый нативный план для одного чернового правила L1."""
+    _native_create(target)
     plan, _ = _plan(_load(layout), entry)
     return plan
 
 
-def _creation_bytes(candidate, journal):
-    profile = profile_journal.with_creation(candidate, journal)
-    return (json.dumps(profile, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + '\n').encode('utf-8')
-
-
 def preview_create(layout, entry, *, target='L1'):
-    """Сформировать точные будущие байты тем же путём, что и при записи."""
-    check_operation('create', target=target)
+    """Нативный снимок будущих байтов чернового правила L1, без записи."""
+    _native_create(target)
     current = _load(layout)
-    plan, candidate = _plan(current, entry)
-    after = current.profile_bytes if candidate is None else _creation_bytes(candidate, current.journal)
-    return CreatePreview(plan, current.inputs_sha256, current.profile_bytes, after)
+    plan, change = _plan(current, entry)
+    before = current.raw['L1']
+    after = before if change is None else _mutation_bytes(current, 'create', 'L1', change)
+    return CreatePreview(plan, current.inputs_sha256, before, after)
 
 
-def _replace(profile, raw, rel):
+def _replace(registry, raw, rel):
     temporary = None
     try:
-        with tempfile.NamedTemporaryFile(mode='wb', dir=profile.parent, prefix='.registry-', suffix='.tmp',
+        with tempfile.NamedTemporaryFile(mode='wb', dir=registry.parent, prefix='.registry-', suffix='.tmp',
                                          delete=False) as staged:
             temporary = Path(staged.name)
             staged.write(raw)
-        os.replace(temporary, profile)
+        os.replace(temporary, registry)
     except OSError as error:
         if temporary is not None:
             try:
@@ -236,7 +418,7 @@ def apply_create(layout, plan, *, confirmed_ticket, preview=None):
     """Записать только актуальный план создания L1; вызов не удостоверяет владельца."""
     if type(plan) is not dict:
         raise StoreError('plan_mismatch', 'plan')
-    check_operation('create', target=plan.get('target'))
+    _native_create(plan.get('target'))
     if type(confirmed_ticket) is not str or plan.get('ticket') != confirmed_ticket:
         raise StoreError('confirmation_required', 'confirmed_ticket')
     current = _load(layout)
@@ -246,21 +428,19 @@ def apply_create(layout, plan, *, confirmed_ticket, preview=None):
         raise StoreError('plan_mismatch', 'plan')
     if steps['from'] != current.documents['L1']['revision']:
         raise StoreError('stale_revision', 'revision/from')
-    expected, candidate = _plan(current, plan.get('add'))
+    expected, change = _plan(current, plan.get('add'))
     if preview is not None:
         if type(preview) is not CreatePreview:
             raise StoreError('plan_mismatch', 'preview')
-        for area, digest in sorted(current.inputs_sha256.items()):
-            if digest != preview.inputs_sha256.get(area):
-                raise StoreError('stale_plan', 'inputs/' + area)
+        _check_inputs(current, preview)
     try:
-        same = candidate is not None and _wire(plan) == _wire(expected)
+        same = change is not None and _wire(plan) == _wire(expected)
     except (TypeError, ValueError, RecursionError):
         same = False
     if not same:
         raise StoreError('plan_mismatch', 'plan')
-    raw = _creation_bytes(candidate, current.journal)
+    raw = _mutation_bytes(current, 'create', 'L1', change)
     if preview is not None and raw != preview.after:
         raise StoreError('plan_mismatch', 'diff')
     _replace(current.files['L1'], raw, expected['registry'])
-    return _status(current, candidate)
+    return _status(current, target='L1', revision=change.candidate['revision'])
