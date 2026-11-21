@@ -1,0 +1,221 @@
+{
+  "baseline": "232eea0b9fe8b82146e6edda489d3679abcb4a43",
+  "casebook_sha256": "5f22c0b5741cd7b1f2f9a97f4c316eb4c8b99773187a7beb8c00048df1e2a324",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/116/test_conflict_review.py"
+  ],
+  "independent_baseline_match": true,
+  "pinned_inputs": {
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/114/PROMOTION.json": "3903f0dfc0738c5be8147e7a5eb355110b2834e6069db072f8b35a6f793323cb",
+    "research/114/test_promotion.py": "fb4c7ed6e8d63a35a50d2b9e172b3d9f731824ad1ead9c132308a781865ed32e",
+    "research/115/CASES.json": "4ca1c42633e1ac6caf4ac46a3816d7b323548cfaafca224d290736335c5e3455",
+    "research/115/SIMULATION.json": "d58ac39f236ea8eeaec0e5b9cf828542f512b8fdbba528c940ab688f33588779",
+    "research/strategy/pre-104/SCHEMA-CASES.json": "e799e309b01ff37bcb21b25b70d0669c5b9a4870bab516dba377b639a769b988"
+  },
+  "rc": 1,
+  "result": {
+    "control": {
+      "legacy_equal_pairs": 0,
+      "legacy_joint_pairs": 3,
+      "legacy_x07_pairs": 1,
+      "p01_exact": {
+        "control_sha256": "ba2244fd145eeb2a1b784bf79cd28d67cb6d08a033a1ea39bf14333afcc49a06",
+        "entry_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152",
+        "id": "L1-new-draft-114",
+        "profile_sha256": "ae353276cd0c4e4acdf983b136dacc94a3fea9cdd83b1182fac268d0d54d7354"
+      },
+      "p01_projects": [
+        "cli",
+        "docs"
+      ],
+      "system_mutation": "system_immutable",
+      "working_port": "unknown_operation"
+    },
+    "counts": {
+      "fail": 33,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "C01",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C02",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C03",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C04",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C05",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C06",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K01",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K02",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K03",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K04",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K05",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K06",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K07",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K08",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K09",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "K10",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N01",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N02",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N03",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N04",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N05",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N06",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N07",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N08",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N09",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N10",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N11",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N12",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N13",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N14",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N15",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N16",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N17",
+        "reason": "conflict_review_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "test_sha256": "1d984f7e3c6b4d6b35548b3b8c3f4556c0055e0d4b8eaf430063de3a765b2f3f"
+}

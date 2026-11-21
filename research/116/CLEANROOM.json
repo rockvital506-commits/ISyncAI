@@ -1,0 +1,1772 @@
+{
+  "files": [
+    "kit/base/CONFLICT-REVIEW.md",
+    "kit/base/conflict_review.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/114/PROMOTION.json",
+    "research/114/test_promotion.py",
+    "research/115/CASES.json",
+    "research/115/SIMULATION.json",
+    "research/116/CASES.json",
+    "research/116/test_conflict_review.py",
+    "research/strategy/pre-104/SCHEMA-CASES.json"
+  ],
+  "inputs_sha256": {
+    "kit/base/CONFLICT-REVIEW.md": "ff68721f17a901ed779541d08e6e310dbf2265a13da4bd8403e14324cfa945d8",
+    "kit/base/conflict_review.py": "6a216df62cbfa5cfcf222fc31b3907d64b8414435193b1c6b632985e63305ff8",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/114/PROMOTION.json": "3903f0dfc0738c5be8147e7a5eb355110b2834e6069db072f8b35a6f793323cb",
+    "research/114/test_promotion.py": "fb4c7ed6e8d63a35a50d2b9e172b3d9f731824ad1ead9c132308a781865ed32e",
+    "research/115/CASES.json": "4ca1c42633e1ac6caf4ac46a3816d7b323548cfaafca224d290736335c5e3455",
+    "research/115/SIMULATION.json": "d58ac39f236ea8eeaec0e5b9cf828542f512b8fdbba528c940ab688f33588779",
+    "research/116/CASES.json": "5f22c0b5741cd7b1f2f9a97f4c316eb4c8b99773187a7beb8c00048df1e2a324",
+    "research/116/test_conflict_review.py": "1d984f7e3c6b4d6b35548b3b8c3f4556c0055e0d4b8eaf430063de3a765b2f3f",
+    "research/strategy/pre-104/SCHEMA-CASES.json": "e799e309b01ff37bcb21b25b70d0669c5b9a4870bab516dba377b639a769b988"
+  },
+  "inputs_unchanged": true,
+  "rc": 0,
+  "result": {
+    "control": {
+      "legacy_equal_pairs": 0,
+      "legacy_joint_pairs": 3,
+      "legacy_x07_pairs": 1,
+      "p01_exact": {
+        "control_sha256": "ba2244fd145eeb2a1b784bf79cd28d67cb6d08a033a1ea39bf14333afcc49a06",
+        "entry_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152",
+        "id": "L1-new-draft-114",
+        "profile_sha256": "ae353276cd0c4e4acdf983b136dacc94a3fea9cdd83b1182fac268d0d54d7354"
+      },
+      "p01_projects": [
+        "cli",
+        "docs"
+      ],
+      "system_mutation": "system_immutable",
+      "working_port": "unknown_operation"
+    },
+    "counts": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 33
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "C01",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L0",
+                    "authority": "system_release",
+                    "declared_rank": 10,
+                    "id": "S-2",
+                    "kind": "constraint",
+                    "parent": "S-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Не считать пропуск обязательного испытания успешной приёмкой.",
+                    "value": "required"
+                  },
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 90,
+                    "id": "R-2",
+                    "kind": "protocol",
+                    "parent": "R-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Допускается пропустить свидетельство фазы.",
+                    "value": "skip"
+                  }
+                ],
+                "key": "workflow.phase.evidence",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required",
+                  "system_immutable",
+                  "system_constraint_not_overridable"
+                ],
+                "scope": "."
+              }
+            ],
+            "inputs_sha256": {
+              "L0": "68b8a5c27f14452056b5fbd01e35ec07acb8cdaea7a3692f384382f11aadb14a",
+              "L1": "c76439f33745f22de3299fb2a6d359e1e2660fa7af1947797f960a0969c04251",
+              "L2": "5f313fcaab298b436054a4518f9e8079895b168de7c16c5c77a648d7117d1eb9"
+            },
+            "outcome": "owner_decision_required",
+            "priorities_sha256": "7274ecb9bfe34125a30e2d1ad5dd76fb884daf4273a87a0a5727167e62457114",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C02",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L0",
+                    "authority": "system_release",
+                    "declared_rank": null,
+                    "id": "shared",
+                    "kind": "rule",
+                    "parent": "S-1",
+                    "scope": "docs",
+                    "state": "active",
+                    "text": "Синтетическое условие L0/shared: full.",
+                    "value": "full"
+                  },
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": null,
+                    "id": "shared",
+                    "kind": "preference",
+                    "parent": "R-1",
+                    "scope": "docs/guide",
+                    "state": "active",
+                    "text": "Синтетическое условие L1/shared: short.",
+                    "value": "short"
+                  }
+                ],
+                "key": "report.format",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "shared"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "shared"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "shared"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "shared"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required",
+                  "system_immutable"
+                ],
+                "scope": "docs/guide"
+              }
+            ],
+            "inputs_sha256": {
+              "L0": "fccd71bad6f89b1886c65f91c4828994cfde480cfff5cdbd5f60fc336b2fc85a",
+              "L1": "72abafb6b6e5e4f555aa067a07f8b1e1b049c63d0193d2e978e2e0883d7a9317",
+              "L2": "5f313fcaab298b436054a4518f9e8079895b168de7c16c5c77a648d7117d1eb9"
+            },
+            "outcome": "owner_decision_required",
+            "priorities_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C03",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 40,
+                    "id": "R-links",
+                    "kind": "rule",
+                    "parent": "R-1",
+                    "scope": "docs",
+                    "state": "active",
+                    "text": "Синтетическое условие L1/R-links: manual.",
+                    "value": "manual"
+                  },
+                  {
+                    "area": "L2",
+                    "authority": "project_owner",
+                    "declared_rank": 40,
+                    "id": "P-links",
+                    "kind": "constraint",
+                    "parent": "P-1",
+                    "scope": "docs/guide",
+                    "state": "active",
+                    "text": "Синтетическое условие L2/P-links: automated.",
+                    "value": "automated"
+                  }
+                ],
+                "key": "test.links",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required"
+                ],
+                "scope": "docs/guide"
+              }
+            ],
+            "inputs_sha256": {
+              "L0": "d4b6794e0a65509242a37dec5d6ed4a6f55dedacde65e5829e9f4e0feab4b74a",
+              "L1": "806e727808e223eec8dd20bbfcccbba32638f3623b8849ae8d7f6221e0cdc645",
+              "L2": "528a48b6e3ba07a85541011a944267e1c71d1a1a65071d9d6bd2573d04f78903"
+            },
+            "outcome": "owner_decision_required",
+            "priorities_sha256": "3a91b671c9776fc049daf355b1b9c8ad0fcf0f022f55cde68ca3a9c6ca721c05",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C04",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 7,
+                    "id": "R-links",
+                    "kind": "rule",
+                    "parent": "R-1",
+                    "scope": "docs",
+                    "state": "active",
+                    "text": "Синтетическое условие L1/R-links: manual.",
+                    "value": "manual"
+                  },
+                  {
+                    "area": "L2",
+                    "authority": "project_owner",
+                    "declared_rank": 100,
+                    "id": "P-links",
+                    "kind": "constraint",
+                    "parent": "P-1",
+                    "scope": "docs/guide",
+                    "state": "active",
+                    "text": "Синтетическое условие L2/P-links: automated.",
+                    "value": "automated"
+                  }
+                ],
+                "key": "test.links",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required"
+                ],
+                "scope": "docs/guide"
+              }
+            ],
+            "inputs_sha256": {
+              "L0": "d4b6794e0a65509242a37dec5d6ed4a6f55dedacde65e5829e9f4e0feab4b74a",
+              "L1": "806e727808e223eec8dd20bbfcccbba32638f3623b8849ae8d7f6221e0cdc645",
+              "L2": "528a48b6e3ba07a85541011a944267e1c71d1a1a65071d9d6bd2573d04f78903"
+            },
+            "outcome": "owner_decision_required",
+            "priorities_sha256": "eb715692686e57b11c9c5ba17ca816d03e0615870af096241246709c9755a019",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C05",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L0",
+                    "authority": "system_release",
+                    "declared_rank": null,
+                    "id": "S-2",
+                    "kind": "constraint",
+                    "parent": "S-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Не считать пропуск обязательного испытания успешной приёмкой.",
+                    "value": "required"
+                  },
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 85,
+                    "id": "R-2",
+                    "kind": "protocol",
+                    "parent": "R-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Допускается пропустить свидетельство фазы.",
+                    "value": "skip"
+                  }
+                ],
+                "key": "workflow.phase.evidence",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required",
+                  "system_immutable",
+                  "system_constraint_not_overridable"
+                ],
+                "scope": "."
+              },
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 85,
+                    "id": "R-2",
+                    "kind": "protocol",
+                    "parent": "R-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Допускается пропустить свидетельство фазы.",
+                    "value": "skip"
+                  },
+                  {
+                    "area": "L2",
+                    "authority": "project_owner",
+                    "declared_rank": 0,
+                    "id": "P-evidence",
+                    "kind": "rule",
+                    "parent": "P-1",
+                    "scope": "docs/guide",
+                    "state": "active",
+                    "text": "Синтетическое условие L2/P-evidence: local-only.",
+                    "value": "local-only"
+                  }
+                ],
+                "key": "workflow.phase.evidence",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required"
+                ],
+                "scope": "docs/guide"
+              }
+            ],
+            "inputs_sha256": {
+              "L0": "68b8a5c27f14452056b5fbd01e35ec07acb8cdaea7a3692f384382f11aadb14a",
+              "L1": "c76439f33745f22de3299fb2a6d359e1e2660fa7af1947797f960a0969c04251",
+              "L2": "369109cf689481e4e526a78a712ae1fb887cee8700010969503bdc541aed4bf4"
+            },
+            "outcome": "owner_decision_required",
+            "priorities_sha256": "fd0c505eb9002bede2d341823f4f0466667c4aa1af21ed2fa04996414fab9ca6",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C06",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": {
+              "area": "L1",
+              "comparison": "structural",
+              "entry_sha256": "fc0535cbf372b854f9a6e336291852322fba8cfee9420e741572bb7280b61a05",
+              "id": "R-links",
+              "state": "draft"
+            },
+            "conflicts": [
+              {
+                "comparison": "prospective",
+                "entries": [
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 7,
+                    "id": "R-links",
+                    "kind": "rule",
+                    "parent": "R-1",
+                    "scope": "docs",
+                    "state": "draft",
+                    "text": "Синтетическое условие L1/R-links: manual.",
+                    "value": "manual"
+                  },
+                  {
+                    "area": "L2",
+                    "authority": "project_owner",
+                    "declared_rank": 100,
+                    "id": "P-links",
+                    "kind": "constraint",
+                    "parent": "P-1",
+                    "scope": "docs/guide",
+                    "state": "active",
+                    "text": "Синтетическое условие L2/P-links: automated.",
+                    "value": "automated"
+                  }
+                ],
+                "key": "test.links",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-links"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-links"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required"
+                ],
+                "scope": "docs/guide"
+              }
+            ],
+            "inputs_sha256": {
+              "L0": "d4b6794e0a65509242a37dec5d6ed4a6f55dedacde65e5829e9f4e0feab4b74a",
+              "L1": "c3ee4029e60d0318199eec1122b170682524e94912afaff6417e8141dadf3446",
+              "L2": "528a48b6e3ba07a85541011a944267e1c71d1a1a65071d9d6bd2573d04f78903"
+            },
+            "outcome": "owner_decision_required",
+            "priorities_sha256": "eb715692686e57b11c9c5ba17ca816d03e0615870af096241246709c9755a019",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K01",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [],
+            "inputs_sha256": {
+              "L0": "68b8a5c27f14452056b5fbd01e35ec07acb8cdaea7a3692f384382f11aadb14a",
+              "L1": "56e85c6fe6768386b76d4d96aa3de688984e4d9a0d6339e5ce2c939820d503c4",
+              "L2": "5f313fcaab298b436054a4518f9e8079895b168de7c16c5c77a648d7117d1eb9"
+            },
+            "outcome": "no_structural_conflict",
+            "priorities_sha256": "7274ecb9bfe34125a30e2d1ad5dd76fb884daf4273a87a0a5727167e62457114",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K02",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [],
+            "inputs_sha256": {
+              "L0": "d4b6794e0a65509242a37dec5d6ed4a6f55dedacde65e5829e9f4e0feab4b74a",
+              "L1": "3ee16a9a923b838633374f6f5c87251bc9279b57bdfdf2a8c9cbf5adc335abbe",
+              "L2": "74eb76598e9b3d8e61e46d94e133947ff1b5303d996fdeb351a4f806ecd83686"
+            },
+            "outcome": "no_structural_conflict",
+            "priorities_sha256": "eb715692686e57b11c9c5ba17ca816d03e0615870af096241246709c9755a019",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K03",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [],
+            "inputs_sha256": {
+              "L0": "68b8a5c27f14452056b5fbd01e35ec07acb8cdaea7a3692f384382f11aadb14a",
+              "L1": "fa304590b9f531edc444ee35d225437fe45f55ebc056e87180da86f5bb55a280",
+              "L2": "5f313fcaab298b436054a4518f9e8079895b168de7c16c5c77a648d7117d1eb9"
+            },
+            "outcome": "no_structural_conflict",
+            "priorities_sha256": "7274ecb9bfe34125a30e2d1ad5dd76fb884daf4273a87a0a5727167e62457114",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K04",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [],
+            "inputs_sha256": {
+              "L0": "d4b6794e0a65509242a37dec5d6ed4a6f55dedacde65e5829e9f4e0feab4b74a",
+              "L1": "c3ee4029e60d0318199eec1122b170682524e94912afaff6417e8141dadf3446",
+              "L2": "528a48b6e3ba07a85541011a944267e1c71d1a1a65071d9d6bd2573d04f78903"
+            },
+            "outcome": "no_structural_conflict",
+            "priorities_sha256": "eb715692686e57b11c9c5ba17ca816d03e0615870af096241246709c9755a019",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K05",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [],
+            "inputs_sha256": {
+              "L0": "68b8a5c27f14452056b5fbd01e35ec07acb8cdaea7a3692f384382f11aadb14a",
+              "L1": "f0565f2284c23de09d616398826b114709e53786a6c5ef919f9c9e4410736b68",
+              "L2": "d188f92534b573767f82af99f5e6c0f0a78c1c9efe3cee42b6d528692e34fd7c"
+            },
+            "outcome": "no_structural_conflict",
+            "priorities_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K06",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L0",
+                    "authority": "system_release",
+                    "declared_rank": null,
+                    "id": "S-2",
+                    "kind": "constraint",
+                    "parent": "S-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Не считать пропуск обязательного испытания успешной приёмкой.",
+                    "value": "required"
+                  },
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 85,
+                    "id": "R-2",
+                    "kind": "protocol",
+                    "parent": "R-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Допускается пропустить свидетельство фазы.",
+                    "value": "skip"
+                  }
+                ],
+                "key": "workflow.phase.evidence",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required",
+                  "system_immutable",
+                  "system_constraint_not_overridable"
+                ],
+                "scope": "."
+              },
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 85,
+                    "id": "R-2",
+                    "kind": "protocol",
+                    "parent": "R-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Допускается пропустить свидетельство фазы.",
+                    "value": "skip"
+                  },
+                  {
+                    "area": "L2",
+                    "authority": "project_owner",
+                    "declared_rank": 0,
+                    "id": "P-evidence",
+                    "kind": "rule",
+                    "parent": "P-1",
+                    "scope": "docs/guide",
+                    "state": "active",
+                    "text": "Синтетическое условие L2/P-evidence: local-only.",
+                    "value": "local-only"
+                  }
+                ],
+                "key": "workflow.phase.evidence",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required"
+                ],
+                "scope": "docs/guide"
+              }
+            ],
+            "inputs_sha256": {
+              "L0": "f7bfabf77e30ada76c2b8dd6bd63fbb3513034388d952bd1b1841defa2ec476e",
+              "L1": "bfdf5b63709c06c90e36572bbd4cfb2f715fbfb675a6541a6e4efb444e02be6a",
+              "L2": "46c402f6a469f9ea099d2a9c04c33bed83e22c07385aebfa957a98d8f7370260"
+            },
+            "outcome": "owner_decision_required",
+            "priorities_sha256": "fd0c505eb9002bede2d341823f4f0466667c4aa1af21ed2fa04996414fab9ca6",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K07",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": {
+              "area": "L1",
+              "comparison": "no_key",
+              "entry_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152",
+              "id": "L1-new-draft-114",
+              "state": "draft"
+            },
+            "conflicts": [],
+            "inputs_sha256": {
+              "L0": "f0d5b1d9d25a72d109b812a125ed2f2fa825a8e60a9dfd9c2c941084d2e8c3d2",
+              "L1": "ae353276cd0c4e4acdf983b136dacc94a3fea9cdd83b1182fac268d0d54d7354",
+              "L2": "e6a2857644878192f0eb158ccfaf4ba083c58f0f7f69ea460b6840bcd2f90154"
+            },
+            "outcome": "unassessed_candidate",
+            "priorities_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K08",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": {
+              "area": "L1",
+              "comparison": "no_key",
+              "entry_sha256": "eaab185af2030f37ecb56af58c714aad3555e2322ba8474c236d14e0110c0152",
+              "id": "L1-new-draft-114",
+              "state": "draft"
+            },
+            "conflicts": [],
+            "inputs_sha256": {
+              "L0": "f0d5b1d9d25a72d109b812a125ed2f2fa825a8e60a9dfd9c2c941084d2e8c3d2",
+              "L1": "ae353276cd0c4e4acdf983b136dacc94a3fea9cdd83b1182fac268d0d54d7354",
+              "L2": "a079298a01a3194e84b2fde38b84103948b58aee1830243ef941b48c6158ef70"
+            },
+            "outcome": "unassessed_candidate",
+            "priorities_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K09",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": null,
+            "conflicts": [
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L0",
+                    "authority": "system_release",
+                    "declared_rank": 10,
+                    "id": "S-2",
+                    "kind": "constraint",
+                    "parent": "S-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Не считать пропуск обязательного испытания успешной приёмкой.",
+                    "value": "required"
+                  },
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 90,
+                    "id": "R-2",
+                    "kind": "protocol",
+                    "parent": "R-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Допускается пропустить свидетельство фазы.",
+                    "value": "skip"
+                  }
+                ],
+                "key": "workflow.phase.evidence",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required",
+                  "system_immutable",
+                  "system_constraint_not_overridable"
+                ],
+                "scope": "."
+              }
+            ],
+            "inputs_sha256": {
+              "L0": "68b8a5c27f14452056b5fbd01e35ec07acb8cdaea7a3692f384382f11aadb14a",
+              "L1": "8298baa212da633a6f2664346f872860a6372ece7ebb210e8f1d48621ddb7a9c",
+              "L2": "5f313fcaab298b436054a4518f9e8079895b168de7c16c5c77a648d7117d1eb9"
+            },
+            "outcome": "owner_decision_required",
+            "priorities_sha256": "7274ecb9bfe34125a30e2d1ad5dd76fb884daf4273a87a0a5727167e62457114",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "K10",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": {
+            "candidate": {
+              "area": "L1",
+              "comparison": "no_key",
+              "entry_sha256": "219f2e51d59b12ce0e7efb27281d7149bca9003b443d7dbabb384c958064c6a9",
+              "id": "draft-no-key",
+              "state": "draft"
+            },
+            "conflicts": [
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L0",
+                    "authority": "system_release",
+                    "declared_rank": null,
+                    "id": "S-2",
+                    "kind": "constraint",
+                    "parent": "S-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Не считать пропуск обязательного испытания успешной приёмкой.",
+                    "value": "required"
+                  },
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 85,
+                    "id": "R-2",
+                    "kind": "protocol",
+                    "parent": "R-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Допускается пропустить свидетельство фазы.",
+                    "value": "skip"
+                  }
+                ],
+                "key": "workflow.phase.evidence",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required",
+                  "system_immutable",
+                  "system_constraint_not_overridable"
+                ],
+                "scope": "."
+              },
+              {
+                "comparison": "active",
+                "entries": [
+                  {
+                    "area": "L1",
+                    "authority": "profile_owner",
+                    "declared_rank": 85,
+                    "id": "R-2",
+                    "kind": "protocol",
+                    "parent": "R-1",
+                    "scope": ".",
+                    "state": "active",
+                    "text": "Допускается пропустить свидетельство фазы.",
+                    "value": "skip"
+                  },
+                  {
+                    "area": "L2",
+                    "authority": "project_owner",
+                    "declared_rank": 0,
+                    "id": "P-evidence",
+                    "kind": "rule",
+                    "parent": "P-1",
+                    "scope": "docs/guide",
+                    "state": "active",
+                    "text": "Синтетическое условие L2/P-evidence: local-only.",
+                    "value": "local-only"
+                  }
+                ],
+                "key": "workflow.phase.evidence",
+                "options": [
+                  {
+                    "action": "leave_unchanged",
+                    "targets": []
+                  },
+                  {
+                    "action": "revise",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "narrow_scope",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "suspend",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  },
+                  {
+                    "action": "clarify_conditions",
+                    "targets": [
+                      {
+                        "area": "L1",
+                        "id": "R-2"
+                      },
+                      {
+                        "area": "L2",
+                        "id": "P-evidence"
+                      }
+                    ]
+                  }
+                ],
+                "restrictions": [
+                  "owner_decision_required"
+                ],
+                "scope": "docs/guide"
+              }
+            ],
+            "inputs_sha256": {
+              "L0": "68b8a5c27f14452056b5fbd01e35ec07acb8cdaea7a3692f384382f11aadb14a",
+              "L1": "a28f15bb6a7748284f1478e71238275672c1e2a808a92148dd55932c08f3a73e",
+              "L2": "369109cf689481e4e526a78a712ae1fb887cee8700010969503bdc541aed4bf4"
+            },
+            "outcome": "owner_decision_required",
+            "priorities_sha256": "fd0c505eb9002bede2d341823f4f0466667c4aa1af21ed2fa04996414fab9ca6",
+            "review_format": 1,
+            "write_allowed": false
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N01",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "stand_only"
+            },
+            "where": "target"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N02",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "bytes"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N03",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "bytes"
+            },
+            "where": "system"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N04",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "project"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N05",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N06",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "roots"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N07",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N08",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "history"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N09",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "priorities"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N10",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "duplicate"
+            },
+            "where": "priorities"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N11",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "reference"
+            },
+            "where": "priorities"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N12",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "priorities"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N13",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "draft"
+            },
+            "where": "candidate"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N14",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "inactive_parent"
+            },
+            "where": "candidate"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N15",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "draft"
+            },
+            "where": "candidate"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N16",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "entry_limit"
+            },
+            "where": "system"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N17",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "conflict_review_failed",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "priorities"
+          },
+          "inputs_unchanged": true,
+          "quiet": true,
+          "report": null
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "tree_unchanged": true
+}
