@@ -1,0 +1,1467 @@
+{
+  "inputs_sha256": {
+    "kit/base/BUNDLE.md": "71e1ec31fe3adc42867fce28232965d281adcdcdf591299eaa78c75d17d0b092",
+    "kit/base/OPERATION-CARD.md": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+    "kit/base/OPERATION-PLAN.md": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+    "kit/base/SCHEMA-V2.md": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+    "kit/base/START.md": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+    "kit/base/STORAGE-V2.md": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+    "kit/base/bootstrap.py": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+    "kit/base/bundle.py": "35f63d4a0867ebe7f93bca94445a4444b2c574a11d67284aa60696e237b4fe20",
+    "kit/base/entry.txt": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+    "kit/base/operation_card.py": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+    "kit/base/operation_plan.py": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/117/CASES.json": "e99f4edd7ded8267b1d094923456bd218b8858eaeb601ded4aaedbf2d450bd40",
+    "research/117/test_bundle.py": "96160383ce20c0554e95de88279d6967d412233259c858e6fdac7f053d25f2b3"
+  },
+  "inputs_unchanged": true,
+  "rc": 0,
+  "result": {
+    "control": {
+      "bare_revisions": [
+        7,
+        0
+      ],
+      "required_files": 16,
+      "valid_history_formats": [
+        1,
+        2
+      ],
+      "valid_layouts": 2,
+      "working_port": {
+        "bundle": "unknown_operation",
+        "bundle_verify": "unknown_operation"
+      }
+    },
+    "counts": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 46
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "observation": {
+          "archive_attempts": 1,
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "member_attempts": 17,
+          "package": {
+            "archive_bytes": 109297,
+            "archive_members": 17,
+            "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+            "fixed_metadata": true,
+            "manifest": {
+              "digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "files": [
+                {
+                  "path": "kit/base/OPERATION-CARD.md",
+                  "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+                  "size": 10741
+                },
+                {
+                  "path": "kit/base/OPERATION-PLAN.md",
+                  "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+                  "size": 8788
+                },
+                {
+                  "path": "kit/base/SCHEMA-V2.md",
+                  "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+                  "size": 7308
+                },
+                {
+                  "path": "kit/base/START.md",
+                  "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+                  "size": 3091
+                },
+                {
+                  "path": "kit/base/STORAGE-V2.md",
+                  "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+                  "size": 6333
+                },
+                {
+                  "path": "kit/base/bootstrap.py",
+                  "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+                  "size": 4103
+                },
+                {
+                  "path": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+                  "size": 20
+                },
+                {
+                  "path": "kit/base/operation_card.py",
+                  "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+                  "size": 15714
+                },
+                {
+                  "path": "kit/base/operation_plan.py",
+                  "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+                  "size": 5555
+                },
+                {
+                  "path": "kit/base/profile_journal.py",
+                  "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+                  "size": 3409
+                },
+                {
+                  "path": "kit/base/registry.json",
+                  "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+                  "size": 96
+                },
+                {
+                  "path": "kit/base/registry_journal.py",
+                  "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+                  "size": 5339
+                },
+                {
+                  "path": "kit/base/registry_policy.py",
+                  "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+                  "size": 4235
+                },
+                {
+                  "path": "kit/base/registry_store.py",
+                  "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+                  "size": 19772
+                },
+                {
+                  "path": "kit/base/schema_v2.py",
+                  "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+                  "size": 8814
+                },
+                {
+                  "path": "profiles/staged/registry.json",
+                  "sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+                  "size": 1756
+                }
+              ],
+              "revision": 7,
+              "roots": [
+                "kit",
+                "profiles/staged"
+              ]
+            },
+            "payload_exact": true
+          },
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P02",
+        "observation": {
+          "archive_attempts": 1,
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "member_attempts": 17,
+          "package": {
+            "archive_bytes": 109297,
+            "archive_members": 17,
+            "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+            "fixed_metadata": true,
+            "manifest": {
+              "digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "files": [
+                {
+                  "path": "kit/base/OPERATION-CARD.md",
+                  "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+                  "size": 10741
+                },
+                {
+                  "path": "kit/base/OPERATION-PLAN.md",
+                  "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+                  "size": 8788
+                },
+                {
+                  "path": "kit/base/SCHEMA-V2.md",
+                  "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+                  "size": 7308
+                },
+                {
+                  "path": "kit/base/START.md",
+                  "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+                  "size": 3091
+                },
+                {
+                  "path": "kit/base/STORAGE-V2.md",
+                  "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+                  "size": 6333
+                },
+                {
+                  "path": "kit/base/bootstrap.py",
+                  "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+                  "size": 4103
+                },
+                {
+                  "path": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+                  "size": 20
+                },
+                {
+                  "path": "kit/base/operation_card.py",
+                  "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+                  "size": 15714
+                },
+                {
+                  "path": "kit/base/operation_plan.py",
+                  "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+                  "size": 5555
+                },
+                {
+                  "path": "kit/base/profile_journal.py",
+                  "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+                  "size": 3409
+                },
+                {
+                  "path": "kit/base/registry.json",
+                  "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+                  "size": 96
+                },
+                {
+                  "path": "kit/base/registry_journal.py",
+                  "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+                  "size": 5339
+                },
+                {
+                  "path": "kit/base/registry_policy.py",
+                  "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+                  "size": 4235
+                },
+                {
+                  "path": "kit/base/registry_store.py",
+                  "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+                  "size": 19772
+                },
+                {
+                  "path": "kit/base/schema_v2.py",
+                  "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+                  "size": 8814
+                },
+                {
+                  "path": "profiles/staged/registry.json",
+                  "sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+                  "size": 1756
+                }
+              ],
+              "revision": 7,
+              "roots": [
+                "kit",
+                "profiles/staged"
+              ]
+            },
+            "payload_exact": true
+          },
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P03",
+        "observation": {
+          "archive_attempts": 1,
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "member_attempts": 17,
+          "package": {
+            "archive_bytes": 107626,
+            "archive_members": 17,
+            "archive_sha256": "be717aa2885be313f48a1c0725b40edd143fa45242ca488cebb7f3fa5e985571",
+            "fixed_metadata": true,
+            "manifest": {
+              "digest": "dca5c6c674e582424d855297928b06e223f129d9d45d4f48494af3d483e6ead5",
+              "files": [
+                {
+                  "path": "kit/base/OPERATION-CARD.md",
+                  "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+                  "size": 10741
+                },
+                {
+                  "path": "kit/base/OPERATION-PLAN.md",
+                  "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+                  "size": 8788
+                },
+                {
+                  "path": "kit/base/SCHEMA-V2.md",
+                  "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+                  "size": 7308
+                },
+                {
+                  "path": "kit/base/START.md",
+                  "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+                  "size": 3091
+                },
+                {
+                  "path": "kit/base/STORAGE-V2.md",
+                  "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+                  "size": 6333
+                },
+                {
+                  "path": "kit/base/bootstrap.py",
+                  "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+                  "size": 4103
+                },
+                {
+                  "path": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+                  "size": 20
+                },
+                {
+                  "path": "kit/base/operation_card.py",
+                  "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+                  "size": 15714
+                },
+                {
+                  "path": "kit/base/operation_plan.py",
+                  "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+                  "size": 5555
+                },
+                {
+                  "path": "kit/base/profile_journal.py",
+                  "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+                  "size": 3409
+                },
+                {
+                  "path": "kit/base/registry.json",
+                  "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+                  "size": 96
+                },
+                {
+                  "path": "kit/base/registry_journal.py",
+                  "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+                  "size": 5339
+                },
+                {
+                  "path": "kit/base/registry_policy.py",
+                  "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+                  "size": 4235
+                },
+                {
+                  "path": "kit/base/registry_store.py",
+                  "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+                  "size": 19772
+                },
+                {
+                  "path": "kit/base/schema_v2.py",
+                  "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+                  "size": 8814
+                },
+                {
+                  "path": "profiles/staged/registry.json",
+                  "sha256": "41da9125bc152ffbe427e5b9c2006dd4f769419c6998e8a73b599ede0614fd15",
+                  "size": 87
+                }
+              ],
+              "revision": 0,
+              "roots": [
+                "kit",
+                "profiles/staged"
+              ]
+            },
+            "payload_exact": true
+          },
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P04",
+        "observation": {
+          "archive_attempts": 1,
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "member_attempts": 17,
+          "package": {
+            "archive_bytes": 109376,
+            "archive_members": 17,
+            "archive_sha256": "f3f293a01d337205f1e1e294bed6b1b85ac2b9151928904f9c0d6ccd02ecf242",
+            "fixed_metadata": true,
+            "manifest": {
+              "digest": "e7a8255b6c35a9ea40e596918b4b9b440b889a6de84eb63bf06ae84bbbe6e87f",
+              "files": [
+                {
+                  "path": "kit/base/OPERATION-CARD.md",
+                  "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+                  "size": 10741
+                },
+                {
+                  "path": "kit/base/OPERATION-PLAN.md",
+                  "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+                  "size": 8788
+                },
+                {
+                  "path": "kit/base/SCHEMA-V2.md",
+                  "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+                  "size": 7308
+                },
+                {
+                  "path": "kit/base/START.md",
+                  "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+                  "size": 3091
+                },
+                {
+                  "path": "kit/base/STORAGE-V2.md",
+                  "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+                  "size": 6333
+                },
+                {
+                  "path": "kit/base/bootstrap.py",
+                  "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+                  "size": 4103
+                },
+                {
+                  "path": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+                  "size": 20
+                },
+                {
+                  "path": "kit/base/operation_card.py",
+                  "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+                  "size": 15714
+                },
+                {
+                  "path": "kit/base/operation_plan.py",
+                  "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+                  "size": 5555
+                },
+                {
+                  "path": "kit/base/profile_journal.py",
+                  "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+                  "size": 3409
+                },
+                {
+                  "path": "kit/base/registry.json",
+                  "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+                  "size": 96
+                },
+                {
+                  "path": "kit/base/registry_journal.py",
+                  "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+                  "size": 5339
+                },
+                {
+                  "path": "kit/base/registry_policy.py",
+                  "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+                  "size": 4235
+                },
+                {
+                  "path": "kit/base/registry_store.py",
+                  "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+                  "size": 19772
+                },
+                {
+                  "path": "kit/base/schema_v2.py",
+                  "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+                  "size": 8814
+                },
+                {
+                  "path": "profiles/staged/registry.json",
+                  "sha256": "d0bcb83315432a27272f61d9bfa665fd436fa7cc34968f921cd5975daeda3f10",
+                  "size": 1835
+                }
+              ],
+              "revision": 7,
+              "roots": [
+                "kit",
+                "profiles/staged"
+              ]
+            },
+            "payload_exact": true
+          },
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P05",
+        "observation": {
+          "archive_attempts": 1,
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "member_attempts": 17,
+          "package": {
+            "archive_bytes": 108684,
+            "archive_members": 17,
+            "archive_sha256": "b66b0b3391bad5fc77283afd150d0d94428452d1fe7b4e6474a5394b9814d970",
+            "fixed_metadata": true,
+            "manifest": {
+              "digest": "d482b7a3dafcbec7b97e11beffd00e1cfdb7ba29fefed45de1a6a82269633e40",
+              "files": [
+                {
+                  "path": "kit/base/OPERATION-CARD.md",
+                  "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+                  "size": 10741
+                },
+                {
+                  "path": "kit/base/OPERATION-PLAN.md",
+                  "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+                  "size": 8788
+                },
+                {
+                  "path": "kit/base/SCHEMA-V2.md",
+                  "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+                  "size": 7308
+                },
+                {
+                  "path": "kit/base/START.md",
+                  "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+                  "size": 3091
+                },
+                {
+                  "path": "kit/base/STORAGE-V2.md",
+                  "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+                  "size": 6333
+                },
+                {
+                  "path": "kit/base/bootstrap.py",
+                  "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+                  "size": 4103
+                },
+                {
+                  "path": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+                  "size": 20
+                },
+                {
+                  "path": "kit/base/operation_card.py",
+                  "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+                  "size": 15714
+                },
+                {
+                  "path": "kit/base/operation_plan.py",
+                  "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+                  "size": 5555
+                },
+                {
+                  "path": "kit/base/profile_journal.py",
+                  "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+                  "size": 3409
+                },
+                {
+                  "path": "kit/base/registry.json",
+                  "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+                  "size": 96
+                },
+                {
+                  "path": "kit/base/registry_journal.py",
+                  "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+                  "size": 5339
+                },
+                {
+                  "path": "kit/base/registry_policy.py",
+                  "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+                  "size": 4235
+                },
+                {
+                  "path": "kit/base/registry_store.py",
+                  "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+                  "size": 19772
+                },
+                {
+                  "path": "kit/base/schema_v2.py",
+                  "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+                  "size": 8814
+                },
+                {
+                  "path": "profiles/staged/registry.json",
+                  "sha256": "71454427cbba37006d063c54afde378796c1abbb9020bfc8ebb3a3b5d047fafe",
+                  "size": 1143
+                }
+              ],
+              "revision": 7,
+              "roots": [
+                "kit",
+                "profiles/staged"
+              ]
+            },
+            "payload_exact": true
+          },
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P06",
+        "observation": {
+          "archive_attempts": 1,
+          "effects": [],
+          "error": null,
+          "inputs_unchanged": true,
+          "member_attempts": 17,
+          "package": {
+            "archive_bytes": 109297,
+            "archive_members": 17,
+            "archive_sha256": "4e9f669dbee193aeffc43246727a1527b6ca8e399be061034e7231cb7bb7857b",
+            "fixed_metadata": true,
+            "manifest": {
+              "digest": "47296c048df2ff02c23cd8151ad4199fe647a106f7aabe67f425eb7bcdc21f7c",
+              "files": [
+                {
+                  "path": "kit/base/OPERATION-CARD.md",
+                  "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+                  "size": 10741
+                },
+                {
+                  "path": "kit/base/OPERATION-PLAN.md",
+                  "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+                  "size": 8788
+                },
+                {
+                  "path": "kit/base/SCHEMA-V2.md",
+                  "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+                  "size": 7308
+                },
+                {
+                  "path": "kit/base/START.md",
+                  "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+                  "size": 3091
+                },
+                {
+                  "path": "kit/base/STORAGE-V2.md",
+                  "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+                  "size": 6333
+                },
+                {
+                  "path": "kit/base/bootstrap.py",
+                  "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+                  "size": 4103
+                },
+                {
+                  "path": "kit/base/entry.txt",
+                  "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+                  "size": 20
+                },
+                {
+                  "path": "kit/base/operation_card.py",
+                  "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+                  "size": 15714
+                },
+                {
+                  "path": "kit/base/operation_plan.py",
+                  "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+                  "size": 5555
+                },
+                {
+                  "path": "kit/base/profile_journal.py",
+                  "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+                  "size": 3409
+                },
+                {
+                  "path": "kit/base/registry.json",
+                  "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+                  "size": 96
+                },
+                {
+                  "path": "kit/base/registry_journal.py",
+                  "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+                  "size": 5339
+                },
+                {
+                  "path": "kit/base/registry_policy.py",
+                  "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+                  "size": 4235
+                },
+                {
+                  "path": "kit/base/registry_store.py",
+                  "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+                  "size": 19772
+                },
+                {
+                  "path": "kit/base/schema_v2.py",
+                  "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+                  "size": 8814
+                },
+                {
+                  "path": "profiles/staged/registry.json",
+                  "sha256": "5260f007ccb1436ee5c2d4500750f08ec784d2f1aecd92ef2d21bcac29b9b4e3",
+                  "size": 1756
+                }
+              ],
+              "revision": 8,
+              "roots": [
+                "kit",
+                "profiles/staged"
+              ]
+            },
+            "payload_exact": true
+          },
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M01",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M02",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M03",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M04",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M05",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M06",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M07",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M08",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M09",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M10",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M11",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M12",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M13",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M14",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M15",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M16",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N01",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "stand_only"
+            },
+            "where": "target"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N02",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N03",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N04",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "unexpected"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N05",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "unexpected"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N06",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "unexpected"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N07",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "unexpected"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N08",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "bytes"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N09",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "bytes"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N10",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N11",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N12",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "system"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N13",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "system"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N14",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "roots"
+            },
+            "where": "system"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N15",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "roots"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N16",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N17",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "local_history"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N18",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "local_history"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N19",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N20",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N21",
+        "observation": {
+          "archive_attempts": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "build"
+            },
+            "where": "archive"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 8,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N22",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "profile"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N23",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "unexpected"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N24",
+        "observation": {
+          "archive_attempts": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "unexpected"
+            },
+            "where": "files"
+          },
+          "inputs_unchanged": true,
+          "member_attempts": 0,
+          "package": null,
+          "quiet": true
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "stderr_empty": true
+}

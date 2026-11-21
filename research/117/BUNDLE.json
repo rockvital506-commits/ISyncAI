@@ -1,0 +1,1483 @@
+{
+  "basis": "CHECKOUT.json; CLEANROOM.json; CASES.json: golden; P01",
+  "iteration": "И-117",
+  "metrics": {
+    "archive_attempts": 7,
+    "bundled": 6,
+    "cases": 46,
+    "effect_attempts": 0,
+    "inputs_unchanged_all": true,
+    "member_attempts": 110,
+    "missing_members_tested": 16,
+    "quiet_all": true,
+    "refused": 40,
+    "refused_before_build": 39
+  },
+  "reference": {
+    "archive_bytes": 109297,
+    "archive_members": 17,
+    "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+    "fixed_metadata": true,
+    "manifest": {
+      "digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+      "files": [
+        {
+          "path": "kit/base/OPERATION-CARD.md",
+          "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+          "size": 10741
+        },
+        {
+          "path": "kit/base/OPERATION-PLAN.md",
+          "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+          "size": 8788
+        },
+        {
+          "path": "kit/base/SCHEMA-V2.md",
+          "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+          "size": 7308
+        },
+        {
+          "path": "kit/base/START.md",
+          "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+          "size": 3091
+        },
+        {
+          "path": "kit/base/STORAGE-V2.md",
+          "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+          "size": 6333
+        },
+        {
+          "path": "kit/base/bootstrap.py",
+          "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+          "size": 4103
+        },
+        {
+          "path": "kit/base/entry.txt",
+          "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+          "size": 20
+        },
+        {
+          "path": "kit/base/operation_card.py",
+          "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+          "size": 15714
+        },
+        {
+          "path": "kit/base/operation_plan.py",
+          "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+          "size": 5555
+        },
+        {
+          "path": "kit/base/profile_journal.py",
+          "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+          "size": 3409
+        },
+        {
+          "path": "kit/base/registry.json",
+          "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+          "size": 96
+        },
+        {
+          "path": "kit/base/registry_journal.py",
+          "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+          "size": 5339
+        },
+        {
+          "path": "kit/base/registry_policy.py",
+          "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+          "size": 4235
+        },
+        {
+          "path": "kit/base/registry_store.py",
+          "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+          "size": 19772
+        },
+        {
+          "path": "kit/base/schema_v2.py",
+          "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+          "size": 8814
+        },
+        {
+          "path": "profiles/staged/registry.json",
+          "sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+          "size": 1756
+        }
+      ],
+      "revision": 7,
+      "roots": [
+        "kit",
+        "profiles/staged"
+      ]
+    },
+    "payload_exact": true
+  },
+  "rows": [
+    {
+      "archive_attempts": 1,
+      "basis": "Ф4; v2; независимый вектор P01",
+      "criterion": "Точные 16 полезных членов, отдельно manifest.json; все размеры, хеши и байты совпали.",
+      "effects": [],
+      "error": null,
+      "id": "P01",
+      "inputs_unchanged": true,
+      "member_attempts": 17,
+      "package": {
+        "archive_bytes": 109297,
+        "archive_members": 17,
+        "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "fixed_metadata": true,
+        "manifest": {
+          "digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "files": [
+            {
+              "path": "kit/base/OPERATION-CARD.md",
+              "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+              "size": 10741
+            },
+            {
+              "path": "kit/base/OPERATION-PLAN.md",
+              "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+              "size": 8788
+            },
+            {
+              "path": "kit/base/SCHEMA-V2.md",
+              "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+              "size": 7308
+            },
+            {
+              "path": "kit/base/START.md",
+              "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+              "size": 3091
+            },
+            {
+              "path": "kit/base/STORAGE-V2.md",
+              "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+              "size": 6333
+            },
+            {
+              "path": "kit/base/bootstrap.py",
+              "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+              "size": 4103
+            },
+            {
+              "path": "kit/base/entry.txt",
+              "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+              "size": 20
+            },
+            {
+              "path": "kit/base/operation_card.py",
+              "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+              "size": 15714
+            },
+            {
+              "path": "kit/base/operation_plan.py",
+              "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+              "size": 5555
+            },
+            {
+              "path": "kit/base/profile_journal.py",
+              "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+              "size": 3409
+            },
+            {
+              "path": "kit/base/registry.json",
+              "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+              "size": 96
+            },
+            {
+              "path": "kit/base/registry_journal.py",
+              "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+              "size": 5339
+            },
+            {
+              "path": "kit/base/registry_policy.py",
+              "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+              "size": 4235
+            },
+            {
+              "path": "kit/base/registry_store.py",
+              "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+              "size": 19772
+            },
+            {
+              "path": "kit/base/schema_v2.py",
+              "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+              "size": 8814
+            },
+            {
+              "path": "profiles/staged/registry.json",
+              "sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+              "size": 1756
+            }
+          ],
+          "revision": 7,
+          "roots": [
+            "kit",
+            "profiles/staged"
+          ]
+        },
+        "payload_exact": true
+      },
+      "quiet": true
+    },
+    {
+      "archive_attempts": 1,
+      "basis": "P01; перестановка ключей",
+      "criterion": "Обратный порядок входных имён даёт побайтно тот же архив и манифест.",
+      "effects": [],
+      "error": null,
+      "id": "P02",
+      "inputs_unchanged": true,
+      "member_attempts": 17,
+      "package": {
+        "archive_bytes": 109297,
+        "archive_members": 17,
+        "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "fixed_metadata": true,
+        "manifest": {
+          "digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "files": [
+            {
+              "path": "kit/base/OPERATION-CARD.md",
+              "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+              "size": 10741
+            },
+            {
+              "path": "kit/base/OPERATION-PLAN.md",
+              "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+              "size": 8788
+            },
+            {
+              "path": "kit/base/SCHEMA-V2.md",
+              "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+              "size": 7308
+            },
+            {
+              "path": "kit/base/START.md",
+              "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+              "size": 3091
+            },
+            {
+              "path": "kit/base/STORAGE-V2.md",
+              "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+              "size": 6333
+            },
+            {
+              "path": "kit/base/bootstrap.py",
+              "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+              "size": 4103
+            },
+            {
+              "path": "kit/base/entry.txt",
+              "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+              "size": 20
+            },
+            {
+              "path": "kit/base/operation_card.py",
+              "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+              "size": 15714
+            },
+            {
+              "path": "kit/base/operation_plan.py",
+              "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+              "size": 5555
+            },
+            {
+              "path": "kit/base/profile_journal.py",
+              "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+              "size": 3409
+            },
+            {
+              "path": "kit/base/registry.json",
+              "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+              "size": 96
+            },
+            {
+              "path": "kit/base/registry_journal.py",
+              "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+              "size": 5339
+            },
+            {
+              "path": "kit/base/registry_policy.py",
+              "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+              "size": 4235
+            },
+            {
+              "path": "kit/base/registry_store.py",
+              "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+              "size": 19772
+            },
+            {
+              "path": "kit/base/schema_v2.py",
+              "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+              "size": 8814
+            },
+            {
+              "path": "profiles/staged/registry.json",
+              "sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+              "size": 1756
+            }
+          ],
+          "revision": 7,
+          "roots": [
+            "kit",
+            "profiles/staged"
+          ]
+        },
+        "payload_exact": true
+      },
+      "quiet": true
+    },
+    {
+      "archive_attempts": 1,
+      "basis": "v2: пустые entries; Ф4",
+      "criterion": "Полная раскладка с пустым валидным L1, revision 0 — не отсутствие файла.",
+      "effects": [],
+      "error": null,
+      "id": "P03",
+      "inputs_unchanged": true,
+      "member_attempts": 17,
+      "package": {
+        "archive_bytes": 107626,
+        "archive_members": 17,
+        "archive_sha256": "be717aa2885be313f48a1c0725b40edd143fa45242ca488cebb7f3fa5e985571",
+        "fixed_metadata": true,
+        "manifest": {
+          "digest": "dca5c6c674e582424d855297928b06e223f129d9d45d4f48494af3d483e6ead5",
+          "files": [
+            {
+              "path": "kit/base/OPERATION-CARD.md",
+              "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+              "size": 10741
+            },
+            {
+              "path": "kit/base/OPERATION-PLAN.md",
+              "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+              "size": 8788
+            },
+            {
+              "path": "kit/base/SCHEMA-V2.md",
+              "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+              "size": 7308
+            },
+            {
+              "path": "kit/base/START.md",
+              "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+              "size": 3091
+            },
+            {
+              "path": "kit/base/STORAGE-V2.md",
+              "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+              "size": 6333
+            },
+            {
+              "path": "kit/base/bootstrap.py",
+              "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+              "size": 4103
+            },
+            {
+              "path": "kit/base/entry.txt",
+              "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+              "size": 20
+            },
+            {
+              "path": "kit/base/operation_card.py",
+              "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+              "size": 15714
+            },
+            {
+              "path": "kit/base/operation_plan.py",
+              "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+              "size": 5555
+            },
+            {
+              "path": "kit/base/profile_journal.py",
+              "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+              "size": 3409
+            },
+            {
+              "path": "kit/base/registry.json",
+              "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+              "size": 96
+            },
+            {
+              "path": "kit/base/registry_journal.py",
+              "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+              "size": 5339
+            },
+            {
+              "path": "kit/base/registry_policy.py",
+              "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+              "size": 4235
+            },
+            {
+              "path": "kit/base/registry_store.py",
+              "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+              "size": 19772
+            },
+            {
+              "path": "kit/base/schema_v2.py",
+              "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+              "size": 8814
+            },
+            {
+              "path": "profiles/staged/registry.json",
+              "sha256": "41da9125bc152ffbe427e5b9c2006dd4f769419c6998e8a73b599ede0614fd15",
+              "size": 87
+            }
+          ],
+          "revision": 0,
+          "roots": [
+            "kit",
+            "profiles/staged"
+          ]
+        },
+        "payload_exact": true
+      },
+      "quiet": true
+    },
+    {
+      "archive_attempts": 1,
+      "basis": "§3.2; P01; независимый вектор",
+      "criterion": "Смена текста при той же revision меняет SHA‑256 L1, digest и итоговый ZIP, но не остальные члены.",
+      "effects": [],
+      "error": null,
+      "id": "P04",
+      "inputs_unchanged": true,
+      "member_attempts": 17,
+      "package": {
+        "archive_bytes": 109376,
+        "archive_members": 17,
+        "archive_sha256": "f3f293a01d337205f1e1e294bed6b1b85ac2b9151928904f9c0d6ccd02ecf242",
+        "fixed_metadata": true,
+        "manifest": {
+          "digest": "e7a8255b6c35a9ea40e596918b4b9b440b889a6de84eb63bf06ae84bbbe6e87f",
+          "files": [
+            {
+              "path": "kit/base/OPERATION-CARD.md",
+              "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+              "size": 10741
+            },
+            {
+              "path": "kit/base/OPERATION-PLAN.md",
+              "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+              "size": 8788
+            },
+            {
+              "path": "kit/base/SCHEMA-V2.md",
+              "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+              "size": 7308
+            },
+            {
+              "path": "kit/base/START.md",
+              "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+              "size": 3091
+            },
+            {
+              "path": "kit/base/STORAGE-V2.md",
+              "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+              "size": 6333
+            },
+            {
+              "path": "kit/base/bootstrap.py",
+              "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+              "size": 4103
+            },
+            {
+              "path": "kit/base/entry.txt",
+              "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+              "size": 20
+            },
+            {
+              "path": "kit/base/operation_card.py",
+              "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+              "size": 15714
+            },
+            {
+              "path": "kit/base/operation_plan.py",
+              "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+              "size": 5555
+            },
+            {
+              "path": "kit/base/profile_journal.py",
+              "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+              "size": 3409
+            },
+            {
+              "path": "kit/base/registry.json",
+              "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+              "size": 96
+            },
+            {
+              "path": "kit/base/registry_journal.py",
+              "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+              "size": 5339
+            },
+            {
+              "path": "kit/base/registry_policy.py",
+              "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+              "size": 4235
+            },
+            {
+              "path": "kit/base/registry_store.py",
+              "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+              "size": 19772
+            },
+            {
+              "path": "kit/base/schema_v2.py",
+              "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+              "size": 8814
+            },
+            {
+              "path": "profiles/staged/registry.json",
+              "sha256": "d0bcb83315432a27272f61d9bfa665fd436fa7cc34968f921cd5975daeda3f10",
+              "size": 1835
+            }
+          ],
+          "revision": 7,
+          "roots": [
+            "kit",
+            "profiles/staged"
+          ]
+        },
+        "payload_exact": true
+      },
+      "quiet": true
+    },
+    {
+      "archive_attempts": 1,
+      "basis": "Ф4; точные входные байты",
+      "criterion": "Валидный JSON с другими пробелами не переписывается; байты, а не только смысл, связываются хешем.",
+      "effects": [],
+      "error": null,
+      "id": "P05",
+      "inputs_unchanged": true,
+      "member_attempts": 17,
+      "package": {
+        "archive_bytes": 108684,
+        "archive_members": 17,
+        "archive_sha256": "b66b0b3391bad5fc77283afd150d0d94428452d1fe7b4e6474a5394b9814d970",
+        "fixed_metadata": true,
+        "manifest": {
+          "digest": "d482b7a3dafcbec7b97e11beffd00e1cfdb7ba29fefed45de1a6a82269633e40",
+          "files": [
+            {
+              "path": "kit/base/OPERATION-CARD.md",
+              "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+              "size": 10741
+            },
+            {
+              "path": "kit/base/OPERATION-PLAN.md",
+              "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+              "size": 8788
+            },
+            {
+              "path": "kit/base/SCHEMA-V2.md",
+              "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+              "size": 7308
+            },
+            {
+              "path": "kit/base/START.md",
+              "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+              "size": 3091
+            },
+            {
+              "path": "kit/base/STORAGE-V2.md",
+              "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+              "size": 6333
+            },
+            {
+              "path": "kit/base/bootstrap.py",
+              "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+              "size": 4103
+            },
+            {
+              "path": "kit/base/entry.txt",
+              "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+              "size": 20
+            },
+            {
+              "path": "kit/base/operation_card.py",
+              "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+              "size": 15714
+            },
+            {
+              "path": "kit/base/operation_plan.py",
+              "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+              "size": 5555
+            },
+            {
+              "path": "kit/base/profile_journal.py",
+              "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+              "size": 3409
+            },
+            {
+              "path": "kit/base/registry.json",
+              "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+              "size": 96
+            },
+            {
+              "path": "kit/base/registry_journal.py",
+              "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+              "size": 5339
+            },
+            {
+              "path": "kit/base/registry_policy.py",
+              "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+              "size": 4235
+            },
+            {
+              "path": "kit/base/registry_store.py",
+              "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+              "size": 19772
+            },
+            {
+              "path": "kit/base/schema_v2.py",
+              "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+              "size": 8814
+            },
+            {
+              "path": "profiles/staged/registry.json",
+              "sha256": "71454427cbba37006d063c54afde378796c1abbb9020bfc8ebb3a3b5d047fafe",
+              "size": 1143
+            }
+          ],
+          "revision": 7,
+          "roots": [
+            "kit",
+            "profiles/staged"
+          ]
+        },
+        "payload_exact": true
+      },
+      "quiet": true
+    },
+    {
+      "archive_attempts": 1,
+      "basis": "§3.2; метаданные L1",
+      "criterion": "Манифест получает изменённую ревизию из профиля; L0 и прочие файлы не затронуты.",
+      "effects": [],
+      "error": null,
+      "id": "P06",
+      "inputs_unchanged": true,
+      "member_attempts": 17,
+      "package": {
+        "archive_bytes": 109297,
+        "archive_members": 17,
+        "archive_sha256": "4e9f669dbee193aeffc43246727a1527b6ca8e399be061034e7231cb7bb7857b",
+        "fixed_metadata": true,
+        "manifest": {
+          "digest": "47296c048df2ff02c23cd8151ad4199fe647a106f7aabe67f425eb7bcdc21f7c",
+          "files": [
+            {
+              "path": "kit/base/OPERATION-CARD.md",
+              "sha256": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+              "size": 10741
+            },
+            {
+              "path": "kit/base/OPERATION-PLAN.md",
+              "sha256": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+              "size": 8788
+            },
+            {
+              "path": "kit/base/SCHEMA-V2.md",
+              "sha256": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+              "size": 7308
+            },
+            {
+              "path": "kit/base/START.md",
+              "sha256": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+              "size": 3091
+            },
+            {
+              "path": "kit/base/STORAGE-V2.md",
+              "sha256": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+              "size": 6333
+            },
+            {
+              "path": "kit/base/bootstrap.py",
+              "sha256": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+              "size": 4103
+            },
+            {
+              "path": "kit/base/entry.txt",
+              "sha256": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+              "size": 20
+            },
+            {
+              "path": "kit/base/operation_card.py",
+              "sha256": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+              "size": 15714
+            },
+            {
+              "path": "kit/base/operation_plan.py",
+              "sha256": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+              "size": 5555
+            },
+            {
+              "path": "kit/base/profile_journal.py",
+              "sha256": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+              "size": 3409
+            },
+            {
+              "path": "kit/base/registry.json",
+              "sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549",
+              "size": 96
+            },
+            {
+              "path": "kit/base/registry_journal.py",
+              "sha256": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+              "size": 5339
+            },
+            {
+              "path": "kit/base/registry_policy.py",
+              "sha256": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+              "size": 4235
+            },
+            {
+              "path": "kit/base/registry_store.py",
+              "sha256": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+              "size": 19772
+            },
+            {
+              "path": "kit/base/schema_v2.py",
+              "sha256": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+              "size": 8814
+            },
+            {
+              "path": "profiles/staged/registry.json",
+              "sha256": "5260f007ccb1436ee5c2d4500750f08ec784d2f1aecd92ef2d21bcac29b9b4e3",
+              "size": 1756
+            }
+          ],
+          "revision": 8,
+          "roots": [
+            "kit",
+            "profiles/staged"
+          ]
+        },
+        "payload_exact": true
+      },
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/OPERATION-CARD.md останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M01",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/OPERATION-PLAN.md останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M02",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/SCHEMA-V2.md останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M03",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/START.md останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M04",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/STORAGE-V2.md останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M05",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/bootstrap.py останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M06",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/entry.txt останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M07",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/operation_card.py останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M08",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/operation_plan.py останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M09",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/profile_journal.py останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M10",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/registry.json останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M11",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/registry_journal.py останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M12",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/registry_policy.py останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M13",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/registry_store.py останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M14",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/schema_v2.py останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M15",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск profiles/staged/registry.json останавливает сборку до открытия буфера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "files"
+      },
+      "id": "M16",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "П1; границы стенда",
+      "criterion": "Рабочая цель отвергнута без сборки.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "stand_only"
+        },
+        "where": "target"
+      },
+      "id": "N01",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "П1; байты без путей",
+      "criterion": "Объект пути не читается как набор файлов.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "files"
+      },
+      "id": "N02",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Замкнутая форма набора",
+      "criterion": "Нестроковое имя не приводится к строке.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "files"
+      },
+      "id": "N03",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Раздельность L0/L1/L2; §14",
+      "criterion": "Проектный реестр не включается в комплект.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "unexpected"
+        },
+        "where": "files"
+      },
+      "id": "N04",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "PROFILE-JOURNAL.md; §14",
+      "criterion": "Отдельный локальный журнал не включается.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "unexpected"
+        },
+        "where": "files"
+      },
+      "id": "N05",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Точные имена; область стенда",
+      "criterion": "Имя ../ не нормализуется и не заменяет отсутствующий файл.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "unexpected"
+        },
+        "where": "files"
+      },
+      "id": "N06",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Анти-скоуп; Git policy",
+      "criterion": "Лишнее имя из чужой области не упаковывается.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "unexpected"
+        },
+        "where": "files"
+      },
+      "id": "N07",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Явные bytes",
+      "criterion": "Bytearray не преобразуется автоматически.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "bytes"
+        },
+        "where": "files"
+      },
+      "id": "N08",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Полнота входа",
+      "criterion": "Пустой стартовый файл отличается от валидного пустого реестра.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "bytes"
+        },
+        "where": "files"
+      },
+      "id": "N09",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Лимит файла",
+      "criterion": "Вход больше 1 МиБ не начинает сборку.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "files"
+      },
+      "id": "N10",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Лимит комплекта",
+      "criterion": "Сумма больше 4 МиБ при допустимых отдельных размерах не начинает сборку.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "files"
+      },
+      "id": "N11",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Строгий v2",
+      "criterion": "Повтор JSON-поля отвергнут без выбора значения.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "registry"
+        },
+        "where": "system"
+      },
+      "id": "N12",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "§3.2; v2 L0",
+      "criterion": "Неизвестная форма версии не подменяется версией профиля.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "registry"
+        },
+        "where": "system"
+      },
+      "id": "N13",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Явный L0; A1",
+      "criterion": "Иной допустимый лексически корень L0 не подходит набору.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "roots"
+        },
+        "where": "system"
+      },
+      "id": "N14",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Явный L1; A1",
+      "criterion": "Рабочий или пересекающийся корень не подставляется.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "roots"
+        },
+        "where": "profile"
+      },
+      "id": "N15",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Authority и область v2",
+      "criterion": "Данные L2 не маскируются именем файла L1.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "registry"
+        },
+        "where": "profile"
+      },
+      "id": "N16",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Локальный контейнер 2; §14",
+      "criterion": "Даже валидный журнальный контейнер 2 не копируется и не очищается автоматически.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "local_history"
+        },
+        "where": "profile"
+      },
+      "id": "N17",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Локальный контейнер 1; §14",
+      "criterion": "Даже валидный прежний контейнер 1 не становится переносимым.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "local_history"
+        },
+        "where": "profile"
+      },
+      "id": "N18",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "A4; v2",
+      "criterion": "Сиротская запись не попадает в архив.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "registry"
+        },
+        "where": "profile"
+      },
+      "id": "N19",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "v2 L1",
+      "criterion": "Булево значение не принимается за целую revision.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "registry"
+        },
+        "where": "profile"
+      },
+      "id": "N20",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 1,
+      "basis": "П1; поздний сбой буфера",
+      "criterion": "Ошибка восьмой записи не возвращает ни частичный ZIP, ни частичный результат.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "build"
+        },
+        "where": "archive"
+      },
+      "id": "N21",
+      "inputs_unchanged": true,
+      "member_attempts": 8,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Строгий UTF-8 v2",
+      "criterion": "Битый JSON нельзя упаковать по имени файла.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "registry"
+        },
+        "where": "profile"
+      },
+      "id": "N22",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Замкнутый список имён",
+      "criterion": "start.md не считается START.md даже при другом регистре ФС.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "unexpected"
+        },
+        "where": "files"
+      },
+      "id": "N23",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    },
+    {
+      "archive_attempts": 0,
+      "basis": "Детерминированный манифест",
+      "criterion": "Вызывающий не может навязать собственный manifest.json.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "unexpected"
+        },
+        "where": "files"
+      },
+      "id": "N24",
+      "inputs_unchanged": true,
+      "member_attempts": 0,
+      "package": null,
+      "quiet": true
+    }
+  ]
+}

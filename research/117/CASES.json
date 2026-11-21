@@ -1,0 +1,596 @@
+{
+  "baseline": "66d7cf67569dda5f75f2e2e61c0cb4a1bfb12dcd",
+  "cases": [
+    {
+      "basis": "Ф4; v2; независимый вектор P01",
+      "criterion": "Точные 16 полезных членов, отдельно manifest.json; все размеры, хеши и байты совпали.",
+      "fixture": "populated",
+      "id": "P01"
+    },
+    {
+      "basis": "P01; перестановка ключей",
+      "criterion": "Обратный порядок входных имён даёт побайтно тот же архив и манифест.",
+      "fixture": "reordered",
+      "id": "P02"
+    },
+    {
+      "basis": "v2: пустые entries; Ф4",
+      "criterion": "Полная раскладка с пустым валидным L1, revision 0 — не отсутствие файла.",
+      "fixture": "empty",
+      "id": "P03"
+    },
+    {
+      "basis": "§3.2; P01; независимый вектор",
+      "criterion": "Смена текста при той же revision меняет SHA‑256 L1, digest и итоговый ZIP, но не остальные члены.",
+      "fixture": "changed_text",
+      "id": "P04"
+    },
+    {
+      "basis": "Ф4; точные входные байты",
+      "criterion": "Валидный JSON с другими пробелами не переписывается; байты, а не только смысл, связываются хешем.",
+      "fixture": "different_encoding",
+      "id": "P05"
+    },
+    {
+      "basis": "§3.2; метаданные L1",
+      "criterion": "Манифест получает изменённую ревизию из профиля; L0 и прочие файлы не затронуты.",
+      "fixture": "next_revision",
+      "id": "P06"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/OPERATION-CARD.md останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M01",
+      "inject": "missing",
+      "path": "kit/base/OPERATION-CARD.md"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/OPERATION-PLAN.md останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M02",
+      "inject": "missing",
+      "path": "kit/base/OPERATION-PLAN.md"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/SCHEMA-V2.md останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M03",
+      "inject": "missing",
+      "path": "kit/base/SCHEMA-V2.md"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/START.md останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M04",
+      "inject": "missing",
+      "path": "kit/base/START.md"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/STORAGE-V2.md останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M05",
+      "inject": "missing",
+      "path": "kit/base/STORAGE-V2.md"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/bootstrap.py останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M06",
+      "inject": "missing",
+      "path": "kit/base/bootstrap.py"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/entry.txt останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M07",
+      "inject": "missing",
+      "path": "kit/base/entry.txt"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/operation_card.py останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M08",
+      "inject": "missing",
+      "path": "kit/base/operation_card.py"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/operation_plan.py останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M09",
+      "inject": "missing",
+      "path": "kit/base/operation_plan.py"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/profile_journal.py останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M10",
+      "inject": "missing",
+      "path": "kit/base/profile_journal.py"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/registry.json останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M11",
+      "inject": "missing",
+      "path": "kit/base/registry.json"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/registry_journal.py останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M12",
+      "inject": "missing",
+      "path": "kit/base/registry_journal.py"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/registry_policy.py останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M13",
+      "inject": "missing",
+      "path": "kit/base/registry_policy.py"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/registry_store.py останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M14",
+      "inject": "missing",
+      "path": "kit/base/registry_store.py"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск kit/base/schema_v2.py останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M15",
+      "inject": "missing",
+      "path": "kit/base/schema_v2.py"
+    },
+    {
+      "basis": "Ф4 И‑117; обязательный набор",
+      "criterion": "Пропуск profiles/staged/registry.json останавливает сборку до открытия буфера.",
+      "error": [
+        "files",
+        "missing"
+      ],
+      "fixture": "populated",
+      "id": "M16",
+      "inject": "missing",
+      "path": "profiles/staged/registry.json"
+    },
+    {
+      "basis": "П1; границы стенда",
+      "criterion": "Рабочая цель отвергнута без сборки.",
+      "error": [
+        "target",
+        "stand_only"
+      ],
+      "fixture": "populated",
+      "id": "N01",
+      "inject": "live"
+    },
+    {
+      "basis": "П1; байты без путей",
+      "criterion": "Объект пути не читается как набор файлов.",
+      "error": [
+        "files",
+        "shape"
+      ],
+      "fixture": "populated",
+      "id": "N02",
+      "inject": "path_input"
+    },
+    {
+      "basis": "Замкнутая форма набора",
+      "criterion": "Нестроковое имя не приводится к строке.",
+      "error": [
+        "files",
+        "shape"
+      ],
+      "fixture": "populated",
+      "id": "N03",
+      "inject": "non_text_name"
+    },
+    {
+      "basis": "Раздельность L0/L1/L2; §14",
+      "criterion": "Проектный реестр не включается в комплект.",
+      "error": [
+        "files",
+        "unexpected"
+      ],
+      "fixture": "populated",
+      "id": "N04",
+      "inject": "include_l2"
+    },
+    {
+      "basis": "PROFILE-JOURNAL.md; §14",
+      "criterion": "Отдельный локальный журнал не включается.",
+      "error": [
+        "files",
+        "unexpected"
+      ],
+      "fixture": "populated",
+      "id": "N05",
+      "inject": "include_local_log"
+    },
+    {
+      "basis": "Точные имена; область стенда",
+      "criterion": "Имя ../ не нормализуется и не заменяет отсутствующий файл.",
+      "error": [
+        "files",
+        "unexpected"
+      ],
+      "fixture": "populated",
+      "id": "N06",
+      "inject": "parent_path"
+    },
+    {
+      "basis": "Анти-скоуп; Git policy",
+      "criterion": "Лишнее имя из чужой области не упаковывается.",
+      "error": [
+        "files",
+        "unexpected"
+      ],
+      "fixture": "populated",
+      "id": "N07",
+      "inject": "include_foreign"
+    },
+    {
+      "basis": "Явные bytes",
+      "criterion": "Bytearray не преобразуется автоматически.",
+      "error": [
+        "files",
+        "bytes"
+      ],
+      "fixture": "populated",
+      "id": "N08",
+      "inject": "mutable_bytes"
+    },
+    {
+      "basis": "Полнота входа",
+      "criterion": "Пустой стартовый файл отличается от валидного пустого реестра.",
+      "error": [
+        "files",
+        "bytes"
+      ],
+      "fixture": "populated",
+      "id": "N09",
+      "inject": "empty_start"
+    },
+    {
+      "basis": "Лимит файла",
+      "criterion": "Вход больше 1 МиБ не начинает сборку.",
+      "error": [
+        "files",
+        "limit"
+      ],
+      "fixture": "populated",
+      "id": "N10",
+      "inject": "oversize_file"
+    },
+    {
+      "basis": "Лимит комплекта",
+      "criterion": "Сумма больше 4 МиБ при допустимых отдельных размерах не начинает сборку.",
+      "error": [
+        "files",
+        "limit"
+      ],
+      "fixture": "populated",
+      "id": "N11",
+      "inject": "oversize_total"
+    },
+    {
+      "basis": "Строгий v2",
+      "criterion": "Повтор JSON-поля отвергнут без выбора значения.",
+      "error": [
+        "system",
+        "registry"
+      ],
+      "fixture": "populated",
+      "id": "N12",
+      "inject": "duplicate_json"
+    },
+    {
+      "basis": "§3.2; v2 L0",
+      "criterion": "Неизвестная форма версии не подменяется версией профиля.",
+      "error": [
+        "system",
+        "registry"
+      ],
+      "fixture": "populated",
+      "id": "N13",
+      "inject": "bad_semver"
+    },
+    {
+      "basis": "Явный L0; A1",
+      "criterion": "Иной допустимый лексически корень L0 не подходит набору.",
+      "error": [
+        "system",
+        "roots"
+      ],
+      "fixture": "populated",
+      "id": "N14",
+      "inject": "wrong_system_root"
+    },
+    {
+      "basis": "Явный L1; A1",
+      "criterion": "Рабочий или пересекающийся корень не подставляется.",
+      "error": [
+        "profile",
+        "roots"
+      ],
+      "fixture": "populated",
+      "id": "N15",
+      "inject": "wrong_profile_root"
+    },
+    {
+      "basis": "Authority и область v2",
+      "criterion": "Данные L2 не маскируются именем файла L1.",
+      "error": [
+        "profile",
+        "registry"
+      ],
+      "fixture": "populated",
+      "id": "N16",
+      "inject": "foreign_area"
+    },
+    {
+      "basis": "Локальный контейнер 2; §14",
+      "criterion": "Даже валидный журнальный контейнер 2 не копируется и не очищается автоматически.",
+      "error": [
+        "profile",
+        "local_history"
+      ],
+      "fixture": "populated",
+      "id": "N17",
+      "inject": "history_two"
+    },
+    {
+      "basis": "Локальный контейнер 1; §14",
+      "criterion": "Даже валидный прежний контейнер 1 не становится переносимым.",
+      "error": [
+        "profile",
+        "local_history"
+      ],
+      "fixture": "populated",
+      "id": "N18",
+      "inject": "history_one"
+    },
+    {
+      "basis": "A4; v2",
+      "criterion": "Сиротская запись не попадает в архив.",
+      "error": [
+        "profile",
+        "registry"
+      ],
+      "fixture": "populated",
+      "id": "N19",
+      "inject": "bad_parent"
+    },
+    {
+      "basis": "v2 L1",
+      "criterion": "Булево значение не принимается за целую revision.",
+      "error": [
+        "profile",
+        "registry"
+      ],
+      "fixture": "populated",
+      "id": "N20",
+      "inject": "bool_revision"
+    },
+    {
+      "basis": "П1; поздний сбой буфера",
+      "criterion": "Ошибка восьмой записи не возвращает ни частичный ZIP, ни частичный результат.",
+      "error": [
+        "archive",
+        "build"
+      ],
+      "fixture": "populated",
+      "id": "N21",
+      "inject": "late_archive",
+      "member_attempts": 8
+    },
+    {
+      "basis": "Строгий UTF-8 v2",
+      "criterion": "Битый JSON нельзя упаковать по имени файла.",
+      "error": [
+        "profile",
+        "registry"
+      ],
+      "fixture": "populated",
+      "id": "N22",
+      "inject": "invalid_utf8"
+    },
+    {
+      "basis": "Замкнутый список имён",
+      "criterion": "start.md не считается START.md даже при другом регистре ФС.",
+      "error": [
+        "files",
+        "unexpected"
+      ],
+      "fixture": "populated",
+      "id": "N23",
+      "inject": "case_alias"
+    },
+    {
+      "basis": "Детерминированный манифест",
+      "criterion": "Вызывающий не может навязать собственный manifest.json.",
+      "error": [
+        "files",
+        "unexpected"
+      ],
+      "fixture": "populated",
+      "id": "N24",
+      "inject": "supplied_manifest"
+    }
+  ],
+  "fixtures": {
+    "profile": {
+      "area": "L1",
+      "schema_version": 2,
+      "roots": [
+        "profiles/staged"
+      ],
+      "revision": 7,
+      "entries": [
+        {
+          "id": "C-sample-117",
+          "kind": "contract",
+          "state": "active",
+          "authority": "profile_owner",
+          "parent": null,
+          "scope": "docs",
+          "title": "Синтетический контракт",
+          "text": "Фикстура не относится к рабочему профилю.",
+          "basis": "Синтетический корпус И‑117.",
+          "criterion": "Проверить точность байтов пакета."
+        },
+        {
+          "id": "R-sample-117",
+          "kind": "rule",
+          "state": "draft",
+          "authority": "profile_owner",
+          "parent": "C-sample-117",
+          "scope": "docs/guide",
+          "title": "Синтетическое правило",
+          "text": "Показать основание и итог проверки.",
+          "basis": "Синтетический корпус И‑117.",
+          "criterion": "Тело черновика сохранено без изменений.",
+          "key": "report.basis",
+          "value": "shown"
+        }
+      ]
+    },
+    "system": {
+      "area": "L0",
+      "entries": [],
+      "release_version": "0.2.0-dev.117",
+      "roots": [
+        "kit"
+      ],
+      "schema_version": 2
+    }
+  },
+  "format": 1,
+  "golden": {
+    "changed_text": {
+      "archive_bytes": 109376,
+      "archive_sha256": "f3f293a01d337205f1e1e294bed6b1b85ac2b9151928904f9c0d6ccd02ecf242",
+      "manifest_digest": "e7a8255b6c35a9ea40e596918b4b9b440b889a6de84eb63bf06ae84bbbe6e87f"
+    },
+    "different_encoding": {
+      "archive_bytes": 108684,
+      "archive_sha256": "b66b0b3391bad5fc77283afd150d0d94428452d1fe7b4e6474a5394b9814d970",
+      "manifest_digest": "d482b7a3dafcbec7b97e11beffd00e1cfdb7ba29fefed45de1a6a82269633e40"
+    },
+    "empty": {
+      "archive_bytes": 107626,
+      "archive_sha256": "be717aa2885be313f48a1c0725b40edd143fa45242ca488cebb7f3fa5e985571",
+      "manifest_digest": "dca5c6c674e582424d855297928b06e223f129d9d45d4f48494af3d483e6ead5"
+    },
+    "next_revision": {
+      "archive_bytes": 109297,
+      "archive_sha256": "4e9f669dbee193aeffc43246727a1527b6ca8e399be061034e7231cb7bb7857b",
+      "manifest_digest": "47296c048df2ff02c23cd8151ad4199fe647a106f7aabe67f425eb7bcdc21f7c"
+    },
+    "populated": {
+      "archive_bytes": 109297,
+      "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5"
+    },
+    "reordered": {
+      "archive_bytes": 109297,
+      "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5"
+    }
+  },
+  "required": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-PLAN.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/START.md",
+    "kit/base/STORAGE-V2.md",
+    "kit/base/bootstrap.py",
+    "kit/base/entry.txt",
+    "kit/base/operation_card.py",
+    "kit/base/operation_plan.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry.json",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "profiles/staged/registry.json"
+  ]
+}

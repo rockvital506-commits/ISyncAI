@@ -1,0 +1,303 @@
+{
+  "baseline": "66d7cf67569dda5f75f2e2e61c0cb4a1bfb12dcd",
+  "casebook_sha256": "e99f4edd7ded8267b1d094923456bd218b8858eaeb601ded4aaedbf2d450bd40",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/117/test_bundle.py"
+  ],
+  "fixture_correction": {
+    "case": "P05",
+    "first_green": {
+      "fail": 1,
+      "failed_id": "P05",
+      "not run": 0,
+      "pass": 45
+    },
+    "original_casebook_sha256": "9f2d90bc79172397c6952bc9346dd3e3010a83c03e4800e7826d0781eef5df4c",
+    "original_red_sha256": "3c75399a3fe35fb0dfd84a42dd387fc2dd3395961ccd20377507f68546c065a7",
+    "reason": "profile_json_member_order_after_casebook_serialization",
+    "repeated_against_original_git_baseline": true,
+    "same_case_criteria_and_golden": true
+  },
+  "independent_baseline_match": true,
+  "pinned_inputs": {
+    "kit/base/OPERATION-CARD.md": "bc813fc73b789a8e735891983277a0baf392270e045d3ce804cdfcbeb84d5ce0",
+    "kit/base/OPERATION-PLAN.md": "97437182f4e44cc6bf0b90fb48b2732adb87438b1e0ff597b827e522d0e57020",
+    "kit/base/SCHEMA-V2.md": "da724c1857f909e9f4d66f11661c3f16fae9cdba994ab2750191223e3e366907",
+    "kit/base/START.md": "37530109f6e2c572b2754da605ea3f6858be7606cf3297bb65805a61e7dd284d",
+    "kit/base/STORAGE-V2.md": "b6994db63420965242ce4c7d1bc9ba045271a4bd190beeb9723f8ceca04b75cb",
+    "kit/base/bootstrap.py": "de6ef1ae140d85077311a3aa97bb6350462b0ef465e91b1bb4ee8b34466f3a36",
+    "kit/base/entry.txt": "814d05acdb697a572b3f171f27b939478d56398c3ba2ba22e1820d868fac867e",
+    "kit/base/operation_card.py": "fc8856f1543e91b3625001427a5cb39d2d7d39ca6838b40eb6d20101e4955e09",
+    "kit/base/operation_plan.py": "15c8844f4bb61f2c512d956534eca111aafbbfb4e18196d9157793df40b6002b",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd"
+  },
+  "rc": 1,
+  "result": {
+    "control": {
+      "bare_revisions": [
+        7,
+        0
+      ],
+      "required_files": 16,
+      "valid_history_formats": [
+        1,
+        2
+      ],
+      "valid_layouts": 2,
+      "working_port": {
+        "bundle": "unknown_operation",
+        "bundle_verify": "unknown_operation"
+      }
+    },
+    "counts": {
+      "fail": 46,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P02",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P03",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P04",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P05",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P06",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M01",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M02",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M03",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M04",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M05",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M06",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M07",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M08",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M09",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M10",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M11",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M12",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M13",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M14",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M15",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M16",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N01",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N02",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N03",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N04",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N05",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N06",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N07",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N08",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N09",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N10",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N11",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N12",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N13",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N14",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N15",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N16",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N17",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N18",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N19",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N20",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N21",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N22",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N23",
+        "reason": "bundle_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N24",
+        "reason": "bundle_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "test_sha256": "96160383ce20c0554e95de88279d6967d412233259c858e6fdac7f053d25f2b3"
+}
