@@ -1,0 +1,134 @@
+{
+  "checks": [
+    {
+      "basis": "DESIGN.md; ITERATION.json; CASES.json; SCHEMA-CASES.json",
+      "check": "p2_casebook",
+      "criterion": "Список заморожен в П2; все 14 карточек И-104 разложены на обязательные случаи.",
+      "detail": [
+        "N01",
+        "N02",
+        "N03",
+        "N04",
+        "N05",
+        "N06",
+        "N07",
+        "N08",
+        "N09",
+        "N10",
+        "N11",
+        "N12",
+        "V01",
+        "V02"
+      ],
+      "status": "pass"
+    },
+    {
+      "basis": "CASES.json; CHECKOUT.json",
+      "check": "target_checkout",
+      "criterion": "Все обязательные ID ровно один раз; исход, тип, причина, путь и неизменность точны.",
+      "detail": {
+        "problems": [],
+        "rc": 0
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "CASES.json; CLEANROOM.json",
+      "check": "target_cleanroom",
+      "criterion": "Все обязательные ID ровно один раз; исход, тип, причина, путь и неизменность точны.",
+      "detail": {
+        "problems": [],
+        "rc": 0
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json: target_inputs; CLEANROOM.json",
+      "check": "isolated_inputs",
+      "criterion": "Чистая копия содержит только перечисленные входы; 0.1.36, ISAI и харнесс в неё не копируются.",
+      "detail": null,
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "source_repeat",
+      "criterion": "Входы по SHA-256 одинаковы и не меняются; результаты двух процессов совпадают.",
+      "detail": null,
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json: facts; V01; PHASED-PROMPT-PROTOCOL.md",
+      "check": "filled_and_draft",
+      "criterion": "Три наполненные области; текст кандидата точен, R-2 остаётся draft внутри R-1.",
+      "detail": null,
+      "status": "pass"
+    },
+    {
+      "basis": "test_acceptance.py; ACCEPTANCE.json: checks",
+      "check": "acceptance_selftest",
+      "criterion": "Шлюз отклоняет пропуски, неверные ID, значения, типы и изменения входа.",
+      "detail": {
+        "rc": 0,
+        "result": {
+          "errors": 0,
+          "fail": 0,
+          "run": 5,
+          "skipped": 0
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "DONOR-CONTROL.json; pre-104/EVIDENCE.json",
+      "check": "donor_control",
+      "criterion": "Отдельный закреплённый 0.1.36 повторяет черновик L2, отказ parent и неизменность его L0.",
+      "detail": null,
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 8
+  },
+  "iteration": "И-104",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Рабочие операции, журнал и физические границы областей (включая NTFS/ACL).",
+      "why": "И-105–И-107; лексический формат не проверяет ФС."
+    },
+    {
+      "status": "not run",
+      "what": "Выдача прав, конфликт действующих правил, активация и перенос R-2.",
+      "why": "И-107, Ф2–Ф3; приняты только данные синтетической записи."
+    },
+    {
+      "status": "not run",
+      "what": "Чистая установка выпуска 0.2.0, миграция и восстановление.",
+      "why": "И-112/И-140 и И-131/132; работа схемы не равна работе поставки."
+    },
+    {
+      "status": "not run",
+      "what": "Чтение и исполнение в Arena, Kilo и Copilot.",
+      "why": "И-125 и Ф8; живые сеансы не запускались."
+    }
+  ],
+  "outcome": "accepted",
+  "phase": "Ф1. Модель данных",
+  "target_cases": {
+    "checkout": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 62
+    },
+    "cleanroom": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 62
+    },
+    "negative": 49,
+    "positive": 13,
+    "required_per_run": 62
+  }
+}

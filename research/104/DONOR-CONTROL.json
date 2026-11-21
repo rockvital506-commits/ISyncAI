@@ -1,0 +1,46 @@
+{
+  "matches_saved_evidence": true,
+  "rc": 0,
+  "result": {
+    "baseline": {
+      "archive_sha256": "e9f817c5286cea4bb4230ccd4f0fd307be3193ad3d46754d230cafc1bea66bf6",
+      "manifest_files": 5,
+      "manifest_pin": "b10cea590c95305d13aa60cdcd1866884edfc58a35dfbfc7d2b122d57d2c447b",
+      "profile_members": 0,
+      "rules_entries": 0,
+      "schema": 1,
+      "version": "0.1.36"
+    },
+    "native_l2_in_temporary_copy": {
+      "calibration_used": false,
+      "draft_id": "P-2",
+      "draft_state": "draft",
+      "effective_entries": 0,
+      "install_connect_create": "pass",
+      "l0_bytes_unchanged": true,
+      "unknown_parent": {
+        "error": "parent",
+        "no_write": true,
+        "rc": 2
+      }
+    },
+    "not_run": [
+      "схема v2 и её будущие сценарии",
+      "регистрация и применение L1",
+      "перенос между проектами",
+      "поведение моделей в живых средах"
+    ],
+    "protocol": {
+      "bytes": 8930,
+      "sha256": "37ed06f94088d2cb40476e95b0526f4ddcea02e794adb8c67a0de8a30b91f373"
+    },
+    "sample_catalog": {
+      "entry_counts": {
+        "L0": 2,
+        "L1": 3,
+        "L2": 2
+      },
+      "planned_cases": 24
+    }
+  }
+}

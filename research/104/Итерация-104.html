@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-104 · Схема v2</title><style>
+:root {color-scheme:light;--ink:#162020;--muted:#486064;--line:#d7e1de;--fine:#edf5f2;--accent:#0e6555;}
+* {box-sizing:border-box} body {margin:0;background:#fbfdfc;color:var(--ink);font:1rem/1.55 system-ui,sans-serif}
+header {border-bottom:1px solid var(--line);background:var(--fine)} header>div,main {max-width:67rem;margin:auto;padding:1.5rem max(1rem,3vw)}
+h1 {margin:.25rem 0;font-size:clamp(2rem,4vw,3rem);line-height:1.13} h2 {margin-top:2rem} .meta {color:var(--muted)}
+a {color:var(--accent)} .verdict {font-weight:700;color:#0e6555}
+.cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:.7rem;margin:1rem 0}
+article {padding:1rem;background:#fff;border:1px solid var(--line);border-radius:.5rem} article strong {display:block}
+table {border-collapse:collapse;width:100%;font-size:.95rem} th,td {padding:.55rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere} th {background:var(--fine)} code {overflow-wrap:anywhere}
+</style></head><body><header><div><p class="meta">И-104 · Ф1. Модель данных · P0</p>
+<h1>Самостоятельная схема v2</h1><p class="verdict">Прогон принят</p>
+<p>Контракт данных и связи L0/L1/L2. Без установки, мутации профиля или активации правил.</p></div></header>
+<main><div class="cards">
+<article><a href="CHECKOUT.json"><strong>П3 · checkout</strong></a>62 pass / 0 fail / 0 not run</article>
+<article><a href="CLEANROOM.json"><strong>П4 · без доноров</strong></a>62 pass / 0 fail / 0 not run</article>
+<article><a href="DONOR-CONTROL.json"><strong>Контроль 0.1.36</strong></a>совпал с эталоном · отдельно</article></div>
+<p>На каждый целевой прогон: 62 обязательных случаев,
+13 положительных и 49 отрицательных. R-2 проверяется как черновик.</p>
+<h2>Ворота приёмки</h2><p>8 pass / 0 fail / 4 not run · <a href="ACCEPTANCE.json">Машинная приёмка</a></p>
+<table><thead><tr><th scope="col">Проверка</th><th scope="col">Статус</th><th scope="col">Критерий</th></tr></thead><tbody><tr><td>p2_casebook</td><td>pass</td><td>Список заморожен в П2; все 14 карточек И-104 разложены на обязательные случаи.</td></tr>
+<tr><td>target_checkout</td><td>pass</td><td>Все обязательные ID ровно один раз; исход, тип, причина, путь и неизменность точны.</td></tr>
+<tr><td>target_cleanroom</td><td>pass</td><td>Все обязательные ID ровно один раз; исход, тип, причина, путь и неизменность точны.</td></tr>
+<tr><td>isolated_inputs</td><td>pass</td><td>Чистая копия содержит только перечисленные входы; 0.1.36, ISAI и харнесс в неё не копируются.</td></tr>
+<tr><td>source_repeat</td><td>pass</td><td>Входы по SHA-256 одинаковы и не меняются; результаты двух процессов совпадают.</td></tr>
+<tr><td>filled_and_draft</td><td>pass</td><td>Три наполненные области; текст кандидата точен, R-2 остаётся draft внутри R-1.</td></tr>
+<tr><td>acceptance_selftest</td><td>pass</td><td>Шлюз отклоняет пропуски, неверные ID, значения, типы и изменения входа.</td></tr>
+<tr><td>donor_control</td><td>pass</td><td>Отдельный закреплённый 0.1.36 повторяет черновик L2, отказ parent и неизменность его L0.</td></tr></tbody></table>
+<h2>Не выполнялось</h2><table><thead><tr><th scope="col">Что</th><th scope="col">Почему</th></tr></thead><tbody><tr><td>Рабочие операции, журнал и физические границы областей (включая NTFS/ACL).</td><td>И-105–И-107; лексический формат не проверяет ФС.</td></tr>
+<tr><td>Выдача прав, конфликт действующих правил, активация и перенос R-2.</td><td>И-107, Ф2–Ф3; приняты только данные синтетической записи.</td></tr>
+<tr><td>Чистая установка выпуска 0.2.0, миграция и восстановление.</td><td>И-112/И-140 и И-131/132; работа схемы не равна работе поставки.</td></tr>
+<tr><td>Чтение и исполнение в Arena, Kilo и Copilot.</td><td>И-125 и Ф8; живые сеансы не запускались.</td></tr></tbody></table>
+<h2>Печать и повтор</h2><p><a href="AgentContractKit-Iteration-104.zip">Архив итерации</a> · 26 файлов · 286268 байт ·
+<a href="REPLAY.json">повтор: ok</a></p><p>SHA‑256 <code>bec696154c49689b863697258de590cb7cb55128f7bdb24c4f17536828de3094</code></p>
+<p><a href="REPORT.md">Отчёт с находками</a> · <a href="DESIGN.md">Замысел</a> · <a href="../../kit/base/SCHEMA-V2.md">Спецификация</a></p>
+<p class="meta">И-105 — реальные раздельные корни и первая штатная мутация L1 со снимками L0 и L2; И-105 ещё не начата.</p></main></body></html>

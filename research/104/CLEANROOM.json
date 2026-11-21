@@ -1,0 +1,689 @@
+{
+  "donor_zip_present": false,
+  "files_after": [
+    "kit/base/schema_v2.py",
+    "research/104/CASES.json",
+    "research/104/test_schema.py",
+    "research/strategy/pre-104/PHASED-PROMPT-PROTOCOL.md",
+    "research/strategy/pre-104/SCHEMA-CASES.json"
+  ],
+  "files_before": [
+    "kit/base/schema_v2.py",
+    "research/104/CASES.json",
+    "research/104/test_schema.py",
+    "research/strategy/pre-104/PHASED-PROMPT-PROTOCOL.md",
+    "research/strategy/pre-104/SCHEMA-CASES.json"
+  ],
+  "inputs_sha256": {
+    "kit/base/schema_v2.py": "5b1a66b91bb071aacaf1eb93cbc833edafce2f1523134cc4c122c4f381574ccc",
+    "research/104/CASES.json": "64ecfe701b9918cb010b0905d335beebda6bf088e16fdf726fec9674837686bd",
+    "research/104/test_schema.py": "c3ef3d64d3dac3e53538d4af65188ba741b4271eb0f713fc7f2c4cdaf13007c2",
+    "research/strategy/pre-104/PHASED-PROMPT-PROTOCOL.md": "37ed06f94088d2cb40476e95b0526f4ddcea02e794adb8c67a0de8a30b91f373",
+    "research/strategy/pre-104/SCHEMA-CASES.json": "e799e309b01ff37bcb21b25b70d0669c5b9a4870bab516dba377b639a769b988"
+  },
+  "inputs_unchanged": true,
+  "isai_present": false,
+  "rc": 0,
+  "result": {
+    "facts": {
+      "candidate": {
+        "id": "R-2",
+        "kind": "protocol",
+        "parent": "R-1",
+        "state": "draft"
+      },
+      "candidate_body_sha256": "37ed06f94088d2cb40476e95b0526f4ddcea02e794adb8c67a0de8a30b91f373",
+      "entry_counts": {
+        "L0": 2,
+        "L1": 3,
+        "L2": 2
+      }
+    },
+    "rows": [
+      {
+        "id": "V01-L0",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V02-L0",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V01-L1",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V02-L1",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V01-L2",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V02-L2",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V01-group",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V02-group",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V03-scope-self",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V04-independent-id",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V05-other-root",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V06-semver",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "V07-raw-json",
+        "observed": {
+          "ok": true
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N01-missing",
+        "observed": {
+          "code": "missing_field",
+          "ok": false,
+          "path": "/entries/1/basis",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N02-blank",
+        "observed": {
+          "code": "blank",
+          "ok": false,
+          "path": "/entries/1/criterion",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N03-enum",
+        "observed": {
+          "code": "unknown_area",
+          "ok": false,
+          "path": "/area",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N03-context",
+        "observed": {
+          "code": "area_mismatch",
+          "ok": false,
+          "path": "/area",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N04-enum",
+        "observed": {
+          "code": "authority",
+          "ok": false,
+          "path": "/entries/1/authority",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N04-known-wrong",
+        "observed": {
+          "code": "authority_area",
+          "ok": false,
+          "path": "/entries/1/authority",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N05-bool",
+        "observed": {
+          "code": "type",
+          "ok": false,
+          "path": "/revision",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N05-string",
+        "observed": {
+          "code": "type",
+          "ok": false,
+          "path": "/revision",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N05-negative",
+        "observed": {
+          "code": "revision",
+          "ok": false,
+          "path": "/revision",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N05-null",
+        "observed": {
+          "code": "type",
+          "ok": false,
+          "path": "/revision",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N05-decimal",
+        "observed": {
+          "code": "type",
+          "ok": false,
+          "path": "/revision",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N06-up",
+        "observed": {
+          "code": "path",
+          "ok": false,
+          "path": "/entries/1/scope",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N06-absolute",
+        "observed": {
+          "code": "path",
+          "ok": false,
+          "path": "/entries/1/scope",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N06-drive",
+        "observed": {
+          "code": "path",
+          "ok": false,
+          "path": "/entries/1/scope",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N06-backslash",
+        "observed": {
+          "code": "path",
+          "ok": false,
+          "path": "/entries/1/scope",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N06-noncanonical",
+        "observed": {
+          "code": "path",
+          "ok": false,
+          "path": "/entries/1/scope",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N06-dot-alias",
+        "observed": {
+          "code": "path",
+          "ok": false,
+          "path": "/entries/1/scope",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N07-sibling",
+        "observed": {
+          "code": "scope_outside",
+          "ok": false,
+          "path": "/entries/1/scope",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N07-parent-wider",
+        "observed": {
+          "code": "scope_outside",
+          "ok": false,
+          "path": "/entries/1/scope",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N07-case",
+        "observed": {
+          "code": "scope_outside",
+          "ok": false,
+          "path": "/entries/1/scope",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N08-dangling",
+        "observed": {
+          "code": "parent_missing",
+          "ok": false,
+          "path": "/entries/1/parent",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N08-kind",
+        "observed": {
+          "code": "parent_kind",
+          "ok": false,
+          "path": "/entries/1/parent",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N08-omitted",
+        "observed": {
+          "code": "missing_field",
+          "ok": false,
+          "path": "/entries/1/parent",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N08-null",
+        "observed": {
+          "code": "type",
+          "ok": false,
+          "path": "/entries/1/parent",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N08-foreign",
+        "observed": {
+          "code": "parent_missing",
+          "ok": false,
+          "path": "/L1/entries/1/parent",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N09-value",
+        "observed": {
+          "code": "key_pair",
+          "ok": false,
+          "path": "/entries/1/value",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N09-key",
+        "observed": {
+          "code": "key_pair",
+          "ok": false,
+          "path": "/entries/1/key",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N09-value-null",
+        "observed": {
+          "code": "type",
+          "ok": false,
+          "path": "/entries/1/value",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N10-duplicate",
+        "observed": {
+          "code": "duplicate_id",
+          "ok": false,
+          "path": "/entries/2/id",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N11-missing",
+        "observed": {
+          "code": "missing_field",
+          "ok": false,
+          "path": "/roots",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N11-type",
+        "observed": {
+          "code": "type",
+          "ok": false,
+          "path": "/roots",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N11-empty",
+        "observed": {
+          "code": "roots_empty",
+          "ok": false,
+          "path": "/roots",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N11-dot",
+        "observed": {
+          "code": "path",
+          "ok": false,
+          "path": "/roots/0",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N12-state",
+        "observed": {
+          "code": "state",
+          "ok": false,
+          "path": "/entries/1/state",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N13-contract-parent",
+        "observed": {
+          "code": "parent_forbidden",
+          "ok": false,
+          "path": "/entries/0/parent",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N14-declared-equal",
+        "observed": {
+          "code": "roots_overlap",
+          "ok": false,
+          "path": "/L1/roots/0",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N14-declared-nested",
+        "observed": {
+          "code": "roots_overlap",
+          "ok": false,
+          "path": "/L1/roots/0",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N14-local-duplicate",
+        "observed": {
+          "code": "roots_overlap",
+          "ok": false,
+          "path": "/roots/1",
+          "stage": "links"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N15-bad-semver",
+        "observed": {
+          "code": "release_version",
+          "ok": false,
+          "path": "/release_version",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N15-profile-semver",
+        "observed": {
+          "code": "unknown_field",
+          "ok": false,
+          "path": "/release_version",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N15-project-semver",
+        "observed": {
+          "code": "unknown_field",
+          "ok": false,
+          "path": "/release_version",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N15-system-counter",
+        "observed": {
+          "code": "unknown_field",
+          "ok": false,
+          "path": "/revision",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N16-old-schema",
+        "observed": {
+          "code": "schema_version",
+          "ok": false,
+          "path": "/schema_version",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N16-floating-tag",
+        "observed": {
+          "code": "type",
+          "ok": false,
+          "path": "/schema_version",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N17-not-inline",
+        "observed": {
+          "code": "unknown_field",
+          "ok": false,
+          "path": "/entries/1/text_file",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N18-opaque-id",
+        "observed": {
+          "code": "id",
+          "ok": false,
+          "path": "/entries/1/id",
+          "stage": "shape"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N19-duplicate-json",
+        "observed": {
+          "code": "duplicate_member",
+          "ok": false,
+          "path": "",
+          "stage": "parse"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N19-nonfinite-json",
+        "observed": {
+          "code": "non_finite",
+          "ok": false,
+          "path": "",
+          "stage": "parse"
+        },
+        "status": "pass",
+        "unchanged": true
+      },
+      {
+        "id": "N19-invalid-json",
+        "observed": {
+          "code": "invalid_json",
+          "ok": false,
+          "path": "",
+          "stage": "parse"
+        },
+        "status": "pass",
+        "unchanged": true
+      }
+    ],
+    "schema_version": 2
+  }
+}

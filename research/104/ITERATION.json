@@ -1,0 +1,69 @@
+{
+  "id": "104",
+  "title": "Самостоятельная схема v2",
+  "branch": "arena/4e000a5e-isyncai",
+  "date": "2026-11-18",
+  "phase": "Ф1. Модель данных",
+  "priority": "P0",
+  "strategy_before": "v1.5 · 0418089",
+  "target_inputs": [
+    "kit/base/schema_v2.py",
+    "research/104/test_schema.py",
+    "research/104/CASES.json",
+    "research/strategy/pre-104/SCHEMA-CASES.json",
+    "research/strategy/pre-104/PHASED-PROMPT-PROTOCOL.md"
+  ],
+  "seal_members": [
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/schema_v2.py",
+    "research/104/ACCEPTANCE.json",
+    "research/104/CASES.json",
+    "research/104/CHECKOUT.json",
+    "research/104/CLEANROOM.json",
+    "research/104/DESIGN.md",
+    "research/104/DONOR-CONTROL.json",
+    "research/104/ITERATION.json",
+    "research/104/REPORT.md",
+    "research/104/accept.py",
+    "research/104/report104.py",
+    "research/104/run.py",
+    "research/104/test_acceptance.py",
+    "research/104/test_schema.py",
+    "research/STRATEGY.md",
+    "research/strategy/BASELINE.json",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py",
+    "research/strategy/pre-104/EVIDENCE.json",
+    "research/strategy/pre-104/PHASED-PROMPT-PROTOCOL.md",
+    "research/strategy/pre-104/RETROSPECTIVE.md",
+    "research/strategy/pre-104/SCHEMA-CASES.json",
+    "research/strategy/pre-104/check_preparation.py"
+  ],
+  "casebook_sha256": "64ecfe701b9918cb010b0905d335beebda6bf088e16fdf726fec9674837686bd",
+  "case_counts": {
+    "positive": 13,
+    "negative": 49
+  },
+  "method_tests": 5,
+  "not_run": [
+    {
+      "what": "Рабочие операции, журнал и физические границы областей (включая NTFS/ACL).",
+      "why": "И-105–И-107; лексический формат не проверяет ФС."
+    },
+    {
+      "what": "Выдача прав, конфликт действующих правил, активация и перенос R-2.",
+      "why": "И-107, Ф2–Ф3; приняты только данные синтетической записи."
+    },
+    {
+      "what": "Чистая установка выпуска 0.2.0, миграция и восстановление.",
+      "why": "И-112/И-140 и И-131/132; работа схемы не равна работе поставки."
+    },
+    {
+      "what": "Чтение и исполнение в Arena, Kilo и Copilot.",
+      "why": "И-125 и Ф8; живые сеансы не запускались."
+    }
+  ],
+  "next": "И-105 — реальные раздельные корни и первая штатная мутация L1 со снимками L0 и L2; И-105 ещё не начата."
+}
