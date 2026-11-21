@@ -1,0 +1,67 @@
+{
+  "checkpoints_digest": "4a40a6ee099fe6e398b09480831a8c44552e987b96147b012cad80b400d0ede8",
+  "expected": {
+    "2-install": "rc=0",
+    "5a-create-contract": "rc=0",
+    "5b-create-rule": "rc=0",
+    "6-list": "count=2 (1 contract + 1 active)",
+    "7-adapter-arena": "error=adapter_unknown"
+  },
+  "format": 1,
+  "steps": [
+    {
+      "health": "absent",
+      "rc": 0,
+      "step": "1-status-before"
+    },
+    {
+      "error": null,
+      "rc": 0,
+      "step": "2-install"
+    },
+    {
+      "entry_mode": "absent",
+      "health": "valid",
+      "rc": 0,
+      "step": "3-status-after-install"
+    },
+    {
+      "error": null,
+      "rc": 0,
+      "step": "4-connect"
+    },
+    {
+      "error": null,
+      "rc": 0,
+      "step": "5a-create-contract"
+    },
+    {
+      "error": null,
+      "rc": 0,
+      "step": "5b-create-rule"
+    },
+    {
+      "active": 1,
+      "contracts": 1,
+      "count": 2,
+      "ids": [
+        "P-2",
+        "P-1"
+      ],
+      "rc": 0,
+      "step": "6-list"
+    },
+    {
+      "error": "adapter_unknown",
+      "rc": 2,
+      "step": "7-adapter-arena"
+    },
+    {
+      "health": "valid",
+      "rc": 0,
+      "revision": null,
+      "step": "8-status-final"
+    }
+  ],
+  "zip": "AgentContractKit-0.1.36.zip"
+}

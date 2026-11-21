@@ -1,0 +1,160 @@
+{
+  "checks": [
+    {
+      "basis": "research/STRATEGY.md: заголовок версии",
+      "check": "strategy_file",
+      "detail": null,
+      "status": "pass"
+    },
+    {
+      "basis": "research/strategy/SYNC-LOG.md: строки журнала",
+      "check": "sync_journal",
+      "detail": 6,
+      "status": "pass"
+    },
+    {
+      "basis": "research/101/REPORT.md: разделы basis и not run",
+      "check": "report_basis",
+      "detail": null,
+      "status": "pass"
+    },
+    {
+      "basis": "BASELINE.json: release",
+      "check": "baseline_release",
+      "detail": "0.1.36",
+      "status": "pass"
+    },
+    {
+      "basis": "BASELINE.json: tree.files == zip.members",
+      "check": "baseline_files_match_zip",
+      "detail": 220,
+      "status": "pass"
+    },
+    {
+      "basis": "два прогона inventory.py",
+      "check": "baseline_deterministic",
+      "detail": "04b11366dbb0676d",
+      "status": "pass"
+    },
+    {
+      "basis": "BASELINE.json: surfaces[*].present",
+      "check": "six_surfaces_absent",
+      "detail": [],
+      "status": "pass"
+    },
+    {
+      "basis": "BASELINE.json: adapters",
+      "check": "adapters_baseline",
+      "detail": {
+        "absent": [
+          "arena"
+        ],
+        "stub": [
+          "antigravity",
+          "claude",
+          "cursor"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json: шаг 2",
+      "check": "cleanroom_install",
+      "detail": {
+        "error": null,
+        "rc": 0,
+        "step": "2-install"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json: шаг 4",
+      "check": "cleanroom_connect",
+      "detail": {
+        "error": null,
+        "rc": 0,
+        "step": "4-connect"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json: шаги 5a, 5b",
+      "check": "cleanroom_create",
+      "detail": null,
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json: шаг 6",
+      "check": "cleanroom_list",
+      "detail": {
+        "active": 1,
+        "contracts": 1,
+        "count": 2,
+        "ids": [
+          "P-2",
+          "P-1"
+        ],
+        "rc": 0,
+        "step": "6-list"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json: шаг 7",
+      "check": "cleanroom_arena_refused",
+      "detail": {
+        "error": "adapter_unknown",
+        "rc": 2,
+        "step": "7-adapter-arena"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "два прогона cleanroom.py",
+      "check": "cleanroom_deterministic",
+      "detail": "4a40a6ee099fe6e398b09480831a8c44552e987b96147b012cad80b400d0ede8",
+      "status": "pass"
+    },
+    {
+      "basis": "файл страницы итерации",
+      "check": "page_exists",
+      "detail": null,
+      "status": "pass"
+    },
+    {
+      "basis": "SEAL.json",
+      "check": "seal_recorded",
+      "detail": {
+        "bytes": 27872,
+        "sha256": "06d5f54e272895febd5cad9ffbf2fd67123088fa9c5c2020954d5fbd3f84d3c9"
+      },
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 0,
+    "pass": 16
+  },
+  "iteration": "И-101",
+  "not_run": [
+    {
+      "what": "поведение моделей в Arena / Kilo / Copilot",
+      "why": "отдельные сессии и N повторов — И-125"
+    },
+    {
+      "what": "чтение AGENTS.md в Arena",
+      "why": "публичной спецификации нет — И-124/И-125"
+    },
+    {
+      "what": "локальный запуск в VS Code 1.146 (Windows 11)",
+      "why": "среды нет в песочнице — И-134"
+    },
+    {
+      "what": "полный набор тестов выпуска kit/tests",
+      "why": "не входит в тест итерации; переносится в И-102"
+    }
+  ],
+  "outcome": "accepted",
+  "phase": "Ф0"
+}

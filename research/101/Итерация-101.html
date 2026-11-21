@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Итерация И-101 — Якорь</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; margin: 2rem auto; max-width: 62rem;
+        line-height: 1.5; color: #1a1a1a; padding: 0 1rem; }
+ h1 { font-size: 1.6rem; margin-bottom: .2rem; }
+ h2 { font-size: 1.15rem; margin-top: 2rem; border-bottom: 1px solid #ddd; padding-bottom: .3rem; }
+ .meta { color: #555; font-size: .9rem; }
+ table { border-collapse: collapse; width: 100%; margin: .6rem 0; font-size: .9rem; }
+ th, td { border: 1px solid #ddd; padding: .35rem .5rem; text-align: left; vertical-align: top; }
+ th { background: #f6f6f6; }
+ .ok { color: #0a6b2d; font-weight: 600; }
+ .bad { color: #a10d0d; font-weight: 600; }
+ .na { color: #8a6d00; font-weight: 600; }
+ code { background: #f3f3f3; padding: .05rem .25rem; border-radius: 3px; }
+ .verdict { font-size: 1.1rem; padding: .6rem .8rem; background: #f2f7f3; border-left: 4px solid #0a6b2d; }
+</style>
+</head>
+<body>
+<h1>Итерация И-101 — «Якорь»</h1>
+<p class="meta">Фаза Ф0 «Каркас программы» · приоритет P0 · 2026-11-18 · ветка arena/4e000a5e-isyncai</p>
+
+<div class="verdict">Приёмка: <b>accepted</b> · pass 16 /
+fail 0 / not run 0</div>
+
+<h2>Замысел</h2>
+<p>Сделать стратегию файлом-якорем и снять неизменяемый базовый отпечаток выпуска 0.1.36.
+Гипотеза: в 0.1.36 нет шести поверхностей и адаптера Arena. Изменяется только <code>research/</code>.</p>
+
+<h2>Baseline выпуска (из артефакта)</h2>
+<table>
+<tr><th>Показатель</th><th>Значение</th></tr>
+<tr><td>Выпуск</td><td>0.1.36</td></tr>
+<tr><td>Размер архива, байт</td><td>774894</td></tr>
+<tr><td>sha256 архива</td><td><code>e9f817c5286cea4bb4230ccd4f0fd307be3193ad3d46754d230cafc1bea66bf6</code></td></tr>
+<tr><td>Файлов / членов архива</td><td>220 / 220</td></tr>
+<tr><td>tree_digest</td><td><code>159de6bda79871f6c4128d1839e1fccb86ca298c54a75d9d87d65b0b185d9fdc</code></td></tr>
+<tr><td>Команд CLI / операций</td><td>26 / 15</td></tr>
+<tr><td>digest baseline</td><td><code>9d2cb89bf03cd58f616a34c05ddd047072f781b3ef3cbd67791f8c8239e09585</code></td></tr>
+</table>
+
+<h2>Шесть поверхностей, которых нет</h2>
+<table>
+<tr><th>Поверхность</th><th>В командах</th><th>В операциях</th><th>Вывод</th></tr>
+<tr><td>bundle</td><td>нет</td><td>нет</td><td>отсутствует</td></tr>
+<tr><td>bundle_verify</td><td>нет</td><td>нет</td><td>отсутствует</td></tr>
+<tr><td>guard</td><td>нет</td><td>нет</td><td>отсутствует</td></tr>
+<tr><td>promote</td><td>нет</td><td>нет</td><td>отсутствует</td></tr>
+<tr><td>prompt</td><td>нет</td><td>нет</td><td>отсутствует</td></tr>
+<tr><td>simulate</td><td>нет</td><td>нет</td><td>отсутствует</td></tr>
+</table>
+
+<h2>Адаптеры</h2>
+<table>
+<tr><th>Среда</th><th>Статус</th><th>Старшинство</th></tr>
+<tr><td>antigravity</td><td>stub</td><td>None</td></tr>
+<tr><td>claude</td><td>stub</td><td>None</td></tr>
+<tr><td>copilot</td><td>documented</td><td>3</td></tr>
+<tr><td>cursor</td><td>stub</td><td>None</td></tr>
+<tr><td>kilo</td><td>documented</td><td>3</td></tr>
+<tr><td>arena</td><td>отсутствует</td><td>—</td></tr>
+</table>
+
+<h2>Чистая копия (install → connect → create)</h2>
+<table>
+<tr><th>Шаг</th><th>rc</th><th>Результат</th></tr>
+<tr><td>1-status-before</td><td>0</td><td>absent</td></tr>
+<tr><td>2-install</td><td>0</td><td>None записей: </td></tr>
+<tr><td>3-status-after-install</td><td>0</td><td>valid</td></tr>
+<tr><td>4-connect</td><td>0</td><td>None записей: </td></tr>
+<tr><td>5a-create-contract</td><td>0</td><td>None записей: </td></tr>
+<tr><td>5b-create-rule</td><td>0</td><td>None записей: </td></tr>
+<tr><td>6-list</td><td>0</td><td>2 записей: P-2, P-1</td></tr>
+<tr><td>7-adapter-arena</td><td>2</td><td>adapter_unknown</td></tr>
+<tr><td>8-status-final</td><td>0</td><td>valid</td></tr>
+</table>
+<p class="meta">Digest точек замера: <code>4a40a6ee099fe6e398b09480831a8c44552e987b96147b012cad80b400d0ede8</code> — два прогона совпали.</p>
+
+<h2>Проверки приёмки</h2>
+<table>
+<tr><th>Проверка</th><th>Статус</th><th>Основание</th><th>Деталь</th></tr>
+<tr><td>strategy_file</td><td class="ok">pass</td><td>research/STRATEGY.md: заголовок версии</td><td>—</td></tr><tr><td>sync_journal</td><td class="ok">pass</td><td>research/strategy/SYNC-LOG.md: строки журнала</td><td>6</td></tr><tr><td>report_basis</td><td class="ok">pass</td><td>research/101/REPORT.md: разделы basis и not run</td><td>—</td></tr><tr><td>baseline_release</td><td class="ok">pass</td><td>BASELINE.json: release</td><td>0.1.36</td></tr><tr><td>baseline_files_match_zip</td><td class="ok">pass</td><td>BASELINE.json: tree.files == zip.members</td><td>220</td></tr><tr><td>baseline_deterministic</td><td class="ok">pass</td><td>два прогона inventory.py</td><td>04b11366dbb0676d</td></tr><tr><td>six_surfaces_absent</td><td class="ok">pass</td><td>BASELINE.json: surfaces[*].present</td><td>[]</td></tr><tr><td>adapters_baseline</td><td class="ok">pass</td><td>BASELINE.json: adapters</td><td>{&#x27;absent&#x27;: [&#x27;arena&#x27;], &#x27;stub&#x27;: [&#x27;antigravity&#x27;, &#x27;claude&#x27;, &#x27;cursor&#x27;]}</td></tr><tr><td>cleanroom_install</td><td class="ok">pass</td><td>CLEANROOM.json: шаг 2</td><td>{&#x27;error&#x27;: None, &#x27;rc&#x27;: 0, &#x27;step&#x27;: &#x27;2-install&#x27;}</td></tr><tr><td>cleanroom_connect</td><td class="ok">pass</td><td>CLEANROOM.json: шаг 4</td><td>{&#x27;error&#x27;: None, &#x27;rc&#x27;: 0, &#x27;step&#x27;: &#x27;4-connect&#x27;}</td></tr><tr><td>cleanroom_create</td><td class="ok">pass</td><td>CLEANROOM.json: шаги 5a, 5b</td><td>—</td></tr><tr><td>cleanroom_list</td><td class="ok">pass</td><td>CLEANROOM.json: шаг 6</td><td>{&#x27;active&#x27;: 1, &#x27;contracts&#x27;: 1, &#x27;count&#x27;: 2, &#x27;ids&#x27;: [&#x27;P-2&#x27;, &#x27;P-1&#x27;], &#x27;rc&#x27;: 0, &#x27;step&#x27;: &#x27;6-list&#x27;}</td></tr><tr><td>cleanroom_arena_refused</td><td class="ok">pass</td><td>CLEANROOM.json: шаг 7</td><td>{&#x27;error&#x27;: &#x27;adapter_unknown&#x27;, &#x27;rc&#x27;: 2, &#x27;step&#x27;: &#x27;7-adapter-arena&#x27;}</td></tr><tr><td>cleanroom_deterministic</td><td class="ok">pass</td><td>два прогона cleanroom.py</td><td>4a40a6ee099fe6e398b09480831a8c44552e987b96147b012cad80b400d0ede8</td></tr><tr><td>page_exists</td><td class="ok">pass</td><td>файл страницы итерации</td><td>—</td></tr><tr><td>seal_recorded</td><td class="ok">pass</td><td>SEAL.json</td><td>{&#x27;bytes&#x27;: 27872, &#x27;sha256&#x27;: &#x27;06d5f54e272895febd5cad9ffbf2fd67123088fa9c5c2020954d5fbd3f84d3c9&#x27;}</td></tr>
+</table>
+
+<h2>Печать</h2>
+<table>
+<tr><th>Файл</th><th>Членов</th><th>Байт</th><th>sha256</th></tr>
+<tr><td>AgentContractKit-Iteration-101.zip</td><td>9</td>
+<td>27872</td><td><code>06d5f54e272895febd5cad9ffbf2fd67123088fa9c5c2020954d5fbd3f84d3c9</code></td></tr>
+</table>
+<p class="meta">AccEPTANCE.json, SEAL.json и эта страница в печать не входят: печать не может ссылаться сама на себя.</p>
+
+<h2>Находки</h2>
+<ol>
+<li><b>F1.</b> Запись вида <code>rule</code> обязана принадлежать существующему <code>contract</code>
+(код <code>parent</code>, contract.py:643). Минимальный <code>create</code> — два шага.</li>
+<li><b>F2.</b> Имя в исходнике не доказывает существование механизма: <code>guard_writes</code> — не CI-привратник.</li>
+<li><b>F3.</b> Импорт <code>contract.py</code> создаёт <code>__pycache__</code> внутри измеряемого дерева и меняет digest.
+Снимок — до импорта, служебные каталоги исключаются.</li>
+<li><b>F4.</b> <code>list</code> возвращает <code>active</code>/<code>contracts</code>, ключа <code>entries</code> нет.</li>
+<li><b>F5.</b> В 0.1.36 26 команд и 15 операций (было записано 20/13 по памяти) — журнал сверок №1.</li>
+<li><b>F6.</b> <code>health</code> и <code>entry_mode</code> — разные поля: <code>valid</code> при <code>entry_mode: absent</code>.</li>
+</ol>
+
+<h2>Что не выполнялось</h2>
+<ul>
+<li><b>поведение моделей в Arena / Kilo / Copilot</b> — отдельные сессии и N повторов — И-125</li><li><b>чтение AGENTS.md в Arena</b> — публичной спецификации нет — И-124/И-125</li><li><b>локальный запуск в VS Code 1.146 (Windows 11)</b> — среды нет в песочнице — И-134</li><li><b>полный набор тестов выпуска kit/tests</b> — не входит в тест итерации; переносится в И-102</li>
+</ul>
+
+<h2>Сверка стратегии</h2>
+<p>Стратегия синхронизирована до <b>v1.1</b>: пять записей в журнале сверок
+(<code>research/strategy/SYNC-LOG.md</code>), включая инвариант A4 и принцип P13.</p>
+
+<p class="meta">Следующая итерация: И-102 — харнесс прогона (П3–П8 одной командой).</p>
+</body>
+</html>
