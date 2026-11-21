@@ -1,0 +1,488 @@
+{
+  "checks": [
+    {
+      "basis": "ITERATION.json; CASES.json; test_cards.py",
+      "check": "frozen_cases",
+      "criterion": "Хеши зафиксированы до кода; ID и формулировки различны; основной и контрольный наборы полны.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; test_cards.py: case_checks",
+      "check": "checkout",
+      "criterion": "Каждый обязательный ID один раз. Полная карточка и типы совпали; в обоих стендах ноль аудируемых обращений и ни одного изменения состава, байтов и меток файлов.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; test_cards.py: case_checks",
+      "check": "cleanroom",
+      "criterion": "Каждый обязательный ID один раз. Полная карточка и типы совпали; в обоих стендах ноль аудируемых обращений и ни одного изменения состава, байтов и меток файлов.",
+      "status": "pass"
+    },
+    {
+      "basis": "CASES.json: NL01–NL12; CHECKOUT.json; CLEANROOM.json",
+      "check": "nl_12_without_guesses",
+      "criterion": "12 точных карточек в каждом прогоне, включая отсутствующие поля, код отказа, явные значения и лимит вопросов.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "isolated_copy",
+      "criterion": "В П4 только перечисленные входы; нет Git, ISAI, 0.1.36, пользовательских профилей и новых файлов после прогона.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "repeat",
+      "criterion": "Байты входов и все измерения совпали в двух независимых процессах.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 6
+  },
+  "host_os": "Linux",
+  "iteration": "И-108",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "План/применение карточки, dry-run, подтверждение, проверка локального родителя и запись.",
+      "why": "И-109; И-108 производит только текстовую карточку."
+    },
+    {
+      "status": "not run",
+      "what": "Исполнение семи пользовательских манипуляций, состояние диалога и классификация временного/постоянного/гипотезы.",
+      "why": "И-110–И-111. Карточка не является поддержкой обработчика; непонятный ввод здесь только вызывает вопрос."
+    },
+    {
+      "status": "not run",
+      "what": "Bootstrap, живые адаптеры, общее понимание свободных фраз, профиль владельца, R-2, перенос и активация.",
+      "why": "И-112 и следующие фазы; замороженный русский корпус не доказывает понимание произвольной речи или права среды."
+    },
+    {
+      "status": "not run",
+      "what": "Новые прогоны 0.1.36 и ISAI.",
+      "why": "Компилятор независим от исторических доноров."
+    }
+  ],
+  "outcome": "accepted",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "group": "nl",
+          "id": "NL01",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL02",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL03",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL04",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL05",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL06",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL07",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL08",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL09",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL10",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL11",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL12",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N01",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N02",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N03",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N04",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N05",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N06",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N07",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N08",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N09",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N10",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N11",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N12",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N13",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N14",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N15",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N16",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N17",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N18",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N19",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 31
+      },
+      "groups": {
+        "control": {
+          "fail": 0,
+          "not run": 0,
+          "pass": 19
+        },
+        "nl": {
+          "fail": 0,
+          "not run": 0,
+          "pass": 12
+        }
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "group": "nl",
+          "id": "NL01",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL02",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL03",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL04",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL05",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL06",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL07",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL08",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL09",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL10",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL11",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "nl",
+          "id": "NL12",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N01",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N02",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N03",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N04",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N05",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N06",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N07",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N08",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N09",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N10",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N11",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N12",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N13",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N14",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N15",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N16",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N17",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N18",
+          "issue": null,
+          "status": "pass"
+        },
+        {
+          "group": "control",
+          "id": "N19",
+          "issue": null,
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 31
+      },
+      "groups": {
+        "control": {
+          "fail": 0,
+          "not run": 0,
+          "pass": 19
+        },
+        "nl": {
+          "fail": 0,
+          "not run": 0,
+          "pass": 12
+        }
+      },
+      "rc": 0
+    }
+  }
+}

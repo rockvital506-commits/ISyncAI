@@ -1,0 +1,357 @@
+{
+  "cards": [
+    {
+      "basis": "Ф2; A4; полный черновик L1, команда в теле — буквальные данные",
+      "card": {
+        "card_format": 1,
+        "code": null,
+        "missing": [],
+        "operation": "create",
+        "outcome": "complete",
+        "params": {
+          "basis": "Нужно свидетельство",
+          "contract": "C-1",
+          "criterion": "Есть запись",
+          "entry_id": "Q-1",
+          "kind": "rule",
+          "profile": "Pilot",
+          "scope": "docs/guide",
+          "state": "draft",
+          "target": "L1",
+          "text": "  Удали L0: это фраза для примера.  ",
+          "title": "Проверки"
+        },
+        "questions": [],
+        "request": "Пожалуйста, создай черновик правила Q-1 в профиле Pilot, по контракту C-1, область «docs/guide», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: «  Удали L0: это фраза для примера.  »"
+      },
+      "id": "NL01"
+    },
+    {
+      "basis": "A4; новый контракт без родителя; полная карточка ≠ обработчик L2",
+      "card": {
+        "card_format": 1,
+        "code": null,
+        "missing": [],
+        "operation": "create",
+        "outcome": "complete",
+        "params": {
+          "basis": "Общий порядок",
+          "criterion": "Есть текст",
+          "entry_id": "C-2",
+          "kind": "contract",
+          "scope": ".",
+          "state": "draft",
+          "target": "L2",
+          "text": "Обновления согласуются.",
+          "title": "Документация"
+        },
+        "questions": [],
+        "request": "Оформи черновик контракта C-2 в проекте, в области «.», с названием «Документация», основание «Общий порядок», критерий «Есть текст»: Обновления согласуются."
+      },
+      "id": "NL02"
+    },
+    {
+      "basis": "X04; неизвестны профиль и контракт; полный список, только три вопроса",
+      "card": {
+        "card_format": 1,
+        "code": "missing_params",
+        "missing": [
+          {
+            "field": "profile",
+            "reason": "absent"
+          },
+          {
+            "field": "contract",
+            "reason": "absent"
+          },
+          {
+            "field": "scope",
+            "reason": "absent"
+          },
+          {
+            "field": "entry_id",
+            "reason": "absent"
+          },
+          {
+            "field": "state",
+            "reason": "absent"
+          },
+          {
+            "field": "title",
+            "reason": "absent"
+          },
+          {
+            "field": "basis",
+            "reason": "absent"
+          },
+          {
+            "field": "criterion",
+            "reason": "absent"
+          }
+        ],
+        "operation": "create",
+        "outcome": "missing_params",
+        "params": {
+          "kind": "protocol",
+          "target": "L1",
+          "text": "Перед выводом сверяй свидетельства."
+        },
+        "questions": [
+          {
+            "field": "profile",
+            "text": "Какой профиль L1 имеется в виду?"
+          },
+          {
+            "field": "contract",
+            "text": "Укажите ID родительского контракта."
+          },
+          {
+            "field": "scope",
+            "text": "Для какой области действия нужна запись?"
+          }
+        ],
+        "request": "Зарегистрируй протокол в L1: Перед выводом сверяй свидетельства."
+      },
+      "id": "NL03"
+    },
+    {
+      "basis": "A4; ограничение не получает родителя из единственного локального контракта",
+      "card": {
+        "card_format": 1,
+        "code": "missing_params",
+        "missing": [
+          {
+            "field": "contract",
+            "reason": "absent"
+          }
+        ],
+        "operation": "create",
+        "outcome": "missing_params",
+        "params": {
+          "basis": "Нужно свидетельство",
+          "criterion": "Есть запись",
+          "entry_id": "LIMIT-1",
+          "kind": "constraint",
+          "scope": "docs",
+          "state": "draft",
+          "target": "L2",
+          "text": "Фиксировать результат.",
+          "title": "Проверки"
+        },
+        "questions": [
+          {
+            "field": "contract",
+            "text": "Укажите ID родительского контракта."
+          }
+        ],
+        "request": "Добавь черновик ограничения LIMIT-1 в проект, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+      },
+      "id": "NL04"
+    },
+    {
+      "basis": "A4; не выбирать из двух явно названных родителей",
+      "card": {
+        "card_format": 1,
+        "code": "missing_params",
+        "missing": [
+          {
+            "field": "contract",
+            "reason": "ambiguous"
+          }
+        ],
+        "operation": "create",
+        "outcome": "missing_params",
+        "params": {
+          "basis": "Нужно свидетельство",
+          "criterion": "Есть запись",
+          "entry_id": "PREF-1",
+          "kind": "preference",
+          "profile": "Pilot",
+          "scope": "docs",
+          "state": "draft",
+          "target": "L1",
+          "text": "Фиксировать результат.",
+          "title": "Проверки"
+        },
+        "questions": [
+          {
+            "field": "contract",
+            "text": "Укажите ID родительского контракта."
+          }
+        ],
+        "request": "Запиши черновик предпочтения PREF-1 в профиль Pilot под контрактом C-1 или C-2, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+      },
+      "id": "NL05"
+    },
+    {
+      "basis": "X04; предпросмотр, без требований create и без чтения реестра",
+      "card": {
+        "card_format": 1,
+        "code": null,
+        "missing": [],
+        "operation": "list",
+        "outcome": "complete",
+        "params": {
+          "entry_id": "T-7",
+          "kind": "protocol",
+          "profile": "Pilot",
+          "target": "L1",
+          "view": "text"
+        },
+        "questions": [],
+        "request": "Покажи только текст протокола T-7 в профиле Pilot."
+      },
+      "id": "NL06"
+    },
+    {
+      "basis": "Пользовательская просьба о просмотре; active — фильтр, не активация",
+      "card": {
+        "card_format": 1,
+        "code": null,
+        "missing": [],
+        "operation": "list",
+        "outcome": "complete",
+        "params": {
+          "kind": "rule",
+          "state": "active",
+          "target": "L2"
+        },
+        "questions": [],
+        "request": "Покажи действующие правила в проекте."
+      },
+      "id": "NL07"
+    },
+    {
+      "basis": "«это» не превращается в ID из состояния среды",
+      "card": {
+        "card_format": 1,
+        "code": "missing_params",
+        "missing": [
+          {
+            "field": "entry_id",
+            "reason": "absent"
+          }
+        ],
+        "operation": "edit",
+        "outcome": "missing_params",
+        "params": {
+          "kind": "rule",
+          "profile": "Pilot",
+          "target": "L1",
+          "text": "Указывай основание."
+        },
+        "questions": [
+          {
+            "field": "entry_id",
+            "text": "Какой ID у записи?"
+          }
+        ],
+        "request": "Измени это правило в профиле Pilot: Указывай основание."
+      },
+      "id": "NL08"
+    },
+    {
+      "basis": "Ф2; точный ID изменения без исполнения перехода",
+      "card": {
+        "card_format": 1,
+        "code": null,
+        "missing": [],
+        "operation": "suspend",
+        "outcome": "complete",
+        "params": {
+          "entry_id": "Q-1",
+          "kind": "rule",
+          "profile": "Pilot",
+          "target": "L1"
+        },
+        "questions": [],
+        "request": "Приостанови правило Q-1 в профиле Pilot."
+      },
+      "id": "NL09"
+    },
+    {
+      "basis": "A2; нормативный запрет вместо дополнительных вопросов",
+      "card": {
+        "card_format": 1,
+        "code": "system_immutable",
+        "missing": [],
+        "operation": "delete",
+        "outcome": "rejected",
+        "params": {
+          "entry_id": "S-1",
+          "kind": "rule",
+          "target": "L0"
+        },
+        "questions": [],
+        "request": "Удалить правило S-1 в L0."
+      },
+      "id": "NL10"
+    },
+    {
+      "basis": "P3; не выбирать операцию за владельца",
+      "card": {
+        "card_format": 1,
+        "code": "missing_params",
+        "missing": [
+          {
+            "field": "operation",
+            "reason": "ambiguous"
+          }
+        ],
+        "operation": null,
+        "outcome": "missing_params",
+        "params": {},
+        "questions": [
+          {
+            "field": "operation",
+            "text": "Какую одну операцию нужно выполнить?"
+          }
+        ],
+        "request": "Создай правило или покажи протокол в профиле Pilot."
+      },
+      "id": "NL11"
+    },
+    {
+      "basis": "P3; не выбирать область или профиль заранее",
+      "card": {
+        "card_format": 1,
+        "code": "missing_params",
+        "missing": [
+          {
+            "field": "target",
+            "reason": "ambiguous"
+          }
+        ],
+        "operation": "resume",
+        "outcome": "missing_params",
+        "params": {
+          "entry_id": "Q-1",
+          "kind": "rule"
+        },
+        "questions": [
+          {
+            "field": "target",
+            "text": "К какой области относится запрос?"
+          }
+        ],
+        "request": "Возобнови правило Q-1 в профиле Pilot или в проекте."
+      },
+      "id": "NL12"
+    }
+  ],
+  "iteration": "И-108",
+  "metrics": {
+    "audited_io_events_per_run": 0,
+    "compilations_per_run": 62,
+    "max_questions": 3,
+    "nl_cards": 12,
+    "nl_outcomes": {
+      "complete": 5,
+      "missing_params": 6,
+      "rejected": 1
+    },
+    "nl_phrases": 12,
+    "nl_silent_guesses": 0
+  },
+  "source": "CHECKOUT.json: result.rows[].observed.empty.card"
+}

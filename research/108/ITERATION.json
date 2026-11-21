@@ -1,0 +1,69 @@
+{
+  "id": "108",
+  "title": "Из фразы — в карточку без догадок",
+  "date": "2026-11-18",
+  "branch": "arena/4e000a5e-isyncai",
+  "phase": "Ф2. Промпт-компилятор и диалог",
+  "priority": "P0",
+  "baseline": "39c83e3 · v1.9",
+  "target_inputs": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/operation_card.py",
+    "kit/base/registry_policy.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/108/CASES.json",
+    "research/108/test_cards.py"
+  ],
+  "seal_members": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/OPERATION-MATRIX.md",
+    "kit/base/SCHEMA-V2.md",
+    "kit/base/operation_card.py",
+    "kit/base/registry_policy.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/107/ACCEPTANCE.json",
+    "research/108/ACCEPTANCE.json",
+    "research/108/CARDS.json",
+    "research/108/CASES.json",
+    "research/108/CHECKOUT.json",
+    "research/108/CLEANROOM.json",
+    "research/108/DESIGN.md",
+    "research/108/ITERATION.json",
+    "research/108/REPORT.md",
+    "research/108/render108.py",
+    "research/108/run.py",
+    "research/108/test_cards.py",
+    "research/STRATEGY.md",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py"
+  ],
+  "case_counts": {
+    "nl": 12,
+    "control": 19
+  },
+  "casebook_sha256": "4d79d76c1cdb61063728fdf8af26eeb81f87e46cda63f67e827181f2d91d8234",
+  "test_sha256": "95a4f632340eff74d1899b3c5ff6388bbc31da9861652ab5f382d3fbd108a0c0",
+  "not_run": [
+    {
+      "what": "План/применение карточки, dry-run, подтверждение, проверка локального родителя и запись.",
+      "why": "И-109; И-108 производит только текстовую карточку."
+    },
+    {
+      "what": "Исполнение семи пользовательских манипуляций, состояние диалога и классификация временного/постоянного/гипотезы.",
+      "why": "И-110–И-111. Карточка не является поддержкой обработчика; непонятный ввод здесь только вызывает вопрос."
+    },
+    {
+      "what": "Bootstrap, живые адаптеры, общее понимание свободных фраз, профиль владельца, R-2, перенос и активация.",
+      "why": "И-112 и следующие фазы; замороженный русский корпус не доказывает понимание произвольной речи или права среды."
+    },
+    {
+      "what": "Новые прогоны 0.1.36 и ISAI.",
+      "why": "Компилятор независим от исторических доноров."
+    }
+  ],
+  "next": "И-109 — план, dry-run, дифф и отдельное подтверждение именно этого плана; И-109 ещё не начата."
+}

@@ -1,0 +1,2212 @@
+{
+  "copy_unchanged": true,
+  "files_after": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/operation_card.py",
+    "kit/base/registry_policy.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/108/CASES.json",
+    "research/108/test_cards.py"
+  ],
+  "files_before": [
+    "kit/base/OPERATION-CARD.md",
+    "kit/base/operation_card.py",
+    "kit/base/registry_policy.py",
+    "kit/base/schema_v2.py",
+    "research/105/test_layout.py",
+    "research/108/CASES.json",
+    "research/108/test_cards.py"
+  ],
+  "inputs_sha256": {
+    "kit/base/OPERATION-CARD.md": "696753b7d701605626836e97761993f050b62a90701d3400d004f2d68d557437",
+    "kit/base/operation_card.py": "3eb1f1226ac8364c11edc688fd5607279d5e5d95d711e7f7ae5f837be979d9b7",
+    "kit/base/registry_policy.py": "7e1f3f417799bb2015a72873570aa50497fe5f0553a1f0c480823f21808a7f4f",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/105/test_layout.py": "c8b62743faa20f01321e97f615d1cf0e55e62a2a5569f8f4ad26e26a6331b748",
+    "research/108/CASES.json": "4d79d76c1cdb61063728fdf8af26eeb81f87e46cda63f67e827181f2d91d8234",
+    "research/108/test_cards.py": "95a4f632340eff74d1899b3c5ff6388bbc31da9861652ab5f382d3fbd108a0c0"
+  },
+  "rc": 0,
+  "result": {
+    "os": "Linux",
+    "rows": [
+      {
+        "id": "NL01",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "create",
+              "outcome": "complete",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "contract": "C-1",
+                "criterion": "Есть запись",
+                "entry_id": "Q-1",
+                "kind": "rule",
+                "profile": "Pilot",
+                "scope": "docs/guide",
+                "state": "draft",
+                "target": "L1",
+                "text": "  Удали L0: это фраза для примера.  ",
+                "title": "Проверки"
+              },
+              "questions": [],
+              "request": "Пожалуйста, создай черновик правила Q-1 в профиле Pilot, по контракту C-1, область «docs/guide», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: «  Удали L0: это фраза для примера.  »"
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "create",
+              "outcome": "complete",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "contract": "C-1",
+                "criterion": "Есть запись",
+                "entry_id": "Q-1",
+                "kind": "rule",
+                "profile": "Pilot",
+                "scope": "docs/guide",
+                "state": "draft",
+                "target": "L1",
+                "text": "  Удали L0: это фраза для примера.  ",
+                "title": "Проверки"
+              },
+              "questions": [],
+              "request": "Пожалуйста, создай черновик правила Q-1 в профиле Pilot, по контракту C-1, область «docs/guide», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: «  Удали L0: это фраза для примера.  »"
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL02",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "create",
+              "outcome": "complete",
+              "params": {
+                "basis": "Общий порядок",
+                "criterion": "Есть текст",
+                "entry_id": "C-2",
+                "kind": "contract",
+                "scope": ".",
+                "state": "draft",
+                "target": "L2",
+                "text": "Обновления согласуются.",
+                "title": "Документация"
+              },
+              "questions": [],
+              "request": "Оформи черновик контракта C-2 в проекте, в области «.», с названием «Документация», основание «Общий порядок», критерий «Есть текст»: Обновления согласуются."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "create",
+              "outcome": "complete",
+              "params": {
+                "basis": "Общий порядок",
+                "criterion": "Есть текст",
+                "entry_id": "C-2",
+                "kind": "contract",
+                "scope": ".",
+                "state": "draft",
+                "target": "L2",
+                "text": "Обновления согласуются.",
+                "title": "Документация"
+              },
+              "questions": [],
+              "request": "Оформи черновик контракта C-2 в проекте, в области «.», с названием «Документация», основание «Общий порядок», критерий «Есть текст»: Обновления согласуются."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL03",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "profile",
+                  "reason": "absent"
+                },
+                {
+                  "field": "contract",
+                  "reason": "absent"
+                },
+                {
+                  "field": "scope",
+                  "reason": "absent"
+                },
+                {
+                  "field": "entry_id",
+                  "reason": "absent"
+                },
+                {
+                  "field": "state",
+                  "reason": "absent"
+                },
+                {
+                  "field": "title",
+                  "reason": "absent"
+                },
+                {
+                  "field": "basis",
+                  "reason": "absent"
+                },
+                {
+                  "field": "criterion",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "kind": "protocol",
+                "target": "L1",
+                "text": "Перед выводом сверяй свидетельства."
+              },
+              "questions": [
+                {
+                  "field": "profile",
+                  "text": "Какой профиль L1 имеется в виду?"
+                },
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                },
+                {
+                  "field": "scope",
+                  "text": "Для какой области действия нужна запись?"
+                }
+              ],
+              "request": "Зарегистрируй протокол в L1: Перед выводом сверяй свидетельства."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "profile",
+                  "reason": "absent"
+                },
+                {
+                  "field": "contract",
+                  "reason": "absent"
+                },
+                {
+                  "field": "scope",
+                  "reason": "absent"
+                },
+                {
+                  "field": "entry_id",
+                  "reason": "absent"
+                },
+                {
+                  "field": "state",
+                  "reason": "absent"
+                },
+                {
+                  "field": "title",
+                  "reason": "absent"
+                },
+                {
+                  "field": "basis",
+                  "reason": "absent"
+                },
+                {
+                  "field": "criterion",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "kind": "protocol",
+                "target": "L1",
+                "text": "Перед выводом сверяй свидетельства."
+              },
+              "questions": [
+                {
+                  "field": "profile",
+                  "text": "Какой профиль L1 имеется в виду?"
+                },
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                },
+                {
+                  "field": "scope",
+                  "text": "Для какой области действия нужна запись?"
+                }
+              ],
+              "request": "Зарегистрируй протокол в L1: Перед выводом сверяй свидетельства."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL04",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "LIMIT-1",
+                "kind": "constraint",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L2",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Добавь черновик ограничения LIMIT-1 в проект, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "LIMIT-1",
+                "kind": "constraint",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L2",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Добавь черновик ограничения LIMIT-1 в проект, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL05",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "ambiguous"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "PREF-1",
+                "kind": "preference",
+                "profile": "Pilot",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L1",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Запиши черновик предпочтения PREF-1 в профиль Pilot под контрактом C-1 или C-2, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "ambiguous"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "PREF-1",
+                "kind": "preference",
+                "profile": "Pilot",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L1",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Запиши черновик предпочтения PREF-1 в профиль Pilot под контрактом C-1 или C-2, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL06",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "list",
+              "outcome": "complete",
+              "params": {
+                "entry_id": "T-7",
+                "kind": "protocol",
+                "profile": "Pilot",
+                "target": "L1",
+                "view": "text"
+              },
+              "questions": [],
+              "request": "Покажи только текст протокола T-7 в профиле Pilot."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "list",
+              "outcome": "complete",
+              "params": {
+                "entry_id": "T-7",
+                "kind": "protocol",
+                "profile": "Pilot",
+                "target": "L1",
+                "view": "text"
+              },
+              "questions": [],
+              "request": "Покажи только текст протокола T-7 в профиле Pilot."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL07",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "list",
+              "outcome": "complete",
+              "params": {
+                "kind": "rule",
+                "state": "active",
+                "target": "L2"
+              },
+              "questions": [],
+              "request": "Покажи действующие правила в проекте."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "list",
+              "outcome": "complete",
+              "params": {
+                "kind": "rule",
+                "state": "active",
+                "target": "L2"
+              },
+              "questions": [],
+              "request": "Покажи действующие правила в проекте."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL08",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "entry_id",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "edit",
+              "outcome": "missing_params",
+              "params": {
+                "kind": "rule",
+                "profile": "Pilot",
+                "target": "L1",
+                "text": "Указывай основание."
+              },
+              "questions": [
+                {
+                  "field": "entry_id",
+                  "text": "Какой ID у записи?"
+                }
+              ],
+              "request": "Измени это правило в профиле Pilot: Указывай основание."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "entry_id",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "edit",
+              "outcome": "missing_params",
+              "params": {
+                "kind": "rule",
+                "profile": "Pilot",
+                "target": "L1",
+                "text": "Указывай основание."
+              },
+              "questions": [
+                {
+                  "field": "entry_id",
+                  "text": "Какой ID у записи?"
+                }
+              ],
+              "request": "Измени это правило в профиле Pilot: Указывай основание."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL09",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "suspend",
+              "outcome": "complete",
+              "params": {
+                "entry_id": "Q-1",
+                "kind": "rule",
+                "profile": "Pilot",
+                "target": "L1"
+              },
+              "questions": [],
+              "request": "Приостанови правило Q-1 в профиле Pilot."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "suspend",
+              "outcome": "complete",
+              "params": {
+                "entry_id": "Q-1",
+                "kind": "rule",
+                "profile": "Pilot",
+                "target": "L1"
+              },
+              "questions": [],
+              "request": "Приостанови правило Q-1 в профиле Pilot."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL10",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "system_immutable",
+              "missing": [],
+              "operation": "delete",
+              "outcome": "rejected",
+              "params": {
+                "entry_id": "S-1",
+                "kind": "rule",
+                "target": "L0"
+              },
+              "questions": [],
+              "request": "Удалить правило S-1 в L0."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "system_immutable",
+              "missing": [],
+              "operation": "delete",
+              "outcome": "rejected",
+              "params": {
+                "entry_id": "S-1",
+                "kind": "rule",
+                "target": "L0"
+              },
+              "questions": [],
+              "request": "Удалить правило S-1 в L0."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL11",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "ambiguous"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "Создай правило или покажи протокол в профиле Pilot."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "ambiguous"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "Создай правило или покажи протокол в профиле Pilot."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "NL12",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "target",
+                  "reason": "ambiguous"
+                }
+              ],
+              "operation": "resume",
+              "outcome": "missing_params",
+              "params": {
+                "entry_id": "Q-1",
+                "kind": "rule"
+              },
+              "questions": [
+                {
+                  "field": "target",
+                  "text": "К какой области относится запрос?"
+                }
+              ],
+              "request": "Возобнови правило Q-1 в профиле Pilot или в проекте."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "target",
+                  "reason": "ambiguous"
+                }
+              ],
+              "operation": "resume",
+              "outcome": "missing_params",
+              "params": {
+                "entry_id": "Q-1",
+                "kind": "rule"
+              },
+              "questions": [
+                {
+                  "field": "target",
+                  "text": "К какой области относится запрос?"
+                }
+              ],
+              "request": "Возобнови правило Q-1 в профиле Pilot или в проекте."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N01",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "revoke",
+              "outcome": "complete",
+              "params": {
+                "entry_id": "OLD-1",
+                "kind": "rule",
+                "target": "L2"
+              },
+              "questions": [],
+              "request": "Отмени правило OLD-1 в проекте."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "revoke",
+              "outcome": "complete",
+              "params": {
+                "entry_id": "OLD-1",
+                "kind": "rule",
+                "target": "L2"
+              },
+              "questions": [],
+              "request": "Отмени правило OLD-1 в проекте."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N02",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "Q-3",
+                "kind": "rule",
+                "profile": "Pilot",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L1",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Добавь черновик правила Q-3 в профиле Pilot, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "Q-3",
+                "kind": "rule",
+                "profile": "Pilot",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L1",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Добавь черновик правила Q-3 в профиле Pilot, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N03",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "target",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "contract": "C-1",
+                "criterion": "Есть запись",
+                "entry_id": "P-4",
+                "kind": "rule",
+                "scope": "docs",
+                "state": "draft",
+                "text": "Слова «в L2» в тексте остаются текстом.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "target",
+                  "text": "К какой области относится запрос?"
+                }
+              ],
+              "request": "Создай черновик правила P-4 по контракту C-1, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Слова «в L2» в тексте остаются текстом."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "target",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "contract": "C-1",
+                "criterion": "Есть запись",
+                "entry_id": "P-4",
+                "kind": "rule",
+                "scope": "docs",
+                "state": "draft",
+                "text": "Слова «в L2» в тексте остаются текстом.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "target",
+                  "text": "К какой области относится запрос?"
+                }
+              ],
+              "request": "Создай черновик правила P-4 по контракту C-1, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Слова «в L2» в тексте остаются текстом."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N04",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "state",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "contract": "C-1",
+                "criterion": "Есть запись",
+                "entry_id": "Q-4",
+                "kind": "rule",
+                "persistence": "permanent",
+                "profile": "Pilot",
+                "scope": "docs",
+                "target": "L1",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "state",
+                  "text": "Какое состояние вы хотите указать?"
+                }
+              ],
+              "request": "Добавь постоянное правило Q-4 в профиле Pilot по контракту C-1, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "state",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "contract": "C-1",
+                "criterion": "Есть запись",
+                "entry_id": "Q-4",
+                "kind": "rule",
+                "persistence": "permanent",
+                "profile": "Pilot",
+                "scope": "docs",
+                "target": "L1",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "state",
+                  "text": "Какое состояние вы хотите указать?"
+                }
+              ],
+              "request": "Добавь постоянное правило Q-4 в профиле Pilot по контракту C-1, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N05",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "parent",
+              "missing": [],
+              "operation": "create",
+              "outcome": "rejected",
+              "params": {
+                "contract": "C-1",
+                "entry_id": "C-2",
+                "kind": "contract",
+                "state": "draft",
+                "target": "L2"
+              },
+              "questions": [],
+              "request": "Создай черновик контракта C-2 в проекте для контракта C-1."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "parent",
+              "missing": [],
+              "operation": "create",
+              "outcome": "rejected",
+              "params": {
+                "contract": "C-1",
+                "entry_id": "C-2",
+                "kind": "contract",
+                "state": "draft",
+                "target": "L2"
+              },
+              "questions": [],
+              "request": "Создай черновик контракта C-2 в проекте для контракта C-1."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N06",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "invalid"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "Q-5",
+                "kind": "protocol",
+                "profile": "Pilot",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L1",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Создай черновик протокола Q-5 в профиле Pilot для контракта «../C-1», область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "invalid"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "Q-5",
+                "kind": "protocol",
+                "profile": "Pilot",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L1",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Создай черновик протокола Q-5 в профиле Pilot для контракта «../C-1», область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N07",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "profile",
+                  "reason": "ambiguous"
+                }
+              ],
+              "operation": "list",
+              "outcome": "missing_params",
+              "params": {
+                "kind": "rule",
+                "state": "active",
+                "target": "L1"
+              },
+              "questions": [
+                {
+                  "field": "profile",
+                  "text": "Какой профиль L1 имеется в виду?"
+                }
+              ],
+              "request": "Покажи действующие правила в профиле Alpha или Beta."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "profile",
+                  "reason": "ambiguous"
+                }
+              ],
+              "operation": "list",
+              "outcome": "missing_params",
+              "params": {
+                "kind": "rule",
+                "state": "active",
+                "target": "L1"
+              },
+              "questions": [
+                {
+                  "field": "profile",
+                  "text": "Какой профиль L1 имеется в виду?"
+                }
+              ],
+              "request": "Покажи действующие правила в профиле Alpha или Beta."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N08",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "profile",
+                  "reason": "invalid"
+                }
+              ],
+              "operation": "list",
+              "outcome": "missing_params",
+              "params": {
+                "entry_id": "Q-8",
+                "kind": "rule",
+                "target": "L1",
+                "view": "text"
+              },
+              "questions": [
+                {
+                  "field": "profile",
+                  "text": "Какой профиль L1 имеется в виду?"
+                }
+              ],
+              "request": "Покажи текст правила Q-8 в профиле «../pilot»."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "profile",
+                  "reason": "invalid"
+                }
+              ],
+              "operation": "list",
+              "outcome": "missing_params",
+              "params": {
+                "entry_id": "Q-8",
+                "kind": "rule",
+                "target": "L1",
+                "view": "text"
+              },
+              "questions": [
+                {
+                  "field": "profile",
+                  "text": "Какой профиль L1 имеется в виду?"
+                }
+              ],
+              "request": "Покажи текст правила Q-8 в профиле «../pilot»."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N09",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "unrecognized"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "Не удаляй правило Q-1 в проекте."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "unrecognized"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "Не удаляй правило Q-1 в проекте."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N10",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "unrecognized"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "«Приостанови правило Q-1 в проекте»"
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "unrecognized"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "«Приостанови правило Q-1 в проекте»"
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N11",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "unrecognized"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "Создай правило Q-1 в проекте, если подтвердит команда."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "unrecognized"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "Создай правило Q-1 в проекте, если подтвердит команда."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N12",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "invalid"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "Создай черновик правила Q-9 в проекте, название «Незакрытое: пример."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "invalid"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "Создай черновик правила Q-9 в проекте, название «Незакрытое: пример."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N13",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "absent"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "   "
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "operation",
+                  "reason": "absent"
+                }
+              ],
+              "operation": null,
+              "outcome": "missing_params",
+              "params": {},
+              "questions": [
+                {
+                  "field": "operation",
+                  "text": "Какую одну операцию нужно выполнить?"
+                }
+              ],
+              "request": "   "
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N14",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "list",
+              "outcome": "complete",
+              "params": {
+                "kind": "rule",
+                "state": "active",
+                "target": "L0"
+              },
+              "questions": [],
+              "request": "Покажи действующие правила в L0."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": null,
+              "missing": [],
+              "operation": "list",
+              "outcome": "complete",
+              "params": {
+                "kind": "rule",
+                "state": "active",
+                "target": "L0"
+              },
+              "questions": [],
+              "request": "Покажи действующие правила в L0."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N15",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "entry_id",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "list",
+              "outcome": "missing_params",
+              "params": {
+                "kind": "rule",
+                "target": "L2",
+                "view": "text"
+              },
+              "questions": [
+                {
+                  "field": "entry_id",
+                  "text": "Какой ID у записи?"
+                }
+              ],
+              "request": "Посмотри текст правила в проекте."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "entry_id",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "list",
+              "outcome": "missing_params",
+              "params": {
+                "kind": "rule",
+                "target": "L2",
+                "view": "text"
+              },
+              "questions": [
+                {
+                  "field": "entry_id",
+                  "text": "Какой ID у записи?"
+                }
+              ],
+              "request": "Посмотри текст правила в проекте."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N16",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "kind",
+                  "reason": "absent"
+                },
+                {
+                  "field": "scope",
+                  "reason": "absent"
+                },
+                {
+                  "field": "entry_id",
+                  "reason": "absent"
+                },
+                {
+                  "field": "state",
+                  "reason": "absent"
+                },
+                {
+                  "field": "title",
+                  "reason": "absent"
+                },
+                {
+                  "field": "basis",
+                  "reason": "absent"
+                },
+                {
+                  "field": "criterion",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "target": "L2",
+                "text": "Нужен отчёт."
+              },
+              "questions": [
+                {
+                  "field": "kind",
+                  "text": "Какого вида новая запись?"
+                },
+                {
+                  "field": "scope",
+                  "text": "Для какой области действия нужна запись?"
+                },
+                {
+                  "field": "entry_id",
+                  "text": "Какой ID у записи?"
+                }
+              ],
+              "request": "Зарегистрируй в проекте: Нужен отчёт."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "kind",
+                  "reason": "absent"
+                },
+                {
+                  "field": "scope",
+                  "reason": "absent"
+                },
+                {
+                  "field": "entry_id",
+                  "reason": "absent"
+                },
+                {
+                  "field": "state",
+                  "reason": "absent"
+                },
+                {
+                  "field": "title",
+                  "reason": "absent"
+                },
+                {
+                  "field": "basis",
+                  "reason": "absent"
+                },
+                {
+                  "field": "criterion",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "target": "L2",
+                "text": "Нужен отчёт."
+              },
+              "questions": [
+                {
+                  "field": "kind",
+                  "text": "Какого вида новая запись?"
+                },
+                {
+                  "field": "scope",
+                  "text": "Для какой области действия нужна запись?"
+                },
+                {
+                  "field": "entry_id",
+                  "text": "Какой ID у записи?"
+                }
+              ],
+              "request": "Зарегистрируй в проекте: Нужен отчёт."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N17",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "system_immutable",
+              "missing": [],
+              "operation": "create",
+              "outcome": "rejected",
+              "params": {
+                "entry_id": "S-1",
+                "kind": "rule",
+                "state": "draft",
+                "target": "L0"
+              },
+              "questions": [],
+              "request": "Создай черновик правила S-1 в L0."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "system_immutable",
+              "missing": [],
+              "operation": "create",
+              "outcome": "rejected",
+              "params": {
+                "entry_id": "S-1",
+                "kind": "rule",
+                "state": "draft",
+                "target": "L0"
+              },
+              "questions": [],
+              "request": "Создай черновик правила S-1 в L0."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N18",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "text",
+                  "reason": "invalid"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "contract": "C-1",
+                "criterion": "Есть запись",
+                "entry_id": "Q-6",
+                "kind": "protocol",
+                "profile": "Pilot",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L1",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "text",
+                  "text": "Какова точная формулировка?"
+                }
+              ],
+              "request": "Добавь черновик протокола Q-6 в профиле Pilot по контракту C-1, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: «   »"
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "text",
+                  "reason": "invalid"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "contract": "C-1",
+                "criterion": "Есть запись",
+                "entry_id": "Q-6",
+                "kind": "protocol",
+                "profile": "Pilot",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L1",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "text",
+                  "text": "Какова точная формулировка?"
+                }
+              ],
+              "request": "Добавь черновик протокола Q-6 в профиле Pilot по контракту C-1, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: «   »"
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      },
+      {
+        "id": "N19",
+        "observed": {
+          "empty": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "PREF-2",
+                "kind": "preference",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L2",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Сделай черновик предпочтения PREF-2 в проекте, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "before": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          },
+          "seeded": {
+            "card": {
+              "card_format": 1,
+              "code": "missing_params",
+              "missing": [
+                {
+                  "field": "contract",
+                  "reason": "absent"
+                }
+              ],
+              "operation": "create",
+              "outcome": "missing_params",
+              "params": {
+                "basis": "Нужно свидетельство",
+                "criterion": "Есть запись",
+                "entry_id": "PREF-2",
+                "kind": "preference",
+                "scope": "docs",
+                "state": "draft",
+                "target": "L2",
+                "text": "Фиксировать результат.",
+                "title": "Проверки"
+              },
+              "questions": [
+                {
+                  "field": "contract",
+                  "text": "Укажите ID родительского контракта."
+                }
+              ],
+              "request": "Сделай черновик предпочтения PREF-2 в проекте, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат."
+            },
+            "digest": {
+              "after": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec",
+              "before": "57e70c8441e8399a7bbe5d8b68ff5a23881c1bbaadc2869df8cb0656bec5f2ec"
+            },
+            "io_events": [],
+            "tree_unchanged": true
+          }
+        }
+      }
+    ]
+  },
+  "sources_unchanged": true
+}

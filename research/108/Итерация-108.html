@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И‑108 · Карточка операции</title><style>
+:root {color-scheme:light;--ink:#223031;--sub:#4e6262;--rule:#d9e5e3;--wash:#eaf5f2;--accent:#17665a}
+* {box-sizing:border-box} body {margin:0;color:var(--ink);background:#fbfdfc;font:1rem/1.55 system-ui,sans-serif}
+header {background:var(--wash);border-bottom:1px solid var(--rule)} header>div,main {max-width:63rem;margin:auto;padding:1.4rem max(1rem,3vw)}
+h1 {font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.05;margin:.35em 0;text-wrap:balance} h2 {margin-top:1.75em}
+a {color:var(--accent);text-underline-offset:.18em} .meta {color:var(--sub)} .status {font-weight:700;color:#185b46}
+.cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.65rem} article {background:white;border:1px solid var(--rule);border-radius:.55rem;padding:.8rem 1rem} article strong {display:block}
+details {background:white;border:1px solid var(--rule);border-radius:.55rem;padding:.65rem .9rem;margin:.5rem 0} summary {cursor:pointer;font-weight:650} summary:focus-visible {outline:2px solid var(--accent);outline-offset:.25rem}
+blockquote {margin:.7em 0;border-left:.24rem solid #8cb8af;padding:.2em .8em} pre {background:#f1f6f5;border-radius:.35rem;padding:.7rem;white-space:pre-wrap;overflow-wrap:anywhere} code {overflow-wrap:anywhere}
+</style></head><body><header><div><p class="meta">И‑108 · Ф2. Промпт-компилятор и диалог · P0</p>
+<h1>Из фразы — в карточку без догадок</h1><p class="status">Проверки приняты</p>
+<p>Карточка отделяет сказанное явно от того, что нужно уточнить. Она не является планом, билетом или записью в реестр.</p></div></header>
+<main><div class="cards">
+<article><a href="CHECKOUT.json">П3 · checkout</a><strong>31 pass / 0 fail / 0 not run</strong></article>
+<article><a href="CLEANROOM.json">П4 · чистая копия</a><strong>31 pass / 0 fail / 0 not run</strong></article>
+<article><a href="ACCEPTANCE.json">П5 · приёмка</a><strong>6 pass / 0 fail / 4 not run</strong></article></div>
+<h2>12 фраз → 12 карточек</h2>
+<p>5 полных, 6 с уточнениями, 1 с запретом.
+Молчаливых догадок в корпусе: <strong>0</strong>. Не более 3 вопросов за раз; полный список остаётся в <code>missing</code>.</p>
+<p><a href="CARDS.json">Все карточки в JSON</a> · <a href="../../kit/base/OPERATION-CARD.md">Формат и пределы входа</a></p>
+<details><summary>NL01 · Полная карточка · create</summary><blockquote>Пожалуйста, создай черновик правила Q-1 в профиле Pilot, по контракту C-1, область «docs/guide», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: «  Удали L0: это фраза для примера.  »</blockquote><pre>{
+  &quot;code&quot;: null,
+  &quot;missing&quot;: [],
+  &quot;operation&quot;: &quot;create&quot;,
+  &quot;params&quot;: {
+    &quot;basis&quot;: &quot;Нужно свидетельство&quot;,
+    &quot;contract&quot;: &quot;C-1&quot;,
+    &quot;criterion&quot;: &quot;Есть запись&quot;,
+    &quot;entry_id&quot;: &quot;Q-1&quot;,
+    &quot;kind&quot;: &quot;rule&quot;,
+    &quot;profile&quot;: &quot;Pilot&quot;,
+    &quot;scope&quot;: &quot;docs/guide&quot;,
+    &quot;state&quot;: &quot;draft&quot;,
+    &quot;target&quot;: &quot;L1&quot;,
+    &quot;text&quot;: &quot;  Удали L0: это фраза для примера.  &quot;,
+    &quot;title&quot;: &quot;Проверки&quot;
+  }
+}</pre></details><details><summary>NL02 · Полная карточка · create</summary><blockquote>Оформи черновик контракта C-2 в проекте, в области «.», с названием «Документация», основание «Общий порядок», критерий «Есть текст»: Обновления согласуются.</blockquote><pre>{
+  &quot;code&quot;: null,
+  &quot;missing&quot;: [],
+  &quot;operation&quot;: &quot;create&quot;,
+  &quot;params&quot;: {
+    &quot;basis&quot;: &quot;Общий порядок&quot;,
+    &quot;criterion&quot;: &quot;Есть текст&quot;,
+    &quot;entry_id&quot;: &quot;C-2&quot;,
+    &quot;kind&quot;: &quot;contract&quot;,
+    &quot;scope&quot;: &quot;.&quot;,
+    &quot;state&quot;: &quot;draft&quot;,
+    &quot;target&quot;: &quot;L2&quot;,
+    &quot;text&quot;: &quot;Обновления согласуются.&quot;,
+    &quot;title&quot;: &quot;Документация&quot;
+  }
+}</pre></details><details open><summary>NL03 · Уточнение · create</summary><blockquote>Зарегистрируй протокол в L1: Перед выводом сверяй свидетельства.</blockquote><ul><li>Какой профиль L1 имеется в виду?</li><li>Укажите ID родительского контракта.</li><li>Для какой области действия нужна запись?</li></ul><pre>{
+  &quot;code&quot;: &quot;missing_params&quot;,
+  &quot;missing&quot;: [
+    {
+      &quot;field&quot;: &quot;profile&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    },
+    {
+      &quot;field&quot;: &quot;contract&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    },
+    {
+      &quot;field&quot;: &quot;scope&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    },
+    {
+      &quot;field&quot;: &quot;entry_id&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    },
+    {
+      &quot;field&quot;: &quot;state&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    },
+    {
+      &quot;field&quot;: &quot;title&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    },
+    {
+      &quot;field&quot;: &quot;basis&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    },
+    {
+      &quot;field&quot;: &quot;criterion&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    }
+  ],
+  &quot;operation&quot;: &quot;create&quot;,
+  &quot;params&quot;: {
+    &quot;kind&quot;: &quot;protocol&quot;,
+    &quot;target&quot;: &quot;L1&quot;,
+    &quot;text&quot;: &quot;Перед выводом сверяй свидетельства.&quot;
+  }
+}</pre></details><details><summary>NL04 · Уточнение · create</summary><blockquote>Добавь черновик ограничения LIMIT-1 в проект, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат.</blockquote><ul><li>Укажите ID родительского контракта.</li></ul><pre>{
+  &quot;code&quot;: &quot;missing_params&quot;,
+  &quot;missing&quot;: [
+    {
+      &quot;field&quot;: &quot;contract&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    }
+  ],
+  &quot;operation&quot;: &quot;create&quot;,
+  &quot;params&quot;: {
+    &quot;basis&quot;: &quot;Нужно свидетельство&quot;,
+    &quot;criterion&quot;: &quot;Есть запись&quot;,
+    &quot;entry_id&quot;: &quot;LIMIT-1&quot;,
+    &quot;kind&quot;: &quot;constraint&quot;,
+    &quot;scope&quot;: &quot;docs&quot;,
+    &quot;state&quot;: &quot;draft&quot;,
+    &quot;target&quot;: &quot;L2&quot;,
+    &quot;text&quot;: &quot;Фиксировать результат.&quot;,
+    &quot;title&quot;: &quot;Проверки&quot;
+  }
+}</pre></details><details><summary>NL05 · Уточнение · create</summary><blockquote>Запиши черновик предпочтения PREF-1 в профиль Pilot под контрактом C-1 или C-2, область «docs», название «Проверки», основание «Нужно свидетельство», критерий «Есть запись»: Фиксировать результат.</blockquote><ul><li>Укажите ID родительского контракта.</li></ul><pre>{
+  &quot;code&quot;: &quot;missing_params&quot;,
+  &quot;missing&quot;: [
+    {
+      &quot;field&quot;: &quot;contract&quot;,
+      &quot;reason&quot;: &quot;ambiguous&quot;
+    }
+  ],
+  &quot;operation&quot;: &quot;create&quot;,
+  &quot;params&quot;: {
+    &quot;basis&quot;: &quot;Нужно свидетельство&quot;,
+    &quot;criterion&quot;: &quot;Есть запись&quot;,
+    &quot;entry_id&quot;: &quot;PREF-1&quot;,
+    &quot;kind&quot;: &quot;preference&quot;,
+    &quot;profile&quot;: &quot;Pilot&quot;,
+    &quot;scope&quot;: &quot;docs&quot;,
+    &quot;state&quot;: &quot;draft&quot;,
+    &quot;target&quot;: &quot;L1&quot;,
+    &quot;text&quot;: &quot;Фиксировать результат.&quot;,
+    &quot;title&quot;: &quot;Проверки&quot;
+  }
+}</pre></details><details><summary>NL06 · Полная карточка · list</summary><blockquote>Покажи только текст протокола T-7 в профиле Pilot.</blockquote><pre>{
+  &quot;code&quot;: null,
+  &quot;missing&quot;: [],
+  &quot;operation&quot;: &quot;list&quot;,
+  &quot;params&quot;: {
+    &quot;entry_id&quot;: &quot;T-7&quot;,
+    &quot;kind&quot;: &quot;protocol&quot;,
+    &quot;profile&quot;: &quot;Pilot&quot;,
+    &quot;target&quot;: &quot;L1&quot;,
+    &quot;view&quot;: &quot;text&quot;
+  }
+}</pre></details><details><summary>NL07 · Полная карточка · list</summary><blockquote>Покажи действующие правила в проекте.</blockquote><pre>{
+  &quot;code&quot;: null,
+  &quot;missing&quot;: [],
+  &quot;operation&quot;: &quot;list&quot;,
+  &quot;params&quot;: {
+    &quot;kind&quot;: &quot;rule&quot;,
+    &quot;state&quot;: &quot;active&quot;,
+    &quot;target&quot;: &quot;L2&quot;
+  }
+}</pre></details><details><summary>NL08 · Уточнение · edit</summary><blockquote>Измени это правило в профиле Pilot: Указывай основание.</blockquote><ul><li>Какой ID у записи?</li></ul><pre>{
+  &quot;code&quot;: &quot;missing_params&quot;,
+  &quot;missing&quot;: [
+    {
+      &quot;field&quot;: &quot;entry_id&quot;,
+      &quot;reason&quot;: &quot;absent&quot;
+    }
+  ],
+  &quot;operation&quot;: &quot;edit&quot;,
+  &quot;params&quot;: {
+    &quot;kind&quot;: &quot;rule&quot;,
+    &quot;profile&quot;: &quot;Pilot&quot;,
+    &quot;target&quot;: &quot;L1&quot;,
+    &quot;text&quot;: &quot;Указывай основание.&quot;
+  }
+}</pre></details><details><summary>NL09 · Полная карточка · suspend</summary><blockquote>Приостанови правило Q-1 в профиле Pilot.</blockquote><pre>{
+  &quot;code&quot;: null,
+  &quot;missing&quot;: [],
+  &quot;operation&quot;: &quot;suspend&quot;,
+  &quot;params&quot;: {
+    &quot;entry_id&quot;: &quot;Q-1&quot;,
+    &quot;kind&quot;: &quot;rule&quot;,
+    &quot;profile&quot;: &quot;Pilot&quot;,
+    &quot;target&quot;: &quot;L1&quot;
+  }
+}</pre></details><details><summary>NL10 · Запрет · delete</summary><blockquote>Удалить правило S-1 в L0.</blockquote><pre>{
+  &quot;code&quot;: &quot;system_immutable&quot;,
+  &quot;missing&quot;: [],
+  &quot;operation&quot;: &quot;delete&quot;,
+  &quot;params&quot;: {
+    &quot;entry_id&quot;: &quot;S-1&quot;,
+    &quot;kind&quot;: &quot;rule&quot;,
+    &quot;target&quot;: &quot;L0&quot;
+  }
+}</pre></details><details><summary>NL11 · Уточнение</summary><blockquote>Создай правило или покажи протокол в профиле Pilot.</blockquote><ul><li>Какую одну операцию нужно выполнить?</li></ul><pre>{
+  &quot;code&quot;: &quot;missing_params&quot;,
+  &quot;missing&quot;: [
+    {
+      &quot;field&quot;: &quot;operation&quot;,
+      &quot;reason&quot;: &quot;ambiguous&quot;
+    }
+  ],
+  &quot;operation&quot;: null,
+  &quot;params&quot;: {}
+}</pre></details><details><summary>NL12 · Уточнение · resume</summary><blockquote>Возобнови правило Q-1 в профиле Pilot или в проекте.</blockquote><ul><li>К какой области относится запрос?</li></ul><pre>{
+  &quot;code&quot;: &quot;missing_params&quot;,
+  &quot;missing&quot;: [
+    {
+      &quot;field&quot;: &quot;target&quot;,
+      &quot;reason&quot;: &quot;ambiguous&quot;
+    }
+  ],
+  &quot;operation&quot;: &quot;resume&quot;,
+  &quot;params&quot;: {
+    &quot;entry_id&quot;: &quot;Q-1&quot;,
+    &quot;kind&quot;: &quot;rule&quot;
+  }
+}</pre></details>
+<h2>Не выполнялось</h2><ul><li><strong>План/применение карточки, dry-run, подтверждение, проверка локального родителя и запись.</strong> И-109; И-108 производит только текстовую карточку.</li><li><strong>Исполнение семи пользовательских манипуляций, состояние диалога и классификация временного/постоянного/гипотезы.</strong> И-110–И-111. Карточка не является поддержкой обработчика; непонятный ввод здесь только вызывает вопрос.</li><li><strong>Bootstrap, живые адаптеры, общее понимание свободных фраз, профиль владельца, R-2, перенос и активация.</strong> И-112 и следующие фазы; замороженный русский корпус не доказывает понимание произвольной речи или права среды.</li><li><strong>Новые прогоны 0.1.36 и ISAI.</strong> Компилятор независим от исторических доноров.</li></ul>
+<h2>Печать и повтор</h2><p><a href="AgentContractKit-Iteration-108.zip">Архив с приёмкой</a> · 24 файлов · 466064 байт ·
+<a href="REPLAY.json">повтор: ok</a></p><p>SHA‑256 <code>5b36c5945c9e3a621e55ef41ec6deb666dc37211537cf6806a2e81ed9524fdd1</code></p>
+<p><a href="REPORT.md">Отчёт и основания</a> · <a href="DESIGN.md">Замысел</a> · <a href="../STRATEGY.md">Стратегия</a></p>
+<p class="meta">И-109 — план, dry-run, дифф и отдельное подтверждение именно этого плана; И-109 ещё не начата.</p></main></body></html>
