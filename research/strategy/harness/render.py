@@ -38,6 +38,8 @@ def md_table(headers, rows):
 
 def render_report(spec, ctx, result):
     base, room, suite = ctx['baseline'], ctx['cleanroom'], ctx['release_tests']
+    test_file = spec.get('test_file', 'test_harness.py')
+    additional = ctx.get('extra_files', {}).values()
     plan = [
         ('Цель', spec['goal']), ('Гипотеза', spec['hypothesis']),
         ('Изменяемая поверхность', ', '.join(f'`{p}`' for p in spec['touches'])),
@@ -50,8 +52,8 @@ def render_report(spec, ctx, result):
         f"Ветка: `{spec['branch']}` · Дата: {spec['date']} · {spec['phase']} · {spec['priority']}",
         '## П0–П1. Сверка и замысел до прогона\n\nСм. [DESIGN.md](DESIGN.md) и [ITERATION.json](ITERATION.json).',
         md_table(('Пункт', 'Содержание'), plan),
-        '## П2. Испытания\n\nЭталоны И‑101 и негативные сценарии заданы в `ITERATION.json` и `test_harness.py`. '
-        f"Воспроизведение фикстур: `python3 -B research/{spec['id']}/test_harness.py`.",
+        f'## П2. Испытания\n\nЭталоны И‑101 и негативные сценарии заданы в `ITERATION.json` и `{test_file}`. '
+        f"Воспроизведение фикстур: `python3 -B research/{spec['id']}/{test_file}`.",
         '## П3. Прогон в репозитории\n\n'
         f"Харнесс из рабочего дерева измеряет отслеживаемый архив `{spec['artifact_zip']}`. "
         'Машинные данные — `BASELINE.json`; выпуск не пересобирался и не менялся.',
@@ -78,6 +80,10 @@ def render_report(spec, ctx, result):
         'Этот отчёт входит в печать и после неё не перезаписывается.',
         f"## Следующая итерация\n\n{spec['next']}",
     ]
+    if additional:
+        links = ', '.join(f'[{filename}]({filename})' for filename in additional)
+        i = next(index for index, chunk in enumerate(chunks) if chunk.startswith('## П5.'))
+        chunks.insert(i, f'Результаты дополнительных проб П3–П4: {links}.')
     return '\n\n'.join(chunks) + '\n'
 
 
@@ -93,6 +99,8 @@ def render_page(spec, ctx, result, seal, replay):
     base, room, suite = ctx['baseline'], ctx['cleanroom'], ctx['release_tests']
     passed = result['outcome'] == 'accepted' and replay['outcome'] == 'ok'
     release_skips = [(row['case'], row['test'], row['reason']) for row in suite['not_run']]
+    links = ', '.join(f'<a href="{e(filename)}">{e(filename)}</a>' for filename in ctx.get('extra_files', {}).values())
+    extra = f'<p>Дополнительные пробы: {links}.</p>\n' if links else ''
     return f"""<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>И-{e(spec['id'])} — {e(spec['title'])}</title>
@@ -114,7 +122,7 @@ th {{ background: #f1f5f9; }} code {{ overflow-wrap: anywhere; }}
 <h2>Чистая копия без калибровки</h2>
 {table(('Шаг', 'rc', 'Результат'), [(s['step'], s['rc'], step_result(s)) for s in room['steps']])}
 <p>Digest точек замера: <code>{e(room['checkpoints_digest'])}</code></p>
-<h2>Приёмка харнесса</h2>{table(('Проверка', 'Статус', 'Основание', 'Критерий'), check_rows(result))}
+{extra}<h2>Приёмка харнесса</h2>{table(('Проверка', 'Статус', 'Основание', 'Критерий'), check_rows(result))}
 <h2>Офлайн-тесты выпуска</h2><p>{e(counts_line(suite['totals']))} (rc {e(suite['rc'])}) · <a href="RELEASE-TESTS.json">Машинный результат</a>.</p>
 {table(('Пропуск', 'Тест', 'Причина'), release_skips) if release_skips else ''}
 <h2>Печать</h2><p><a href="{e(seal['file'])}">Скачать ZIP</a> · {e(seal['members'])} файлов · {e(seal['bytes'])} байт</p>

@@ -73,7 +73,7 @@ def page_name(spec):
     return f"Итерация-{spec['id']}.html"
 
 
-def validate_check(check, room):
+def validate_check(check, room, probe_files):
     kind = text(check, 'type')
     text(check, 'basis')
     text(check, 'criterion')
@@ -84,7 +84,7 @@ def validate_check(check, room):
         if not reference.is_file() or reference.is_relative_to(room):
             raise SpecError('json_equal требует существующий эталон вне каталога выхода')
     elif kind == 'json_value':
-        if text(check, 'source') not in PROBE_FILES:
+        if text(check, 'source') not in probe_files:
             raise SpecError('json_value: неизвестный источник')
         text(check, 'path')
         if text(check, 'op') not in (*COMPARISONS, 'len==') or 'value' not in check:
@@ -103,7 +103,7 @@ def validate_check(check, room):
         raise SpecError('неизвестный тип проверки: ' + kind)
 
 
-def validate(spec, spec_path):
+def validate(spec, spec_path, extra_files):
     if not isinstance(spec, dict):
         raise SpecError('спецификация должна быть объектом')
     identifier = text(spec, 'id')
@@ -135,11 +135,11 @@ def validate(spec, spec_path):
     if len(checks) < MIN_CHECKS or len(names) != len(set(names)):
         raise SpecError(f'нужно не менее {MIN_CHECKS} проверок с уникальными именами')
     for check in checks:
-        validate_check(check, room)
+        validate_check(check, room, PROBE_FILES | extra_files)
     if not any(check['type'] == 'json_equal' for check in checks):
         raise SpecError('нет регрессии json_equal относительно внешнего эталона')
 
-    outputs = {room / name for name in SEALED_OUTPUTS}
+    outputs = {room / name for name in (*SEALED_OUTPUTS, *extra_files.values())}
     derived = {room / name for name in ('SEAL.json', 'REPLAY.json', seal_name(spec), page_name(spec))}
     for path in outputs | derived:
         repo_path(path.relative_to(REPO).as_posix())
@@ -150,6 +150,10 @@ def validate(spec, spec_path):
         raise SpecError('seal_members: отсутствуют обязательные результаты и/или ITERATION.json')
     if any(path not in outputs and not path.is_file() for path in members):
         raise SpecError('seal_members: входной файл не существует')
+    if 'test_file' in spec:
+        test_file = text(spec, 'test_file')
+        if not re.fullmatch(r'test_[a-z0-9_]+\.py', test_file) or room / test_file not in members:
+            raise SpecError('test_file: нужен запечатанный test_*.py в каталоге итерации')
     return room, artifact
 
 
@@ -242,7 +246,7 @@ def replay_seal(spec, room):
             'archive_sha256': probes.sha256_bytes(archived)}
 
 
-def run_iteration(spec, room, artifact):
+def run_iteration(spec, room, artifact, extra_probes, extra_files):
     actual_hash = probes.sha256_bytes(artifact.read_bytes())
     if actual_hash != spec['artifact_sha256']:
         emit({'error': 'artifact_digest_mismatch', 'expected': spec['artifact_sha256'], 'actual': actual_hash})
@@ -254,7 +258,9 @@ def run_iteration(spec, room, artifact):
     repeat = {c['source'] for c in spec['checks'] if c['type'] == 'deterministic'}
     ctx['repeat'] = {name: probe(artifact) for name, probe in loaders.items() if name in repeat}
     ctx['release_tests'] = probes.release_suite(artifact)
-    for name, filename in PROBE_FILES.items():
+    ctx.update({name: probe(artifact) for name, (_, probe) in extra_probes.items()})
+    ctx['extra_files'] = extra_files
+    for name, filename in (PROBE_FILES | extra_files).items():
         dump_json(room / filename, ctx[name])
 
     # П5–П6: приёмка и итоговый отчёт больше не меняются после формирования печати.
@@ -277,7 +283,16 @@ def run_iteration(spec, room, artifact):
     return 0 if ok else 1
 
 
-def main(argv=None):
+def main(argv=None, *, extra_probes=None):
+    # Дополнительные пробы регистрирует доверенный Python-драйвер, не JSON-спецификация.
+    extra_probes = extra_probes or {}
+    extra_files = {source: filename for source, (filename, _) in extra_probes.items()}
+    filenames = set(extra_files.values())
+    if (extra_files.keys() & (PROBE_FILES.keys() | {'repeat', 'extra_files'})
+            or len(filenames) != len(extra_files)
+            or filenames & set((*SEALED_OUTPUTS, 'SEAL.json', 'REPLAY.json'))
+            or any(not re.fullmatch(r'[A-Z][A-Z0-9-]*\.json', name) for name in filenames)):
+        raise ValueError('Недопустимая регистрация дополнительных проб')
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--spec', required=True)
     mode = parser.add_mutually_exclusive_group()
@@ -288,7 +303,7 @@ def main(argv=None):
     try:
         spec_path = (REPO / args.spec).resolve()
         spec = read_json(spec_path)
-        room, artifact = validate(spec, spec_path)
+        room, artifact = validate(spec, spec_path, extra_files)
     except (OSError, ValueError) as exc:
         emit({'error': 'spec_invalid', 'message': str(exc)})
         return 2
@@ -302,7 +317,7 @@ def main(argv=None):
             replay = replay_seal(spec, room)
             emit(replay)
             return 0 if replay['outcome'] == 'ok' else 1
-        return run_iteration(spec, room, artifact)
+        return run_iteration(spec, room, artifact, extra_probes, extra_files)
     except (OSError, ValueError, subprocess.TimeoutExpired, zipfile.BadZipFile, KeyError) as exc:
         emit({'error': 'run_error', 'message': str(exc)})
         return 1

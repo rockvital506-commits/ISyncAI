@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И-103 — Версии и совместимость</title>
+<style>
+body { font: 1rem/1.55 system-ui, sans-serif; margin: 2rem auto; max-width: 70rem; padding: 0 1rem; color: #162534; }
+h1 { margin-bottom: 0; } h2 { margin: 1.8rem 0 .45rem; }
+.meta { color: #486074; } .verdict { padding: .65rem .9rem; border-left: 4px solid; background: #eef5f9; }
+.ok { color: #135333; } .bad { color: #8a2525; }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th, td { border-bottom: 1px solid #dce5ed; padding: .42rem .5rem; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+th { background: #f1f5f9; } code { overflow-wrap: anywhere; }
+</style></head><body>
+<header><h1>И-103 — Версии и совместимость</h1>
+<p class="meta">Ф0. Каркас программы · P0 · 2026-11-18</p></header>
+<main><p class="verdict ok"><strong>Прогон принят</strong> ·
+19 pass / 0 fail / 3 not run · повтор печати: <code>ok</code></p>
+<p>Зафиксировать разделение SemVer L0, revision L1 и состояния L2, допустимые маршруты перехода и политику Git. <a href="REPORT.md">Полный отчёт</a>.</p>
+<h2>Инвентарь выпуска</h2><table><thead><tr><th scope="col">Показатель</th><th scope="col">Значение</th></tr></thead><tbody><tr><td>Выпуск</td><td>0.1.36</td></tr>
+<tr><td>ZIP: байт / членов</td><td>774894 / 220</td></tr>
+<tr><td>SHA-256 выпуска</td><td>e9f817c5286cea4bb4230ccd4f0fd307be3193ad3d46754d230cafc1bea66bf6</td></tr>
+<tr><td>Дерево: файлов</td><td>220</td></tr>
+<tr><td>Дерево: digest</td><td>159de6bda79871f6c4128d1839e1fccb86ca298c54a75d9d87d65b0b185d9fdc</td></tr>
+<tr><td>Команд / операций</td><td>26 / 15</td></tr>
+<tr><td>Digest baseline</td><td>9d2cb89bf03cd58f616a34c05ddd047072f781b3ef3cbd67791f8c8239e09585</td></tr></tbody></table>
+<h2>Чистая копия без калибровки</h2>
+<table><thead><tr><th scope="col">Шаг</th><th scope="col">rc</th><th scope="col">Результат</th></tr></thead><tbody><tr><td>1-status-before</td><td>0</td><td>absent</td></tr>
+<tr><td>2-install</td><td>0</td><td>успех</td></tr>
+<tr><td>3-status-after-install</td><td>0</td><td>valid</td></tr>
+<tr><td>4-connect</td><td>0</td><td>успех</td></tr>
+<tr><td>5a-create-contract</td><td>0</td><td>успех</td></tr>
+<tr><td>5b-create-rule</td><td>0</td><td>успех</td></tr>
+<tr><td>6-list</td><td>0</td><td>контрактов: 1; активных записей: 1 (P-2, P-1)</td></tr>
+<tr><td>7-adapter-arena</td><td>2</td><td>adapter_unknown</td></tr>
+<tr><td>8-status-final</td><td>0</td><td>valid</td></tr></tbody></table>
+<p>Digest точек замера: <code>4a40a6ee099fe6e398b09480831a8c44552e987b96147b012cad80b400d0ede8</code></p>
+<p>Дополнительные пробы: <a href="VERSION-EVIDENCE.json">VERSION-EVIDENCE.json</a>.</p>
+<h2>Приёмка харнесса</h2><table><thead><tr><th scope="col">Проверка</th><th scope="col">Статус</th><th scope="col">Основание</th><th scope="col">Критерий</th></tr></thead><tbody><tr><td>baseline_matches_i101</td><td>pass</td><td>research/strategy/BASELINE.json</td><td>Полный инвентарь совпадает с И-101</td></tr>
+<tr><td>cleanroom_matches_i101</td><td>pass</td><td>research/101/CLEANROOM.json</td><td>Чистая установка, подключение и создание без калибровки совпадают с И-101</td></tr>
+<tr><td>release_regression</td><td>pass</td><td>RELEASE-TESTS.json: totals</td><td>Офлайн-набор выпуска не потерял проверок</td></tr>
+<tr><td>release_exit</td><td>pass</td><td>RELEASE-TESTS.json: rc</td><td>Нативные тесты завершились с rc 0</td></tr>
+<tr><td>no_native_l1</td><td>pass</td><td>VERSION-EVIDENCE.json: package.profile_members</td><td>ZIP 0.1.36 не поставляет profiles; проба не выдаётся за штатную функцию</td></tr>
+<tr><td>l1_revision_sequence</td><td>pass</td><td>VERSION-EVIDENCE.json: profile.revisions</td><td>Из файлов прочитано 0 → 1 … → 10, а не из номера цикла</td></tr>
+<tr><td>l1_ten_commits</td><td>pass</td><td>VERSION-EVIDENCE.json: profile.committed_mutations</td><td>Каждая из десяти записей завершилась как committed</td></tr>
+<tr><td>l1_content_changed</td><td>pass</td><td>VERSION-EVIDENCE.json: profile.distinct_rules_digests</td><td>Различны SHA-256 начального и каждого из десяти состояний rules.json</td></tr>
+<tr><td>l1_new_rules_linked</td><td>pass</td><td>VERSION-EVIDENCE.json: profile.child_ids</td><td>Десять различных дочерних записей прочитаны из rules.json</td></tr>
+<tr><td>l1_no_product_version</td><td>pass</td><td>VERSION-EVIDENCE.json: profile.only_counter_and_registry</td><td>Стендовые файлы L1 содержат счётчик и реестр без полей версии продукта</td></tr>
+<tr><td>l1_retries_no_write</td><td>pass</td><td>VERSION-EVIDENCE.json: profile.retries</td><td>Повтор правила и просроченная ожидаемая ревизия не меняют ни одного из двух файлов</td></tr>
+<tr><td>native_l0_stays_pinned</td><td>pass</td><td>VERSION-EVIDENCE.json: system.initial.base_version</td><td>Версия из status настоящего CLI</td></tr>
+<tr><td>native_identity_matches_pin</td><td>pass</td><td>VERSION-EVIDENCE.json: system.pin_matches_install</td><td>Хеш установленного манифеста равен pin; начальная копия L0 тождественна источнику и одобренному пакету</td></tr>
+<tr><td>native_l0_not_mutated</td><td>pass</td><td>VERSION-EVIDENCE.json: system.steady</td><td>Штатные L2 create и десять смен L1 не меняют версию, установочный pin и хеши исходного/установленного L0</td></tr>
+<tr><td>native_l2_own_counter</td><td>pass</td><td>VERSION-EVIDENCE.json: project.create_revisions</td><td>status.project_revision прочитан до create и после каждого create, не берётся из SemVer</td></tr>
+<tr><td>native_l2_not_mutated_by_l1</td><td>pass</td><td>VERSION-EVIDENCE.json: project.unchanged_during_profile_writes</td><td>Снимок всего реального проекта и его счётчик не меняются на каждом шаге L1</td></tr>
+<tr><td>unknown_native_schema</td><td>pass</td><td>VERSION-EVIDENCE.json: refusals.unknown_schema</td><td>0.1.36 отказывает plan мутации при неизвестной схеме без изменения байтов</td></tr>
+<tr><td>bad_native_pin</td><td>pass</td><td>VERSION-EVIDENCE.json: refusals.bad_pin</td><td>Верный SemVer с неутверждённым pin не разрешает install</td></tr>
+<tr><td>compat_routes</td><td>pass</td><td>VERSION-EVIDENCE.json: compatibility.matches_cases</td><td>Точные пары, неподдержанные варианты и rollback соответствуют независимым ожиданиям; классификация не запускает миграцию</td></tr></tbody></table>
+<h2>Офлайн-тесты выпуска</h2><p>105 pass / 0 fail / 3 not run (rc 0) · <a href="RELEASE-TESTS.json">Машинный результат</a>.</p>
+<table><thead><tr><th scope="col">Пропуск</th><th scope="col">Тест</th><th scope="col">Причина</th></tr></thead><tbody><tr><td>X14</td><td>test_31_windows_junction</td><td>Нет Windows/NTFS в данном прогоне.</td></tr>
+<tr><td>T12-live</td><td>GitHub Copilot</td><td>Сеанс расширения не запускался.</td></tr>
+<tr><td>T12-live</td><td>Kilo Code</td><td>Сеанс расширения не запускался.</td></tr></tbody></table>
+<h2>Печать</h2><p><a href="AgentContractKit-Iteration-103.zip">Скачать ZIP</a> · 23 файлов · 187869 байт</p>
+<p>SHA-256: <code>ed44ccb02b0987adddf8467b92430117d1232260d6d42c2e79eece879fdf5b52</code> · <a href="REPLAY.json">Протокол повтора</a></p>
+<h2>Находки</h2><table><thead><tr><th scope="col">№</th><th scope="col">Факт</th><th scope="col">Основание</th><th scope="col">Изменение</th></tr></thead><tbody><tr><td>F1</td><td>L1 не входит в поставку 0.1.36: десять мутаций проверяют стенд рядом с настоящим L0, а не штатный интерфейс.</td><td>VERSION-EVIDENCE.json: package, profile, system</td><td>В §4 разведены проверка политики И-103 и функциональная проверка И-105/И-106.</td></tr>
+<tr><td>F2</td><td>Ревизию проекта нативный status даёт как project_revision. base.version остаётся ссылкой на L0, schema_version — меткой формата.</td><td>VERSION-EVIDENCE.json: project, system.initial; contract.py:2012–2014 в базовом ZIP</td><td>Раздельные поля закреплены в VERSIONING.md и §3.2 стратегии.</td></tr>
+<tr><td>F3</td><td>Совпадения SemVer или наличия старого пакета недостаточно для миграции: pin и поддержанная схема проверяются отдельно.</td><td>VERSION-EVIDENCE.json: refusals, compatibility; COMPATIBILITY.json</td><td>Только 0.1.36 со схемой 1 — прямой кандидат; переход на 0.2.0 остаётся not run до И-131.</td></tr>
+<tr><td>F4</td><td>Семейство 0.1.x не является сплошным подтверждённым диапазоном: в закреплённом ZIP нет манифестов 0.1.1, 0.1.2 и 0.1.3.</td><td>VERSION-EVIDENCE.json: package.shipped_manifests и compatibility.cases</td><td>Матрица не использует wildcard-поддержку 0.1.x и не выдаёт список пакетов за тест миграции.</td></tr></tbody></table>
+<h2>Что не выполнялось в этой итерации</h2>
+<table><thead><tr><th scope="col">Что</th><th scope="col">Почему</th></tr></thead><tbody><tr><td>Рабочие схема и CLI L1, атомарность и журнал профильных операций</td><td>В 0.1.36 L1 нет; реализация и повтор на ней — И-104–И-106.</td></tr>
+<tr><td>Фактические установка, миграция и восстановление 0.2.0; сплошная совместимость всех 0.1.x</td><td>0.2.0 ещё не выпущена; матрица задаёт проверяемые маршруты, а не результаты И-112/И-131/И-132/И-140.</td></tr>
+<tr><td>Живые сеансы Arena/Kilo/Copilot и локальный Git‑цикл на Windows/VS Code</td><td>Нужны отдельные прогоны сред; И-124/И-125/И-134/И-135.</td></tr></tbody></table>
+<p class="meta">Дальше: После закрытия Ф0 — И-104 (Ф1): схема v2 и отрицательные фикстуры для областей, полномочий, scope и реестров. Реализация L1 и миграции не засчитана.</p></main>
+</body></html>

@@ -1,0 +1,357 @@
+{
+  "checks": [
+    {
+      "basis": "research/strategy/BASELINE.json",
+      "check": "baseline_matches_i101",
+      "criterion": "Полный инвентарь совпадает с И-101",
+      "detail": {
+        "equal": true,
+        "reference": "research/strategy/BASELINE.json",
+        "source": "baseline"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "research/101/CLEANROOM.json",
+      "check": "cleanroom_matches_i101",
+      "criterion": "Чистая установка, подключение и создание без калибровки совпадают с И-101",
+      "detail": {
+        "equal": true,
+        "reference": "research/101/CLEANROOM.json",
+        "source": "cleanroom"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "RELEASE-TESTS.json: totals",
+      "check": "release_regression",
+      "criterion": "Офлайн-набор выпуска не потерял проверок",
+      "detail": {
+        "op": "==",
+        "path": "totals",
+        "value": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 105
+        },
+        "want": {
+          "fail": 0,
+          "inconclusive": 0,
+          "not run": 3,
+          "pass": 105
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "RELEASE-TESTS.json: rc",
+      "check": "release_exit",
+      "criterion": "Нативные тесты завершились с rc 0",
+      "detail": {
+        "op": "==",
+        "path": "rc",
+        "value": 0,
+        "want": 0
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: package.profile_members",
+      "check": "no_native_l1",
+      "criterion": "ZIP 0.1.36 не поставляет profiles; проба не выдаётся за штатную функцию",
+      "detail": {
+        "op": "==",
+        "path": "package.profile_members",
+        "value": 0,
+        "want": 0
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: profile.revisions",
+      "check": "l1_revision_sequence",
+      "criterion": "Из файлов прочитано 0 → 1 … → 10, а не из номера цикла",
+      "detail": {
+        "op": "==",
+        "path": "profile.revisions",
+        "value": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "want": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: profile.committed_mutations",
+      "check": "l1_ten_commits",
+      "criterion": "Каждая из десяти записей завершилась как committed",
+      "detail": {
+        "op": "==",
+        "path": "profile.committed_mutations",
+        "value": 10,
+        "want": 10
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: profile.distinct_rules_digests",
+      "check": "l1_content_changed",
+      "criterion": "Различны SHA-256 начального и каждого из десяти состояний rules.json",
+      "detail": {
+        "op": "==",
+        "path": "profile.distinct_rules_digests",
+        "value": 11,
+        "want": 11
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: profile.child_ids",
+      "check": "l1_new_rules_linked",
+      "criterion": "Десять различных дочерних записей прочитаны из rules.json",
+      "detail": {
+        "op": "==",
+        "path": "profile.child_ids",
+        "value": [
+          "R-2",
+          "R-3",
+          "R-4",
+          "R-5",
+          "R-6",
+          "R-7",
+          "R-8",
+          "R-9",
+          "R-10",
+          "R-11"
+        ],
+        "want": [
+          "R-2",
+          "R-3",
+          "R-4",
+          "R-5",
+          "R-6",
+          "R-7",
+          "R-8",
+          "R-9",
+          "R-10",
+          "R-11"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: profile.only_counter_and_registry",
+      "check": "l1_no_product_version",
+      "criterion": "Стендовые файлы L1 содержат счётчик и реестр без полей версии продукта",
+      "detail": {
+        "op": "==",
+        "path": "profile.only_counter_and_registry",
+        "value": true,
+        "want": true
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: profile.retries",
+      "check": "l1_retries_no_write",
+      "criterion": "Повтор правила и просроченная ожидаемая ревизия не меняют ни одного из двух файлов",
+      "detail": {
+        "op": "==",
+        "path": "profile.retries",
+        "value": [
+          {
+            "outcome": "no_change",
+            "revision": 10,
+            "unchanged": true
+          },
+          {
+            "outcome": "stale_revision",
+            "revision": 10,
+            "unchanged": true
+          }
+        ],
+        "want": [
+          {
+            "outcome": "no_change",
+            "revision": 10,
+            "unchanged": true
+          },
+          {
+            "outcome": "stale_revision",
+            "revision": 10,
+            "unchanged": true
+          }
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: system.initial.base_version",
+      "check": "native_l0_stays_pinned",
+      "criterion": "Версия из status настоящего CLI",
+      "detail": {
+        "op": "==",
+        "path": "system.initial.base_version",
+        "value": "0.1.36",
+        "want": "0.1.36"
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: system.pin_matches_install",
+      "check": "native_identity_matches_pin",
+      "criterion": "Хеш установленного манифеста равен pin; начальная копия L0 тождественна источнику и одобренному пакету",
+      "detail": {
+        "op": "==",
+        "path": "system.pin_matches_install",
+        "value": true,
+        "want": true
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: system.steady",
+      "check": "native_l0_not_mutated",
+      "criterion": "Штатные L2 create и десять смен L1 не меняют версию, установочный pin и хеши исходного/установленного L0",
+      "detail": {
+        "op": "==",
+        "path": "system.steady",
+        "value": true,
+        "want": true
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: project.create_revisions",
+      "check": "native_l2_own_counter",
+      "criterion": "status.project_revision прочитан до create и после каждого create, не берётся из SemVer",
+      "detail": {
+        "op": "==",
+        "path": "project.create_revisions",
+        "value": [
+          2,
+          3,
+          4
+        ],
+        "want": [
+          2,
+          3,
+          4
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: project.unchanged_during_profile_writes",
+      "check": "native_l2_not_mutated_by_l1",
+      "criterion": "Снимок всего реального проекта и его счётчик не меняются на каждом шаге L1",
+      "detail": {
+        "op": "==",
+        "path": "project.unchanged_during_profile_writes",
+        "value": true,
+        "want": true
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: refusals.unknown_schema",
+      "check": "unknown_native_schema",
+      "criterion": "0.1.36 отказывает plan мутации при неизвестной схеме без изменения байтов",
+      "detail": {
+        "op": "==",
+        "path": "refusals.unknown_schema",
+        "value": {
+          "error": "unknown_schema",
+          "no_write": true,
+          "rc": 2
+        },
+        "want": {
+          "error": "unknown_schema",
+          "no_write": true,
+          "rc": 2
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: refusals.bad_pin",
+      "check": "bad_native_pin",
+      "criterion": "Верный SemVer с неутверждённым pin не разрешает install",
+      "detail": {
+        "op": "==",
+        "path": "refusals.bad_pin",
+        "value": {
+          "error": "trust",
+          "no_write": true,
+          "rc": 2
+        },
+        "want": {
+          "error": "trust",
+          "no_write": true,
+          "rc": 2
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "basis": "VERSION-EVIDENCE.json: compatibility.matches_cases",
+      "check": "compat_routes",
+      "criterion": "Точные пары, неподдержанные варианты и rollback соответствуют независимым ожиданиям; классификация не запускает миграцию",
+      "detail": {
+        "op": "==",
+        "path": "compatibility.matches_cases",
+        "value": true,
+        "want": true
+      },
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 3,
+    "pass": 19
+  },
+  "iteration": "И-103",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Рабочие схема и CLI L1, атомарность и журнал профильных операций",
+      "why": "В 0.1.36 L1 нет; реализация и повтор на ней — И-104–И-106."
+    },
+    {
+      "status": "not run",
+      "what": "Фактические установка, миграция и восстановление 0.2.0; сплошная совместимость всех 0.1.x",
+      "why": "0.2.0 ещё не выпущена; матрица задаёт проверяемые маршруты, а не результаты И-112/И-131/И-132/И-140."
+    },
+    {
+      "status": "not run",
+      "what": "Живые сеансы Arena/Kilo/Copilot и локальный Git‑цикл на Windows/VS Code",
+      "why": "Нужны отдельные прогоны сред; И-124/И-125/И-134/И-135."
+    }
+  ],
+  "outcome": "accepted",
+  "phase": "Ф0. Каркас программы"
+}

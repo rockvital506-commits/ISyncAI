@@ -1,0 +1,342 @@
+{
+  "id": "103",
+  "title": "Версии и совместимость",
+  "phase": "Ф0. Каркас программы",
+  "priority": "P0",
+  "date": "2026-11-18",
+  "branch": "arena/4e000a5e-isyncai",
+  "goal": "Зафиксировать разделение SemVer L0, revision L1 и состояния L2, допустимые маршруты перехода и политику Git.",
+  "hypothesis": "Десять реальных записей в стенд L1 изменят только его ревизию; измеренные версия, pin и файлы настоящего L0 и состояние реального L2 не изменятся.",
+  "touches": [
+    "research/103/",
+    "research/strategy/",
+    "research/STRATEGY.md"
+  ],
+  "not_touched": [
+    ".isai/",
+    "выпуск 0.1.36 и рабочий Kit",
+    "артефакты И-101/И-102",
+    "пользовательские проекты"
+  ],
+  "expected_codes": [
+    "trust (CLI 0.1.36, pin)",
+    "unknown_schema (CLI 0.1.36)",
+    "stale_revision (стенд)",
+    "unknown_version (политика)"
+  ],
+  "success": "Полные результаты И-101 воспроизводятся; 10 стендовых мутаций сравниваются с настоящими версиями и байтами; отказы не пишут; границы совместимости и Git зафиксированы.",
+  "failure": "Дрейф L0/L2 от действий в другом слое, сдвиг ревизии при отказе или незаметное объявление непроверенной миграции поддержанной.",
+  "rollback": "Отменить только коммит И-103; постоянные проекты и архив выпуска не затронуты.",
+  "artifact_zip": "research/release-0.1.36/AgentContractKit-0.1.36.zip",
+  "artifact_sha256": "e9f817c5286cea4bb4230ccd4f0fd307be3193ad3d46754d230cafc1bea66bf6",
+  "test_file": "test_versioning.py",
+  "checks": [
+    {
+      "type": "json_equal",
+      "name": "baseline_matches_i101",
+      "source": "baseline",
+      "reference": "research/strategy/BASELINE.json",
+      "basis": "research/strategy/BASELINE.json",
+      "criterion": "Полный инвентарь совпадает с И-101"
+    },
+    {
+      "type": "json_equal",
+      "name": "cleanroom_matches_i101",
+      "source": "cleanroom",
+      "reference": "research/101/CLEANROOM.json",
+      "basis": "research/101/CLEANROOM.json",
+      "criterion": "Чистая установка, подключение и создание без калибровки совпадают с И-101"
+    },
+    {
+      "type": "json_value",
+      "name": "release_regression",
+      "source": "release_tests",
+      "path": "totals",
+      "op": "==",
+      "value": {
+        "pass": 105,
+        "fail": 0,
+        "not run": 3,
+        "inconclusive": 0
+      },
+      "basis": "RELEASE-TESTS.json: totals",
+      "criterion": "Офлайн-набор выпуска не потерял проверок"
+    },
+    {
+      "type": "json_value",
+      "name": "release_exit",
+      "source": "release_tests",
+      "path": "rc",
+      "op": "==",
+      "value": 0,
+      "basis": "RELEASE-TESTS.json: rc",
+      "criterion": "Нативные тесты завершились с rc 0"
+    },
+    {
+      "type": "json_value",
+      "name": "no_native_l1",
+      "source": "versioning",
+      "path": "package.profile_members",
+      "op": "==",
+      "value": 0,
+      "basis": "VERSION-EVIDENCE.json: package.profile_members",
+      "criterion": "ZIP 0.1.36 не поставляет profiles; проба не выдаётся за штатную функцию"
+    },
+    {
+      "type": "json_value",
+      "name": "l1_revision_sequence",
+      "source": "versioning",
+      "path": "profile.revisions",
+      "op": "==",
+      "value": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "basis": "VERSION-EVIDENCE.json: profile.revisions",
+      "criterion": "Из файлов прочитано 0 → 1 … → 10, а не из номера цикла"
+    },
+    {
+      "type": "json_value",
+      "name": "l1_ten_commits",
+      "source": "versioning",
+      "path": "profile.committed_mutations",
+      "op": "==",
+      "value": 10,
+      "basis": "VERSION-EVIDENCE.json: profile.committed_mutations",
+      "criterion": "Каждая из десяти записей завершилась как committed"
+    },
+    {
+      "type": "json_value",
+      "name": "l1_content_changed",
+      "source": "versioning",
+      "path": "profile.distinct_rules_digests",
+      "op": "==",
+      "value": 11,
+      "basis": "VERSION-EVIDENCE.json: profile.distinct_rules_digests",
+      "criterion": "Различны SHA-256 начального и каждого из десяти состояний rules.json"
+    },
+    {
+      "type": "json_value",
+      "name": "l1_new_rules_linked",
+      "source": "versioning",
+      "path": "profile.child_ids",
+      "op": "==",
+      "value": [
+        "R-2",
+        "R-3",
+        "R-4",
+        "R-5",
+        "R-6",
+        "R-7",
+        "R-8",
+        "R-9",
+        "R-10",
+        "R-11"
+      ],
+      "basis": "VERSION-EVIDENCE.json: profile.child_ids",
+      "criterion": "Десять различных дочерних записей прочитаны из rules.json"
+    },
+    {
+      "type": "json_value",
+      "name": "l1_no_product_version",
+      "source": "versioning",
+      "path": "profile.only_counter_and_registry",
+      "op": "==",
+      "value": true,
+      "basis": "VERSION-EVIDENCE.json: profile.only_counter_and_registry",
+      "criterion": "Стендовые файлы L1 содержат счётчик и реестр без полей версии продукта"
+    },
+    {
+      "type": "json_value",
+      "name": "l1_retries_no_write",
+      "source": "versioning",
+      "path": "profile.retries",
+      "op": "==",
+      "value": [
+        {
+          "outcome": "no_change",
+          "revision": 10,
+          "unchanged": true
+        },
+        {
+          "outcome": "stale_revision",
+          "revision": 10,
+          "unchanged": true
+        }
+      ],
+      "basis": "VERSION-EVIDENCE.json: profile.retries",
+      "criterion": "Повтор правила и просроченная ожидаемая ревизия не меняют ни одного из двух файлов"
+    },
+    {
+      "type": "json_value",
+      "name": "native_l0_stays_pinned",
+      "source": "versioning",
+      "path": "system.initial.base_version",
+      "op": "==",
+      "value": "0.1.36",
+      "basis": "VERSION-EVIDENCE.json: system.initial.base_version",
+      "criterion": "Версия из status настоящего CLI"
+    },
+    {
+      "type": "json_value",
+      "name": "native_identity_matches_pin",
+      "source": "versioning",
+      "path": "system.pin_matches_install",
+      "op": "==",
+      "value": true,
+      "basis": "VERSION-EVIDENCE.json: system.pin_matches_install",
+      "criterion": "Хеш установленного манифеста равен pin; начальная копия L0 тождественна источнику и одобренному пакету"
+    },
+    {
+      "type": "json_value",
+      "name": "native_l0_not_mutated",
+      "source": "versioning",
+      "path": "system.steady",
+      "op": "==",
+      "value": true,
+      "basis": "VERSION-EVIDENCE.json: system.steady",
+      "criterion": "Штатные L2 create и десять смен L1 не меняют версию, установочный pin и хеши исходного/установленного L0"
+    },
+    {
+      "type": "json_value",
+      "name": "native_l2_own_counter",
+      "source": "versioning",
+      "path": "project.create_revisions",
+      "op": "==",
+      "value": [
+        2,
+        3,
+        4
+      ],
+      "basis": "VERSION-EVIDENCE.json: project.create_revisions",
+      "criterion": "status.project_revision прочитан до create и после каждого create, не берётся из SemVer"
+    },
+    {
+      "type": "json_value",
+      "name": "native_l2_not_mutated_by_l1",
+      "source": "versioning",
+      "path": "project.unchanged_during_profile_writes",
+      "op": "==",
+      "value": true,
+      "basis": "VERSION-EVIDENCE.json: project.unchanged_during_profile_writes",
+      "criterion": "Снимок всего реального проекта и его счётчик не меняются на каждом шаге L1"
+    },
+    {
+      "type": "json_value",
+      "name": "unknown_native_schema",
+      "source": "versioning",
+      "path": "refusals.unknown_schema",
+      "op": "==",
+      "value": {
+        "rc": 2,
+        "error": "unknown_schema",
+        "no_write": true
+      },
+      "basis": "VERSION-EVIDENCE.json: refusals.unknown_schema",
+      "criterion": "0.1.36 отказывает plan мутации при неизвестной схеме без изменения байтов"
+    },
+    {
+      "type": "json_value",
+      "name": "bad_native_pin",
+      "source": "versioning",
+      "path": "refusals.bad_pin",
+      "op": "==",
+      "value": {
+        "rc": 2,
+        "error": "trust",
+        "no_write": true
+      },
+      "basis": "VERSION-EVIDENCE.json: refusals.bad_pin",
+      "criterion": "Верный SemVer с неутверждённым pin не разрешает install"
+    },
+    {
+      "type": "json_value",
+      "name": "compat_routes",
+      "source": "versioning",
+      "path": "compatibility.matches_cases",
+      "op": "==",
+      "value": true,
+      "basis": "VERSION-EVIDENCE.json: compatibility.matches_cases",
+      "criterion": "Точные пары, неподдержанные варианты и rollback соответствуют независимым ожиданиям; классификация не запускает миграцию"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "text": "L1 не входит в поставку 0.1.36: десять мутаций проверяют стенд рядом с настоящим L0, а не штатный интерфейс.",
+      "basis": "VERSION-EVIDENCE.json: package, profile, system",
+      "criterion": "Все 10 шагов сохраняют байты L0/L2 и повышают сохранённый revision стенда.",
+      "effect": "В §4 разведены проверка политики И-103 и функциональная проверка И-105/И-106."
+    },
+    {
+      "id": "F2",
+      "text": "Ревизию проекта нативный status даёт как project_revision. base.version остаётся ссылкой на L0, schema_version — меткой формата.",
+      "basis": "VERSION-EVIDENCE.json: project, system.initial; contract.py:2012–2014 в базовом ZIP",
+      "criterion": "Контракт и дочернее правило сдвигают счётчик проекта, а версию, pin и файлы L0 — нет.",
+      "effect": "Раздельные поля закреплены в VERSIONING.md и §3.2 стратегии."
+    },
+    {
+      "id": "F3",
+      "text": "Совпадения SemVer или наличия старого пакета недостаточно для миграции: pin и поддержанная схема проверяются отдельно.",
+      "basis": "VERSION-EVIDENCE.json: refusals, compatibility; COMPATIBILITY.json",
+      "criterion": "У 0.1.36 неверный pin даёт trust, незнакомая схема — unknown_schema; оба отказа без записи.",
+      "effect": "Только 0.1.36 со схемой 1 — прямой кандидат; переход на 0.2.0 остаётся not run до И-131."
+    },
+    {
+      "id": "F4",
+      "text": "Семейство 0.1.x не является сплошным подтверждённым диапазоном: в закреплённом ZIP нет манифестов 0.1.1, 0.1.2 и 0.1.3.",
+      "basis": "VERSION-EVIDENCE.json: package.shipped_manifests и compatibility.cases",
+      "criterion": "Классификатор отказывает отсутствующим номерам; для найденных старых выпусков решение — только проверка цепочки до 0.1.36.",
+      "effect": "Матрица не использует wildcard-поддержку 0.1.x и не выдаёт список пакетов за тест миграции."
+    }
+  ],
+  "not_run": [
+    {
+      "what": "Рабочие схема и CLI L1, атомарность и журнал профильных операций",
+      "why": "В 0.1.36 L1 нет; реализация и повтор на ней — И-104–И-106."
+    },
+    {
+      "what": "Фактические установка, миграция и восстановление 0.2.0; сплошная совместимость всех 0.1.x",
+      "why": "0.2.0 ещё не выпущена; матрица задаёт проверяемые маршруты, а не результаты И-112/И-131/И-132/И-140."
+    },
+    {
+      "what": "Живые сеансы Arena/Kilo/Copilot и локальный Git‑цикл на Windows/VS Code",
+      "why": "Нужны отдельные прогоны сред; И-124/И-125/И-134/И-135."
+    }
+  ],
+  "seal_members": [
+    "research/STRATEGY.md",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/VERSIONING.md",
+    "research/strategy/GIT-POLICY.md",
+    "research/strategy/COMPATIBILITY.json",
+    "research/strategy/BASELINE.json",
+    "research/101/CLEANROOM.json",
+    "research/056/COMPAT.json",
+    "research/strategy/harness/SPEC-FORMAT.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py",
+    "research/103/ITERATION.json",
+    "research/103/DESIGN.md",
+    "research/103/run.py",
+    "research/103/test_versioning.py",
+    "research/103/version_probe.py",
+    "research/103/BASELINE.json",
+    "research/103/CLEANROOM.json",
+    "research/103/RELEASE-TESTS.json",
+    "research/103/VERSION-EVIDENCE.json",
+    "research/103/ACCEPTANCE.json",
+    "research/103/REPORT.md"
+  ],
+  "next": "После закрытия Ф0 — И-104 (Ф1): схема v2 и отрицательные фикстуры для областей, полномочий, scope и реестров. Реализация L1 и миграции не засчитана."
+}

@@ -1,0 +1,28 @@
+{
+  "failures": [],
+  "not_run": [
+    {
+      "case": "X14",
+      "reason": "Нет Windows/NTFS в данном прогоне.",
+      "test": "test_31_windows_junction"
+    },
+    {
+      "case": "T12-live",
+      "reason": "Сеанс расширения не запускался.",
+      "test": "GitHub Copilot"
+    },
+    {
+      "case": "T12-live",
+      "reason": "Сеанс расширения не запускался.",
+      "test": "Kilo Code"
+    }
+  ],
+  "rc": 0,
+  "totals": {
+    "fail": 0,
+    "inconclusive": 0,
+    "not run": 3,
+    "pass": 105
+  },
+  "version": "0.1.36"
+}

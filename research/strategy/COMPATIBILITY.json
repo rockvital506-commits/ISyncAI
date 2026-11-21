@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "rows": [
+    {
+      "source": "0.1.36",
+      "source_schema": 1,
+      "target": "0.1.36",
+      "decision": "use_baseline",
+      "evidence": "baseline_observed",
+      "proof": "И-103: install/connect/create/status на закреплённом 0.1.36"
+    },
+    {
+      "source": "0.1.36",
+      "source_schema": 1,
+      "target": "0.2.0",
+      "decision": "migration_required",
+      "evidence": "not run",
+      "proof": "И-131: прямой переход на копии из проверенного здорового состояния, compat --old"
+    },
+    {
+      "source": "older_shipped",
+      "source_schema": 1,
+      "target": "0.2.0",
+      "decision": "review_upgrade_path",
+      "evidence": "not run",
+      "proof": "Подтвердить путь до 0.1.36 для точной версии и данных; не считать всё семейство поддерживаемым"
+    },
+    {
+      "source": "absent",
+      "source_schema": null,
+      "target": "0.2.0",
+      "decision": "clean_install",
+      "evidence": "not run",
+      "proof": "И-112/И-140: чистая установка кандидата 0.2.0; не трактовать повреждённый или неполный проект как пустой"
+    },
+    {
+      "source": "0.2.0",
+      "source_schema": 2,
+      "target": "shipped_baseline_or_older",
+      "decision": "restore_snapshot_only",
+      "evidence": "not run",
+      "proof": "И-132: восстановление целого снимка с исходным L0, а не обратное преобразование"
+    }
+  ],
+  "default": {
+    "decision": "unknown_version",
+    "evidence": "policy_only",
+    "proof": "Нет явно поддержанной комбинации. Отказ без записи, диагностика и выбор владельца. Это правило классификатора, а не код CLI 0.1.36."
+  }
+}
