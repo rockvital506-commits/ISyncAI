@@ -1,0 +1,730 @@
+{
+  "checks": [
+    {
+      "basis": "CASES.json; RED.json; ITERATION.json",
+      "check": "frozen_red",
+      "criterion": "50 случаев и оракул закреплены до продукта; RED 0/50/0 равен базовому Git-снимку.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json",
+      "check": "checkout",
+      "criterion": "Все 50 наблюдений, порядок и диагностики равны независимому оракулу; rc0 без stderr.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json",
+      "check": "cleanroom",
+      "criterion": "Все 50 наблюдений, порядок и диагностики равны независимому оракулу; rc0 без stderr.",
+      "status": "pass"
+    },
+    {
+      "basis": "P01/P02/P05/P07; R01–R07/R10",
+      "check": "exact_previous",
+      "criterion": "Выбран непосредственный прежний SHA; нет подбора по revision, обхода, фиктивного шага или второго отката.",
+      "status": "pass"
+    },
+    {
+      "basis": "P01/P02; CASES.json:readbacks; штатный read_registry + status",
+      "check": "v2_readback",
+      "criterion": "Чтение прежнего v2 L1 снова работает и совпало с исходным B; L0/L2 прежние, revision 7 не определяет текст.",
+      "status": "pass"
+    },
+    {
+      "basis": "P03; T01–T10; R08/R09; И‑118 и И‑119",
+      "check": "current_trust",
+      "criterion": "Целостность первая, затем свежая политика; истечение на apply и неверная/непроверенная подпись блокируют, журнал не даёт исключения сам.",
+      "status": "pass"
+    },
+    {
+      "basis": "P06; C01–C08; T04",
+      "check": "confirmation",
+      "criterion": "План не пишет; чужое, повторное или устаревшее подтверждение не заменяет точный план и его входы.",
+      "status": "pass"
+    },
+    {
+      "basis": "P07/R11; J01–J10; R03",
+      "check": "journal_and_limits",
+      "criterion": "Неверная форма, связь или квитанция не исправляется; предыстория сохранена, один слот по счётчику оставлен для N‑1.",
+      "status": "pass"
+    },
+    {
+      "basis": "W01; P01–P07; снимки файла и перехват replace",
+      "check": "single_replace",
+      "criterion": "До замены виден целый прежний файл, после — целый новый; при отказе нет даже частичного события.",
+      "status": "pass"
+    },
+    {
+      "basis": "N01–N03; снимки стендов; control.working_port",
+      "check": "stand_boundary",
+      "criterion": "Никакой рабочей цели, операции порта или утечки пути, билета и текста ошибки в результат; стенды убраны.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "fresh_copy",
+      "criterion": "Чистая копия — только 13 входов; без рабочих данных, Git, сервера подписи или записи в дерево входов.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "repeat",
+      "criterion": "Идентичные входные байты и полный одинаковый результат в двух процессах.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 12
+  },
+  "iteration": "И-120",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Рабочий роллаут, установка, откат живого L1/L0 или исполнение правил.",
+      "why": "Только выбор снимка, локальный журнал и чтение синтетики; не мерили применение и не трогали живой порт."
+    },
+    {
+      "status": "not run",
+      "what": "Параллельные писатели, обрыв питания, долговечность и частичные сбои реальной установки.",
+      "why": "Один писатель и введённый сбой до одной замены; не аварийное восстановление И‑132."
+    },
+    {
+      "status": "not run",
+      "what": "Защищённость журнала, источника политики и часов, реальные подписи и постоянное решение Д7.",
+      "why": "Явный доверенный стенд; подписывание не выполнялось, открытая криптопроверка относится к И‑119."
+    },
+    {
+      "status": "not run",
+      "what": "Миграция, слияние живых L1, адаптеры и CI.",
+      "why": "Другие операции, данные и точки контроля; работа в них не разрешена."
+    }
+  ],
+  "os": "Linux",
+  "outcome": "accepted",
+  "python": "3.11.2",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "basis": "CASES.json:P01; DESIGN.md",
+          "criterion": "Цепочка A→B→C, затем точный B: прежний результат штатного чтения возвращён, C отличался.",
+          "id": "P01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P02; DESIGN.md",
+          "criterion": "Нечитаемый N не мешает вернуться к B: текущий ZIP даёт digest_mismatch, после отката чтение B снова работает.",
+          "id": "P02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P03; DESIGN.md",
+          "criterion": "Точное действующее исключение на A позволяет стендовый переход; в журнале unsigned/exception.",
+          "id": "P03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P04; DESIGN.md",
+          "criterion": "Первый подтверждённый выбор из пустого журнала даёт seq=1, from=null и SHA точного A.",
+          "id": "P04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P05; DESIGN.md",
+          "criterion": "Новый подтверждённый rollout после отката продвигает историю, не заменяет прежние записи.",
+          "id": "P05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P06; DESIGN.md",
+          "criterion": "Предварительный план на B показывает точные состояния до/после, но не меняет байты, inode или журнал.",
+          "id": "P06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P07; DESIGN.md",
+          "criterion": "На 31 записи остаётся шаг для N‑1; успешный откат добавляет 32-ю, без обрезки.",
+          "id": "P07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R01; DESIGN.md",
+          "criterion": "В пустом журнале нет N‑1, даже если B проверяем.",
+          "id": "R01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R02; DESIGN.md",
+          "criterion": "После первого выбора N‑1 ещё нет.",
+          "id": "R02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R03; DESIGN.md",
+          "criterion": "После отката второй откат не возвращает отброшенный N и не ищет иной пакет.",
+          "id": "R03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R04; DESIGN.md",
+          "criterion": "Более старый принятый A не заменяет непосредственный предшествующий B.",
+          "id": "R04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R05; DESIGN.md",
+          "criterion": "Текущий C с той же ревизией не является N‑1.",
+          "id": "R05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R06; DESIGN.md",
+          "criterion": "Самосогласованная пересборка B при той же revision не заменяет точный SHA B.",
+          "id": "R06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R07; DESIGN.md",
+          "criterion": "Если точные байты N‑1 не предъявлены, не искать другой архив.",
+          "id": "R07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R08; DESIGN.md",
+          "criterion": "Изменение содержимого при правильном CRC сохраняет исходный digest_mismatch.",
+          "id": "R08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R09; DESIGN.md",
+          "criterion": "Отсутствующий манифест сохраняет исходный bundle_incomplete.",
+          "id": "R09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R10; DESIGN.md",
+          "criterion": "Rollout того же активного ZIP не добавляет фиктивный успешный шаг.",
+          "id": "R10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R11; DESIGN.md",
+          "criterion": "Rollout не занимает последнюю позицию журнала, оставленную для N‑1.",
+          "id": "R11",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T01; DESIGN.md",
+          "criterion": "Пережитая проверка при optional не даёт права обойти текущее требование подписи.",
+          "id": "T01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T02; DESIGN.md",
+          "criterion": "Ровно в expiry исключение для точного N‑1 уже не действует.",
+          "id": "T02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T03; DESIGN.md",
+          "criterion": "Действующее при плане исключение проверяется в apply заново; в expiry запись запрещена.",
+          "id": "T03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T04; DESIGN.md",
+          "criterion": "Переход optional→exception меняет согласованный дифф, даже если новая политика допустила ZIP.",
+          "id": "T04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T05; DESIGN.md",
+          "criterion": "Решение чужого approver не разблокирует прежний пакет.",
+          "id": "T05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T06; DESIGN.md",
+          "criterion": "Известная открытая подпись И‑119 без явно доступного проверяющего не превращается в unsigned.",
+          "id": "T06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T07; DESIGN.md",
+          "criterion": "При повреждённом ZIP и неверной политике раньше срабатывает целостность.",
+          "id": "T07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T08; DESIGN.md",
+          "criterion": "Неявный формат часов не заменяется временем из журнала или ZIP.",
+          "id": "T08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T09; DESIGN.md",
+          "criterion": "Исключение к другому SHA не действует на B с той же revision.",
+          "id": "T09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T10; DESIGN.md",
+          "criterion": "Предъявленная подпись неправильной формы блокирует даже optional.",
+          "id": "T10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C01; DESIGN.md",
+          "criterion": "Предварительный план без отдельного подтверждения не применим.",
+          "id": "C01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C02; DESIGN.md",
+          "criterion": "Чужой билет из другой сессии для того же плана не подтверждает запись.",
+          "id": "C02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C03; DESIGN.md",
+          "criterion": "Подмена SHA в уже выданном плане отвергается при верном билете.",
+          "id": "C03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C04; DESIGN.md",
+          "criterion": "Булево true в поле целого формата нельзя принять за первоначальный план.",
+          "id": "C04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C05; DESIGN.md",
+          "criterion": "Иная связная история с тем же активным C обрывает подтверждение старого плана.",
+          "id": "C05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C06; DESIGN.md",
+          "criterion": "Иной валидный ZIP при той же revision не проходит apply согласованного продвижения.",
+          "id": "C06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C07; DESIGN.md",
+          "criterion": "Новая попытка плана гасит прежний билет, даже если новая цель не N‑1.",
+          "id": "C07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C08; DESIGN.md",
+          "criterion": "Попытка применения без согласия гасит билет; повтор с исходным билетом не проходит.",
+          "id": "C08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J01; DESIGN.md",
+          "criterion": "Неполный журнал отвергается, текст парсера не выводится.",
+          "id": "J01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J02; DESIGN.md",
+          "criterion": "Разорванная связь from/to обнаружена до выбора пакета.",
+          "id": "J02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J03; DESIGN.md",
+          "criterion": "Активный SHA не может расходиться с последним событием.",
+          "id": "J03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J04; DESIGN.md",
+          "criterion": "Повтор поля JSON не принимается за корректный журнал.",
+          "id": "J04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J05; DESIGN.md",
+          "criterion": "Булево seq не является счётчиком журнала.",
+          "id": "J05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J06; DESIGN.md",
+          "criterion": "Записанный откат мимо N‑1 делает журнал непригодным.",
+          "id": "J06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J07; DESIGN.md",
+          "criterion": "Журнал больше 64 КиБ отклоняется, не разбирается как состояние.",
+          "id": "J07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J08; DESIGN.md",
+          "criterion": "Прежняя квитанция с чужой revision не соответствует тому же ZIP.",
+          "id": "J08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J09; DESIGN.md",
+          "criterion": "Неканоническое представление состояния не исправляется молча.",
+          "id": "J09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J10; DESIGN.md",
+          "criterion": "Незнакомый формат журнала не мигрируется и не переписывается.",
+          "id": "J10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:W01; DESIGN.md",
+          "criterion": "Сбой до единственного replace оставляет старый SHA и весь журнал; билет не переиспользуется.",
+          "id": "W01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:N01; DESIGN.md",
+          "criterion": "Цель live отвергается до создания временного каталога.",
+          "id": "N01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:N02; DESIGN.md",
+          "criterion": "Вызов вне открытой сессии не создаёт состояние.",
+          "id": "N02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:N03; DESIGN.md",
+          "criterion": "Действие install не входит в стенд отката.",
+          "id": "N03",
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 50
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "basis": "CASES.json:P01; DESIGN.md",
+          "criterion": "Цепочка A→B→C, затем точный B: прежний результат штатного чтения возвращён, C отличался.",
+          "id": "P01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P02; DESIGN.md",
+          "criterion": "Нечитаемый N не мешает вернуться к B: текущий ZIP даёт digest_mismatch, после отката чтение B снова работает.",
+          "id": "P02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P03; DESIGN.md",
+          "criterion": "Точное действующее исключение на A позволяет стендовый переход; в журнале unsigned/exception.",
+          "id": "P03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P04; DESIGN.md",
+          "criterion": "Первый подтверждённый выбор из пустого журнала даёт seq=1, from=null и SHA точного A.",
+          "id": "P04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P05; DESIGN.md",
+          "criterion": "Новый подтверждённый rollout после отката продвигает историю, не заменяет прежние записи.",
+          "id": "P05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P06; DESIGN.md",
+          "criterion": "Предварительный план на B показывает точные состояния до/после, но не меняет байты, inode или журнал.",
+          "id": "P06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P07; DESIGN.md",
+          "criterion": "На 31 записи остаётся шаг для N‑1; успешный откат добавляет 32-ю, без обрезки.",
+          "id": "P07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R01; DESIGN.md",
+          "criterion": "В пустом журнале нет N‑1, даже если B проверяем.",
+          "id": "R01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R02; DESIGN.md",
+          "criterion": "После первого выбора N‑1 ещё нет.",
+          "id": "R02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R03; DESIGN.md",
+          "criterion": "После отката второй откат не возвращает отброшенный N и не ищет иной пакет.",
+          "id": "R03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R04; DESIGN.md",
+          "criterion": "Более старый принятый A не заменяет непосредственный предшествующий B.",
+          "id": "R04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R05; DESIGN.md",
+          "criterion": "Текущий C с той же ревизией не является N‑1.",
+          "id": "R05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R06; DESIGN.md",
+          "criterion": "Самосогласованная пересборка B при той же revision не заменяет точный SHA B.",
+          "id": "R06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R07; DESIGN.md",
+          "criterion": "Если точные байты N‑1 не предъявлены, не искать другой архив.",
+          "id": "R07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R08; DESIGN.md",
+          "criterion": "Изменение содержимого при правильном CRC сохраняет исходный digest_mismatch.",
+          "id": "R08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R09; DESIGN.md",
+          "criterion": "Отсутствующий манифест сохраняет исходный bundle_incomplete.",
+          "id": "R09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R10; DESIGN.md",
+          "criterion": "Rollout того же активного ZIP не добавляет фиктивный успешный шаг.",
+          "id": "R10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R11; DESIGN.md",
+          "criterion": "Rollout не занимает последнюю позицию журнала, оставленную для N‑1.",
+          "id": "R11",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T01; DESIGN.md",
+          "criterion": "Пережитая проверка при optional не даёт права обойти текущее требование подписи.",
+          "id": "T01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T02; DESIGN.md",
+          "criterion": "Ровно в expiry исключение для точного N‑1 уже не действует.",
+          "id": "T02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T03; DESIGN.md",
+          "criterion": "Действующее при плане исключение проверяется в apply заново; в expiry запись запрещена.",
+          "id": "T03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T04; DESIGN.md",
+          "criterion": "Переход optional→exception меняет согласованный дифф, даже если новая политика допустила ZIP.",
+          "id": "T04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T05; DESIGN.md",
+          "criterion": "Решение чужого approver не разблокирует прежний пакет.",
+          "id": "T05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T06; DESIGN.md",
+          "criterion": "Известная открытая подпись И‑119 без явно доступного проверяющего не превращается в unsigned.",
+          "id": "T06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T07; DESIGN.md",
+          "criterion": "При повреждённом ZIP и неверной политике раньше срабатывает целостность.",
+          "id": "T07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T08; DESIGN.md",
+          "criterion": "Неявный формат часов не заменяется временем из журнала или ZIP.",
+          "id": "T08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T09; DESIGN.md",
+          "criterion": "Исключение к другому SHA не действует на B с той же revision.",
+          "id": "T09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:T10; DESIGN.md",
+          "criterion": "Предъявленная подпись неправильной формы блокирует даже optional.",
+          "id": "T10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C01; DESIGN.md",
+          "criterion": "Предварительный план без отдельного подтверждения не применим.",
+          "id": "C01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C02; DESIGN.md",
+          "criterion": "Чужой билет из другой сессии для того же плана не подтверждает запись.",
+          "id": "C02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C03; DESIGN.md",
+          "criterion": "Подмена SHA в уже выданном плане отвергается при верном билете.",
+          "id": "C03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C04; DESIGN.md",
+          "criterion": "Булево true в поле целого формата нельзя принять за первоначальный план.",
+          "id": "C04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C05; DESIGN.md",
+          "criterion": "Иная связная история с тем же активным C обрывает подтверждение старого плана.",
+          "id": "C05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C06; DESIGN.md",
+          "criterion": "Иной валидный ZIP при той же revision не проходит apply согласованного продвижения.",
+          "id": "C06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C07; DESIGN.md",
+          "criterion": "Новая попытка плана гасит прежний билет, даже если новая цель не N‑1.",
+          "id": "C07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:C08; DESIGN.md",
+          "criterion": "Попытка применения без согласия гасит билет; повтор с исходным билетом не проходит.",
+          "id": "C08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J01; DESIGN.md",
+          "criterion": "Неполный журнал отвергается, текст парсера не выводится.",
+          "id": "J01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J02; DESIGN.md",
+          "criterion": "Разорванная связь from/to обнаружена до выбора пакета.",
+          "id": "J02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J03; DESIGN.md",
+          "criterion": "Активный SHA не может расходиться с последним событием.",
+          "id": "J03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J04; DESIGN.md",
+          "criterion": "Повтор поля JSON не принимается за корректный журнал.",
+          "id": "J04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J05; DESIGN.md",
+          "criterion": "Булево seq не является счётчиком журнала.",
+          "id": "J05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J06; DESIGN.md",
+          "criterion": "Записанный откат мимо N‑1 делает журнал непригодным.",
+          "id": "J06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J07; DESIGN.md",
+          "criterion": "Журнал больше 64 КиБ отклоняется, не разбирается как состояние.",
+          "id": "J07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J08; DESIGN.md",
+          "criterion": "Прежняя квитанция с чужой revision не соответствует тому же ZIP.",
+          "id": "J08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J09; DESIGN.md",
+          "criterion": "Неканоническое представление состояния не исправляется молча.",
+          "id": "J09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:J10; DESIGN.md",
+          "criterion": "Незнакомый формат журнала не мигрируется и не переписывается.",
+          "id": "J10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:W01; DESIGN.md",
+          "criterion": "Сбой до единственного replace оставляет старый SHA и весь журнал; билет не переиспользуется.",
+          "id": "W01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:N01; DESIGN.md",
+          "criterion": "Цель live отвергается до создания временного каталога.",
+          "id": "N01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:N02; DESIGN.md",
+          "criterion": "Вызов вне открытой сессии не создаёт состояние.",
+          "id": "N02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:N03; DESIGN.md",
+          "criterion": "Действие install не входит в стенд отката.",
+          "id": "N03",
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 50
+      },
+      "rc": 0
+    }
+  },
+  "scope": "П5 · один файл временного стенда, точный N‑1 и повтор штатного чтения v2"
+}

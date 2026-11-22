@@ -1,0 +1,338 @@
+{
+  "baseline": "83553b045b640d69dccb476fe10ab7e04f0e9c86",
+  "casebook_sha256": "0803a53ad58c61c6de2a0d2dfe60961c9b43b97ea1d3da9ad52f07da78ecba76",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/120/test_bundle_rollback.py"
+  ],
+  "independent_baseline_match": true,
+  "pinned_inputs": {
+    "kit/base/bundle_trust.py": "f4ec8f458e36410f476cd37d9331e6769728ef4f1405a382fd1acd6b8cb0a4ec",
+    "kit/base/bundle_verify.py": "0461d0475ec8add173b102f33d2967b1db862f238ae8aef31b738ba3d8b992af",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/117/Synthetic-Bundle-117.zip": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+    "research/119/CASES.json": "66475c0cc9bb84575d2fb600ab1f6190ec68287865703869e81a2b461240c9c7"
+  },
+  "rc": 1,
+  "result": {
+    "control": {
+      "profiles": {
+        "A": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "profile_revision": 7,
+          "profile_sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "dda402a87a500d6cc856d6f98ca3e2b5624ccd8a724286ce10c5ee965b02c5da",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        },
+        "B": {
+          "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+          "profile_revision": 7,
+          "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        },
+        "C": {
+          "archive_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+          "profile_revision": 7,
+          "profile_sha256": "fbea39515e6545557c636da47b554949ed18cd46598981c7e8b63bb8fad5d877",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "7a55e52505bf950e6044ef0b5d19caafbd258d3f69aa8cbff7974bf095cd5973",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        }
+      },
+      "rebuild_integrity": {
+        "archive_sha256": "38b801b69c2ddacdffbd3fe9b782e1a34a682d2449c0785850702a777d21588d",
+        "bundle_format": 1,
+        "manifest_digest": "cf7ccda9299b37a3c478975daadd0020169eca796a6b06f688682f9e017c56b3",
+        "outcome": "verified",
+        "revision": 7
+      },
+      "working_port": {
+        "rollback": "unknown_operation",
+        "rollout": "unknown_operation",
+        "rollout_status": "unknown_operation"
+      }
+    },
+    "counts": {
+      "fail": 50,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P02",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P03",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P04",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P05",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P06",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P07",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R01",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R02",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R03",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R04",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R05",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R06",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R07",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R08",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R09",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R10",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R11",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T01",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T02",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T03",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T04",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T05",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T06",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T07",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T08",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T09",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T10",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C01",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C02",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C03",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C04",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C05",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C06",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C07",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "C08",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J01",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J02",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J03",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J04",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J05",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J06",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J07",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J08",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J09",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "J10",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "W01",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N01",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N02",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N03",
+        "reason": "bundle_rollback_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "test_sha256": "dab91cfa18c87e87ba9941d02f65ca3a01032b5f67ef16c961360671b3dafee9"
+}

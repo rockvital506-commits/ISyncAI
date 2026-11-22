@@ -1,0 +1,1862 @@
+{
+  "basis": "CASES.json; CHECKOUT.json; CLEANROOM.json",
+  "iteration": "И-120",
+  "metrics": {
+    "applied": 6,
+    "by_action": {
+      "rollback": 4,
+      "rollout": 2
+    },
+    "by_error": {
+      "bundle_incomplete": 1,
+      "bundle_trust_invalid": 1,
+      "digest_mismatch": 2,
+      "rollback_unavailable": 7,
+      "rollout_blocked": 7,
+      "rollout_invalid": 3,
+      "rollout_limit": 1,
+      "rollout_no_change": 1,
+      "rollout_stale": 3,
+      "rollout_state_invalid": 10,
+      "rollout_unconfirmed": 6,
+      "rollout_write_failed": 1
+    },
+    "cases": 50,
+    "preview_only": 1,
+    "quiet_clean_unchanged_inputs": true,
+    "refused": 43,
+    "replace_attempts": 7,
+    "restored_readbacks": 2,
+    "successful_replaces": 6,
+    "unchanged_refusals": 43
+  },
+  "reader_control": {
+    "A": {
+      "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "profile_revision": 7,
+      "profile_sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+      "project_revision": 3,
+      "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+      "reader_unchanged": true,
+      "release_version": "0.2.0-dev.117",
+      "rule_text_sha256": "dda402a87a500d6cc856d6f98ca3e2b5624ccd8a724286ce10c5ee965b02c5da",
+      "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+    },
+    "B": {
+      "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+      "profile_revision": 7,
+      "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+      "project_revision": 3,
+      "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+      "reader_unchanged": true,
+      "release_version": "0.2.0-dev.117",
+      "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+      "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+    },
+    "C": {
+      "archive_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+      "profile_revision": 7,
+      "profile_sha256": "fbea39515e6545557c636da47b554949ed18cd46598981c7e8b63bb8fad5d877",
+      "project_revision": 3,
+      "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+      "reader_unchanged": true,
+      "release_version": "0.2.0-dev.117",
+      "rule_text_sha256": "7a55e52505bf950e6044ef0b5d19caafbd258d3f69aa8cbff7974bf095cd5973",
+      "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+    }
+  },
+  "references": {
+    "A": {
+      "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "bundle_format": 1,
+      "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+      "outcome": "verified",
+      "revision": 7
+    },
+    "B": {
+      "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+      "bundle_format": 1,
+      "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+      "outcome": "verified",
+      "revision": 7
+    },
+    "B_rebuilt": {
+      "archive_sha256": "38b801b69c2ddacdffbd3fe9b782e1a34a682d2449c0785850702a777d21588d",
+      "bundle_format": 1,
+      "manifest_digest": "cf7ccda9299b37a3c478975daadd0020169eca796a6b06f688682f9e017c56b3",
+      "outcome": "verified",
+      "revision": 7
+    },
+    "C": {
+      "archive_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+      "bundle_format": 1,
+      "manifest_digest": "598217dcb9daf937b24cd33caa0a5625aa9c65f7639dca44407984ac5d45dfc6",
+      "outcome": "verified",
+      "revision": 7
+    }
+  },
+  "rows": [
+    {
+      "action": "rollback",
+      "at": null,
+      "basis": "CASES.json:P01; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Цепочка A→B→C, затем точный B: прежний результат штатного чтения возвращён, C отличался.",
+      "error": null,
+      "file_effect": "replaced",
+      "id": "P01",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": true,
+      "quiet": true,
+      "readback": {
+        "current": {
+          "archive_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+          "profile_revision": 7,
+          "profile_sha256": "fbea39515e6545557c636da47b554949ed18cd46598981c7e8b63bb8fad5d877",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "7a55e52505bf950e6044ef0b5d19caafbd258d3f69aa8cbff7974bf095cd5973",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        },
+        "previous": {
+          "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+          "profile_revision": 7,
+          "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        },
+        "restored": {
+          "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+          "profile_revision": 7,
+          "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        }
+      },
+      "replace": [
+        {
+          "completed": true,
+          "old_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "one_file": true,
+          "staged_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+        }
+      ],
+      "result": {
+        "active_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+        "event": {
+          "action": "rollback",
+          "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+          "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+          "policy_decision": "optional",
+          "revision": 7,
+          "seq": 4,
+          "signature_status": "unsigned",
+          "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+        },
+        "outcome": "applied",
+        "state_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+      },
+      "retry_rejected": true,
+      "state_after": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": null,
+      "basis": "CASES.json:P02; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Нечитаемый N не мешает вернуться к B: текущий ZIP даёт digest_mismatch, после отката чтение B снова работает.",
+      "error": null,
+      "file_effect": "replaced",
+      "id": "P02",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": true,
+      "quiet": true,
+      "readback": {
+        "current": {
+          "code": "digest_mismatch",
+          "details": {
+            "reason": "sha256"
+          },
+          "where": "files"
+        },
+        "previous": {
+          "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+          "profile_revision": 7,
+          "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        },
+        "restored": {
+          "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+          "profile_revision": 7,
+          "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        }
+      },
+      "replace": [
+        {
+          "completed": true,
+          "old_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "one_file": true,
+          "staged_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+        }
+      ],
+      "result": {
+        "active_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+        "event": {
+          "action": "rollback",
+          "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+          "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+          "policy_decision": "optional",
+          "revision": 7,
+          "seq": 4,
+          "signature_status": "unsigned",
+          "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+        },
+        "outcome": "applied",
+        "state_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+      },
+      "retry_rejected": true,
+      "state_after": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": null,
+      "basis": "CASES.json:P03; DESIGN.md",
+      "candidate": "A",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Точное действующее исключение на A позволяет стендовый переход; в журнале unsigned/exception.",
+      "error": null,
+      "file_effect": "replaced",
+      "id": "P03",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "53b45bf3e5b387be7cf57d1a165ada69f291bb7a9c4b1af42574601d895f28d3",
+        "from_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+        "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "exception",
+        "revision": 7,
+        "seq": 3,
+        "signature_status": "unsigned",
+        "state_sha256": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167",
+        "target": "stand",
+        "to_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+      },
+      "prefix_preserved": true,
+      "quiet": true,
+      "readback": null,
+      "replace": [
+        {
+          "completed": true,
+          "old_sha256": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167",
+          "one_file": true,
+          "staged_sha256": "53b45bf3e5b387be7cf57d1a165ada69f291bb7a9c4b1af42574601d895f28d3"
+        }
+      ],
+      "result": {
+        "active_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "event": {
+          "action": "rollback",
+          "from_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "policy_decision": "exception",
+          "revision": 7,
+          "seq": 3,
+          "signature_status": "unsigned",
+          "to_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+        },
+        "outcome": "applied",
+        "state_sha256": "53b45bf3e5b387be7cf57d1a165ada69f291bb7a9c4b1af42574601d895f28d3"
+      },
+      "retry_rejected": true,
+      "state_after": "53b45bf3e5b387be7cf57d1a165ada69f291bb7a9c4b1af42574601d895f28d3",
+      "state_before": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167"
+    },
+    {
+      "action": "rollout",
+      "at": null,
+      "basis": "CASES.json:P04; DESIGN.md",
+      "candidate": "A",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Первый подтверждённый выбор из пустого журнала даёт seq=1, from=null и SHA точного A.",
+      "error": null,
+      "file_effect": "replaced",
+      "id": "P04",
+      "plan": {
+        "action": "rollout",
+        "after_sha256": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+        "from_sha256": null,
+        "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 1,
+        "signature_status": "unsigned",
+        "state_sha256": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4",
+        "target": "stand",
+        "to_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+      },
+      "prefix_preserved": true,
+      "quiet": true,
+      "readback": null,
+      "replace": [
+        {
+          "completed": true,
+          "old_sha256": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4",
+          "one_file": true,
+          "staged_sha256": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2"
+        }
+      ],
+      "result": {
+        "active_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "event": {
+          "action": "rollout",
+          "from_sha256": null,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "policy_decision": "optional",
+          "revision": 7,
+          "seq": 1,
+          "signature_status": "unsigned",
+          "to_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+        },
+        "outcome": "applied",
+        "state_sha256": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2"
+      },
+      "retry_rejected": true,
+      "state_after": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+      "state_before": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4"
+    },
+    {
+      "action": "rollout",
+      "at": null,
+      "basis": "CASES.json:P05; DESIGN.md",
+      "candidate": "C",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Новый подтверждённый rollout после отката продвигает историю, не заменяет прежние записи.",
+      "error": null,
+      "file_effect": "replaced",
+      "id": "P05",
+      "plan": {
+        "action": "rollout",
+        "after_sha256": "8adb7a634430bf48207adefeeddd06714b25728e7d967b043d46216aee32ea23",
+        "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "manifest_digest": "598217dcb9daf937b24cd33caa0a5625aa9c65f7639dca44407984ac5d45dfc6",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27",
+        "target": "stand",
+        "to_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539"
+      },
+      "prefix_preserved": true,
+      "quiet": true,
+      "readback": null,
+      "replace": [
+        {
+          "completed": true,
+          "old_sha256": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27",
+          "one_file": true,
+          "staged_sha256": "8adb7a634430bf48207adefeeddd06714b25728e7d967b043d46216aee32ea23"
+        }
+      ],
+      "result": {
+        "active_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "event": {
+          "action": "rollout",
+          "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "manifest_digest": "598217dcb9daf937b24cd33caa0a5625aa9c65f7639dca44407984ac5d45dfc6",
+          "policy_decision": "optional",
+          "revision": 7,
+          "seq": 4,
+          "signature_status": "unsigned",
+          "to_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539"
+        },
+        "outcome": "applied",
+        "state_sha256": "8adb7a634430bf48207adefeeddd06714b25728e7d967b043d46216aee32ea23"
+      },
+      "retry_rejected": true,
+      "state_after": "8adb7a634430bf48207adefeeddd06714b25728e7d967b043d46216aee32ea23",
+      "state_before": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27"
+    },
+    {
+      "action": "rollback",
+      "at": null,
+      "basis": "CASES.json:P06; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Предварительный план на B показывает точные состояния до/после, но не меняет байты, inode или журнал.",
+      "error": null,
+      "file_effect": "unchanged",
+      "id": "P06",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": null,
+      "basis": "CASES.json:P07; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "На 31 записи остаётся шаг для N‑1; успешный откат добавляет 32-ю, без обрезки.",
+      "error": null,
+      "file_effect": "replaced",
+      "id": "P07",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "9b6e5c8579c87cd2cdcde98aa9f2ccaa3fc8586e5ed7855109bc79a9fa9cff15",
+        "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 32,
+        "signature_status": "unsigned",
+        "state_sha256": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": true,
+      "quiet": true,
+      "readback": null,
+      "replace": [
+        {
+          "completed": true,
+          "old_sha256": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391",
+          "one_file": true,
+          "staged_sha256": "9b6e5c8579c87cd2cdcde98aa9f2ccaa3fc8586e5ed7855109bc79a9fa9cff15"
+        }
+      ],
+      "result": {
+        "active_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+        "event": {
+          "action": "rollback",
+          "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+          "policy_decision": "optional",
+          "revision": 7,
+          "seq": 32,
+          "signature_status": "unsigned",
+          "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+        },
+        "outcome": "applied",
+        "state_sha256": "9b6e5c8579c87cd2cdcde98aa9f2ccaa3fc8586e5ed7855109bc79a9fa9cff15"
+      },
+      "retry_rejected": true,
+      "state_after": "9b6e5c8579c87cd2cdcde98aa9f2ccaa3fc8586e5ed7855109bc79a9fa9cff15",
+      "state_before": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R01; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "В пустом журнале нет N‑1, даже если B проверяем.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "no_previous"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "R01",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4",
+      "state_before": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R02; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "После первого выбора N‑1 ещё нет.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "no_previous"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "R02",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+      "state_before": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R03; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "После отката второй откат не возвращает отброшенный N и не ищет иной пакет.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "no_previous"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "R03",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27",
+      "state_before": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R04; DESIGN.md",
+      "candidate": "A",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Более старый принятый A не заменяет непосредственный предшествующий B.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "not_previous"
+        },
+        "where": "archive"
+      },
+      "file_effect": "unchanged",
+      "id": "R04",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R05; DESIGN.md",
+      "candidate": "C",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Текущий C с той же ревизией не является N‑1.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "not_previous"
+        },
+        "where": "archive"
+      },
+      "file_effect": "unchanged",
+      "id": "R05",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R06; DESIGN.md",
+      "candidate": "B_rebuilt",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Самосогласованная пересборка B при той же revision не заменяет точный SHA B.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "not_previous"
+        },
+        "where": "archive"
+      },
+      "file_effect": "unchanged",
+      "id": "R06",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R07; DESIGN.md",
+      "candidate": null,
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Если точные байты N‑1 не предъявлены, не искать другой архив.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "archive"
+      },
+      "file_effect": "unchanged",
+      "id": "R07",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R08; DESIGN.md",
+      "candidate": "B_bad",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Изменение содержимого при правильном CRC сохраняет исходный digest_mismatch.",
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "file_effect": "unchanged",
+      "id": "R08",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R09; DESIGN.md",
+      "candidate": "B_incomplete",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Отсутствующий манифест сохраняет исходный bundle_incomplete.",
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "file_effect": "unchanged",
+      "id": "R09",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollout",
+      "at": "plan",
+      "basis": "CASES.json:R10; DESIGN.md",
+      "candidate": "C",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Rollout того же активного ZIP не добавляет фиктивный успешный шаг.",
+      "error": {
+        "code": "rollout_no_change",
+        "details": {
+          "reason": "already_active"
+        },
+        "where": "archive"
+      },
+      "file_effect": "unchanged",
+      "id": "R10",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollout",
+      "at": "plan",
+      "basis": "CASES.json:R11; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Rollout не занимает последнюю позицию журнала, оставленную для N‑1.",
+      "error": {
+        "code": "rollout_limit",
+        "details": {
+          "reason": "capacity"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "R11",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391",
+      "state_before": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T01; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Пережитая проверка при optional не даёт права обойти текущее требование подписи.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "signature_required"
+        },
+        "where": "trust"
+      },
+      "file_effect": "unchanged",
+      "id": "T01",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T02; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Ровно в expiry исключение для точного N‑1 уже не действует.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "exception_expired"
+        },
+        "where": "trust"
+      },
+      "file_effect": "unchanged",
+      "id": "T02",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:T03; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Действующее при плане исключение проверяется в apply заново; в expiry запись запрещена.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "exception_expired"
+        },
+        "where": "trust"
+      },
+      "file_effect": "unchanged",
+      "id": "T03",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "4cc548b2ddc818b1acbcf2a432dc75ea3ad835f711be8179487714ecd91b5cdd",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "exception",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:T04; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Переход optional→exception меняет согласованный дифф, даже если новая политика допустила ZIP.",
+      "error": {
+        "code": "rollout_stale",
+        "details": {
+          "reason": "assessment"
+        },
+        "where": "plan"
+      },
+      "file_effect": "unchanged",
+      "id": "T04",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T05; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Решение чужого approver не разблокирует прежний пакет.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "exception_approver"
+        },
+        "where": "trust"
+      },
+      "file_effect": "unchanged",
+      "id": "T05",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T06; DESIGN.md",
+      "candidate": "A",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Известная открытая подпись И‑119 без явно доступного проверяющего не превращается в unsigned.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "verifier_unavailable"
+        },
+        "where": "trust"
+      },
+      "file_effect": "unchanged",
+      "id": "T06",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167",
+      "state_before": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T07; DESIGN.md",
+      "candidate": "B_bad",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "При повреждённом ZIP и неверной политике раньше срабатывает целостность.",
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "file_effect": "unchanged",
+      "id": "T07",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T08; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Неявный формат часов не заменяется временем из журнала или ZIP.",
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "utc"
+        },
+        "where": "clock"
+      },
+      "file_effect": "unchanged",
+      "id": "T08",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T09; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Исключение к другому SHA не действует на B с той же revision.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "signature_required"
+        },
+        "where": "trust"
+      },
+      "file_effect": "unchanged",
+      "id": "T09",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T10; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Предъявленная подпись неправильной формы блокирует даже optional.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "trust"
+      },
+      "file_effect": "unchanged",
+      "id": "T10",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C01; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Предварительный план без отдельного подтверждения не применим.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "ticket"
+        },
+        "where": "plan"
+      },
+      "file_effect": "unchanged",
+      "id": "C01",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C02; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Чужой билет из другой сессии для того же плана не подтверждает запись.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "ticket"
+        },
+        "where": "plan"
+      },
+      "file_effect": "unchanged",
+      "id": "C02",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C03; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Подмена SHA в уже выданном плане отвергается при верном билете.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "changed"
+        },
+        "where": "plan"
+      },
+      "file_effect": "unchanged",
+      "id": "C03",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C04; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Булево true в поле целого формата нельзя принять за первоначальный план.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "changed"
+        },
+        "where": "plan"
+      },
+      "file_effect": "unchanged",
+      "id": "C04",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C05; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Иная связная история с тем же активным C обрывает подтверждение старого плана.",
+      "error": {
+        "code": "rollout_stale",
+        "details": {
+          "reason": "changed"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "C05",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "4d03e717d2c5ab06fe2b749806070f695b0ccae889dd2588d2253179131d2087",
+      "state_before": "4d03e717d2c5ab06fe2b749806070f695b0ccae889dd2588d2253179131d2087"
+    },
+    {
+      "action": "rollout",
+      "at": "apply",
+      "basis": "CASES.json:C06; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Иной валидный ZIP при той же revision не проходит apply согласованного продвижения.",
+      "error": {
+        "code": "rollout_stale",
+        "details": {
+          "reason": "changed"
+        },
+        "where": "archive"
+      },
+      "file_effect": "unchanged",
+      "id": "C06",
+      "plan": {
+        "action": "rollout",
+        "after_sha256": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167",
+        "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 2,
+        "signature_status": "unsigned",
+        "state_sha256": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+      "state_before": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C07; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Новая попытка плана гасит прежний билет, даже если новая цель не N‑1.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "ticket"
+        },
+        "where": "plan"
+      },
+      "file_effect": "unchanged",
+      "id": "C07",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C08; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Попытка применения без согласия гасит билет; повтор с исходным билетом не проходит.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "ticket"
+        },
+        "where": "plan"
+      },
+      "file_effect": "unchanged",
+      "id": "C08",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": true,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J01; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Неполный журнал отвергается, текст парсера не выводится.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "json"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J01",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "038660ab63683c640420a5ef65619ddfbbdd5655019156ff707ce52c1e23f7a6",
+      "state_before": "038660ab63683c640420a5ef65619ddfbbdd5655019156ff707ce52c1e23f7a6"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J02; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Разорванная связь from/to обнаружена до выбора пакета.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "chain"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J02",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "8722777640d0ddffbcd41347c737a482063707005d9e09a4f7ffe2099cf1040d",
+      "state_before": "8722777640d0ddffbcd41347c737a482063707005d9e09a4f7ffe2099cf1040d"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J03; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Активный SHA не может расходиться с последним событием.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "chain"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J03",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "870db88bba863fdc72745830dae88875de0caacf21e089bc81b7a4f039fff260",
+      "state_before": "870db88bba863fdc72745830dae88875de0caacf21e089bc81b7a4f039fff260"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J04; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Повтор поля JSON не принимается за корректный журнал.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "json"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J04",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "ac7a2d50addb4b5a23aa30e50da26737029c057fdff96fadf0323079cfce09bc",
+      "state_before": "ac7a2d50addb4b5a23aa30e50da26737029c057fdff96fadf0323079cfce09bc"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J05; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Булево seq не является счётчиком журнала.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J05",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "45ea3b0864f370bb88c4210de9ddaa34742d0892f6ef8058fa962891de7d78ea",
+      "state_before": "45ea3b0864f370bb88c4210de9ddaa34742d0892f6ef8058fa962891de7d78ea"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J06; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Записанный откат мимо N‑1 делает журнал непригодным.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "chain"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J06",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "3627da62b1067fd0820e20a4e1e105919e2b3e5cb6b22cef5e412098e937be27",
+      "state_before": "3627da62b1067fd0820e20a4e1e105919e2b3e5cb6b22cef5e412098e937be27"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J07; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Журнал больше 64 КиБ отклоняется, не разбирается как состояние.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J07",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "76c002eec0c9da854ca2ee5dae9fb0069a622274b6638ab712fcb70384304899",
+      "state_before": "76c002eec0c9da854ca2ee5dae9fb0069a622274b6638ab712fcb70384304899"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J08; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Прежняя квитанция с чужой revision не соответствует тому же ZIP.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "receipt"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J08",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "b95790d310fb348b52a5e17eeb7c8b13cc911cedeced94805a1dca1b29ea31e6",
+      "state_before": "b95790d310fb348b52a5e17eeb7c8b13cc911cedeced94805a1dca1b29ea31e6"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J09; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Неканоническое представление состояния не исправляется молча.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "encoding"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J09",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "5df42d3c583121bd227decfbeb9ccceba17c3c83b7b692980b4b0256a080253e",
+      "state_before": "5df42d3c583121bd227decfbeb9ccceba17c3c83b7b692980b4b0256a080253e"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J10; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Незнакомый формат журнала не мигрируется и не переписывается.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "journal"
+      },
+      "file_effect": "unchanged",
+      "id": "J10",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "93a8f7e230ec351771b08ad835c5d8f8744cf109a9190b1c2bdeda66aa1cc593",
+      "state_before": "93a8f7e230ec351771b08ad835c5d8f8744cf109a9190b1c2bdeda66aa1cc593"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:W01; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Сбой до единственного replace оставляет старый SHA и весь журнал; билет не переиспользуется.",
+      "error": {
+        "code": "rollout_write_failed",
+        "details": {
+          "reason": "replace"
+        },
+        "where": "state"
+      },
+      "file_effect": "unchanged",
+      "id": "W01",
+      "plan": {
+        "action": "rollback",
+        "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+        "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+        "outcome": "planned",
+        "plan_format": 1,
+        "policy_decision": "optional",
+        "revision": 7,
+        "seq": 4,
+        "signature_status": "unsigned",
+        "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+        "target": "stand",
+        "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+      },
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [
+        {
+          "completed": false,
+          "old_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "one_file": true,
+          "staged_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+        }
+      ],
+      "result": null,
+      "retry_rejected": true,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    },
+    {
+      "action": "rollback",
+      "at": "init",
+      "basis": "CASES.json:N01; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Цель live отвергается до создания временного каталога.",
+      "error": {
+        "code": "rollout_invalid",
+        "details": {
+          "reason": "stand_only"
+        },
+        "where": "target"
+      },
+      "file_effect": "absent",
+      "id": "N01",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": null,
+      "state_before": null
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:N02; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Вызов вне открытой сессии не создаёт состояние.",
+      "error": {
+        "code": "rollout_invalid",
+        "details": {
+          "reason": "inactive"
+        },
+        "where": "session"
+      },
+      "file_effect": "absent",
+      "id": "N02",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": null,
+      "state_before": null
+    },
+    {
+      "action": "install",
+      "at": "plan",
+      "basis": "CASES.json:N03; DESIGN.md",
+      "candidate": "B",
+      "cleanup": true,
+      "context_unchanged": true,
+      "criterion": "Действие install не входит в стенд отката.",
+      "error": {
+        "code": "rollout_invalid",
+        "details": {
+          "reason": "unknown"
+        },
+        "where": "operation"
+      },
+      "file_effect": "unchanged",
+      "id": "N03",
+      "plan": null,
+      "prefix_preserved": null,
+      "quiet": true,
+      "readback": null,
+      "replace": [],
+      "result": null,
+      "retry_rejected": null,
+      "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+      "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+    }
+  ],
+  "working_port": {
+    "rollback": "unknown_operation",
+    "rollout": "unknown_operation",
+    "rollout_status": "unknown_operation"
+  }
+}

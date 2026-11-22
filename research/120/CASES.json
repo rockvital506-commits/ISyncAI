@@ -1,0 +1,1160 @@
+{
+  "archive_sha256": {
+    "A": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+    "B": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+    "B_bad": "468dfd2b69f1910acb1111578fc57145f59d2f8e18289ab94a5fc22a18f42295",
+    "B_incomplete": "69073b9a84f349156b071e4b897842839acca3c47d244f3cef4bb1bf6189ef67",
+    "B_rebuilt": "38b801b69c2ddacdffbd3fe9b782e1a34a682d2449c0785850702a777d21588d",
+    "C": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+    "C_bad": "edc5be95abecd4b2363a5e5b43ef9f89ffe733aa7c73dc25aa66382ed624ed8b"
+  },
+  "baseline": "83553b045b640d69dccb476fe10ab7e04f0e9c86",
+  "cases": [
+    {
+      "action": "rollback",
+      "basis": "CASES.json:P01; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Цепочка A→B→C, затем точный B: прежний результат штатного чтения возвращён, C отличался.",
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "P01",
+      "witness": "healthy"
+    },
+    {
+      "action": "rollback",
+      "basis": "CASES.json:P02; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Нечитаемый N не мешает вернуться к B: текущий ZIP даёт digest_mismatch, после отката чтение B снова работает.",
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "P02",
+      "witness": "current_corrupt"
+    },
+    {
+      "action": "rollback",
+      "basis": "CASES.json:P03; DESIGN.md",
+      "candidate": "A",
+      "context": "exception",
+      "criterion": "Точное действующее исключение на A позволяет стендовый переход; в журнале unsigned/exception.",
+      "history": [
+        "A",
+        "B"
+      ],
+      "id": "P03"
+    },
+    {
+      "action": "rollout",
+      "basis": "CASES.json:P04; DESIGN.md",
+      "candidate": "A",
+      "criterion": "Первый подтверждённый выбор из пустого журнала даёт seq=1, from=null и SHA точного A.",
+      "history": [],
+      "id": "P04"
+    },
+    {
+      "action": "rollout",
+      "basis": "CASES.json:P05; DESIGN.md",
+      "candidate": "C",
+      "criterion": "Новый подтверждённый rollout после отката продвигает историю, не заменяет прежние записи.",
+      "history": [
+        "A",
+        "B",
+        "~A"
+      ],
+      "id": "P05"
+    },
+    {
+      "action": "rollback",
+      "basis": "CASES.json:P06; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Предварительный план на B показывает точные состояния до/после, но не меняет байты, inode или журнал.",
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "P06",
+      "mode": "preview"
+    },
+    {
+      "action": "rollback",
+      "basis": "CASES.json:P07; DESIGN.md",
+      "candidate": "B",
+      "criterion": "На 31 записи остаётся шаг для N‑1; успешный откат добавляет 32-ю, без обрезки.",
+      "history": [
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A"
+      ],
+      "id": "P07"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R01; DESIGN.md",
+      "candidate": "B",
+      "criterion": "В пустом журнале нет N‑1, даже если B проверяем.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "no_previous"
+        },
+        "where": "journal"
+      },
+      "history": [],
+      "id": "R01"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R02; DESIGN.md",
+      "candidate": "B",
+      "criterion": "После первого выбора N‑1 ещё нет.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "no_previous"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A"
+      ],
+      "id": "R02"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R03; DESIGN.md",
+      "candidate": "B",
+      "criterion": "После отката второй откат не возвращает отброшенный N и не ищет иной пакет.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "no_previous"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "~A"
+      ],
+      "id": "R03"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R04; DESIGN.md",
+      "candidate": "A",
+      "criterion": "Более старый принятый A не заменяет непосредственный предшествующий B.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "not_previous"
+        },
+        "where": "archive"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "R04"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R05; DESIGN.md",
+      "candidate": "C",
+      "criterion": "Текущий C с той же ревизией не является N‑1.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "not_previous"
+        },
+        "where": "archive"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "R05"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R06; DESIGN.md",
+      "candidate": "B_rebuilt",
+      "criterion": "Самосогласованная пересборка B при той же revision не заменяет точный SHA B.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "not_previous"
+        },
+        "where": "archive"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "R06"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R07; DESIGN.md",
+      "candidate": null,
+      "criterion": "Если точные байты N‑1 не предъявлены, не искать другой архив.",
+      "error": {
+        "code": "rollback_unavailable",
+        "details": {
+          "reason": "missing"
+        },
+        "where": "archive"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "R07"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R08; DESIGN.md",
+      "candidate": "B_bad",
+      "criterion": "Изменение содержимого при правильном CRC сохраняет исходный digest_mismatch.",
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "R08"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:R09; DESIGN.md",
+      "candidate": "B_incomplete",
+      "criterion": "Отсутствующий манифест сохраняет исходный bundle_incomplete.",
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "R09"
+    },
+    {
+      "action": "rollout",
+      "at": "plan",
+      "basis": "CASES.json:R10; DESIGN.md",
+      "candidate": "C",
+      "criterion": "Rollout того же активного ZIP не добавляет фиктивный успешный шаг.",
+      "error": {
+        "code": "rollout_no_change",
+        "details": {
+          "reason": "already_active"
+        },
+        "where": "archive"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "R10"
+    },
+    {
+      "action": "rollout",
+      "at": "plan",
+      "basis": "CASES.json:R11; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Rollout не занимает последнюю позицию журнала, оставленную для N‑1.",
+      "error": {
+        "code": "rollout_limit",
+        "details": {
+          "reason": "capacity"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A",
+        "B",
+        "A"
+      ],
+      "id": "R11"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T01; DESIGN.md",
+      "candidate": "B",
+      "context": "required",
+      "criterion": "Пережитая проверка при optional не даёт права обойти текущее требование подписи.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "signature_required"
+        },
+        "where": "trust"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "T01"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T02; DESIGN.md",
+      "candidate": "B",
+      "context": "expired",
+      "criterion": "Ровно в expiry исключение для точного N‑1 уже не действует.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "exception_expired"
+        },
+        "where": "trust"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "T02"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:T03; DESIGN.md",
+      "candidate": "B",
+      "context": "exception",
+      "criterion": "Действующее при плане исключение проверяется в apply заново; в expiry запись запрещена.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "exception_expired"
+        },
+        "where": "trust"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "T03",
+      "recheck": "expired"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:T04; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Переход optional→exception меняет согласованный дифф, даже если новая политика допустила ZIP.",
+      "error": {
+        "code": "rollout_stale",
+        "details": {
+          "reason": "assessment"
+        },
+        "where": "plan"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "T04",
+      "recheck": "exception"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T05; DESIGN.md",
+      "candidate": "B",
+      "context": "wrong_approver",
+      "criterion": "Решение чужого approver не разблокирует прежний пакет.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "exception_approver"
+        },
+        "where": "trust"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "T05"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T06; DESIGN.md",
+      "candidate": "A",
+      "context": "unchecked",
+      "criterion": "Известная открытая подпись И‑119 без явно доступного проверяющего не превращается в unsigned.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "verifier_unavailable"
+        },
+        "where": "trust"
+      },
+      "history": [
+        "A",
+        "B"
+      ],
+      "id": "T06"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T07; DESIGN.md",
+      "candidate": "B_bad",
+      "context": "bad_policy",
+      "criterion": "При повреждённом ZIP и неверной политике раньше срабатывает целостность.",
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "T07"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T08; DESIGN.md",
+      "candidate": "B",
+      "context": "bad_clock",
+      "criterion": "Неявный формат часов не заменяется временем из журнала или ZIP.",
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "utc"
+        },
+        "where": "clock"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "T08"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T09; DESIGN.md",
+      "candidate": "B",
+      "context": "wrong_archive",
+      "criterion": "Исключение к другому SHA не действует на B с той же revision.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "signature_required"
+        },
+        "where": "trust"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "T09"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:T10; DESIGN.md",
+      "candidate": "B",
+      "context": "bad_signature",
+      "criterion": "Предъявленная подпись неправильной формы блокирует даже optional.",
+      "error": {
+        "code": "rollout_blocked",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "trust"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "T10"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C01; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Предварительный план без отдельного подтверждения не применим.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "ticket"
+        },
+        "where": "plan"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "C01",
+      "mode": "no_ticket"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C02; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Чужой билет из другой сессии для того же плана не подтверждает запись.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "ticket"
+        },
+        "where": "plan"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "C02",
+      "mode": "foreign_ticket"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C03; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Подмена SHA в уже выданном плане отвергается при верном билете.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "changed"
+        },
+        "where": "plan"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "C03",
+      "mode": "plan_tamper"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C04; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Булево true в поле целого формата нельзя принять за первоначальный план.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "changed"
+        },
+        "where": "plan"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "C04",
+      "mode": "plan_bool"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C05; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Иная связная история с тем же активным C обрывает подтверждение старого плана.",
+      "error": {
+        "code": "rollout_stale",
+        "details": {
+          "reason": "changed"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "C05",
+      "replacement_history": [
+        "A",
+        "B",
+        "C",
+        "~B",
+        "C"
+      ]
+    },
+    {
+      "action": "rollout",
+      "apply_candidate": "C",
+      "at": "apply",
+      "basis": "CASES.json:C06; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Иной валидный ZIP при той же revision не проходит apply согласованного продвижения.",
+      "error": {
+        "code": "rollout_stale",
+        "details": {
+          "reason": "changed"
+        },
+        "where": "archive"
+      },
+      "history": [
+        "A"
+      ],
+      "id": "C06"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C07; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Новая попытка плана гасит прежний билет, даже если новая цель не N‑1.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "ticket"
+        },
+        "where": "plan"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "C07",
+      "mode": "superseded"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:C08; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Попытка применения без согласия гасит билет; повтор с исходным билетом не проходит.",
+      "error": {
+        "code": "rollout_unconfirmed",
+        "details": {
+          "reason": "ticket"
+        },
+        "where": "plan"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "C08",
+      "mode": "retry"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J01; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Неполный журнал отвергается, текст парсера не выводится.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "json"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J01",
+      "mutation": "truncated"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J02; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Разорванная связь from/to обнаружена до выбора пакета.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "chain"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J02",
+      "mutation": "chain"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J03; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Активный SHA не может расходиться с последним событием.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "chain"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J03",
+      "mutation": "head"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J04; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Повтор поля JSON не принимается за корректный журнал.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "json"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J04",
+      "mutation": "duplicate"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J05; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Булево seq не является счётчиком журнала.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J05",
+      "mutation": "bool_seq"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J06; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Записанный откат мимо N‑1 делает журнал непригодным.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "chain"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J06",
+      "mutation": "skip_previous"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J07; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Журнал больше 64 КиБ отклоняется, не разбирается как состояние.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J07",
+      "mutation": "size"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J08; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Прежняя квитанция с чужой revision не соответствует тому же ZIP.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "receipt"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J08",
+      "mutation": "receipt"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J09; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Неканоническое представление состояния не исправляется молча.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "encoding"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J09",
+      "mutation": "encoding"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:J10; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Незнакомый формат журнала не мигрируется и не переписывается.",
+      "error": {
+        "code": "rollout_state_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "journal"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "J10",
+      "mutation": "version"
+    },
+    {
+      "action": "rollback",
+      "at": "apply",
+      "basis": "CASES.json:W01; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Сбой до единственного replace оставляет старый SHA и весь журнал; билет не переиспользуется.",
+      "error": {
+        "code": "rollout_write_failed",
+        "details": {
+          "reason": "replace"
+        },
+        "where": "state"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "W01",
+      "mode": "write_failure"
+    },
+    {
+      "action": "rollback",
+      "at": "init",
+      "basis": "CASES.json:N01; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Цель live отвергается до создания временного каталога.",
+      "error": {
+        "code": "rollout_invalid",
+        "details": {
+          "reason": "stand_only"
+        },
+        "where": "target"
+      },
+      "history": [],
+      "id": "N01",
+      "mode": "reject_target"
+    },
+    {
+      "action": "rollback",
+      "at": "plan",
+      "basis": "CASES.json:N02; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Вызов вне открытой сессии не создаёт состояние.",
+      "error": {
+        "code": "rollout_invalid",
+        "details": {
+          "reason": "inactive"
+        },
+        "where": "session"
+      },
+      "history": [],
+      "id": "N02",
+      "mode": "outside"
+    },
+    {
+      "action": "install",
+      "at": "plan",
+      "basis": "CASES.json:N03; DESIGN.md",
+      "candidate": "B",
+      "criterion": "Действие install не входит в стенд отката.",
+      "error": {
+        "code": "rollout_invalid",
+        "details": {
+          "reason": "unknown"
+        },
+        "where": "operation"
+      },
+      "history": [
+        "A",
+        "B",
+        "C"
+      ],
+      "id": "N03"
+    }
+  ],
+  "expected_control": {
+    "profiles": {
+      "A": {
+        "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "profile_revision": 7,
+        "profile_sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+        "project_revision": 3,
+        "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+        "reader_unchanged": true,
+        "release_version": "0.2.0-dev.117",
+        "rule_text_sha256": "dda402a87a500d6cc856d6f98ca3e2b5624ccd8a724286ce10c5ee965b02c5da",
+        "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+      },
+      "B": {
+        "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+        "profile_revision": 7,
+        "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+        "project_revision": 3,
+        "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+        "reader_unchanged": true,
+        "release_version": "0.2.0-dev.117",
+        "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+        "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+      },
+      "C": {
+        "archive_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+        "profile_revision": 7,
+        "profile_sha256": "fbea39515e6545557c636da47b554949ed18cd46598981c7e8b63bb8fad5d877",
+        "project_revision": 3,
+        "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+        "reader_unchanged": true,
+        "release_version": "0.2.0-dev.117",
+        "rule_text_sha256": "7a55e52505bf950e6044ef0b5d19caafbd258d3f69aa8cbff7974bf095cd5973",
+        "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+      }
+    },
+    "rebuild_integrity": {
+      "archive_sha256": "38b801b69c2ddacdffbd3fe9b782e1a34a682d2449c0785850702a777d21588d",
+      "bundle_format": 1,
+      "manifest_digest": "cf7ccda9299b37a3c478975daadd0020169eca796a6b06f688682f9e017c56b3",
+      "outcome": "verified",
+      "revision": 7
+    },
+    "working_port": {
+      "rollback": "unknown_operation",
+      "rollout": "unknown_operation",
+      "rollout_status": "unknown_operation"
+    }
+  },
+  "format": 1,
+  "integrity": {
+    "A": {
+      "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "bundle_format": 1,
+      "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+      "outcome": "verified",
+      "revision": 7
+    },
+    "B": {
+      "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+      "bundle_format": 1,
+      "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+      "outcome": "verified",
+      "revision": 7
+    },
+    "B_rebuilt": {
+      "archive_sha256": "38b801b69c2ddacdffbd3fe9b782e1a34a682d2449c0785850702a777d21588d",
+      "bundle_format": 1,
+      "manifest_digest": "cf7ccda9299b37a3c478975daadd0020169eca796a6b06f688682f9e017c56b3",
+      "outcome": "verified",
+      "revision": 7
+    },
+    "C": {
+      "archive_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+      "bundle_format": 1,
+      "manifest_digest": "598217dcb9daf937b24cd33caa0a5625aa9c65f7639dca44407984ac5d45dfc6",
+      "outcome": "verified",
+      "revision": 7
+    }
+  },
+  "readbacks": {
+    "A": {
+      "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "profile_revision": 7,
+      "profile_sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+      "project_revision": 3,
+      "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+      "reader_unchanged": true,
+      "release_version": "0.2.0-dev.117",
+      "rule_text_sha256": "dda402a87a500d6cc856d6f98ca3e2b5624ccd8a724286ce10c5ee965b02c5da",
+      "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+    },
+    "B": {
+      "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+      "profile_revision": 7,
+      "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+      "project_revision": 3,
+      "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+      "reader_unchanged": true,
+      "release_version": "0.2.0-dev.117",
+      "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+      "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+    },
+    "B_rebuilt": {
+      "archive_sha256": "38b801b69c2ddacdffbd3fe9b782e1a34a682d2449c0785850702a777d21588d",
+      "profile_revision": 7,
+      "profile_sha256": "d9be27e33d17ebf9162d95b623b1f8c4de37385d132e48a9a702b0c2da377efe",
+      "project_revision": 3,
+      "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+      "reader_unchanged": true,
+      "release_version": "0.2.0-dev.117",
+      "rule_text_sha256": "79e7a311638682b5464d39cb57af27f7fdac2c0586e0a2988e411040adafca3a",
+      "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+    },
+    "C": {
+      "archive_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+      "profile_revision": 7,
+      "profile_sha256": "fbea39515e6545557c636da47b554949ed18cd46598981c7e8b63bb8fad5d877",
+      "project_revision": 3,
+      "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+      "reader_unchanged": true,
+      "release_version": "0.2.0-dev.117",
+      "rule_text_sha256": "7a55e52505bf950e6044ef0b5d19caafbd258d3f69aa8cbff7974bf095cd5973",
+      "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+    }
+  }
+}

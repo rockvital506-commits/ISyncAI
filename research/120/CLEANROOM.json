@@ -1,0 +1,1804 @@
+{
+  "files": [
+    "kit/base/BUNDLE-ROLLBACK.md",
+    "kit/base/bundle_rollback.py",
+    "kit/base/bundle_trust.py",
+    "kit/base/bundle_verify.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/registry_store.py",
+    "kit/base/schema_v2.py",
+    "research/117/Synthetic-Bundle-117.zip",
+    "research/119/CASES.json",
+    "research/120/CASES.json",
+    "research/120/test_bundle_rollback.py"
+  ],
+  "inputs_sha256": {
+    "kit/base/BUNDLE-ROLLBACK.md": "b2feedb660a66b6c76a2885fd59d61804f64df9124c8d6200a9aa7e7d41ca3df",
+    "kit/base/bundle_rollback.py": "92feebd165caa095187d3f2b33b9e3c70b7708d9c943d821bb3e1940c75f9484",
+    "kit/base/bundle_trust.py": "f4ec8f458e36410f476cd37d9331e6769728ef4f1405a382fd1acd6b8cb0a4ec",
+    "kit/base/bundle_verify.py": "0461d0475ec8add173b102f33d2967b1db862f238ae8aef31b738ba3d8b992af",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/registry_store.py": "ed4c7877d9c2661f843e546a2e671caed5d695e99b1c4a502c74438d6af21243",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/117/Synthetic-Bundle-117.zip": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+    "research/119/CASES.json": "66475c0cc9bb84575d2fb600ab1f6190ec68287865703869e81a2b461240c9c7",
+    "research/120/CASES.json": "0803a53ad58c61c6de2a0d2dfe60961c9b43b97ea1d3da9ad52f07da78ecba76",
+    "research/120/test_bundle_rollback.py": "dab91cfa18c87e87ba9941d02f65ca3a01032b5f67ef16c961360671b3dafee9"
+  },
+  "inputs_unchanged": true,
+  "rc": 0,
+  "result": {
+    "control": {
+      "profiles": {
+        "A": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "profile_revision": 7,
+          "profile_sha256": "db6a1cf80fc0b2c979b1a4974f999d77721962b57d44ca00ba6bcc68a1aaf0df",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "dda402a87a500d6cc856d6f98ca3e2b5624ccd8a724286ce10c5ee965b02c5da",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        },
+        "B": {
+          "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+          "profile_revision": 7,
+          "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        },
+        "C": {
+          "archive_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+          "profile_revision": 7,
+          "profile_sha256": "fbea39515e6545557c636da47b554949ed18cd46598981c7e8b63bb8fad5d877",
+          "project_revision": 3,
+          "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+          "reader_unchanged": true,
+          "release_version": "0.2.0-dev.117",
+          "rule_text_sha256": "7a55e52505bf950e6044ef0b5d19caafbd258d3f69aa8cbff7974bf095cd5973",
+          "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+        }
+      },
+      "rebuild_integrity": {
+        "archive_sha256": "38b801b69c2ddacdffbd3fe9b782e1a34a682d2449c0785850702a777d21588d",
+        "bundle_format": 1,
+        "manifest_digest": "cf7ccda9299b37a3c478975daadd0020169eca796a6b06f688682f9e017c56b3",
+        "outcome": "verified",
+        "revision": 7
+      },
+      "working_port": {
+        "rollback": "unknown_operation",
+        "rollout": "unknown_operation",
+        "rollout_status": "unknown_operation"
+      }
+    },
+    "counts": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 50
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "observation": {
+          "at": null,
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": null,
+          "file_effect": "replaced",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": true,
+          "quiet": true,
+          "readback": {
+            "current": {
+              "archive_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+              "profile_revision": 7,
+              "profile_sha256": "fbea39515e6545557c636da47b554949ed18cd46598981c7e8b63bb8fad5d877",
+              "project_revision": 3,
+              "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+              "reader_unchanged": true,
+              "release_version": "0.2.0-dev.117",
+              "rule_text_sha256": "7a55e52505bf950e6044ef0b5d19caafbd258d3f69aa8cbff7974bf095cd5973",
+              "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+            },
+            "previous": {
+              "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+              "profile_revision": 7,
+              "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+              "project_revision": 3,
+              "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+              "reader_unchanged": true,
+              "release_version": "0.2.0-dev.117",
+              "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+              "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+            },
+            "restored": {
+              "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+              "profile_revision": 7,
+              "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+              "project_revision": 3,
+              "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+              "reader_unchanged": true,
+              "release_version": "0.2.0-dev.117",
+              "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+              "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+            }
+          },
+          "replace": [
+            {
+              "completed": true,
+              "old_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+              "one_file": true,
+              "staged_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+            }
+          ],
+          "result": {
+            "active_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+            "event": {
+              "action": "rollback",
+              "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+              "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+              "policy_decision": "optional",
+              "revision": 7,
+              "seq": 4,
+              "signature_status": "unsigned",
+              "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+            },
+            "outcome": "applied",
+            "state_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+          },
+          "retry_rejected": true,
+          "state_after": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P02",
+        "observation": {
+          "at": null,
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": null,
+          "file_effect": "replaced",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": true,
+          "quiet": true,
+          "readback": {
+            "current": {
+              "code": "digest_mismatch",
+              "details": {
+                "reason": "sha256"
+              },
+              "where": "files"
+            },
+            "previous": {
+              "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+              "profile_revision": 7,
+              "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+              "project_revision": 3,
+              "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+              "reader_unchanged": true,
+              "release_version": "0.2.0-dev.117",
+              "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+              "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+            },
+            "restored": {
+              "archive_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+              "profile_revision": 7,
+              "profile_sha256": "667377cf3b740fcf435c68947bbb51bddfd8ec57f6a0220efb2c65a58016d1af",
+              "project_revision": 3,
+              "project_sha256": "5e0875fbda69e9564829844259eaf3d377ba30d75b903cb998ef0a76c5059f7d",
+              "reader_unchanged": true,
+              "release_version": "0.2.0-dev.117",
+              "rule_text_sha256": "ac20d7bb1141277116997d79d6cf7ec09afc4c793a8b5f878c249f9bc7668d1d",
+              "system_sha256": "ed913353bbd88521670e2913c22819eb06d3287a6f716bc3d51653bb8dbea549"
+            }
+          },
+          "replace": [
+            {
+              "completed": true,
+              "old_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+              "one_file": true,
+              "staged_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+            }
+          ],
+          "result": {
+            "active_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+            "event": {
+              "action": "rollback",
+              "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+              "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+              "policy_decision": "optional",
+              "revision": 7,
+              "seq": 4,
+              "signature_status": "unsigned",
+              "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+            },
+            "outcome": "applied",
+            "state_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+          },
+          "retry_rejected": true,
+          "state_after": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P03",
+        "observation": {
+          "at": null,
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": null,
+          "file_effect": "replaced",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "53b45bf3e5b387be7cf57d1a165ada69f291bb7a9c4b1af42574601d895f28d3",
+            "from_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+            "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "exception",
+            "revision": 7,
+            "seq": 3,
+            "signature_status": "unsigned",
+            "state_sha256": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167",
+            "target": "stand",
+            "to_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+          },
+          "prefix_preserved": true,
+          "quiet": true,
+          "readback": null,
+          "replace": [
+            {
+              "completed": true,
+              "old_sha256": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167",
+              "one_file": true,
+              "staged_sha256": "53b45bf3e5b387be7cf57d1a165ada69f291bb7a9c4b1af42574601d895f28d3"
+            }
+          ],
+          "result": {
+            "active_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+            "event": {
+              "action": "rollback",
+              "from_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "policy_decision": "exception",
+              "revision": 7,
+              "seq": 3,
+              "signature_status": "unsigned",
+              "to_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+            },
+            "outcome": "applied",
+            "state_sha256": "53b45bf3e5b387be7cf57d1a165ada69f291bb7a9c4b1af42574601d895f28d3"
+          },
+          "retry_rejected": true,
+          "state_after": "53b45bf3e5b387be7cf57d1a165ada69f291bb7a9c4b1af42574601d895f28d3",
+          "state_before": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P04",
+        "observation": {
+          "at": null,
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": null,
+          "file_effect": "replaced",
+          "plan": {
+            "action": "rollout",
+            "after_sha256": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+            "from_sha256": null,
+            "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 1,
+            "signature_status": "unsigned",
+            "state_sha256": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4",
+            "target": "stand",
+            "to_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+          },
+          "prefix_preserved": true,
+          "quiet": true,
+          "readback": null,
+          "replace": [
+            {
+              "completed": true,
+              "old_sha256": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4",
+              "one_file": true,
+              "staged_sha256": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2"
+            }
+          ],
+          "result": {
+            "active_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+            "event": {
+              "action": "rollout",
+              "from_sha256": null,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "policy_decision": "optional",
+              "revision": 7,
+              "seq": 1,
+              "signature_status": "unsigned",
+              "to_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+            },
+            "outcome": "applied",
+            "state_sha256": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2"
+          },
+          "retry_rejected": true,
+          "state_after": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+          "state_before": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P05",
+        "observation": {
+          "at": null,
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": null,
+          "file_effect": "replaced",
+          "plan": {
+            "action": "rollout",
+            "after_sha256": "8adb7a634430bf48207adefeeddd06714b25728e7d967b043d46216aee32ea23",
+            "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+            "manifest_digest": "598217dcb9daf937b24cd33caa0a5625aa9c65f7639dca44407984ac5d45dfc6",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27",
+            "target": "stand",
+            "to_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539"
+          },
+          "prefix_preserved": true,
+          "quiet": true,
+          "readback": null,
+          "replace": [
+            {
+              "completed": true,
+              "old_sha256": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27",
+              "one_file": true,
+              "staged_sha256": "8adb7a634430bf48207adefeeddd06714b25728e7d967b043d46216aee32ea23"
+            }
+          ],
+          "result": {
+            "active_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "event": {
+              "action": "rollout",
+              "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "manifest_digest": "598217dcb9daf937b24cd33caa0a5625aa9c65f7639dca44407984ac5d45dfc6",
+              "policy_decision": "optional",
+              "revision": 7,
+              "seq": 4,
+              "signature_status": "unsigned",
+              "to_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539"
+            },
+            "outcome": "applied",
+            "state_sha256": "8adb7a634430bf48207adefeeddd06714b25728e7d967b043d46216aee32ea23"
+          },
+          "retry_rejected": true,
+          "state_after": "8adb7a634430bf48207adefeeddd06714b25728e7d967b043d46216aee32ea23",
+          "state_before": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P06",
+        "observation": {
+          "at": null,
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": null,
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P07",
+        "observation": {
+          "at": null,
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": null,
+          "file_effect": "replaced",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "9b6e5c8579c87cd2cdcde98aa9f2ccaa3fc8586e5ed7855109bc79a9fa9cff15",
+            "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 32,
+            "signature_status": "unsigned",
+            "state_sha256": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": true,
+          "quiet": true,
+          "readback": null,
+          "replace": [
+            {
+              "completed": true,
+              "old_sha256": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391",
+              "one_file": true,
+              "staged_sha256": "9b6e5c8579c87cd2cdcde98aa9f2ccaa3fc8586e5ed7855109bc79a9fa9cff15"
+            }
+          ],
+          "result": {
+            "active_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a",
+            "event": {
+              "action": "rollback",
+              "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+              "policy_decision": "optional",
+              "revision": 7,
+              "seq": 32,
+              "signature_status": "unsigned",
+              "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+            },
+            "outcome": "applied",
+            "state_sha256": "9b6e5c8579c87cd2cdcde98aa9f2ccaa3fc8586e5ed7855109bc79a9fa9cff15"
+          },
+          "retry_rejected": true,
+          "state_after": "9b6e5c8579c87cd2cdcde98aa9f2ccaa3fc8586e5ed7855109bc79a9fa9cff15",
+          "state_before": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R01",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollback_unavailable",
+            "details": {
+              "reason": "no_previous"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4",
+          "state_before": "a447f42b940156cc64b3a9d89fa9c2a4b27737ee2d70ae04b7ee2f00541ce6b4"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R02",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollback_unavailable",
+            "details": {
+              "reason": "no_previous"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+          "state_before": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R03",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollback_unavailable",
+            "details": {
+              "reason": "no_previous"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27",
+          "state_before": "bba2482323cd3c757eb655923290f23f90e4579dacccf185e03674cb1f36ac27"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R04",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollback_unavailable",
+            "details": {
+              "reason": "not_previous"
+            },
+            "where": "archive"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R05",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollback_unavailable",
+            "details": {
+              "reason": "not_previous"
+            },
+            "where": "archive"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R06",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollback_unavailable",
+            "details": {
+              "reason": "not_previous"
+            },
+            "where": "archive"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R07",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollback_unavailable",
+            "details": {
+              "reason": "missing"
+            },
+            "where": "archive"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R08",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R09",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R10",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_no_change",
+            "details": {
+              "reason": "already_active"
+            },
+            "where": "archive"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R11",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_limit",
+            "details": {
+              "reason": "capacity"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391",
+          "state_before": "00acd6fe9fe9d92e04a3d70f77f0a117bdbc7b01f2e50a8562a98a05555c4391"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T01",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_blocked",
+            "details": {
+              "reason": "signature_required"
+            },
+            "where": "trust"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T02",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_blocked",
+            "details": {
+              "reason": "exception_expired"
+            },
+            "where": "trust"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T03",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_blocked",
+            "details": {
+              "reason": "exception_expired"
+            },
+            "where": "trust"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "4cc548b2ddc818b1acbcf2a432dc75ea3ad835f711be8179487714ecd91b5cdd",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "exception",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T04",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_stale",
+            "details": {
+              "reason": "assessment"
+            },
+            "where": "plan"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T05",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_blocked",
+            "details": {
+              "reason": "exception_approver"
+            },
+            "where": "trust"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T06",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_blocked",
+            "details": {
+              "reason": "verifier_unavailable"
+            },
+            "where": "trust"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167",
+          "state_before": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T07",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T08",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "utc"
+            },
+            "where": "clock"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T09",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_blocked",
+            "details": {
+              "reason": "signature_required"
+            },
+            "where": "trust"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T10",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_blocked",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "trust"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C01",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_unconfirmed",
+            "details": {
+              "reason": "ticket"
+            },
+            "where": "plan"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C02",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_unconfirmed",
+            "details": {
+              "reason": "ticket"
+            },
+            "where": "plan"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C03",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_unconfirmed",
+            "details": {
+              "reason": "changed"
+            },
+            "where": "plan"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C04",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_unconfirmed",
+            "details": {
+              "reason": "changed"
+            },
+            "where": "plan"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C05",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_stale",
+            "details": {
+              "reason": "changed"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "4d03e717d2c5ab06fe2b749806070f695b0ccae889dd2588d2253179131d2087",
+          "state_before": "4d03e717d2c5ab06fe2b749806070f695b0ccae889dd2588d2253179131d2087"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C06",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_stale",
+            "details": {
+              "reason": "changed"
+            },
+            "where": "archive"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollout",
+            "after_sha256": "e9f5e685bb4a5acbbb21be4311bb5583ddbff5316d9c70370d381298367c4167",
+            "from_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 2,
+            "signature_status": "unsigned",
+            "state_sha256": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2",
+          "state_before": "f2b3d4329144d6ffb1eed785639a81b0707cb53f65a2b417f28bd520e6d02bc2"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C07",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_unconfirmed",
+            "details": {
+              "reason": "ticket"
+            },
+            "where": "plan"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "C08",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_unconfirmed",
+            "details": {
+              "reason": "ticket"
+            },
+            "where": "plan"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": true,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J01",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "json"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "038660ab63683c640420a5ef65619ddfbbdd5655019156ff707ce52c1e23f7a6",
+          "state_before": "038660ab63683c640420a5ef65619ddfbbdd5655019156ff707ce52c1e23f7a6"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J02",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "chain"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "8722777640d0ddffbcd41347c737a482063707005d9e09a4f7ffe2099cf1040d",
+          "state_before": "8722777640d0ddffbcd41347c737a482063707005d9e09a4f7ffe2099cf1040d"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J03",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "chain"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "870db88bba863fdc72745830dae88875de0caacf21e089bc81b7a4f039fff260",
+          "state_before": "870db88bba863fdc72745830dae88875de0caacf21e089bc81b7a4f039fff260"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J04",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "json"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "ac7a2d50addb4b5a23aa30e50da26737029c057fdff96fadf0323079cfce09bc",
+          "state_before": "ac7a2d50addb4b5a23aa30e50da26737029c057fdff96fadf0323079cfce09bc"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J05",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "45ea3b0864f370bb88c4210de9ddaa34742d0892f6ef8058fa962891de7d78ea",
+          "state_before": "45ea3b0864f370bb88c4210de9ddaa34742d0892f6ef8058fa962891de7d78ea"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J06",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "chain"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "3627da62b1067fd0820e20a4e1e105919e2b3e5cb6b22cef5e412098e937be27",
+          "state_before": "3627da62b1067fd0820e20a4e1e105919e2b3e5cb6b22cef5e412098e937be27"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J07",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "76c002eec0c9da854ca2ee5dae9fb0069a622274b6638ab712fcb70384304899",
+          "state_before": "76c002eec0c9da854ca2ee5dae9fb0069a622274b6638ab712fcb70384304899"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J08",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "receipt"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "b95790d310fb348b52a5e17eeb7c8b13cc911cedeced94805a1dca1b29ea31e6",
+          "state_before": "b95790d310fb348b52a5e17eeb7c8b13cc911cedeced94805a1dca1b29ea31e6"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J09",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "encoding"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "5df42d3c583121bd227decfbeb9ccceba17c3c83b7b692980b4b0256a080253e",
+          "state_before": "5df42d3c583121bd227decfbeb9ccceba17c3c83b7b692980b4b0256a080253e"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "J10",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_state_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "journal"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "93a8f7e230ec351771b08ad835c5d8f8744cf109a9190b1c2bdeda66aa1cc593",
+          "state_before": "93a8f7e230ec351771b08ad835c5d8f8744cf109a9190b1c2bdeda66aa1cc593"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "W01",
+        "observation": {
+          "at": "apply",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_write_failed",
+            "details": {
+              "reason": "replace"
+            },
+            "where": "state"
+          },
+          "file_effect": "unchanged",
+          "plan": {
+            "action": "rollback",
+            "after_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93",
+            "from_sha256": "c3ac4783ea1c6e96e855c19a97289c5643119b77c564ee027e1b3fd791905539",
+            "manifest_digest": "807f34c071555666a9b0eaea2e04db217789c064b89a593f4fbf77ccf7d684b3",
+            "outcome": "planned",
+            "plan_format": 1,
+            "policy_decision": "optional",
+            "revision": 7,
+            "seq": 4,
+            "signature_status": "unsigned",
+            "state_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+            "target": "stand",
+            "to_sha256": "ee90f13eff0b192cf04115f4ace78435d32dbe1f9881462c7a4236100b101f1a"
+          },
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [
+            {
+              "completed": false,
+              "old_sha256": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+              "one_file": true,
+              "staged_sha256": "96430e76bb281ebe12dcd80861426ff7bc75cb1965a0f84da1f6def534ae1c93"
+            }
+          ],
+          "result": null,
+          "retry_rejected": true,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N01",
+        "observation": {
+          "at": "init",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_invalid",
+            "details": {
+              "reason": "stand_only"
+            },
+            "where": "target"
+          },
+          "file_effect": "absent",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": null,
+          "state_before": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N02",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_invalid",
+            "details": {
+              "reason": "inactive"
+            },
+            "where": "session"
+          },
+          "file_effect": "absent",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": null,
+          "state_before": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N03",
+        "observation": {
+          "at": "plan",
+          "cleanup": true,
+          "context_unchanged": true,
+          "error": {
+            "code": "rollout_invalid",
+            "details": {
+              "reason": "unknown"
+            },
+            "where": "operation"
+          },
+          "file_effect": "unchanged",
+          "plan": null,
+          "prefix_preserved": null,
+          "quiet": true,
+          "readback": null,
+          "replace": [],
+          "result": null,
+          "retry_rejected": null,
+          "state_after": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f",
+          "state_before": "f7425c71db29b2897b28b769696ab7d673ac50d7fe5bdb6f2b007219f3ad4b6f"
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "tree_unchanged": true
+}
