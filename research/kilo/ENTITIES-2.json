@@ -1,0 +1,66 @@
+{
+  "schema": "kilo-dossier-entities-2/1",
+  "checked": "2026-11-22",
+  "level": "observed_ui",
+  "note": "Настройки расширения имеют префикс kilo-code.new.*, часть состояния живёт в конфигурации CLI. Сброс настроек VS Code не трогает режимы и правила автоутверждения.",
+  "layers": {
+    "vscode_layer": {"prefix": "kilo-code.new.*", "examples": ["autoApprove.enabled", "model.modelID", "indexing.showButtonWhenIndexingDisabled", "experimental.claudeCodeCompat", "chat.shiftTabCycleVariant"]},
+    "cli_layer": {"note": "режимы/агенты и правила автоутверждения хранятся в конфигурации CLI и не сбрасываются кнопкой «Сбросить все настройки»", "backend": "локальный сервер, порт 4896, статус «Подключено»"},
+    "project_layer": {"note": "kilo.jsonc, AGENTS.md, .kilo/ — читаются бэкендом; в files.watcherExclude по умолчанию .kilo/worktrees и .kilocode/worktrees"}
+  },
+  "permissions_observed": {
+    "master_auto_approve": false,
+    "external_directory": {"default": "ask"},
+    "bash": {"\"*\"": "ask"},
+    "read": {"\"*\"": "allow", "exceptions": [{"glob": "*.env", "value": "deny"}, {"glob": ".env*", "value": "deny"}]},
+    "edit": {"\"*\"": "ask"},
+    "glob": {"default": "allow"},
+    "grep": {"default": "allow"},
+    "list": {"default": "allow"},
+    "task": {"default": "ask"},
+    "skill": {"default": "allow"},
+    "lsp": {"default": "allow"},
+    "todoread/todowrite": {"default": "allow"},
+    "websearch": {"default": "allow"},
+    "webfetch": {"default": "allow"},
+    "browser_open": {"default": "ask"},
+    "doom_loop": {"default": "ask"}
+  },
+  "agents_observed": [
+    {"name": "ask", "badge": null, "note": "ответы и объяснения без изменений"},
+    {"name": "code", "badge": null, "note": "агент по умолчанию, инструменты по configured permissions"},
+    {"name": "compaction", "badge": null, "note": "служебный"},
+    {"name": "debug", "badge": null, "note": "систематическая диагностика"},
+    {"name": "explore", "badge": "субагент", "note": "быстрый поиск по базе кода"},
+    {"name": "general", "badge": "субагент", "note": "многошаговые задачи, параллельные единицы работы"},
+    {"name": "orchestrator", "badge": "субагент", "note": "делегирование специализированным агентам"},
+    {"name": "plan", "badge": null, "note": "правит только файлы планов, остальные мутации запрещены"},
+    {"name": "title", "badge": null, "note": "служебный"}
+  ],
+  "agent_settings_ui": {"tabs": ["Агенты", "MCP-серверы", "Правила", "Рабочие процессы", "Навыки"], "default_agent": "не задан", "toggles_on": ["Отправлять исправления пул-реквестов", "Kilo Swarm"], "buttons": ["Импорт", "Обзор Marketplace", "Создать новый режим"]},
+  "commands_significant": [
+    {"id": "kilo-code.new.reload", "title": "Reload Config and Skills", "why": "единственная явная команда перечитывания конфигурации и навыков"},
+    {"id": "kilo-code.new.toggleAutoApprove", "key": "Ctrl+Alt+A", "why": "переключение мастер-права"},
+    {"id": "kilo-code.new.cycleAgentMode", "key": "Ctrl+.", "why": "смена агента"},
+    {"id": "kilo-code.new.toggleMemory", "why": "память проекта"},
+    {"id": "kilo-code.new.generateCommitMessage", "why": "видна в контекстных меню SCM"},
+    {"id": "kilo-code.new.settingsButtonClicked", "why": "переход в настройки"}
+  ],
+  "commands_count_seen": ">60 префикса kilo-code.new.* на двух экранах; команд чтения правил проекта нет",
+  "observed_misc": {
+    "model": {"modelID": "kilo-auto/free", "providerID": "kilo"},
+    "agent_manager": {"autoBranchNaming": true, "branchPrefix": "feature/", "worktreePool": true, "projects": "нет доступных"},
+    "web": {"websearch": true, "browserAutomation": true, "systemChrome": true, "headless": true},
+    "checkpoints": {"snapshots": true, "autoCleanup": true, "retainDays": 30},
+    "display": {"username": "<пользователь>", "fontSize": 13, "showAutoApproveReason": true},
+    "autocomplete": {"builtin": true, "smartTaskKeybinding": true, "chatAutocomplete": true},
+    "language": {"ui": "auto (VS Code)", "current": "russian"},
+    "about": {"version": "7.8.32", "telemetry": true, "cliServer": {"status": "connected", "port": 4896}, "exportImport": true, "rooImport": true},
+    "experimental": {"agentManagerSplash": false, "browserAutomationPanel": false, "claudeMigration": false, "conversationPromptHistory": false}
+  },
+  "open_questions": [
+    {"id": "C8", "question": "Мастер autoApprove.enabled=false против уровней read/glob/list=allow: что сильнее?", "settle": "прогон: чтение файла при выключенном мастере"},
+    {"id": "C9", "question": "Документация: .env → ask; UI: .env → deny. Где правда?", "settle": "прогон: попытка чтения .env"},
+    {"id": "E9", "question": "Reload Config and Skills перечитывает правила проекта без перезапуска?", "settle": "правка правила + reload + повтор задачи"}
+  ]
+}

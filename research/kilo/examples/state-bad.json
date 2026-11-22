@@ -1,0 +1,11 @@
+{
+  "id": "ST-BAD",
+  "fingerprint": {"permission": {"bash": "maybe"}},
+  "evidence_level": "observed",
+  "kilo_jsonc": {
+    "permission": {"bash": "maybe", "shell": "allow"},
+    "agent": {"my": {"mode": "boss", "qqq": 1}},
+    "compaction": {"threshold_percent": 150},
+    "mcp": {"s": {"type": "weird"}}
+  }
+}

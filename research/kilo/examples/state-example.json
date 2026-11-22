@@ -1,0 +1,20 @@
+{
+  "id": "ST-EXAMPLE",
+  "purpose": "Пример корректного состояния досье для проверки spec_check",
+  "fingerprint": {
+    "extension": "kilocode.kilo-code 7.8.32 pre-release",
+    "project": "kilo.jsonc с instructions и суженными правами",
+    "agents": ["code", "reviewer"]
+  },
+  "evidence_level": "not run",
+  "kilo_jsonc": {
+    "instructions": [".kilo/rules/*.md"],
+    "permission": {
+      "bash": {"*": "ask", "git diff*": "allow"},
+      "read": {"*": "allow", "*.env": "deny"}
+    },
+    "compaction": {"auto": true, "threshold_percent": 60},
+    "agent": {"reviewer": {"mode": "primary", "permission": {"edit": "deny"}}},
+    "provider": {"kilo": {"models": {"m": {"limit": {"context": 200000, "output": 32000}}}}}
+  }
+}

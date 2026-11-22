@@ -1,0 +1,610 @@
+{
+  "schema": "kilo-dossier-entities/1",
+  "checked": "2026-11-18",
+  "note": "Возможные значения перечислены как данные документации. Наличие значения не доказывает его действие в установленной версии.",
+  "entities": [
+    {
+      "id": "ENT-ENV",
+      "class": "жизненный цикл",
+      "name": "Среда и канал",
+      "fields": [
+        {
+          "key": "product",
+          "values": [
+            "kilo-code (VS Code)",
+            "kilo CLI",
+            "JetBrains plugin",
+            "web app"
+          ],
+          "note": "одна компания, разные поверхности; возможности не переносятся"
+        },
+        {
+          "key": "extension_version",
+          "values": [
+            "<x.y.z> из реестра или UI",
+            "latest",
+            "pre-release"
+          ],
+          "note": "S05: на 2026-11-18 latest 7.8.32"
+        },
+        {
+          "key": "architecture_era",
+          "values": [
+            "v7 на Kilo CLI",
+            "прежняя 4.x/6.x"
+          ],
+          "note": "граница Ф1; форма файлов правил разная"
+        },
+        {
+          "key": "channel",
+          "values": [
+            "stable",
+            "pre-release"
+          ],
+          "note": "Kilo рекомендует pre-release; значит поведение может отличаться от latest"
+        },
+        {
+          "key": "vscode_version",
+          "values": [
+            "<x.y.z>"
+          ],
+          "note": "пилот закреплён на 1.146"
+        },
+        {
+          "key": "platform",
+          "values": [
+            "win32-x64",
+            "darwin-arm64",
+            "linux-x64",
+            "..."
+          ],
+          "note": "размеры сборок различаются"
+        }
+      ]
+    },
+    {
+      "id": "ENT-CONFIG",
+      "class": "конфигурация",
+      "name": "kilo.jsonc",
+      "fields": [
+        {
+          "key": "$schema",
+          "values": [
+            "https://app.kilo.ai/config.json"
+          ],
+          "effect": "валидация в редакторе"
+        },
+        {
+          "key": "model",
+          "values": [
+            "provider/model"
+          ],
+          "effect": "модель по умолчанию"
+        },
+        {
+          "key": "default_agent",
+          "values": [
+            "code",
+            "plan",
+            "ask",
+            "debug",
+            "<свой>"
+          ],
+          "effect": "агент при старте"
+        },
+        {
+          "key": "instructions",
+          "values": [
+            "массив путей и glob",
+            "URL"
+          ],
+          "effect": "источники правил, приоритет 2 в проекте и 4 глобально"
+        },
+        {
+          "key": "permission",
+          "values": [
+            "наследуется от Permission: строка или объект glob→allow|ask|deny"
+          ],
+          "effect": "границы действий инструментов"
+        },
+        {
+          "key": "agent",
+          "values": [
+            "{<name>: Agent}"
+          ],
+          "effect": "агенты и их права, приоритет 1 для prompt"
+        },
+        {
+          "key": "mode",
+          "values": [
+            "{<name>: Agent}"
+          ],
+          "effect": "устаревший синоним agent, мигрируется при загрузке"
+        },
+        {
+          "key": "command",
+          "values": [
+            "{<name>: Command}"
+          ],
+          "effect": "слэш-команды"
+        },
+        {
+          "key": "mcp",
+          "values": [
+            "{<server>: Mcp}"
+          ],
+          "effect": "MCP-серверы; инструменты получают имена {server}_{tool}"
+        },
+        {
+          "key": "provider",
+          "values": [
+            "{<provider>: options, models}"
+          ],
+          "effect": "провайдеры моделей, baseURL, лимиты"
+        },
+        {
+          "key": "compaction",
+          "values": [
+            "auto",
+            "prune",
+            "reserved"
+          ],
+          "effect": "сжатие контекста"
+        },
+        {
+          "key": "skills",
+          "values": [
+            "{paths: [...]}"
+          ],
+          "effect": "дополнительные skill-каталоги"
+        },
+        {
+          "key": "share",
+          "values": [
+            "auto",
+            "disabled"
+          ],
+          "effect": "обмен сессиями"
+        },
+        {
+          "key": "keybinds",
+          "values": [
+            "объект"
+          ],
+          "effect": "горячие клавиши"
+        },
+        {
+          "key": "plugin",
+          "values": [
+            "npm-пакет",
+            "file:// URL"
+          ],
+          "effect": "плагины"
+        }
+      ],
+      "constraints": [
+        "{env:VAR} допустим только в доверенном конфиге; проектный файл с {env:...} отвергается целиком (заявлено для 7.8.1)",
+        "проектный конфиг кешируется при открытии рабочей папки",
+        "внутри permission последнее совпавшее правило выигрывает"
+      ],
+      "sources": [
+        "S06",
+        "S04",
+        "S08"
+      ],
+      "observed_ui": {
+        "date": "2026-11-22",
+        "note": "UI настроек 7.8.32 сгруппирован в разделы: Модели, Провайдеры, Поведение агента, Автодобрение, Agent Manager, Веб-инструменты, Контрольные точки, Отображение, Автодополнение, Уведомления, Контекст, Commit Message, Индексация, Экспериментальное, Язык, О Kilo Code",
+        "keys_seen": [
+          "Модель по умолчанию",
+          "Малая модель",
+          "Модель субагента",
+          "Модель сжатия",
+          "Модель автодополнения",
+          "Модель для режима",
+          "Базовый URL речи",
+          "Скрывать модели, обучающиеся на запросах"
+        ]
+      }
+    },
+    {
+      "id": "ENT-RULES",
+      "class": "инструкции",
+      "name": "Правила (instructions)",
+      "fields": [
+        {
+          "key": "project_instructions",
+          "values": [
+            "kilo.jsonc: instructions"
+          ],
+          "priority": 2
+        },
+        {
+          "key": "agents_md",
+          "values": [
+            "AGENTS.md",
+            "AGENT.md"
+          ],
+          "priority": 3,
+          "note": "нельзя отключить; защищён от записи; регистр важен"
+        },
+        {
+          "key": "global_instructions",
+          "values": [
+            "~/.config/kilo/kilo.jsonc: instructions"
+          ],
+          "priority": 4
+        },
+        {
+          "key": "agent_prompt",
+          "values": [
+            "agent.<name>.prompt",
+            "тело .md агента"
+          ],
+          "priority": 1
+        },
+        {
+          "key": "skills",
+          "values": [
+            ".kilo/skills/",
+            "config skills"
+          ],
+          "priority": "по требованию"
+        },
+        {
+          "key": "legacy_rules_dir",
+          "values": [
+            ".kilocode/rules/",
+            ".kilo/rules/"
+          ],
+          "priority": "вне таблицы",
+          "note": "читается автоматически или по instructions — противоречие C1"
+        },
+        {
+          "key": "mode_rules_dir",
+          "values": [
+            ".kilo/rules-{slug}/",
+            ".kilorules-{slug}"
+          ],
+          "priority": "не загружается по умолчанию",
+          "note": "S11 против S12, конфликт C2"
+        },
+        {
+          "key": "subdir_agents_md",
+          "values": [
+            "<dir>/AGENTS.md"
+          ],
+          "priority": "динамически",
+          "note": "внедряется при чтении файлов рядом, через system-reminder"
+        }
+      ],
+      "constraints": [
+        "AGENTS.md загружается всегда, если есть; выключить нельзя, только перекрыть более приоритетным источником",
+        "правки действуют в новых задачах, иногда нужна перезагрузка окна",
+        "имена каталогов и файлов чувствительны к регистру в документированной части"
+      ],
+      "sources": [
+        "S01",
+        "S02",
+        "S07",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "id": "ENT-AGENT",
+      "class": "агенты",
+      "name": "Агент (ранее «режим»)",
+      "fields": [
+        {
+          "key": "name",
+          "values": [
+            "имя файла без .md",
+            "ключ в agent"
+          ],
+          "effect": "идентификатор; совпадение имён сливает уровни"
+        },
+        {
+          "key": "mode",
+          "values": [
+            "primary",
+            "subagent",
+            "all"
+          ],
+          "effect": "где виден: выбор пользователя, только вызов агентом, и то и другое"
+        },
+        {
+          "key": "description",
+          "values": [
+            "строка"
+          ],
+          "effect": "показ в выборе и подсказка оркестратору"
+        },
+        {
+          "key": "prompt",
+          "values": [
+            "текст",
+            "тело .md",
+            "{file:./path}"
+          ],
+          "effect": "системный промпт агента"
+        },
+        {
+          "key": "model",
+          "values": [
+            "provider/model"
+          ],
+          "effect": "модель агента; ручной выбор пользователя перекрывает конфиг в текущей сессии"
+        },
+        {
+          "key": "temperature",
+          "values": [
+            "0.0–1.0"
+          ],
+          "effect": "случайность"
+        },
+        {
+          "key": "top_p",
+          "values": [
+            "0.0–1.0"
+          ],
+          "effect": "альтернатива температуре"
+        },
+        {
+          "key": "steps",
+          "values": [
+            "целое"
+          ],
+          "effect": "предел итераций до принудительного текстового ответа"
+        },
+        {
+          "key": "variant",
+          "values": [
+            "строка"
+          ],
+          "effect": "вариант модели (например, reasoning)"
+        },
+        {
+          "key": "permission",
+          "values": [
+            "Permission"
+          ],
+          "effect": "перекрывает общие права для этого агента"
+        },
+        {
+          "key": "hidden",
+          "values": [
+            "true",
+            "false"
+          ],
+          "effect": "скрыть субагента из списка"
+        },
+        {
+          "key": "disable",
+          "values": [
+            "true",
+            "false"
+          ],
+          "effect": "убрать агента"
+        },
+        {
+          "key": "color",
+          "values": [
+            "#RRGGBB",
+            "тема"
+          ],
+          "effect": "только интерфейс"
+        }
+      ],
+      "constraints": [
+        "уровни сливаются по имени, а не заменяются целиком",
+        "агенты организации перекрывают встроенных и не удаляются пользователем",
+        "устаревшие .kilocodemodes/custom_modes.yaml мигрируются один раз при старте"
+      ],
+      "sources": [
+        "S03",
+        "S11",
+        "S12",
+        "S08"
+      ],
+      "observed_ui": {
+        "date": "2026-11-22",
+        "modes_in_settings": [
+          "Code",
+          "Ask",
+          "Debug",
+          "Orchestrator",
+          "Plan"
+        ],
+        "subagent_model": "не задано (использует модель агента)"
+      }
+    },
+    {
+      "id": "ENT-PERM",
+      "class": "права",
+      "name": "Инструменты и разрешения",
+      "fields": [
+        {
+          "key": "read",
+          "note": "чтение файлов"
+        },
+        {
+          "key": "edit",
+          "note": "изменение файлов"
+        },
+        {
+          "key": "bash",
+          "note": "команды оболочки"
+        },
+        {
+          "key": "glob",
+          "note": "поиск по именам"
+        },
+        {
+          "key": "grep",
+          "note": "поиск по содержимому"
+        },
+        {
+          "key": "list",
+          "note": "список каталога"
+        },
+        {
+          "key": "task",
+          "note": "запуск субагентов; значениями могут быть имена агентов"
+        },
+        {
+          "key": "external_directory",
+          "note": "доступ вне проекта; по умолчанию ask"
+        },
+        {
+          "key": "webfetch",
+          "note": "загрузка URL"
+        },
+        {
+          "key": "websearch",
+          "note": "поиск"
+        },
+        {
+          "key": "lsp",
+          "note": "операции языкового сервера"
+        },
+        {
+          "key": "todoread/todowrite",
+          "note": "список задач"
+        },
+        {
+          "key": "skill",
+          "note": "загрузка skills"
+        },
+        {
+          "key": "agent_manager",
+          "note": "управляемые сеансы; отдельные согласия на worktree, prompt, stop, move, answer"
+        },
+        {
+          "key": "doom_loop",
+          "note": "продолжение после повторных сбоев; по умолчанию ask"
+        },
+        {
+          "key": "question",
+          "note": "вопросы агенту (по схеме S06)"
+        }
+      ],
+      "constraints": [
+        "значения allow/ask/deny; при отсутствии совпадения — ask",
+        "внутри одного инструмента последнее совпавшее правило выигрывает",
+        "большинство инструментов по умолчанию allow; .env, external_directory, doom_loop — ask",
+        "MCP-инструменты именуются {server}_{tool}, допускают glob"
+      ],
+      "sources": [
+        "S04",
+        "S06"
+      ]
+    },
+    {
+      "id": "ENT-STATE",
+      "class": "расход",
+      "name": "Контекст и расход",
+      "fields": [
+        {
+          "key": "context_window",
+          "values": [
+            "зависит от модели"
+          ],
+          "note": "собственного капа расширения не подтверждено"
+        },
+        {
+          "key": "maxReadFileLine",
+          "values": [
+            "число"
+          ],
+          "note": "число из прежней архитектуры S14; не переносить без проверки"
+        },
+        {
+          "key": "maxWorkspaceFiles",
+          "values": [
+            "число"
+          ],
+          "note": "то же"
+        },
+        {
+          "key": "autoCondenseContextPercent",
+          "values": [
+            "0–100"
+          ],
+          "note": "порог конденсации"
+        },
+        {
+          "key": "compaction",
+          "values": [
+            "auto",
+            "prune",
+            "reserved"
+          ],
+          "note": "признаки из S06"
+        },
+        {
+          "key": "steps",
+          "values": [
+            "целое"
+          ],
+          "note": "предел итераций, влияет на расход"
+        }
+      ],
+      "constraints": [
+        "доля окна 25–30 % — бюджет Kit, не клиентский кап",
+        "4096 байт §0 — локальное ограничение Kit"
+      ],
+      "sources": [
+        "S14",
+        "S06"
+      ],
+      "observed_ui": {
+        "date": "2026-11-22",
+        "auto_condense": "вкл",
+        "auto_condense_limit_percent": 50,
+        "memory_project": "выкл, «No active project for memory»",
+        "note": "порог 50 % — настройка, а не измеренная доля окна; окно модели неизвестно"
+      }
+    },
+    {
+      "id": "ENT-EVENT",
+      "class": "жизненный цикл",
+      "name": "События, меняющие загрузку",
+      "fields": [
+        {
+          "key": "new_task",
+          "note": "правки AGENTS.md и правил действуют в новой задаче"
+        },
+        {
+          "key": "reload_window",
+          "note": "проектный конфиг кешируется; после правки — перезагрузка"
+        },
+        {
+          "key": "startup_migration",
+          "note": "однократный перенос устаревших режимов"
+        },
+        {
+          "key": "read_file_near_subdir",
+          "note": "динамическая подгрузка AGENTS.md подкаталога"
+        },
+        {
+          "key": "context_condense",
+          "note": "сжатие может вытеснить ранее прочитанное правило"
+        },
+        {
+          "key": "model_switch",
+          "note": "ручной выбор модели перекрывает конфиг до конца сессии"
+        }
+      ],
+      "constraints": [
+        "ни одно событие не доказано прогоном в этой среде"
+      ],
+      "sources": [
+        "S01",
+        "S04",
+        "S03",
+        "S14"
+      ]
+    }
+  ]
+}

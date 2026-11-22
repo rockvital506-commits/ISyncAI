@@ -1,0 +1,104 @@
+{
+  "schema": "kilo-decisions/1",
+  "checked": "2026-11-22",
+  "note": "Быстрая справка: задача → состояние → ключи → проверка. Каждая карточка — не обещание, а маршрут.",
+  "decisions": [
+    {
+      "id": "D-ENTRY",
+      "task": "Дать агенту точку входа Kit без второго реестра",
+      "state": "ST-AGENTS-MD-ONLY",
+      "keys": [
+        {"where": "проект", "file": "AGENTS.md", "content": "короткий указатель на kit/base/entry.txt, не текст правил"}
+      ],
+      "why": "AGENTS.md нельзя отключить, он всегда в контексте; значит он должен быть коротким",
+      "must_not": ["копировать правила Kit в AGENTS.md", "дублировать их в .kilo/rules"],
+      "verify": ["E12: файл существует", "E14: reload и новая задача видят указатель"],
+      "blocked_by": ["C1", "C2"]
+    },
+    {
+      "id": "D-RULES",
+      "task": "Подключить правила проекта, которые читаются явно",
+      "state": "ST-PROJECT-WIRED",
+      "keys": [
+        {"where": "проект", "file": "kilo.jsonc", "key": "instructions", "value": "[ \".kilo/rules/*.md\" ]"}
+      ],
+      "why": "instructions выше AGENTS.md по приоритету и явно перечисляет источники",
+      "must_not": ["рассчитывать на автоподхват .kilo/rules без instructions, пока C1 не закрыт"],
+      "verify": ["E1: файл в .kilo/rules без instructions", "E13: вкладка «Правила»"],
+      "blocked_by": ["C1"]
+    },
+    {
+      "id": "D-FOREIGN",
+      "task": "Не перезаписать чужой AGENTS.md",
+      "state": "ST-FOREIGN-GUARD",
+      "keys": [
+        {"where": "процедура", "key": "SHA-256 до", "value": "зафиксировать"},
+        {"where": "процедура", "key": "после попытки правки", "value": "сверить SHA-256"}
+      ],
+      "why": "AGENTS.md защищён от записи, но это надо подтвердить наблюдением, а не документацией",
+      "verify": ["SC-01", "снимок контрольной точки как независимый свидетель"],
+      "blocked_by": []
+    },
+    {
+      "id": "D-PERM-READONLY",
+      "task": "Агент только читает",
+      "state": "ST-AGENT-SCOPED",
+      "keys": [
+        {"where": ".kilo/agents/reviewer.md", "key": "permission.edit", "value": "deny"},
+        {"where": ".kilo/agents/reviewer.md", "key": "permission.bash", "value": "deny"},
+        {"where": ".kilo/agents/reviewer.md", "key": "mode", "value": "primary"}
+      ],
+      "why": "Права — техническое принуждение, текст инструкции им не является",
+      "verify": ["SC-04", "в UI видна причина отказа при showAutoApprovalReason=true"],
+      "blocked_by": []
+    },
+    {
+      "id": "D-PERM-SAFE",
+      "task": "Разрешить безопасные команды, остальное спросить",
+      "state": "ST-PERM-TIGHT",
+      "keys": [
+        {"where": "kilo.jsonc", "key": "permission.bash", "value": {"*": "ask", "git status*": "allow", "git diff*": "allow", "rm *": "deny"}}
+      ],
+      "why": "последнее совпавшее правило выигрывает: сначала широкое, потом узкое",
+      "verify": ["SC-06", "наблюдаемая причина автоодобрения"],
+      "blocked_by": ["C11", "C12"]
+    },
+    {
+      "id": "D-SKILL-INSTEAD",
+      "task": "Держать длинные инструкции вне постоянного контекста",
+      "state": "ST-PROJECT-WIRED",
+      "keys": [
+        {"where": ".kilo/skills/<name>/SKILL.md", "key": "frontmatter.description", "value": "точное описание, когда применять"}
+      ],
+      "why": "в промпт попадают только имя, описание и путь; тело читается по требованию",
+      "must_not": ["рассчитывать на каталоги навыков для конкретного режима: в новой платформе их нет"],
+      "verify": ["метаданные видны в списке навыков", "тело читается при явном вызове"],
+      "blocked_by": []
+    },
+    {
+      "id": "D-CONTEXT-BUDGET",
+      "task": "Не выйти за бюджет контекста",
+      "state": "ST-CONTEXT-PRESSURE",
+      "keys": [
+        {"where": "kilo.jsonc", "key": "compaction.threshold_percent", "value": "например 60"},
+        {"where": "kilo.jsonc", "key": "provider.<id>.models.<model>.limit.context", "value": "реальное окно модели"}
+      ],
+      "why": "без объявленного limit.context учёт и автосжатие не работают",
+      "must_not": ["считать 25–30 % клиентским капом: это бюджет Kit"],
+      "verify": ["E16", "наблюдение усечения или сжатия"],
+      "blocked_by": ["C8", "E16"]
+    },
+    {
+      "id": "D-PROVIDER",
+      "task": "Начать сеанс при отсутствии провайдера",
+      "state": "ST-ENV-1",
+      "keys": [
+        {"where": "настройки → Провайдеры", "key": "подключить провайдера", "value": "любой доступный"}
+      ],
+      "why": "сейчас не подключён ни один; модель kilo-auto/free может требовать входа",
+      "must_not": ["вводить ключи в проектном kilo.jsonc: файл с {env:...} отвергается целиком (C6)"],
+      "verify": ["E16"],
+      "blocked_by": ["E16"]
+    }
+  ]
+}

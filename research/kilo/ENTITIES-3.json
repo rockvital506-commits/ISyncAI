@@ -1,0 +1,179 @@
+{
+  "schema": "kilo-dossier-entities-3/1",
+  "checked": "2026-11-22",
+  "note": "Сущности, наблюдаемые в настройках VS Code и подтверждённые официальными страницами Kilo. Влияние — отдельное поле, чтобы не выдавать описание за поведение.",
+  "entities": [
+    {
+      "id": "ENT-WORKSTYLE",
+      "class": "пресет",
+      "name": "Стиль работы (пресет)",
+      "fields": [
+        {"key": "Review first", "values": ["пресет"], "effect": "разворачивает reasoning/терминал/правки, показывает причину автоодобрения; разрешает read-only команды и спрашивает перед edit, внешними путями и остальными командами", "source": "S17"},
+        {"key": "High autonomy", "values": ["пресет"], "effect": "reasoning в режиме preview, блоки схлопнуты, причина автоодобрения скрыта, права не меняет", "source": "S17"}
+      ],
+      "observed_ui": {"2026-11-22": "права соответствуют Review first: bash ask, edit ask, task ask, read allow"},
+      "why_it_matters": "Это ответ на C3/C10: наблюдаемые права — пресет, а не заводские значения.",
+      "links": ["ENT-PERM", "ENT-DISPLAY"]
+    },
+    {
+      "id": "ENT-DISPLAY",
+      "class": "настройки",
+      "name": "Отображение",
+      "fields": [
+        {"key": "reasoning_display", "values": ["expanded", "preview", "headline"], "default": "expanded", "effect": "как показывать блоки рассуждений"},
+        {"key": "terminal_command_display", "values": ["expanded", "collapsed"], "effect": "терминальные блоки"},
+        {"key": "code_edit_display", "values": ["expanded", "collapsed"], "effect": "блоки правок"},
+        {"key": "mcp_tool_display", "values": ["expanded", "collapsed"], "effect": "блоки MCP и инструментов"},
+        {"key": "kilo-code.new.showAutoApprovalReason", "values": ["true", "false"], "observed": true, "effect": "показывает, каким правилом разрешено действие"},
+        {"key": "kilo-code.new.showTaskTimeline", "values": ["true", "false"], "observed": true, "effect": "график задачи в шапке"},
+        {"key": "kilo-code.new.diff.renderMarkdown", "values": ["true", "false"], "observed": null}
+      ],
+      "why_it_matters": "`showAutoApprovalReason=true` — готовый наблюдаемый признак того, какое правило применилось. Для приёмки это дешевле, чем догадываться по поведению.",
+      "links": ["ENT-PERM"]
+    },
+    {
+      "id": "ENT-COMPACTION",
+      "class": "контекст",
+      "name": "Сжатие контекста",
+      "fields": [
+        {"key": "compaction.auto", "default": true},
+        {"key": "compaction.threshold_percent", "values": ["1–100", "не задано"], "observed_ui": 50, "effect": "порог запуска автосжатия"},
+        {"key": "compaction.prune", "default": true, "effect": "чистить старые выходы инструментов за пределами 40K токенов"},
+        {"key": "compaction.tail_turns", "default": 2},
+        {"key": "compaction.preserve_recent_tokens", "default": "25 % используемого контекста, ограничено 2000–8000"},
+        {"key": "compaction.reserved", "default": "min(20000, максимальный вывод модели)"},
+        {"key": "agent.compaction.model", "effect": "модель сжатия; не задано → модель чата"}
+      ],
+      "constraints": [
+        "если модель не объявляет limit.context, автосжатие не запускается",
+        "порог срабатывает раньше порога процента, если достигнут резерв"
+      ],
+      "why_it_matters": "Правило может быть вытеснено сжатием — либо не загружено вовсе, если лимит неизвестен.",
+      "links": ["ENT-MODELS", "ENT-RULES"]
+    },
+    {
+      "id": "ENT-MODELS",
+      "class": "модели",
+      "name": "Модели и провайдеры",
+      "fields": [
+        {"key": "model", "values": ["provider/model"]},
+        {"key": "small_model", "effect": "дешёвая модель для служебных задач"},
+        {"key": "agent.<name>.model", "effect": "модель конкретного агента"},
+        {"key": "provider.<id>.models.<model>.limit.context", "effect": "окно контекста, без него не работает учёт"},
+        {"key": "provider.<id>.models.<model>.limit.output", "effect": "максимум вывода"},
+        {"key": "hide_prompt_training_models", "values": ["true", "false"], "effect": "скрыть модели, обучающиеся на запросах"},
+        {"key": "experimental.speech_to_text_model", "effect": "модель расшифровки речи"}
+      ],
+      "observed_ui": {"2026-11-22": {"model": "kilo-auto/free", "providers_connected": 0}},
+      "why_it_matters": "Без объявленного контекста модель не отслеживается; при нуле провайдеров сеанс может не начаться.",
+      "links": ["ENT-COMPACTION"]
+    },
+    {
+      "id": "ENT-SKILLS",
+      "class": "инструкции",
+      "name": "Навыки (skills)",
+      "fields": [
+        {"key": "locations", "values": ["~/.kilo/skills/", ".kilo/skills/", "~/.agents/skills/", ".agents/skills/", "~/.claude/skills/", ".claude/skills/"]},
+        {"key": "skills.paths", "values": ["абсолютный путь", "~/", "относительный к проекту"]},
+        {"key": "skills.urls", "values": ["URL каталога с index.json"]}
+      ],
+      "constraints": [
+        "в промпт попадают только имя, описание и путь; тело читается по запросу",
+        "проектные навыки перекрывают глобальные при одинаковом имени",
+        "внешние пути доверенны только из пользовательского конфига"
+      ],
+      "why_it_matters": "Это рабочая альтернатива длинному AGENTS.md: дешёвая ссылка вместо постоянного текста.",
+      "links": ["ENT-RULES", "ENT-CONTEXT"]
+    },
+    {
+      "id": "ENT-MCP",
+      "class": "инструменты",
+      "name": "MCP-серверы",
+      "fields": [
+        {"key": "mcp.<server>.type", "values": ["local", "remote"]},
+        {"key": "mcp.<server>.command", "values": ["массив команд"], "note": "только для local"},
+        {"key": "mcp.<server>.url", "values": ["URL"], "note": "только для remote; SSE устарел"},
+        {"key": "mcp.<server>.enabled", "values": ["true", "false"]},
+        {"key": "mcp.<server>.timeout", "default": "10000 local / 15000 remote", "observed_vscode": 60000},
+        {"key": "permission.<server>_<tool>", "values": ["allow", "ask", "deny"]}
+      ],
+      "constraints": ["инструменты получают имена {server}_{tool}", "OAuth 2.0 для remote, можно отключить"],
+      "why_it_matters": "Каждый MCP — расширение прав инструментов; для Kit это отдельный источник действий.",
+      "links": ["ENT-PERM"]
+    },
+    {
+      "id": "ENT-INDEX",
+      "class": "поиск",
+      "name": "Индексация кода",
+      "fields": [
+        {"key": "включено", "values": ["true", "false"], "observed": false},
+        {"key": "провайдер эмбеддингов", "values": ["Kilo", "другой"], "observed": "Kilo"},
+        {"key": "хранилище", "values": ["LanceDB (default)", "Qdrant"], "observed": "LanceDB"},
+        {"key": "Search Min Score", "observed": 0.4},
+        {"key": "Search Max Results", "observed": 50},
+        {"key": "Embedding Batch Size", "observed": 60},
+        {"key": "Scanner Max Batch Retries", "observed": 3},
+        {"key": "Configuration scope", "values": ["Глобальный", "Локальный"], "observed": "Глобальный"}
+      ],
+      "why_it_matters": "При выключенной индексации поиск идёт по файлам, а не по эмбеддингам: другой набор контекста.",
+      "links": ["ENT-CONTEXT"]
+    },
+    {
+      "id": "ENT-CHECKPOINTS",
+      "class": "состояние",
+      "name": "Контрольные точки и сессии",
+      "fields": [
+        {"key": "снимки", "values": ["вкл", "выкл"], "observed": true, "effect": "снимок файлов перед редактированием"},
+        {"key": "автоочистка сессий", "values": ["вкл", "выкл"], "observed": false},
+        {"key": "хранить сессии (дней)", "observed": 30}
+      ],
+      "why_it_matters": "Снимки дают откат правок агента; для проверки «файл не изменён» это независимый свидетель.",
+      "links": ["ENT-EVENT"]
+    },
+    {
+      "id": "ENT-TELEMETRY",
+      "class": "политика",
+      "name": "Телеметрия и данные",
+      "fields": [
+        {"key": "телеметрия Kilo", "values": ["вкл", "выкл"], "observed": true},
+        {"key": "VS Code telemetry.telemetryLevel", "values": ["all", "error", "crash", "off"], "observed_settings": "off"},
+        {"key": "автоотправка исправлений PR", "values": ["вкл", "выкл"], "observed": true},
+        {"key": "Kilo Swarm", "values": ["вкл", "выкл"], "observed": true}
+      ],
+      "why_it_matters": "Разные уровни: телеметрия Kilo включена, телеметрия VS Code выключена. Это два независимых канала.",
+      "links": []
+    },
+    {
+      "id": "ENT-SETTINGS-VSCODE",
+      "class": "настройки",
+      "name": "Настройки VS Code, связанные с агентом",
+      "fields": [
+        {"key": "kilo-code.new.autocomplete.enableAutoTrigger", "observed": false},
+        {"key": "kilo-code.new.autocomplete.enableChatAutocomplete", "observed": false},
+        {"key": "kilo-code.new.autocomplete.enableSmartInlineTaskKeybinding", "observed": false},
+        {"key": "kilo-code.new.showAutoApprovalReason", "observed": true},
+        {"key": "kilo-code.new.showTaskTimeline", "observed": true},
+        {"key": "terminal.integrated.commandsToSkipShell", "observed": ["kilo-code.new.agentManagerOpen", "...showTerminal", "...previousTerminal", "...nextTerminal"], "effect": "клавиши уходят в Kilo, а не в терминал"},
+        {"key": "files.watcherExclude", "observed": ["**/.git/objects/**", "**/.next/**", "**/dist/**", "**/node_modules/*/**"], "note": "по умолчанию у расширения также .kilo/worktrees и .kilocode/worktrees"},
+        {"key": "github.copilot.*", "observed": "включено", "note": "вторая агентская среда в том же VS Code"}
+      ],
+      "why_it_matters": "Это граница между «настройкой агента Kilo» и «настройкой редактора»: смешивать нельзя, иначе сценарий проверяет не то.",
+      "links": ["ENT-WORKSTYLE"]
+    },
+    {
+      "id": "ENT-EVENT",
+      "class": "жизненный цикл",
+      "name": "События и команды, меняющие состояние",
+      "fields": [
+        {"key": "onStartupFinished", "observed": "активация расширения при старте VS Code", "effect": "среда готова до открытия папки"},
+        {"key": "onUri", "observed": true, "effect": "активация по ссылке"},
+        {"key": "kilo-code.new.reload", "observed": "Reload Config and Skills", "effect": "перечитывание конфигурации и навыков", "status": "E14"},
+        {"key": "kilo-code.new.toggleAutoApprove", "observed": "Ctrl+Alt+A", "effect": "временное включение мастер-права"},
+        {"key": "kilo-code.new.cycleAgentMode", "observed": "Ctrl+.", "effect": "смена агента"},
+        {"key": "/reload (CLI)", "effect": "пересканирование навыков"}
+      ],
+      "why_it_matters": "`Reload Config and Skills` — единственная явная команда перечитывания; без неё правка правил ждёт новой сессии.",
+      "links": ["ENT-RULES"]
+    }
+  ]
+}

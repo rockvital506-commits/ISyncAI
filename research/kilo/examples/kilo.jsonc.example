@@ -1,0 +1,25 @@
+// Пример для сценария D-ENTRY + D-RULES. Это образец, а НЕ рабочий конфиг.
+// Не содержит ключей и токенов: {env:...} в проектном файле отвергается целиком.
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "instructions": [".kilo/rules/*.md"],
+
+  "permission": {
+    "bash": { "*": "ask", "git status*": "allow", "git diff*": "allow", "rm *": "deny" },
+    "edit": { "*": "ask" },
+    "read": { "*": "allow", "*.env": "deny", ".env*": "deny" },
+    "external_directory": "ask",
+    "task": "ask",
+    "doom_loop": "ask"
+  },
+
+  "compaction": { "auto": true, "threshold_percent": 60 },
+
+  "agent": {
+    "reviewer": {
+      "description": "Только чтение: объясняет, не правит",
+      "mode": "primary",
+      "permission": { "edit": "deny", "bash": "deny" }
+    }
+  }
+}

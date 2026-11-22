@@ -1,0 +1,508 @@
+{
+  "schema": "kilo-catalog/1",
+  "checked": "2026-11-22",
+  "how_to_use": "Слой 0. Читается первым. Открывать тела только по ссылке из карточки.",
+  "layers": {
+    "0": "CATALOG.json",
+    "1": "KILO-SPEC.json",
+    "2": "ENTITIES*.json",
+    "3": "STATES.json",
+    "4": "SCENARIOS.json",
+    "5": "DECISIONS.json"
+  },
+  "evidence": {
+    "sources": "SOURCES.json",
+    "conflicts": "GAPS.md + GAPS-2.md",
+    "screens": "SCREENS-2026-11-22-01.md + SCREENS-2026-11-22-02.md"
+  },
+  "counts": {
+    "entities": 18,
+    "states": 12,
+    "scenarios": 9,
+    "decisions": 8,
+    "conflicts": 14,
+    "measurements": 19,
+    "sources": 21,
+    "files": 31
+  },
+  "entities": [
+    {
+      "id": "ENT-WORKSTYLE",
+      "name": "Стиль работы (пресет)",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-DISPLAY",
+      "name": "Отображение",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-COMPACTION",
+      "name": "Сжатие контекста",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-MODELS",
+      "name": "Модели и провайдеры",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-SKILLS",
+      "name": "Навыки (skills)",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-MCP",
+      "name": "MCP-серверы",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-INDEX",
+      "name": "Индексация кода",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-CHECKPOINTS",
+      "name": "Контрольные точки и сессии",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-TELEMETRY",
+      "name": "Телеметрия и данные",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-SETTINGS-VSCODE",
+      "name": "Настройки VS Code, связанные с агентом",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-EVENT",
+      "name": "События и команды, меняющие состояние",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-ENV",
+      "name": "Среда и канал",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-CONFIG",
+      "name": "kilo.jsonc",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-RULES",
+      "name": "Правила (instructions)",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-AGENT",
+      "name": "Агент (ранее «режим»)",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-PERM",
+      "name": "Инструменты и разрешения",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-STATE",
+      "name": "Контекст и расход",
+      "file": "ENTITIES.json"
+    },
+    {
+      "id": "ENT-EVENT",
+      "name": "События, меняющие загрузку",
+      "file": "ENTITIES.json"
+    }
+  ],
+  "states": [
+    {
+      "id": "ST-ENV-1",
+      "level": "observed_ui",
+      "purpose": "Наблюдаемое состояние пользователя на 2026-11-22 (первая партия скринов)"
+    },
+    {
+      "id": "ST-ABSENT",
+      "level": "not run",
+      "purpose": "Исходная точка: ничего не установлено"
+    },
+    {
+      "id": "ST-PROFILE-CLEAN",
+      "level": "not run",
+      "purpose": "Свежая установка без пользовательских правил"
+    },
+    {
+      "id": "ST-PROJECT-BARE",
+      "level": "not run",
+      "purpose": "Проверить, читается ли правило без подключения"
+    },
+    {
+      "id": "ST-PROJECT-WIRED",
+      "level": "not run",
+      "purpose": "Правило подключено явно через instructions"
+    },
+    {
+      "id": "ST-AGENTS-MD-ONLY",
+      "level": "not run",
+      "purpose": "Только AGENTS.md, без kilo.jsonc"
+    },
+    {
+      "id": "ST-CONFLICT-PAIR",
+      "level": "not run",
+      "purpose": "Старшинство: AGENTS.md против instructions проекта"
+    },
+    {
+      "id": "ST-AGENT-SCOPED",
+      "level": "not run",
+      "purpose": "Отдельный агент с собственным промптом и правами"
+    },
+    {
+      "id": "ST-AGENT-BOTH",
+      "level": "not run",
+      "purpose": "Проверить, какой каталог агентов читается (C4)"
+    },
+    {
+      "id": "ST-FOREIGN-GUARD",
+      "level": "not run",
+      "purpose": "Чужой AGENTS.md: сохранность и отсутствие перезаписи"
+    },
+    {
+      "id": "ST-PERM-TIGHT",
+      "level": "not run",
+      "purpose": "Суженные права как проверяемое ограничение"
+    },
+    {
+      "id": "ST-CONTEXT-PRESSURE",
+      "level": "not run",
+      "purpose": "Поведение при сжатии контекста"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SC-01",
+      "goal": "Чужой AGENTS.md не перезаписывается без согласия",
+      "state": "ST-FOREIGN-GUARD",
+      "iteration": "И‑122",
+      "level": "not run"
+    },
+    {
+      "id": "SC-02",
+      "goal": "Подключённое правило читается",
+      "state": "ST-PROJECT-WIRED",
+      "iteration": "И‑122 / И‑125",
+      "level": "not run"
+    },
+    {
+      "id": "SC-03",
+      "goal": "Старшинство двух конфликтующих источников",
+      "state": "ST-CONFLICT-PAIR",
+      "iteration": "И‑122 (форма) / И‑125 (доля)",
+      "level": "not run"
+    },
+    {
+      "id": "SC-04",
+      "goal": "Агент с суженными правами",
+      "state": "ST-AGENT-SCOPED",
+      "iteration": "И‑122",
+      "level": "not run"
+    },
+    {
+      "id": "SC-05",
+      "goal": "Правила режима в .kilo/rules-{slug}/",
+      "state": "ST-AGENT-SCOPED",
+      "iteration": "И‑122",
+      "level": "not run"
+    },
+    {
+      "id": "SC-06",
+      "goal": "Сужение прав по последнему совпадению",
+      "state": "ST-PERM-TIGHT",
+      "iteration": "И‑122",
+      "level": "not run"
+    },
+    {
+      "id": "SC-07",
+      "goal": "Эксплуатация Kit в среде Kilo без второго реестра",
+      "state": "ST-PROJECT-WIRED + ST-AGENT-SCOPED",
+      "iteration": "И‑122 (форма) / И‑134 (пилот)",
+      "level": "not run"
+    },
+    {
+      "id": "SC-08",
+      "goal": "Смена версии не ломает сценарий",
+      "state": "ST-PROFILE-CLEAN",
+      "iteration": "И‑136",
+      "level": "not run"
+    },
+    {
+      "id": "SC-09",
+      "goal": "Давление контекста не вытесняет правило молча",
+      "state": "ST-CONTEXT-PRESSURE",
+      "iteration": "И‑126",
+      "level": "not run"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-ENTRY",
+      "task": "Дать агенту точку входа Kit без второго реестра",
+      "state": "ST-AGENTS-MD-ONLY",
+      "blocked_by": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "D-RULES",
+      "task": "Подключить правила проекта, которые читаются явно",
+      "state": "ST-PROJECT-WIRED",
+      "blocked_by": [
+        "C1"
+      ]
+    },
+    {
+      "id": "D-FOREIGN",
+      "task": "Не перезаписать чужой AGENTS.md",
+      "state": "ST-FOREIGN-GUARD",
+      "blocked_by": []
+    },
+    {
+      "id": "D-PERM-READONLY",
+      "task": "Агент только читает",
+      "state": "ST-AGENT-SCOPED",
+      "blocked_by": []
+    },
+    {
+      "id": "D-PERM-SAFE",
+      "task": "Разрешить безопасные команды, остальное спросить",
+      "state": "ST-PERM-TIGHT",
+      "blocked_by": [
+        "C11",
+        "C12"
+      ]
+    },
+    {
+      "id": "D-SKILL-INSTEAD",
+      "task": "Держать длинные инструкции вне постоянного контекста",
+      "state": "ST-PROJECT-WIRED",
+      "blocked_by": []
+    },
+    {
+      "id": "D-CONTEXT-BUDGET",
+      "task": "Не выйти за бюджет контекста",
+      "state": "ST-CONTEXT-PRESSURE",
+      "blocked_by": [
+        "C8",
+        "E16"
+      ]
+    },
+    {
+      "id": "D-PROVIDER",
+      "task": "Начать сеанс при отсутствии провайдера",
+      "state": "ST-ENV-1",
+      "blocked_by": [
+        "E16"
+      ]
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "C1",
+      "status": "open"
+    },
+    {
+      "id": "C2",
+      "status": "open"
+    },
+    {
+      "id": "C3",
+      "status": "closed_by_observation"
+    },
+    {
+      "id": "C4",
+      "status": "partially_closed"
+    },
+    {
+      "id": "C5",
+      "status": "open"
+    },
+    {
+      "id": "C6",
+      "status": "open"
+    },
+    {
+      "id": "C7",
+      "status": "refined"
+    },
+    {
+      "id": "C8",
+      "status": "open_observed_ui"
+    },
+    {
+      "id": "C9",
+      "status": "open_observed_ui"
+    },
+    {
+      "id": "C10",
+      "status": "explained"
+    },
+    {
+      "id": "C11",
+      "status": "open"
+    },
+    {
+      "id": "C12",
+      "status": "open"
+    },
+    {
+      "id": "C13",
+      "status": "open"
+    },
+    {
+      "id": "C14",
+      "status": "open_observed_ui"
+    }
+  ],
+  "measurements": [
+    {
+      "id": "E1",
+      "question": "Читается ли .kilo/rules/ без записи в instructions?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E2",
+      "question": "Работает ли .kilo/rules-{slug}/ для агента?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E3",
+      "question": "Какие права стоят по умолчанию?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E4",
+      "question": "Какой каталог агентов реально читается?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E5",
+      "question": "Точная версия расширения и форма правил",
+      "next": "И‑122"
+    },
+    {
+      "id": "E6",
+      "question": "Отвергается ли проектный конфиг с {env:...} целиком?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E7",
+      "question": "Старшинство AGENTS.md против instructions проекта",
+      "next": "И‑122 (старшинство), И‑125 (доля)"
+    },
+    {
+      "id": "E8",
+      "question": "Orchestrator реально доступен как агент в 7.8.32?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E10",
+      "question": "Что сильнее: мастер автоодобрения или уровень инструмента?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E11",
+      "question": "Чтение .env: запрос или отказ?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E9",
+      "question": "Команда Reload Config and Skills перечитывает правила проекта?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E10",
+      "question": "Что сильнее: мастер автоодобрения или разрешение инструмента?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E11",
+      "question": "Чтение .env: запрос или отказ?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E12",
+      "question": "Есть ли в проекте kilo.jsonc, AGENTS.md, .kilo/rules?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E13",
+      "question": "Что перечислено во вкладке «Правила»?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E14",
+      "question": "Перечитывает ли Reload Config and Skills правила проекта без перезапуска VS Code?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E15",
+      "question": "Применяются ли настройки VS Code (inline-автодополнение выключено) к поведению Kilo?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E16",
+      "question": "Что видно при выключенном провайдере и модели kilo-auto/free?",
+      "next": "И‑122"
+    },
+    {
+      "id": "E17",
+      "question": "Почему UI и settings.json расходятся по автодополнению?",
+      "next": "И‑122"
+    }
+  ],
+  "files": {
+    "0": "CATALOG.json",
+    "1": "KILO-SPEC.json",
+    "2": [
+      "ENTITIES.json",
+      "ENTITIES-2.json",
+      "ENTITIES-3.json"
+    ],
+    "3": "STATES.json",
+    "4": "SCENARIOS.json",
+    "5": "DECISIONS.json",
+    "evidence": [
+      "SOURCES.json",
+      "GAPS.md",
+      "GAPS-2.md",
+      "SCREENS-2026-11-22-01.md",
+      "SCREENS-2026-11-22-02.md",
+      "SETTINGS-OBSERVED.md",
+      "REVISION-2026-11-22.md"
+    ],
+    "guides": [
+      "CRITIQUE-AND-RESEARCH-PLAN.md",
+      "DECISION-ROADMAP.md",
+      "KILO-VSCODE.md",
+      "PROBES-GUIDE.md",
+      "PROMPT-REWORK-122.md",
+      "README.md",
+      "REPORT-2026-11-22.md",
+      "ROADMAP-PROTOCOL.md",
+      "ROADMAP-RECOMMENDATION.md",
+      "RUNBOOK-V1.md",
+      "STRATEGY-STORAGE.md",
+      "TARGETS.md"
+    ],
+    "tools": [
+      "spec_check.py"
+    ],
+    "examples": [
+      "examples/kilo.jsonc.example",
+      "examples/state-example.json",
+      "examples/state-bad.json"
+    ]
+  }
+}
