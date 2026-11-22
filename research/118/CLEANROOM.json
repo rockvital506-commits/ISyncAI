@@ -1,0 +1,2260 @@
+{
+  "files": [
+    "kit/base/BUNDLE-VERIFY.md",
+    "kit/base/bundle_verify.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/schema_v2.py",
+    "research/117/Synthetic-Bundle-117.zip",
+    "research/118/CASES.json",
+    "research/118/test_bundle_verify.py"
+  ],
+  "inputs_sha256": {
+    "kit/base/BUNDLE-VERIFY.md": "b844f606a435c45d0cdc468558ad718d8bae8c1e62f3a6e44b729729338c1446",
+    "kit/base/bundle_verify.py": "0461d0475ec8add173b102f33d2967b1db862f238ae8aef31b738ba3d8b992af",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/117/Synthetic-Bundle-117.zip": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+    "research/118/CASES.json": "b6d3f07715ff2b3d1bc1a79d4199c4b69ce807ca4f6e054d691f2316382dec9a",
+    "research/118/test_bundle_verify.py": "7024fe2e0472894b20b1ec147cc84a3101e4267a4e05e2ac25c2b0f365dc8c8c"
+  },
+  "inputs_unchanged": true,
+  "rc": 0,
+  "result": {
+    "control": {
+      "bare_revisions": [
+        7,
+        0
+      ],
+      "history_formats": [
+        1,
+        2
+      ],
+      "source_members": 17,
+      "source_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "working_port": {
+        "bundle": "unknown_operation",
+        "bundle_verify": "unknown_operation"
+      }
+    },
+    "counts": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 116
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": null,
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": {
+            "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+            "bundle_format": 1,
+            "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+            "outcome": "verified",
+            "revision": 7
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P02",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": null,
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": {
+            "archive_sha256": "be717aa2885be313f48a1c0725b40edd143fa45242ca488cebb7f3fa5e985571",
+            "bundle_format": 1,
+            "manifest_digest": "dca5c6c674e582424d855297928b06e223f129d9d45d4f48494af3d483e6ead5",
+            "outcome": "verified",
+            "revision": 0
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P03",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": null,
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": {
+            "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+            "bundle_format": 1,
+            "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+            "outcome": "verified",
+            "revision": 7
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P04",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": null,
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": {
+            "archive_sha256": "44b38c7a339b96fbb0961bc49d94f51f147d0a15c3038509aa444efb38975e22",
+            "bundle_format": 1,
+            "manifest_digest": "1cd4608024c0cc3c654ea4f837f9d566a1d9512c44c5b0f00bbc27d5b56f6b1b",
+            "outcome": "verified",
+            "revision": 7
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P05",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": null,
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": {
+            "archive_sha256": "4e9f669dbee193aeffc43246727a1527b6ca8e399be061034e7231cb7bb7857b",
+            "bundle_format": 1,
+            "manifest_digest": "47296c048df2ff02c23cd8151ad4199fe647a106f7aabe67f425eb7bcdc21f7c",
+            "outcome": "verified",
+            "revision": 8
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P06",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": null,
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": {
+            "archive_sha256": "7a378bb4a7fb26362778bc5df2e99be7970ee2aa236868abc96636916ae914ea",
+            "bundle_format": 1,
+            "manifest_digest": "5a4cd3881bc44de98d52e65bba2fa4897c50939f069ee1870cd0454b535adf59",
+            "outcome": "verified",
+            "revision": 7
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T01",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 2,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T02",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 3,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T03",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 4,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T04",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 5,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T05",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 6,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T06",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 7,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T07",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 8,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T08",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 9,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T09",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 10,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T10",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 11,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T11",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 12,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T12",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 13,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T13",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 14,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T14",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 15,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T15",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 16,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "T16",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A01",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A02",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A03",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A04",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A05",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A06",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A07",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A08",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A09",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A10",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A11",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A12",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A13",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A14",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A15",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "A16",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M01",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M02",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M03",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M04",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M05",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M06",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M07",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M08",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M09",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M10",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M11",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M12",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M13",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M14",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M15",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "M16",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B01",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B02",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B03",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B04",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B05",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B06",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B07",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B08",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B09",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B10",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B11",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B12",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B13",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B14",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B15",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "B16",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N01",
+        "observation": {
+          "archives": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "stand_only"
+            },
+            "where": "target"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N02",
+        "observation": {
+          "archives": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "bytes"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N03",
+        "observation": {
+          "archives": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "bytes"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N04",
+        "observation": {
+          "archives": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "bytes"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N05",
+        "observation": {
+          "archives": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N06",
+        "observation": {
+          "archives": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "zip"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N07",
+        "observation": {
+          "archives": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "layout"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N08",
+        "observation": {
+          "archives": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "zip"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N09",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N10",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "duplicate_member"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N11",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N12",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N13",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N14",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N15",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "layout"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N16",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "format"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N17",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "format"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N18",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "layout"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N19",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "format"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N20",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "read"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 5,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N21",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N22",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N23",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N24",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "json"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N25",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "json"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N26",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N27",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N28",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N29",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N30",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "duplicate_member"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N31",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "roots"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N32",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "encoding"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N33",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "digest"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N34",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 5,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N35",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "size"
+            },
+            "where": "files"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N36",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "revision"
+            },
+            "where": "profile"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N37",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "system"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N38",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "roots"
+            },
+            "where": "system"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N39",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "local_history"
+            },
+            "where": "profile"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N40",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "local_history"
+            },
+            "where": "profile"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N41",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "registry"
+            },
+            "where": "profile"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N42",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "roots"
+            },
+            "where": "profile"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 17,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N43",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "encoding"
+            },
+            "where": "manifest"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 1,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N44",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N45",
+        "observation": {
+          "archives": 0,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N46",
+        "observation": {
+          "archives": 1,
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "archive"
+          },
+          "input_unchanged": true,
+          "quiet": true,
+          "reads": 0,
+          "verified": null
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "tree_unchanged": true
+}

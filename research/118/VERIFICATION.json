@@ -1,0 +1,2824 @@
+{
+  "basis": "CASES.json; CHECKOUT.json; CLEANROOM.json",
+  "independent_rehash": {
+    "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+    "bundle_format": 1,
+    "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+    "outcome": "verified",
+    "revision": 7
+  },
+  "iteration": "И-118",
+  "metrics": {
+    "archive_attempts": 107,
+    "by_code": {
+      "bundle_incomplete": 91,
+      "digest_mismatch": 19
+    },
+    "cases": 116,
+    "effect_attempts": 0,
+    "member_reads": 412,
+    "no_archive_open": 9,
+    "no_member_read": 56,
+    "quiet_and_unchanged": true,
+    "refused": 110,
+    "verified": 6
+  },
+  "reference": {
+    "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+    "bundle_format": 1,
+    "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+    "outcome": "verified",
+    "revision": 7
+  },
+  "rows": [
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; SEAL и эталонный Synthetic-Bundle-117.zip",
+      "criterion": "Точный принятый пакет, digest и SHA-256 ZIP верны и различны, L1 revision=7.",
+      "effects": [],
+      "error": null,
+      "id": "P01",
+      "input": {
+        "bytes": 109297,
+        "sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "sample",
+      "verified": {
+        "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "bundle_format": 1,
+        "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+        "outcome": "verified",
+        "revision": 7
+      }
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P03; валидный v2 L1 с entries=[]",
+      "criterion": "Полный пакет с пустым L1 принят, revision=0.",
+      "effects": [],
+      "error": null,
+      "id": "P02",
+      "input": {
+        "bytes": 107626,
+        "sha256": "be717aa2885be313f48a1c0725b40edd143fa45242ca488cebb7f3fa5e985571",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "empty_profile",
+      "verified": {
+        "archive_sha256": "be717aa2885be313f48a1c0725b40edd143fa45242ca488cebb7f3fa5e985571",
+        "bundle_format": 1,
+        "manifest_digest": "dca5c6c674e582424d855297928b06e223f129d9d45d4f48494af3d483e6ead5",
+        "outcome": "verified",
+        "revision": 0
+      }
+    },
+    {
+      "archives": 1,
+      "basis": "Независимая замена байта START и пересчёт всех связей",
+      "criterion": "Та же revision=7, но другой digest и ZIP, результат принят только как целостный, не как подлинный.",
+      "effects": [],
+      "error": null,
+      "id": "P03",
+      "input": {
+        "bytes": 109297,
+        "sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "independent_rehash",
+      "verified": {
+        "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+        "bundle_format": 1,
+        "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+        "outcome": "verified",
+        "revision": 7
+      }
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P05; другое JSON-представление голого L1",
+      "criterion": "Новые сырые байты дают иной digest, реестр валиден и принят без нормализации.",
+      "effects": [],
+      "error": null,
+      "id": "P04",
+      "input": {
+        "bytes": 108684,
+        "sha256": "44b38c7a339b96fbb0961bc49d94f51f147d0a15c3038509aa444efb38975e22",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "raw_profile",
+      "verified": {
+        "archive_sha256": "44b38c7a339b96fbb0961bc49d94f51f147d0a15c3038509aa444efb38975e22",
+        "bundle_format": 1,
+        "manifest_digest": "1cd4608024c0cc3c654ea4f837f9d566a1d9512c44c5b0f00bbc27d5b56f6b1b",
+        "outcome": "verified",
+        "revision": 7
+      }
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P06; явная смена ревизии в L1",
+      "criterion": "Ревизия 8 совпадает с манифестом; совпадение значений не создаёт разрешение.",
+      "effects": [],
+      "error": null,
+      "id": "P05",
+      "input": {
+        "bytes": 109297,
+        "sha256": "4e9f669dbee193aeffc43246727a1527b6ca8e399be061034e7231cb7bb7857b",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "next_revision",
+      "verified": {
+        "archive_sha256": "4e9f669dbee193aeffc43246727a1527b6ca8e399be061034e7231cb7bb7857b",
+        "bundle_format": 1,
+        "manifest_digest": "47296c048df2ff02c23cd8151ad4199fe647a106f7aabe67f425eb7bcdc21f7c",
+        "outcome": "verified",
+        "revision": 8
+      }
+    },
+    {
+      "archives": 1,
+      "basis": "Границы И‑117; независимая перекладка 1/4 МиБ",
+      "criterion": "Точно 1 МиБ хотя бы в одном файле и 4 МиБ суммарно принимаются.",
+      "effects": [],
+      "error": null,
+      "id": "P06",
+      "input": {
+        "bytes": 4198537,
+        "sha256": "7a378bb4a7fb26362778bc5df2e99be7970ee2aa236868abc96636916ae914ea",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "boundary",
+      "verified": {
+        "archive_sha256": "7a378bb4a7fb26362778bc5df2e99be7970ee2aa236868abc96636916ae914ea",
+        "bundle_format": 1,
+        "manifest_digest": "5a4cd3881bc44de98d52e65bba2fa4897c50939f069ee1870cd0454b535adf59",
+        "outcome": "verified",
+        "revision": 7
+      }
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/OPERATION-CARD.md",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T01",
+      "input": {
+        "bytes": 109297,
+        "sha256": "73257944cc727a00817211594f0cd04837ba5d6645fe42662ad779044a81e77b",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 2,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/OPERATION-PLAN.md",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T02",
+      "input": {
+        "bytes": 109297,
+        "sha256": "5b1776d3887ad1c6bbaaa317685eb2b05ea5d5403a3d38de69b262cfd544aa84",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 3,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/SCHEMA-V2.md",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T03",
+      "input": {
+        "bytes": 109297,
+        "sha256": "a8d0b83484370b92c13fb30c61fa85f8fcf2d8dbb843336abceae90915783cfa",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 4,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/START.md",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T04",
+      "input": {
+        "bytes": 109297,
+        "sha256": "03089b1395f0afb2f094c80887a53c6f456234ab6b16fe5522e1a3e9bf6fb462",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 5,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/STORAGE-V2.md",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T05",
+      "input": {
+        "bytes": 109297,
+        "sha256": "e429885b8e46c4fcb20a33a1203eb1be9c489391ad90831bcda26d0356a6ba85",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 6,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/bootstrap.py",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T06",
+      "input": {
+        "bytes": 109297,
+        "sha256": "021ecbf5cb752b98c79768e50211e37d725637fd52cffca1476d1ae2ad4a3b7b",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 7,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/entry.txt",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T07",
+      "input": {
+        "bytes": 109297,
+        "sha256": "a211b7a411d6a9551fe24b806ffaab25ef1af6160d16d0ddd3f3b8aaedde0433",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 8,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/operation_card.py",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T08",
+      "input": {
+        "bytes": 109297,
+        "sha256": "d7471afff9528ec4b0f09da4eeafaa7b496f2698b04c43ed317da9c4fd6de4b3",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 9,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/operation_plan.py",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T09",
+      "input": {
+        "bytes": 109297,
+        "sha256": "507fb5c0a8826d2c2437e5f7b77b8440fd264a2ec52b5e8531498a6903630e28",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 10,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/profile_journal.py",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T10",
+      "input": {
+        "bytes": 109297,
+        "sha256": "1710f20932d814d598c3ce98f62cf364d58c4bf5e0cce80d6925e0ab1376ebcc",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 11,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry.json",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T11",
+      "input": {
+        "bytes": 109297,
+        "sha256": "111a0bfcfe8a54b2992b1405db20ee9f3c1e79ad1c0e7222f2e7d83843f22c5e",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 12,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry_journal.py",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T12",
+      "input": {
+        "bytes": 109297,
+        "sha256": "280e7cce6cafe5607e35c61202c98e5525d4b276ffb12c07ec98bd0f5313f6d0",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 13,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry_policy.py",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T13",
+      "input": {
+        "bytes": 109297,
+        "sha256": "b4fd0a6688d74ad53ec666dd40e2271aa9f42b95944c4063ee2fdf3af9657209",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 14,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry_store.py",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T14",
+      "input": {
+        "bytes": 109297,
+        "sha256": "1f6bd8383d6b9d2cb1a495df7629374193fcb909f03043af90b5dc587568c37a",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 15,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/schema_v2.py",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T15",
+      "input": {
+        "bytes": 109297,
+        "sha256": "d4db1083e49105d5ca5d2af51504330b8fbbfe5d3bf5fbc443b2222c2e6f25d3",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 16,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: profiles/staged/registry.json",
+      "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "T16",
+      "input": {
+        "bytes": 109297,
+        "sha256": "bf92eb9a4d7657e61627f2dd96851d6b0eaff5f9cf3700f7dc22480161018501",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "tamper",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-CARD.md",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A01",
+      "input": {
+        "bytes": 98428,
+        "sha256": "0ac4b4da398f515132d960e0b2306e4515287e1359ac0e17cb858864427fdf7c",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-PLAN.md",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A02",
+      "input": {
+        "bytes": 100381,
+        "sha256": "ad5946dc7322ae3eb4ef84a29c116418f454c08efc44df49a85380a14e638baa",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/SCHEMA-V2.md",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A03",
+      "input": {
+        "bytes": 101871,
+        "sha256": "b61d06ecd0a1ca8e6f2c2e230a592d08c00bae0aaef6bf796f76a61a063ca73b",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/START.md",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A04",
+      "input": {
+        "bytes": 106096,
+        "sha256": "4ac4b21d2d3a1d5faad4a41af195599e77e64b81bb1b6a0d1aeb8dac600b20eb",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/STORAGE-V2.md",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A05",
+      "input": {
+        "bytes": 102844,
+        "sha256": "203716a32e01d895b06ca02807af45107e79ad798adfe49f41bbdcd2a720f357",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/bootstrap.py",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A06",
+      "input": {
+        "bytes": 105076,
+        "sha256": "0d433f5afab911bbba39e0cd132a1a2b65e929a7aae22b5fe4c1f20842915488",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/entry.txt",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A07",
+      "input": {
+        "bytes": 109165,
+        "sha256": "c32571ea39261a4efd28a8cfd9c843432ff9644b10cf8dfcca9b6c4dd02b5362",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/operation_card.py",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A08",
+      "input": {
+        "bytes": 93455,
+        "sha256": "a8958953f339548460c87ddbeb6fa07b9b964c527518f53bab5ccbcd45802c5d",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/operation_plan.py",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A09",
+      "input": {
+        "bytes": 103614,
+        "sha256": "fba2769a5bc81e3a74567483f66005b576beab7300c1d3d39f32a156f24851fd",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/profile_journal.py",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A10",
+      "input": {
+        "bytes": 105758,
+        "sha256": "e975be9a7e3c539f522453150b363ccf28ec1ab8e4d2308962f1dbe6a8b80b90",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry.json",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A11",
+      "input": {
+        "bytes": 109081,
+        "sha256": "ed66f70153864b646c860be4f662b27d075320d08d35a2f9e853f299ef632d4e",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry_journal.py",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A12",
+      "input": {
+        "bytes": 103826,
+        "sha256": "00ecb35661706f2a954908e60f2ee88e15349cef51101f7a5916d346609c8ed5",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry_policy.py",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A13",
+      "input": {
+        "bytes": 104932,
+        "sha256": "3c0b25d62f6d9c661cc3604ac13ae67089ce9885dbd6f362e60c1213128eab6a",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry_store.py",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A14",
+      "input": {
+        "bytes": 89397,
+        "sha256": "55b73dd3dcc0264599a04221820691dfb6412539a9707c4112538e44d89c9edc",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/schema_v2.py",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A15",
+      "input": {
+        "bytes": 100365,
+        "sha256": "a00a9222fda3d2a817219c0aed5ce338627f094ceadea070895b4922aba99ee6",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: profiles/staged/registry.json",
+      "criterion": "Файл исчез только из ZIP, манифест прежний.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "A16",
+      "input": {
+        "bytes": 107407,
+        "sha256": "b9ed608d46741e03243348e6d1a2104ef4cbacdb2b35d8a0ab50680e838412de",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-CARD.md",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M01",
+      "input": {
+        "bytes": 109170,
+        "sha256": "cc6003dfc62596fa83ed0858f7c7b328db810501f1c90fb374a7ff1071b3284d",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-PLAN.md",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M02",
+      "input": {
+        "bytes": 109171,
+        "sha256": "111312097ed2c078b16c3e19df89ae8d4dee16f60ac50f8e4c0e46c7b71876e9",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/SCHEMA-V2.md",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M03",
+      "input": {
+        "bytes": 109176,
+        "sha256": "1388bad1a5f83ba89ddefc90d286384840390537b96adaf4b94f16a6553d6405",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/START.md",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M04",
+      "input": {
+        "bytes": 109180,
+        "sha256": "b97e1b3dd0b4d3e19d7ce08383418bccf9dde6680aef3770fed50902cc265b17",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/STORAGE-V2.md",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M05",
+      "input": {
+        "bytes": 109175,
+        "sha256": "617a87979d73f8b6c561406a0bc00e8464675a1999aa1d1340f60b90cd6476c7",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/bootstrap.py",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M06",
+      "input": {
+        "bytes": 109176,
+        "sha256": "d9023b8b4d60683891efc347f24e4e2489ac24b4b56453f72914cd1b965bf1c5",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/entry.txt",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M07",
+      "input": {
+        "bytes": 109181,
+        "sha256": "0d866d57d5c1c5cd5b472df2f78557306ca8cf5be667e2ec029e66114768a314",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/operation_card.py",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M08",
+      "input": {
+        "bytes": 109170,
+        "sha256": "a33f52704765506a3660e5ac8db1a0bbde264c4fcad6a1edf5c4d4b1cd2e8f20",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/operation_plan.py",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M09",
+      "input": {
+        "bytes": 109171,
+        "sha256": "fee3d65c37058ebaabb7f8795c3006b377f9f571fdf16529e2981f8999b5912e",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/profile_journal.py",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M10",
+      "input": {
+        "bytes": 109170,
+        "sha256": "66b46c5c66061786f033ef4d6080143e899f4c4c73bbcf972c05862ce904bbfc",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry.json",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M11",
+      "input": {
+        "bytes": 109177,
+        "sha256": "5d8024bb969866b3e9266c63ee316deca1507d5697c2adb5e758ec59791cbbdc",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry_journal.py",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M12",
+      "input": {
+        "bytes": 109169,
+        "sha256": "dc6f1a94a6d0e28111a8ae44d3669dea7bd91171cd08e4b5285d36d7597bfd7b",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry_policy.py",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M13",
+      "input": {
+        "bytes": 109170,
+        "sha256": "89abbde20a15787260256de98ce789b15999bb182cffa19d5b94d59354029f0e",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry_store.py",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M14",
+      "input": {
+        "bytes": 109170,
+        "sha256": "f2a39d2485e70ed2bf964ec68e096564fd333d25f165a2b1a75eb44919478079",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/schema_v2.py",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M15",
+      "input": {
+        "bytes": 109176,
+        "sha256": "278656005a6fb768f40aaae3cbaf46e340085075c2960151b98649ad3d89b2a4",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: profiles/staged/registry.json",
+      "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "M16",
+      "input": {
+        "bytes": 109168,
+        "sha256": "72f15a9e79d74db5a765b0fd85df6d314d7df47492871704752cf0fbb06e91aa",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-CARD.md",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B01",
+      "input": {
+        "bytes": 98301,
+        "sha256": "fa896832b798695fd24ea66bf6eaa3da669f06c781dc37d51ddb6b8c4f2f6e87",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-PLAN.md",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B02",
+      "input": {
+        "bytes": 100255,
+        "sha256": "10139f34b4d15c956e8d65807f37639ed29b19d7e426c4aa0815d8c5ea5273c7",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/SCHEMA-V2.md",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B03",
+      "input": {
+        "bytes": 101750,
+        "sha256": "0a1cff5bb8570a7d234247fc83e3c4c5a8fe755d116342bad31745960f1e812f",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/START.md",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B04",
+      "input": {
+        "bytes": 105979,
+        "sha256": "d2c52fa511d7c00c0ca46eb8facca60f6f6137a99218aa983132d4d98f37648b",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/STORAGE-V2.md",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B05",
+      "input": {
+        "bytes": 102722,
+        "sha256": "d8399dca47d6838a3977bee4263250df32be392a931635f6f6168213901ae0cd",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/bootstrap.py",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B06",
+      "input": {
+        "bytes": 104955,
+        "sha256": "d29413f13f04ca5ad803d61eb9e02a1b7e85190e78fd0980e43c87c497861e4f",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/entry.txt",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B07",
+      "input": {
+        "bytes": 109049,
+        "sha256": "92897e2115d8d1c68942caa88d889798975f4818657e1f48050653e151ee08a2",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/operation_card.py",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B08",
+      "input": {
+        "bytes": 93328,
+        "sha256": "293ce43cc3d7d220ba493028d1ce7650155efcf3821f762caa40e29f6776fe38",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/operation_plan.py",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B09",
+      "input": {
+        "bytes": 103488,
+        "sha256": "5262f1a0db4a55338143997fe3d4365199f76a1560942bd2c28fd4eb05a82888",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/profile_journal.py",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B10",
+      "input": {
+        "bytes": 105631,
+        "sha256": "9e959779760469a20514aa1ef8cffa36d4c2d52e119de1cbf14d4ffcd3a09ed7",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry.json",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B11",
+      "input": {
+        "bytes": 108961,
+        "sha256": "140a702ab3b942c35d019a940a2a3a6bc73ca058c0e9cae51576c5860f40b190",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry_journal.py",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B12",
+      "input": {
+        "bytes": 103698,
+        "sha256": "efdf71632e5e71c20056bf8c4cbbccb26108ac940947354e50c9f525ef547121",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry_policy.py",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B13",
+      "input": {
+        "bytes": 104805,
+        "sha256": "7e0f48cc2d7464d768168d6340edd57f09d0d7b58cfae0ad07de23c20ba58d00",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/registry_store.py",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B14",
+      "input": {
+        "bytes": 89270,
+        "sha256": "806029ac344f6a2af7c1cb5161061a03437cbaafa219a9f70595bc638d4bfb00",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: kit/base/schema_v2.py",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B15",
+      "input": {
+        "bytes": 100244,
+        "sha256": "a1daf4579dd831346f2420257762139155d71078d98cf6007ce8d863ead67717",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; закрытый состав: profiles/staged/registry.json",
+      "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "B16",
+      "input": {
+        "bytes": 107278,
+        "sha256": "4285af17b80e1592a8878607b15e3751660d0c28914af77d98de8f7062c65891",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "both_missing",
+      "verified": null
+    },
+    {
+      "archives": 0,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение live",
+      "criterion": "Даже правильный ZIP за пределами стенда отвергается до разбора.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "stand_only"
+        },
+        "where": "target"
+      },
+      "id": "N01",
+      "input": {
+        "bytes": 109297,
+        "sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "live",
+      "verified": null
+    },
+    {
+      "archives": 0,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение path",
+      "criterion": "Путь не открывается и не повторяется в отказе.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "bytes"
+        },
+        "where": "archive"
+      },
+      "id": "N02",
+      "input": {
+        "type": "path"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "path",
+      "verified": null
+    },
+    {
+      "archives": 0,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение bytearray",
+      "criterion": "Изменяемый объект не приводится к bytes.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "bytes"
+        },
+        "where": "archive"
+      },
+      "id": "N03",
+      "input": {
+        "bytes": 109297,
+        "sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+        "type": "bytearray"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "bytearray",
+      "verified": null
+    },
+    {
+      "archives": 0,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение empty",
+      "criterion": "Отсутствие входа не считается пустым валидным L1.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "bytes"
+        },
+        "where": "archive"
+      },
+      "id": "N04",
+      "input": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "empty",
+      "verified": null
+    },
+    {
+      "archives": 0,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение archive_limit",
+      "criterion": "ZIP больше предела отвергается до разбора.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "archive"
+      },
+      "id": "N05",
+      "input": {
+        "bytes": 5308417,
+        "sha256": "e3bf1c10368b2743ddef06448ed2dcf5f3acb0a2f1dc1e04ec0be66e7b4ffc07",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "archive_limit",
+      "verified": null
+    },
+    {
+      "archives": 0,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение truncated",
+      "criterion": "Обрезанная запись конца ZIP отвергается.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "zip"
+        },
+        "where": "archive"
+      },
+      "id": "N06",
+      "input": {
+        "bytes": 109296,
+        "sha256": "4c044269e13df1c5f3660f797f62c7ba33232a905c9d41da6be4e80ae10bbc06",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "truncated",
+      "verified": null
+    },
+    {
+      "archives": 0,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение prefix",
+      "criterion": "Нет неучтённого префикса перед ZIP.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "layout"
+        },
+        "where": "archive"
+      },
+      "id": "N07",
+      "input": {
+        "bytes": 109322,
+        "sha256": "b8dcdc339a0231f7a493e8ebcc00a5c74b36770b804f2bb76ca3ae8a59c86ba9",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "prefix",
+      "verified": null
+    },
+    {
+      "archives": 0,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение tail",
+      "criterion": "Нет добавленных данных после ZIP.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "zip"
+        },
+        "where": "archive"
+      },
+      "id": "N08",
+      "input": {
+        "bytes": 109322,
+        "sha256": "683548f8c6fcb2e01d7cd8b077e995c5b567dab346d58c566c51852758fbefd4",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "tail",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение no_manifest",
+      "criterion": "Полезные файлы без manifest.json не принимаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "N09",
+      "input": {
+        "bytes": 107078,
+        "sha256": "179f14f011a3064e63ae615bfb503e634f12ba35967220aceb51771876244a24",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "no_manifest",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение duplicate_zip",
+      "criterion": "Повтор имени в центральном списке не скрывается поиском по словарю.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "duplicate_member"
+        },
+        "where": "archive"
+      },
+      "id": "N10",
+      "input": {
+        "bytes": 112498,
+        "sha256": "931573198f72319908b4d5ccf16586f4f447cccb2230cf4a3069f703553abf1c",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "duplicate_zip",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение extra_zip",
+      "criterion": "L2 дополнительно к полному набору отвергается.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "N11",
+      "input": {
+        "bytes": 109472,
+        "sha256": "e2a89e2121a0167158c816abfbdd47c79b9ee024e08f90a9bbe21fd12b5eb2ba",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "extra_zip",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение extra_manifest",
+      "criterion": "Строка без архивного члена даже с правильным digest отклоняется.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "manifest"
+      },
+      "id": "N12",
+      "input": {
+        "bytes": 109432,
+        "sha256": "79ca8682d6ccd37c3687cdf54f49834ccd8467c92c9b447e8a15e05eb052e4a8",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "extra_manifest",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение extra_both",
+      "criterion": "Согласованный лишний локальный журнал не допускается.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "N13",
+      "input": {
+        "bytes": 109598,
+        "sha256": "abd0f88a82df9cfefabbba414a8e8f656cf042e5de921a16811445b2e2ece887",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "extra_both",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение case_alias",
+      "criterion": "Похожее имя в другом регистре не нормализуется.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "N14",
+      "input": {
+        "bytes": 109297,
+        "sha256": "37d029dc646d74a5c87ce22c30f7e1b4a4254d2b1e9fef819ad57340783e86c0",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "case_alias",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение zip_order",
+      "criterion": "Архивные члены одного набора в обратном порядке не формат И‑117.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "layout"
+        },
+        "where": "archive"
+      },
+      "id": "N15",
+      "input": {
+        "bytes": 109297,
+        "sha256": "20c35c03aef5de8ac359cec04b9c905a0ca047958dd943722941bafca02bbc2c",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "zip_order",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение symlink",
+      "criterion": "Запись с атрибутом символьной ссылки не обычный член.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "format"
+        },
+        "where": "archive"
+      },
+      "id": "N16",
+      "input": {
+        "bytes": 109297,
+        "sha256": "1d65a691a86efda9468f6cdbce79b20cd0e513434365c3a977e340cd884f6f3a",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "symlink",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение compressed",
+      "criterion": "Сжатый член отклонён до декомпрессии.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "format"
+        },
+        "where": "archive"
+      },
+      "id": "N17",
+      "input": {
+        "bytes": 107595,
+        "sha256": "262435e351cd20b7ab54995aa7381cac9666303710befa1cefec6e95e1f6d531",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "compressed",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение local_header",
+      "criterion": "Флаги локального заголовка должны точно совпадать с допустимым каталогом.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "layout"
+        },
+        "where": "archive"
+      },
+      "id": "N18",
+      "input": {
+        "bytes": 109297,
+        "sha256": "c176b89ad44bf4f965e19f4d15dbdb73725413ecb82620aa117e91dccd62f38b",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "local_header",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение encrypted_flag",
+      "criterion": "Флаг шифрования не разрешён; читаемости содержимого не проверяем.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "format"
+        },
+        "where": "archive"
+      },
+      "id": "N19",
+      "input": {
+        "bytes": 109297,
+        "sha256": "4cdd004d692fb8935a0b080dcfb39111d5838f534a6d8b148c532d33b875c16b",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "encrypted_flag",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение data_crc",
+      "criterion": "Тот же заголовок, повреждённое тело: ошибка CRC остаётся ошибкой контейнера.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "read"
+        },
+        "where": "archive"
+      },
+      "id": "N20",
+      "input": {
+        "bytes": 109297,
+        "sha256": "6f3fd8f97b0141df56b1dfe3041ea8071d6606a5e3ead6b1f78ee9759d7ec232",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 5,
+      "variant": "data_crc",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение file_limit",
+      "criterion": "1 МиБ + 1 байт в одном полезном члене — отказ до чтения.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "archive"
+      },
+      "id": "N21",
+      "input": {
+        "bytes": 1154786,
+        "sha256": "564724474cbfdefea83c801e74f6bf7b0fe4c3bef5f751a108191ad72bf02b7f",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "file_limit",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение total_limit",
+      "criterion": "4 МиБ + 1 байт суммарно при допустимых размерах отдельных членов — отказ.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "archive"
+      },
+      "id": "N22",
+      "input": {
+        "bytes": 4198538,
+        "sha256": "e0d27a601abf034db0a5db23348b540408b306dcd5bf1de80bf1f488554df6dc",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "total_limit",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение manifest_limit",
+      "criterion": "Отдельная граница манифеста проверяется до чтения его тела.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "archive"
+      },
+      "id": "N23",
+      "input": {
+        "bytes": 1163949,
+        "sha256": "ea959dce160c9734f394998fd7ed0cbb77788296607bdb71acccc8fe349b0851",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "manifest_limit",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение duplicate_json",
+      "criterion": "Повтор JSON-ключа не допускается.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "json"
+        },
+        "where": "manifest"
+      },
+      "id": "N24",
+      "input": {
+        "bytes": 107224,
+        "sha256": "3af34459b8a0f7db1d0d39f488e538e5587ebdcc4f7f6f178e042196cc6e4746",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "duplicate_json",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_utf8",
+      "criterion": "Некорректный UTF-8 не допускается.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "json"
+        },
+        "where": "manifest"
+      },
+      "id": "N25",
+      "input": {
+        "bytes": 107194,
+        "sha256": "15177c2e90a17ba7f5c29eebac6295e9ff24cf47a34039a578d5ff00bad2d1b0",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "bad_utf8",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение unknown_field",
+      "criterion": "Лишнее поле манифеста отклоняется без эха значения.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "manifest"
+      },
+      "id": "N26",
+      "input": {
+        "bytes": 109333,
+        "sha256": "9f994c8e39b402cb37bcd4140dc700b61ea5c1c588c6229e766817fb7a8a5d5e",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "unknown_field",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение bool_size",
+      "criterion": "Булево значение не целый размер.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "manifest"
+      },
+      "id": "N27",
+      "input": {
+        "bytes": 109297,
+        "sha256": "8e548f021549f767a9ff2f9901b3e3c42c175faeb43789e11d71028f07e4880e",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "bool_size",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение bool_revision",
+      "criterion": "Булево значение не ревизия.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "manifest"
+      },
+      "id": "N28",
+      "input": {
+        "bytes": 109300,
+        "sha256": "75711c4fa05eae0ea22a6b7f1fec0a1e365807574457d9846c2ea177e33eb368",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "bool_revision",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_sha",
+      "criterion": "SHA-256 строки — ровно 64 нижнерегистровых hex знака.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "manifest"
+      },
+      "id": "N29",
+      "input": {
+        "bytes": 109297,
+        "sha256": "8badd312be471c9823651a55e589fe9c6e2b49ef0394e67d4a99741d92f68cac",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "bad_sha",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение duplicate_row",
+      "criterion": "Две строки на одно имя отвергаются.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "duplicate_member"
+        },
+        "where": "manifest"
+      },
+      "id": "N30",
+      "input": {
+        "bytes": 109414,
+        "sha256": "9219caa5a9293dbe2c879e36259b520592bcc0135e12fe6144aa906ec8eab00f",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "duplicate_row",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_roots",
+      "criterion": "Порядок и значения корней фиксированы независимо от digest.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "roots"
+        },
+        "where": "manifest"
+      },
+      "id": "N31",
+      "input": {
+        "bytes": 109297,
+        "sha256": "096ec120be3b2e76ab1c40263a805a37b30746bf1af33a2130675104189dec70",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "wrong_roots",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение manifest_whitespace",
+      "criterion": "Дополнительный LF не каноническая запись манифеста.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "encoding"
+        },
+        "where": "manifest"
+      },
+      "id": "N32",
+      "input": {
+        "bytes": 109298,
+        "sha256": "a2528c515581dfa50cc4d0a5a14a1765c02c3ec2751f6ae209f16f8d2260e136",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_whitespace",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_digest",
+      "criterion": "Корректная форма, но digest не равен хешу остальных полей.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "digest"
+        },
+        "where": "manifest"
+      },
+      "id": "N33",
+      "input": {
+        "bytes": 109297,
+        "sha256": "4a68fde7a81a36b7e718cf36fc3a0c8291175457690de05b98f9be43d144ce89",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "wrong_digest",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_file_hash",
+      "criterion": "Digest манифеста правильный, но его SHA-256 для START неверный.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "N34",
+      "input": {
+        "bytes": 109297,
+        "sha256": "f8a8df7cbed90c18709bbb50de61408a5550bec48faa14ff7a1cc99eb9acc700",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 5,
+      "variant": "wrong_file_hash",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_size",
+      "criterion": "Digest манифеста правильный, но заявленная длина не совпадает с ZIP.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "size"
+        },
+        "where": "files"
+      },
+      "id": "N35",
+      "input": {
+        "bytes": 109297,
+        "sha256": "260baedb39e3ef3c4eddbd971e4477775983613776f47d25ef966e8ee18c7037",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "wrong_size",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_revision",
+      "criterion": "Обе хеш-сверки успешны, но ревизия манифеста не равна L1.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "revision"
+        },
+        "where": "profile"
+      },
+      "id": "N36",
+      "input": {
+        "bytes": 109297,
+        "sha256": "da8acbf4cd5b95b2da492d58a926aa7719df802b817e4777f3856aff97ef5d52",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "wrong_revision",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_l0",
+      "criterion": "Согласованные хеши не заменяют проверку v2 и SemVer L0.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "registry"
+        },
+        "where": "system"
+      },
+      "id": "N37",
+      "input": {
+        "bytes": 109287,
+        "sha256": "487dc3bcc2cff9fdf014a43bd9a614aa84671848b34616e27f8ef03112c7bfa3",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "bad_l0",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_l0_root",
+      "criterion": "L0 с допустимым, но чужим корнем не согласован с манифестом.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "roots"
+        },
+        "where": "system"
+      },
+      "id": "N38",
+      "input": {
+        "bytes": 109304,
+        "sha256": "baaab6dc4b0f0ce9ee1276a1d1ac3222b599636261a614044822cff065c96e20",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "wrong_l0_root",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение history_one",
+      "criterion": "Штатный локальный формат 1 с валидным L1 целиком вне пакета.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "local_history"
+        },
+        "where": "profile"
+      },
+      "id": "N39",
+      "input": {
+        "bytes": 109374,
+        "sha256": "1e75b39d619e1fb5e4b93fb61b03f68c96b4ca3bbac65d60b62ffb053d7f6b99",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "history_one",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение history_two",
+      "criterion": "Штатный локальный формат 2 с валидным L1 целиком вне пакета.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "local_history"
+        },
+        "where": "profile"
+      },
+      "id": "N40",
+      "input": {
+        "bytes": 109556,
+        "sha256": "77fa1646851eeb751e4958d6b84af0c9b81275842466f35bc7f28b840ef2145c",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "history_two",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_parent",
+      "criterion": "Хеши не спасают запись без существующего родителя по A4.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "registry"
+        },
+        "where": "profile"
+      },
+      "id": "N41",
+      "input": {
+        "bytes": 109312,
+        "sha256": "578e37965625a86ce27e1134ab5d8704cb64f5606b795253fb0b898081a75666",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "bad_parent",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_l1_root",
+      "criterion": "Голый профиль с другим корнем не соответствует манифесту.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "roots"
+        },
+        "where": "profile"
+      },
+      "id": "N42",
+      "input": {
+        "bytes": 109296,
+        "sha256": "68be5668f5b0de8f63c36d7ce047f0ac4aae93f74d9303f58e745a166bee4510",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 17,
+      "variant": "wrong_l1_root",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение manifest_order",
+      "criterion": "Тот же набор строк в обратном порядке с пересчитанным digest не каноничен.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "encoding"
+        },
+        "where": "manifest"
+      },
+      "id": "N43",
+      "input": {
+        "bytes": 109297,
+        "sha256": "4ce7fc7c90b2598c20c27c40b5ce82cbbbe218cc8f00a0648e759b1d13cffb0a",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 1,
+      "variant": "manifest_order",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение traversal",
+      "criterion": "Имя с .. отвергнуто; ни один путь не разрешается на диске.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "N44",
+      "input": {
+        "bytes": 109303,
+        "sha256": "f085e0ec32020aa34b9144d018cd3c9534c49c0ddf92b748f33aa07be2dca7d8",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "traversal",
+      "verified": null
+    },
+    {
+      "archives": 0,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение directory_limit",
+      "criterion": "33 строки каталога отвергнуты до создания объекта ZIP.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "archive"
+      },
+      "id": "N45",
+      "input": {
+        "bytes": 3949,
+        "sha256": "3ac07b40b74b00c9fb2073b804f70186c808ff1717141fd5683922e3fe4e74ce",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "directory_limit",
+      "verified": null
+    },
+    {
+      "archives": 1,
+      "basis": "И‑117/P01; DESIGN.md; изолированное изменение empty_payload",
+      "criterion": "Нулевой размер обязательного полезного файла недопустим.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "archive"
+      },
+      "id": "N46",
+      "input": {
+        "bytes": 106203,
+        "sha256": "10956bb57fd24720db60375b729e00fdc2f41b9a4af6996dd28605b2258b059d",
+        "type": "bytes"
+      },
+      "input_unchanged": true,
+      "quiet": true,
+      "reads": 0,
+      "variant": "empty_payload",
+      "verified": null
+    }
+  ],
+  "source": {
+    "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+    "bytes": 109297,
+    "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+    "path": "research/117/Synthetic-Bundle-117.zip",
+    "revision": 7
+  }
+}

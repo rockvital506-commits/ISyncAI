@@ -1,0 +1,1522 @@
+{
+  "checks": [
+    {
+      "basis": "ITERATION.json; CASES.json; RED.json",
+      "check": "frozen_red",
+      "criterion": "Оракул, исходный пример и эталоны закреплены до продукта; RED 0/116/0 совпал с Git-снимком.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json; test_bundle_verify.py",
+      "check": "checkout",
+      "criterion": "Каждая обязательная строка сопоставлена по ID, статусу, выводу и эффектам; rc0, без stderr.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json; test_bundle_verify.py",
+      "check": "cleanroom",
+      "criterion": "Каждая обязательная строка сопоставлена по ID, статусу, выводу и эффектам; rc0, без stderr.",
+      "status": "pass"
+    },
+    {
+      "basis": "P01/P02/P04–P06; Synthetic-Bundle-117.zip; закреплённые векторы",
+      "check": "valid_bundles_and_source",
+      "criterion": "Приняты исходный пример, пустой L1, иные байты JSON, новая ревизия и точная граница 1/4 МиБ.",
+      "status": "pass"
+    },
+    {
+      "basis": "T01–T16; CASES.json; N33–N35",
+      "check": "tamper_each_file",
+      "criterion": "Один байт каждого файла при правильном CRC и старой заявке — отказ SHA-256; размер и digest проверяются отдельно.",
+      "status": "pass"
+    },
+    {
+      "basis": "A01–A16/M01–M16/B01–B16; N09–N14",
+      "check": "both_directions",
+      "criterion": "48 пропусков: из ZIP, манифеста и обоих. Лишнее или повторённое имя не покрывается digest.",
+      "status": "pass"
+    },
+    {
+      "basis": "N01–N08/N15–N23/N44–N46; Monitor",
+      "check": "bounds_before_payload",
+      "criterion": "Ограничиваем части до чтения; не извлекаем ссылки, не декомпрессируем, не открываем вход-путь.",
+      "status": "pass"
+    },
+    {
+      "basis": "N36–N42; положительный контроль истории; v2",
+      "check": "registry_binding",
+      "criterion": "Самосогласованный ZIP не заменяет проверку двух реестров, корней, A4 и соответствия revision.",
+      "status": "pass"
+    },
+    {
+      "basis": "P01/P03; T01–T16",
+      "check": "not_a_trust_claim",
+      "criterion": "Изменение файла и пересчёт всего манифеста может пройти как целостность, не подлинность.",
+      "status": "pass"
+    },
+    {
+      "basis": "Оба прогона; Monitor; VERIFICATION.json",
+      "check": "no_effects_or_partial_result",
+      "criterion": "Нет попыток I/O, запуска, записи ZIP или вывода; отказ не выдаёт полезные байты и частичный результат.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "fresh_copy",
+      "criterion": "В новой копии ровно девять входов; Git, донор и рабочие профили отсутствуют.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "repeat",
+      "criterion": "Повтор из заявленных байтов дал те же значения всех наблюдений.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 12
+  },
+  "iteration": "И-118",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Подпись, происхождение, доверие, pin выпуска и исключения (И‑119).",
+      "why": "Внутренняя согласованность может быть заново рассчитана отправителем; внешнее основание доверия не задано."
+    },
+    {
+      "status": "not run",
+      "what": "Установка, рабочий перенос, откат и живой агент (И‑120 и последующие).",
+      "why": "Нет выдачи полезных байтов, распаковки, исполнения или записи рабочего состояния."
+    },
+    {
+      "status": "not run",
+      "what": "Порт, адаптеры, guard и CI.",
+      "why": "Стендовая функция не зарегистрирована; сценарии И‑127/И‑128 не запускались."
+    },
+    {
+      "status": "not run",
+      "what": "Реальные пакеты, секреты/PII, иные ОС/ACL и произвольный ZIP.",
+      "why": "Корпус ограничен синтетикой и форматом И‑117, повтор проведён в доступной Linux-среде."
+    }
+  ],
+  "os": "Linux",
+  "outcome": "accepted",
+  "python": "3.11.2",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "basis": "И‑117/P01; SEAL и эталонный Synthetic-Bundle-117.zip",
+          "criterion": "Точный принятый пакет, digest и SHA-256 ZIP верны и различны, L1 revision=7.",
+          "id": "P01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P03; валидный v2 L1 с entries=[]",
+          "criterion": "Полный пакет с пустым L1 принят, revision=0.",
+          "id": "P02",
+          "status": "pass"
+        },
+        {
+          "basis": "Независимая замена байта START и пересчёт всех связей",
+          "criterion": "Та же revision=7, но другой digest и ZIP, результат принят только как целостный, не как подлинный.",
+          "id": "P03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P05; другое JSON-представление голого L1",
+          "criterion": "Новые сырые байты дают иной digest, реестр валиден и принят без нормализации.",
+          "id": "P04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P06; явная смена ревизии в L1",
+          "criterion": "Ревизия 8 совпадает с манифестом; совпадение значений не создаёт разрешение.",
+          "id": "P05",
+          "status": "pass"
+        },
+        {
+          "basis": "Границы И‑117; независимая перекладка 1/4 МиБ",
+          "criterion": "Точно 1 МиБ хотя бы в одном файле и 4 МиБ суммарно принимаются.",
+          "id": "P06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/OPERATION-CARD.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/OPERATION-PLAN.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/SCHEMA-V2.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/START.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/STORAGE-V2.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/bootstrap.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/entry.txt",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/operation_card.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/operation_plan.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/profile_journal.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry.json",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry_journal.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry_policy.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry_store.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/schema_v2.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: profiles/staged/registry.json",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-CARD.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-PLAN.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/SCHEMA-V2.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/START.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/STORAGE-V2.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/bootstrap.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/entry.txt",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_card.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_plan.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/profile_journal.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry.json",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_journal.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_policy.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_store.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/schema_v2.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: profiles/staged/registry.json",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-CARD.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-PLAN.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/SCHEMA-V2.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/START.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/STORAGE-V2.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/bootstrap.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/entry.txt",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_card.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_plan.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/profile_journal.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry.json",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_journal.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_policy.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_store.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/schema_v2.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: profiles/staged/registry.json",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-CARD.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-PLAN.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/SCHEMA-V2.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/START.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/STORAGE-V2.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/bootstrap.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/entry.txt",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_card.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_plan.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/profile_journal.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry.json",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_journal.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_policy.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_store.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/schema_v2.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: profiles/staged/registry.json",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение live",
+          "criterion": "Даже правильный ZIP за пределами стенда отвергается до разбора.",
+          "id": "N01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение path",
+          "criterion": "Путь не открывается и не повторяется в отказе.",
+          "id": "N02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bytearray",
+          "criterion": "Изменяемый объект не приводится к bytes.",
+          "id": "N03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение empty",
+          "criterion": "Отсутствие входа не считается пустым валидным L1.",
+          "id": "N04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение archive_limit",
+          "criterion": "ZIP больше предела отвергается до разбора.",
+          "id": "N05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение truncated",
+          "criterion": "Обрезанная запись конца ZIP отвергается.",
+          "id": "N06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение prefix",
+          "criterion": "Нет неучтённого префикса перед ZIP.",
+          "id": "N07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение tail",
+          "criterion": "Нет добавленных данных после ZIP.",
+          "id": "N08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение no_manifest",
+          "criterion": "Полезные файлы без manifest.json не принимаются.",
+          "id": "N09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение duplicate_zip",
+          "criterion": "Повтор имени в центральном списке не скрывается поиском по словарю.",
+          "id": "N10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение extra_zip",
+          "criterion": "L2 дополнительно к полному набору отвергается.",
+          "id": "N11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение extra_manifest",
+          "criterion": "Строка без архивного члена даже с правильным digest отклоняется.",
+          "id": "N12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение extra_both",
+          "criterion": "Согласованный лишний локальный журнал не допускается.",
+          "id": "N13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение case_alias",
+          "criterion": "Похожее имя в другом регистре не нормализуется.",
+          "id": "N14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение zip_order",
+          "criterion": "Архивные члены одного набора в обратном порядке не формат И‑117.",
+          "id": "N15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение symlink",
+          "criterion": "Запись с атрибутом символьной ссылки не обычный член.",
+          "id": "N16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение compressed",
+          "criterion": "Сжатый член отклонён до декомпрессии.",
+          "id": "N17",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение local_header",
+          "criterion": "Флаги локального заголовка должны точно совпадать с допустимым каталогом.",
+          "id": "N18",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение encrypted_flag",
+          "criterion": "Флаг шифрования не разрешён; читаемости содержимого не проверяем.",
+          "id": "N19",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение data_crc",
+          "criterion": "Тот же заголовок, повреждённое тело: ошибка CRC остаётся ошибкой контейнера.",
+          "id": "N20",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение file_limit",
+          "criterion": "1 МиБ + 1 байт в одном полезном члене — отказ до чтения.",
+          "id": "N21",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение total_limit",
+          "criterion": "4 МиБ + 1 байт суммарно при допустимых размерах отдельных членов — отказ.",
+          "id": "N22",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение manifest_limit",
+          "criterion": "Отдельная граница манифеста проверяется до чтения его тела.",
+          "id": "N23",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение duplicate_json",
+          "criterion": "Повтор JSON-ключа не допускается.",
+          "id": "N24",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_utf8",
+          "criterion": "Некорректный UTF-8 не допускается.",
+          "id": "N25",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение unknown_field",
+          "criterion": "Лишнее поле манифеста отклоняется без эха значения.",
+          "id": "N26",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bool_size",
+          "criterion": "Булево значение не целый размер.",
+          "id": "N27",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bool_revision",
+          "criterion": "Булево значение не ревизия.",
+          "id": "N28",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_sha",
+          "criterion": "SHA-256 строки — ровно 64 нижнерегистровых hex знака.",
+          "id": "N29",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение duplicate_row",
+          "criterion": "Две строки на одно имя отвергаются.",
+          "id": "N30",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_roots",
+          "criterion": "Порядок и значения корней фиксированы независимо от digest.",
+          "id": "N31",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение manifest_whitespace",
+          "criterion": "Дополнительный LF не каноническая запись манифеста.",
+          "id": "N32",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_digest",
+          "criterion": "Корректная форма, но digest не равен хешу остальных полей.",
+          "id": "N33",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_file_hash",
+          "criterion": "Digest манифеста правильный, но его SHA-256 для START неверный.",
+          "id": "N34",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_size",
+          "criterion": "Digest манифеста правильный, но заявленная длина не совпадает с ZIP.",
+          "id": "N35",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_revision",
+          "criterion": "Обе хеш-сверки успешны, но ревизия манифеста не равна L1.",
+          "id": "N36",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_l0",
+          "criterion": "Согласованные хеши не заменяют проверку v2 и SemVer L0.",
+          "id": "N37",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_l0_root",
+          "criterion": "L0 с допустимым, но чужим корнем не согласован с манифестом.",
+          "id": "N38",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение history_one",
+          "criterion": "Штатный локальный формат 1 с валидным L1 целиком вне пакета.",
+          "id": "N39",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение history_two",
+          "criterion": "Штатный локальный формат 2 с валидным L1 целиком вне пакета.",
+          "id": "N40",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_parent",
+          "criterion": "Хеши не спасают запись без существующего родителя по A4.",
+          "id": "N41",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_l1_root",
+          "criterion": "Голый профиль с другим корнем не соответствует манифесту.",
+          "id": "N42",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение manifest_order",
+          "criterion": "Тот же набор строк в обратном порядке с пересчитанным digest не каноничен.",
+          "id": "N43",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение traversal",
+          "criterion": "Имя с .. отвергнуто; ни один путь не разрешается на диске.",
+          "id": "N44",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение directory_limit",
+          "criterion": "33 строки каталога отвергнуты до создания объекта ZIP.",
+          "id": "N45",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение empty_payload",
+          "criterion": "Нулевой размер обязательного полезного файла недопустим.",
+          "id": "N46",
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 116
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "basis": "И‑117/P01; SEAL и эталонный Synthetic-Bundle-117.zip",
+          "criterion": "Точный принятый пакет, digest и SHA-256 ZIP верны и различны, L1 revision=7.",
+          "id": "P01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P03; валидный v2 L1 с entries=[]",
+          "criterion": "Полный пакет с пустым L1 принят, revision=0.",
+          "id": "P02",
+          "status": "pass"
+        },
+        {
+          "basis": "Независимая замена байта START и пересчёт всех связей",
+          "criterion": "Та же revision=7, но другой digest и ZIP, результат принят только как целостный, не как подлинный.",
+          "id": "P03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P05; другое JSON-представление голого L1",
+          "criterion": "Новые сырые байты дают иной digest, реестр валиден и принят без нормализации.",
+          "id": "P04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P06; явная смена ревизии в L1",
+          "criterion": "Ревизия 8 совпадает с манифестом; совпадение значений не создаёт разрешение.",
+          "id": "P05",
+          "status": "pass"
+        },
+        {
+          "basis": "Границы И‑117; независимая перекладка 1/4 МиБ",
+          "criterion": "Точно 1 МиБ хотя бы в одном файле и 4 МиБ суммарно принимаются.",
+          "id": "P06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/OPERATION-CARD.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/OPERATION-PLAN.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/SCHEMA-V2.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/START.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/STORAGE-V2.md",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/bootstrap.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/entry.txt",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/operation_card.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/operation_plan.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/profile_journal.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry.json",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry_journal.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry_policy.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/registry_store.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: kit/base/schema_v2.py",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; CRC пересчитан, заявка прежняя: profiles/staged/registry.json",
+          "criterion": "Один байт заменён без изменения длины; несовпадение SHA-256 не выдаёт результата.",
+          "id": "T16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-CARD.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-PLAN.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/SCHEMA-V2.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/START.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/STORAGE-V2.md",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/bootstrap.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/entry.txt",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_card.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_plan.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/profile_journal.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry.json",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_journal.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_policy.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_store.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/schema_v2.py",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: profiles/staged/registry.json",
+          "criterion": "Файл исчез только из ZIP, манифест прежний.",
+          "id": "A16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-CARD.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-PLAN.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/SCHEMA-V2.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/START.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/STORAGE-V2.md",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/bootstrap.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/entry.txt",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_card.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_plan.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/profile_journal.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry.json",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_journal.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_policy.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_store.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/schema_v2.py",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: profiles/staged/registry.json",
+          "criterion": "Строка исчезла только из манифеста; digest согласован с неполным списком.",
+          "id": "M16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-CARD.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/OPERATION-PLAN.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/SCHEMA-V2.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/START.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/STORAGE-V2.md",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/bootstrap.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/entry.txt",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_card.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/operation_plan.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/profile_journal.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry.json",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_journal.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_policy.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/registry_store.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: kit/base/schema_v2.py",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; закрытый состав: profiles/staged/registry.json",
+          "criterion": "Имя исчезло с обеих сторон, digest пересчитан; равные неполные наборы не принимаются.",
+          "id": "B16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение live",
+          "criterion": "Даже правильный ZIP за пределами стенда отвергается до разбора.",
+          "id": "N01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение path",
+          "criterion": "Путь не открывается и не повторяется в отказе.",
+          "id": "N02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bytearray",
+          "criterion": "Изменяемый объект не приводится к bytes.",
+          "id": "N03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение empty",
+          "criterion": "Отсутствие входа не считается пустым валидным L1.",
+          "id": "N04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение archive_limit",
+          "criterion": "ZIP больше предела отвергается до разбора.",
+          "id": "N05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение truncated",
+          "criterion": "Обрезанная запись конца ZIP отвергается.",
+          "id": "N06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение prefix",
+          "criterion": "Нет неучтённого префикса перед ZIP.",
+          "id": "N07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение tail",
+          "criterion": "Нет добавленных данных после ZIP.",
+          "id": "N08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение no_manifest",
+          "criterion": "Полезные файлы без manifest.json не принимаются.",
+          "id": "N09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение duplicate_zip",
+          "criterion": "Повтор имени в центральном списке не скрывается поиском по словарю.",
+          "id": "N10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение extra_zip",
+          "criterion": "L2 дополнительно к полному набору отвергается.",
+          "id": "N11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение extra_manifest",
+          "criterion": "Строка без архивного члена даже с правильным digest отклоняется.",
+          "id": "N12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение extra_both",
+          "criterion": "Согласованный лишний локальный журнал не допускается.",
+          "id": "N13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение case_alias",
+          "criterion": "Похожее имя в другом регистре не нормализуется.",
+          "id": "N14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение zip_order",
+          "criterion": "Архивные члены одного набора в обратном порядке не формат И‑117.",
+          "id": "N15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение symlink",
+          "criterion": "Запись с атрибутом символьной ссылки не обычный член.",
+          "id": "N16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение compressed",
+          "criterion": "Сжатый член отклонён до декомпрессии.",
+          "id": "N17",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение local_header",
+          "criterion": "Флаги локального заголовка должны точно совпадать с допустимым каталогом.",
+          "id": "N18",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение encrypted_flag",
+          "criterion": "Флаг шифрования не разрешён; читаемости содержимого не проверяем.",
+          "id": "N19",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение data_crc",
+          "criterion": "Тот же заголовок, повреждённое тело: ошибка CRC остаётся ошибкой контейнера.",
+          "id": "N20",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение file_limit",
+          "criterion": "1 МиБ + 1 байт в одном полезном члене — отказ до чтения.",
+          "id": "N21",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение total_limit",
+          "criterion": "4 МиБ + 1 байт суммарно при допустимых размерах отдельных членов — отказ.",
+          "id": "N22",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение manifest_limit",
+          "criterion": "Отдельная граница манифеста проверяется до чтения его тела.",
+          "id": "N23",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение duplicate_json",
+          "criterion": "Повтор JSON-ключа не допускается.",
+          "id": "N24",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_utf8",
+          "criterion": "Некорректный UTF-8 не допускается.",
+          "id": "N25",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение unknown_field",
+          "criterion": "Лишнее поле манифеста отклоняется без эха значения.",
+          "id": "N26",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bool_size",
+          "criterion": "Булево значение не целый размер.",
+          "id": "N27",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bool_revision",
+          "criterion": "Булево значение не ревизия.",
+          "id": "N28",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_sha",
+          "criterion": "SHA-256 строки — ровно 64 нижнерегистровых hex знака.",
+          "id": "N29",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение duplicate_row",
+          "criterion": "Две строки на одно имя отвергаются.",
+          "id": "N30",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_roots",
+          "criterion": "Порядок и значения корней фиксированы независимо от digest.",
+          "id": "N31",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение manifest_whitespace",
+          "criterion": "Дополнительный LF не каноническая запись манифеста.",
+          "id": "N32",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_digest",
+          "criterion": "Корректная форма, но digest не равен хешу остальных полей.",
+          "id": "N33",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_file_hash",
+          "criterion": "Digest манифеста правильный, но его SHA-256 для START неверный.",
+          "id": "N34",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_size",
+          "criterion": "Digest манифеста правильный, но заявленная длина не совпадает с ZIP.",
+          "id": "N35",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_revision",
+          "criterion": "Обе хеш-сверки успешны, но ревизия манифеста не равна L1.",
+          "id": "N36",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_l0",
+          "criterion": "Согласованные хеши не заменяют проверку v2 и SemVer L0.",
+          "id": "N37",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_l0_root",
+          "criterion": "L0 с допустимым, но чужим корнем не согласован с манифестом.",
+          "id": "N38",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение history_one",
+          "criterion": "Штатный локальный формат 1 с валидным L1 целиком вне пакета.",
+          "id": "N39",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение history_two",
+          "criterion": "Штатный локальный формат 2 с валидным L1 целиком вне пакета.",
+          "id": "N40",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение bad_parent",
+          "criterion": "Хеши не спасают запись без существующего родителя по A4.",
+          "id": "N41",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение wrong_l1_root",
+          "criterion": "Голый профиль с другим корнем не соответствует манифесту.",
+          "id": "N42",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение manifest_order",
+          "criterion": "Тот же набор строк в обратном порядке с пересчитанным digest не каноничен.",
+          "id": "N43",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение traversal",
+          "criterion": "Имя с .. отвергнуто; ни один путь не разрешается на диске.",
+          "id": "N44",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение directory_limit",
+          "criterion": "33 строки каталога отвергнуты до создания объекта ZIP.",
+          "id": "N45",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑117/P01; DESIGN.md; изолированное изменение empty_payload",
+          "criterion": "Нулевой размер обязательного полезного файла недопустим.",
+          "id": "N46",
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 116
+      },
+      "rc": 0
+    }
+  },
+  "scope": "П5 · целостность ZIP И-117, не подпись, установка или произвольный ZIP"
+}

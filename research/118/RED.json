@@ -1,0 +1,631 @@
+{
+  "baseline": "3ce8a27653be0fd917e7244c461d4c84e2373c52",
+  "casebook_sha256": "b6d3f07715ff2b3d1bc1a79d4199c4b69ce807ca4f6e054d691f2316382dec9a",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/118/test_bundle_verify.py"
+  ],
+  "independent_baseline_match": true,
+  "pinned_inputs": {
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_journal.py": "2c9f5b0daba2dbd4f840530ef81e049896e13e03fe2a1023688e443857419eb6",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/117/Synthetic-Bundle-117.zip": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+  },
+  "rc": 1,
+  "result": {
+    "control": {
+      "bare_revisions": [
+        7,
+        0
+      ],
+      "history_formats": [
+        1,
+        2
+      ],
+      "source_members": 17,
+      "source_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "working_port": {
+        "bundle": "unknown_operation",
+        "bundle_verify": "unknown_operation"
+      }
+    },
+    "counts": {
+      "fail": 116,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P02",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P03",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P04",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P05",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P06",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T01",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T02",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T03",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T04",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T05",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T06",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T07",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T08",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T09",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T10",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T11",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T12",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T13",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T14",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T15",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "T16",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A01",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A02",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A03",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A04",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A05",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A06",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A07",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A08",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A09",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A10",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A11",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A12",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A13",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A14",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A15",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "A16",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M01",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M02",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M03",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M04",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M05",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M06",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M07",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M08",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M09",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M10",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M11",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M12",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M13",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M14",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M15",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "M16",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B01",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B02",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B03",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B04",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B05",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B06",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B07",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B08",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B09",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B10",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B11",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B12",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B13",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B14",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B15",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "B16",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N01",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N02",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N03",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N04",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N05",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N06",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N07",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N08",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N09",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N10",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N11",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N12",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N13",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N14",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N15",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N16",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N17",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N18",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N19",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N20",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N21",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N22",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N23",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N24",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N25",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N26",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N27",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N28",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N29",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N30",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N31",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N32",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N33",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N34",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N35",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N36",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N37",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N38",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N39",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N40",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N41",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N42",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N43",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N44",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N45",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N46",
+        "reason": "bundle_verify_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "test_sha256": "7024fe2e0472894b20b1ec147cc84a3101e4267a4e05e2ac25c2b0f365dc8c8c"
+}
