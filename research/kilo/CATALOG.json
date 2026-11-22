@@ -23,7 +23,7 @@
     "conflicts": 14,
     "measurements": 19,
     "sources": 21,
-    "files": 31
+    "files": 35
   },
   "entities": [
     {
@@ -486,6 +486,8 @@
       "CRITIQUE-AND-RESEARCH-PLAN.md",
       "DECISION-ROADMAP.md",
       "KILO-VSCODE.md",
+      "P00-ENVIRONMENT-SETUP.md",
+      "PLAN-PROBES.md",
       "PROBES-GUIDE.md",
       "PROMPT-REWORK-122.md",
       "README.md",
@@ -493,8 +495,10 @@
       "ROADMAP-PROTOCOL.md",
       "ROADMAP-RECOMMENDATION.md",
       "RUNBOOK-V1.md",
+      "STAND-COPY.md",
       "STRATEGY-STORAGE.md",
-      "TARGETS.md"
+      "TARGETS.md",
+      "VISION-END-STATE.md"
     ],
     "tools": [
       "spec_check.py"
