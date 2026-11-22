@@ -1,0 +1,764 @@
+{
+  "checks": [
+    {
+      "basis": "CASES.json; ITERATION.json; RED.json",
+      "check": "frozen_red",
+      "criterion": "Корпус и исторические входы закреплены до матрицы и валидатора; RED 0/51/0 совпал с архивом базы.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json",
+      "check": "checkout",
+      "criterion": "Весь корпус, порядок и диагностики совпадают с ожиданиями; rc0 без stderr.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json",
+      "check": "cleanroom",
+      "criterion": "Весь корпус, порядок и диагностики совпадают с ожиданиями; rc0 без stderr.",
+      "status": "pass"
+    },
+    {
+      "basis": "P01; R01–R09; S09/S10; §1.2",
+      "check": "roster_and_scope",
+      "criterion": "Три кандидата, три заглушки с причиной; нет новой среды или отмены охраны путей.",
+      "status": "pass"
+    },
+    {
+      "basis": "S01–S06; SURFACES.json:entry/priority",
+      "check": "entry_and_priority",
+      "criterion": "Указаны кандидаты и проверяемые конфликты; догадка о ключе или старшинстве не становится фактом.",
+      "status": "pass"
+    },
+    {
+      "basis": "P8; И‑112 B01/S05; S07/S08",
+      "check": "limits_separated",
+      "criterion": "Проектный процент, байты локального §0 и неизвестные капы клиентов различаются.",
+      "status": "pass"
+    },
+    {
+      "basis": "P01; S11–S17; SURFACES.json:coverage/metrics",
+      "check": "no_claimed_coverage",
+      "criterion": "0 запусков; пять разных незапущенных стадий на клиента, отсутствие наблюдения не равно нулевой доле.",
+      "status": "pass"
+    },
+    {
+      "basis": "Печать И‑101; И‑102/BASELINE.json; D01–D06",
+      "check": "donor_only",
+      "criterion": "Обе исторические цифры сохранены; первичен инвентарь только для 0.1.36. Нет доказательства порядка цели.",
+      "status": "pass"
+    },
+    {
+      "basis": "SURFACES.json:gaps; ARCHITECTURE-REVIEW.md; S18–S22",
+      "check": "gaps_traced",
+      "criterion": "Пробелы имеют основания и критерии; заглушки не включены; разбиение И‑125 не принято за владельца.",
+      "status": "pass"
+    },
+    {
+      "basis": "Все 51 случая; перехват файлов, системы, socket и процесса",
+      "check": "offline_readonly",
+      "criterion": "Вызовы валидатора не наблюдались вне памяти; нет вывода, изменения источников или исполнения текста.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "fresh_copy",
+      "criterion": "Новая копия из 13 входов, без установленного клиента или выполнения донора.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json; якорь стратегии",
+      "check": "repeat",
+      "criterion": "Полное одинаковое наблюдение и неизменяемые входы; якорь не меняется при записи факта в стратегию.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 12
+  },
+  "iteration": "И-121",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Точные версии, режимы, документы и старшинство живых клиентов.",
+      "why": "Локальные исторические записи и план — не сверка установленного клиента; И‑122/123/124 отдельно."
+    },
+    {
+      "status": "not run",
+      "what": "Наличие, обнаружение, чтение, применение и повторяемость в трёх целевых средах.",
+      "why": "0 клиентских запусков; И‑125 после согласования разбиения по P12; три заглушки вне обкатки."
+    },
+    {
+      "status": "not run",
+      "what": "Размер контекста, усечение, лимиты клиентов и проверка бюджета 25–30%.",
+      "why": "И‑112 подтверждала байты локального §0, а не токены; фактический бюджет — И‑126."
+    },
+    {
+      "status": "not run",
+      "what": "Подключение, настройка, установка, PR, рабочие профили и пригодность.",
+      "why": "Матрица — инвентаризация, не интеграция или разрешение; живой пилот по Ф8."
+    }
+  ],
+  "os": "Linux",
+  "outcome": "accepted",
+  "python": "3.11.2",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "basis": "CASES.json:P01; DESIGN.md",
+          "criterion": "Шесть строк, явные границы, раздельные свидетельства; закрытых ячеек клиентов нет.",
+          "id": "P01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P02; DESIGN.md",
+          "criterion": "Перестановка ключей и строк JSON не меняет значения.",
+          "id": "P02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P03; DESIGN.md",
+          "criterion": "Перефразированный непустой критерий остаётся данными.",
+          "id": "P03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I01; DESIGN.md",
+          "criterion": "Обычная строка не является байтовым входом.",
+          "id": "I01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I02; DESIGN.md",
+          "criterion": "Пустой вход не выдаёт матрицу.",
+          "id": "I02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I03; DESIGN.md",
+          "criterion": "Документ свыше 96 КиБ отвергнут; это не лимит клиента.",
+          "id": "I03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I04; DESIGN.md",
+          "criterion": "Некорректный JSON не возвращает текст входа.",
+          "id": "I04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I05; DESIGN.md",
+          "criterion": "Некорректный UTF‑8 не восстанавливается молча.",
+          "id": "I05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I06; DESIGN.md",
+          "criterion": "Повтор поля формата не выбирает победителя.",
+          "id": "I06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I07; DESIGN.md",
+          "criterion": "Две строки одного ID недопустимы.",
+          "id": "I07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I08; DESIGN.md",
+          "criterion": "NaN не заменяет неизвестное.",
+          "id": "I08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I09; DESIGN.md",
+          "criterion": "Булево true не версия формата.",
+          "id": "I09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I10; DESIGN.md",
+          "criterion": "Матрица не объявляет рабочее подключение.",
+          "id": "I10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I11; DESIGN.md",
+          "criterion": "Лишнее поле разрешения не принимается.",
+          "id": "I11",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R01; DESIGN.md",
+          "criterion": "Пропуск строки не равен сохранению заглушки.",
+          "id": "R01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R02; DESIGN.md",
+          "criterion": "Нельзя расширить список сред через данные.",
+          "id": "R02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R03; DESIGN.md",
+          "criterion": "Явный статус обязателен.",
+          "id": "R03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R04; DESIGN.md",
+          "criterion": "Статус documented донора не переносится в цель.",
+          "id": "R04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R05; DESIGN.md",
+          "criterion": "Текущая сессия не подтверждает empirical до И‑124.",
+          "id": "R05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R06; DESIGN.md",
+          "criterion": "Снять заглушку нельзя данными матрицы.",
+          "id": "R06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R07; DESIGN.md",
+          "criterion": "Причина заглушки не может быть пустой.",
+          "id": "R07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R08; DESIGN.md",
+          "criterion": "Режим реальной пробы остаётся неизвестным.",
+          "id": "R08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R09; DESIGN.md",
+          "criterion": "Версия редактора не выдаётся за версию клиента.",
+          "id": "R09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S01; DESIGN.md",
+          "criterion": "Пробел .kilo/rules и конфигурация явно перечислены.",
+          "id": "S01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S02; DESIGN.md",
+          "criterion": "Непроверенный ключ kilo.jsonc не подставляется.",
+          "id": "S02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S03; DESIGN.md",
+          "criterion": "Заглушка не включает CLAUDE.md.",
+          "id": "S03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S04; DESIGN.md",
+          "criterion": "Ручной кандидат не становится внешним путём.",
+          "id": "S04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S05; DESIGN.md",
+          "criterion": "Гипотеза nearest wins не объявляется победителем.",
+          "id": "S05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S06; DESIGN.md",
+          "criterion": "Числовой ранг донора не свойство клиента.",
+          "id": "S06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S07; DESIGN.md",
+          "criterion": "Неизмеренный кап нельзя принять за число.",
+          "id": "S07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S08; DESIGN.md",
+          "criterion": "Бюджет Kit не превращается в измеренный кап.",
+          "id": "S08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S09; DESIGN.md",
+          "criterion": "Нельзя пропустить охраняемые пути.",
+          "id": "S09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S10; DESIGN.md",
+          "criterion": "Существующие настройки и .kilo/rules остаются защищены.",
+          "id": "S10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S11; DESIGN.md",
+          "criterion": "Файл из checkout не закрывает ячейку целевой пробы.",
+          "id": "S11",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S12; DESIGN.md",
+          "criterion": "Пропущенное обнаружение не заменяется чтением.",
+          "id": "S12",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S13; DESIGN.md",
+          "criterion": "Заглушка не приравнивается к согласованному опыту.",
+          "id": "S13",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S14; DESIGN.md",
+          "criterion": "Ноль запусков не означает 0% чтения.",
+          "id": "S14",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S15; DESIGN.md",
+          "criterion": "Отсутствие apply_rate не равно явному null.",
+          "id": "S15",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S16; DESIGN.md",
+          "criterion": "Самопроверка текущей сессии не засчитывает опыт.",
+          "id": "S16",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S17; DESIGN.md",
+          "criterion": "Доля ложных срабатываний не измерена.",
+          "id": "S17",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S18; DESIGN.md",
+          "criterion": "Пробел foreign нельзя скрыть.",
+          "id": "S18",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S19; DESIGN.md",
+          "criterion": "И‑125 не подменяет проверку конфликтов И‑123.",
+          "id": "S19",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S20; DESIGN.md",
+          "criterion": "Вымышленный источник не служит основанием.",
+          "id": "S20",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S21; DESIGN.md",
+          "criterion": "Пустая строка не критерий будущей пробы.",
+          "id": "S21",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S22; DESIGN.md",
+          "criterion": "Заглушка не получает опыт без решения владельца.",
+          "id": "S22",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D01; DESIGN.md",
+          "criterion": "Приоритет донора привязан к структурному инвентарю.",
+          "id": "D01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D02; DESIGN.md",
+          "criterion": "0.1.36: отсутствует, цель: кандидат.",
+          "id": "D02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D03; DESIGN.md",
+          "criterion": "Обе конфликтующие исторические записи доступны.",
+          "id": "D03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D04; DESIGN.md",
+          "criterion": "Старый отчёт дал 3/4, а не 3/5.",
+          "id": "D04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D05; DESIGN.md",
+          "criterion": "Историческое расхождение не доказывает порядок цели.",
+          "id": "D05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D06; DESIGN.md",
+          "criterion": "Причина разночтения не считается измеренной.",
+          "id": "D06",
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 51
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "basis": "CASES.json:P01; DESIGN.md",
+          "criterion": "Шесть строк, явные границы, раздельные свидетельства; закрытых ячеек клиентов нет.",
+          "id": "P01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P02; DESIGN.md",
+          "criterion": "Перестановка ключей и строк JSON не меняет значения.",
+          "id": "P02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:P03; DESIGN.md",
+          "criterion": "Перефразированный непустой критерий остаётся данными.",
+          "id": "P03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I01; DESIGN.md",
+          "criterion": "Обычная строка не является байтовым входом.",
+          "id": "I01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I02; DESIGN.md",
+          "criterion": "Пустой вход не выдаёт матрицу.",
+          "id": "I02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I03; DESIGN.md",
+          "criterion": "Документ свыше 96 КиБ отвергнут; это не лимит клиента.",
+          "id": "I03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I04; DESIGN.md",
+          "criterion": "Некорректный JSON не возвращает текст входа.",
+          "id": "I04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I05; DESIGN.md",
+          "criterion": "Некорректный UTF‑8 не восстанавливается молча.",
+          "id": "I05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I06; DESIGN.md",
+          "criterion": "Повтор поля формата не выбирает победителя.",
+          "id": "I06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I07; DESIGN.md",
+          "criterion": "Две строки одного ID недопустимы.",
+          "id": "I07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I08; DESIGN.md",
+          "criterion": "NaN не заменяет неизвестное.",
+          "id": "I08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I09; DESIGN.md",
+          "criterion": "Булево true не версия формата.",
+          "id": "I09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I10; DESIGN.md",
+          "criterion": "Матрица не объявляет рабочее подключение.",
+          "id": "I10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:I11; DESIGN.md",
+          "criterion": "Лишнее поле разрешения не принимается.",
+          "id": "I11",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R01; DESIGN.md",
+          "criterion": "Пропуск строки не равен сохранению заглушки.",
+          "id": "R01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R02; DESIGN.md",
+          "criterion": "Нельзя расширить список сред через данные.",
+          "id": "R02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R03; DESIGN.md",
+          "criterion": "Явный статус обязателен.",
+          "id": "R03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R04; DESIGN.md",
+          "criterion": "Статус documented донора не переносится в цель.",
+          "id": "R04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R05; DESIGN.md",
+          "criterion": "Текущая сессия не подтверждает empirical до И‑124.",
+          "id": "R05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R06; DESIGN.md",
+          "criterion": "Снять заглушку нельзя данными матрицы.",
+          "id": "R06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R07; DESIGN.md",
+          "criterion": "Причина заглушки не может быть пустой.",
+          "id": "R07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R08; DESIGN.md",
+          "criterion": "Режим реальной пробы остаётся неизвестным.",
+          "id": "R08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:R09; DESIGN.md",
+          "criterion": "Версия редактора не выдаётся за версию клиента.",
+          "id": "R09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S01; DESIGN.md",
+          "criterion": "Пробел .kilo/rules и конфигурация явно перечислены.",
+          "id": "S01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S02; DESIGN.md",
+          "criterion": "Непроверенный ключ kilo.jsonc не подставляется.",
+          "id": "S02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S03; DESIGN.md",
+          "criterion": "Заглушка не включает CLAUDE.md.",
+          "id": "S03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S04; DESIGN.md",
+          "criterion": "Ручной кандидат не становится внешним путём.",
+          "id": "S04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S05; DESIGN.md",
+          "criterion": "Гипотеза nearest wins не объявляется победителем.",
+          "id": "S05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S06; DESIGN.md",
+          "criterion": "Числовой ранг донора не свойство клиента.",
+          "id": "S06",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S07; DESIGN.md",
+          "criterion": "Неизмеренный кап нельзя принять за число.",
+          "id": "S07",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S08; DESIGN.md",
+          "criterion": "Бюджет Kit не превращается в измеренный кап.",
+          "id": "S08",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S09; DESIGN.md",
+          "criterion": "Нельзя пропустить охраняемые пути.",
+          "id": "S09",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S10; DESIGN.md",
+          "criterion": "Существующие настройки и .kilo/rules остаются защищены.",
+          "id": "S10",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S11; DESIGN.md",
+          "criterion": "Файл из checkout не закрывает ячейку целевой пробы.",
+          "id": "S11",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S12; DESIGN.md",
+          "criterion": "Пропущенное обнаружение не заменяется чтением.",
+          "id": "S12",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S13; DESIGN.md",
+          "criterion": "Заглушка не приравнивается к согласованному опыту.",
+          "id": "S13",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S14; DESIGN.md",
+          "criterion": "Ноль запусков не означает 0% чтения.",
+          "id": "S14",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S15; DESIGN.md",
+          "criterion": "Отсутствие apply_rate не равно явному null.",
+          "id": "S15",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S16; DESIGN.md",
+          "criterion": "Самопроверка текущей сессии не засчитывает опыт.",
+          "id": "S16",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S17; DESIGN.md",
+          "criterion": "Доля ложных срабатываний не измерена.",
+          "id": "S17",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S18; DESIGN.md",
+          "criterion": "Пробел foreign нельзя скрыть.",
+          "id": "S18",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S19; DESIGN.md",
+          "criterion": "И‑125 не подменяет проверку конфликтов И‑123.",
+          "id": "S19",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S20; DESIGN.md",
+          "criterion": "Вымышленный источник не служит основанием.",
+          "id": "S20",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S21; DESIGN.md",
+          "criterion": "Пустая строка не критерий будущей пробы.",
+          "id": "S21",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:S22; DESIGN.md",
+          "criterion": "Заглушка не получает опыт без решения владельца.",
+          "id": "S22",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D01; DESIGN.md",
+          "criterion": "Приоритет донора привязан к структурному инвентарю.",
+          "id": "D01",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D02; DESIGN.md",
+          "criterion": "0.1.36: отсутствует, цель: кандидат.",
+          "id": "D02",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D03; DESIGN.md",
+          "criterion": "Обе конфликтующие исторические записи доступны.",
+          "id": "D03",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D04; DESIGN.md",
+          "criterion": "Старый отчёт дал 3/4, а не 3/5.",
+          "id": "D04",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D05; DESIGN.md",
+          "criterion": "Историческое расхождение не доказывает порядок цели.",
+          "id": "D05",
+          "status": "pass"
+        },
+        {
+          "basis": "CASES.json:D06; DESIGN.md",
+          "criterion": "Причина разночтения не считается измеренной.",
+          "id": "D06",
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 51
+      },
+      "rc": 0
+    }
+  },
+  "scope": "П5 · покрытие матрицы, не клиентских запусков",
+  "summary": {
+    "by_coverage": {
+      "not run": 15,
+      "out_of_scope": 15
+    },
+    "by_status": {
+      "candidate": 3,
+      "stub": 3
+    },
+    "client_runs": 0,
+    "entry_candidates": 7,
+    "environments": {
+      "antigravity": "stub",
+      "arena": "candidate",
+      "claude": "stub",
+      "copilot": "candidate",
+      "cursor": "stub",
+      "kilo": "candidate"
+    },
+    "format": 1,
+    "scope": "inventory_only"
+  }
+}

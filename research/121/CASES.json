@@ -1,0 +1,1212 @@
+{
+  "baseline": "4159cb68d7a79583a8db0b0b1af23258b378412e",
+  "cases": [
+    {
+      "basis": "CASES.json:P01; DESIGN.md",
+      "check_view": true,
+      "criterion": "Шесть строк, явные границы, раздельные свидетельства; закрытых ячеек клиентов нет.",
+      "id": "P01"
+    },
+    {
+      "basis": "CASES.json:P02; DESIGN.md",
+      "check_view": true,
+      "criterion": "Перестановка ключей и строк JSON не меняет значения.",
+      "id": "P02",
+      "raw": "reorder"
+    },
+    {
+      "basis": "CASES.json:P03; DESIGN.md",
+      "criterion": "Перефразированный непустой критерий остаётся данными.",
+      "id": "P03",
+      "path": [
+        "environments",
+        "arena",
+        "gaps",
+        "entry",
+        "criterion"
+      ],
+      "value": "Синтетический контроль: отдельно сопоставить файл и обнаружение."
+    },
+    {
+      "basis": "CASES.json:I01; DESIGN.md",
+      "criterion": "Обычная строка не является байтовым входом.",
+      "error": {
+        "code": "surfaces_input",
+        "reason": "bytes",
+        "where": "matrix"
+      },
+      "id": "I01",
+      "raw": "str"
+    },
+    {
+      "basis": "CASES.json:I02; DESIGN.md",
+      "criterion": "Пустой вход не выдаёт матрицу.",
+      "error": {
+        "code": "surfaces_input",
+        "reason": "bytes",
+        "where": "matrix"
+      },
+      "id": "I02",
+      "raw": "empty"
+    },
+    {
+      "basis": "CASES.json:I03; DESIGN.md",
+      "criterion": "Документ свыше 96 КиБ отвергнут; это не лимит клиента.",
+      "error": {
+        "code": "surfaces_input",
+        "reason": "limit",
+        "where": "matrix"
+      },
+      "id": "I03",
+      "raw": "oversize"
+    },
+    {
+      "basis": "CASES.json:I04; DESIGN.md",
+      "criterion": "Некорректный JSON не возвращает текст входа.",
+      "error": {
+        "code": "surfaces_input",
+        "reason": "json",
+        "where": "matrix"
+      },
+      "id": "I04",
+      "raw": "broken"
+    },
+    {
+      "basis": "CASES.json:I05; DESIGN.md",
+      "criterion": "Некорректный UTF‑8 не восстанавливается молча.",
+      "error": {
+        "code": "surfaces_input",
+        "reason": "json",
+        "where": "matrix"
+      },
+      "id": "I05",
+      "raw": "utf8"
+    },
+    {
+      "basis": "CASES.json:I06; DESIGN.md",
+      "criterion": "Повтор поля формата не выбирает победителя.",
+      "error": {
+        "code": "surfaces_input",
+        "reason": "json",
+        "where": "matrix"
+      },
+      "id": "I06",
+      "raw": "duplicate"
+    },
+    {
+      "basis": "CASES.json:I07; DESIGN.md",
+      "criterion": "Две строки одного ID недопустимы.",
+      "error": {
+        "code": "surfaces_input",
+        "reason": "json",
+        "where": "matrix"
+      },
+      "id": "I07",
+      "raw": "duplicate_row"
+    },
+    {
+      "basis": "CASES.json:I08; DESIGN.md",
+      "criterion": "NaN не заменяет неизвестное.",
+      "error": {
+        "code": "surfaces_input",
+        "reason": "json",
+        "where": "matrix"
+      },
+      "id": "I08",
+      "raw": "nan"
+    },
+    {
+      "basis": "CASES.json:I09; DESIGN.md",
+      "criterion": "Булево true не версия формата.",
+      "error": {
+        "code": "surfaces_shape",
+        "reason": "version",
+        "where": "matrix"
+      },
+      "id": "I09",
+      "op": "set",
+      "path": [
+        "format"
+      ],
+      "value": true
+    },
+    {
+      "basis": "CASES.json:I10; DESIGN.md",
+      "criterion": "Матрица не объявляет рабочее подключение.",
+      "error": {
+        "code": "surfaces_shape",
+        "reason": "scope",
+        "where": "matrix"
+      },
+      "id": "I10",
+      "op": "set",
+      "path": [
+        "scope"
+      ],
+      "value": "runtime"
+    },
+    {
+      "basis": "CASES.json:I11; DESIGN.md",
+      "criterion": "Лишнее поле разрешения не принимается.",
+      "error": {
+        "code": "surfaces_shape",
+        "reason": "fields",
+        "where": "matrix"
+      },
+      "id": "I11",
+      "op": "set",
+      "path": [
+        "allow_install"
+      ],
+      "value": true
+    },
+    {
+      "basis": "CASES.json:R01; DESIGN.md",
+      "criterion": "Пропуск строки не равен сохранению заглушки.",
+      "error": {
+        "code": "surfaces_rows",
+        "reason": "exact",
+        "where": "environments"
+      },
+      "id": "R01",
+      "op": "drop",
+      "path": [
+        "environments",
+        "cursor"
+      ]
+    },
+    {
+      "basis": "CASES.json:R02; DESIGN.md",
+      "criterion": "Нельзя расширить список сред через данные.",
+      "error": {
+        "code": "surfaces_rows",
+        "reason": "exact",
+        "where": "environments"
+      },
+      "id": "R02",
+      "op": "set",
+      "path": [
+        "environments",
+        "foreign"
+      ],
+      "value": {}
+    },
+    {
+      "basis": "CASES.json:R03; DESIGN.md",
+      "criterion": "Явный статус обязателен.",
+      "error": {
+        "code": "surfaces_shape",
+        "reason": "fields",
+        "where": "kilo"
+      },
+      "id": "R03",
+      "op": "drop",
+      "path": [
+        "environments",
+        "kilo",
+        "status"
+      ]
+    },
+    {
+      "basis": "CASES.json:R04; DESIGN.md",
+      "criterion": "Статус documented донора не переносится в цель.",
+      "error": {
+        "code": "surfaces_status",
+        "reason": "candidate",
+        "where": "kilo"
+      },
+      "id": "R04",
+      "op": "set",
+      "path": [
+        "environments",
+        "kilo",
+        "status"
+      ],
+      "value": "documented"
+    },
+    {
+      "basis": "CASES.json:R05; DESIGN.md",
+      "criterion": "Текущая сессия не подтверждает empirical до И‑124.",
+      "error": {
+        "code": "surfaces_status",
+        "reason": "candidate",
+        "where": "arena"
+      },
+      "id": "R05",
+      "op": "set",
+      "path": [
+        "environments",
+        "arena",
+        "status"
+      ],
+      "value": "empirical"
+    },
+    {
+      "basis": "CASES.json:R06; DESIGN.md",
+      "criterion": "Снять заглушку нельзя данными матрицы.",
+      "error": {
+        "code": "surfaces_status",
+        "reason": "stub",
+        "where": "antigravity"
+      },
+      "id": "R06",
+      "op": "set",
+      "path": [
+        "environments",
+        "antigravity",
+        "status"
+      ],
+      "value": "candidate"
+    },
+    {
+      "basis": "CASES.json:R07; DESIGN.md",
+      "criterion": "Причина заглушки не может быть пустой.",
+      "error": {
+        "code": "surfaces_status",
+        "reason": "reason",
+        "where": "claude"
+      },
+      "id": "R07",
+      "op": "set",
+      "path": [
+        "environments",
+        "claude",
+        "stub_reason"
+      ],
+      "value": " "
+    },
+    {
+      "basis": "CASES.json:R08; DESIGN.md",
+      "criterion": "Режим реальной пробы остаётся неизвестным.",
+      "error": {
+        "code": "surfaces_status",
+        "reason": "observation",
+        "where": "copilot"
+      },
+      "id": "R08",
+      "op": "set",
+      "path": [
+        "environments",
+        "copilot",
+        "target",
+        "observed_mode"
+      ],
+      "value": "agent"
+    },
+    {
+      "basis": "CASES.json:R09; DESIGN.md",
+      "criterion": "Версия редактора не выдаётся за версию клиента.",
+      "error": {
+        "code": "surfaces_status",
+        "reason": "observation",
+        "where": "kilo"
+      },
+      "id": "R09",
+      "op": "set",
+      "path": [
+        "environments",
+        "kilo",
+        "target",
+        "observed_version"
+      ],
+      "value": "1.146"
+    },
+    {
+      "basis": "CASES.json:S01; DESIGN.md",
+      "criterion": "Пробел .kilo/rules и конфигурация явно перечислены.",
+      "error": {
+        "code": "surfaces_entry",
+        "reason": "surfaces",
+        "where": "kilo"
+      },
+      "id": "S01",
+      "op": "set",
+      "path": [
+        "environments",
+        "kilo",
+        "entry",
+        "paths"
+      ],
+      "value": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "basis": "CASES.json:S02; DESIGN.md",
+      "criterion": "Непроверенный ключ kilo.jsonc не подставляется.",
+      "error": {
+        "code": "surfaces_entry",
+        "reason": "unverified_key",
+        "where": "kilo"
+      },
+      "id": "S02",
+      "op": "set",
+      "path": [
+        "environments",
+        "kilo",
+        "entry",
+        "config_key"
+      ],
+      "value": "guessedKey"
+    },
+    {
+      "basis": "CASES.json:S03; DESIGN.md",
+      "criterion": "Заглушка не включает CLAUDE.md.",
+      "error": {
+        "code": "surfaces_entry",
+        "reason": "surfaces",
+        "where": "claude"
+      },
+      "id": "S03",
+      "op": "set",
+      "path": [
+        "environments",
+        "claude",
+        "entry",
+        "paths"
+      ],
+      "value": [
+        "CLAUDE.md"
+      ]
+    },
+    {
+      "basis": "CASES.json:S04; DESIGN.md",
+      "criterion": "Ручной кандидат не становится внешним путём.",
+      "error": {
+        "code": "surfaces_entry",
+        "reason": "surfaces",
+        "where": "arena"
+      },
+      "id": "S04",
+      "op": "set",
+      "path": [
+        "environments",
+        "arena",
+        "entry",
+        "manual"
+      ],
+      "value": "../foreign/AGENTS.md"
+    },
+    {
+      "basis": "CASES.json:S05; DESIGN.md",
+      "criterion": "Гипотеза nearest wins не объявляется победителем.",
+      "error": {
+        "code": "surfaces_priority",
+        "reason": "unverified",
+        "where": "copilot"
+      },
+      "id": "S05",
+      "op": "set",
+      "path": [
+        "environments",
+        "copilot",
+        "priority",
+        "winner"
+      ],
+      "value": "nearest-wins"
+    },
+    {
+      "basis": "CASES.json:S06; DESIGN.md",
+      "criterion": "Числовой ранг донора не свойство клиента.",
+      "error": {
+        "code": "surfaces_priority",
+        "reason": "unverified",
+        "where": "kilo"
+      },
+      "id": "S06",
+      "op": "set",
+      "path": [
+        "environments",
+        "kilo",
+        "priority",
+        "rank"
+      ],
+      "value": 3
+    },
+    {
+      "basis": "CASES.json:S07; DESIGN.md",
+      "criterion": "Неизмеренный кап нельзя принять за число.",
+      "error": {
+        "code": "surfaces_caps",
+        "reason": "native_unknown",
+        "where": "copilot"
+      },
+      "id": "S07",
+      "op": "set",
+      "path": [
+        "environments",
+        "copilot",
+        "caps",
+        "context_tokens"
+      ],
+      "value": 4096
+    },
+    {
+      "basis": "CASES.json:S08; DESIGN.md",
+      "criterion": "Бюджет Kit не превращается в измеренный кап.",
+      "error": {
+        "code": "surfaces_caps",
+        "reason": "kit_limits",
+        "where": "limits"
+      },
+      "id": "S08",
+      "op": "set",
+      "path": [
+        "limits",
+        "context_status"
+      ],
+      "value": "measured"
+    },
+    {
+      "basis": "CASES.json:S09; DESIGN.md",
+      "criterion": "Нельзя пропустить охраняемые пути.",
+      "error": {
+        "code": "surfaces_guard",
+        "reason": "protected",
+        "where": "matrix"
+      },
+      "id": "S09",
+      "op": "set",
+      "path": [
+        "protected"
+      ],
+      "value": [
+        "kit/"
+      ]
+    },
+    {
+      "basis": "CASES.json:S10; DESIGN.md",
+      "criterion": "Существующие настройки и .kilo/rules остаются защищены.",
+      "error": {
+        "code": "surfaces_guard",
+        "reason": "unchanged",
+        "where": "kilo"
+      },
+      "id": "S10",
+      "op": "set",
+      "path": [
+        "environments",
+        "kilo",
+        "unchanged"
+      ],
+      "value": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "basis": "CASES.json:S11; DESIGN.md",
+      "criterion": "Файл из checkout не закрывает ячейку целевой пробы.",
+      "error": {
+        "code": "surfaces_coverage",
+        "reason": "stages",
+        "where": "arena"
+      },
+      "id": "S11",
+      "op": "set",
+      "path": [
+        "environments",
+        "arena",
+        "coverage",
+        "presence"
+      ],
+      "value": "pass"
+    },
+    {
+      "basis": "CASES.json:S12; DESIGN.md",
+      "criterion": "Пропущенное обнаружение не заменяется чтением.",
+      "error": {
+        "code": "surfaces_coverage",
+        "reason": "stages",
+        "where": "copilot"
+      },
+      "id": "S12",
+      "op": "drop",
+      "path": [
+        "environments",
+        "copilot",
+        "coverage",
+        "detected"
+      ]
+    },
+    {
+      "basis": "CASES.json:S13; DESIGN.md",
+      "criterion": "Заглушка не приравнивается к согласованному опыту.",
+      "error": {
+        "code": "surfaces_coverage",
+        "reason": "stages",
+        "where": "claude"
+      },
+      "id": "S13",
+      "op": "set",
+      "path": [
+        "environments",
+        "claude",
+        "coverage",
+        "read"
+      ],
+      "value": "not run"
+    },
+    {
+      "basis": "CASES.json:S14; DESIGN.md",
+      "criterion": "Ноль запусков не означает 0% чтения.",
+      "error": {
+        "code": "surfaces_coverage",
+        "reason": "metrics",
+        "where": "kilo"
+      },
+      "id": "S14",
+      "op": "set",
+      "path": [
+        "environments",
+        "kilo",
+        "metrics",
+        "read_rate"
+      ],
+      "value": 0
+    },
+    {
+      "basis": "CASES.json:S15; DESIGN.md",
+      "criterion": "Отсутствие apply_rate не равно явному null.",
+      "error": {
+        "code": "surfaces_coverage",
+        "reason": "metrics",
+        "where": "copilot"
+      },
+      "id": "S15",
+      "op": "drop",
+      "path": [
+        "environments",
+        "copilot",
+        "metrics",
+        "apply_rate"
+      ]
+    },
+    {
+      "basis": "CASES.json:S16; DESIGN.md",
+      "criterion": "Самопроверка текущей сессии не засчитывает опыт.",
+      "error": {
+        "code": "surfaces_coverage",
+        "reason": "metrics",
+        "where": "arena"
+      },
+      "id": "S16",
+      "op": "set",
+      "path": [
+        "environments",
+        "arena",
+        "metrics",
+        "runs"
+      ],
+      "value": 1
+    },
+    {
+      "basis": "CASES.json:S17; DESIGN.md",
+      "criterion": "Доля ложных срабатываний не измерена.",
+      "error": {
+        "code": "surfaces_coverage",
+        "reason": "metrics",
+        "where": "kilo"
+      },
+      "id": "S17",
+      "op": "set",
+      "path": [
+        "environments",
+        "kilo",
+        "metrics",
+        "false_positive"
+      ],
+      "value": 0
+    },
+    {
+      "basis": "CASES.json:S18; DESIGN.md",
+      "criterion": "Пробел foreign нельзя скрыть.",
+      "error": {
+        "code": "surfaces_gaps",
+        "reason": "set",
+        "where": "kilo"
+      },
+      "id": "S18",
+      "op": "drop",
+      "path": [
+        "environments",
+        "kilo",
+        "gaps",
+        "foreign_entry"
+      ]
+    },
+    {
+      "basis": "CASES.json:S19; DESIGN.md",
+      "criterion": "И‑125 не подменяет проверку конфликтов И‑123.",
+      "error": {
+        "code": "surfaces_gaps",
+        "reason": "next",
+        "where": "copilot"
+      },
+      "id": "S19",
+      "op": "set",
+      "path": [
+        "environments",
+        "copilot",
+        "gaps",
+        "priority",
+        "next"
+      ],
+      "value": "И‑125"
+    },
+    {
+      "basis": "CASES.json:S20; DESIGN.md",
+      "criterion": "Вымышленный источник не служит основанием.",
+      "error": {
+        "code": "surfaces_gaps",
+        "reason": "basis",
+        "where": "arena"
+      },
+      "id": "S20",
+      "op": "set",
+      "path": [
+        "environments",
+        "arena",
+        "gaps",
+        "entry",
+        "basis"
+      ],
+      "value": "unknown.txt"
+    },
+    {
+      "basis": "CASES.json:S21; DESIGN.md",
+      "criterion": "Пустая строка не критерий будущей пробы.",
+      "error": {
+        "code": "surfaces_gaps",
+        "reason": "criterion",
+        "where": "kilo"
+      },
+      "id": "S21",
+      "op": "set",
+      "path": [
+        "environments",
+        "kilo",
+        "gaps",
+        "context_budget",
+        "criterion"
+      ],
+      "value": " "
+    },
+    {
+      "basis": "CASES.json:S22; DESIGN.md",
+      "criterion": "Заглушка не получает опыт без решения владельца.",
+      "error": {
+        "code": "surfaces_gaps",
+        "reason": "next",
+        "where": "cursor"
+      },
+      "id": "S22",
+      "op": "set",
+      "path": [
+        "environments",
+        "cursor",
+        "gaps",
+        "scope",
+        "next"
+      ],
+      "value": "И‑124"
+    },
+    {
+      "basis": "CASES.json:D01; DESIGN.md",
+      "criterion": "Приоритет донора привязан к структурному инвентарю.",
+      "error": {
+        "code": "surfaces_donor",
+        "reason": "inventory",
+        "where": "copilot"
+      },
+      "id": "D01",
+      "op": "set",
+      "path": [
+        "environments",
+        "copilot",
+        "donor",
+        "of"
+      ],
+      "value": 4
+    },
+    {
+      "basis": "CASES.json:D02; DESIGN.md",
+      "criterion": "0.1.36: отсутствует, цель: кандидат.",
+      "error": {
+        "code": "surfaces_donor",
+        "reason": "inventory",
+        "where": "arena"
+      },
+      "id": "D02",
+      "op": "set",
+      "path": [
+        "environments",
+        "arena",
+        "donor",
+        "status"
+      ],
+      "value": "candidate"
+    },
+    {
+      "basis": "CASES.json:D03; DESIGN.md",
+      "criterion": "Обе конфликтующие исторические записи доступны.",
+      "error": {
+        "code": "surfaces_donor",
+        "reason": "discrepancy",
+        "where": "copilot"
+      },
+      "id": "D03",
+      "op": "drop",
+      "path": [
+        "donor_discrepancy",
+        "basis"
+      ]
+    },
+    {
+      "basis": "CASES.json:D04; DESIGN.md",
+      "criterion": "Старый отчёт дал 3/4, а не 3/5.",
+      "error": {
+        "code": "surfaces_donor",
+        "reason": "discrepancy",
+        "where": "copilot"
+      },
+      "id": "D04",
+      "op": "set",
+      "path": [
+        "donor_discrepancy",
+        "report"
+      ],
+      "value": [
+        3,
+        5
+      ]
+    },
+    {
+      "basis": "CASES.json:D05; DESIGN.md",
+      "criterion": "Историческое расхождение не доказывает порядок цели.",
+      "error": {
+        "code": "surfaces_donor",
+        "reason": "discrepancy",
+        "where": "copilot"
+      },
+      "id": "D05",
+      "op": "set",
+      "path": [
+        "donor_discrepancy",
+        "resolution"
+      ],
+      "value": "target_priority_proven"
+    },
+    {
+      "basis": "CASES.json:D06; DESIGN.md",
+      "criterion": "Причина разночтения не считается измеренной.",
+      "error": {
+        "code": "surfaces_donor",
+        "reason": "discrepancy",
+        "where": "copilot"
+      },
+      "id": "D06",
+      "op": "set",
+      "path": [
+        "donor_discrepancy",
+        "cause_known"
+      ],
+      "value": true
+    }
+  ],
+  "expected_control": {
+    "anchors_sha256": "4834c5860c6b93e517c29fdd0feba5c820d5c3c391416ca694e1f3c56dffe884",
+    "copilot_inventory": [
+      3,
+      5
+    ],
+    "copilot_report": [
+      3,
+      4
+    ],
+    "inventory_repeat_match": true,
+    "kilo_inventory": [
+      3,
+      4
+    ],
+    "legacy_arena": {
+      "error": "adapter_unknown",
+      "rc": 2,
+      "step": "7-adapter-arena"
+    },
+    "legacy_release": "0.1.36",
+    "printed_inventory_and_report_match": true,
+    "split_before_125": true,
+    "start_section_max_bytes": 4096,
+    "start_section_observed_bytes": 2363,
+    "target_window_percent": [
+      25,
+      30
+    ]
+  },
+  "expected_summary": {
+    "by_coverage": {
+      "not run": 15,
+      "out_of_scope": 15
+    },
+    "by_status": {
+      "candidate": 3,
+      "stub": 3
+    },
+    "client_runs": 0,
+    "entry_candidates": 7,
+    "environments": {
+      "antigravity": "stub",
+      "arena": "candidate",
+      "claude": "stub",
+      "copilot": "candidate",
+      "cursor": "stub",
+      "kilo": "candidate"
+    },
+    "format": 1,
+    "scope": "inventory_only"
+  },
+  "expected_view": {
+    "discrepancy": {
+      "cause_known": false,
+      "id": "copilot",
+      "inventory": [
+        3,
+        5
+      ],
+      "report": [
+        3,
+        4
+      ],
+      "resolution": "inventory_for_donor_only"
+    },
+    "environments": {
+      "antigravity": {
+        "config_key": null,
+        "coverage": {
+          "applied": "out_of_scope",
+          "detected": "out_of_scope",
+          "presence": "out_of_scope",
+          "read": "out_of_scope",
+          "repeat": "out_of_scope"
+        },
+        "donor": {
+          "entry": null,
+          "of": null,
+          "rank": null,
+          "status": "stub"
+        },
+        "entry_status": "disabled",
+        "gaps": {
+          "scope": null
+        },
+        "hypotheses": [],
+        "identity_unknown": true,
+        "manual": null,
+        "metrics": {
+          "apply_rate": null,
+          "false_positive": null,
+          "read_rate": null,
+          "runs": null
+        },
+        "native_caps": {
+          "context_tokens": null,
+          "instruction_bytes": null,
+          "status": "out_of_scope",
+          "truncation": null
+        },
+        "paths": [],
+        "pilot": null,
+        "status": "stub",
+        "stub_has_reason": true,
+        "surface": "Antigravity",
+        "unchanged": [
+          "GEMINI.md",
+          "настройки IDE/App/CLI"
+        ],
+        "winner": null
+      },
+      "arena": {
+        "config_key": null,
+        "coverage": {
+          "applied": "not run",
+          "detected": "not run",
+          "presence": "not run",
+          "read": "not run",
+          "repeat": "not run"
+        },
+        "donor": {
+          "entry": null,
+          "of": null,
+          "rank": null,
+          "status": "absent"
+        },
+        "entry_status": "candidate",
+        "gaps": {
+          "context_budget": "И‑126",
+          "copy_boundary": "И‑124",
+          "entry": "И‑124",
+          "priority": "И‑124",
+          "read_apply_repeat": "И‑125"
+        },
+        "hypotheses": [
+          "sandbox-root-vs-nested"
+        ],
+        "identity_unknown": true,
+        "manual": "kit/base/entry.txt → kit/base/START.md §0",
+        "metrics": {
+          "apply_rate": null,
+          "false_positive": null,
+          "read_rate": null,
+          "runs": 0
+        },
+        "native_caps": {
+          "context_tokens": null,
+          "instruction_bytes": null,
+          "status": "not run",
+          "truncation": null
+        },
+        "paths": [
+          "AGENTS.md"
+        ],
+        "pilot": null,
+        "status": "candidate",
+        "stub_has_reason": false,
+        "surface": "Arena Agent Mode / GitHub",
+        "unchanged": [
+          "AGENTS.md",
+          ".github/workflows/",
+          "настройки репозитория и веток"
+        ],
+        "winner": null
+      },
+      "claude": {
+        "config_key": null,
+        "coverage": {
+          "applied": "out_of_scope",
+          "detected": "out_of_scope",
+          "presence": "out_of_scope",
+          "read": "out_of_scope",
+          "repeat": "out_of_scope"
+        },
+        "donor": {
+          "entry": null,
+          "of": null,
+          "rank": null,
+          "status": "stub"
+        },
+        "entry_status": "disabled",
+        "gaps": {
+          "scope": null
+        },
+        "hypotheses": [],
+        "identity_unknown": true,
+        "manual": null,
+        "metrics": {
+          "apply_rate": null,
+          "false_positive": null,
+          "read_rate": null,
+          "runs": null
+        },
+        "native_caps": {
+          "context_tokens": null,
+          "instruction_bytes": null,
+          "status": "out_of_scope",
+          "truncation": null
+        },
+        "paths": [],
+        "pilot": null,
+        "status": "stub",
+        "stub_has_reason": true,
+        "surface": "Claude Code",
+        "unchanged": [
+          "CLAUDE.md",
+          "пользовательские настройки Claude Code"
+        ],
+        "winner": null
+      },
+      "copilot": {
+        "config_key": null,
+        "coverage": {
+          "applied": "not run",
+          "detected": "not run",
+          "presence": "not run",
+          "read": "not run",
+          "repeat": "not run"
+        },
+        "donor": {
+          "entry": "AGENTS.md",
+          "of": 5,
+          "rank": 3,
+          "status": "documented"
+        },
+        "entry_status": "candidate",
+        "gaps": {
+          "context_budget": "И‑126",
+          "entry": "И‑123",
+          "priority": "И‑123",
+          "read_apply_repeat": "И‑125",
+          "single_registry": "И‑123"
+        },
+        "hypotheses": [
+          "nearest-wins",
+          "root-vs-path-scoped"
+        ],
+        "identity_unknown": true,
+        "manual": "kit/base/entry.txt → kit/base/START.md §0",
+        "metrics": {
+          "apply_rate": null,
+          "false_positive": null,
+          "read_rate": null,
+          "runs": 0
+        },
+        "native_caps": {
+          "context_tokens": null,
+          "instruction_bytes": null,
+          "status": "not run",
+          "truncation": null
+        },
+        "paths": [
+          "AGENTS.md",
+          ".github/copilot-instructions.md",
+          ".github/instructions/*.instructions.md"
+        ],
+        "pilot": "Windows 11 / VS Code 1.146",
+        "status": "candidate",
+        "stub_has_reason": false,
+        "surface": "GitHub Copilot / VS Code",
+        "unchanged": [
+          "AGENTS.md",
+          ".github/copilot-instructions.md",
+          ".github/instructions/",
+          "настройки VS Code и расширения"
+        ],
+        "winner": null
+      },
+      "cursor": {
+        "config_key": null,
+        "coverage": {
+          "applied": "out_of_scope",
+          "detected": "out_of_scope",
+          "presence": "out_of_scope",
+          "read": "out_of_scope",
+          "repeat": "out_of_scope"
+        },
+        "donor": {
+          "entry": null,
+          "of": null,
+          "rank": null,
+          "status": "stub"
+        },
+        "entry_status": "disabled",
+        "gaps": {
+          "scope": null
+        },
+        "hypotheses": [],
+        "identity_unknown": true,
+        "manual": null,
+        "metrics": {
+          "apply_rate": null,
+          "false_positive": null,
+          "read_rate": null,
+          "runs": null
+        },
+        "native_caps": {
+          "context_tokens": null,
+          "instruction_bytes": null,
+          "status": "out_of_scope",
+          "truncation": null
+        },
+        "paths": [],
+        "pilot": null,
+        "status": "stub",
+        "stub_has_reason": true,
+        "surface": "Cursor",
+        "unchanged": [
+          ".cursor/rules/",
+          "пользовательские настройки Cursor"
+        ],
+        "winner": null
+      },
+      "kilo": {
+        "config_key": null,
+        "coverage": {
+          "applied": "not run",
+          "detected": "not run",
+          "presence": "not run",
+          "read": "not run",
+          "repeat": "not run"
+        },
+        "donor": {
+          "entry": "AGENTS.md",
+          "of": 4,
+          "rank": 3,
+          "status": "documented"
+        },
+        "entry_status": "candidate",
+        "gaps": {
+          "context_budget": "И‑126",
+          "entry": "И‑122",
+          "foreign_entry": "И‑122",
+          "priority": "И‑122",
+          "read_apply_repeat": "И‑125"
+        },
+        "hypotheses": [
+          "agents-vs-kilo-rules"
+        ],
+        "identity_unknown": true,
+        "manual": "kit/base/entry.txt → kit/base/START.md §0",
+        "metrics": {
+          "apply_rate": null,
+          "false_positive": null,
+          "read_rate": null,
+          "runs": 0
+        },
+        "native_caps": {
+          "context_tokens": null,
+          "instruction_bytes": null,
+          "status": "not run",
+          "truncation": null
+        },
+        "paths": [
+          "AGENTS.md",
+          "kilo.jsonc",
+          ".kilo/rules/"
+        ],
+        "pilot": "Windows 11 / VS Code 1.146",
+        "status": "candidate",
+        "stub_has_reason": false,
+        "surface": "Kilo / VS Code",
+        "unchanged": [
+          "AGENTS.md",
+          "kilo.jsonc",
+          ".kilo/rules/",
+          "настройки VS Code и расширения"
+        ],
+        "winner": null
+      }
+    },
+    "limits": {
+      "basis": [
+        "research/STRATEGY.md:P8",
+        "research/112/BOOTSTRAP.json:controls.S05"
+      ],
+      "context_percent": [
+        25,
+        30
+      ],
+      "context_status": "target",
+      "start_section_max_bytes": 4096,
+      "start_status": "kit_only"
+    },
+    "protected": [
+      ".isai/",
+      "kit/",
+      "AGENTS.md",
+      "реестры и профили L0/L1/L2",
+      "глобальные настройки и права",
+      "секреты и проектные данные",
+      "порт и CI"
+    ]
+  },
+  "format": 1
+}

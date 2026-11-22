@@ -1,0 +1,175 @@
+{
+  "baseline": "4159cb68d7a79583a8db0b0b1af23258b378412e",
+  "baseline_strategy": "v1.22",
+  "branch": "arena/4e000a5e-isyncai",
+  "case_ids": [
+    "P01",
+    "P02",
+    "P03",
+    "I01",
+    "I02",
+    "I03",
+    "I04",
+    "I05",
+    "I06",
+    "I07",
+    "I08",
+    "I09",
+    "I10",
+    "I11",
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06"
+  ],
+  "casebook_sha256": "f2eddea3953ab21ccd6964497c5afbc58cdcfbe6bdbc5ca13caa37a3af1ab0ef",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/121/test_surfaces.py"
+  ],
+  "date": "2026-11-18",
+  "expected_control": {
+    "anchors_sha256": "4834c5860c6b93e517c29fdd0feba5c820d5c3c391416ca694e1f3c56dffe884",
+    "copilot_inventory": [
+      3,
+      5
+    ],
+    "copilot_report": [
+      3,
+      4
+    ],
+    "inventory_repeat_match": true,
+    "kilo_inventory": [
+      3,
+      4
+    ],
+    "legacy_arena": {
+      "error": "adapter_unknown",
+      "rc": 2,
+      "step": "7-adapter-arena"
+    },
+    "legacy_release": "0.1.36",
+    "printed_inventory_and_report_match": true,
+    "split_before_125": true,
+    "start_section_max_bytes": 4096,
+    "start_section_observed_bytes": 2363,
+    "target_window_percent": [
+      25,
+      30
+    ]
+  },
+  "id": "121",
+  "not_run": [
+    {
+      "what": "Точные версии, режимы, документы и старшинство живых клиентов.",
+      "why": "Локальные исторические записи и план — не сверка установленного клиента; И‑122/123/124 отдельно."
+    },
+    {
+      "what": "Наличие, обнаружение, чтение, применение и повторяемость в трёх целевых средах.",
+      "why": "0 клиентских запусков; И‑125 после согласования разбиения по P12; три заглушки вне обкатки."
+    },
+    {
+      "what": "Размер контекста, усечение, лимиты клиентов и проверка бюджета 25–30%.",
+      "why": "И‑112 подтверждала байты локального §0, а не токены; фактический бюджет — И‑126."
+    },
+    {
+      "what": "Подключение, настройка, установка, PR, рабочие профили и пригодность.",
+      "why": "Матрица — инвентаризация, не интеграция или разрешение; живой пилот по Ф8."
+    }
+  ],
+  "phase": "Ф5. Адаптеры: Arena / Kilo / Copilot",
+  "pinned_inputs": {
+    "research/101/AgentContractKit-Iteration-101.zip": "06d5f54e272895febd5cad9ffbf2fd67123088fa9c5c2020954d5fbd3f84d3c9",
+    "research/101/CLEANROOM.json": "c08319baeebde4790d0ec5e6490e033aa153ec5dd7b3e3ddec0adc885490ca54",
+    "research/101/REPORT.md": "45b1e4922d30d7d9e4b03ed103d5a8f700f1c0cbe3f46cc6b23ea72a61388bfe",
+    "research/101/SEAL.json": "677d97211d05da61f02e2717cb27a46f33e2f4db26746fd3fe26281931afbcad",
+    "research/102/BASELINE.json": "04b11366dbb0676d3f22589e64efa81fee7ff08135607a44e9d27d3151e3d5f9",
+    "research/112/BOOTSTRAP.json": "71dcb273d49b152143aaf9633d6fcdafb812791b3511aa16ca4d4f3be1fa0d4c",
+    "research/strategy/BASELINE.json": "04b11366dbb0676d3f22589e64efa81fee7ff08135607a44e9d27d3151e3d5f9",
+    "research/strategy/pre-104/ARCHITECTURE-REVIEW.md": "b1a24742706f241c0c365e2501769c5cd26c7dc81d8c13b06adf643659964a8d"
+  },
+  "priority": "P0",
+  "seal_members": [
+    "research/101/AgentContractKit-Iteration-101.zip",
+    "research/101/CLEANROOM.json",
+    "research/101/REPORT.md",
+    "research/101/SEAL.json",
+    "research/102/BASELINE.json",
+    "research/112/BOOTSTRAP.json",
+    "research/121/ACCEPTANCE.json",
+    "research/121/CASES.json",
+    "research/121/CHECKOUT.json",
+    "research/121/CLEANROOM.json",
+    "research/121/DESIGN.md",
+    "research/121/ITERATION.json",
+    "research/121/RED.json",
+    "research/121/REPORT.md",
+    "research/121/SURFACES.json",
+    "research/121/render121.py",
+    "research/121/run.py",
+    "research/121/test_surfaces.py",
+    "research/121/validate_surfaces.py",
+    "research/STRATEGY.md",
+    "research/strategy/BASELINE.json",
+    "research/strategy/SYNC-LOG.md",
+    "research/strategy/harness/probes.py",
+    "research/strategy/harness/render.py",
+    "research/strategy/harness/run_iteration.py",
+    "research/strategy/pre-104/ARCHITECTURE-REVIEW.md"
+  ],
+  "strategy_anchors_sha256": "4834c5860c6b93e517c29fdd0feba5c820d5c3c391416ca694e1f3c56dffe884",
+  "target_inputs": [
+    "research/101/AgentContractKit-Iteration-101.zip",
+    "research/101/CLEANROOM.json",
+    "research/101/REPORT.md",
+    "research/101/SEAL.json",
+    "research/102/BASELINE.json",
+    "research/112/BOOTSTRAP.json",
+    "research/121/CASES.json",
+    "research/121/SURFACES.json",
+    "research/121/test_surfaces.py",
+    "research/121/validate_surfaces.py",
+    "research/STRATEGY.md",
+    "research/strategy/BASELINE.json",
+    "research/strategy/pre-104/ARCHITECTURE-REVIEW.md"
+  ],
+  "test_sha256": "8c05e947f1f4887e767dbd69d720941269ada0287694345bd8ceed554d3c16e7",
+  "title": "Матрица входов и пробелов"
+}

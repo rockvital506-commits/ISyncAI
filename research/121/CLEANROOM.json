@@ -1,0 +1,1629 @@
+{
+  "files": [
+    "research/101/AgentContractKit-Iteration-101.zip",
+    "research/101/CLEANROOM.json",
+    "research/101/REPORT.md",
+    "research/101/SEAL.json",
+    "research/102/BASELINE.json",
+    "research/112/BOOTSTRAP.json",
+    "research/121/CASES.json",
+    "research/121/SURFACES.json",
+    "research/121/test_surfaces.py",
+    "research/121/validate_surfaces.py",
+    "research/STRATEGY.md",
+    "research/strategy/BASELINE.json",
+    "research/strategy/pre-104/ARCHITECTURE-REVIEW.md"
+  ],
+  "inputs_sha256": {
+    "research/101/AgentContractKit-Iteration-101.zip": "06d5f54e272895febd5cad9ffbf2fd67123088fa9c5c2020954d5fbd3f84d3c9",
+    "research/101/CLEANROOM.json": "c08319baeebde4790d0ec5e6490e033aa153ec5dd7b3e3ddec0adc885490ca54",
+    "research/101/REPORT.md": "45b1e4922d30d7d9e4b03ed103d5a8f700f1c0cbe3f46cc6b23ea72a61388bfe",
+    "research/101/SEAL.json": "677d97211d05da61f02e2717cb27a46f33e2f4db26746fd3fe26281931afbcad",
+    "research/102/BASELINE.json": "04b11366dbb0676d3f22589e64efa81fee7ff08135607a44e9d27d3151e3d5f9",
+    "research/112/BOOTSTRAP.json": "71dcb273d49b152143aaf9633d6fcdafb812791b3511aa16ca4d4f3be1fa0d4c",
+    "research/121/CASES.json": "f2eddea3953ab21ccd6964497c5afbc58cdcfbe6bdbc5ca13caa37a3af1ab0ef",
+    "research/121/SURFACES.json": "9f028ce8f73a3a9231c3c49c0b280a2b9c440de8fe1bcb229981527e91782d4f",
+    "research/121/test_surfaces.py": "8c05e947f1f4887e767dbd69d720941269ada0287694345bd8ceed554d3c16e7",
+    "research/121/validate_surfaces.py": "c9cf0cda527019ab1c04d165a536a1c6f4136236d5fdb89d99b5d4f08aac40f2",
+    "research/strategy/BASELINE.json": "04b11366dbb0676d3f22589e64efa81fee7ff08135607a44e9d27d3151e3d5f9",
+    "research/strategy/pre-104/ARCHITECTURE-REVIEW.md": "b1a24742706f241c0c365e2501769c5cd26c7dc81d8c13b06adf643659964a8d"
+  },
+  "inputs_unchanged": true,
+  "rc": 0,
+  "result": {
+    "control": {
+      "anchors_sha256": "4834c5860c6b93e517c29fdd0feba5c820d5c3c391416ca694e1f3c56dffe884",
+      "copilot_inventory": [
+        3,
+        5
+      ],
+      "copilot_report": [
+        3,
+        4
+      ],
+      "inventory_repeat_match": true,
+      "kilo_inventory": [
+        3,
+        4
+      ],
+      "legacy_arena": {
+        "error": "adapter_unknown",
+        "rc": 2,
+        "step": "7-adapter-arena"
+      },
+      "legacy_release": "0.1.36",
+      "printed_inventory_and_report_match": true,
+      "split_before_125": true,
+      "start_section_max_bytes": 4096,
+      "start_section_observed_bytes": 2363,
+      "target_window_percent": [
+        25,
+        30
+      ]
+    },
+    "counts": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 51
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "projection": {
+            "discrepancy": {
+              "cause_known": false,
+              "id": "copilot",
+              "inventory": [
+                3,
+                5
+              ],
+              "report": [
+                3,
+                4
+              ],
+              "resolution": "inventory_for_donor_only"
+            },
+            "environments": {
+              "antigravity": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "out_of_scope",
+                  "detected": "out_of_scope",
+                  "presence": "out_of_scope",
+                  "read": "out_of_scope",
+                  "repeat": "out_of_scope"
+                },
+                "donor": {
+                  "entry": null,
+                  "of": null,
+                  "rank": null,
+                  "status": "stub"
+                },
+                "entry_status": "disabled",
+                "gaps": {
+                  "scope": null
+                },
+                "hypotheses": [],
+                "identity_unknown": true,
+                "manual": null,
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": null
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "out_of_scope",
+                  "truncation": null
+                },
+                "paths": [],
+                "pilot": null,
+                "status": "stub",
+                "stub_has_reason": true,
+                "surface": "Antigravity",
+                "unchanged": [
+                  "GEMINI.md",
+                  "настройки IDE/App/CLI"
+                ],
+                "winner": null
+              },
+              "arena": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "not run",
+                  "detected": "not run",
+                  "presence": "not run",
+                  "read": "not run",
+                  "repeat": "not run"
+                },
+                "donor": {
+                  "entry": null,
+                  "of": null,
+                  "rank": null,
+                  "status": "absent"
+                },
+                "entry_status": "candidate",
+                "gaps": {
+                  "context_budget": "И‑126",
+                  "copy_boundary": "И‑124",
+                  "entry": "И‑124",
+                  "priority": "И‑124",
+                  "read_apply_repeat": "И‑125"
+                },
+                "hypotheses": [
+                  "sandbox-root-vs-nested"
+                ],
+                "identity_unknown": true,
+                "manual": "kit/base/entry.txt → kit/base/START.md §0",
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": 0
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "not run",
+                  "truncation": null
+                },
+                "paths": [
+                  "AGENTS.md"
+                ],
+                "pilot": null,
+                "status": "candidate",
+                "stub_has_reason": false,
+                "surface": "Arena Agent Mode / GitHub",
+                "unchanged": [
+                  "AGENTS.md",
+                  ".github/workflows/",
+                  "настройки репозитория и веток"
+                ],
+                "winner": null
+              },
+              "claude": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "out_of_scope",
+                  "detected": "out_of_scope",
+                  "presence": "out_of_scope",
+                  "read": "out_of_scope",
+                  "repeat": "out_of_scope"
+                },
+                "donor": {
+                  "entry": null,
+                  "of": null,
+                  "rank": null,
+                  "status": "stub"
+                },
+                "entry_status": "disabled",
+                "gaps": {
+                  "scope": null
+                },
+                "hypotheses": [],
+                "identity_unknown": true,
+                "manual": null,
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": null
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "out_of_scope",
+                  "truncation": null
+                },
+                "paths": [],
+                "pilot": null,
+                "status": "stub",
+                "stub_has_reason": true,
+                "surface": "Claude Code",
+                "unchanged": [
+                  "CLAUDE.md",
+                  "пользовательские настройки Claude Code"
+                ],
+                "winner": null
+              },
+              "copilot": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "not run",
+                  "detected": "not run",
+                  "presence": "not run",
+                  "read": "not run",
+                  "repeat": "not run"
+                },
+                "donor": {
+                  "entry": "AGENTS.md",
+                  "of": 5,
+                  "rank": 3,
+                  "status": "documented"
+                },
+                "entry_status": "candidate",
+                "gaps": {
+                  "context_budget": "И‑126",
+                  "entry": "И‑123",
+                  "priority": "И‑123",
+                  "read_apply_repeat": "И‑125",
+                  "single_registry": "И‑123"
+                },
+                "hypotheses": [
+                  "nearest-wins",
+                  "root-vs-path-scoped"
+                ],
+                "identity_unknown": true,
+                "manual": "kit/base/entry.txt → kit/base/START.md §0",
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": 0
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "not run",
+                  "truncation": null
+                },
+                "paths": [
+                  "AGENTS.md",
+                  ".github/copilot-instructions.md",
+                  ".github/instructions/*.instructions.md"
+                ],
+                "pilot": "Windows 11 / VS Code 1.146",
+                "status": "candidate",
+                "stub_has_reason": false,
+                "surface": "GitHub Copilot / VS Code",
+                "unchanged": [
+                  "AGENTS.md",
+                  ".github/copilot-instructions.md",
+                  ".github/instructions/",
+                  "настройки VS Code и расширения"
+                ],
+                "winner": null
+              },
+              "cursor": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "out_of_scope",
+                  "detected": "out_of_scope",
+                  "presence": "out_of_scope",
+                  "read": "out_of_scope",
+                  "repeat": "out_of_scope"
+                },
+                "donor": {
+                  "entry": null,
+                  "of": null,
+                  "rank": null,
+                  "status": "stub"
+                },
+                "entry_status": "disabled",
+                "gaps": {
+                  "scope": null
+                },
+                "hypotheses": [],
+                "identity_unknown": true,
+                "manual": null,
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": null
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "out_of_scope",
+                  "truncation": null
+                },
+                "paths": [],
+                "pilot": null,
+                "status": "stub",
+                "stub_has_reason": true,
+                "surface": "Cursor",
+                "unchanged": [
+                  ".cursor/rules/",
+                  "пользовательские настройки Cursor"
+                ],
+                "winner": null
+              },
+              "kilo": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "not run",
+                  "detected": "not run",
+                  "presence": "not run",
+                  "read": "not run",
+                  "repeat": "not run"
+                },
+                "donor": {
+                  "entry": "AGENTS.md",
+                  "of": 4,
+                  "rank": 3,
+                  "status": "documented"
+                },
+                "entry_status": "candidate",
+                "gaps": {
+                  "context_budget": "И‑126",
+                  "entry": "И‑122",
+                  "foreign_entry": "И‑122",
+                  "priority": "И‑122",
+                  "read_apply_repeat": "И‑125"
+                },
+                "hypotheses": [
+                  "agents-vs-kilo-rules"
+                ],
+                "identity_unknown": true,
+                "manual": "kit/base/entry.txt → kit/base/START.md §0",
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": 0
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "not run",
+                  "truncation": null
+                },
+                "paths": [
+                  "AGENTS.md",
+                  "kilo.jsonc",
+                  ".kilo/rules/"
+                ],
+                "pilot": "Windows 11 / VS Code 1.146",
+                "status": "candidate",
+                "stub_has_reason": false,
+                "surface": "Kilo / VS Code",
+                "unchanged": [
+                  "AGENTS.md",
+                  "kilo.jsonc",
+                  ".kilo/rules/",
+                  "настройки VS Code и расширения"
+                ],
+                "winner": null
+              }
+            },
+            "limits": {
+              "basis": [
+                "research/STRATEGY.md:P8",
+                "research/112/BOOTSTRAP.json:controls.S05"
+              ],
+              "context_percent": [
+                25,
+                30
+              ],
+              "context_status": "target",
+              "start_section_max_bytes": 4096,
+              "start_status": "kit_only"
+            },
+            "protected": [
+              ".isai/",
+              "kit/",
+              "AGENTS.md",
+              "реестры и профили L0/L1/L2",
+              "глобальные настройки и права",
+              "секреты и проектные данные",
+              "порт и CI"
+            ]
+          },
+          "quiet": true,
+          "result": {
+            "by_coverage": {
+              "not run": 15,
+              "out_of_scope": 15
+            },
+            "by_status": {
+              "candidate": 3,
+              "stub": 3
+            },
+            "client_runs": 0,
+            "entry_candidates": 7,
+            "environments": {
+              "antigravity": "stub",
+              "arena": "candidate",
+              "claude": "stub",
+              "copilot": "candidate",
+              "cursor": "stub",
+              "kilo": "candidate"
+            },
+            "format": 1,
+            "scope": "inventory_only"
+          },
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P02",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "projection": {
+            "discrepancy": {
+              "cause_known": false,
+              "id": "copilot",
+              "inventory": [
+                3,
+                5
+              ],
+              "report": [
+                3,
+                4
+              ],
+              "resolution": "inventory_for_donor_only"
+            },
+            "environments": {
+              "antigravity": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "out_of_scope",
+                  "detected": "out_of_scope",
+                  "presence": "out_of_scope",
+                  "read": "out_of_scope",
+                  "repeat": "out_of_scope"
+                },
+                "donor": {
+                  "entry": null,
+                  "of": null,
+                  "rank": null,
+                  "status": "stub"
+                },
+                "entry_status": "disabled",
+                "gaps": {
+                  "scope": null
+                },
+                "hypotheses": [],
+                "identity_unknown": true,
+                "manual": null,
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": null
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "out_of_scope",
+                  "truncation": null
+                },
+                "paths": [],
+                "pilot": null,
+                "status": "stub",
+                "stub_has_reason": true,
+                "surface": "Antigravity",
+                "unchanged": [
+                  "GEMINI.md",
+                  "настройки IDE/App/CLI"
+                ],
+                "winner": null
+              },
+              "arena": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "not run",
+                  "detected": "not run",
+                  "presence": "not run",
+                  "read": "not run",
+                  "repeat": "not run"
+                },
+                "donor": {
+                  "entry": null,
+                  "of": null,
+                  "rank": null,
+                  "status": "absent"
+                },
+                "entry_status": "candidate",
+                "gaps": {
+                  "context_budget": "И‑126",
+                  "copy_boundary": "И‑124",
+                  "entry": "И‑124",
+                  "priority": "И‑124",
+                  "read_apply_repeat": "И‑125"
+                },
+                "hypotheses": [
+                  "sandbox-root-vs-nested"
+                ],
+                "identity_unknown": true,
+                "manual": "kit/base/entry.txt → kit/base/START.md §0",
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": 0
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "not run",
+                  "truncation": null
+                },
+                "paths": [
+                  "AGENTS.md"
+                ],
+                "pilot": null,
+                "status": "candidate",
+                "stub_has_reason": false,
+                "surface": "Arena Agent Mode / GitHub",
+                "unchanged": [
+                  "AGENTS.md",
+                  ".github/workflows/",
+                  "настройки репозитория и веток"
+                ],
+                "winner": null
+              },
+              "claude": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "out_of_scope",
+                  "detected": "out_of_scope",
+                  "presence": "out_of_scope",
+                  "read": "out_of_scope",
+                  "repeat": "out_of_scope"
+                },
+                "donor": {
+                  "entry": null,
+                  "of": null,
+                  "rank": null,
+                  "status": "stub"
+                },
+                "entry_status": "disabled",
+                "gaps": {
+                  "scope": null
+                },
+                "hypotheses": [],
+                "identity_unknown": true,
+                "manual": null,
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": null
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "out_of_scope",
+                  "truncation": null
+                },
+                "paths": [],
+                "pilot": null,
+                "status": "stub",
+                "stub_has_reason": true,
+                "surface": "Claude Code",
+                "unchanged": [
+                  "CLAUDE.md",
+                  "пользовательские настройки Claude Code"
+                ],
+                "winner": null
+              },
+              "copilot": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "not run",
+                  "detected": "not run",
+                  "presence": "not run",
+                  "read": "not run",
+                  "repeat": "not run"
+                },
+                "donor": {
+                  "entry": "AGENTS.md",
+                  "of": 5,
+                  "rank": 3,
+                  "status": "documented"
+                },
+                "entry_status": "candidate",
+                "gaps": {
+                  "context_budget": "И‑126",
+                  "entry": "И‑123",
+                  "priority": "И‑123",
+                  "read_apply_repeat": "И‑125",
+                  "single_registry": "И‑123"
+                },
+                "hypotheses": [
+                  "nearest-wins",
+                  "root-vs-path-scoped"
+                ],
+                "identity_unknown": true,
+                "manual": "kit/base/entry.txt → kit/base/START.md §0",
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": 0
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "not run",
+                  "truncation": null
+                },
+                "paths": [
+                  "AGENTS.md",
+                  ".github/copilot-instructions.md",
+                  ".github/instructions/*.instructions.md"
+                ],
+                "pilot": "Windows 11 / VS Code 1.146",
+                "status": "candidate",
+                "stub_has_reason": false,
+                "surface": "GitHub Copilot / VS Code",
+                "unchanged": [
+                  "AGENTS.md",
+                  ".github/copilot-instructions.md",
+                  ".github/instructions/",
+                  "настройки VS Code и расширения"
+                ],
+                "winner": null
+              },
+              "cursor": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "out_of_scope",
+                  "detected": "out_of_scope",
+                  "presence": "out_of_scope",
+                  "read": "out_of_scope",
+                  "repeat": "out_of_scope"
+                },
+                "donor": {
+                  "entry": null,
+                  "of": null,
+                  "rank": null,
+                  "status": "stub"
+                },
+                "entry_status": "disabled",
+                "gaps": {
+                  "scope": null
+                },
+                "hypotheses": [],
+                "identity_unknown": true,
+                "manual": null,
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": null
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "out_of_scope",
+                  "truncation": null
+                },
+                "paths": [],
+                "pilot": null,
+                "status": "stub",
+                "stub_has_reason": true,
+                "surface": "Cursor",
+                "unchanged": [
+                  ".cursor/rules/",
+                  "пользовательские настройки Cursor"
+                ],
+                "winner": null
+              },
+              "kilo": {
+                "config_key": null,
+                "coverage": {
+                  "applied": "not run",
+                  "detected": "not run",
+                  "presence": "not run",
+                  "read": "not run",
+                  "repeat": "not run"
+                },
+                "donor": {
+                  "entry": "AGENTS.md",
+                  "of": 4,
+                  "rank": 3,
+                  "status": "documented"
+                },
+                "entry_status": "candidate",
+                "gaps": {
+                  "context_budget": "И‑126",
+                  "entry": "И‑122",
+                  "foreign_entry": "И‑122",
+                  "priority": "И‑122",
+                  "read_apply_repeat": "И‑125"
+                },
+                "hypotheses": [
+                  "agents-vs-kilo-rules"
+                ],
+                "identity_unknown": true,
+                "manual": "kit/base/entry.txt → kit/base/START.md §0",
+                "metrics": {
+                  "apply_rate": null,
+                  "false_positive": null,
+                  "read_rate": null,
+                  "runs": 0
+                },
+                "native_caps": {
+                  "context_tokens": null,
+                  "instruction_bytes": null,
+                  "status": "not run",
+                  "truncation": null
+                },
+                "paths": [
+                  "AGENTS.md",
+                  "kilo.jsonc",
+                  ".kilo/rules/"
+                ],
+                "pilot": "Windows 11 / VS Code 1.146",
+                "status": "candidate",
+                "stub_has_reason": false,
+                "surface": "Kilo / VS Code",
+                "unchanged": [
+                  "AGENTS.md",
+                  "kilo.jsonc",
+                  ".kilo/rules/",
+                  "настройки VS Code и расширения"
+                ],
+                "winner": null
+              }
+            },
+            "limits": {
+              "basis": [
+                "research/STRATEGY.md:P8",
+                "research/112/BOOTSTRAP.json:controls.S05"
+              ],
+              "context_percent": [
+                25,
+                30
+              ],
+              "context_status": "target",
+              "start_section_max_bytes": 4096,
+              "start_status": "kit_only"
+            },
+            "protected": [
+              ".isai/",
+              "kit/",
+              "AGENTS.md",
+              "реестры и профили L0/L1/L2",
+              "глобальные настройки и права",
+              "секреты и проектные данные",
+              "порт и CI"
+            ]
+          },
+          "quiet": true,
+          "result": {
+            "by_coverage": {
+              "not run": 15,
+              "out_of_scope": 15
+            },
+            "by_status": {
+              "candidate": 3,
+              "stub": 3
+            },
+            "client_runs": 0,
+            "entry_candidates": 7,
+            "environments": {
+              "antigravity": "stub",
+              "arena": "candidate",
+              "claude": "stub",
+              "copilot": "candidate",
+              "cursor": "stub",
+              "kilo": "candidate"
+            },
+            "format": 1,
+            "scope": "inventory_only"
+          },
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "P03",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "projection": null,
+          "quiet": true,
+          "result": {
+            "by_coverage": {
+              "not run": 15,
+              "out_of_scope": 15
+            },
+            "by_status": {
+              "candidate": 3,
+              "stub": 3
+            },
+            "client_runs": 0,
+            "entry_candidates": 7,
+            "environments": {
+              "antigravity": "stub",
+              "arena": "candidate",
+              "claude": "stub",
+              "copilot": "candidate",
+              "cursor": "stub",
+              "kilo": "candidate"
+            },
+            "format": 1,
+            "scope": "inventory_only"
+          },
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I01",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_input",
+            "reason": "bytes",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I02",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_input",
+            "reason": "bytes",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I03",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_input",
+            "reason": "limit",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I04",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_input",
+            "reason": "json",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I05",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_input",
+            "reason": "json",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I06",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_input",
+            "reason": "json",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I07",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_input",
+            "reason": "json",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I08",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_input",
+            "reason": "json",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I09",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_shape",
+            "reason": "version",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I10",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_shape",
+            "reason": "scope",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I11",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_shape",
+            "reason": "fields",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R01",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_rows",
+            "reason": "exact",
+            "where": "environments"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R02",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_rows",
+            "reason": "exact",
+            "where": "environments"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R03",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_shape",
+            "reason": "fields",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R04",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_status",
+            "reason": "candidate",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R05",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_status",
+            "reason": "candidate",
+            "where": "arena"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R06",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_status",
+            "reason": "stub",
+            "where": "antigravity"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R07",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_status",
+            "reason": "reason",
+            "where": "claude"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R08",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_status",
+            "reason": "observation",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "R09",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_status",
+            "reason": "observation",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S01",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_entry",
+            "reason": "surfaces",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S02",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_entry",
+            "reason": "unverified_key",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S03",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_entry",
+            "reason": "surfaces",
+            "where": "claude"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S04",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_entry",
+            "reason": "surfaces",
+            "where": "arena"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S05",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_priority",
+            "reason": "unverified",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S06",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_priority",
+            "reason": "unverified",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S07",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_caps",
+            "reason": "native_unknown",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S08",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_caps",
+            "reason": "kit_limits",
+            "where": "limits"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S09",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_guard",
+            "reason": "protected",
+            "where": "matrix"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S10",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_guard",
+            "reason": "unchanged",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S11",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_coverage",
+            "reason": "stages",
+            "where": "arena"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S12",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_coverage",
+            "reason": "stages",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S13",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_coverage",
+            "reason": "stages",
+            "where": "claude"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S14",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_coverage",
+            "reason": "metrics",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S15",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_coverage",
+            "reason": "metrics",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S16",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_coverage",
+            "reason": "metrics",
+            "where": "arena"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S17",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_coverage",
+            "reason": "metrics",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S18",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_gaps",
+            "reason": "set",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S19",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_gaps",
+            "reason": "next",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S20",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_gaps",
+            "reason": "basis",
+            "where": "arena"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S21",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_gaps",
+            "reason": "criterion",
+            "where": "kilo"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S22",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_gaps",
+            "reason": "next",
+            "where": "cursor"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D01",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_donor",
+            "reason": "inventory",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D02",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_donor",
+            "reason": "inventory",
+            "where": "arena"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D03",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_donor",
+            "reason": "discrepancy",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D04",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_donor",
+            "reason": "discrepancy",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D05",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_donor",
+            "reason": "discrepancy",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      },
+      {
+        "id": "D06",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "surfaces_donor",
+            "reason": "discrepancy",
+            "where": "copilot"
+          },
+          "projection": null,
+          "quiet": true,
+          "result": null,
+          "unchanged": true
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "strategy_anchors_sha256": "4834c5860c6b93e517c29fdd0feba5c820d5c3c391416ca694e1f3c56dffe884",
+  "tree_unchanged": true
+}

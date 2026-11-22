@@ -1,0 +1,324 @@
+{
+  "baseline": "4159cb68d7a79583a8db0b0b1af23258b378412e",
+  "casebook_sha256": "f2eddea3953ab21ccd6964497c5afbc58cdcfbe6bdbc5ca13caa37a3af1ab0ef",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/121/test_surfaces.py"
+  ],
+  "independent_baseline_match": true,
+  "pinned_inputs": {
+    "research/101/AgentContractKit-Iteration-101.zip": "06d5f54e272895febd5cad9ffbf2fd67123088fa9c5c2020954d5fbd3f84d3c9",
+    "research/101/CLEANROOM.json": "c08319baeebde4790d0ec5e6490e033aa153ec5dd7b3e3ddec0adc885490ca54",
+    "research/101/REPORT.md": "45b1e4922d30d7d9e4b03ed103d5a8f700f1c0cbe3f46cc6b23ea72a61388bfe",
+    "research/101/SEAL.json": "677d97211d05da61f02e2717cb27a46f33e2f4db26746fd3fe26281931afbcad",
+    "research/102/BASELINE.json": "04b11366dbb0676d3f22589e64efa81fee7ff08135607a44e9d27d3151e3d5f9",
+    "research/112/BOOTSTRAP.json": "71dcb273d49b152143aaf9633d6fcdafb812791b3511aa16ca4d4f3be1fa0d4c",
+    "research/strategy/BASELINE.json": "04b11366dbb0676d3f22589e64efa81fee7ff08135607a44e9d27d3151e3d5f9",
+    "research/strategy/pre-104/ARCHITECTURE-REVIEW.md": "b1a24742706f241c0c365e2501769c5cd26c7dc81d8c13b06adf643659964a8d"
+  },
+  "rc": 1,
+  "result": {
+    "control": {
+      "anchors_sha256": "4834c5860c6b93e517c29fdd0feba5c820d5c3c391416ca694e1f3c56dffe884",
+      "copilot_inventory": [
+        3,
+        5
+      ],
+      "copilot_report": [
+        3,
+        4
+      ],
+      "inventory_repeat_match": true,
+      "kilo_inventory": [
+        3,
+        4
+      ],
+      "legacy_arena": {
+        "error": "adapter_unknown",
+        "rc": 2,
+        "step": "7-adapter-arena"
+      },
+      "legacy_release": "0.1.36",
+      "printed_inventory_and_report_match": true,
+      "split_before_125": true,
+      "start_section_max_bytes": 4096,
+      "start_section_observed_bytes": 2363,
+      "target_window_percent": [
+        25,
+        30
+      ]
+    },
+    "counts": {
+      "fail": 51,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "P01",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P02",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "P03",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I01",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I02",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I03",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I04",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I05",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I06",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I07",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I08",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I09",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I10",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I11",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R01",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R02",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R03",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R04",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R05",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R06",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R07",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R08",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "R09",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S01",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S02",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S03",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S04",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S05",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S06",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S07",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S08",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S09",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S10",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S11",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S12",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S13",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S14",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S15",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S16",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S17",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S18",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S19",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S20",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S21",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S22",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D01",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D02",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D03",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D04",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D05",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      },
+      {
+        "id": "D06",
+        "reason": "surfaces_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "strategy_anchors_sha256": "4834c5860c6b93e517c29fdd0feba5c820d5c3c391416ca694e1f3c56dffe884",
+  "test_sha256": "8c05e947f1f4887e767dbd69d720941269ada0287694345bd8ceed554d3c16e7"
+}

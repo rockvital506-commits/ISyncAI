@@ -1,0 +1,525 @@
+{
+  "format": 1,
+  "iteration": "И-121",
+  "scope": "inventory_only",
+  "limits": {
+    "context_percent": [
+      25,
+      30
+    ],
+    "context_status": "target",
+    "start_section_max_bytes": 4096,
+    "start_status": "kit_only",
+    "basis": [
+      "research/STRATEGY.md:P8",
+      "research/112/BOOTSTRAP.json:controls.S05"
+    ]
+  },
+  "protected": [
+    ".isai/",
+    "kit/",
+    "AGENTS.md",
+    "реестры и профили L0/L1/L2",
+    "глобальные настройки и права",
+    "секреты и проектные данные",
+    "порт и CI"
+  ],
+  "environments": {
+    "arena": {
+      "status": "candidate",
+      "stub_reason": null,
+      "target": {
+        "surface": "Arena Agent Mode / GitHub",
+        "pilot": null,
+        "observed_version": null,
+        "observed_mode": null,
+        "basis": [
+          "research/STRATEGY.md:И‑124"
+        ]
+      },
+      "entry": {
+        "status": "candidate",
+        "paths": [
+          "AGENTS.md"
+        ],
+        "config_key": null,
+        "manual": "kit/base/entry.txt → kit/base/START.md §0",
+        "basis": [
+          "research/STRATEGY.md:И‑124",
+          "research/112/BOOTSTRAP.json:witness"
+        ]
+      },
+      "priority": {
+        "status": "not run",
+        "winner": null,
+        "hypotheses": [
+          "sandbox-root-vs-nested"
+        ]
+      },
+      "caps": {
+        "status": "not run",
+        "context_tokens": null,
+        "instruction_bytes": null,
+        "truncation": null
+      },
+      "unchanged": [
+        "AGENTS.md",
+        ".github/workflows/",
+        "настройки репозитория и веток"
+      ],
+      "coverage": {
+        "presence": "not run",
+        "detected": "not run",
+        "read": "not run",
+        "applied": "not run",
+        "repeat": "not run"
+      },
+      "metrics": {
+        "runs": 0,
+        "read_rate": null,
+        "apply_rate": null,
+        "false_positive": null
+      },
+      "gaps": {
+        "entry": {
+          "next": "И‑124",
+          "basis": "research/STRATEGY.md:И‑124",
+          "criterion": "В отдельной согласованной сессии связать видимую копию с SHA и режимом. Различить наличие AGENTS.md, его автоматическое обнаружение и явное чтение по запросу; не засчитывать текущий разговор."
+        },
+        "priority": {
+          "next": "И‑124",
+          "basis": "research/STRATEGY.md:И‑124",
+          "criterion": "На той же задаче сопоставить корневой и вложенный вход в согласованной копии. Если различение не подтверждено, не назначать победителя."
+        },
+        "copy_boundary": {
+          "next": "И‑124",
+          "basis": "research/STRATEGY.md:И‑124",
+          "criterion": "Проверить границу sandbox-копии и что сохраняется после сессии. «1 PR/сессия» — рамка будущей пробы, не гарантия сервиса и не разрешение открыть PR."
+        },
+        "read_apply_repeat": {
+          "next": "И‑125",
+          "basis": "research/STRATEGY.md:И‑125",
+          "criterion": "После согласования разбиения по P12 сравнить 5–10 повторов в одной заявленной среде/режиме со сценарием без AGENTS.md и с канарейкой ZX-41. Раздельно зафиксировать наличие, обнаружение, чтение, применение и повторяемость, знаменатели read_rate / apply_rate / false_positive."
+        },
+        "context_budget": {
+          "next": "И‑126",
+          "basis": "research/STRATEGY.md:И‑126",
+          "criterion": "В названном окне измерить токены каталога, выборки по scope и тел по запросу. Сверить целевые 25–30% и наблюдаемое усечение; 4096 байт §0 не пересчитывать в лимит клиента."
+        }
+      },
+      "donor": {
+        "status": "absent",
+        "entry": null,
+        "rank": null,
+        "of": null,
+        "basis": "research/strategy/BASELINE.json:absent_adapters; research/101/CLEANROOM.json:7-adapter-arena",
+        "release": "0.1.36"
+      }
+    },
+    "kilo": {
+      "status": "candidate",
+      "stub_reason": null,
+      "target": {
+        "surface": "Kilo / VS Code",
+        "pilot": "Windows 11 / VS Code 1.146",
+        "observed_version": null,
+        "observed_mode": null,
+        "basis": [
+          "research/STRATEGY.md:И‑122",
+          "research/STRATEGY.md:Ф8"
+        ]
+      },
+      "entry": {
+        "status": "candidate",
+        "paths": [
+          "AGENTS.md",
+          "kilo.jsonc",
+          ".kilo/rules/"
+        ],
+        "config_key": null,
+        "manual": "kit/base/entry.txt → kit/base/START.md §0",
+        "basis": [
+          "research/STRATEGY.md:И‑122",
+          "research/112/BOOTSTRAP.json:witness"
+        ]
+      },
+      "priority": {
+        "status": "not run",
+        "winner": null,
+        "hypotheses": [
+          "agents-vs-kilo-rules"
+        ]
+      },
+      "caps": {
+        "status": "not run",
+        "context_tokens": null,
+        "instruction_bytes": null,
+        "truncation": null
+      },
+      "unchanged": [
+        "AGENTS.md",
+        "kilo.jsonc",
+        ".kilo/rules/",
+        "настройки VS Code и расширения"
+      ],
+      "coverage": {
+        "presence": "not run",
+        "detected": "not run",
+        "read": "not run",
+        "applied": "not run",
+        "repeat": "not run"
+      },
+      "metrics": {
+        "runs": 0,
+        "read_rate": null,
+        "apply_rate": null,
+        "false_positive": null
+      },
+      "gaps": {
+        "entry": {
+          "next": "И‑122",
+          "basis": "research/STRATEGY.md:И‑122",
+          "criterion": "Записать установленные версии, режим и документацию этой версии. Установить точный ключ kilo.jsonc и отдельно проверить обнаружение AGENTS.md и .kilo/rules на согласованной копии."
+        },
+        "priority": {
+          "next": "И‑122",
+          "basis": "research/STRATEGY.md:И‑122",
+          "criterion": "Сопоставить специально конфликтующие проектные входы для одного scope. Старый rank 3/4 не считать ответом; если порядок не воспроизводится, оставить неизвестным."
+        },
+        "foreign_entry": {
+          "next": "И‑122",
+          "basis": "research/STRATEGY.md:И‑122",
+          "criterion": "На копии с чужим AGENTS.md проверить entry_mode: foreign: байты исходной инструкции сохранены; без отдельного согласия нет перезаписи или импорта в реестр."
+        },
+        "read_apply_repeat": {
+          "next": "И‑125",
+          "basis": "research/STRATEGY.md:И‑125",
+          "criterion": "После согласования разбиения по P12 сравнить 5–10 повторов в одной заявленной среде/режиме со сценарием без AGENTS.md и с канарейкой ZX-41. Раздельно зафиксировать наличие, обнаружение, чтение, применение и повторяемость, знаменатели read_rate / apply_rate / false_positive."
+        },
+        "context_budget": {
+          "next": "И‑126",
+          "basis": "research/STRATEGY.md:И‑126",
+          "criterion": "В названном окне измерить токены каталога, выборки по scope и тел по запросу. Сверить целевые 25–30% и наблюдаемое усечение; 4096 байт §0 не пересчитывать в лимит клиента."
+        }
+      },
+      "donor": {
+        "status": "documented",
+        "entry": "AGENTS.md",
+        "rank": 3,
+        "of": 4,
+        "basis": "research/strategy/BASELINE.json:adapters.kilo",
+        "release": "0.1.36"
+      }
+    },
+    "copilot": {
+      "status": "candidate",
+      "stub_reason": null,
+      "target": {
+        "surface": "GitHub Copilot / VS Code",
+        "pilot": "Windows 11 / VS Code 1.146",
+        "observed_version": null,
+        "observed_mode": null,
+        "basis": [
+          "research/STRATEGY.md:И‑123",
+          "research/STRATEGY.md:Ф8"
+        ]
+      },
+      "entry": {
+        "status": "candidate",
+        "paths": [
+          "AGENTS.md",
+          ".github/copilot-instructions.md",
+          ".github/instructions/*.instructions.md"
+        ],
+        "config_key": null,
+        "manual": "kit/base/entry.txt → kit/base/START.md §0",
+        "basis": [
+          "research/STRATEGY.md:И‑123",
+          "research/112/BOOTSTRAP.json:witness"
+        ]
+      },
+      "priority": {
+        "status": "not run",
+        "winner": null,
+        "hypotheses": [
+          "nearest-wins",
+          "root-vs-path-scoped"
+        ]
+      },
+      "caps": {
+        "status": "not run",
+        "context_tokens": null,
+        "instruction_bytes": null,
+        "truncation": null
+      },
+      "unchanged": [
+        "AGENTS.md",
+        ".github/copilot-instructions.md",
+        ".github/instructions/",
+        "настройки VS Code и расширения"
+      ],
+      "coverage": {
+        "presence": "not run",
+        "detected": "not run",
+        "read": "not run",
+        "applied": "not run",
+        "repeat": "not run"
+      },
+      "metrics": {
+        "runs": 0,
+        "read_rate": null,
+        "apply_rate": null,
+        "false_positive": null
+      },
+      "gaps": {
+        "entry": {
+          "next": "И‑123",
+          "basis": "research/STRATEGY.md:И‑123",
+          "criterion": "Указать версию расширения, режим в VS Code и источники. Сравнить корневые и путевые инструкции в совпадающем и несовпадающем scope; не переносить результаты на агент PR или другой режим."
+        },
+        "priority": {
+          "next": "И‑123",
+          "basis": "research/STRATEGY.md:И‑123",
+          "criterion": "Проверить nearest wins на контролируемом конфликте AGENTS.md с общими и путевыми инструкциями. При неоднозначном ответе оставить конфликт открытым."
+        },
+        "single_registry": {
+          "next": "И‑123",
+          "basis": "research/STRATEGY.md:И‑123",
+          "criterion": "При конфликте показать обе формулировки и области. Клиентские файлы — вход, не второй реестр; исходные байты и данные L0/L1/L2 не изменять."
+        },
+        "read_apply_repeat": {
+          "next": "И‑125",
+          "basis": "research/STRATEGY.md:И‑125",
+          "criterion": "После согласования разбиения по P12 сравнить 5–10 повторов в одной заявленной среде/режиме со сценарием без AGENTS.md и с канарейкой ZX-41. Раздельно зафиксировать наличие, обнаружение, чтение, применение и повторяемость, знаменатели read_rate / apply_rate / false_positive."
+        },
+        "context_budget": {
+          "next": "И‑126",
+          "basis": "research/STRATEGY.md:И‑126",
+          "criterion": "В названном окне измерить токены каталога, выборки по scope и тел по запросу. Сверить целевые 25–30% и наблюдаемое усечение; 4096 байт §0 не пересчитывать в лимит клиента."
+        }
+      },
+      "donor": {
+        "status": "documented",
+        "entry": "AGENTS.md",
+        "rank": 3,
+        "of": 5,
+        "basis": "research/strategy/BASELINE.json:adapters.copilot",
+        "release": "0.1.36"
+      }
+    },
+    "claude": {
+      "status": "stub",
+      "stub_reason": "Вне обкатки по §1.2; режим Claude Code и его точка входа не выбраны для целевого Kit.",
+      "target": {
+        "surface": "Claude Code",
+        "pilot": null,
+        "observed_version": null,
+        "observed_mode": null,
+        "basis": [
+          "research/STRATEGY.md:§1.2"
+        ]
+      },
+      "entry": {
+        "status": "disabled",
+        "paths": [],
+        "config_key": null,
+        "manual": null,
+        "basis": [
+          "research/STRATEGY.md:§1.2"
+        ]
+      },
+      "priority": {
+        "status": "out_of_scope",
+        "winner": null,
+        "hypotheses": []
+      },
+      "caps": {
+        "status": "out_of_scope",
+        "context_tokens": null,
+        "instruction_bytes": null,
+        "truncation": null
+      },
+      "unchanged": [
+        "CLAUDE.md",
+        "пользовательские настройки Claude Code"
+      ],
+      "coverage": {
+        "presence": "out_of_scope",
+        "detected": "out_of_scope",
+        "read": "out_of_scope",
+        "applied": "out_of_scope",
+        "repeat": "out_of_scope"
+      },
+      "metrics": {
+        "runs": null,
+        "read_rate": null,
+        "apply_rate": null,
+        "false_positive": null
+      },
+      "gaps": {
+        "scope": {
+          "next": null,
+          "basis": "research/STRATEGY.md:§1.2",
+          "criterion": "Отдельное решение владельца после обкатки целевых сред; до него нет реализации, подключения или клиентского опыта."
+        }
+      },
+      "donor": {
+        "status": "stub",
+        "entry": null,
+        "rank": null,
+        "of": null,
+        "basis": "research/strategy/BASELINE.json:adapters.claude",
+        "release": "0.1.36"
+      }
+    },
+    "cursor": {
+      "status": "stub",
+      "stub_reason": "Вне обкатки по §1.2; режим активации правил Cursor не исследуется в Ф5.",
+      "target": {
+        "surface": "Cursor",
+        "pilot": null,
+        "observed_version": null,
+        "observed_mode": null,
+        "basis": [
+          "research/STRATEGY.md:§1.2"
+        ]
+      },
+      "entry": {
+        "status": "disabled",
+        "paths": [],
+        "config_key": null,
+        "manual": null,
+        "basis": [
+          "research/STRATEGY.md:§1.2"
+        ]
+      },
+      "priority": {
+        "status": "out_of_scope",
+        "winner": null,
+        "hypotheses": []
+      },
+      "caps": {
+        "status": "out_of_scope",
+        "context_tokens": null,
+        "instruction_bytes": null,
+        "truncation": null
+      },
+      "unchanged": [
+        ".cursor/rules/",
+        "пользовательские настройки Cursor"
+      ],
+      "coverage": {
+        "presence": "out_of_scope",
+        "detected": "out_of_scope",
+        "read": "out_of_scope",
+        "applied": "out_of_scope",
+        "repeat": "out_of_scope"
+      },
+      "metrics": {
+        "runs": null,
+        "read_rate": null,
+        "apply_rate": null,
+        "false_positive": null
+      },
+      "gaps": {
+        "scope": {
+          "next": null,
+          "basis": "research/STRATEGY.md:§1.2",
+          "criterion": "Отдельное решение владельца после обкатки целевых сред; до него нет реализации, подключения или клиентского опыта."
+        }
+      },
+      "donor": {
+        "status": "stub",
+        "entry": null,
+        "rank": null,
+        "of": null,
+        "basis": "research/strategy/BASELINE.json:adapters.cursor",
+        "release": "0.1.36"
+      }
+    },
+    "antigravity": {
+      "status": "stub",
+      "stub_reason": "Вне обкатки по §1.2; IDE, App и CLI не приравниваем друг к другу и не подключаем.",
+      "target": {
+        "surface": "Antigravity",
+        "pilot": null,
+        "observed_version": null,
+        "observed_mode": null,
+        "basis": [
+          "research/STRATEGY.md:§1.2"
+        ]
+      },
+      "entry": {
+        "status": "disabled",
+        "paths": [],
+        "config_key": null,
+        "manual": null,
+        "basis": [
+          "research/STRATEGY.md:§1.2"
+        ]
+      },
+      "priority": {
+        "status": "out_of_scope",
+        "winner": null,
+        "hypotheses": []
+      },
+      "caps": {
+        "status": "out_of_scope",
+        "context_tokens": null,
+        "instruction_bytes": null,
+        "truncation": null
+      },
+      "unchanged": [
+        "GEMINI.md",
+        "настройки IDE/App/CLI"
+      ],
+      "coverage": {
+        "presence": "out_of_scope",
+        "detected": "out_of_scope",
+        "read": "out_of_scope",
+        "applied": "out_of_scope",
+        "repeat": "out_of_scope"
+      },
+      "metrics": {
+        "runs": null,
+        "read_rate": null,
+        "apply_rate": null,
+        "false_positive": null
+      },
+      "gaps": {
+        "scope": {
+          "next": null,
+          "basis": "research/STRATEGY.md:§1.2",
+          "criterion": "Отдельное решение владельца после обкатки целевых сред; до него нет реализации, подключения или клиентского опыта."
+        }
+      },
+      "donor": {
+        "status": "stub",
+        "entry": null,
+        "rank": null,
+        "of": null,
+        "basis": "research/strategy/BASELINE.json:adapters.antigravity",
+        "release": "0.1.36"
+      }
+    }
+  },
+  "donor_discrepancy": {
+    "id": "copilot",
+    "inventory": [
+      3,
+      5
+    ],
+    "report": [
+      3,
+      4
+    ],
+    "resolution": "inventory_for_donor_only",
+    "cause_known": false,
+    "basis": [
+      "research/101/AgentContractKit-Iteration-101.zip:research/strategy/BASELINE.json:adapters.copilot",
+      "research/102/BASELINE.json:adapters.copilot",
+      "research/101/REPORT.md:инвентарь адаптеров"
+    ],
+    "criterion": "Сравнить структурную запись в печати И‑101 с повтором И‑102 и отдельной текстовой строкой И‑101. Оба числа относятся к донору; текущее старшинство не измерено."
+  }
+}
