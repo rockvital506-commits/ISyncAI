@@ -1,0 +1,742 @@
+{
+  "checks": [
+    {
+      "basis": "CASES.json; RED.json; ITERATION.json",
+      "check": "frozen_red",
+      "criterion": "Открытые векторы закреплены до продукта; RED 0/51/0 подтверждён из Git-снимка.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CASES.json",
+      "check": "checkout",
+      "criterion": "Все строки, порядок и диагностики совпали с независимым оракулом; rc0 без stderr.",
+      "status": "pass"
+    },
+    {
+      "basis": "CLEANROOM.json; CASES.json",
+      "check": "cleanroom",
+      "criterion": "Все строки, порядок и диагностики совпали с независимым оракулом; rc0 без stderr.",
+      "status": "pass"
+    },
+    {
+      "basis": "I01–I05; неизменная И‑118",
+      "check": "integrity_first",
+      "criterion": "Подмена/неполнота возвращается раньше политики; ни подпись, ни исключение их не отменяют.",
+      "status": "pass"
+    },
+    {
+      "basis": "U01/U02; P9 стратегии; I01/I02",
+      "check": "unsigned_is_separate",
+      "criterion": "Нет подписи не означает ошибку хеша и блокирует только согласно переданной политике.",
+      "status": "pass"
+    },
+    {
+      "basis": "U03–U11; N10–N18",
+      "check": "exception_scope_time_authority",
+      "criterion": "Действуют только точный SHA ZIP, разрешённый approver и now < expiry; digest манифеста не заменяет SHA ZIP.",
+      "status": "pass"
+    },
+    {
+      "basis": "S01/S02/S04–S06/S17; контроль RFC 8032 §7.1",
+      "check": "real_signature_binding",
+      "criterion": "OpenSSL принимает две подписи, но не их изменение, обмен ZIP или другого ключа.",
+      "status": "pass"
+    },
+    {
+      "basis": "S03/S07–S17",
+      "check": "fail_closed",
+      "criterion": "Чужой ключ и неисправный проверяющий не дают доверия и не становятся unsigned.",
+      "status": "pass"
+    },
+    {
+      "basis": "N01–N18",
+      "check": "config_exact",
+      "criterion": "Некорректная политика, время и реестр исключений отклоняются без подбора значений.",
+      "status": "pass"
+    },
+    {
+      "basis": "Monitor; оба прогона",
+      "check": "no_effects",
+      "criterion": "Только 8 явных вызовов проверяющего; нет побочного I/O модуля, вывода, изменений входов или частичного допуска.",
+      "status": "pass"
+    },
+    {
+      "basis": "ITERATION.json; CLEANROOM.json",
+      "check": "fresh_copy",
+      "criterion": "В новой копии только девять входов, без рабочего профиля, Git и закрытого ключа.",
+      "status": "pass"
+    },
+    {
+      "basis": "CHECKOUT.json; CLEANROOM.json",
+      "check": "repeat",
+      "criterion": "Байты входов и все наблюдения совпадают в двух процессах.",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "fail": 0,
+    "not run": 4,
+    "pass": 12
+  },
+  "iteration": "И-119",
+  "not_run": [
+    {
+      "status": "not run",
+      "what": "Реальные ключи, подписание и выпуск пакета, ротация и отзыв.",
+      "why": "Только открытые учебные векторы на повторе, нет хранилища или подключения поставщика ключей."
+    },
+    {
+      "status": "not run",
+      "what": "Происхождение политики, аутентификация approver и защищённые часы в эксплуатации.",
+      "why": "Отдельные доверенные входы стенда; утверждающий, время и исключения не берутся из ZIP."
+    },
+    {
+      "status": "not run",
+      "what": "Рабочий перенос, установка, отказоустойчивое восстановление и откат (И‑120).",
+      "why": "Результат только диагностика политики; нет активации и записи."
+    },
+    {
+      "status": "not run",
+      "what": "Реальные данные, рабочий порт, адаптеры/CI и иные среды.",
+      "why": "Нет регистрации операции; повтор требует наличия OpenSSL с Ed25519 на согласованном стенде."
+    }
+  ],
+  "os": "Linux",
+  "outcome": "accepted",
+  "python": "3.11.2",
+  "runs": {
+    "checkout": {
+      "cases": [
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; optional",
+          "criterion": "Без подписи и без требования: unsigned, не ошибка целостности.",
+          "id": "U01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; required",
+          "criterion": "Целостный пакет без подписи заблокирован явным требованием.",
+          "id": "U02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; active",
+          "criterion": "Точное исключение доверенного утверждающего до срока действует; unsigned сохраняется.",
+          "id": "U03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; equal_expiry",
+          "criterion": "Ровно expiry — исключение уже недействительно.",
+          "id": "U04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; past_expiry",
+          "criterion": "Истёкшее исключение не продлевается.",
+          "id": "U05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; foreign_approver",
+          "criterion": "Формально корректный, но не разрешённый approver не даёт исключения.",
+          "id": "U06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; wrong_zip",
+          "criterion": "Та же revision и другое тело не наследуют решение для исходного ZIP.",
+          "id": "U07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; manifest_is_not_zip",
+          "criterion": "Digest манифеста не используется как SHA‑256 ZIP.",
+          "id": "U08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; optional_with_exception",
+          "criterion": "Опциональная политика не использует даже активное исключение.",
+          "id": "U09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; revoked_approver",
+          "criterion": "После исключения утверждающего из явно переданной политики допуск не сохраняется.",
+          "id": "U10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; active_alternate",
+          "criterion": "Точная запись для другого целостного ZIP действует только для него.",
+          "id": "U11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; trusted",
+          "criterion": "Настоящая Ed25519-подпись заранее одобренного ключа проходит.",
+          "id": "S01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; trusted",
+          "criterion": "Отдельно подписанный пересогласованный пакет принят с другим отпечатком.",
+          "id": "S02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; unknown_optional",
+          "criterion": "Действительная подпись неизвестного ключа не становится доверенной при optional или исключении.",
+          "id": "S03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; bad_bits",
+          "criterion": "Изменение бита подписи остаётся отказом, активное исключение не применяется.",
+          "id": "S04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; signed_reused",
+          "criterion": "Старая подпись не подходит к изменённому ZIP с пересчитанным манифестом.",
+          "id": "S05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; signed_reused",
+          "criterion": "Обратный перенос подписи также отвергается.",
+          "id": "S06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; algorithm",
+          "criterion": "Чужой алгоритм не запускает обходной проверяющий.",
+          "id": "S07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; empty_signature",
+          "criterion": "Предъявленные пустые байты не отсутствие подписи.",
+          "id": "S08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; bool_format",
+          "criterion": "true не номер формата.",
+          "id": "S09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; bad_envelope",
+          "criterion": "Пустой словарь не unsigned.",
+          "id": "S10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; embedded_key",
+          "criterion": "Ключ, вложенный отправителем, не импортируется.",
+          "id": "S11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; unknown_id",
+          "criterion": "Допустимый формат ID не доказывает одобрение ключа.",
+          "id": "S12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; unavailable",
+          "criterion": "Отсутствующий проверяющий не выдаёт доверие и не включает исключение.",
+          "id": "S13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; verifier_error",
+          "criterion": "Сбой проверяющего не объявляется подделкой, тело исключения скрыто.",
+          "id": "S14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; truthy",
+          "criterion": "Число 1 не явный True.",
+          "id": "S15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; bad_key_id",
+          "criterion": "Ключевой ID строго нижнерегистровый SHA‑256.",
+          "id": "S16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; substituted_approved_key",
+          "criterion": "Другой одобренный ключ не равен ключу, к которому привязана подпись.",
+          "id": "S17",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; tampered_unsigned",
+          "criterion": "Подмена с правильным CRC остаётся digest_mismatch даже при точном исключении.",
+          "id": "I01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; tampered_signed",
+          "criterion": "Подпись и неверная политика не заслоняют digest_mismatch.",
+          "id": "I02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; no_manifest",
+          "criterion": "Даже точное исключение не принимает неполный пакет.",
+          "id": "I03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; path_input",
+          "criterion": "И‑118 отвергает путь без открытия.",
+          "id": "I04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; live",
+          "criterion": "Выход за стенд остаётся отказом И‑118.",
+          "id": "I05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; require_type",
+          "criterion": "Требование подписи — точный bool.",
+          "id": "N01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; policy_extra",
+          "criterion": "Чужое поле не меняет политику и не отражается в диагностике.",
+          "id": "N02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; keys_duplicate",
+          "criterion": "Дубликат ключа недопустим.",
+          "id": "N03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; public_length",
+          "criterion": "Ключ строго 32 байта.",
+          "id": "N04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; approver_id",
+          "criterion": "Неверный ID утверждающего не нормализуется.",
+          "id": "N05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; approver_duplicate",
+          "criterion": "Дубликат утверждающего недопустим.",
+          "id": "N06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; too_many_keys",
+          "criterion": "Число ключей ограничено.",
+          "id": "N07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; now_offset",
+          "criterion": "Произвольное смещение не канонический UTC.",
+          "id": "N08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; invalid_now",
+          "criterion": "Несуществующая дата now отвергается.",
+          "id": "N09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; missing_expiry",
+          "criterion": "Запись без expiry не бессрочная по умолчанию.",
+          "id": "N10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; missing_approver",
+          "criterion": "Без approver исключение не засчитывается.",
+          "id": "N11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; duplicate_exception",
+          "criterion": "Не выбираем из нескольких записей для одного ZIP.",
+          "id": "N12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; upper_hash",
+          "criterion": "Неканонический SHA‑256 отвергнут.",
+          "id": "N13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; expiry_offset",
+          "criterion": "Допустим только строгий UTC с Z.",
+          "id": "N14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; invalid_expiry",
+          "criterion": "Несуществующая дата expiry отвергнута.",
+          "id": "N15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; exception_extra",
+          "criterion": "Непредусмотренное поле не ослабляет требования.",
+          "id": "N16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; too_many_exceptions",
+          "criterion": "Ограничение реестра проверяется целиком.",
+          "id": "N17",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; exceptions_list",
+          "criterion": "Неверная форма контейнера исключений отвергнута.",
+          "id": "N18",
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 51
+      },
+      "rc": 0
+    },
+    "cleanroom": {
+      "cases": [
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; optional",
+          "criterion": "Без подписи и без требования: unsigned, не ошибка целостности.",
+          "id": "U01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; required",
+          "criterion": "Целостный пакет без подписи заблокирован явным требованием.",
+          "id": "U02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; active",
+          "criterion": "Точное исключение доверенного утверждающего до срока действует; unsigned сохраняется.",
+          "id": "U03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; equal_expiry",
+          "criterion": "Ровно expiry — исключение уже недействительно.",
+          "id": "U04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; past_expiry",
+          "criterion": "Истёкшее исключение не продлевается.",
+          "id": "U05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; foreign_approver",
+          "criterion": "Формально корректный, но не разрешённый approver не даёт исключения.",
+          "id": "U06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; wrong_zip",
+          "criterion": "Та же revision и другое тело не наследуют решение для исходного ZIP.",
+          "id": "U07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; manifest_is_not_zip",
+          "criterion": "Digest манифеста не используется как SHA‑256 ZIP.",
+          "id": "U08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; optional_with_exception",
+          "criterion": "Опциональная политика не использует даже активное исключение.",
+          "id": "U09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; revoked_approver",
+          "criterion": "После исключения утверждающего из явно переданной политики допуск не сохраняется.",
+          "id": "U10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; active_alternate",
+          "criterion": "Точная запись для другого целостного ZIP действует только для него.",
+          "id": "U11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; trusted",
+          "criterion": "Настоящая Ed25519-подпись заранее одобренного ключа проходит.",
+          "id": "S01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; trusted",
+          "criterion": "Отдельно подписанный пересогласованный пакет принят с другим отпечатком.",
+          "id": "S02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; unknown_optional",
+          "criterion": "Действительная подпись неизвестного ключа не становится доверенной при optional или исключении.",
+          "id": "S03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; bad_bits",
+          "criterion": "Изменение бита подписи остаётся отказом, активное исключение не применяется.",
+          "id": "S04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; signed_reused",
+          "criterion": "Старая подпись не подходит к изменённому ZIP с пересчитанным манифестом.",
+          "id": "S05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; signed_reused",
+          "criterion": "Обратный перенос подписи также отвергается.",
+          "id": "S06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; algorithm",
+          "criterion": "Чужой алгоритм не запускает обходной проверяющий.",
+          "id": "S07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; empty_signature",
+          "criterion": "Предъявленные пустые байты не отсутствие подписи.",
+          "id": "S08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; bool_format",
+          "criterion": "true не номер формата.",
+          "id": "S09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; bad_envelope",
+          "criterion": "Пустой словарь не unsigned.",
+          "id": "S10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; embedded_key",
+          "criterion": "Ключ, вложенный отправителем, не импортируется.",
+          "id": "S11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; unknown_id",
+          "criterion": "Допустимый формат ID не доказывает одобрение ключа.",
+          "id": "S12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; unavailable",
+          "criterion": "Отсутствующий проверяющий не выдаёт доверие и не включает исключение.",
+          "id": "S13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; verifier_error",
+          "criterion": "Сбой проверяющего не объявляется подделкой, тело исключения скрыто.",
+          "id": "S14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; truthy",
+          "criterion": "Число 1 не явный True.",
+          "id": "S15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; bad_key_id",
+          "criterion": "Ключевой ID строго нижнерегистровый SHA‑256.",
+          "id": "S16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; substituted_approved_key",
+          "criterion": "Другой одобренный ключ не равен ключу, к которому привязана подпись.",
+          "id": "S17",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; tampered_unsigned",
+          "criterion": "Подмена с правильным CRC остаётся digest_mismatch даже при точном исключении.",
+          "id": "I01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; tampered_signed",
+          "criterion": "Подпись и неверная политика не заслоняют digest_mismatch.",
+          "id": "I02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; no_manifest",
+          "criterion": "Даже точное исключение не принимает неполный пакет.",
+          "id": "I03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; path_input",
+          "criterion": "И‑118 отвергает путь без открытия.",
+          "id": "I04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; live",
+          "criterion": "Выход за стенд остаётся отказом И‑118.",
+          "id": "I05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; require_type",
+          "criterion": "Требование подписи — точный bool.",
+          "id": "N01",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; policy_extra",
+          "criterion": "Чужое поле не меняет политику и не отражается в диагностике.",
+          "id": "N02",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; keys_duplicate",
+          "criterion": "Дубликат ключа недопустим.",
+          "id": "N03",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; public_length",
+          "criterion": "Ключ строго 32 байта.",
+          "id": "N04",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; approver_id",
+          "criterion": "Неверный ID утверждающего не нормализуется.",
+          "id": "N05",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; approver_duplicate",
+          "criterion": "Дубликат утверждающего недопустим.",
+          "id": "N06",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; too_many_keys",
+          "criterion": "Число ключей ограничено.",
+          "id": "N07",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; now_offset",
+          "criterion": "Произвольное смещение не канонический UTC.",
+          "id": "N08",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; invalid_now",
+          "criterion": "Несуществующая дата now отвергается.",
+          "id": "N09",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; missing_expiry",
+          "criterion": "Запись без expiry не бессрочная по умолчанию.",
+          "id": "N10",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; missing_approver",
+          "criterion": "Без approver исключение не засчитывается.",
+          "id": "N11",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; duplicate_exception",
+          "criterion": "Не выбираем из нескольких записей для одного ZIP.",
+          "id": "N12",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; upper_hash",
+          "criterion": "Неканонический SHA‑256 отвергнут.",
+          "id": "N13",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; expiry_offset",
+          "criterion": "Допустим только строгий UTC с Z.",
+          "id": "N14",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; invalid_expiry",
+          "criterion": "Несуществующая дата expiry отвергнута.",
+          "id": "N15",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; exception_extra",
+          "criterion": "Непредусмотренное поле не ослабляет требования.",
+          "id": "N16",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; too_many_exceptions",
+          "criterion": "Ограничение реестра проверяется целиком.",
+          "id": "N17",
+          "status": "pass"
+        },
+        {
+          "basis": "И‑118/P01,P03; DESIGN.md; exceptions_list",
+          "criterion": "Неверная форма контейнера исключений отвергнута.",
+          "id": "N18",
+          "status": "pass"
+        }
+      ],
+      "counts": {
+        "fail": 0,
+        "not run": 0,
+        "pass": 51
+      },
+      "rc": 0
+    }
+  },
+  "scope": "П5 · диагностика явно заданной доверенной политики на синтетических данных"
+}

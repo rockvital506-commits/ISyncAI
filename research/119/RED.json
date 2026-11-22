@@ -1,0 +1,302 @@
+{
+  "baseline": "de5ca5b92f396ec4effc7d47e01c4aaca73aee3a",
+  "casebook_sha256": "66475c0cc9bb84575d2fb600ab1f6190ec68287865703869e81a2b461240c9c7",
+  "command": [
+    "-B",
+    "-I",
+    "-S",
+    "-X",
+    "utf8",
+    "research/119/test_bundle_trust.py"
+  ],
+  "independent_baseline_match": true,
+  "pinned_inputs": {
+    "kit/base/bundle_verify.py": "0461d0475ec8add173b102f33d2967b1db862f238ae8aef31b738ba3d8b992af",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/117/Synthetic-Bundle-117.zip": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3"
+  },
+  "rc": 1,
+  "result": {
+    "control": {
+      "mismatches_rejected": 4,
+      "openssl": "OpenSSL 3.0.20 7 Apr 2026 (Library: OpenSSL 3.0.20 7 Apr 2026)",
+      "reference_signatures_valid": 2,
+      "rfc_public_vector": true,
+      "source_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "working_port": {
+        "assess_bundle_trust": "unknown_operation",
+        "bundle": "unknown_operation",
+        "bundle_verify": "unknown_operation"
+      }
+    },
+    "counts": {
+      "fail": 51,
+      "not run": 0,
+      "pass": 0
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "U01",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U02",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U03",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U04",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U05",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U06",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U07",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U08",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U09",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U10",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "U11",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S01",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S02",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S03",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S04",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S05",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S06",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S07",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S08",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S09",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S10",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S11",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S12",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S13",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S14",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S15",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S16",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "S17",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I01",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I02",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I03",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I04",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "I05",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N01",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N02",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N03",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N04",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N05",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N06",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N07",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N08",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N09",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N10",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N11",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N12",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N13",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N14",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N15",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N16",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N17",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      },
+      {
+        "id": "N18",
+        "reason": "bundle_trust_missing",
+        "status": "fail"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "test_sha256": "9e1ba5c37a6d5916629b2e89b20bad64b93296f1d9955a5be721136adc70b698"
+}

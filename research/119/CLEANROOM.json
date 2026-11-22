@@ -1,0 +1,1359 @@
+{
+  "files": [
+    "kit/base/BUNDLE-TRUST.md",
+    "kit/base/bundle_trust.py",
+    "kit/base/bundle_verify.py",
+    "kit/base/profile_journal.py",
+    "kit/base/registry_policy.py",
+    "kit/base/schema_v2.py",
+    "research/117/Synthetic-Bundle-117.zip",
+    "research/119/CASES.json",
+    "research/119/test_bundle_trust.py"
+  ],
+  "inputs_sha256": {
+    "kit/base/BUNDLE-TRUST.md": "75561102e97519a0c6ae121e7dec92cdf72cf75773a13303f6d480ea26bd94a0",
+    "kit/base/bundle_trust.py": "f4ec8f458e36410f476cd37d9331e6769728ef4f1405a382fd1acd6b8cb0a4ec",
+    "kit/base/bundle_verify.py": "0461d0475ec8add173b102f33d2967b1db862f238ae8aef31b738ba3d8b992af",
+    "kit/base/profile_journal.py": "6868cf7a7c9a4b8f95eeb31065478c4d7f4a6321f8a73b07faab902f2ad54ce8",
+    "kit/base/registry_policy.py": "788430a67a0d456a20f5d774f768bdd9baab00041b0c51bef9f673e45e246872",
+    "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
+    "research/117/Synthetic-Bundle-117.zip": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+    "research/119/CASES.json": "66475c0cc9bb84575d2fb600ab1f6190ec68287865703869e81a2b461240c9c7",
+    "research/119/test_bundle_trust.py": "9e1ba5c37a6d5916629b2e89b20bad64b93296f1d9955a5be721136adc70b698"
+  },
+  "inputs_unchanged": true,
+  "rc": 0,
+  "result": {
+    "control": {
+      "mismatches_rejected": 4,
+      "openssl": "OpenSSL 3.0.20 7 Apr 2026 (Library: OpenSSL 3.0.20 7 Apr 2026)",
+      "reference_signatures_valid": 2,
+      "rfc_public_vector": true,
+      "source_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "working_port": {
+        "assess_bundle_trust": "unknown_operation",
+        "bundle": "unknown_operation",
+        "bundle_verify": "unknown_operation"
+      }
+    },
+    "counts": {
+      "fail": 0,
+      "not run": 0,
+      "pass": 51
+    },
+    "format": 1,
+    "os": "Linux",
+    "python": "3.11.2",
+    "rows": [
+      {
+        "id": "U01",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "optional",
+            "reason": "signature_optional",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U02",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "signature_required",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U03",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "exception",
+            "reason": "exception_active",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U04",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "exception_expired",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U05",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "exception_expired",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U06",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "exception_approver",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U07",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+              "bundle_format": 1,
+              "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "signature_required",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U08",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "signature_required",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U09",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "optional",
+            "reason": "signature_optional",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U10",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "exception_approver",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "U11",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+              "bundle_format": 1,
+              "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "exception",
+            "reason": "exception_active",
+            "signature_status": "unsigned",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S01",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity",
+            "verifier"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "satisfied",
+            "reason": "signature_verified",
+            "signature_status": "trusted_signature",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": {
+            "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+            "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+            "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S02",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity",
+            "verifier"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+              "bundle_format": 1,
+              "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "satisfied",
+            "reason": "signature_verified",
+            "signature_status": "trusted_signature",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": {
+            "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+            "message_sha256": "9b6857ba11118a2917616209d89c2cd3575aed32940693a1bdab2ba1d6a57388",
+            "signature_sha256": "de47679136b01ac917e5dbf4f2841b7eb69e0d1ca82f3d482cbb13b3f1e5572c"
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S03",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "key_not_approved",
+            "signature_status": "untrusted_signer",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S04",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity",
+            "verifier"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "mismatch",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": {
+            "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+            "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+            "signature_sha256": "783722561669e6981b122fc489c047608727b2ec01e7342a1171a17fbaaed088"
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S05",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity",
+            "verifier"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+              "bundle_format": 1,
+              "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "mismatch",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": {
+            "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+            "message_sha256": "9b6857ba11118a2917616209d89c2cd3575aed32940693a1bdab2ba1d6a57388",
+            "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S06",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity",
+            "verifier"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "mismatch",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": {
+            "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+            "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+            "signature_sha256": "de47679136b01ac917e5dbf4f2841b7eb69e0d1ca82f3d482cbb13b3f1e5572c"
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S07",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "algorithm",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S08",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "shape",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S09",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "shape",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S10",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "shape",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S11",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "shape",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S12",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "key_not_approved",
+            "signature_status": "untrusted_signer",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S13",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "verifier_unavailable",
+            "signature_status": "signature_unchecked",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S14",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity",
+            "verifier"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "verifier_error",
+            "signature_status": "signature_unchecked",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": {
+            "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+            "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+            "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S15",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity",
+            "verifier"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "verifier_result",
+            "signature_status": "signature_unchecked",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": {
+            "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+            "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+            "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S16",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "shape",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "S17",
+        "observation": {
+          "effects": [],
+          "error": null,
+          "order": [
+            "integrity",
+            "verifier"
+          ],
+          "quiet": true,
+          "result": {
+            "integrity": {
+              "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+              "bundle_format": 1,
+              "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+              "outcome": "verified",
+              "revision": 7
+            },
+            "outcome": "assessed",
+            "policy_decision": "blocked",
+            "reason": "mismatch",
+            "signature_status": "signature_invalid",
+            "trust_format": 1
+          },
+          "unchanged": true,
+          "verifier_input": {
+            "key_id": "39f713d0a644253f04529421b9f51b9b08979d08295959c4f3990ee617f5139f",
+            "message_sha256": "518c70acb5c2b3728d64dfe8ba2f975be3de70f5dca1143f67e00d764d2cce2d",
+            "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+          }
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I01",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I02",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "digest_mismatch",
+            "details": {
+              "reason": "sha256"
+            },
+            "where": "files"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I03",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "members"
+            },
+            "where": "archive"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I04",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "bytes"
+            },
+            "where": "archive"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "I05",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_incomplete",
+            "details": {
+              "reason": "stand_only"
+            },
+            "where": "target"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N01",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "policy"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N02",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "policy"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N03",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "duplicate"
+            },
+            "where": "policy"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N04",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "policy"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N05",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "policy"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N06",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "duplicate"
+            },
+            "where": "policy"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N07",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "policy"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N08",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "utc"
+            },
+            "where": "clock"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N09",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "utc"
+            },
+            "where": "clock"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N10",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "exceptions"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N11",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "exceptions"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N12",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "duplicate"
+            },
+            "where": "exceptions"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N13",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "exceptions"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N14",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "expiry"
+            },
+            "where": "exceptions"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N15",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "expiry"
+            },
+            "where": "exceptions"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N16",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "exceptions"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N17",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "limit"
+            },
+            "where": "exceptions"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      },
+      {
+        "id": "N18",
+        "observation": {
+          "effects": [],
+          "error": {
+            "code": "bundle_trust_invalid",
+            "details": {
+              "reason": "shape"
+            },
+            "where": "exceptions"
+          },
+          "order": [
+            "integrity"
+          ],
+          "quiet": true,
+          "result": null,
+          "unchanged": true,
+          "verifier_input": null
+        },
+        "status": "pass"
+      }
+    ]
+  },
+  "stderr_empty": true,
+  "tree_unchanged": true
+}

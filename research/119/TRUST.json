@@ -1,0 +1,1407 @@
+{
+  "basis": "CASES.json; CHECKOUT.json; CLEANROOM.json",
+  "iteration": "И-119",
+  "metrics": {
+    "assessed": 28,
+    "by_decision": {
+      "blocked": 22,
+      "exception": 2,
+      "optional": 2,
+      "satisfied": 2
+    },
+    "by_error": {
+      "bundle_incomplete": 3,
+      "bundle_trust_invalid": 18,
+      "digest_mismatch": 2
+    },
+    "by_signature": {
+      "signature_invalid": 10,
+      "signature_unchecked": 3,
+      "trusted_signature": 2,
+      "unsigned": 11,
+      "untrusted_signer": 2
+    },
+    "cases": 51,
+    "effect_attempts": 0,
+    "quiet_and_unchanged": true,
+    "refused": 23,
+    "verifier_calls": 8
+  },
+  "public_key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+  "references": {
+    "alternate": {
+      "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+      "bundle_format": 1,
+      "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+      "outcome": "verified",
+      "revision": 7
+    },
+    "source": {
+      "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+      "bundle_format": 1,
+      "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+      "outcome": "verified",
+      "revision": 7
+    }
+  },
+  "rows": [
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; optional",
+      "criterion": "Без подписи и без требования: unsigned, не ошибка целостности.",
+      "effects": [],
+      "error": null,
+      "id": "U01",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "optional",
+        "reason": "signature_optional",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "optional",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; required",
+      "criterion": "Целостный пакет без подписи заблокирован явным требованием.",
+      "effects": [],
+      "error": null,
+      "id": "U02",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "signature_required",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "required",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; active",
+      "criterion": "Точное исключение доверенного утверждающего до срока действует; unsigned сохраняется.",
+      "effects": [],
+      "error": null,
+      "id": "U03",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "exception",
+        "reason": "exception_active",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "active",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; equal_expiry",
+      "criterion": "Ровно expiry — исключение уже недействительно.",
+      "effects": [],
+      "error": null,
+      "id": "U04",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "exception_expired",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "equal_expiry",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; past_expiry",
+      "criterion": "Истёкшее исключение не продлевается.",
+      "effects": [],
+      "error": null,
+      "id": "U05",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "exception_expired",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "past_expiry",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; foreign_approver",
+      "criterion": "Формально корректный, но не разрешённый approver не даёт исключения.",
+      "effects": [],
+      "error": null,
+      "id": "U06",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "exception_approver",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "foreign_approver",
+      "verifier_input": null
+    },
+    {
+      "archive": "alternate",
+      "basis": "И‑118/P01,P03; DESIGN.md; wrong_zip",
+      "criterion": "Та же revision и другое тело не наследуют решение для исходного ZIP.",
+      "effects": [],
+      "error": null,
+      "id": "U07",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+          "bundle_format": 1,
+          "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "signature_required",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "wrong_zip",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; manifest_is_not_zip",
+      "criterion": "Digest манифеста не используется как SHA‑256 ZIP.",
+      "effects": [],
+      "error": null,
+      "id": "U08",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "signature_required",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "manifest_is_not_zip",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; optional_with_exception",
+      "criterion": "Опциональная политика не использует даже активное исключение.",
+      "effects": [],
+      "error": null,
+      "id": "U09",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "optional",
+        "reason": "signature_optional",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "optional_with_exception",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; revoked_approver",
+      "criterion": "После исключения утверждающего из явно переданной политики допуск не сохраняется.",
+      "effects": [],
+      "error": null,
+      "id": "U10",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "exception_approver",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "revoked_approver",
+      "verifier_input": null
+    },
+    {
+      "archive": "alternate",
+      "basis": "И‑118/P01,P03; DESIGN.md; active_alternate",
+      "criterion": "Точная запись для другого целостного ZIP действует только для него.",
+      "effects": [],
+      "error": null,
+      "id": "U11",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+          "bundle_format": 1,
+          "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "exception",
+        "reason": "exception_active",
+        "signature_status": "unsigned",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "active_alternate",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; trusted",
+      "criterion": "Настоящая Ed25519-подпись заранее одобренного ключа проходит.",
+      "effects": [],
+      "error": null,
+      "id": "S01",
+      "order": [
+        "integrity",
+        "verifier"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "satisfied",
+        "reason": "signature_verified",
+        "signature_status": "trusted_signature",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "trusted",
+      "verifier_input": {
+        "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+        "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+        "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+      }
+    },
+    {
+      "archive": "alternate",
+      "basis": "И‑118/P01,P03; DESIGN.md; trusted",
+      "criterion": "Отдельно подписанный пересогласованный пакет принят с другим отпечатком.",
+      "effects": [],
+      "error": null,
+      "id": "S02",
+      "order": [
+        "integrity",
+        "verifier"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+          "bundle_format": 1,
+          "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "satisfied",
+        "reason": "signature_verified",
+        "signature_status": "trusted_signature",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "trusted",
+      "verifier_input": {
+        "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+        "message_sha256": "9b6857ba11118a2917616209d89c2cd3575aed32940693a1bdab2ba1d6a57388",
+        "signature_sha256": "de47679136b01ac917e5dbf4f2841b7eb69e0d1ca82f3d482cbb13b3f1e5572c"
+      }
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; unknown_optional",
+      "criterion": "Действительная подпись неизвестного ключа не становится доверенной при optional или исключении.",
+      "effects": [],
+      "error": null,
+      "id": "S03",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "key_not_approved",
+        "signature_status": "untrusted_signer",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "unknown_optional",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; bad_bits",
+      "criterion": "Изменение бита подписи остаётся отказом, активное исключение не применяется.",
+      "effects": [],
+      "error": null,
+      "id": "S04",
+      "order": [
+        "integrity",
+        "verifier"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "mismatch",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "bad_bits",
+      "verifier_input": {
+        "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+        "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+        "signature_sha256": "783722561669e6981b122fc489c047608727b2ec01e7342a1171a17fbaaed088"
+      }
+    },
+    {
+      "archive": "alternate",
+      "basis": "И‑118/P01,P03; DESIGN.md; signed_reused",
+      "criterion": "Старая подпись не подходит к изменённому ZIP с пересчитанным манифестом.",
+      "effects": [],
+      "error": null,
+      "id": "S05",
+      "order": [
+        "integrity",
+        "verifier"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "aeb8d8224efe9dc606193d159f3b405ad780e64cdee85a4d7591ce4afd740c4f",
+          "bundle_format": 1,
+          "manifest_digest": "1f79bb9e6a59fc829403a5c3fed9eb9998f4d3cb2452191d4911500e2e4e9430",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "mismatch",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "signed_reused",
+      "verifier_input": {
+        "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+        "message_sha256": "9b6857ba11118a2917616209d89c2cd3575aed32940693a1bdab2ba1d6a57388",
+        "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+      }
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; signed_reused",
+      "criterion": "Обратный перенос подписи также отвергается.",
+      "effects": [],
+      "error": null,
+      "id": "S06",
+      "order": [
+        "integrity",
+        "verifier"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "mismatch",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "signed_reused",
+      "verifier_input": {
+        "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+        "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+        "signature_sha256": "de47679136b01ac917e5dbf4f2841b7eb69e0d1ca82f3d482cbb13b3f1e5572c"
+      }
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; algorithm",
+      "criterion": "Чужой алгоритм не запускает обходной проверяющий.",
+      "effects": [],
+      "error": null,
+      "id": "S07",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "algorithm",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "algorithm",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; empty_signature",
+      "criterion": "Предъявленные пустые байты не отсутствие подписи.",
+      "effects": [],
+      "error": null,
+      "id": "S08",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "shape",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "empty_signature",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; bool_format",
+      "criterion": "true не номер формата.",
+      "effects": [],
+      "error": null,
+      "id": "S09",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "shape",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "bool_format",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; bad_envelope",
+      "criterion": "Пустой словарь не unsigned.",
+      "effects": [],
+      "error": null,
+      "id": "S10",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "shape",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "bad_envelope",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; embedded_key",
+      "criterion": "Ключ, вложенный отправителем, не импортируется.",
+      "effects": [],
+      "error": null,
+      "id": "S11",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "shape",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "embedded_key",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; unknown_id",
+      "criterion": "Допустимый формат ID не доказывает одобрение ключа.",
+      "effects": [],
+      "error": null,
+      "id": "S12",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "key_not_approved",
+        "signature_status": "untrusted_signer",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "unknown_id",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; unavailable",
+      "criterion": "Отсутствующий проверяющий не выдаёт доверие и не включает исключение.",
+      "effects": [],
+      "error": null,
+      "id": "S13",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "verifier_unavailable",
+        "signature_status": "signature_unchecked",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "unavailable",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; verifier_error",
+      "criterion": "Сбой проверяющего не объявляется подделкой, тело исключения скрыто.",
+      "effects": [],
+      "error": null,
+      "id": "S14",
+      "order": [
+        "integrity",
+        "verifier"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "verifier_error",
+        "signature_status": "signature_unchecked",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "verifier_error",
+      "verifier_input": {
+        "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+        "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+        "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+      }
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; truthy",
+      "criterion": "Число 1 не явный True.",
+      "effects": [],
+      "error": null,
+      "id": "S15",
+      "order": [
+        "integrity",
+        "verifier"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "verifier_result",
+        "signature_status": "signature_unchecked",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "truthy",
+      "verifier_input": {
+        "key_id": "6b86b41461678ccd19ee73c5475fd00e3f98b14df209ade4986d17c521444a57",
+        "message_sha256": "dea4a66e4e68315693db1f0f52fc60d71ff9cb77268d20db4a8b0000f6bec68e",
+        "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+      }
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; bad_key_id",
+      "criterion": "Ключевой ID строго нижнерегистровый SHA‑256.",
+      "effects": [],
+      "error": null,
+      "id": "S16",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "shape",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "bad_key_id",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; substituted_approved_key",
+      "criterion": "Другой одобренный ключ не равен ключу, к которому привязана подпись.",
+      "effects": [],
+      "error": null,
+      "id": "S17",
+      "order": [
+        "integrity",
+        "verifier"
+      ],
+      "quiet": true,
+      "result": {
+        "integrity": {
+          "archive_sha256": "5c95478a90f6328c21068527d44ed35462f1a5f36b8120835b49ef85f86494d3",
+          "bundle_format": 1,
+          "manifest_digest": "300af66638088f51fc2e079d2cbf75bc30144f62f2e0c5ef8a12b6a7fc54bee5",
+          "outcome": "verified",
+          "revision": 7
+        },
+        "outcome": "assessed",
+        "policy_decision": "blocked",
+        "reason": "mismatch",
+        "signature_status": "signature_invalid",
+        "trust_format": 1
+      },
+      "unchanged": true,
+      "variant": "substituted_approved_key",
+      "verifier_input": {
+        "key_id": "39f713d0a644253f04529421b9f51b9b08979d08295959c4f3990ee617f5139f",
+        "message_sha256": "518c70acb5c2b3728d64dfe8ba2f975be3de70f5dca1143f67e00d764d2cce2d",
+        "signature_sha256": "9db041de812b0aa28a129cf53b2b3e7d63356ff78200c74083758fb2023f71a1"
+      }
+    },
+    {
+      "archive": "tampered",
+      "basis": "И‑118/P01,P03; DESIGN.md; tampered_unsigned",
+      "criterion": "Подмена с правильным CRC остаётся digest_mismatch даже при точном исключении.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "I01",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "tampered_unsigned",
+      "verifier_input": null
+    },
+    {
+      "archive": "tampered",
+      "basis": "И‑118/P01,P03; DESIGN.md; tampered_signed",
+      "criterion": "Подпись и неверная политика не заслоняют digest_mismatch.",
+      "effects": [],
+      "error": {
+        "code": "digest_mismatch",
+        "details": {
+          "reason": "sha256"
+        },
+        "where": "files"
+      },
+      "id": "I02",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "tampered_signed",
+      "verifier_input": null
+    },
+    {
+      "archive": "incomplete",
+      "basis": "И‑118/P01,P03; DESIGN.md; no_manifest",
+      "criterion": "Даже точное исключение не принимает неполный пакет.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "members"
+        },
+        "where": "archive"
+      },
+      "id": "I03",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "no_manifest",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; path_input",
+      "criterion": "И‑118 отвергает путь без открытия.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "bytes"
+        },
+        "where": "archive"
+      },
+      "id": "I04",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "path_input",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; live",
+      "criterion": "Выход за стенд остаётся отказом И‑118.",
+      "effects": [],
+      "error": {
+        "code": "bundle_incomplete",
+        "details": {
+          "reason": "stand_only"
+        },
+        "where": "target"
+      },
+      "id": "I05",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "live",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; require_type",
+      "criterion": "Требование подписи — точный bool.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "policy"
+      },
+      "id": "N01",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "require_type",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; policy_extra",
+      "criterion": "Чужое поле не меняет политику и не отражается в диагностике.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "policy"
+      },
+      "id": "N02",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "policy_extra",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; keys_duplicate",
+      "criterion": "Дубликат ключа недопустим.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "duplicate"
+        },
+        "where": "policy"
+      },
+      "id": "N03",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "keys_duplicate",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; public_length",
+      "criterion": "Ключ строго 32 байта.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "policy"
+      },
+      "id": "N04",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "public_length",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; approver_id",
+      "criterion": "Неверный ID утверждающего не нормализуется.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "policy"
+      },
+      "id": "N05",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "approver_id",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; approver_duplicate",
+      "criterion": "Дубликат утверждающего недопустим.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "duplicate"
+        },
+        "where": "policy"
+      },
+      "id": "N06",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "approver_duplicate",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; too_many_keys",
+      "criterion": "Число ключей ограничено.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "policy"
+      },
+      "id": "N07",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "too_many_keys",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; now_offset",
+      "criterion": "Произвольное смещение не канонический UTC.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "utc"
+        },
+        "where": "clock"
+      },
+      "id": "N08",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "now_offset",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; invalid_now",
+      "criterion": "Несуществующая дата now отвергается.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "utc"
+        },
+        "where": "clock"
+      },
+      "id": "N09",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "invalid_now",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; missing_expiry",
+      "criterion": "Запись без expiry не бессрочная по умолчанию.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "exceptions"
+      },
+      "id": "N10",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "missing_expiry",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; missing_approver",
+      "criterion": "Без approver исключение не засчитывается.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "exceptions"
+      },
+      "id": "N11",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "missing_approver",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; duplicate_exception",
+      "criterion": "Не выбираем из нескольких записей для одного ZIP.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "duplicate"
+        },
+        "where": "exceptions"
+      },
+      "id": "N12",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "duplicate_exception",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; upper_hash",
+      "criterion": "Неканонический SHA‑256 отвергнут.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "exceptions"
+      },
+      "id": "N13",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "upper_hash",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; expiry_offset",
+      "criterion": "Допустим только строгий UTC с Z.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "expiry"
+        },
+        "where": "exceptions"
+      },
+      "id": "N14",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "expiry_offset",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; invalid_expiry",
+      "criterion": "Несуществующая дата expiry отвергнута.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "expiry"
+        },
+        "where": "exceptions"
+      },
+      "id": "N15",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "invalid_expiry",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; exception_extra",
+      "criterion": "Непредусмотренное поле не ослабляет требования.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "exceptions"
+      },
+      "id": "N16",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "exception_extra",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; too_many_exceptions",
+      "criterion": "Ограничение реестра проверяется целиком.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "limit"
+        },
+        "where": "exceptions"
+      },
+      "id": "N17",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "too_many_exceptions",
+      "verifier_input": null
+    },
+    {
+      "archive": "source",
+      "basis": "И‑118/P01,P03; DESIGN.md; exceptions_list",
+      "criterion": "Неверная форма контейнера исключений отвергнута.",
+      "effects": [],
+      "error": {
+        "code": "bundle_trust_invalid",
+        "details": {
+          "reason": "shape"
+        },
+        "where": "exceptions"
+      },
+      "id": "N18",
+      "order": [
+        "integrity"
+      ],
+      "quiet": true,
+      "result": null,
+      "unchanged": true,
+      "variant": "exceptions_list",
+      "verifier_input": null
+    }
+  ]
+}
