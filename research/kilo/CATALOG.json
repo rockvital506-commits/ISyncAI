@@ -493,6 +493,7 @@
     "ENTITIES.json",
     "GAPS-2.md",
     "GAPS.md",
+    "INSTALL-KILO.md",
     "KILO-SPEC.json",
     "KILO-VSCODE.md",
     "P00-ENVIRONMENT-SETUP.md",
@@ -543,7 +544,7 @@
     "CATALOG.json"
   ],
   "counters": {
-    "files_total": 57,
+    "files_total": 58,
     "probes_cards": 12
   },
   "generated": "2026-11-24",
@@ -578,6 +579,7 @@
   "guides": [
     "CRITIQUE-AND-RESEARCH-PLAN.md",
     "DECISION-ROADMAP.md",
+    "INSTALL-KILO.md",
     "KILO-VSCODE.md",
     "P00-ENVIRONMENT-SETUP.md",
     "PLAN-PROBES.md",
@@ -603,5 +605,10 @@
     "seal": "research/122/AgentContractKit-Iteration-122.zip",
     "seal_hash_source": "research/122/SEAL.json (не дублируется здесь: CATALOG входит в печать)"
   },
-  "debt_closure": "DEBT-CLOSURE.md"
+  "debt_closure": "DEBT-CLOSURE.md",
+  "product_docs": {
+    "install": "INSTALL-KILO.md",
+    "basis": "12 проб 2026-11-24",
+    "status": "готов к применению"
+  }
 }
