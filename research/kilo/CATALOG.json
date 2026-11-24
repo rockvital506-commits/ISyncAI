@@ -527,6 +527,7 @@
     "examples/kilo.jsonc.example",
     "examples/state-bad.json",
     "examples/state-example.json",
+    "probes/E25-ENTRY-CONFLICT.md",
     "probes/E27-SUBAGENT.md",
     "probes/P00-ENV.md",
     "probes/P1-AUTOLOAD.md",
@@ -541,8 +542,8 @@
     "CATALOG.json"
   ],
   "counters": {
-    "files_total": 55,
-    "probes_cards": 10
+    "files_total": 56,
+    "probes_cards": 11
   },
   "generated": "2026-11-24",
   "probes": {
