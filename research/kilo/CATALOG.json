@@ -575,7 +575,9 @@
   "acceptance": {
     "dir": "acceptance/",
     "draft": "acceptance/ACCEPTANCE-122-DRAFT.md",
-    "status": "НЕ ПРИНЯТА — проект для решения владельца",
-    "decision": "ожидается"
+    "status": "ПРИНЯТА 2026-11-24 (вариант A, ограничения О1–О6)",
+    "decision": "владелец, 2026-11-24",
+    "seal": "research/122/AgentContractKit-Iteration-122.zip",
+    "seal_hash_source": "research/122/SEAL.json (не дублируется здесь: CATALOG входит в печать)"
   }
 }

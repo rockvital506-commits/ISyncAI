@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru"><meta charset="utf-8"><title>Итерация 122 · Kilo</title>
+<style>
+body{font:16px/1.55 system-ui,sans-serif;max-width:58rem;margin:3rem auto;padding:0 1.2rem;color:#1b1f24}
+h1{font-size:1.7rem;margin-bottom:.2rem} .sub{color:#5b6572;margin-bottom:2rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0} th,td{border-bottom:1px solid #e2e6ea;padding:.5rem;text-align:left;vertical-align:top}
+th{background:#f6f8fa;font-weight:600} .s-pass{color:#1a7f37;font-weight:600} .s-partial{color:#9a6700;font-weight:600}
+.s-fail{color:#b3261e;font-weight:600} code{background:#f6f8fa;padding:.1rem .35rem;border-radius:4px}
+</style>
+<h1>Итерация 122 · Kilo: поверхность, чтение правил и права — приёмка восьми проб</h1>
+<p class=sub>Ф5. Адаптеры: Arena / Kilo / Copilot · 2026-11-24 · ветка <code>arena/4e000a5e-isyncai</code> ·
+вердикт <code>accepted</code></p>
+<h2>Окружение</h2><table><tr><th>VS Code</th><td>1.147.0</td></tr>
+<tr><th>Kilo Code</th><td>7.8.32</td></tr>
+<tr><th>CLI-сервер</th><td>подключено, порт 4096</td></tr>
+<tr><th>Провайдер</th><td>не подключён (осознанное решение владельца)</td></tr>
+<tr><th>Модель</th><td>Auto Free (kilo-auto/free) — маршрутизатор, не одна модель</td></tr>
+<tr><th>Окно по счётчику</th><td>256.0K на 2026-11-24</td></tr>
+<tr><th>Мастер автоодобрения</th><td>выключен; включался намеренно только для П3 и П4</td></tr>
+<tr><th>Права</th><td>bash ask, edit ask, read allow (*.env deny), external_directory ask</td></tr>
+<tr><th>Стенд</th><td>D:\kilo-stand-122, p1–p6</td></tr>
+<tr><th>Исполнитель проб</th><td>владелец; интерпретация — агент</td></tr></table>
+<h2>Проверки (10)</h2>
+<table><tr><th>#</th><th>Проверка</th><th>Статус</th><th>Основание</th></tr><tr><td>1</td><td>Пробы выполнены в согласованной среде с записью версий</td><td class=s-pass>pass</td><td>probes/P00-ENV.md</td></tr>
+<tr><td>2</td><td>Каждая проба оформлена отдельной карточкой (8 обязательных + P00)</td><td class=s-pass>pass</td><td>probes/</td></tr>
+<tr><td>3</td><td>Уровни не смешаны: чтение подтверждено цитатой и источником</td><td class=s-pass>pass</td><td>П1, PROBES-RESULT §1</td></tr>
+<tr><td>4</td><td>Точка входа подтверждена наблюдением, а не документацией</td><td class=s-pass>pass</td><td>П1, П2</td></tr>
+<tr><td>5</td><td>Старшинство AGENTS.md: чтение доказано, конфликт значений — нет</td><td class=s-partial>partial</td><td>П3, GAPS-2 E25</td></tr>
+<tr><td>6</td><td>0 fail среди обязательных проб</td><td class=s-pass>pass</td><td>PROBES-RESULT §1</td></tr>
+<tr><td>7</td><td>Модель прав измерена: deny &gt; мастер &gt; ask</td><td class=s-pass>pass</td><td>П4, П5, П7</td></tr>
+<tr><td>8</td><td>Опровергнутые утверждения зафиксированы, а не сглажены</td><td class=s-pass>pass</td><td>PROBES-RESULT §3, C19, C27</td></tr>
+<tr><td>9</td><td>Ограничения free-тарифа внесены в критерии</td><td class=s-pass>pass</td><td>TARGETS §3.4, C31, S23–S25</td></tr>
+<tr><td>10</td><td>Отчёт с basis/criterion для каждой проверки</td><td class=s-pass>pass</td><td>ITERATION.json</td></tr></table>
+<h2>Ограничения</h2><ul><li><b>О1</b> — Выборка — одна модель Auto Free (маршрутизатор) на дату 2026-11-24. <i>перенос результатов на другую модель — not run</i></li>
+<li><b>О2</b> — Окно сессии нестабильно (маршрутизация). <i>окно сверять по счётчику в начале каждой сессии</i></li>
+<li><b>О3</b> — Целостность чужого проекта обеспечивается внешним контролем, не правилами Kilo. <i>Ф6 обязательна, а не желательна</i></li>
+<li><b>О4</b> — Защита секретов средствами правил не гарантируется. <i>в документации Kit запрещена формулировка «секреты не утекут»</i></li>
+<li><b>О5</b> — Обход через субагента не проверен (E27). <i>проба-долг, не блокер И-122</i></li>
+<li><b>О6</b> — Автосжатие на пороге не наблюдалось. <i>проба-долг И-126</i></li></ul>
+<h2>Печать</h2>
+<p>20 файлов, 219858 байт. SHA-256: <code>e94b062c36a9dac591b167c4cbda753ac064a9b61e2a186955879720b94d7ea2</code></p>
+<p>Каждая карточка пробы входит в архив байтами — проверяющий видит те же файлы.</p>
+<h2>Чего приёмка не утверждает</h2><ul><li>что поведение повторится на другой модели, версии расширения или ОС</li><li>что секреты защищены правилами Kilo — опровергнуто П7</li><li>что AGENTS.md неизменяем — опровергнуто П3</li><li>что Kit работает как продукт: проверена поверхность Kilo, а не продукт</li><li>что воспроизводимость подтверждена: это И-125</li></ul>
+</html>
