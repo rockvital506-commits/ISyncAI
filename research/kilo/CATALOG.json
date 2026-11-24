@@ -540,12 +540,13 @@
     "probes/P6-RELOAD.md",
     "probes/P7-ENV-MASTER.md",
     "probes/P8-CONTEXT.md",
+    "probes/RECIPE-DRYRUN.md",
     "spec_check.py",
     "CATALOG.json"
   ],
   "counters": {
-    "files_total": 58,
-    "probes_cards": 12
+    "files_total": 59,
+    "probes_cards": 13
   },
   "generated": "2026-11-24",
   "probes": {
@@ -574,7 +575,8 @@
       "повторяемость": "И-125",
       "E36": "закрыта наблюдением 2026-11-24 (универсальный механизм найден)",
       "E37": "ОТКРЫТА — конфликт двух загруженных источников"
-    }
+    },
+    "recipe_dryrun": "probes/RECIPE-DRYRUN.md"
   },
   "guides": [
     "CRITIQUE-AND-RESEARCH-PLAN.md",
