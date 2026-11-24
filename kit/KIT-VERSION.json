@@ -1,8 +1,9 @@
 {
   "files": {
-    "kit/LAYERS.md": "437666700f9c2f6c55c9c6475b4eeadad1737a4731f4a7bc868be261a05c7a34",
+    "kit/LAYERS.md": "54b3ca4063c94e6f23faa0cbc01562944c6c3961bcaa1c6cb59f1509e1ef16c0",
     "kit/PREVIEW-RULE.md": "e321f9c245a0873b515427c682f9766522e78c72234a2febeda77138a42515a8",
     "kit/RENDER-RULE.md": "620c77196b9ebf6d3432f00841b05c8b3cb9edd232a950af3a98b3c3330ec046",
+    "kit/SESSION-CLI.md": "860c1526a00d608d0555a2f53997f1a049e7578eb03375792658f93259c64052",
     "kit/base/BUNDLE-ROLLBACK.md": "b2feedb660a66b6c76a2885fd59d61804f64df9124c8d6200a9aa7e7d41ca3df",
     "kit/base/BUNDLE-TRUST.md": "75561102e97519a0c6ae121e7dec92cdf72cf75773a13303f6d480ea26bd94a0",
     "kit/base/BUNDLE-VERIFY.md": "b844f606a435c45d0cdc468558ad718d8bae8c1e62f3a6e44b729729338c1446",
@@ -38,10 +39,11 @@
     "kit/base/simulation.py": "395b2c08d0624e55a6c84ea23a93835cf8ece79513481bd9cf93f333d22e77f9",
     "kit/preview_rule.py": "c7367b3c33651dd2cb876601025ca53517d61d644c6e71817111a28f9c176229",
     "kit/render_rule.py": "f2a858f51ac29c084a3d2b2e0cafff533b13a5f4928a2193e1e6ca42127d11c0",
-    "kit/verify_candidate.py": "24640ae577331b0ccb02542d1070b4519077b73f93dcc2813398d228beeb6e05"
+    "kit/session_cli.py": "41a6b23338a5a0e9fdf7564756df6d94c70aeeb79ec71e791e1154318c3cf115",
+    "kit/verify_candidate.py": "5dee05cf15894318222c12e668438b23233102055513d8272bf26e0ddce563ca"
   },
   "format": 1,
   "scope": "source-l0-only",
   "status": "candidate",
-  "version": "0.2.0-mvp.4"
+  "version": "0.2.0-mvp.5"
 }
