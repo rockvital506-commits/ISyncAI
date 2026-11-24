@@ -4,7 +4,7 @@
 Зачем. Тесты итераций 105/107/108/109 — замороженные акты приёмки внутри печатей.
 Они проверяли поведение своего времени и с тех пор разошлись с кодом намеренно
 (см. research/audit/A-002-DIAGNOSIS.md). Править их нельзя: сломается ответ на
-вопрос «чем проверяли И-NNN». Живой регрессии у ядра не было.
+вопрос «чем проверяли И-NNN». Проверенные расхождения объяснены последующими изменениями; это не доказывает отсутствие других дефектов.
 
 Этот файл — живая проверка: он сверяет ТЕКУЩИЙ код с документами (kit/base/*.md),
 а не со снимками. Плюс «каталог дрейфа»: 20 известных расхождений закреплены
@@ -19,7 +19,9 @@
 """
 from __future__ import annotations
 
+import copy
 import json
+import re
 import sys
 import tempfile
 from hashlib import sha256
@@ -105,24 +107,73 @@ def card(ident='Q-1', scope='docs', kind='protocol', text='Сверяй свид
 
 # ---------------------------------------------------------------- проверки
 
+MATRIX_REFERENCE = {
+    'read':    ('available', 'available', 'available'),
+    'create':  ('forbidden', 'available', 'available'),
+    'list':    ('planned',   'available', 'available'),
+    'edit':    ('forbidden', 'available', 'available'),
+    'suspend': ('forbidden', 'available', 'available'),
+    'resume':  ('forbidden', 'available', 'available'),
+    'revoke':  ('forbidden', 'available', 'available'),
+    'delete':  ('forbidden', 'available', 'available'),
+}
+MATRIX_CODES = {'available': None, 'planned': 'operation_unavailable',
+                'forbidden': 'system_immutable'}
+
+
+def parse_matrix(text):
+    """Строго читаем единственную таблицу L0/L1/L2, отказываемся от неполных данных."""
+    lines = text.splitlines()
+    header = '| Операция | L0 | L1 | L2 |'
+    if lines.count(header) != 1:
+        raise ValueError('не найдена единственная таблица операций')
+    start = lines.index(header) + 2
+    rows = {}
+    for line in lines[start:]:
+        if not line.startswith('|'):
+            break
+        cells = [x.strip() for x in line.strip().strip('|').split('|')]
+        if len(cells) != 4:
+            raise ValueError('неверная строка таблицы')
+        match = re.match(r'^`([a-z]+)`', cells[0])
+        if not match or match.group(1) in rows:
+            raise ValueError('неверная или повторная операция')
+        states = tuple(x.strip('`') for x in cells[1:])
+        if any(x not in MATRIX_CODES for x in states):
+            raise ValueError('неизвестное состояние')
+        rows[match.group(1)] = states
+    if set(rows) != set(MATRIX_REFERENCE):
+        raise ValueError('неполная или расширенная таблица операций')
+    # Документ также должен сохранять отображение состояний в диагностические коды.
+    mapping = '`available` имеет `code: null`, `planned` — `operation_unavailable`, `forbidden` — `system_immutable`'
+    if mapping not in text:
+        raise ValueError('описание кодов состояний изменилось или отсутствует')
+    return rows
+
+
+def compare_matrix(text, live):
+    documented = parse_matrix(text)
+    out = []
+    if set(live) != set(MATRIX_REFERENCE):
+        out.append('код: операции матрицы не совпадают с эталоном')
+    for op, reference in MATRIX_REFERENCE.items():
+        for pos, area in enumerate(('L0', 'L1', 'L2')):
+            state = documented[op][pos]
+            if state != reference[pos]:
+                out.append(f'{op}/{area}: документ={state}, эталон={reference[pos]}')
+            actual = live.get(op, {}).get(area)
+            want = {'state': state, 'code': MATRIX_CODES[state]}
+            if actual != want:
+                out.append(f'{op}/{area}: документ={want}, код={actual}')
+        if set(live.get(op, {})) != {'L0', 'L1', 'L2'}:
+            out.append(f'{op}: неполный или расширенный набор областей')
+    return out
+
+
 def check_matrix():
-    """OPERATION-MATRIX.md: таблица 8×3 совпадает с исполняемой матрицей."""
-    documented = {
-        'read':    {'L0': 'available', 'L1': 'available', 'L2': 'available'},
-        'create':  {'L0': 'forbidden', 'L1': 'available', 'L2': 'available'},
-        'list':    {'L0': 'planned',   'L1': 'available', 'L2': 'available'},
-        'edit':    {'L0': 'forbidden', 'L1': 'available', 'L2': 'available'},
-        'suspend': {'L0': 'forbidden', 'L1': 'available', 'L2': 'available'},
-        'resume':  {'L0': 'forbidden', 'L1': 'available', 'L2': 'available'},
-        'revoke':  {'L0': 'forbidden', 'L1': 'available', 'L2': 'available'},
-        'delete':  {'L0': 'forbidden', 'L1': 'available', 'L2': 'available'},
-    }
-    live = store.operation_matrix()
-    bad = [f'{op}/{area}: документ={want}, код={live[op][area]["state"]}'
-           for op, areas in documented.items()
-           for area, want in areas.items() if live[op][area]['state'] != want]
-    return {'name': 'матрица 8×3 против OPERATION-MATRIX.md',
-            'cells': sum(len(v) for v in documented.values()), 'mismatches': bad}
+    text = (ROOT / 'kit/base/OPERATION-MATRIX.md').read_text(encoding='utf-8')
+    return {'name': 'матрица 8×3 против OPERATION-MATRIX.md', 'cases': 24,
+            'mismatches': compare_matrix(text, store.operation_matrix())}
 
 
 def check_schema_scope():
@@ -134,7 +185,7 @@ def check_schema_scope():
             session = PlanSession(layout, profile_id='Pilot')
             try:
                 plan = session.plan(card(scope=scope))
-                got, detail = True, plan['outcome']
+                got, detail = plan.get('outcome') == 'planned', plan.get('outcome')
             except store.StoreError as error:
                 got, detail = False, error.diagnostic()['code']
         if got != must_pass:
@@ -171,7 +222,7 @@ def check_schema_parent():
             got = session.plan(card())
             out.append(f'отсутствующий родитель: код выдал {got["outcome"]} вместо отказа')
         except store.StoreError as error:
-            if error.diagnostic()['code'] not in ('parent', 'invalid_entry'):
+            if error.diagnostic()['code'] != 'parent':
                 out.append(f'отсутствующий родитель: неожиданный код {error.diagnostic()["code"]}')
     return {'name': 'родитель записи против SCHEMA-V2.md', 'cases': 2, 'mismatches': out}
 
@@ -241,7 +292,7 @@ def check_l1_format():
 
 
 def check_kinds_and_layers():
-    """И-110 DESIGN: create принимает любой из 5 видов; L2 доступен через карточку."""
+    """Четыре дочерних вида в L1 и правило в L2 через карточку."""
     out = []
     kinds = ('rule', 'constraint', 'protocol', 'preference')
     for kind in kinds:
@@ -312,29 +363,28 @@ def check_tickets():
 
 
 def check_l0_immutable():
-    """OPERATION-MATRIX.md: мутации L0 запрещены при любой формулировке."""
+    """Два отдельных сценария L0, не утверждение обо всех формулировках."""
     out = []
-    for phrase in ('Создай черновик правила Q-3 в L0, постоянное, по контракту S-1, '
-                   'область «docs», название «П», основание «Н», критерий «Е»: текст.',
-                   'Покажи правила в L0.'):
+    scenarios = (
+        ('Создай черновик правила Q-3 в L0, постоянное, по контракту S-1, '
+         'область «docs», название «П», основание «Н», критерий «Е»: текст.', 'system_immutable'),
+        ('Покажи правила в L0.', 'operation_unavailable'),
+    )
+    for phrase, expected_code in scenarios:
         with tempfile.TemporaryDirectory() as tmp:
             layout = make_workspace(tmp)
             session = PlanSession(layout, profile_id='Pilot')
             before = tree_digest(tmp)
             try:
                 got = session.plan(compile_prompt(phrase))
-                # OPERATION-MATRIX.md строка 17: у мутаций L0 — system_immutable
-                # (карточка отвергает сразу), у list — planned даёт operation_unavailable.
-                # Любой исход, кроме этих двух, означал бы, что L0 стал изменяемым.
-                if got['outcome'] != 'rejected':
-                    out.append(f'L0: исход {got["outcome"]} вместо rejected')
+                out.append(f'L0: получен исход {got.get("outcome")} вместо отказа {expected_code}')
             except store.StoreError as error:
                 code = error.diagnostic()['code']
-                if code not in ('system_immutable', 'operation_unavailable'):
-                    out.append(f'L0: код {code} вместо system_immutable/operation_unavailable')
+                if code != expected_code:
+                    out.append(f'L0: код {code} вместо {expected_code}')
             if tree_digest(tmp) != before:
                 out.append('L0: дерево изменилось')
-    return {'name': 'неизменность L0 против OPERATION-MATRIX.md', 'cases': 2, 'mismatches': out}
+    return {'name': 'два сценария L0 против OPERATION-MATRIX.md', 'cases': 2, 'mismatches': out}
 
 
 def check_code():
@@ -369,7 +419,7 @@ def check_code():
                              'по контракту S-1, область «docs», название «П», '
                              'основание «Н», критерий «Е»: текст.')
         seen['system_immutable'] = got.get('code') if got['outcome'] == 'rejected' else got['outcome']
-    if seen.get('parent') not in ('parent', 'invalid_entry'):
+    if seen.get('parent') != 'parent':
         out.append(f'отсутствующий родитель дал {seen.get("parent")!r}')
     if seen.get('scope_outside') != 'parent':
         out.append(f'scope вне родителя дал {seen.get("scope_outside")!r}, ждали parent (A4)')
@@ -378,80 +428,115 @@ def check_code():
     return {'name': 'коды ошибок против OPERATION-MATRIX.md A4', 'cases': 3, 'mismatches': out}
 
 
-def check_known_drift():
-    """Каталог дрейфа: ровно 20 известных расхождений, ни больше ни меньше."""
-    import importlib.util
+def current_cases(iteration, cases):
+    """Ожидаемое поведение сегодня: точечные замены к историческим ожиданиям."""
+    cases = copy.deepcopy(cases)
+    by_id = {case['id']: case for case in cases}
+    if len(by_id) != len(cases) or not set(KNOWN_DRIFT[iteration]) <= set(by_id):
+        raise ValueError('повторные или отсутствующие ID случаев')
+    if iteration == 105:
+        by_id['P02-create']['expected']['exact_append'] = False
+        by_id['N12-no-parent']['expected']['error']['code'] = 'parent'
+    elif iteration == 107:
+        # Старый тест create/L2 вызывает нативный create L1 после проверки допуска L2.
+        by_id['M-create-L2']['expected'] = copy.deepcopy(by_id['M-create-L1']['expected'])
+        for ident in KNOWN_DRIFT[107]:
+            if ident == 'M-create-L2':
+                continue
+            by_id[ident]['expected'] = {'ok': True, 'changed': [], 'l0_l2_unchanged': True,
+                                         'registry_untouched': True,
+                                         'route': {'state': 'available', 'code': None}}
+    elif iteration == 108:
+        for ident in KNOWN_DRIFT[108]:
+            expected = by_id[ident]['expected']
+            expected['missing'].insert(0, {'field': 'persistence', 'reason': 'absent'})
+            expected['questions'].insert(0, {'field': 'persistence', 'text':
+                'Как трактовать запрос: как постоянное изменение реестра, временное указание, предложение или гипотезу?'})
+            expected.update(code='missing_params', outcome='missing_params')
+    elif iteration == 109:
+        for ident, start in (('N16-project', 7), ('N28-kind', 4)):
+            by_id[ident]['expected'] = {'ok': True, 'outcome': 'planned', 'dry_run': True,
+                'valid_ticket': True, 'exact_preview': False, 'revision': {'from': start, 'to': start + 1},
+                'changed': [], 'profile_untouched': True, 'l0_l2_unchanged': True,
+                'write_event': False, 'replacements': 0, 'staged_matches_preview': False}
+    return cases
 
-    out, rows = [], {}
+
+def subprocess_evidence(path):
+    import subprocess
+    run = subprocess.run([sys.executable, '-B', str(path)], capture_output=True, text=True, timeout=120)
+    if run.returncode not in (0, 1):
+        raise ValueError(f'тест завершился с кодом {run.returncode}: {run.stderr[-500:]}')
+    try:
+        data = json.loads(run.stdout)
+    except (ValueError, TypeError) as error:
+        raise ValueError(f'нет корректного JSON теста, код {run.returncode}: {run.stderr[-500:]}') from error
+    if type(data) is not dict or type(data.get('rows')) is not list or run.stderr:
+        raise ValueError(f'неполный результат теста или stderr: {run.stderr[-500:]}')
+    return data
+
+
+def compare_evidence(module, cases, evidence):
+    """Запускаем исторический проверяющий код поверх актуального эталона, включая digest."""
+    return [f'{row["id"]}: {row.get("issue", "fail")}'
+            for row in module.case_checks(cases, evidence) if row['status'] != 'pass']
+
+
+def known_exception(ident, error):
+    return ident == 'N17-list' and type(error) is KeyError and error.args == ('diff',)
+
+
+def check_known_drift():
+    """Сверка всех 130 случаев с актуальными точечными ожиданиями и историческими проверками."""
+    import importlib.util
+    import platform
+    out, count = [], 0
     for iteration, name in ((105, 'test_layout'), (107, 'test_policy'),
                             (108, 'test_cards'), (109, 'test_plan')):
         path = ROOT / f'research/{iteration}/{name}.py'
-        spec = importlib.util.spec_from_file_location(f'drift{iteration}', path)
-        module = importlib.util.module_from_spec(spec)
-        sys.modules[f'drift{iteration}'] = module
         try:
+            spec = importlib.util.spec_from_file_location(f'drift{iteration}', path)
+            module = importlib.util.module_from_spec(spec)
+            sys.modules[f'drift{iteration}'] = module
             spec.loader.exec_module(module)
-        except Exception as error:                     # noqa: BLE001
-            out.append(f'И-{iteration}: модуль не загрузился — {type(error).__name__}')
-            continue
-        cases = json.loads((ROOT / f'research/{iteration}/CASES.json')
-                           .read_text(encoding='utf-8'))['cases']
-        rows[iteration] = {c['id']: c for c in cases}
-        drifted = drift_of(module, cases, iteration)
-        known = KNOWN_DRIFT[iteration]
-        new = sorted(set(drifted) - set(known))
-        healed = sorted(set(known) - set(drifted))
-        if new:
-            out.append(f'И-{iteration}: НОВЫЕ расхождения {new}')
-        if healed:
-            out.append(f'И-{iteration}: перестали расходиться {healed} — обновите каталог')
-    return {'name': 'каталог дрейфа 105/107/108/109',
-            'cases': sum(len(v) for v in rows.values()), 'mismatches': out}
-
-
-def drift_of(module, cases, iteration):
-    """ID случаев, которые сейчас дают не тот результат, что записан в замороженном корпусе."""
-    import platform
-    import subprocess
-
-    if iteration in (105, 108):
-        # Эти тесты строят evidence внутри main() и печатают его; берём оттуда.
-        name = 'test_layout' if iteration == 105 else 'test_cards'
-        run = subprocess.run([sys.executable, '-B', str(ROOT / f'research/{iteration}/{name}.py')],
-                             capture_output=True, text=True)
-        evidence = json.loads(run.stdout)
-        return [r['id'] for r in module.case_checks(cases, evidence) if r['status'] != 'pass']
-
-    if iteration == 109:
-        # Падает на N17 внутри общего прогона, поэтому по одному случаю.
-        audit = module.Audit()
-        drifted = []
-        for case in cases:
-            try:
-                row = module.observe(store, PlanSession, compile_prompt, audit, case)
-                actual = row['observed']
-            except Exception:                          # noqa: BLE001
-                drifted.append(case['id'])
-                continue
-            if json.dumps(actual, sort_keys=True, ensure_ascii=False) != \
-                    json.dumps(case['expected'], sort_keys=True, ensure_ascii=False):
-                drifted.append(case['id'])
-        return drifted
-
-    evidence = {'os': platform.system(), 'rows': []}
-    for case in cases:
-        try:
-            if iteration == 105:
-                evidence['rows'].append(module.observe(store, case))
+            cases = json.loads((ROOT / f'research/{iteration}/CASES.json').read_text(encoding='utf-8'))['cases']
+            expected = current_cases(iteration, cases)
+            count += len(cases)
+            exception_ids = set()
+            if iteration in (105, 108):
+                evidence = subprocess_evidence(path)
+            elif iteration == 107:
+                evidence = {'os': platform.system(), 'rows': [module.observe(store, case) for case in cases]}
             else:
-                evidence['rows'].append(module.observe(store, case))
-        except Exception:                              # noqa: BLE001
-            evidence['rows'].append({'id': case['id'], 'observed': {'<исключение>': True}})
-    if iteration == 108:
-        for row in evidence['rows']:
-            if 'observed' not in row:
-                row['observed'] = {'empty': {'card': {}}, 'seeded': {'card': {}}}
-    return [r['id'] for r in module.case_checks(cases, evidence) if r['status'] != 'pass']
+                rows = []
+                audit = module.Audit()
+                for case in cases:
+                    try:
+                        row = module.observe(store, PlanSession, compile_prompt, audit, case)
+                    except Exception as error:
+                        # Только точная историческая ошибка и только у N17 допустимы.
+                        if known_exception(case['id'], error):
+                            exception_ids.add(case['id'])
+                            continue
+                        out.append(f'И-109 {case["id"]}: неожиданное исключение {type(error).__name__}: {error}')
+                        continue
+                    if case['id'] == 'N17-list':
+                        out.append('И-109 N17-list: ожидаемое KeyError diff не возникло')
+                        continue
+                    rows.append(row)
+                expected = [c for c in expected if c['id'] != 'N17-list']
+                evidence = {'os': platform.system(), 'rows': rows}
+            out.extend(f'И-{iteration} {issue}' for issue in compare_evidence(module, expected, evidence))
+            historical = [c for c in cases if c['id'] not in exception_ids]
+            observed_drift = {row['id'] for row in module.case_checks(historical, evidence)
+                              if row['status'] != 'pass'} | exception_ids
+            if observed_drift != set(KNOWN_DRIFT[iteration]):
+                out.append(f'И-{iteration}: изменился состав исторических расхождений: '
+                           f'новые={sorted(observed_drift - set(KNOWN_DRIFT[iteration]))}, '
+                           f'исчезли={sorted(set(KNOWN_DRIFT[iteration]) - observed_drift)}')
+        except Exception as error:
+            out.append(f'И-{iteration}: сбой аудита {type(error).__name__}: {error}')
+    return {'name': 'текущие ожидания случаев 105/107/108/109', 'cases': count, 'mismatches': out}
 
 
 CHECKS = (check_matrix, check_schema_scope, check_schema_parent, check_plan_outcomes,
