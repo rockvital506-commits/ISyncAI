@@ -491,6 +491,7 @@
     "ENTITIES-2.json",
     "ENTITIES-3.json",
     "ENTITIES.json",
+    "GAP-RENDER.md",
     "GAPS-2.md",
     "GAPS.md",
     "INSTALL-KILO.md",
@@ -545,7 +546,7 @@
     "CATALOG.json"
   ],
   "counters": {
-    "files_total": 59,
+    "files_total": 60,
     "probes_cards": 13
   },
   "generated": "2026-11-24",
@@ -610,7 +611,8 @@
   "debt_closure": "DEBT-CLOSURE.md",
   "product_docs": {
     "install": "INSTALL-KILO.md",
-    "basis": "12 проб 2026-11-24",
-    "status": "готов к применению"
+    "status": "ОТЛОЖЕН — нет предмета внедрения",
+    "gap": "GAP-RENDER.md",
+    "resume_after": "слой переноса/внедрения (Ф5)"
   }
 }
