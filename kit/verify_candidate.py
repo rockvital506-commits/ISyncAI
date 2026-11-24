@@ -64,7 +64,7 @@ def verify(root, *, pin=None):
         raise VerificationError('манифест не является UTF-8 JSON') from exc
     if type(doc) is not dict or set(doc) != {'format', 'version', 'status', 'scope', 'files'}:
         raise VerificationError('неверные поля манифеста')
-    if type(doc['format']) is not int or doc['format'] != FORMAT or doc['version'] != '0.2.0-mvp.1':
+    if type(doc['format']) is not int or doc['format'] != FORMAT or doc['version'] != '0.2.0-mvp.2':
         raise VerificationError('неподдерживаемая версия манифеста или кандидата')
     if doc['status'] != 'candidate' or doc['scope'] != 'source-l0-only':
         raise VerificationError('неверный статус или область')

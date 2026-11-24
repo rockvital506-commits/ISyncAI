@@ -6,7 +6,7 @@ from . import profile_journal, schema_v2
 REGISTRY_FORMAT = 2
 _REVISION = {'L1': 'profile_revision', 'L2': 'project_revision'}
 _DIGEST = re.compile(r'[0-9a-f]{64}')
-_OPERATIONS = ('create', 'edit', 'suspend', 'resume', 'revoke', 'delete')
+_OPERATIONS = ('create', 'edit', 'activate', 'suspend', 'resume', 'revoke', 'delete')
 
 
 def _need(condition, code, path):

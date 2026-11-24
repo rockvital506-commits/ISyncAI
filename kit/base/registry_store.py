@@ -231,7 +231,7 @@ def _propose_create(current, target, entry, *, rule_only=False):
     return _change(current, target, candidate, prior, entry)
 
 
-_TRANSITIONS = {'suspend': ({'active'}, 'suspended'), 'resume': ({'suspended'}, 'active'),
+_TRANSITIONS = {'activate': ({'draft'}, 'active'), 'suspend': ({'active'}, 'suspended'), 'resume': ({'suspended'}, 'active'),
                 'revoke': ({'draft', 'active', 'suspended'}, 'revoked')}
 
 
@@ -270,10 +270,15 @@ def _propose_existing(current, operation, target, params):
     else:
         allowed, new_state = _TRANSITIONS[operation]
         if state == new_state:
+            # Активный дочерний флаг не делает запись действующей под неактивным контрактом.
+            if operation == 'activate' and prior['parent'] is not None:
+                parent = next(row for row in entries if row['id'] == prior['parent'])
+                if parent['state'] != 'active':
+                    raise StoreError('parent', rel, details={'reason': 'parent_inactive', 'contract': parent['id']})
             return None
         if state not in allowed:
             raise invalid_transition()
-        if operation == 'resume' and prior['parent'] is not None:
+        if operation in ('activate', 'resume') and prior['parent'] is not None:
             parent = next(row for row in entries if row['id'] == prior['parent'])
             if parent['state'] != 'active':
                 raise StoreError('parent', rel, details={'reason': 'parent_inactive', 'contract': parent['id']})

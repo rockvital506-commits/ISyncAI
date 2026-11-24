@@ -25,6 +25,7 @@ _OPERATIONS = {
     'create': (True, _MUTABLE),
     'list': (False, _MUTABLE),
     'edit': (True, _MUTABLE),
+    'activate': (True, _MUTABLE),
     'suspend': (True, _MUTABLE),
     'resume': (True, _MUTABLE),
     'revoke': (True, _MUTABLE),

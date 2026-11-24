@@ -112,6 +112,7 @@ MATRIX_REFERENCE = {
     'create':  ('forbidden', 'available', 'available'),
     'list':    ('planned',   'available', 'available'),
     'edit':    ('forbidden', 'available', 'available'),
+    'activate': ('forbidden', 'available', 'available'),
     'suspend': ('forbidden', 'available', 'available'),
     'resume':  ('forbidden', 'available', 'available'),
     'revoke':  ('forbidden', 'available', 'available'),
@@ -172,7 +173,7 @@ def compare_matrix(text, live):
 
 def check_matrix():
     text = (ROOT / 'kit/base/OPERATION-MATRIX.md').read_text(encoding='utf-8')
-    return {'name': 'матрица 8×3 против OPERATION-MATRIX.md', 'cases': 24,
+    return {'name': 'матрица 9×3 против OPERATION-MATRIX.md', 'cases': 27,
             'mismatches': compare_matrix(text, store.operation_matrix())}
 
 

@@ -8,12 +8,13 @@
 | `create` · регистрация | `forbidden` | `available` | `available` |
 | `list` · пользовательский просмотр | `planned` | `available` | `available` |
 | `edit` · замена текста | `forbidden` | `available` | `available` |
+| `activate` · активация черновика | `forbidden` | `available` | `available` |
 | `suspend` · приостановка | `forbidden` | `available` | `available` |
 | `resume` · возобновление | `forbidden` | `available` | `available` |
 | `revoke` · отмена | `forbidden` | `available` | `available` |
 | `delete` · физическое удаление | `forbidden` | `available` | `available` |
 
-- Семь пользовательских действий идут через [`PlanSession`](OPERATION-PLAN.md); **14 исполненных ячеек** и наблюдавшиеся переходы — [ACTIONS.json](../../research/110/ACTIONS.json). `list` не равен `read`: возвращает каталог или отдельный текст, а не сырой реестр. Нативный `plan_create/apply_create` сохранён только для `rule/draft` L1, не подменяет карточный маршрут L2.
+- Восемь пользовательских действий идут через [`PlanSession`](OPERATION-PLAN.md); **14 исполненных ячеек И-110** и наблюдавшиеся тогда переходы — [ACTIONS.json](../../research/110/ACTIONS.json). `list` не равен `read`: возвращает каталог или отдельный текст, а не сырой реестр. Нативный `plan_create/apply_create` сохранён только для `rule/draft` L1, не подменяет карточный маршрут L2.
 - `available` имеет `code: null`, `planned` — `operation_unavailable`, `forbidden` — `system_immutable` для любой эксплуатационной мутации L0. Внешнее `authority` или билет не меняют цель. Имя вне таблицы — `unknown_operation`; неизвестная область — `unknown_area`.
 - `status`, `profile_history`, `registry_history`, `report_conflicts` — диагностические чтения. Повреждённая привязка или данные любой области блокируют загрузку. Bootstrap, промоушен, перенос, выдача прав и команды донора не входят в матрицу. [Снимок И‑107](../../research/107/MATRIX.json) исторический, не текущий допуск.
 

@@ -21,7 +21,7 @@ class AuditTests(unittest.TestCase):
 
     def test_matrix_full_and_codes(self):
         self.assertEqual(audit.compare_matrix(self.matrix_text, self.matrix), [])
-        self.assertEqual(audit.check_matrix()['cases'], 24)
+        self.assertEqual(audit.check_matrix()['cases'], 27)
         changed = copy.deepcopy(self.matrix)
         changed['create']['L0']['code'] = 'other'
         self.assertTrue(audit.compare_matrix(self.matrix_text, changed))
