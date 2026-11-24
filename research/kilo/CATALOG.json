@@ -529,6 +529,7 @@
     "examples/state-example.json",
     "probes/E25-ENTRY-CONFLICT.md",
     "probes/E27-SUBAGENT.md",
+    "probes/E36-INSTRUCTIONS-VS-AGENTS.md",
     "probes/P00-ENV.md",
     "probes/P1-AUTOLOAD.md",
     "probes/P2-INSTRUCTIONS.md",
@@ -542,8 +543,8 @@
     "CATALOG.json"
   ],
   "counters": {
-    "files_total": 56,
-    "probes_cards": 11
+    "files_total": 57,
+    "probes_cards": 12
   },
   "generated": "2026-11-24",
   "probes": {

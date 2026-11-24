@@ -491,7 +491,10 @@
       "question": "Загрузит ли `instructions` в kilo.jsonc файлы .kilo/rules при наличии AGENTS.md?",
       "state": "ST-ENV-3",
       "criterion": "строка из .kilo/rules в системном промпте при наличии AGENTS.md и instructions",
-      "next": "p8 (добавить kilo.jsonc)"
+      "next": "p8 (добавить kilo.jsonc)",
+      "card": "probes/E36-INSTRUCTIONS-VS-AGENTS.md",
+      "status": "in_progress",
+      "design": "в p8 (где .kilo/rules уже вытеснен по E25) добавляется только kilo.jsonc с instructions; вопрос задаётся дословно тот же"
     }
   ],
   "hard_blockers_for_iteration_122": [
