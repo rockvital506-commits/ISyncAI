@@ -497,6 +497,7 @@
     "INSTALL-KILO.md",
     "KILO-SPEC.json",
     "KILO-VSCODE.md",
+    "KIT-MVP-ANALYSIS.md",
     "P00-ENVIRONMENT-SETUP.md",
     "PLAN-PROBES.md",
     "PROBES-GUIDE.md",
@@ -546,7 +547,7 @@
     "CATALOG.json"
   ],
   "counters": {
-    "files_total": 60,
+    "files_total": 61,
     "probes_cards": 13
   },
   "generated": "2026-11-24",
@@ -614,5 +615,11 @@
     "status": "ОТЛОЖЕН — нет предмета внедрения",
     "gap": "GAP-RENDER.md",
     "resume_after": "слой переноса/внедрения (Ф5)"
+  },
+  "mvp": {
+    "analysis": "KIT-MVP-ANALYSIS.md",
+    "steps": 7,
+    "first": "ревизия ядра: 4 устаревших теста",
+    "only_new_dev": "рендер записи в файл среды"
   }
 }
