@@ -358,6 +358,59 @@
         "это настройки редактора, а не проекта",
         "не доказывает поведение Kilo"
       ]
+    },
+    {
+      "id": "S22",
+      "url": "https://kilo.ai/docs/customize/context/kilocodeignore",
+      "title": ".kilocodeignore",
+      "claims": [
+        ".kilocodeignore — файл в корне проекта, синтаксис .gitignore, ограничивает доступ Kilo к файлам (не Git)",
+        "IgnoreMigrator автоматически превращает шаблоны .kilocodeignore в deny-правила на инструменты read и edit",
+        "watcher.ignore в kilo.jsonc влияет только на наблюдение за изменениями, не на доступ",
+        "встроенные исключения: 27 каталогов и 11 шаблонов файлов; .gitignore и .ignore учитываются при листинге и поиске",
+        "блокировка через .kilocodeignore не мешает контрольным точкам, если файл не исключён из git"
+      ],
+      "fetched": "2026-11-24",
+      "why": "проверка идеи владельца о «файле агентигнора»; ключевой факт — механизм сводится к тем же deny на read/edit"
+    },
+    {
+      "id": "S23",
+      "url": "https://www.ayautomate.com/free-models/kilo-code-openrouter-free",
+      "title": "openrouter/free (Kilo Code): free limits",
+      "claims": [
+        "модель `kilo-auto/free` — авто-маршрутизатор (в источнике: minimax 80 %, stepfun 20 %)",
+        "контекст `openrouter/free` указан 200 000 токенов",
+        "лимит 200 запросов/час на IP без входа; лимиты для вошедших не опубликованы"
+      ],
+      "fetched": "2026-11-24",
+      "confidence": "secondary",
+      "why": "объясняет ответ модели «окно 200 000» в П8 и требование владельца учитывать вариативность модели"
+    },
+    {
+      "id": "S24",
+      "url": "https://horizonlux.com/tools/ai-models/free/kilo-code-kilo-auto-free",
+      "title": "Auto Free (router) on Kilo Code",
+      "claims": [
+        "`kilo-auto/free` — маршрутизатор: модель может меняться от сессии к сессии",
+        "free-модели могут маршрутизироваться к провайдерам, которые логируют промпты и обучаются на них, включая trial-эндпоинты NVIDIA",
+        "каждая free-модель в списке помечена «mayTrainOnYourPrompts»",
+        "контекст указан 256 000"
+      ],
+      "fetched": "2026-11-24",
+      "confidence": "secondary",
+      "why": "ключевой факт для K4: на free-тарифе промпты могут попадать в обучение"
+    },
+    {
+      "id": "S25",
+      "url": "https://rubentorney.com/blog/en/openrouter-modeles-gratuits-2026.html",
+      "title": "OpenRouter free models list 2026",
+      "claims": [
+        "free-модели имеют окна от 1M до 32K; `openrouter/free` — 200K",
+        "окна :free и платных вариантов одной модели различаются в обе стороны"
+      ],
+      "fetched": "2026-11-24",
+      "confidence": "secondary",
+      "why": "подтверждает вариативность окна между бесплатными моделями (поправка владельца)"
     }
   ]
 }

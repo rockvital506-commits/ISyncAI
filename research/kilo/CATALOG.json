@@ -2,19 +2,40 @@
   "schema": "kilo-catalog/1",
   "checked": "2026-11-22",
   "how_to_use": "Слой 0. Читается первым. Открывать тела только по ссылке из карточки.",
-  "layers": {
-    "0": "CATALOG.json",
-    "1": "KILO-SPEC.json",
-    "2": "ENTITIES*.json",
-    "3": "STATES.json",
-    "4": "SCENARIOS.json",
-    "5": "DECISIONS.json"
-  },
-  "evidence": {
-    "sources": "SOURCES.json",
-    "conflicts": "GAPS.md + GAPS-2.md",
-    "screens": "SCREENS-2026-11-22-01.md + SCREENS-2026-11-22-02.md"
-  },
+  "layers": [
+    {
+      "layer": "0 · карта",
+      "files": "CATALOG.json"
+    },
+    {
+      "layer": "1 · спецификация",
+      "files": "KILO-SPEC.json"
+    },
+    {
+      "layer": "2 · сущности",
+      "files": "ENTITIES.json, ENTITIES-2.json, ENTITIES-3.json"
+    },
+    {
+      "layer": "3 · состояния",
+      "files": "STATES.json"
+    },
+    {
+      "layer": "4 · сценарии",
+      "files": "SCENARIOS.json"
+    },
+    {
+      "layer": "5 · решения",
+      "files": "DECISIONS.json"
+    }
+  ],
+  "evidence": [
+    "SOURCES.json",
+    "GAPS.md",
+    "GAPS-2.md",
+    "SCREENS-2026-11-22-01.md",
+    "SCREENS-2026-11-22-02.md",
+    "SETTINGS-OBSERVED.md"
+  ],
   "counts": {
     "entities": 18,
     "states": 12,
@@ -462,51 +483,92 @@
       "next": "И‑122"
     }
   ],
-  "files": {
-    "0": "CATALOG.json",
-    "1": "KILO-SPEC.json",
-    "2": [
-      "ENTITIES.json",
-      "ENTITIES-2.json",
-      "ENTITIES-3.json"
+  "files": [
+    "CRITIQUE-AND-RESEARCH-PLAN.md",
+    "DECISION-ROADMAP.md",
+    "DECISIONS.json",
+    "ENTITIES-2.json",
+    "ENTITIES-3.json",
+    "ENTITIES.json",
+    "GAPS-2.md",
+    "GAPS.md",
+    "KILO-SPEC.json",
+    "KILO-VSCODE.md",
+    "P00-ENVIRONMENT-SETUP.md",
+    "PLAN-PROBES.md",
+    "PROBES-GUIDE.md",
+    "PROBES-RESULT-2026-11-24.md",
+    "PROMPT-REWORK-122.md",
+    "README.md",
+    "REPORT-2026-11-22.md",
+    "REVISION-2026-11-22.md",
+    "ROADMAP-PROTOCOL.md",
+    "ROADMAP-RECOMMENDATION.md",
+    "RUNBOOK-V1.md",
+    "SCENARIOS.json",
+    "SCREENS-2026-11-22-01.md",
+    "SCREENS-2026-11-22-02.md",
+    "SETTINGS-OBSERVED.md",
+    "SOURCES.json",
+    "STAND-COPY.md",
+    "STATES.json",
+    "STRATEGY-STORAGE.md",
+    "TARGETS.md",
+    "VISION-END-STATE.md",
+    "examples/kilo.jsonc.example",
+    "examples/state-bad.json",
+    "examples/state-example.json",
+    "probes/P00-ENV.md",
+    "probes/P1-AUTOLOAD.md",
+    "probes/P2-INSTRUCTIONS.md",
+    "probes/P3-AGENTS-MD.md",
+    "probes/P4-REVIEWER.md",
+    "probes/P5-PERMISSION-ORDER.md",
+    "probes/P6-RELOAD.md",
+    "probes/P7-ENV-MASTER.md",
+    "probes/P8-CONTEXT.md",
+    "spec_check.py",
+    "CATALOG.json"
+  ],
+  "counters": {
+    "files_total": 45,
+    "probes_cards": 9
+  },
+  "generated": "2026-11-24",
+  "probes": {
+    "dir": "probes/",
+    "cards": [
+      "probes/P00-ENV.md",
+      "probes/P1-AUTOLOAD.md",
+      "probes/P2-INSTRUCTIONS.md",
+      "probes/P3-AGENTS-MD.md",
+      "probes/P4-REVIEWER.md",
+      "probes/P5-PERMISSION-ORDER.md",
+      "probes/P6-RELOAD.md",
+      "probes/P7-ENV-MASTER.md",
+      "probes/P8-CONTEXT.md"
     ],
-    "3": "STATES.json",
-    "4": "SCENARIOS.json",
-    "5": "DECISIONS.json",
-    "evidence": [
-      "SOURCES.json",
-      "GAPS.md",
-      "GAPS-2.md",
-      "SCREENS-2026-11-22-01.md",
-      "SCREENS-2026-11-22-02.md",
-      "SETTINGS-OBSERVED.md",
-      "REVISION-2026-11-22.md"
-    ],
-    "guides": [
-      "CRITIQUE-AND-RESEARCH-PLAN.md",
-      "DECISION-ROADMAP.md",
-      "KILO-VSCODE.md",
-      "P00-ENVIRONMENT-SETUP.md",
-      "PLAN-PROBES.md",
-      "PROBES-GUIDE.md",
-      "PROMPT-REWORK-122.md",
-      "README.md",
-      "REPORT-2026-11-22.md",
-      "ROADMAP-PROTOCOL.md",
-      "ROADMAP-RECOMMENDATION.md",
-      "RUNBOOK-V1.md",
-      "STAND-COPY.md",
-      "STRATEGY-STORAGE.md",
-      "TARGETS.md",
-      "VISION-END-STATE.md"
-    ],
-    "tools": [
-      "spec_check.py"
-    ],
-    "examples": [
-      "examples/kilo.jsonc.example",
-      "examples/state-example.json",
-      "examples/state-bad.json"
-    ]
-  }
+    "result": "PROBES-RESULT-2026-11-24.md",
+    "state": "8 проб выполнены 2026-11-24 владельцем; P00 подготовка"
+  },
+  "guides": [
+    "CRITIQUE-AND-RESEARCH-PLAN.md",
+    "DECISION-ROADMAP.md",
+    "KILO-VSCODE.md",
+    "P00-ENVIRONMENT-SETUP.md",
+    "PLAN-PROBES.md",
+    "PROBES-GUIDE.md",
+    "PROBES-RESULT-2026-11-24.md",
+    "PROMPT-REWORK-122.md",
+    "README.md",
+    "REPORT-2026-11-22.md",
+    "REVISION-2026-11-22.md",
+    "ROADMAP-PROTOCOL.md",
+    "ROADMAP-RECOMMENDATION.md",
+    "RUNBOOK-V1.md",
+    "STAND-COPY.md",
+    "STRATEGY-STORAGE.md",
+    "TARGETS.md",
+    "VISION-END-STATE.md"
+  ]
 }

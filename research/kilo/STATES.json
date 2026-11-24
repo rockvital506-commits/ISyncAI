@@ -4,6 +4,56 @@
   "note": "Состояние — это сущность с определённым конфигом, а не папка. Одно состояние используется во многих сценариях; сценарий ссылается на состояние по id.",
   "states": [
     {
+      "id": "ST-ENV-3",
+      "purpose": "Мастер автоодобрения ВЫКЛЮЧЕН (2026-11-24, p5). Рабочее состояние для проб на запрос разрешения.",
+      "fingerprint": {
+        "extension": "kilocode.kilo-code 7.8.32",
+        "model": "Auto Free",
+        "context_window_observed": "256.0K",
+        "auto_approve_master": "выключен (подсказка «Автодобрение отключено»)",
+        "permissions": "per-agent: edit deny, bash {\"*\": ask, \"git status*\": allow}",
+        "shell": "PowerShell, несмотря на имя инструмента bash"
+      },
+      "expected": [
+        "точечный allow без вопроса",
+        "остальное — запрос",
+        "deny запрещает"
+      ],
+      "observed_2026_11_24": {
+        "allow_without_prompt": true,
+        "ask_prompted_3_times": true,
+        "reason_text": "«Одобрено автоматически агентом exec.md совпало с правилом \"bash\" \"git status*\"»",
+        "ls_la_failed_powershell": true
+      },
+      "evidence_level": "observed"
+    },
+    {
+      "id": "ST-ENV-2",
+      "purpose": "То же, что ST-ENV-1, но мастер автоодобрения включён владельцем вручную (2026-11-24)",
+      "fingerprint": {
+        "extension": "kilocode.kilo-code 7.8.32",
+        "model": "Auto Free (kilo-auto/free)",
+        "context_window_observed": "256.0K",
+        "auto_approve_master": "включён (щит подсвечен, подсказка «Автодобрение включено»)",
+        "permissions": "bash ask, edit ask, read allow (.env deny), external_directory ask, task ask",
+        "project": "пустой стенд p1 с .kilo/rules/canary.md"
+      },
+      "expected": [
+        "запросы разрешений не появляются; запросы на выход из песочницы по-прежнему спрашиваются"
+      ],
+      "not_expected": [
+        "что «нет запроса» доказывает правило: при включённом мастере это неотличимо"
+      ],
+      "evidence_level": "observed",
+      "note": "Ключевое следствие: с включённым мастером пробы на «спросит или нет» недействительны. П5 и П7 требуют мастера ВЫКЛ.",
+      "findings": [
+        "мастер автоодобрения перекрывает Edit:Спросить — запроса нет",
+        "UI подписывает авторешение как «Одобрено вами»",
+        "правка сохранила байты: UTF-8 без BOM, CRLF, без финального LF"
+      ],
+      "warning": "непригодно для проб на запрос разрешения (П5, П7 требуют мастера ВЫКЛ)"
+    },
+    {
       "id": "ST-ENV-1",
       "purpose": "Наблюдаемое состояние пользователя на 2026-11-22 (первая партия скринов)",
       "fingerprint": {
@@ -78,7 +128,13 @@
       "not_expected": [
         "вывод «не поддерживается» по молчанию"
       ],
-      "evidence_level": "not run"
+      "evidence_level": "observed",
+      "observed_2026_11_24": {
+        "loaded_automatically": true,
+        "evidence": "цитата ZX-41-P1 + «Инструкции from: <путь>» + вкладка «Правила»",
+        "bom": "не помешал",
+        "tokens": "20.6K → 22.6K (8 % → 9 % от 256K)"
+      }
     },
     {
       "id": "ST-PROJECT-WIRED",

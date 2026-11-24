@@ -8,56 +8,211 @@
     "not run": "не проверено поведением"
   },
   "layers": {
-    "vscode": {"path": "настройки VS Code", "prefix": "kilo-code.new.*", "reset_note": "кнопка «Сбросить все настройки» НЕ трогает режимы и правила автоутверждения"},
-    "cli": {"path": "конфигурация Kilo CLI", "files": ["~/.config/kilo/kilo.jsonc", "kilo.jsonc", ".kilo/kilo.jsonc"], "note": "общие с CLI: режимы/агенты, правила автоутверждения; локальный сервер, порт 4896"},
-    "project": {"path": "файлы проекта", "files": ["AGENTS.md", "AGENT.md", ".kilo/rules/*", ".kilo/skills/*", ".kilo/agents/*", ".kilocode/*"], "note": ".kilo/ приоритетнее .kilocode/"}
+    "vscode": {
+      "path": "настройки VS Code",
+      "prefix": "kilo-code.new.*",
+      "reset_note": "кнопка «Сбросить все настройки» НЕ трогает режимы и правила автоутверждения"
+    },
+    "cli": {
+      "path": "конфигурация Kilo CLI",
+      "files": [
+        "~/.config/kilo/kilo.jsonc",
+        "kilo.jsonc",
+        ".kilo/kilo.jsonc"
+      ],
+      "note": "общие с CLI: режимы/агенты, правила автоутверждения; локальный сервер, порт 4896"
+    },
+    "project": {
+      "path": "файлы проекта",
+      "files": [
+        "AGENTS.md",
+        "AGENT.md",
+        ".kilo/rules/*",
+        ".kilo/skills/*",
+        ".kilo/agents/*",
+        ".kilocode/*"
+      ],
+      "note": ".kilo/ приоритетнее .kilocode/"
+    }
   },
   "instruction_priority": [
-    {"rank": 1, "source": "agent.<name>.prompt", "level": "vendor"},
-    {"rank": 2, "source": "kilo.jsonc: instructions (проект)", "level": "vendor"},
-    {"rank": 3, "source": "AGENTS.md в корне", "level": "vendor", "note": "нельзя отключить; защищён от записи; всегда в контексте"},
-    {"rank": 4, "source": "kilo.jsonc: instructions (глобально)", "level": "vendor"},
-    {"rank": 5, "source": "skills", "level": "vendor", "note": "по требованию, только метаданные в промпте"},
-    {"rank": "вне таблицы", "source": ".kilocode/rules/, .kilo/rules-{slug}/, AGENTS.md подкаталогов", "level": "conflict", "note": "C1, C2; подкаталоги грузятся динамически при чтении файлов рядом"}
+    {
+      "rank": 1,
+      "source": "agent.<name>.prompt",
+      "level": "vendor"
+    },
+    {
+      "rank": 2,
+      "source": "kilo.jsonc: instructions (проект)",
+      "level": "vendor"
+    },
+    {
+      "rank": 3,
+      "source": "AGENTS.md в корне",
+      "level": "vendor",
+      "note": "нельзя отключить; защищён от записи; всегда в контексте"
+    },
+    {
+      "rank": 4,
+      "source": "kilo.jsonc: instructions (глобально)",
+      "level": "vendor"
+    },
+    {
+      "rank": 5,
+      "source": "skills",
+      "level": "vendor",
+      "note": "по требованию, только метаданные в промпте"
+    },
+    {
+      "rank": "вне таблицы",
+      "source": ".kilocode/rules/, .kilo/rules-{slug}/, AGENTS.md подкаталогов",
+      "level": "observed",
+      "note": "ЗАКРЫТО 2026-11-24: .kilo/rules/*.md читается автоматически, без instructions. AGENTS.md подкаталогов и .kilo/rules-{slug}/ остаются непроверенными."
+    }
   ],
   "permission": {
-    "values": ["allow", "ask", "deny"],
+    "values": [
+      "allow",
+      "ask",
+      "deny"
+    ],
     "matching": "glob; последнее совпавшее правило выигрывает (vendor); при отсутствии совпадения — ask",
-    "tools": ["read", "edit", "bash", "glob", "grep", "list", "task", "external_directory", "webfetch", "websearch", "lsp", "skill", "todoread", "todowrite", "agent_manager", "doom_loop", "browser_open"],
+    "tools": [
+      "read",
+      "edit",
+      "bash",
+      "glob",
+      "grep",
+      "list",
+      "task",
+      "external_directory",
+      "webfetch",
+      "websearch",
+      "lsp",
+      "skill",
+      "todoread",
+      "todowrite",
+      "agent_manager",
+      "doom_loop",
+      "browser_open"
+    ],
     "mcp_names": "{server}_{tool}, допускает glob",
     "observed_profile_2026_11_22": {
       "note": "НЕ заводские значения: это пресет «Сначала проверка» (Review first)",
-      "bash": "ask", "edit": "ask", "read": {"*": "allow", "*.env": "deny", ".env*": "deny"},
-      "glob": "allow", "grep": "allow", "list": "allow", "task": "ask",
-      "external_directory": "ask", "doom_loop": "ask", "browser_open": "ask",
-      "skill": "allow", "lsp": "allow", "todoread": "allow", "todowrite": "allow",
-      "websearch": "allow", "webfetch": "allow",
+      "bash": "ask",
+      "edit": "ask",
+      "read": {
+        "*": "allow",
+        "*.env": "deny",
+        ".env*": "deny"
+      },
+      "glob": "allow",
+      "grep": "allow",
+      "list": "allow",
+      "task": "ask",
+      "external_directory": "ask",
+      "doom_loop": "ask",
+      "browser_open": "ask",
+      "skill": "allow",
+      "lsp": "allow",
+      "todoread": "allow",
+      "todowrite": "allow",
+      "websearch": "allow",
+      "webfetch": "allow",
       "master_auto_approve": false
     }
   },
   "agents": {
-    "builtin": ["ask", "code", "plan", "debug", "explore", "general", "orchestrator", "compaction", "title"],
-    "observed_badges": {"explore": "субагент", "general": "субагент", "orchestrator": "субагент"},
-    "fields": ["name", "description", "prompt", "model", "variant", "temperature", "top_p", "steps", "permission", "mode", "hidden", "disable", "color"],
-    "mode_values": ["primary", "subagent", "all"],
+    "builtin": [
+      "ask",
+      "code",
+      "plan",
+      "debug",
+      "explore",
+      "general",
+      "orchestrator",
+      "compaction",
+      "title"
+    ],
+    "observed_badges": {
+      "explore": "субагент",
+      "general": "субагент",
+      "orchestrator": "субагент"
+    },
+    "fields": [
+      "name",
+      "description",
+      "prompt",
+      "model",
+      "variant",
+      "temperature",
+      "top_p",
+      "steps",
+      "permission",
+      "mode",
+      "hidden",
+      "disable",
+      "color"
+    ],
+    "mode_values": [
+      "primary",
+      "subagent",
+      "all"
+    ],
     "merge": "по имени, по уровням: встроенные → глобальный конфиг → проектный конфиг → .kilo/ → переменные окружения",
-    "paths": [".kilo/agents/*.md", ".kilo/agent/*.md", ".kilocode/agents/*.md", "~/.config/kilo/agent/*.md"]
+    "paths": [
+      ".kilo/agents/*.md",
+      ".kilo/agent/*.md",
+      ".kilocode/agents/*.md",
+      "~/.config/kilo/agent/*.md"
+    ]
   },
   "context": {
-    "compaction_auto": {"default": true, "source": "vendor-doc"},
-    "compaction_threshold_percent": {"default": null, "observed": 50, "source": "vendor-doc + observed_ui", "note": "50 % в UI, не заводское значение"},
-    "compaction_prune": {"default": true},
-    "compaction_tail_turns": {"default": 2},
-    "compaction_reserved": {"default": "min(20000, model_max_output)"},
+    "compaction_auto": {
+      "default": true,
+      "source": "vendor-doc"
+    },
+    "compaction_threshold_percent": {
+      "default": null,
+      "observed": 50,
+      "source": "vendor-doc + observed_ui",
+      "note": "50 % в UI, не заводское значение"
+    },
+    "compaction_prune": {
+      "default": true
+    },
+    "compaction_tail_turns": {
+      "default": 2
+    },
+    "compaction_reserved": {
+      "default": "min(20000, model_max_output)"
+    },
     "hard_rule": "если у модели не объявлен limit.context, учёт контекста и автосжатие НЕ работают",
-    "limit_fallback": "при отсутствии значений context и output считаются 0 → output по умолчанию 32000, context не отслеживается"
+    "limit_fallback": "при отсутствии значений context и output считаются 0 → output по умолчанию 32000, context не отслеживается",
+    "observed_baseline": {
+      "empty_project_tokens": "20.6K",
+      "one_rule_file_tokens": "22.6K",
+      "window": "256.0K (Auto Free)",
+      "share": "8 % → 9 %"
+    }
   },
   "models": {
-    "observed": {"model.modelID": "kilo-auto/free", "model.providerID": "kilo", "providers_connected": 0},
-    "resolution": ["конфиг provider.<id>.models.<model>.limit", "встроенный каталог models.dev (обновление ежечасно)", "иначе 0"]
+    "observed": {
+      "model.modelID": "kilo-auto/free",
+      "model.providerID": "kilo",
+      "providers_connected": 0
+    },
+    "resolution": [
+      "конфиг provider.<id>.models.<model>.limit",
+      "встроенный каталог models.dev (обновление ежечасно)",
+      "иначе 0"
+    ]
   },
   "budget_contract": {
-    "kit_target_percent": [25, 30],
+    "kit_target_percent": [
+      25,
+      30
+    ],
     "kit_section0_bytes": 4096,
     "status": "цель Kit, не клиентский кап",
     "measurement_pending": "И‑126"

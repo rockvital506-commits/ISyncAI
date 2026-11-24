@@ -95,6 +95,80 @@ def check_context(doc, out):
                         'не объявлено: учёт контекста и автосжатие не работают (KILO-SPEC.context.hard_rule)'))
 
 
+def strip_jsonc(text: str) -> str:
+    """Удаляет // и /* */ комментарии и висячие запятые, не трогая строковые литералы.
+
+    Kilo хранит настройки в JSONC: комментарии допустимы, но json.loads их не принимает.
+    Функция нужна, чтобы проверять файлы как есть, а не требовать их предварительной чистки.
+    """
+    out: list[str] = []
+    i, n = 0, len(text)
+    in_str = False
+    esc = False
+    while i < n:
+        ch = text[i]
+        if in_str:
+            out.append(ch)
+            if esc:
+                esc = False
+            elif ch == '\\':
+                esc = True
+            elif ch == '"':
+                in_str = False
+            i += 1
+            continue
+        if ch == '"':
+            in_str = True
+            out.append(ch)
+            i += 1
+            continue
+        if ch == '/' and i + 1 < n and text[i + 1] == '/':
+            while i < n and text[i] not in '\r\n':
+                i += 1
+            continue
+        if ch == '/' and i + 1 < n and text[i + 1] == '*':
+            i += 2
+            while i + 1 < n and not (text[i] == '*' and text[i + 1] == '/'):
+                i += 1
+            i += 2
+            continue
+        out.append(ch)
+        i += 1
+    cleaned = ''.join(out)
+    # висячие запятые перед } или ]
+    res: list[str] = []
+    j, m = 0, len(cleaned)
+    in_str = False
+    esc = False
+    while j < m:
+        ch = cleaned[j]
+        if in_str:
+            res.append(ch)
+            if esc:
+                esc = False
+            elif ch == '\\':
+                esc = True
+            elif ch == '"':
+                in_str = False
+            j += 1
+            continue
+        if ch == '"':
+            in_str = True
+            res.append(ch)
+            j += 1
+            continue
+        if ch == ',':
+            k = j + 1
+            while k < m and cleaned[k] in ' \t\r\n':
+                k += 1
+            if k < m and cleaned[k] in '}]':
+                j += 1
+                continue
+        res.append(ch)
+        j += 1
+    return ''.join(res)
+
+
 def check_kilo_jsonc(doc: dict) -> dict:
     out: list = []
     if not isinstance(doc, dict):
@@ -184,7 +258,8 @@ def selftest() -> int:
     assert any(f['level'] == 'gap' for f in ctx['findings']), 'без limit.context должен быть gap'
     st = check_state({'id': 'ST-X', 'fingerprint': {}, 'evidence_level': 'observed'})
     assert st['ok'] is False, 'observed без прогонов запрещён'
-    print('selftest: ok (5 проверок)')
+    assert json.loads(strip_jsonc('{// c\n"a": [1,2,],/* x */"b": "//not a comment",}')) == {'a': [1, 2], 'b': '//not a comment'}, 'strip_jsonc'
+    print('selftest: ok (6 проверок)')
     return 0
 
 
@@ -198,8 +273,8 @@ def main() -> int:
         return selftest()
     if args.kilo_jsonc:
         raw = Path(args.kilo_jsonc).read_bytes()
-        text = raw.decode('utf-8')
-        result = check_kilo_jsonc(json.loads(text))
+        text = raw.decode('utf-8-sig')
+        result = check_kilo_jsonc(json.loads(strip_jsonc(text)))
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0 if result['ok'] else 1
     if args.state:
