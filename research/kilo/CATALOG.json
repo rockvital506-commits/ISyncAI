@@ -515,6 +515,7 @@
     "STRATEGY-STORAGE.md",
     "TARGETS.md",
     "VISION-END-STATE.md",
+    "acceptance/ACCEPTANCE-122-DRAFT.md",
     "examples/kilo.jsonc.example",
     "examples/state-bad.json",
     "examples/state-example.json",
@@ -531,7 +532,7 @@
     "CATALOG.json"
   ],
   "counters": {
-    "files_total": 45,
+    "files_total": 46,
     "probes_cards": 9
   },
   "generated": "2026-11-24",
@@ -570,5 +571,11 @@
     "STRATEGY-STORAGE.md",
     "TARGETS.md",
     "VISION-END-STATE.md"
-  ]
+  ],
+  "acceptance": {
+    "dir": "acceptance/",
+    "draft": "acceptance/ACCEPTANCE-122-DRAFT.md",
+    "status": "НЕ ПРИНЯТА — проект для решения владельца",
+    "decision": "ожидается"
+  }
 }
