@@ -1,6 +1,7 @@
 {
   "files": {
-    "kit/LAYERS.md": "c3cb8984ffb6677016e4e6f68150d68ea7def7abcfcb9eb6d25dee565ee4bbfa",
+    "kit/LAYERS.md": "2f26934869e976766876e402ba169e08ea7b934bea1852e40e76e6b8a9dfbf12",
+    "kit/RENDER-RULE.md": "620c77196b9ebf6d3432f00841b05c8b3cb9edd232a950af3a98b3c3330ec046",
     "kit/base/BUNDLE-ROLLBACK.md": "b2feedb660a66b6c76a2885fd59d61804f64df9124c8d6200a9aa7e7d41ca3df",
     "kit/base/BUNDLE-TRUST.md": "75561102e97519a0c6ae121e7dec92cdf72cf75773a13303f6d480ea26bd94a0",
     "kit/base/BUNDLE-VERIFY.md": "b844f606a435c45d0cdc468558ad718d8bae8c1e62f3a6e44b729729338c1446",
@@ -34,10 +35,11 @@
     "kit/base/registry_store.py": "1615c9dc35d6029e696c0629e15d5910c597c9e4daf9e5898789732d59e80c87",
     "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
     "kit/base/simulation.py": "395b2c08d0624e55a6c84ea23a93835cf8ece79513481bd9cf93f333d22e77f9",
-    "kit/verify_candidate.py": "68751ea780380a65980474ad2c8f29eb2ae759bdbb3b1ff38d37d5812fe6d60b"
+    "kit/render_rule.py": "f2a858f51ac29c084a3d2b2e0cafff533b13a5f4928a2193e1e6ca42127d11c0",
+    "kit/verify_candidate.py": "19943412144b93dd40f90b454aeb599691879679ba065635f7202888b75acbfa"
   },
   "format": 1,
   "scope": "source-l0-only",
   "status": "candidate",
-  "version": "0.2.0-mvp.2"
+  "version": "0.2.0-mvp.3"
 }
