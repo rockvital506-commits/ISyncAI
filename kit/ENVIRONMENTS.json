@@ -1,0 +1,27 @@
+{
+  "format": 1,
+  "scope": "mvp-candidate",
+  "environments": {
+    "arena": {
+      "status": "candidate",
+      "mvp_reading": "not_run",
+      "mvp_application": "not_run",
+      "basis": "research/121/SURFACES.json",
+      "limit": "Локальное выполнение Python в Arena не доказывает автоматическое обнаружение, чтение или соблюдение правил агентом."
+    },
+    "kilo": {
+      "status": "candidate",
+      "mvp_reading": "not_run",
+      "mvp_application": "not_run",
+      "basis": "research/kilo/probes/E36-INSTRUCTIONS-VS-AGENTS.md",
+      "limit": "Историческая проба механизма instructions не является сквозным прогоном нового рендера."
+    },
+    "copilot": {
+      "status": "stub",
+      "mvp_reading": "not_run",
+      "mvp_application": "not_run",
+      "basis": "research/121/SURFACES.json",
+      "limit": "Адаптер MVP не реализован и не измерен; финальная цель поддержки среды сохраняется."
+    }
+  }
+}

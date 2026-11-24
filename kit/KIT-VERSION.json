@@ -1,6 +1,8 @@
 {
   "files": {
-    "kit/LAYERS.md": "54b3ca4063c94e6f23faa0cbc01562944c6c3961bcaa1c6cb59f1509e1ef16c0",
+    "kit/ENVIRONMENTS.json": "0a6eb262e80c942f47455a96ae5b761071c9f0a731dca1b51a400629ce113c13",
+    "kit/ENVIRONMENTS.md": "319959a30a8b62a321d9dbce990548e50aa4feea8c05a330eec5c21a15509c3e",
+    "kit/LAYERS.md": "de64bc8c1464dca738826275bd9fd28f38e550206601af6806a485871dcebadf",
     "kit/PREVIEW-RULE.md": "e321f9c245a0873b515427c682f9766522e78c72234a2febeda77138a42515a8",
     "kit/RENDER-RULE.md": "620c77196b9ebf6d3432f00841b05c8b3cb9edd232a950af3a98b3c3330ec046",
     "kit/SESSION-CLI.md": "860c1526a00d608d0555a2f53997f1a049e7578eb03375792658f93259c64052",
@@ -40,10 +42,10 @@
     "kit/preview_rule.py": "c7367b3c33651dd2cb876601025ca53517d61d644c6e71817111a28f9c176229",
     "kit/render_rule.py": "f2a858f51ac29c084a3d2b2e0cafff533b13a5f4928a2193e1e6ca42127d11c0",
     "kit/session_cli.py": "41a6b23338a5a0e9fdf7564756df6d94c70aeeb79ec71e791e1154318c3cf115",
-    "kit/verify_candidate.py": "5dee05cf15894318222c12e668438b23233102055513d8272bf26e0ddce563ca"
+    "kit/verify_candidate.py": "636aafd1fe402753656055fe8336b4693c2ceed87fe3e924c36221deb2a2cb4f"
   },
   "format": 1,
   "scope": "source-l0-only",
   "status": "candidate",
-  "version": "0.2.0-mvp.5"
+  "version": "0.2.0-mvp.6"
 }
