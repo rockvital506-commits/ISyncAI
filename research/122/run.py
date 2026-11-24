@@ -43,9 +43,23 @@ def dump_json(path: Path, data: dict) -> None:
                     encoding='utf-8', newline='\n')
 
 
+FROZEN = HERE / 'materials'
+
+
+def source(name: str) -> Path:
+    """Читаем ЗАМОРОЖЕННУЮ копию материалов приёмки, а не живой файл.
+
+    Причина: после приёмки досье продолжает меняться (E27 и далее), и печать,
+    собранная из живых файлов, перестаёт воспроизводиться. Материалы зафиксированы
+    на коммите приёмки: research/122/materials/MANIFEST.json.
+    """
+    frozen = FROZEN / name
+    return frozen if frozen.is_file() else ROOT / name
+
+
 def members() -> list[str]:
-    """Что входит в печать: спецификация, все карточки, сводка, отчёт, документы оснований."""
-    spec = read_json(SPEC)
+    """Что входит в печать: спецификация, все карточки, сводка, документы оснований."""
+    spec = read_json(FROZEN / 'research/122/ITERATION.json')
     return sorted(set(spec['seal_members']))
 
 
@@ -57,7 +71,7 @@ def seal_bytes(names: list[str]) -> tuple[bytes, dict]:
             info = zipfile.ZipInfo(name)
             info.create_system = 3
             info.external_attr = 0o100644 << 16
-            archive.writestr(info, (ROOT / name).read_bytes())
+            archive.writestr(info, source(name).read_bytes())
     raw = buffer.getvalue()
     return raw, {'file': ZIP_NAME, 'format': 1, 'iteration': 'И-122', 'members': len(names),
                  'bytes': len(raw), 'sha256': sha(raw)}
@@ -141,25 +155,25 @@ def evaluate(spec: dict) -> dict:
     for c in spec['checks']:
         kind = c['type']
         if kind == 'file_exists':
-            ok = (ROOT / c['path']).is_file()
+            ok = source(c['path']).is_file()
             detail = c['path']
         elif kind == 'dir_contains':
-            folder = ROOT / c['dir']
+            folder = source(c['dir'])
             ok = folder.is_dir() and len(list(folder.glob(c['glob']))) >= c['min']
             detail = f"{c['dir']}: {len(list(folder.glob(c['glob']))) if folder.is_dir() else 0} файлов"
         elif kind == 'quote_present':
-            text = (ROOT / c['path']).read_text(encoding='utf-8')
+            text = source(c['path']).read_text(encoding='utf-8')
             ok = all(q in text for q in c['quotes'])
             detail = ', '.join(q for q in c['quotes'] if q in text) or 'ни одной цитаты'
         elif kind == 'json_field':
-            data = read_json(ROOT / c['path'])
+            data = read_json(source(c['path']))
             cur = data
             for part in c['field'].split('.'):
                 cur = cur[part] if isinstance(cur, dict) else None
             ok = cur == c['equals']
             detail = f"{c['field']} = {cur!r}"
         elif kind == 'spec_selfcheck':
-            data = read_json(ROOT / c['path'])
+            data = read_json(source(c['path']))
             missing = [x['name'] for x in data['checks'] if not x.get('basis') or not x.get('criterion')]
             ok = not missing
             detail = 'basis/criterion у всех проверок' if ok else 'нет у: ' + ', '.join(missing)
@@ -178,7 +192,7 @@ def evaluate(spec: dict) -> dict:
 
 
 def build() -> dict:
-    spec = read_json(SPEC)
+    spec = read_json(FROZEN / 'research/122/ITERATION.json')
     rec = evaluate(spec)
     names = members()
     (HERE / 'REPORT.md').write_text(report_md(spec, rec, {'members': len(names), 'bytes': 0,
@@ -199,7 +213,7 @@ def build() -> dict:
 
 
 def verify() -> dict:
-    spec = read_json(SPEC)
+    spec = read_json(FROZEN / 'research/122/ITERATION.json')
     rec = evaluate(spec)
     names = members()
     raw, rebuilt = seal_bytes(names)

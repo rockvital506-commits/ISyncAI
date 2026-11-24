@@ -485,6 +485,7 @@
   ],
   "files": [
     "CRITIQUE-AND-RESEARCH-PLAN.md",
+    "DEBT-CLOSURE.md",
     "DECISION-ROADMAP.md",
     "DECISIONS.json",
     "ENTITIES-2.json",
@@ -516,6 +517,13 @@
     "TARGETS.md",
     "VISION-END-STATE.md",
     "acceptance/ACCEPTANCE-122-DRAFT.md",
+    "archive/2026-11-24-receipt/ACCEPTANCE-122-DRAFT.md",
+    "archive/2026-11-24-receipt/DECISIONS.json",
+    "archive/2026-11-24-receipt/GAPS-2.md",
+    "archive/2026-11-24-receipt/PROBES-RESULT-2026-11-24.md",
+    "archive/2026-11-24-receipt/README.md",
+    "archive/2026-11-24-receipt/TARGETS.md",
+    "archive/2026-11-24-receipt/VISION-END-STATE.md",
     "examples/kilo.jsonc.example",
     "examples/state-bad.json",
     "examples/state-example.json",
@@ -533,7 +541,7 @@
     "CATALOG.json"
   ],
   "counters": {
-    "files_total": 47,
+    "files_total": 55,
     "probes_cards": 10
   },
   "generated": "2026-11-24",
@@ -553,11 +561,14 @@
     "result": "PROBES-RESULT-2026-11-24.md",
     "state": "8 проб выполнены 2026-11-24 владельцем; P00 подготовка",
     "debt": {
-      "E27": "закрыта 2026-11-24 (обход через субагента подтверждён)",
-      "E25": "открыта",
-      "E34": "открыта",
-      "E32": "открыта",
-      "E35": "открыта"
+      "E27": "закрыта наблюдением 2026-11-24",
+      "E25": "ОТКРЫТА — обязательна (установка)",
+      "E32": "закрыта рассуждением (S22 + П7)",
+      "E34": "закрыта рассуждением",
+      "E35": "закрыта рассуждением",
+      "C33": "наблюдение один раз",
+      "автосжатие": "перенесено в И-126",
+      "повторяемость": "И-125"
     }
   },
   "guides": [
@@ -587,5 +598,6 @@
     "decision": "владелец, 2026-11-24",
     "seal": "research/122/AgentContractKit-Iteration-122.zip",
     "seal_hash_source": "research/122/SEAL.json (не дублируется здесь: CATALOG входит в печать)"
-  }
+  },
+  "debt_closure": "DEBT-CLOSURE.md"
 }

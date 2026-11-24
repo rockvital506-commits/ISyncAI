@@ -1,0 +1,416 @@
+{
+  "schema": "kilo-dossier-sources/1",
+  "checked": "2026-11-18",
+  "note": "Сохранены утверждения и ссылки, не тексты. Кириллица и цитаты — перевод/пересказ, не дословная копия.",
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "vendor-doc",
+      "title": "Agents.md — Kilo Code Docs",
+      "url": "https://kilo.ai/docs/customize/agents-md",
+      "reliability": "high",
+      "supports": [
+        "Таблица приоритетов: prompt агента 1, instructions проекта 2, AGENTS.md 3, instructions глобально 4, skills по требованию",
+        "AGENTS.md нельзя отключить: он загружается всегда, если присутствует",
+        "AGENTS.md и AGENT.md защищены от записи; агент меняет их только с явным согласием",
+        "Имя файла чувствительно к регистру: AGENTS.md, не agents.md",
+        "AGENTS.md в подкаталогах подгружаются динамически при чтении файлов рядом, через system-reminder"
+      ],
+      "caveats": [
+        "описание документации, не измерение",
+        "версия на странице не указана"
+      ]
+    },
+    {
+      "id": "S02",
+      "kind": "vendor-doc",
+      "title": "Custom Rules — Kilo Code Docs",
+      "url": "https://kilo.ai/docs/customize/custom-rules",
+      "reliability": "high",
+      "supports": [
+        "Правила проекта задаются массивом instructions в проектном kilo.jsonc",
+        "Файлы правил кладут в .kilo/rules/ и подключают путём или glob в instructions",
+        "Порядок: сначала глобальные instructions, затем проектные; проектные важнее при конфликте",
+        "Каталог .kilocode/rules/ читается для обратной совместимости",
+        "Правила применяются на следующем взаимодействии, для смены нужен новый сеанс"
+      ],
+      "caveats": [
+        "не сказано, что каталог .kilo/rules подхватывается без записи в instructions"
+      ]
+    },
+    {
+      "id": "S03",
+      "kind": "vendor-doc",
+      "title": "Custom Modes / agents — Kilo Code Docs",
+      "url": "https://kilo.ai/docs/customize/custom-modes",
+      "reliability": "high",
+      "supports": [
+        "Текущее расширение v7 построено на Kilo CLI; агенты описываются markdown-файлами или ключом agent в kilo.jsonc",
+        "Каталоги агентов: .kilo/agents/, .kilo/agent/, устаревший .kilocode/agents/, глобально ~/.config/kilo/agent/",
+        "Свойства агента: model, variant, temperature, top_p, prompt, permission, mode (primary/subagent/all), hidden, steps, description, color, disable",
+        "Права: allow/ask/deny, glob, последнее совпадение выигрывает",
+        "Порядок слияния: встроенные значения, глобальный конфиг, проектный конфиг, каталоги .kilo/ и .opencode/, переменные окружения",
+        "Одноимённые агенты организации перекрывают встроенных",
+        "Устаревшие .kilocodemodes и custom_modes.yaml мигрируются при старте"
+      ],
+      "caveats": [
+        "две разные формы каталога агентов в одном документе (.kilo/agents и .kilo/agent)"
+      ]
+    },
+    {
+      "id": "S04",
+      "kind": "vendor-doc",
+      "title": "Auto-Approving Actions — Kilo Code Docs",
+      "url": "https://kilo.ai/docs/getting-started/settings/auto-approving-actions",
+      "reliability": "high",
+      "supports": [
+        "Уровни прав: allow — без вопроса, ask — пауза и подтверждение, deny — запрет",
+        "Если ни одно правило не совпало, действие по умолчанию ask",
+        "Большинство инструментов по умолчанию allow, исключения: .env, external_directory, doom_loop",
+        "Проектный kilo.jsonc кешируется при загрузке рабочей папки и не перечитывается на каждый запрос; нужна перезагрузка окна",
+        "Глобальный конфиг перечитывается автоматически",
+        "MCP-инструменты именуются {server}_{tool} и подчиняются тем же правилам"
+      ],
+      "caveats": [
+        "противоречит собственному quickstart, где bash по умолчанию спрашивает (см. GAPS C3)"
+      ]
+    },
+    {
+      "id": "S05",
+      "kind": "registry-api",
+      "title": "Open VSX API: kilocode.kilo-code",
+      "url": "https://open-vsx.org/api/kilocode/kilo-code",
+      "reliability": "high",
+      "supports": [
+        "Последняя версия в реестре на дату проверки: 7.8.32",
+        "Каналы latest и pre-release различаются",
+        "Размеры сборок по платформам, win32-x64 около 153 МБ",
+        "Счётчик загрузок реестра около 4.8 млн (не число активных установок)"
+      ],
+      "caveats": [
+        "реестр не говорит, какая версия стоит у пользователя",
+        "счётчик загрузок не равен пользователям"
+      ]
+    },
+    {
+      "id": "S06",
+      "kind": "vendor-repo-doc",
+      "title": "Configuration System (схема конфигурации)",
+      "url": "https://deepwiki.com/Kilo-Org/kilocode/4.2-model-selection-and-providers",
+      "reliability": "medium",
+      "supports": [
+        "Ключи конфигурации: agent, mode (устаревший), plugin, command, mcp, permission, instructions, provider, username, share, keybinds, compaction, skills",
+        "Схема прав: read, edit, bash, glob, grep, list, task, external_directory, webfetch, websearch, lsp, question"
+      ],
+      "caveats": [
+        "пересказ исходников через сторонний сервис",
+        "может отставать от версии"
+      ]
+    },
+    {
+      "id": "S07",
+      "kind": "secondary",
+      "title": "Consolidate Kilo Code rule files (обзор)",
+      "url": "https://www.memorylake.ai/en/blogs/consolidate-kilo-code-rule-files",
+      "reliability": "low",
+      "supports": [
+        "Подтверждает приоритет: prompt агента, instructions проекта, AGENTS.md, instructions глобально, skills",
+        "AGENTS.md нельзя отключить по отдельности",
+        "Три поведения вне массива instructions: .kilocode/rules читается автоматически, AGENTS.md в подкаталогах внедряется при чтении рядом, CLI читает каталоги совместимости других инструментов"
+      ],
+      "caveats": [
+        "сторонний обзор, возможно машинно сгенерирован",
+        "не источник для чисел"
+      ]
+    },
+    {
+      "id": "S08",
+      "kind": "secondary",
+      "title": "Kilo Code skill / cheatsheet для агентов",
+      "url": "https://terminalskills.io/skills/kilo-code",
+      "reliability": "low",
+      "supports": [
+        "Проектный kilo.jsonc, содержащий {env:...}, отвергается целиком; deny-правила тихо перестают действовать (заявлено для 7.8.1)",
+        "Внутри инструмента последнее совпавшее правило выигрывает, поэтому '*' ставят первым",
+        "Встроенные агенты: code, plan, ask, debug"
+      ],
+      "caveats": [
+        "сторонний текст",
+        "версия указана только в одном утверждении"
+      ]
+    },
+    {
+      "id": "S09",
+      "kind": "secondary",
+      "title": "Kilo Code review, состояние на 2026-09-29",
+      "url": "https://javisreview.com/review/kilo-code-review-2026/",
+      "reliability": "low",
+      "supports": [
+        "Расширение v7.8.1 и около 1.58 млн установок по API Marketplace на 29.09.2026",
+        "Поглощение Anaconda, отдельные бренды Kilo и Kilo Code"
+      ],
+      "caveats": [
+        "обзор с оценками",
+        "числа расходятся с Open VSX, сравнивать нельзя"
+      ]
+    },
+    {
+      "id": "S10",
+      "kind": "secondary",
+      "title": "Kilo Code vs Cline vs Roo, состояние на 2026-09-11/10-19",
+      "url": "https://agentscamp.com/guides/comparisons/cline-vs-kilo-code-vs-roo-code",
+      "reliability": "low",
+      "supports": [
+        "v7 построена на сервере OpenCode, общедоступна с 02.04.2026",
+        "Roo Code закрыт 15.05.2026",
+        "Kilo начинался как форк Roo и был перестроен"
+      ],
+      "caveats": [
+        "обзор",
+        "даты полезны только как ориентир"
+      ]
+    },
+    {
+      "id": "S11",
+      "kind": "vendor-article",
+      "title": "Roo → Kilo: руководство по переносу",
+      "url": "https://kilo.ai/articles/roo-to-kilo-migration-guide",
+      "reliability": "medium",
+      "supports": [
+        "Пользовательские режимы теперь агенты: markdown с YAML-frontmatter",
+        "Каталог .kilo/rules-{slug}/ по умолчанию не загружается; правила режима переносят в тело агента",
+        "AGENTS.md защищён от записи, изменения только с согласием",
+        "Правки AGENTS.md действуют в новых задачах"
+      ],
+      "caveats": [
+        "статья компании, не справочная страница",
+        "прямо противоречит S12"
+      ]
+    },
+    {
+      "id": "S12",
+      "kind": "secondary",
+      "title": "Kilo Code — описание агентов и режимов",
+      "url": "https://factoryengineering.dev/ides/kilo-code/",
+      "reliability": "low",
+      "supports": [
+        "Правила конкретного режима берутся из .kilo/rules-{slug}/ или .kilorules-{slug}",
+        "Хранилище проектных режимов: .kilocodemodes в корне"
+      ],
+      "caveats": [
+        "описывает прежнюю схему как текущую",
+        "противоречит S03 и S11"
+      ]
+    },
+    {
+      "id": "S13",
+      "kind": "secondary",
+      "title": "Kilo Code CLI — памятка",
+      "url": "https://gist.github.com/jetnet/d8be5febbd9dc87db25c494fb1d7de20",
+      "reliability": "low",
+      "supports": [
+        "Практическая модель: prompt агента, instructions проекта, AGENTS.md, глобальные instructions, skills",
+        "Изменения AGENTS.md действуют в новых задачах",
+        "Kilo не даёт хуков жизненного цикла; заменяют AGENTS.md, команды, субагенты, skills"
+      ],
+      "caveats": [
+        "памятка сообщества",
+        "часть выводов — мнение автора"
+      ]
+    },
+    {
+      "id": "S14",
+      "kind": "secondary",
+      "title": "Контекст и ограничения расширения (описание внутренностей)",
+      "url": "https://deepwiki.com/daoyuly/kilocode/7-context-management",
+      "reliability": "low",
+      "supports": [
+        "Параметры: maxOpenTabsContext 20, maxWorkspaceFiles 200, maxReadFileLine 500, autoCondenseContextPercent 100",
+        "Скользящее окно и конденсация как механизмы усечения"
+      ],
+      "caveats": [
+        "относится к прежней архитектуре расширения",
+        "не переносить числа в И‑126 без проверки версии"
+      ]
+    },
+    {
+      "id": "S15",
+      "kind": "observed-ui",
+      "title": "Скрины пользователя, партия 1 (15 файлов, 2026-11-22)",
+      "url": "/tmp/arena-coding-uploads/Снимок экрана 2026-11-22 1035*.png…1048*.png",
+      "reliability": "observed-ui",
+      "supports": [
+        "версия 7.8.32 pre-release и включённое автообновление",
+        "провайдеры не подключены",
+        "автосжатие 50 %, память проекта выкл",
+        "индексация выключена, LanceDB",
+        "активация onStartupFinished/onUri",
+        "режимы Code/Ask/Debug/Orchestrator/Plan в настройках"
+      ],
+      "caveats": [
+        "показывает интерфейс, не поведение",
+        "среда пользователя Windows, не стенд агента",
+        "не заменяет прогон"
+      ]
+    },
+    {
+      "id": "S16",
+      "kind": "observed-ui",
+      "title": "Скрины пользователя, партия 2 (18 файлов, 2026-11-22)",
+      "url": "/tmp/arena-coding-uploads/Снимок экрана 2026-11-22 1041*.png…1048*.png",
+      "reliability": "observed-ui",
+      "supports": [
+        "права по умолчанию по инструментам",
+        "список агентов 7.8.32",
+        "разделение слоёв VS Code и CLI",
+        "CLI-сервер на 4896",
+        "команда Reload Config and Skills"
+      ],
+      "caveats": [
+        "интерфейс, не поведение",
+        "часть значений — «По умолчанию», итог зависит от CLI-конфигурации"
+      ]
+    },
+    {
+      "id": "S17",
+      "kind": "vendor-doc",
+      "title": "Settings — Kilo Code Docs",
+      "url": "https://kilo.ai/docs/getting-started/settings",
+      "reliability": "high",
+      "supports": [
+        "Настройки Kilo читают и пишут те же JSONC-файлы, что и CLI",
+        "Глобальный конфиг ~/.config/kilo/kilo.jsonc, проектный kilo.jsonc или .kilo/kilo.jsonc",
+        "Пресеты отображения: Review first и High autonomy, Review first задаёт permission-правила",
+        "Onboarding заполняет только незаданное",
+        "compaction model хранится как agent.compaction.model",
+        "reasoning_display/terminal_command_display/code_edit_display/mcp_tool_display"
+      ],
+      "caveats": [
+        "не сказано, что именно попадает в permission пресета построчно"
+      ]
+    },
+    {
+      "id": "S18",
+      "kind": "vendor-doc",
+      "title": "Context Condensing — Kilo Code Docs",
+      "url": "https://kilo.ai/docs/customize/context/context-condensing",
+      "reliability": "high",
+      "supports": [
+        "compaction.auto=true по умолчанию",
+        "threshold_percent необязателен, 1–100",
+        "reserved = min(20000, max_output)",
+        "prune=true, tail_turns=2",
+        "если модель не объявляет контекст, автосжатие не запускается"
+      ],
+      "caveats": [
+        "страница не привязана к версии расширения"
+      ]
+    },
+    {
+      "id": "S19",
+      "kind": "vendor-doc",
+      "title": "Skills — Kilo Code Docs",
+      "url": "https://kilo.ai/docs/customize/skills",
+      "reliability": "high",
+      "supports": [
+        "SKILL.md с YAML-frontmatter",
+        "в промпт попадают только имя, описание, путь",
+        "каталоги: ~/.kilo/skills, .kilo/skills, ~/.agents/skills, .agents/skills, claude при включённой совместимости",
+        "skills.paths и skills.urls",
+        "режимных каталогов навыков в новой платформе нет",
+        "повторное сканирование по /reload или новой сессии"
+      ],
+      "caveats": [
+        "часть страницы относится к CLI"
+      ]
+    },
+    {
+      "id": "S20",
+      "kind": "vendor-doc",
+      "title": "Using MCP in Kilo Code — Kilo Code Docs",
+      "url": "https://kilo.ai/docs/automate/mcp/using-in-kilo-code",
+      "reliability": "high",
+      "supports": [
+        "mcp в kilo.jsonc, уровни глобальный и проектный",
+        "type local/remote",
+        "таймаут 10 с локально, 15 с удалённо",
+        "имена инструментов {server}_{tool}",
+        "SSE устарел, используется Streamable HTTP"
+      ],
+      "caveats": [
+        "примеры конфигурации могут отличаться от текущей схемы"
+      ]
+    },
+    {
+      "id": "S21",
+      "kind": "observed-file",
+      "title": "settings.json пользователя (240 строк)",
+      "url": "/tmp/arena-coding-uploads/settings.json",
+      "reliability": "observed-ui",
+      "supports": [
+        "пять ключей kilo-code.new.*: autocomplete выключен, showAutoApprovalReason и showTaskTimeline включены",
+        "telemetry.telemetryLevel=off относится к VS Code",
+        "github.copilot.* включён",
+        "terminal.integrated.commandsToSkipShell содержит команды agentManager",
+        "секретов нет"
+      ],
+      "caveats": [
+        "это настройки редактора, а не проекта",
+        "не доказывает поведение Kilo"
+      ]
+    },
+    {
+      "id": "S22",
+      "url": "https://kilo.ai/docs/customize/context/kilocodeignore",
+      "title": ".kilocodeignore",
+      "claims": [
+        ".kilocodeignore — файл в корне проекта, синтаксис .gitignore, ограничивает доступ Kilo к файлам (не Git)",
+        "IgnoreMigrator автоматически превращает шаблоны .kilocodeignore в deny-правила на инструменты read и edit",
+        "watcher.ignore в kilo.jsonc влияет только на наблюдение за изменениями, не на доступ",
+        "встроенные исключения: 27 каталогов и 11 шаблонов файлов; .gitignore и .ignore учитываются при листинге и поиске",
+        "блокировка через .kilocodeignore не мешает контрольным точкам, если файл не исключён из git"
+      ],
+      "fetched": "2026-11-24",
+      "why": "проверка идеи владельца о «файле агентигнора»; ключевой факт — механизм сводится к тем же deny на read/edit"
+    },
+    {
+      "id": "S23",
+      "url": "https://www.ayautomate.com/free-models/kilo-code-openrouter-free",
+      "title": "openrouter/free (Kilo Code): free limits",
+      "claims": [
+        "модель `kilo-auto/free` — авто-маршрутизатор (в источнике: minimax 80 %, stepfun 20 %)",
+        "контекст `openrouter/free` указан 200 000 токенов",
+        "лимит 200 запросов/час на IP без входа; лимиты для вошедших не опубликованы"
+      ],
+      "fetched": "2026-11-24",
+      "confidence": "secondary",
+      "why": "объясняет ответ модели «окно 200 000» в П8 и требование владельца учитывать вариативность модели"
+    },
+    {
+      "id": "S24",
+      "url": "https://horizonlux.com/tools/ai-models/free/kilo-code-kilo-auto-free",
+      "title": "Auto Free (router) on Kilo Code",
+      "claims": [
+        "`kilo-auto/free` — маршрутизатор: модель может меняться от сессии к сессии",
+        "free-модели могут маршрутизироваться к провайдерам, которые логируют промпты и обучаются на них, включая trial-эндпоинты NVIDIA",
+        "каждая free-модель в списке помечена «mayTrainOnYourPrompts»",
+        "контекст указан 256 000"
+      ],
+      "fetched": "2026-11-24",
+      "confidence": "secondary",
+      "why": "ключевой факт для K4: на free-тарифе промпты могут попадать в обучение"
+    },
+    {
+      "id": "S25",
+      "url": "https://rubentorney.com/blog/en/openrouter-modeles-gratuits-2026.html",
+      "title": "OpenRouter free models list 2026",
+      "claims": [
+        "free-модели имеют окна от 1M до 32K; `openrouter/free` — 200K",
+        "окна :free и платных вариантов одной модели различаются в обе стороны"
+      ],
+      "fetched": "2026-11-24",
+      "confidence": "secondary",
+      "why": "подтверждает вариативность окна между бесплатными моделями (поправка владельца)"
+    }
+  ]
+}

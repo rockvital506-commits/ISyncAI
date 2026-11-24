@@ -1,0 +1,273 @@
+{
+  "schema": "kilo-dossier-states/1",
+  "checked": "2026-11-18",
+  "note": "Состояние — это сущность с определённым конфигом, а не папка. Одно состояние используется во многих сценариях; сценарий ссылается на состояние по id.",
+  "states": [
+    {
+      "id": "ST-ENV-3",
+      "purpose": "Мастер автоодобрения ВЫКЛЮЧЕН (2026-11-24, p5). Рабочее состояние для проб на запрос разрешения.",
+      "fingerprint": {
+        "extension": "kilocode.kilo-code 7.8.32",
+        "model": "Auto Free",
+        "context_window_observed": "256.0K",
+        "auto_approve_master": "выключен (подсказка «Автодобрение отключено»)",
+        "permissions": "per-agent: edit deny, bash {\"*\": ask, \"git status*\": allow}",
+        "shell": "PowerShell, несмотря на имя инструмента bash"
+      },
+      "expected": [
+        "точечный allow без вопроса",
+        "остальное — запрос",
+        "deny запрещает"
+      ],
+      "observed_2026_11_24": {
+        "allow_without_prompt": true,
+        "ask_prompted_3_times": true,
+        "reason_text": "«Одобрено автоматически агентом exec.md совпало с правилом \"bash\" \"git status*\"»",
+        "ls_la_failed_powershell": true
+      },
+      "evidence_level": "observed"
+    },
+    {
+      "id": "ST-ENV-2",
+      "purpose": "То же, что ST-ENV-1, но мастер автоодобрения включён владельцем вручную (2026-11-24)",
+      "fingerprint": {
+        "extension": "kilocode.kilo-code 7.8.32",
+        "model": "Auto Free (kilo-auto/free)",
+        "context_window_observed": "256.0K",
+        "auto_approve_master": "включён (щит подсвечен, подсказка «Автодобрение включено»)",
+        "permissions": "bash ask, edit ask, read allow (.env deny), external_directory ask, task ask",
+        "project": "пустой стенд p1 с .kilo/rules/canary.md"
+      },
+      "expected": [
+        "запросы разрешений не появляются; запросы на выход из песочницы по-прежнему спрашиваются"
+      ],
+      "not_expected": [
+        "что «нет запроса» доказывает правило: при включённом мастере это неотличимо"
+      ],
+      "evidence_level": "observed",
+      "note": "Ключевое следствие: с включённым мастером пробы на «спросит или нет» недействительны. П5 и П7 требуют мастера ВЫКЛ.",
+      "findings": [
+        "мастер автоодобрения перекрывает Edit:Спросить — запроса нет",
+        "UI подписывает авторешение как «Одобрено вами»",
+        "правка сохранила байты: UTF-8 без BOM, CRLF, без финального LF"
+      ],
+      "warning": "непригодно для проб на запрос разрешения (П5, П7 требуют мастера ВЫКЛ)"
+    },
+    {
+      "id": "ST-ENV-1",
+      "purpose": "Наблюдаемое состояние пользователя на 2026-11-22 (первая партия скринов)",
+      "fingerprint": {
+        "extension": "kilocode.kilo-code 7.8.32 pre-release, авт. обновление вкл",
+        "os": "Windows, рабочая папка <диск>:/<рабочая папка>",
+        "providers": "не подключены",
+        "default_models": "kilo-auto/free для основной, малой и модели сжатия",
+        "context": "автосжатие вкл, лимит 50 %, память проекта выкл",
+        "indexing": "выкл, LanceDB",
+        "experimental": "обмен вручную; LSP, форматтер, пакетный инструмент, изображения, браузер вкл; MCP 60000 мс",
+        "permissions": "bash ask, edit ask, read allow (.env deny), task ask, doom_loop ask, мастер автоодобрения выкл",
+        "agents": "ask, code, compaction, debug, explore, general, orchestrator, plan, title",
+        "cli_server": "подключён на 4896",
+        "telemetry": "вкл"
+      },
+      "expected": [
+        "расширение активно при старте VS Code",
+        "агенты Code/Ask/Debug/Orchestrator/Plan присутствуют в настройках"
+      ],
+      "not_expected": [
+        "что провайдер доступен: подключений нет",
+        "что правила проекта прочитаны: файлы проекта не показаны"
+      ],
+      "evidence_level": "observed_ui",
+      "note": "это не состояние Kit, а среда пользователя; для сценариев из SCENARIOS.json нужен явный проект"
+    },
+    {
+      "id": "ST-ABSENT",
+      "purpose": "Исходная точка: ничего не установлено",
+      "fingerprint": {
+        "extension": "absent",
+        "kilo_jsonc": "absent",
+        ".kilo/": "absent",
+        "AGENTS.md": "absent"
+      },
+      "expected": [
+        "Kilo не участвует в чтении файлов проекта"
+      ],
+      "not_expected": [
+        "никакого «правила применено»"
+      ],
+      "evidence_level": "not run"
+    },
+    {
+      "id": "ST-PROFILE-CLEAN",
+      "purpose": "Свежая установка без пользовательских правил",
+      "fingerprint": {
+        "extension": "<версия из UI>",
+        "global_config": "по умолчанию",
+        "project": "нет kilo.jsonc, нет AGENTS.md"
+      },
+      "expected": [
+        "права по умолчанию, как в документации",
+        "базовый агент code доступен"
+      ],
+      "not_expected": [
+        "что «по умолчанию» совпадает у всех версий"
+      ],
+      "evidence_level": "not run"
+    },
+    {
+      "id": "ST-PROJECT-BARE",
+      "purpose": "Проверить, читается ли правило без подключения",
+      "fingerprint": {
+        "kilo.jsonc": "есть, без instructions",
+        ".kilo/rules/keep.md": "есть, уникальная строка",
+        "AGENTS.md": "absent"
+      },
+      "expected": [
+        "ответ на E1"
+      ],
+      "not_expected": [
+        "вывод «не поддерживается» по молчанию"
+      ],
+      "evidence_level": "observed",
+      "observed_2026_11_24": {
+        "loaded_automatically": true,
+        "evidence": "цитата ZX-41-P1 + «Инструкции from: <путь>» + вкладка «Правила»",
+        "bom": "не помешал",
+        "tokens": "20.6K → 22.6K (8 % → 9 % от 256K)"
+      }
+    },
+    {
+      "id": "ST-PROJECT-WIRED",
+      "purpose": "Правило подключено явно через instructions",
+      "fingerprint": {
+        "kilo.jsonc": "instructions: [\".kilo/rules/*.md\"]",
+        ".kilo/rules/": "минимум один файл",
+        "AGENTS.md": "absent"
+      },
+      "expected": [
+        "правило в контексте",
+        "проектные правила перекрывают глобальные"
+      ],
+      "not_expected": [
+        "что подключение доказывает применение к действиям"
+      ],
+      "evidence_level": "not run"
+    },
+    {
+      "id": "ST-AGENTS-MD-ONLY",
+      "purpose": "Только AGENTS.md, без kilo.jsonc",
+      "fingerprint": {
+        "AGENTS.md": "есть",
+        "kilo.jsonc": "absent",
+        ".kilo/": "absent"
+      },
+      "expected": [
+        "AGENTS.md загружается всегда",
+        "защищён от записи агентом"
+      ],
+      "not_expected": [
+        "возможность его отключить"
+      ],
+      "evidence_level": "not run"
+    },
+    {
+      "id": "ST-CONFLICT-PAIR",
+      "purpose": "Старшинство: AGENTS.md против instructions проекта",
+      "fingerprint": {
+        "AGENTS.md": "инструкция A",
+        "kilo.jsonc": "instructions-файл с инструкцией не-A"
+      },
+      "expected": [
+        "ответ на E7 — наблюдение, какая инструкция соблюдена"
+      ],
+      "not_expected": [
+        "ранг из документации как доказательство"
+      ],
+      "evidence_level": "not run"
+    },
+    {
+      "id": "ST-AGENT-SCOPED",
+      "purpose": "Отдельный агент с собственным промптом и правами",
+      "fingerprint": {
+        ".kilo/agents/reviewer.md": "frontmatter: mode primary, permission edit deny, bash deny",
+        "kilo.jsonc": "agent: {} не перекрывает"
+      },
+      "expected": [
+        "агент виден в выборе",
+        "запрет редактирования действует"
+      ],
+      "not_expected": [
+        "что запрет действует и в других агентах"
+      ],
+      "evidence_level": "not run"
+    },
+    {
+      "id": "ST-AGENT-BOTH",
+      "purpose": "Проверить, какой каталог агентов читается (C4)",
+      "fingerprint": {
+        ".kilo/agents/from-agents-dir.md": "уникальное имя",
+        ".kilo/agent/from-agent-dir.md": "уникальное имя"
+      },
+      "expected": [
+        "в списке виден ответ на E4"
+      ],
+      "not_expected": [
+        "перенос вывода на другую версию"
+      ],
+      "evidence_level": "not run"
+    },
+    {
+      "id": "ST-FOREIGN-GUARD",
+      "purpose": "Чужой AGENTS.md: сохранность и отсутствие перезаписи",
+      "fingerprint": {
+        "AGENTS.md": "байты другого проекта, зафиксированы SHA‑256",
+        "агент": "с намерением редактировать AGENTS.md"
+      },
+      "expected": [
+        "запрос подтверждения",
+        "без согласия байты не меняются"
+      ],
+      "not_expected": [
+        "импорт содержимого в реестр Kit"
+      ],
+      "evidence_level": "not run",
+      "note": "класс состояния для entry_mode: foreign в I‑122"
+    },
+    {
+      "id": "ST-PERM-TIGHT",
+      "purpose": "Суженные права как проверяемое ограничение",
+      "fingerprint": {
+        "kilo.jsonc": "permission.bash: {'*': ask, 'git *': allow, 'rm *': deny}"
+      },
+      "expected": [
+        "последнее совпадение выигрывает",
+        "rm спрашивает или запрещён согласно правилу"
+      ],
+      "not_expected": [
+        "что правило в тексте отменяет права"
+      ],
+      "evidence_level": "not run"
+    },
+    {
+      "id": "ST-CONTEXT-PRESSURE",
+      "purpose": "Поведение при сжатии контекста",
+      "fingerprint": {
+        "большой каталог": "много файлов",
+        "правило": "длинное, за пределами окна"
+      },
+      "expected": [
+        "наблюдение, теряется ли правило после конденсации"
+      ],
+      "not_expected": [
+        "числа капа без замера"
+      ],
+      "evidence_level": "not run",
+      "next": "И‑126"
+    }
+  ],
+  "invariants": [
+    "все состояния описывают файлы и настройки, а не намерения",
+    "fingerprint — минимальный набор для воспроизведения, не полный снимок",
+    "переход между состояниями фиксируется отдельно; сам переход не доказывает чтение"
+  ]
+}

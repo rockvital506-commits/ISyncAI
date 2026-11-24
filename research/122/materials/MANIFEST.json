@@ -1,0 +1,30 @@
+{
+  "files": {
+    "research/122/ITERATION.json": "3c9dc1917fcfb457a1eaa39821c8a6c0c41b0d1d801a6cb30b216bc0a4bc84f9",
+    "research/122/run.py": "daf5aff5842183ed8231f7a333dc8cc7b6aa43a1b7168e429b994dedcd83b56d",
+    "research/kilo/CATALOG.json": "0109dda2b6a4e7439efa573171e0f469eb3a8cd5e813f7862de87fdc075d9dcc",
+    "research/kilo/DECISIONS.json": "fbc5ca7c1006aef64cb1035dba3f2507faaeb6b72ac96fd85adef43d456ff5c7",
+    "research/kilo/GAPS-2.md": "2f1f8a9c856d04040ae986433efe0186c848161cf5a190c4494155c266b0db77",
+    "research/kilo/PROBES-RESULT-2026-11-24.md": "eb23066546dcb5cb0d69da8b737610984a871824f1faf95be5087ee9052d08fc",
+    "research/kilo/SOURCES.json": "2401c89a440a50ce2a900c1482f811d6b4cafbf6c01e77aa69940ec4250e4a50",
+    "research/kilo/STATES.json": "c79e32adfe02ddee2976b2ad9f0aa749db712504f53b06d63e8b09622f21d602",
+    "research/kilo/TARGETS.md": "8ac6dcad086959884730f567df60d11d71be6f735781708c4b1735e9587a31f5",
+    "research/kilo/VISION-END-STATE.md": "8ac3a6a5106468a75710278e5ee183221857a39bd719fdcd315ac5131052f7c6",
+    "research/kilo/acceptance/ACCEPTANCE-122-DRAFT.md": "cebe5aa4b985abad1ace272870bcb5a2706025061b60cda9f75aae3b1be4c270",
+    "research/kilo/probes/P00-ENV.md": "3cf9f5da88075f21a7c644928f8db2e09082cf73316f7db85bdf589681d6945a",
+    "research/kilo/probes/P1-AUTOLOAD.md": "a88e274e64b204b855ff726825a4a32b960b1ed3dc87f92fd7a5e524236f3873",
+    "research/kilo/probes/P2-INSTRUCTIONS.md": "c8d9c86a011985dc157d397ee0c11e7f9401e9eacd24d6e34c2c26a79f7d9928",
+    "research/kilo/probes/P3-AGENTS-MD.md": "1f6b8e7c93ac5a9ace97b5bedd33c0032552e759b091bc69cfb18a516f55f715",
+    "research/kilo/probes/P4-REVIEWER.md": "2662b64ee1306b026ee005a1c50de3898b63875cc45d5b37cf6ebfd37f5dd7bd",
+    "research/kilo/probes/P5-PERMISSION-ORDER.md": "905e6fc33595796f8c776d39214a54857982a3dcbf03803bb25a117b8d93c74d",
+    "research/kilo/probes/P6-RELOAD.md": "d9c9e666f2ac066ccdc66c19a6f3e64826b62298b87a68bbb1d6f481a551bdad",
+    "research/kilo/probes/P7-ENV-MASTER.md": "e411cf62ef784c396aa9cc5216ed40234aa75c0ed2ed587933e73eec935fa575",
+    "research/kilo/probes/P8-CONTEXT.md": "42d12b11fb3d1d639cd6e1ea29c54be886c3f55f638a8e200e1f3a74fb799e30"
+  },
+  "frozen_at_commit": "c83bc84",
+  "note": "Замороженные материалы приёмки. read через run.py:source(). Живые файлы досье продолжают меняться.",
+  "post_acceptance_docs": {
+    "research/kilo/DEBT-CLOSURE.md": "решения после приёмки (владелец, 2026-11-24)",
+    "research/kilo/archive/2026-11-24-receipt/": "снимок документов на дату приёмки"
+  }
+}

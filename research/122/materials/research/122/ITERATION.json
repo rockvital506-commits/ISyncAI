@@ -1,0 +1,216 @@
+{
+  "id": "122",
+  "title": "Kilo: поверхность, чтение правил и права — приёмка восьми проб",
+  "phase": "Ф5. Адаптеры: Arena / Kilo / Copilot",
+  "priority": "P0",
+  "date": "2026-11-24",
+  "branch": "arena/4e000a5e-isyncai",
+  "baseline": "e9a9ef7",
+  "decision": "вариант A: принять с ограничениями О1–О6 (решение владельца 2026-11-24)",
+  "environment": {
+    "VS Code": "1.147.0",
+    "Kilo Code": "7.8.32",
+    "CLI-сервер": "подключено, порт 4096",
+    "Провайдер": "не подключён (осознанное решение владельца)",
+    "Модель": "Auto Free (kilo-auto/free) — маршрутизатор, не одна модель",
+    "Окно по счётчику": "256.0K на 2026-11-24",
+    "Мастер автоодобрения": "выключен; включался намеренно только для П3 и П4",
+    "Права": "bash ask, edit ask, read allow (*.env deny), external_directory ask",
+    "Стенд": "D:\\kilo-stand-122, p1–p6",
+    "Исполнитель проб": "владелец; интерпретация — агент"
+  },
+  "checks": [
+    {
+      "name": "Пробы выполнены в согласованной среде с записью версий",
+      "type": "quote_present",
+      "path": "research/kilo/probes/P00-ENV.md",
+      "quotes": [
+        "VS Code | **1.147.0**",
+        "Kilo (расширение) | **7.8.32**"
+      ],
+      "basis": "probes/P00-ENV.md",
+      "criterion": "версии и статус CLI записаны в карточке P00"
+    },
+    {
+      "name": "Каждая проба оформлена отдельной карточкой (8 обязательных + P00)",
+      "type": "dir_contains",
+      "dir": "research/kilo/probes",
+      "glob": "P*.md",
+      "min": 9,
+      "basis": "probes/",
+      "criterion": "≥9 файлов: P00, П1–П8"
+    },
+    {
+      "name": "Уровни не смешаны: чтение подтверждено цитатой и источником",
+      "type": "quote_present",
+      "path": "research/kilo/probes/P1-AUTOLOAD.md",
+      "quotes": [
+        "ZX-41-P1",
+        "Инструкции from"
+      ],
+      "basis": "П1, PROBES-RESULT §1",
+      "criterion": "цитата канарейки и строка источника в карточке"
+    },
+    {
+      "name": "Точка входа подтверждена наблюдением, а не документацией",
+      "type": "quote_present",
+      "path": "research/kilo/probes/P2-INSTRUCTIONS.md",
+      "quotes": [
+        "Практическое следствие для Kit",
+        "не обязателен"
+      ],
+      "basis": "П1, П2",
+      "criterion": "вывод об автоподхвате записан как наблюдённый"
+    },
+    {
+      "name": "Старшинство AGENTS.md: чтение доказано, конфликт значений — нет",
+      "type": "declared_partial",
+      "why": "П3: чтение доказано; E25 (конфликт AGENTS.md против .kilo/rules) не проверялся",
+      "force_status": "partial",
+      "basis": "П3, GAPS-2 E25",
+      "criterion": "заявлено отдельно: чтение — да, конфликт — not run"
+    },
+    {
+      "name": "0 fail среди обязательных проб",
+      "type": "quote_present",
+      "path": "research/kilo/PROBES-RESULT-2026-11-24.md",
+      "quotes": [
+        "| П8 | контекст | — | pass |"
+      ],
+      "basis": "PROBES-RESULT §1",
+      "criterion": "в сводке все восемь проб со статусом pass"
+    },
+    {
+      "name": "Модель прав измерена: deny > мастер > ask",
+      "type": "quote_present",
+      "path": "research/kilo/PROBES-RESULT-2026-11-24.md",
+      "quotes": [
+        "`deny` > мастер автоодобрения > `ask`"
+      ],
+      "basis": "П4, П5, П7",
+      "criterion": "иерархия записана как наблюдённая"
+    },
+    {
+      "name": "Опровергнутые утверждения зафиксированы, а не сглажены",
+      "type": "quote_present",
+      "path": "research/kilo/PROBES-RESULT-2026-11-24.md",
+      "quotes": [
+        "Три опровергнутых утверждения"
+      ],
+      "basis": "PROBES-RESULT §3, C19, C27",
+      "criterion": "раздел с опровержениями присутствует (регистр учитывается)"
+    },
+    {
+      "name": "Ограничения free-тарифа внесены в критерии",
+      "type": "quote_present",
+      "path": "research/kilo/TARGETS.md",
+      "quotes": [
+        "3.4 Ограничение, вытекающее из бесплатного тарифа"
+      ],
+      "basis": "TARGETS §3.4, C31, S23–S25",
+      "criterion": "раздел о маршрутизации и окне присутствует"
+    },
+    {
+      "name": "Отчёт с basis/criterion для каждой проверки",
+      "type": "spec_selfcheck",
+      "path": "research/122/ITERATION.json",
+      "basis": "ITERATION.json",
+      "criterion": "у каждой проверки заполнены basis и criterion"
+    }
+  ],
+  "not_run": [
+    {
+      "what": "E25: что побеждает при конфликте AGENTS.md и .kilo/rules",
+      "why": "не проверялось; П3 проверил чтение, не конфликт"
+    },
+    {
+      "what": "E27: обход deny через субагента task",
+      "why": "агент пытался в П4, предметной пробы не было"
+    },
+    {
+      "what": "Автосжатие на пороге 50 % окна",
+      "why": "нужен длинный диалог; относится к И-126"
+    },
+    {
+      "what": "Повторяемость 5–10 прогонов",
+      "why": "это И-125, отдельная итерация"
+    },
+    {
+      "what": "E34: меняется ли окно сессии между запусками",
+      "why": "нужны три новые сессии на Auto Free"
+    },
+    {
+      "what": "E32: .kilocodeignore против чтения через bash",
+      "why": "по документации (S22) компилируется в те же deny на read/edit; практика не проверялась"
+    }
+  ],
+  "limits": [
+    {
+      "id": "О1",
+      "limit": "Выборка — одна модель Auto Free (маршрутизатор) на дату 2026-11-24",
+      "effect": "перенос результатов на другую модель — not run"
+    },
+    {
+      "id": "О2",
+      "limit": "Окно сессии нестабильно (маршрутизация)",
+      "effect": "окно сверять по счётчику в начале каждой сессии"
+    },
+    {
+      "id": "О3",
+      "limit": "Целостность чужого проекта обеспечивается внешним контролем, не правилами Kilo",
+      "effect": "Ф6 обязательна, а не желательна"
+    },
+    {
+      "id": "О4",
+      "limit": "Защита секретов средствами правил не гарантируется",
+      "effect": "в документации Kit запрещена формулировка «секреты не утекут»"
+    },
+    {
+      "id": "О5",
+      "limit": "Обход через субагента не проверен (E27)",
+      "effect": "проба-долг, не блокер И-122"
+    },
+    {
+      "id": "О6",
+      "limit": "Автосжатие на пороге не наблюдалось",
+      "effect": "проба-долг И-126"
+    }
+  ],
+  "not_claimed": [
+    "что поведение повторится на другой модели, версии расширения или ОС",
+    "что секреты защищены правилами Kilo — опровергнуто П7",
+    "что AGENTS.md неизменяем — опровергнуто П3",
+    "что Kit работает как продукт: проверена поверхность Kilo, а не продукт",
+    "что воспроизводимость подтверждена: это И-125"
+  ],
+  "seal_members": [
+    "research/122/ITERATION.json",
+    "research/122/run.py",
+    "research/kilo/PROBES-RESULT-2026-11-24.md",
+    "research/kilo/acceptance/ACCEPTANCE-122-DRAFT.md",
+    "research/kilo/TARGETS.md",
+    "research/kilo/VISION-END-STATE.md",
+    "research/kilo/DECISIONS.json",
+    "research/kilo/GAPS-2.md",
+    "research/kilo/SOURCES.json",
+    "research/kilo/STATES.json",
+    "research/kilo/CATALOG.json",
+    "research/kilo/probes/P00-ENV.md",
+    "research/kilo/probes/P1-AUTOLOAD.md",
+    "research/kilo/probes/P2-INSTRUCTIONS.md",
+    "research/kilo/probes/P3-AGENTS-MD.md",
+    "research/kilo/probes/P4-REVIEWER.md",
+    "research/kilo/probes/P5-PERMISSION-ORDER.md",
+    "research/kilo/probes/P6-RELOAD.md",
+    "research/kilo/probes/P7-ENV-MASTER.md",
+    "research/kilo/probes/P8-CONTEXT.md"
+  ],
+  "computed_outputs": [
+    "REPORT.md",
+    "ACCEPTANCE.json",
+    "SEAL.json",
+    "REPLAY.json",
+    "Итерация-122.html"
+  ],
+  "computed_note": "Вычисляемые выходы не входят в архив (содержат его хеш). Их совпадение проверяет --verify-seal пересборкой."
+}
