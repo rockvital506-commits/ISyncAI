@@ -492,9 +492,25 @@ def _posix_metadata(info, rel):
         raise StoreError('metadata_unavailable', rel) from error
 
 
+def _reject_visible_xattrs(path_or_fd, rel, *, target=False):
+    """Отказать при видимых xattr или невозможности их перечисления; значения не читаем."""
+    try:
+        if not hasattr(os, 'listxattr'):
+            raise OSError('xattrs_api_unavailable')
+        attrs = (os.listxattr(path_or_fd, follow_symlinks=False) if target
+                 else os.listxattr(path_or_fd))
+        if type(attrs) is not list:
+            raise TypeError('invalid_xattr_list')
+    except (OSError, TypeError, ValueError, NotImplementedError) as error:
+        raise StoreError('xattrs_unavailable', rel) from error
+    if attrs:
+        raise StoreError('replacement_xattrs_present', rel)
+
+
 def _replace(registry, raw, rel, *, expected_metadata=None):
     temporary = None
     try:
+        _reject_visible_xattrs(registry, rel, target=True)
         with tempfile.NamedTemporaryFile(mode='wb', dir=registry.parent, prefix='.registry-', suffix='.tmp',
                                          delete=False) as staged:
             temporary = Path(staged.name)
@@ -506,14 +522,17 @@ def _replace(registry, raw, rel, *, expected_metadata=None):
                         raise StoreError('metadata_unavailable', rel) from error
                     if observed != expected_metadata:
                         raise StoreError('replacement_metadata_mismatch', rel)
-            # Сравнение без chmod/chown: при несовпадении даже содержимое не записывается.
+            # Без chmod/chown или копирования xattr; отказ до записи при обнаружении.
             check_stage()
+            _reject_visible_xattrs(staged.fileno(), rel)
             written = staged.write(raw)
             if expected_metadata is not None:
                 if written != len(raw):
                     raise OSError('short_write')
                 staged.flush()
                 check_stage()
+            _reject_visible_xattrs(staged.fileno(), rel)
+        _reject_visible_xattrs(registry, rel, target=True)
         os.replace(temporary, registry)
     except (OSError, StoreError) as error:
         if temporary is not None:

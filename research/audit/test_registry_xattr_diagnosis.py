@@ -89,24 +89,16 @@ class XattrDiagnosis(unittest.TestCase):
     def apply(self, plan):
         return self.session.apply(plan, confirmed_ticket=plan['ticket'])
 
-    def assert_replaced(self, before, after, target):
-        self.assertNotEqual(before[target][0], after[target][0])
-        self.assertEqual(before[target][1:4], after[target][1:4])
-        self.assertEqual(before[target][4], INITIAL)
-        self.assertIsNone(after[target][4])
-        for other in set(self.files) - {target}: self.assertEqual(before[other], after[other])
-
-    def test_confirmed_replacements_lose_probe_xattr_on_this_filesystem(self):
+    def test_confirmed_replacements_refuse_visible_xattr(self):
         for target in ('L1', 'L2'):
             with self.subTest(target=target):
                 before = self.observed(); plan = self.plan(target)
-                self.assertEqual(self.observed(), before)
-                with self.assertRaises(StoreError) as denied:
-                    self.session.apply(plan)
+                with self.assertRaises(StoreError) as denied: self.session.apply(plan)
                 self.assertEqual(denied.exception.code, 'confirmation_required')
                 self.assertEqual(self.observed(), before)
-                self.assertEqual(self.apply(plan)['outcome'], 'applied')
-                self.assert_replaced(before, self.observed(), target)
+                with self.assertRaises(StoreError) as failure: self.apply(plan)
+                self.assertEqual(failure.exception.code, 'replacement_xattrs_present')
+                self.assertEqual(self.observed(), before)
                 with self.assertRaises(StoreError) as again: self.apply(plan)
                 self.assertEqual(again.exception.code, 'ticket_unknown')
 
@@ -116,21 +108,22 @@ class XattrDiagnosis(unittest.TestCase):
         drift = self.observed()
         self.assertEqual(before['L1'][:4], drift['L1'][:4])
         self.assertEqual(plan['inputs_sha256']['L1'], hashlib.sha256(drift['L1'][0]).hexdigest())
-        self.assertEqual(self.apply(plan)['outcome'], 'applied')
-        after = self.observed()
-        self.assertIsNone(after['L1'][4]); self.assertEqual(after['L1'][1:4], drift['L1'][1:4])
-        self.assertNotEqual(after['L1'][0], drift['L1'][0])
-        for other in ('L0', 'L2'): self.assertEqual(drift[other], after[other])
+        with self.assertRaises(StoreError) as failure: self.apply(plan)
+        self.assertEqual(failure.exception.code, 'replacement_xattrs_present')
+        self.assertEqual(self.observed(), drift)
 
     def test_non_target_xattr_drift_is_not_checked(self):
+        os.removexattr(self.files['L1'], NAME)
         plan = self.plan(); before = self.observed()
         os.setxattr(self.files['L2'], NAME, CHANGED)
         drift = self.observed(); self.assertEqual(before['L2'][:4], drift['L2'][:4])
         self.assertEqual(self.apply(plan)['outcome'], 'applied')
         after = self.observed(); self.assertEqual(after['L2'], drift['L2'])
-        self.assert_replaced(drift, after, 'L1')
+        self.assertEqual(after['L0'], drift['L0'])
+        self.assertNotEqual(after['L1'][0], drift['L1'][0])
 
-    def test_replace_failure_preserves_probe_and_consumes_ticket(self):
+    def test_replace_failure_preserves_other_attributes_and_consumes_ticket(self):
+        os.removexattr(self.files['L1'], NAME)
         before = self.observed(); plan = self.plan()
         with patch('kit.base.registry_store.os.replace', side_effect=OSError('synthetic')):
             with self.assertRaises(StoreError) as failure: self.apply(plan)
@@ -163,17 +156,17 @@ class XattrDiagnosis(unittest.TestCase):
         self.assertEqual(denied['diagnostic']['code'], 'confirmation_required')
         self.assertEqual(self.observed(), before)
         result = send({'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
-        self.assertEqual(result['outcome'], 'applied')
-        self.assert_replaced(before, self.observed(), 'L1')
+        self.assertEqual(result['diagnostic']['code'], 'replacement_xattrs_present')
+        self.assertEqual(before, self.observed())
         again = send({'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
         self.assertEqual(again['diagnostic']['code'], 'ticket_unknown')
 
-    def test_cli_observes_same_xattr_loss(self):
+    def test_cli_refuses_visible_xattr(self):
         args = [sys.executable, '-I', '-S', '-B', str(ROOT/'kit/session_cli.py'),
                 '--workspace', str(self.workspace), '--profile-root', 'profiles/pilot', '--profile-id', 'Pilot']
         self.run_lines(args, self.observed())
 
-    def test_isolated_snapshot_observes_same_xattr_loss(self):
+    def test_isolated_snapshot_refuses_visible_xattr(self):
         raw = (ROOT/'kit/KIT-VERSION.json').read_bytes(); manifest = json.loads(raw)
         source = self.root/'source'; source.mkdir(); trusted = self.root/'trusted'; trusted.mkdir()
         for rel in ('kit/KIT-VERSION.json', *manifest['files']):

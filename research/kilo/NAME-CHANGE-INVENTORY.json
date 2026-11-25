@@ -5335,6 +5335,14 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 2,
+        "new_brand": 1
+      },
+      "path": "research/audit/test_replacement_xattr_guard.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "candidate_version": 1,
         "donor_version": 4,
         "new_brand": 4,
@@ -7567,7 +7575,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2016,
+  "scanned_files": 2017,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }

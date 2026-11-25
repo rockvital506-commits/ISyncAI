@@ -3,14 +3,14 @@
   "status": "draft_not_active",
   "roadmap_version": "3.1.0",
   "roadmap_sha256": "7712160f17edda9db74dbf9045f0662c0d7cee90c788e389a0ab68bb1b286e94",
-  "candidate_manifest_sha256": "5915d766e4f8a461db0e7545e7a0472ec2e519d32d519ad1b55570078c13ef32",
+  "candidate_manifest_sha256": "0aae99af07dcc09a1655f0c8dd0335c00d0c932b0c9aa5866cb8480c426a102c",
   "registry": {
     "schema_version": 2,
     "area": "L0",
     "roots": [
       "kit"
     ],
-    "release_version": "0.2.0-mvp.33",
+    "release_version": "0.2.0-mvp.34",
     "entries": [
       {
         "id": "SYS-CONTRACT",
