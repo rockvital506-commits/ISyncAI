@@ -287,6 +287,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "new_brand": 2
+      },
+      "path": "kit/TERMINAL-SESSION.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "kit_import": 3
       },
       "path": "kit/atomic_init.py"
@@ -8065,7 +8072,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2099,
+  "scanned_files": 2102,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
