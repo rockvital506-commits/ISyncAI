@@ -1,0 +1,7203 @@
+{
+  "archive_paths_only_not_opened": [
+    "dist/AgentContractKit-0.1.0.zip",
+    "research/022/AgentContractKit-Iteration-022.zip",
+    "research/023/AgentContractKit-Iteration-023.zip",
+    "research/024/AgentContractKit-Iteration-024.zip",
+    "research/025/AgentContractKit-Iteration-025.zip",
+    "research/026/AgentContractKit-Iteration-026.zip",
+    "research/027/AgentContractKit-Iteration-027.zip",
+    "research/028/AgentContractKit-Iteration-028.zip",
+    "research/029/AgentContractKit-Iteration-029.zip",
+    "research/030/AgentContractKit-Iteration-030.zip",
+    "research/031/AgentContractKit-Iteration-031.zip",
+    "research/032/AgentContractKit-Iteration-032.zip",
+    "research/033/AgentContractKit-Iteration-033.zip",
+    "research/034/AgentContractKit-Iteration-034.zip",
+    "research/035/AgentContractKit-Iteration-035.zip",
+    "research/036/AgentContractKit-Iteration-036.zip",
+    "research/037/AgentContractKit-Iteration-037.zip",
+    "research/038/AgentContractKit-Iteration-038.zip",
+    "research/039/AgentContractKit-Iteration-039.zip",
+    "research/040/AgentContractKit-Iteration-040.zip",
+    "research/041/AgentContractKit-Iteration-041.zip",
+    "research/042/AgentContractKit-Iteration-042.zip",
+    "research/043/AgentContractKit-Iteration-043.zip",
+    "research/044/AgentContractKit-Iteration-044.zip",
+    "research/045/AgentContractKit-Iteration-045.zip",
+    "research/046/AgentContractKit-Iteration-046.zip",
+    "research/047/AgentContractKit-Iteration-047.zip",
+    "research/048/AgentContractKit-Iteration-048.zip",
+    "research/049/AgentContractKit-Iteration-049.zip",
+    "research/050/AgentContractKit-Iteration-050.zip",
+    "research/051/AgentContractKit-Iteration-051.zip",
+    "research/052/AgentContractKit-Iteration-052.zip",
+    "research/053/AgentContractKit-Iteration-053.zip",
+    "research/054/AgentContractKit-Iteration-054.zip",
+    "research/055/AgentContractKit-Iteration-055.zip",
+    "research/056/AgentContractKit-Iteration-056.zip",
+    "research/101/AgentContractKit-Iteration-101.zip",
+    "research/102/AgentContractKit-Iteration-102.zip",
+    "research/103/AgentContractKit-Iteration-103.zip",
+    "research/104/AgentContractKit-Iteration-104.zip",
+    "research/105/AgentContractKit-Iteration-105.zip",
+    "research/106/AgentContractKit-Iteration-106.zip",
+    "research/107/AgentContractKit-Iteration-107.zip",
+    "research/108/AgentContractKit-Iteration-108.zip",
+    "research/109/AgentContractKit-Iteration-109.zip",
+    "research/110/AgentContractKit-Iteration-110.zip",
+    "research/111/AgentContractKit-Iteration-111.zip",
+    "research/112/AgentContractKit-Iteration-112.zip",
+    "research/113/AgentContractKit-Iteration-113.zip",
+    "research/114/AgentContractKit-Iteration-114.zip",
+    "research/115/AgentContractKit-Iteration-115.zip",
+    "research/116/AgentContractKit-Iteration-116.zip",
+    "research/117/AgentContractKit-Iteration-117.zip",
+    "research/118/AgentContractKit-Iteration-118.zip",
+    "research/119/AgentContractKit-Iteration-119.zip",
+    "research/120/AgentContractKit-Iteration-120.zip",
+    "research/121/AgentContractKit-Iteration-121.zip",
+    "research/122/AgentContractKit-Iteration-122.zip",
+    "research/release-0.1.10/AgentContractKit-0.1.10.zip",
+    "research/release-0.1.10/AgentContractKitISAIEdition-0.1.10+docs.1.zip",
+    "research/release-0.1.11/AgentContractKit-0.1.11.zip",
+    "research/release-0.1.11/AgentContractKitISAIEdition-0.1.11+docs.1.zip",
+    "research/release-0.1.12/AgentContractKit-0.1.12.zip",
+    "research/release-0.1.12/AgentContractKitISAIEdition-0.1.12+docs.1.zip",
+    "research/release-0.1.13/AgentContractKit-0.1.13.zip",
+    "research/release-0.1.13/AgentContractKitISAIEdition-0.1.13+docs.1.zip",
+    "research/release-0.1.14/AgentContractKit-0.1.14.zip",
+    "research/release-0.1.14/AgentContractKitISAIEdition-0.1.14+docs.1.zip",
+    "research/release-0.1.15/AgentContractKit-0.1.15.zip",
+    "research/release-0.1.15/AgentContractKitISAIEdition-0.1.15+docs.1.zip",
+    "research/release-0.1.16/AgentContractKit-0.1.16.zip",
+    "research/release-0.1.16/AgentContractKitISAIEdition-0.1.16+docs.1.zip",
+    "research/release-0.1.17/AgentContractKit-0.1.17.zip",
+    "research/release-0.1.17/AgentContractKitISAIEdition-0.1.17+docs.1.zip",
+    "research/release-0.1.18/AgentContractKit-0.1.18.zip",
+    "research/release-0.1.18/AgentContractKitISAIEdition-0.1.18+docs.1.zip",
+    "research/release-0.1.19/AgentContractKit-0.1.19.zip",
+    "research/release-0.1.19/AgentContractKitISAIEdition-0.1.19+docs.1.zip",
+    "research/release-0.1.20/AgentContractKit-0.1.20.zip",
+    "research/release-0.1.20/AgentContractKitISAIEdition-0.1.20+docs.1.zip",
+    "research/release-0.1.21/AgentContractKit-0.1.21.zip",
+    "research/release-0.1.21/AgentContractKitISAIEdition-0.1.21+docs.1.zip",
+    "research/release-0.1.22/AgentContractKit-0.1.22.zip",
+    "research/release-0.1.22/AgentContractKitISAIEdition-0.1.22+docs.1.zip",
+    "research/release-0.1.23/AgentContractKit-0.1.23.zip",
+    "research/release-0.1.23/AgentContractKitISAIEdition-0.1.23+docs.1.zip",
+    "research/release-0.1.24/AgentContractKit-0.1.24.zip",
+    "research/release-0.1.24/AgentContractKitISAIEdition-0.1.24+docs.1.zip",
+    "research/release-0.1.25/AgentContractKit-0.1.25.zip",
+    "research/release-0.1.25/AgentContractKitISAIEdition-0.1.25+docs.1.zip",
+    "research/release-0.1.26/AgentContractKit-0.1.26.zip",
+    "research/release-0.1.26/AgentContractKitISAIEdition-0.1.26+docs.1.zip",
+    "research/release-0.1.27/AgentContractKit-0.1.27.zip",
+    "research/release-0.1.27/AgentContractKitISAIEdition-0.1.27+docs.1.zip",
+    "research/release-0.1.28/AgentContractKit-0.1.28.zip",
+    "research/release-0.1.28/AgentContractKitISAIEdition-0.1.28+docs.1.zip",
+    "research/release-0.1.29/AgentContractKit-0.1.29.zip",
+    "research/release-0.1.29/AgentContractKitISAIEdition-0.1.29+docs.1.zip",
+    "research/release-0.1.30/AgentContractKit-0.1.30.zip",
+    "research/release-0.1.30/AgentContractKitISAIEdition-0.1.30+docs.1.zip",
+    "research/release-0.1.31/AgentContractKit-0.1.31.zip",
+    "research/release-0.1.31/AgentContractKitISAIEdition-0.1.31+docs.1.zip",
+    "research/release-0.1.32/AgentContractKit-0.1.32.zip",
+    "research/release-0.1.32/AgentContractKitISAIEdition-0.1.32+docs.1.zip",
+    "research/release-0.1.33/AgentContractKit-0.1.33.zip",
+    "research/release-0.1.33/AgentContractKitISAIEdition-0.1.33+docs.1.zip",
+    "research/release-0.1.34/AgentContractKit-0.1.34.zip",
+    "research/release-0.1.34/AgentContractKitISAIEdition-0.1.34+docs.1.zip",
+    "research/release-0.1.35/AgentContractKit-0.1.35.zip",
+    "research/release-0.1.35/AgentContractKit-Calibration-0.1.35.zip",
+    "research/release-0.1.35/AgentContractKitISAIEdition-0.1.35+docs.1.zip",
+    "research/release-0.1.36/AgentContractKit-0.1.36.zip",
+    "research/release-0.1.36/AgentContractKit-Calibration-0.1.36.zip",
+    "research/release-0.1.36/AgentContractKitISAIEdition-0.1.36+docs.1.zip",
+    "research/release-0.1.4/AgentContractKit-0.1.4.zip",
+    "research/release-0.1.4/AgentContractKitISAIEdition-0.1.4+docs.1.zip",
+    "research/release-0.1.5/AgentContractKit-0.1.5.zip",
+    "research/release-0.1.5/AgentContractKitISAIEdition-0.1.5+docs.1.zip",
+    "research/release-0.1.6/AgentContractKit-0.1.6.zip",
+    "research/release-0.1.6/AgentContractKitISAIEdition-0.1.6+docs.1.zip",
+    "research/release-0.1.7/AgentContractKit-0.1.7.zip",
+    "research/release-0.1.7/AgentContractKitISAIEdition-0.1.7+docs.1.zip",
+    "research/release-0.1.8/AgentContractKit-0.1.8.zip",
+    "research/release-0.1.8/AgentContractKitISAIEdition-0.1.8+docs.1.zip",
+    "research/release-0.1.9/AgentContractKit-0.1.9.zip",
+    "research/release-0.1.9/AgentContractKitISAIEdition-0.1.9+docs.1.zip"
+  ],
+  "format": 1,
+  "matches": [
+    {
+      "area": "root_reference",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "README.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "donor_version": 2,
+        "kit_import": 1
+      },
+      "path": "kit/COMPARE-OLD.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "old_brand": 2
+      },
+      "path": "kit/GUARD-TREE.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "old_brand": 2
+      },
+      "path": "kit/GUARD.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "kit/KIT-VERSION.json"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "candidate_version": 2
+      },
+      "path": "kit/LAYERS.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "donor_version": 2,
+        "kit_import": 1
+      },
+      "path": "kit/LEGACY-CAPSULE.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "donor_version": 1,
+        "kit_import": 1,
+        "project_path": 3
+      },
+      "path": "kit/LEGACY-PROJECTION.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "kit/base/BUNDLE-TRUST.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "kit/base/CONFLICT-REVIEW.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "kit/base/REGISTRY-JOURNAL.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "candidate_version": 2,
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "kit/base/SCHEMA-V2.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "kit/base/SIMULATION.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "kit/base/STORAGE-V2.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "kit/base/bundle_trust.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "kit/base/conflict_review.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "kit/base/registry_store.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "kit/base/simulation.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "donor_version": 3,
+        "kit_import": 1
+      },
+      "path": "kit/compare_old.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "kit/examples/projects/README.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "kit/examples/projects/cli.json"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "kit/examples/projects/docs.json"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 3
+      },
+      "path": "kit/guard.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 1
+      },
+      "path": "kit/guard_tree.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 4
+      },
+      "path": "kit/kilo_deploy.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 4
+      },
+      "path": "kit/kilo_inspect.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "donor_version": 1,
+        "kit_import": 2
+      },
+      "path": "kit/legacy_capsule.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "donor_version": 1,
+        "kit_import": 2
+      },
+      "path": "kit/legacy_projection.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 3
+      },
+      "path": "kit/preview_rule.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 2
+      },
+      "path": "kit/render_rule.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 4
+      },
+      "path": "kit/session_cli.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "kit/verify_candidate.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 6,
+        "old_brand": 4
+      },
+      "path": "research/022/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 4
+      },
+      "path": "research/022/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/022/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "old_brand": 2
+      },
+      "path": "research/022/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/022/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 5,
+        "old_brand": 2
+      },
+      "path": "research/022/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/022/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-022.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/023/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/023/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/023/diagnose.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 43
+      },
+      "path": "research/023/pairs-023-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 43
+      },
+      "path": "research/023/pairs-023-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "old_brand": 8
+      },
+      "path": "research/023/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/023/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-023.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/024/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "old_brand": 2
+      },
+      "path": "research/024/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/024/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-024.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/025/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/025/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/025/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2
+      },
+      "path": "research/025/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/025/pairs-025-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/025/pairs-025-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/025/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/025/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-025.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/026/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/026/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/026/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2
+      },
+      "path": "research/026/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/026/adapter_check.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/026/pairs-026-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/026/pairs-026-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/026/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/026/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-026.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/027/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/027/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/027/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2
+      },
+      "path": "research/027/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/027/adapter_check.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/027/pairs-027-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/027/pairs-027-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/027/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/027/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-027.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/028/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/028/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/028/EXPECTATIONS.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/028/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/028/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/028/adapter_check.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/028/dual-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/028/dual-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 5
+      },
+      "path": "research/028/dual_check.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/028/pairs-028-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/028/pairs-028-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/028/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/028/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-028.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/029/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/029/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/029/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/029/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/029/adapter_check.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/029/dual-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/029/dual-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 5
+      },
+      "path": "research/029/dual_check.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/029/pairs-029-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/029/pairs-029-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/029/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/029/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-029.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/030/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/030/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/030/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/030/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/030/adapter_check.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/030/dual-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/030/dual-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 5
+      },
+      "path": "research/030/dual_check.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/030/pairs-030-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/030/pairs-030-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/030/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/030/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-030.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/031/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/031/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/031/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/031/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/031/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/031/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/031/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/031/pairs-031-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/031/pairs-031-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/031/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 6,
+        "project_path": 7
+      },
+      "path": "research/031/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/031/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/031/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-031.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/032/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/032/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/032/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/032/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/032/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/032/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/032/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/032/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/032/pairs-032-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/032/pairs-032-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/032/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 4
+      },
+      "path": "research/032/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/032/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/032/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-032.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/033/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/033/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/033/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/033/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/033/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/033/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/033/pairs-033-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/033/pairs-033-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/033/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 6
+      },
+      "path": "research/033/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/033/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 5
+      },
+      "path": "research/033/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-033.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/034/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/034/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/034/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/034/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/034/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/034/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/034/pairs-034-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/034/pairs-034-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/034/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 7
+      },
+      "path": "research/034/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/034/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/034/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-034.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/035/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/035/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/035/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/035/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/035/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/035/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/035/pairs-035-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/035/pairs-035-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/035/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 7
+      },
+      "path": "research/035/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/035/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/035/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-035.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/036/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/036/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/036/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/036/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/036/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/036/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/036/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/036/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/036/pairs-036-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/036/pairs-036-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/036/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 8
+      },
+      "path": "research/036/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/036/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/036/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-036.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/037/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/037/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/037/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/037/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/037/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/037/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/037/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/037/pairs-037-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/037/pairs-037-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/037/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 9
+      },
+      "path": "research/037/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/037/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/037/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-037.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/038/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/038/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/038/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/038/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/038/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/038/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/038/pairs-038-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/038/pairs-038-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/038/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 10
+      },
+      "path": "research/038/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/038/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/038/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-038.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/039/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/039/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/039/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/039/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/039/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/039/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/039/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/039/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/039/pairs-039-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/039/pairs-039-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/039/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 12
+      },
+      "path": "research/039/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/039/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 3
+      },
+      "path": "research/039/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-039.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/040/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/040/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/040/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/040/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/040/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/040/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/040/pairs-040-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/040/pairs-040-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/040/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 12
+      },
+      "path": "research/040/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/040/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/040/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-040.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/041/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/041/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/041/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/041/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/041/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/041/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/041/pairs-041-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/041/pairs-041-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/041/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 13
+      },
+      "path": "research/041/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/041/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/041/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-041.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/042/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/042/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/042/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/042/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/042/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/042/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/042/pairs-042-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/042/pairs-042-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/042/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 13
+      },
+      "path": "research/042/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/042/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/042/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-042.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/043/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/043/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/043/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/043/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/043/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/043/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/043/pairs-043-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/043/pairs-043-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/043/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 13
+      },
+      "path": "research/043/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/043/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/043/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-043.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/044/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/044/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/044/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 4
+      },
+      "path": "research/044/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/044/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/044/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/044/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/044/pairs-044-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/044/pairs-044-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/044/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 16
+      },
+      "path": "research/044/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/044/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/044/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-044.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/045/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/045/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/045/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/045/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/045/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/045/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/045/pairs-045-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/045/pairs-045-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/045/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 17
+      },
+      "path": "research/045/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/045/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/045/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-045.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/046/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/046/CONTINUITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/046/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/046/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/046/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/046/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/046/pairs-046-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/046/pairs-046-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/046/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 17
+      },
+      "path": "research/046/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/046/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/046/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-046.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/047/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/047/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/047/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/047/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/047/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/047/pairs-047-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/047/pairs-047-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/047/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 18
+      },
+      "path": "research/047/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/047/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/047/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-047.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/048/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/048/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/048/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/048/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/048/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/048/pairs-048-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/048/pairs-048-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/048/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 20
+      },
+      "path": "research/048/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/048/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/048/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-048.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/049/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/049/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 26
+      },
+      "path": "research/049/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 26
+      },
+      "path": "research/049/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/049/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/049/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/049/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/049/pairs-049-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/049/pairs-049-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/049/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 25
+      },
+      "path": "research/049/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/049/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 2
+      },
+      "path": "research/049/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-049.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/050/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 34
+      },
+      "path": "research/050/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 34
+      },
+      "path": "research/050/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/050/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/050/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/050/pairs-050-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/050/pairs-050-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/050/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 28
+      },
+      "path": "research/050/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/050/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/050/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-050.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/051/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/051/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 39
+      },
+      "path": "research/051/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 39
+      },
+      "path": "research/051/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/051/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/051/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/051/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/051/pairs-051-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/051/pairs-051-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/051/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 34
+      },
+      "path": "research/051/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/051/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/051/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-051.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/052/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 2
+      },
+      "path": "research/052/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/052/EXPECTATIONS.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/052/ISAI-BASELINE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 41
+      },
+      "path": "research/052/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 41
+      },
+      "path": "research/052/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/052/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "old_brand": 1,
+        "project_path": 2
+      },
+      "path": "research/052/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/052/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/052/pairs-052-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/052/pairs-052-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/052/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 6,
+        "project_path": 36
+      },
+      "path": "research/052/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/052/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "donor_version": 6,
+        "old_brand": 3,
+        "project_path": 3
+      },
+      "path": "research/052/\u0414\u041e\u041f\u041e\u041b\u041d\u0415\u041d\u0418\u042f.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 1,
+        "project_path": 3
+      },
+      "path": "research/052/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-052.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/053/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/053/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 42
+      },
+      "path": "research/053/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 42
+      },
+      "path": "research/053/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/053/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 3
+      },
+      "path": "research/053/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/053/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/053/pairs-053-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/053/pairs-053-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/053/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 6,
+        "project_path": 39
+      },
+      "path": "research/053/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/053/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 4
+      },
+      "path": "research/053/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-053.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/054/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/054/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 44
+      },
+      "path": "research/054/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 44
+      },
+      "path": "research/054/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/054/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/054/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 2
+      },
+      "path": "research/054/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/054/pairs-054-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/054/pairs-054-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/054/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 6,
+        "project_path": 41
+      },
+      "path": "research/054/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 10
+      },
+      "path": "research/054/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/054/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-054.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "old_brand": 4
+      },
+      "path": "research/055/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/055/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "old_brand": 1,
+        "project_path": 45
+      },
+      "path": "research/055/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "old_brand": 1,
+        "project_path": 45
+      },
+      "path": "research/055/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/055/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/055/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/055/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/055/pairs-055-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 40
+      },
+      "path": "research/055/pairs-055-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "project_path": 1
+      },
+      "path": "research/055/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 6,
+        "old_brand": 2,
+        "project_path": 42
+      },
+      "path": "research/055/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 13
+      },
+      "path": "research/055/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/055/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-055.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "donor_version": 9,
+        "old_brand": 4
+      },
+      "path": "research/056/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/056/COMPAT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 3
+      },
+      "path": "research/056/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/056/EXPECTATIONS.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "donor_version": 7,
+        "old_brand": 1,
+        "project_path": 45
+      },
+      "path": "research/056/PILOT-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "donor_version": 7,
+        "old_brand": 1,
+        "project_path": 45
+      },
+      "path": "research/056/PILOT-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/056/REPLAY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 3,
+        "old_brand": 3
+      },
+      "path": "research/056/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 5,
+        "donor_version": 14,
+        "old_brand": 9
+      },
+      "path": "research/056/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1
+      },
+      "path": "research/056/anchors.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "project_path": 40
+      },
+      "path": "research/056/pairs-056-journals-base.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "project_path": 40
+      },
+      "path": "research/056/pairs-056-journals-edition.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "donor_version": 2,
+        "project_path": 1
+      },
+      "path": "research/056/pairs_cli.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 6,
+        "donor_version": 4,
+        "old_brand": 2,
+        "project_path": 42
+      },
+      "path": "research/056/pilot.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "donor_version": 14,
+        "old_brand": 13
+      },
+      "path": "research/056/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 7,
+        "old_brand": 2
+      },
+      "path": "research/056/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-056.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/101/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/101/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 8,
+        "old_brand": 1
+      },
+      "path": "research/101/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/101/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 3,
+        "old_brand": 1
+      },
+      "path": "research/101/acceptance.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "donor_version": 1
+      },
+      "path": "research/101/cleanroom.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "donor_version": 2,
+        "old_brand": 2
+      },
+      "path": "research/101/inventory.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 3
+      },
+      "path": "research/101/page.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/101/seal.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 5,
+        "old_brand": 1
+      },
+      "path": "research/101/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-101.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/102/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2,
+        "old_brand": 1,
+        "project_path": 9
+      },
+      "path": "research/102/BASELINE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/102/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/102/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 4,
+        "old_brand": 1
+      },
+      "path": "research/102/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/102/RELEASE-TESTS.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 5,
+        "old_brand": 1
+      },
+      "path": "research/102/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/102/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 2
+      },
+      "path": "research/102/test_harness.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 3,
+        "old_brand": 1
+      },
+      "path": "research/102/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-102.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 2,
+        "donor_version": 5
+      },
+      "path": "research/103/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2,
+        "old_brand": 1,
+        "project_path": 9
+      },
+      "path": "research/103/BASELINE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/103/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 3,
+        "donor_version": 5
+      },
+      "path": "research/103/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 3,
+        "donor_version": 13,
+        "old_brand": 1
+      },
+      "path": "research/103/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/103/RELEASE-TESTS.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 3,
+        "donor_version": 13,
+        "old_brand": 1
+      },
+      "path": "research/103/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/103/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 11,
+        "donor_version": 11
+      },
+      "path": "research/103/VERSION-EVIDENCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 19,
+        "donor_version": 13
+      },
+      "path": "research/103/test_versioning.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_lab": 3,
+        "donor_version": 3,
+        "project_path": 1
+      },
+      "path": "research/103/version_probe.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 3,
+        "donor_version": 6,
+        "old_brand": 1
+      },
+      "path": "research/103/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-103.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 2
+      },
+      "path": "research/104/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 3,
+        "project_path": 4
+      },
+      "path": "research/104/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/104/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/104/DONOR-CONTROL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "research/104/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 5
+      },
+      "path": "research/104/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/104/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 4
+      },
+      "path": "research/104/report104.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 3,
+        "old_brand": 1
+      },
+      "path": "research/104/run.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "research/104/test_schema.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 3,
+        "old_brand": 1
+      },
+      "path": "research/104/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-104.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 2,
+        "donor_version": 1
+      },
+      "path": "research/105/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 4,
+        "project_path": 1
+      },
+      "path": "research/105/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 4,
+        "project_path": 1
+      },
+      "path": "research/105/CHECKOUT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 4,
+        "project_path": 1
+      },
+      "path": "research/105/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 2,
+        "project_path": 1
+      },
+      "path": "research/105/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/105/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 3,
+        "donor_version": 2,
+        "project_path": 1
+      },
+      "path": "research/105/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/105/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 1
+      },
+      "path": "research/105/render105.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 1,
+        "project_path": 3
+      },
+      "path": "research/105/test_layout.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 2,
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/105/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-105.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 2
+      },
+      "path": "research/106/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 13
+      },
+      "path": "research/106/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 13
+      },
+      "path": "research/106/CHECKOUT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 13
+      },
+      "path": "research/106/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/106/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/106/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 4
+      },
+      "path": "research/106/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/106/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/106/render106.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/106/run.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 1,
+        "project_path": 3
+      },
+      "path": "research/106/test_history.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/106/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-106.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/107/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/107/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/107/CHECKOUT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/107/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/107/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/107/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2,
+        "project_path": 1
+      },
+      "path": "research/107/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/107/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/107/render107.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 1,
+        "project_path": 5
+      },
+      "path": "research/107/test_policy.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/107/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-107.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/108/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/108/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/108/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 3
+      },
+      "path": "research/108/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/108/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/108/render108.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/108/run.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 2,
+        "project_path": 2
+      },
+      "path": "research/108/test_cards.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/108/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-108.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/109/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/109/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/109/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/109/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/109/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/109/run.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 3,
+        "project_path": 3
+      },
+      "path": "research/109/test_plan.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/109/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-109.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/110/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 12
+      },
+      "path": "research/110/ACTIONS.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 19
+      },
+      "path": "research/110/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 24
+      },
+      "path": "research/110/CHECKOUT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 24
+      },
+      "path": "research/110/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/110/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/110/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "project_path": 19
+      },
+      "path": "research/110/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/110/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 3,
+        "project_path": 3
+      },
+      "path": "research/110/test_actions.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1,
+        "project_path": 5
+      },
+      "path": "research/110/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-110.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/111/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/111/CHECKOUT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/111/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/111/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/111/INTENTS.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/111/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2,
+        "project_path": 1
+      },
+      "path": "research/111/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/111/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/111/render111.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 3,
+        "project_path": 2
+      },
+      "path": "research/111/test_intent.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1,
+        "project_path": 5
+      },
+      "path": "research/111/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-111.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "research/112/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "project_path": 5
+      },
+      "path": "research/112/BOOTSTRAP.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/112/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "project_path": 50
+      },
+      "path": "research/112/CHECKOUT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "project_path": 50
+      },
+      "path": "research/112/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/112/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "research/112/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/112/RED.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 1,
+        "project_path": 2
+      },
+      "path": "research/112/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/112/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/112/render112.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 3,
+        "project_path": 2
+      },
+      "path": "research/112/test_bootstrap.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "old_brand": 1,
+        "project_path": 2
+      },
+      "path": "research/112/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-112.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 12
+      },
+      "path": "research/113/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 6
+      },
+      "path": "research/113/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 6
+      },
+      "path": "research/113/CLASSIFICATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/113/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 6
+      },
+      "path": "research/113/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/113/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "kit_import": 2
+      },
+      "path": "research/113/test_specificity.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/113/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-113.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/114/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/114/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 2,
+        "kit_import": 2,
+        "project_path": 4
+      },
+      "path": "research/114/test_promotion.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/114/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-114.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "project_path": 2
+      },
+      "path": "research/115/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/115/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "kit_import": 3,
+        "project_path": 2
+      },
+      "path": "research/115/test_simulation.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/115/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-115.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/116/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/116/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 2,
+        "project_path": 1
+      },
+      "path": "research/116/test_conflict_review.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/116/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-116.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "research/117/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/117/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/117/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "kit_import": 1
+      },
+      "path": "research/117/run.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "kit_import": 2,
+        "project_path": 2
+      },
+      "path": "research/117/test_bundle.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/117/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-117.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/118/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "kit_import": 2,
+        "project_path": 1
+      },
+      "path": "research/118/test_bundle_verify.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/118/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-118.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/119/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/119/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "kit_import": 3,
+        "old_brand": 1
+      },
+      "path": "research/119/test_bundle_trust.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/119/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-119.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 7
+      },
+      "path": "research/120/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 8
+      },
+      "path": "research/120/CHECKOUT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 8
+      },
+      "path": "research/120/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 3
+      },
+      "path": "research/120/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 3
+      },
+      "path": "research/120/RED.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 8
+      },
+      "path": "research/120/ROLLOUT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/120/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "kit_import": 3,
+        "project_path": 2
+      },
+      "path": "research/120/test_bundle_rollback.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/120/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-120.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 3
+      },
+      "path": "research/121/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/121/CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/121/CHECKOUT.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 2
+      },
+      "path": "research/121/CLEANROOM.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/121/DESIGN.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 3
+      },
+      "path": "research/121/ITERATION.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/121/RED.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 4
+      },
+      "path": "research/121/REPORT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/121/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 6,
+        "old_brand": 1
+      },
+      "path": "research/121/SURFACES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 3
+      },
+      "path": "research/121/render121.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/121/run.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/121/test_surfaces.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 3,
+        "old_brand": 1
+      },
+      "path": "research/121/validate_surfaces.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/121/\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u044f-121.html"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/122/ACCEPTANCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/122/SEAL.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/122/materials/research/122/run.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/122/materials/research/kilo/CATALOG.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 2,
+        "donor_version": 1
+      },
+      "path": "research/122/materials/research/kilo/TARGETS.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 4,
+        "project_path": 1
+      },
+      "path": "research/122/materials/research/kilo/VISION-END-STATE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/122/run.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "new_brand": 1
+      },
+      "path": "research/README.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 3,
+        "project_path": 5
+      },
+      "path": "research/ROADMAP.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "donor_version": 5,
+        "old_brand": 6,
+        "project_path": 11
+      },
+      "path": "research/STATUS.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 9,
+        "donor_version": 20,
+        "old_brand": 2,
+        "project_path": 2
+      },
+      "path": "research/STRATEGY.md"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 3,
+        "project_path": 4
+      },
+      "path": "research/audit/core_audit.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/audit/name_inventory.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 2
+      },
+      "path": "research/audit/state_audit.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 3,
+        "project_path": 2
+      },
+      "path": "research/audit/test_activation.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 1
+      },
+      "path": "research/audit/test_bundle_current.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 5,
+        "kit_import": 2,
+        "project_path": 1
+      },
+      "path": "research/audit/test_compare_old.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 1,
+        "project_path": 1
+      },
+      "path": "research/audit/test_guard.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 1
+      },
+      "path": "research/audit/test_guard_tree.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 3,
+        "project_path": 2
+      },
+      "path": "research/audit/test_kilo_deploy.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 3,
+        "project_path": 1
+      },
+      "path": "research/audit/test_kilo_inspect.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 2
+      },
+      "path": "research/audit/test_legacy_capsule.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 3,
+        "project_path": 2
+      },
+      "path": "research/audit/test_legacy_projection.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 4,
+        "project_path": 2
+      },
+      "path": "research/audit/test_mvp_end_to_end.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "new_brand": 1,
+        "old_brand": 10,
+        "project_path": 1
+      },
+      "path": "research/audit/test_name_inventory.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 5,
+        "project_path": 2
+      },
+      "path": "research/audit/test_preview_rule.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 1
+      },
+      "path": "research/audit/test_profile_candidate.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 4,
+        "project_path": 2
+      },
+      "path": "research/audit/test_project_candidates.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 2,
+        "project_path": 1
+      },
+      "path": "research/audit/test_render_rule.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 4,
+        "new_brand": 4,
+        "old_brand": 1
+      },
+      "path": "research/audit/test_roadmap_contract.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/audit/test_session_cli.py"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/kilo/CATALOG.json"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 3
+      },
+      "path": "research/kilo/KIT-MVP-ANALYSIS.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 19,
+        "donor_version": 3,
+        "new_brand": 2,
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/kilo/MVP-ROADMAP.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 1,
+        "donor_version": 1,
+        "kit_import": 1,
+        "new_brand": 6,
+        "old_brand": 2,
+        "project_path": 2
+      },
+      "path": "research/kilo/NAME-CHANGE-ANALYSIS.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/kilo/README.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "new_brand": 1
+      },
+      "path": "research/kilo/REVISION-ROADMAP-IMPLEMENTATION.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/kilo/ROADMAP-PROTOCOL.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "research/kilo/ROADMAP-RECOMMENDATION.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "donor_version": 3,
+        "new_brand": 3,
+        "old_brand": 2
+      },
+      "path": "research/kilo/ROADMAP.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "research/kilo/TARGETS.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 3,
+        "project_path": 1
+      },
+      "path": "research/kilo/VISION-END-STATE.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/kilo/archive/2026-11-24-receipt/CATALOG.json"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 2,
+        "donor_version": 1
+      },
+      "path": "research/kilo/archive/2026-11-24-receipt/TARGETS.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 4,
+        "project_path": 1
+      },
+      "path": "research/kilo/archive/2026-11-24-receipt/VISION-END-STATE.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "donor_version": 2
+      },
+      "path": "research/kilo/roadmap-evaluation/QUESTIONS.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "donor_version": 1,
+        "new_brand": 1,
+        "old_brand": 1
+      },
+      "path": "research/kilo/roadmap-evaluation/RUBRIC.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 2
+      },
+      "path": "research/release-0.1.10/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.10/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/release-0.1.11/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.11/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3,
+        "project_path": 2
+      },
+      "path": "research/release-0.1.12/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.12/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.12/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/release-0.1.13/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.13/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.13/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.13/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/release-0.1.14/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.14/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.14/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.14/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.14/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/release-0.1.15/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.15/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.15/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.15/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.15/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/release-0.1.16/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.16/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.16/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.16/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.16/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.16/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3,
+        "project_path": 1
+      },
+      "path": "research/release-0.1.17/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7,
+        "project_path": 1
+      },
+      "path": "research/release-0.1.17/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.17/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.17/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.17/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.17/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.17/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/release-0.1.18/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.18/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.18/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.18/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.18/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.18/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.18/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3,
+        "project_path": 2
+      },
+      "path": "research/release-0.1.19/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7,
+        "project_path": 1
+      },
+      "path": "research/release-0.1.19/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.19/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.19/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.19/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.19/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.19/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.19/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/release-0.1.20/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.20/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.20/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.20/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.20/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.20/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.20/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.20/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 3
+      },
+      "path": "research/release-0.1.21/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.21/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.21/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.21/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.21/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.21/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.21/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.21/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/release-0.1.22/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.22/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.22/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.22/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.22/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.22/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.22/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.22/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/release-0.1.23/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.23/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.23/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.23/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.23/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.23/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.23/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.23/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/release-0.1.24/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.24/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.24/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.24/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.24/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.24/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.24/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.24/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.24/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/release-0.1.25/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.25/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.25/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.25/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.25/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.25/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.25/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.25/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.25/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/release-0.1.26/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.26/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.26/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.26/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.26/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.26/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.26/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.26/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.26/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/release-0.1.27/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.27/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.27/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.27/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.27/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.27/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.27/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.27/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.27/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/release-0.1.28/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.28/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.28/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.28/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.28/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.28/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.28/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.28/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.28/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.28/patch_038.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/release-0.1.29/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.29/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.29/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.29/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.29/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.29/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.29/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.29/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.29/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.29/patch_038.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.29/patch_039.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1
+      },
+      "path": "research/release-0.1.30/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.30/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.30/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.30/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.30/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.30/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.30/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.30/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.30/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.30/patch_038.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.30/patch_039.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.30/patch_040.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/release-0.1.31/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.31/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.31/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.31/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.31/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.31/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.31/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.31/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.31/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.31/patch_038.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.31/patch_039.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.31/patch_040.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/release-0.1.31/patch_041.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 2
+      },
+      "path": "research/release-0.1.32/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.32/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.32/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.32/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.32/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.32/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.32/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.32/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.32/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.32/patch_038.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.32/patch_039.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.32/patch_040.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/release-0.1.32/patch_041.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 5
+      },
+      "path": "research/release-0.1.32/patch_042.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 2
+      },
+      "path": "research/release-0.1.33/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.33/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.33/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.33/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.33/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.33/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.33/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.33/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.33/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.33/patch_038.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.33/patch_039.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.33/patch_040.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/release-0.1.33/patch_041.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 5
+      },
+      "path": "research/release-0.1.33/patch_042.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.33/patch_043.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/release-0.1.34/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.34/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.34/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.34/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.34/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.34/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.34/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.34/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.34/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.34/patch_038.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.34/patch_039.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.34/patch_040.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/release-0.1.34/patch_041.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 5
+      },
+      "path": "research/release-0.1.34/patch_042.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.34/patch_043.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 4
+      },
+      "path": "research/release-0.1.34/patch_044.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 2,
+        "project_path": 1
+      },
+      "path": "research/release-0.1.35/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 11
+      },
+      "path": "research/release-0.1.35/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.35/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.35/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.35/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.35/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.35/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.35/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.35/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.35/patch_038.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.35/patch_039.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.35/patch_040.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/release-0.1.35/patch_041.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 5
+      },
+      "path": "research/release-0.1.35/patch_042.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.35/patch_043.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 4
+      },
+      "path": "research/release-0.1.35/patch_044.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 5,
+        "project_path": 7
+      },
+      "path": "research/release-0.1.35/patch_045.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/release-0.1.36/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "donor_version": 5,
+        "old_brand": 11
+      },
+      "path": "research/release-0.1.36/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 9
+      },
+      "path": "research/release-0.1.36/patch_022.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 6
+      },
+      "path": "research/release-0.1.36/patch_023.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 3
+      },
+      "path": "research/release-0.1.36/patch_024.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.36/patch_026.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 2
+      },
+      "path": "research/release-0.1.36/patch_027.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 3
+      },
+      "path": "research/release-0.1.36/patch_029.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.36/patch_034.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.36/patch_038.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.36/patch_039.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 1
+      },
+      "path": "research/release-0.1.36/patch_040.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 7
+      },
+      "path": "research/release-0.1.36/patch_041.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "project_path": 5
+      },
+      "path": "research/release-0.1.36/patch_042.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "project_path": 9
+      },
+      "path": "research/release-0.1.36/patch_043.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "project_path": 4
+      },
+      "path": "research/release-0.1.36/patch_044.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 5,
+        "project_path": 7
+      },
+      "path": "research/release-0.1.36/patch_045.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/release-0.1.36/patch_046.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.4/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 1,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.4/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 2
+      },
+      "path": "research/release-0.1.5/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.5/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 2
+      },
+      "path": "research/release-0.1.6/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.6/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 2
+      },
+      "path": "research/release-0.1.7/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 2,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.7/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 2
+      },
+      "path": "research/release-0.1.8/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.8/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 2
+      },
+      "path": "research/release-0.1.9/RELEASE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "old_brand": 7
+      },
+      "path": "research/release-0.1.9/build.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2,
+        "old_brand": 1,
+        "project_path": 9
+      },
+      "path": "research/strategy/BASELINE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 5,
+        "donor_version": 6
+      },
+      "path": "research/strategy/COMPATIBILITY.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "old_brand": 2
+      },
+      "path": "research/strategy/GIT-POLICY.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 2,
+        "donor_version": 9
+      },
+      "path": "research/strategy/SYNC-LOG.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 8,
+        "donor_version": 11,
+        "old_brand": 1
+      },
+      "path": "research/strategy/VERSIONING.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/strategy/harness/SPEC-FORMAT.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "donor_version": 3
+      },
+      "path": "research/strategy/harness/probes.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1,
+        "old_brand": 1
+      },
+      "path": "research/strategy/harness/run_iteration.py"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 4,
+        "project_path": 1
+      },
+      "path": "research/strategy/pre-104/ADDENDUM.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "candidate_version": 4,
+        "donor_version": 9
+      },
+      "path": "research/strategy/pre-104/ARCHITECTURE-REVIEW.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 1
+      },
+      "path": "research/strategy/pre-104/EVIDENCE.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 7
+      },
+      "path": "research/strategy/pre-104/RETROSPECTIVE.md"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_version": 2,
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/strategy/pre-104/SCHEMA-CASES.json"
+    },
+    {
+      "area": "historical_research_and_policy",
+      "hits": {
+        "donor_lab": 3,
+        "donor_version": 3,
+        "old_brand": 1,
+        "project_path": 2
+      },
+      "path": "research/strategy/pre-104/check_preparation.py"
+    }
+  ],
+  "scanned_files": 1953,
+  "scope": "tracked-allowed-text-plus-explicit-working-files",
+  "skipped_files": []
+}
