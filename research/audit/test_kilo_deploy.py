@@ -42,6 +42,7 @@ class DeployTests(unittest.TestCase):
 
     def test_plan_confirmation_exact_create_and_no_overwrite(self):
         before = a.tree_digest(self.root); plan = self.plan()
+        self.assertEqual(plan['plan_format'], 2)
         self.assertEqual(before, a.tree_digest(self.root))
         self.denied(lambda: self.session.apply(plan), 'confirmation_required')
         self.denied(lambda: self.session.apply(plan, confirmed_ticket='wrong'), 'confirmation_required')
@@ -133,7 +134,91 @@ class DeployTests(unittest.TestCase):
         with patch('kit.kilo_deploy.os.fstat', side_effect=OSError('synthetic')):
             with self.assertRaises(DeployError) as exc: self.apply(plan)
         self.assertEqual(exc.exception.code, 'cleanup_unsafe')
-        self.assertTrue((self.root/plan['target']).exists())
+        self.assertFalse((self.root/plan['target']).exists())
+        self.assertTrue((self.root/plan['staging_target']).exists())
+
+    def test_publish_only_complete_bytes_and_no_staging_remainder(self):
+        plan = self.plan(); original = os.link; calls = []
+        def checked_link(source, target):
+            self.assertEqual(source, self.root/plan['staging_target'])
+            self.assertEqual(source.suffix, '.tmp')
+            self.assertFalse(target.exists())
+            self.assertEqual(source.read_bytes(), plan['content'].encode('utf-8'))
+            calls.append(1)
+            return original(source, target)
+        with patch('kit.kilo_deploy.os.link', side_effect=checked_link):
+            self.apply(plan)
+        self.assertEqual(calls, [1])
+        self.assertFalse((self.root/plan['staging_target']).exists())
+        self.assertEqual((self.root/plan['target']).read_bytes(), plan['content'].encode('utf-8'))
+
+    def test_unsupported_link_refuses_without_fallback(self):
+        plan = self.plan(); before = a.tree_digest(self.root)
+        with patch('kit.kilo_deploy.os.link', side_effect=OSError('unsupported')):
+            with self.assertRaises(DeployError) as exc: self.apply(plan)
+        self.assertEqual(exc.exception.code, 'publish_failed')
+        self.assertEqual(before, a.tree_digest(self.root))
+        self.assertFalse((self.root/plan['target']).exists())
+        self.assertFalse((self.root/plan['staging_target']).exists())
+
+    def test_replaced_stage_is_not_deleted_or_published(self):
+        plan = self.plan(); stage = self.root/plan['staging_target']; original = os.fsync
+        def replace_stage(fd):
+            original(fd)
+            stage.unlink()
+            stage.write_bytes(b'foreign')
+        with patch('kit.kilo_deploy.os.fsync', side_effect=replace_stage):
+            with self.assertRaises(DeployError) as exc: self.apply(plan)
+        self.assertEqual(exc.exception.code, 'cleanup_unsafe')
+        self.assertEqual(stage.read_bytes(), b'foreign')
+        self.assertFalse((self.root/plan['target']).exists())
+
+    def test_target_created_at_link_is_not_overwritten(self):
+        plan = self.plan(); original = os.link; target = self.root/plan['target']
+        def competing_link(source, dest):
+            dest.write_bytes(b'foreign')
+            return original(source, dest)
+        with patch('kit.kilo_deploy.os.link', side_effect=competing_link):
+            with self.assertRaises(DeployError) as exc: self.apply(plan)
+        self.assertEqual(exc.exception.code, 'target_exists')
+        self.assertEqual(target.read_bytes(), b'foreign')
+        self.assertFalse((self.root/plan['staging_target']).exists())
+
+    def test_stage_collision_never_overwrites(self):
+        plan = self.plan(); stage = self.root/plan['staging_target']; stage.write_bytes(b'foreign')
+        self.denied(lambda: self.apply(plan), 'staging_exists')
+        self.assertEqual(stage.read_bytes(), b'foreign')
+        self.assertFalse((self.root/plan['target']).exists())
+
+    def test_cleanup_failure_reports_both_paths(self):
+        plan = self.plan(); original = Path.unlink
+        def reject_stage(path, *args, **kwargs):
+            if path == self.root/plan['staging_target']:
+                raise PermissionError('synthetic')
+            return original(path, *args, **kwargs)
+        with patch.object(Path, 'unlink', reject_stage):
+            with self.assertRaises(DeployError) as exc: self.apply(plan)
+        self.assertEqual(exc.exception.code, 'cleanup_failed')
+        self.assertEqual((self.root/plan['target']).read_bytes(), plan['content'].encode('utf-8'))
+        self.assertEqual((self.root/plan['staging_target']).read_bytes(), plan['content'].encode('utf-8'))
+
+    def test_wrong_staged_bytes_are_rejected_before_link(self):
+        plan = self.plan(); before = a.tree_digest(self.root); original = os.write
+        def wrong_write(fd, data):
+            return original(fd, bytes(len(data)))
+        with patch('kit.kilo_deploy.os.write', side_effect=wrong_write), patch('kit.kilo_deploy.os.link') as link:
+            with self.assertRaises(DeployError) as exc: self.apply(plan)
+        self.assertEqual(exc.exception.code, 'write_failed')
+        link.assert_not_called()
+        self.assertEqual(before, a.tree_digest(self.root))
+
+    def test_fsync_failure_does_not_publish(self):
+        plan = self.plan(); before = a.tree_digest(self.root)
+        with patch('kit.kilo_deploy.os.fsync', side_effect=OSError('synthetic')):
+            with self.assertRaises(DeployError) as exc: self.apply(plan)
+        self.assertEqual(exc.exception.code, 'write_failed')
+        self.assertEqual(before, a.tree_digest(self.root))
+        self.assertFalse((self.root/plan['target']).exists())
 
     def test_draft_and_narrow_scope_rejected(self):
         doc = json.loads(self.profile.read_text(encoding='utf-8')); doc['entries'][1]['state'] = 'draft'; a.write(self.profile, doc)

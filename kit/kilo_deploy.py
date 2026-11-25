@@ -49,6 +49,26 @@ def _target_absent(path):
     raise DeployError('target_exists')
 
 
+def _stage_stat(path, identity):
+    try:
+        info = path.lstat()
+    except OSError as exc:
+        raise DeployError('cleanup_unsafe') from exc
+    if (not stat.S_ISREG(info.st_mode) or getattr(info, 'st_file_attributes', 0) & registry_store._REPARSE
+            or (info.st_dev, info.st_ino) != identity):
+        raise DeployError('cleanup_unsafe')
+    return info
+
+
+def _remove_stage(path, identity):
+    # При неопределённой идентичности не удалять чужой объект.
+    _stage_stat(path, identity)
+    try:
+        path.unlink()
+    except OSError as exc:
+        raise DeployError('cleanup_failed') from exc
+
+
 class KiloDeploymentSession:
     """Единственный ожидающий план, данные принимаются в пределах доверенного Layout."""
 
@@ -68,10 +88,11 @@ class KiloDeploymentSession:
         name = f'kit-{area.lower()}-{entry_id}.md'
         _target_absent(directory / name)
         ticket = token_hex(32)
-        result = {'plan_format': 1, 'outcome': 'planned', 'target': '.kilo/rules/' + name,
+        result = {'plan_format': 2, 'outcome': 'planned', 'target': '.kilo/rules/' + name,
                   'area': area, 'entry_id': entry_id, 'inputs_sha256': dict(loaded.inputs_sha256),
                   'content_sha256': hashlib.sha256(content).hexdigest(),
-                  'content': content.decode('utf-8'), 'ticket': ticket}
+                  'content': content.decode('utf-8'), 'ticket': ticket,
+                  'staging_target': '.kilo/rules/.kit-stage-' + ticket + '.tmp'}
         self._pending = (canonical_bytes(result), ticket, content, identity)
         return result
 
@@ -97,21 +118,21 @@ class KiloDeploymentSession:
         if content != pending[2] or hashlib.sha256(content).hexdigest() != plan['content_sha256']:
             raise DeployError('stale_plan')
         path = directory / Path(plan['target']).name
+        stage = directory / Path(plan['staging_target']).name
         _target_absent(path)
         flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, 'O_BINARY', 0) | getattr(os, 'O_NOFOLLOW', 0)
-        fd = None
-        created = False
-        file_identity = None
         try:
-            fd = os.open(path, flags, 0o600)
+            fd = os.open(stage, flags, 0o600)
         except FileExistsError as exc:
-            raise DeployError('target_exists') from exc
+            raise DeployError('staging_exists') from exc
         except OSError as exc:
             raise DeployError('write_failed') from exc
-        created = True
+        file_identity = None
         try:
             st = os.fstat(fd)
             file_identity = (st.st_dev, st.st_ino)
+            if not stat.S_ISREG(st.st_mode) or st.st_nlink != 1:
+                raise OSError('unsafe stage')
             remaining = memoryview(content)
             while remaining:
                 written = os.write(fd, remaining)
@@ -127,19 +148,30 @@ class KiloDeploymentSession:
                     os.close(fd)
                 except OSError:
                     pass
-            if created and file_identity is None:
+            if file_identity is None:
                 raise DeployError('cleanup_unsafe') from exc
-            if file_identity is not None:
-                try:
-                    st = path.lstat()
-                    if (st.st_dev, st.st_ino) != file_identity:
-                        raise DeployError('cleanup_unsafe')
-                    path.unlink()
-                except FileNotFoundError:
-                    pass
-                except OSError as cleanup:
-                    raise DeployError('cleanup_failed') from cleanup
+            _remove_stage(stage, file_identity)
             raise DeployError('write_failed') from exc
+        # Сначала полная запись, fsync и повторная проверка байтов; ссылка не заменяет имя.
+        if _stage_stat(stage, file_identity).st_nlink != 1:
+            raise DeployError('cleanup_unsafe')
+        try:
+            valid = stage.read_bytes() == content
+        except OSError as exc:
+            _remove_stage(stage, file_identity)
+            raise DeployError('write_failed') from exc
+        if not valid:
+            _remove_stage(stage, file_identity)
+            raise DeployError('write_failed')
+        try:
+            os.link(stage, path)
+        except FileExistsError as exc:
+            _remove_stage(stage, file_identity)
+            raise DeployError('target_exists') from exc
+        except OSError as exc:
+            _remove_stage(stage, file_identity)
+            raise DeployError('publish_failed') from exc
+        _remove_stage(stage, file_identity)
         try:
             st = path.lstat()
             if not stat.S_ISREG(st.st_mode) or (st.st_dev, st.st_ino) != file_identity or st.st_nlink != 1:
