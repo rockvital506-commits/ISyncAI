@@ -13,7 +13,7 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from kit.guard_tree import MAX_BLOB, TreeViolation, guard_tree
+from kit.guard_tree import MAX_BLOB, TreeViolation, guard_commit, guard_tree
 
 
 class GuardTreeTests(unittest.TestCase):
@@ -163,6 +163,86 @@ class GuardTreeTests(unittest.TestCase):
         self.assertEqual(p.returncode,0,p.stderr)
         self.assertEqual(json.loads(p.stdout)['tree_oid'],self.tree)
 
+    def commit(self, tree, message='synthetic'):
+        # Создаёт только объект commit в синтетическом репозитории, без веток и ссылок.
+        return self.git('-c','user.name=Synthetic','-c','user.email=synthetic@example.invalid',
+                        'commit-tree',tree,'-m',message).strip()
+
+    def test_commit_binds_exact_object_to_checked_tree(self):
+        commit = self.commit(self.tree)
+        result = guard_commit(self.repo,commit_oid=commit,manifest_pin=self.pin)
+        self.assertEqual(result['outcome'],'pass')
+        self.assertEqual(result['commit_oid'],commit)
+        self.assertEqual(result['tree_oid'],self.tree)
+        self.assertEqual(result['guard_commit_format'],1)
+        self.assertNotIn('guard_tree_format',result)
+        self.assertEqual(self.git('write-tree').strip(),self.tree)
+        p = subprocess.run([sys.executable,'-I','-S','-B',str(ROOT/'kit/guard_tree.py'),
+                            '--repo',str(self.repo),'--commit',commit,'--manifest-pin',self.pin],
+                           cwd=self.repo,env=self.env,capture_output=True,text=True,encoding='utf-8',timeout=60)
+        self.assertEqual(p.returncode,0,p.stderr)
+        self.assertEqual(json.loads(p.stdout)['commit_oid'],commit)
+
+    def test_commit_rejects_bad_oid_and_wrong_object_type(self):
+        for oid in ('HEAD','--help','0'*39,'A'*40,'',self.tree):
+            with self.subTest(oid=oid), self.assertRaises(TreeViolation) as exc:
+                guard_commit(self.repo,commit_oid=oid,manifest_pin=self.pin)
+            self.assertEqual(exc.exception.reason,'commit_invalid')
+        with self.assertRaises(TreeViolation) as exc:
+            guard_commit(self.repo,commit_oid='0'*40,manifest_pin=self.pin)
+        self.assertEqual(exc.exception.reason,'git_failed')
+        with patch('kit.guard_tree._Git') as git:
+            with self.assertRaises(TreeViolation) as exc:
+                guard_commit(self.repo,commit_oid='0'*40,manifest_pin=None)
+            self.assertEqual(exc.exception.reason,'pin_required')
+            git.assert_not_called()
+
+    def test_commit_with_modified_candidate_fails(self):
+        path = self.repo/'kit/base/SCHEMA-V2.md'; path.write_bytes(path.read_bytes()+b'changed')
+        self.git('add','--','kit/base/SCHEMA-V2.md')
+        commit = self.commit(self.git('write-tree').strip())
+        with self.assertRaises(TreeViolation) as exc:
+            guard_commit(self.repo,commit_oid=commit,manifest_pin=self.pin)
+        self.assertEqual(exc.exception.reason,'candidate_digest_mismatch')
+        p = subprocess.run([sys.executable,'-I','-S','-B',str(ROOT/'kit/guard_tree.py'),
+                            '--repo',str(self.repo),'--commit',commit,'--manifest-pin',self.pin],
+                           cwd=self.repo,env=self.env,capture_output=True,text=True,encoding='utf-8',timeout=60)
+        self.assertEqual(p.returncode,1)
+        self.assertEqual(json.loads(p.stdout), {'guard_commit_format':1, 'outcome':'violation',
+                                               'reason':'candidate_digest_mismatch'})
+
+    def test_git_replace_cannot_redirect_checked_commit(self):
+        original = self.commit(self.tree, 'original')
+        path = self.repo/'kit/base/SCHEMA-V2.md'; path.write_bytes(path.read_bytes()+b'changed')
+        self.git('add','--','kit/base/SCHEMA-V2.md')
+        bad_tree = self.git('write-tree').strip(); replacement = self.commit(bad_tree, 'replacement')
+        # replace только в этом временном репозитории, не в рабочей истории проекта.
+        self.git('replace',original,replacement)
+        self.assertIn('tree '+bad_tree, self.git('cat-file','-p',original))
+        result = guard_commit(self.repo,commit_oid=original,manifest_pin=self.pin)
+        self.assertEqual(result['tree_oid'],self.tree)
+        self.assertEqual(result['commit_oid'],original)
+        with self.assertRaises(TreeViolation) as exc:
+            guard_commit(self.repo,commit_oid=replacement,manifest_pin=self.pin)
+        self.assertEqual(exc.exception.reason,'candidate_digest_mismatch')
+
+    def test_malformed_commit_tree_lookup_fails_closed(self):
+        with patch('kit.guard_tree._Git') as factory:
+            fake = factory.return_value; fake.oid_length=40
+            fake.run.side_effect=[b'commit\\n',b'not-a-tree\\n']
+            with self.assertRaises(TreeViolation) as exc:
+                guard_commit(self.repo,commit_oid='a'*40,manifest_pin=self.pin)
+            self.assertEqual(exc.exception.reason,'commit_invalid')
+
+    def test_cli_rejects_both_commit_and_tree(self):
+        commit = self.commit(self.tree)
+        p = subprocess.run([sys.executable,'-I','-S','-B',str(ROOT/'kit/guard_tree.py'),
+                            '--repo',str(self.repo),'--commit',commit,'--tree',self.tree,
+                            '--manifest-pin',self.pin],cwd=self.repo,env=self.env,
+                           capture_output=True,text=True,encoding='utf-8',timeout=60)
+        self.assertNotEqual(p.returncode,0)
+        self.assertFalse(p.stdout)
+
     def test_subdirectory_is_not_accepted_as_repository_root(self):
         with self.assertRaises(TreeViolation) as exc:
             guard_tree(self.repo/'kit',tree_oid=self.tree,manifest_pin=self.pin)
@@ -181,6 +261,11 @@ class GuardTreeTests(unittest.TestCase):
         self.assertEqual(len(tree),64)
         self.assertEqual(report['git_object_format'],'sha256')
         self.assertEqual(report['outcome'],'pass')
+        commit=subprocess.check_output(['git','-C',str(other),'-c','user.name=Synthetic',
+                                        '-c','user.email=synthetic@example.invalid','commit-tree',tree,'-m','synthetic'],
+                                       env=self.env).decode().strip()
+        result=guard_commit(other,commit_oid=commit,manifest_pin=self.pin)
+        self.assertEqual((result['commit_oid'],result['tree_oid']), (commit,tree))
 
 
 if __name__ == '__main__': unittest.main()

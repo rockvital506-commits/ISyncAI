@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 FORMAT = 1
-CANDIDATE_VERSION = '0.2.0-mvp.11'
+CANDIDATE_VERSION = '0.2.0-mvp.12'
 MANIFEST = 'kit/KIT-VERSION.json'
 EXTRA = {'kit/verify_candidate.py', 'kit/LAYERS.md', 'kit/render_rule.py', 'kit/RENDER-RULE.md', 'kit/preview_rule.py', 'kit/PREVIEW-RULE.md', 'kit/session_cli.py', 'kit/SESSION-CLI.md', 'kit/ENVIRONMENTS.json', 'kit/ENVIRONMENTS.md', 'kit/kilo_deploy.py', 'kit/KILO-DEPLOY.md', 'kit/kilo_inspect.py', 'kit/KILO-INSPECT.md', 'kit/guard.py', 'kit/GUARD.md', 'kit/guard_tree.py', 'kit/GUARD-TREE.md'}
 HEX = re.compile(r'^[0-9a-f]{64}$')

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Проверить L0 кандидата в одном Git tree, не выполняя код этого tree."""
+"""Проверить L0 кандидата в Git tree или commit, не выполняя код снимка."""
 from __future__ import annotations
 
 import argparse
@@ -108,13 +108,12 @@ def _manifest(raw, pin):
     return files
 
 
-def guard_tree(repo, *, tree_oid, manifest_pin):
-    """Только выбранный tree и части L0 в нём; не проверяет index, commit или рабочие файлы."""
+def _check_pin(manifest_pin):
     if type(manifest_pin) is not str or HEX.fullmatch(manifest_pin) is None:
         raise TreeViolation('pin_required')
-    if type(tree_oid) is not str or OID.fullmatch(tree_oid) is None:
-        raise TreeViolation('tree_invalid')
-    git = _Git(repo)
+
+
+def _check_tree(git, tree_oid, manifest_pin):
     if len(tree_oid) != git.oid_length or git.run('cat-file', '-t', tree_oid).strip() != b'tree':
         raise TreeViolation('tree_invalid')
     raw = git.run('ls-tree', '-r', '-z', '--full-tree', tree_oid, '--', 'kit/base', MANIFEST, *sorted(EXTRA))
@@ -151,16 +150,48 @@ def guard_tree(repo, *, tree_oid, manifest_pin):
             'candidate': CANDIDATE_VERSION, 'files': len(files), 'checked': 'candidate_l0_only'}
 
 
+def guard_tree(repo, *, tree_oid, manifest_pin):
+    """Только выбранный tree и части L0 в нём; не проверяет index, commit или рабочие файлы."""
+    _check_pin(manifest_pin)
+    if type(tree_oid) is not str or OID.fullmatch(tree_oid) is None:
+        raise TreeViolation('tree_invalid')
+    return _check_tree(_Git(repo), tree_oid, manifest_pin)
+
+
+def guard_commit(repo, *, commit_oid, manifest_pin):
+    """Сверяет L0 в root tree указанного commit, без проверки PR, подписи или родительства."""
+    _check_pin(manifest_pin)
+    if type(commit_oid) is not str or OID.fullmatch(commit_oid) is None:
+        raise TreeViolation('commit_invalid')
+    git = _Git(repo)
+    if len(commit_oid) != git.oid_length or git.run('cat-file', '-t', commit_oid).strip() != b'commit':
+        raise TreeViolation('commit_invalid')
+    raw = git.run('rev-parse', '--verify', '--end-of-options', commit_oid + '^{tree}').strip()
+    try:
+        tree_oid = raw.decode('ascii')
+    except UnicodeError as exc:
+        raise TreeViolation('commit_invalid') from exc
+    if len(tree_oid) != git.oid_length or OID.fullmatch(tree_oid) is None:
+        raise TreeViolation('commit_invalid')
+    result = _check_tree(git, tree_oid, manifest_pin)
+    del result['guard_tree_format']
+    return {'guard_commit_format': 1, 'commit_oid': commit_oid, **result}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo', type=Path, required=True, help='корень выбранного Git-репозитория')
-    parser.add_argument('--tree', required=True, help='полный OID Git tree, не ветка и не коммит')
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument('--tree', help='полный OID Git tree')
+    source.add_argument('--commit', help='полный OID Git commit')
     parser.add_argument('--manifest-pin', help='заранее доверенный SHA-256 манифеста')
     args = parser.parse_args()
+    format_key = 'guard_commit_format' if args.commit is not None else 'guard_tree_format'
     try:
-        result = guard_tree(args.repo, tree_oid=args.tree, manifest_pin=args.manifest_pin)
+        result = (guard_commit(args.repo, commit_oid=args.commit, manifest_pin=args.manifest_pin)
+                  if args.commit is not None else guard_tree(args.repo, tree_oid=args.tree, manifest_pin=args.manifest_pin))
     except TreeViolation as exc:
-        print(json.dumps({'guard_tree_format': 1, 'outcome': 'violation', 'reason': exc.reason}, sort_keys=True))
+        print(json.dumps({format_key: 1, 'outcome': 'violation', 'reason': exc.reason}, sort_keys=True))
         return 1
     print(json.dumps(result, sort_keys=True))
     return 0
