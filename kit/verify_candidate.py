@@ -11,8 +11,9 @@ import sys
 from pathlib import Path
 
 FORMAT = 1
+CANDIDATE_VERSION = '0.2.0-mvp.11'
 MANIFEST = 'kit/KIT-VERSION.json'
-EXTRA = {'kit/verify_candidate.py', 'kit/LAYERS.md', 'kit/render_rule.py', 'kit/RENDER-RULE.md', 'kit/preview_rule.py', 'kit/PREVIEW-RULE.md', 'kit/session_cli.py', 'kit/SESSION-CLI.md', 'kit/ENVIRONMENTS.json', 'kit/ENVIRONMENTS.md', 'kit/kilo_deploy.py', 'kit/KILO-DEPLOY.md', 'kit/kilo_inspect.py', 'kit/KILO-INSPECT.md', 'kit/guard.py', 'kit/GUARD.md'}
+EXTRA = {'kit/verify_candidate.py', 'kit/LAYERS.md', 'kit/render_rule.py', 'kit/RENDER-RULE.md', 'kit/preview_rule.py', 'kit/PREVIEW-RULE.md', 'kit/session_cli.py', 'kit/SESSION-CLI.md', 'kit/ENVIRONMENTS.json', 'kit/ENVIRONMENTS.md', 'kit/kilo_deploy.py', 'kit/KILO-DEPLOY.md', 'kit/kilo_inspect.py', 'kit/KILO-INSPECT.md', 'kit/guard.py', 'kit/GUARD.md', 'kit/guard_tree.py', 'kit/GUARD-TREE.md'}
 HEX = re.compile(r'^[0-9a-f]{64}$')
 NAME = re.compile(r'^[A-Za-z0-9][A-Za-z0-9_.-]*$')
 
@@ -64,7 +65,7 @@ def verify(root, *, pin=None):
         raise VerificationError('манифест не является UTF-8 JSON') from exc
     if type(doc) is not dict or set(doc) != {'format', 'version', 'status', 'scope', 'files'}:
         raise VerificationError('неверные поля манифеста')
-    if type(doc['format']) is not int or doc['format'] != FORMAT or doc['version'] != '0.2.0-mvp.10':
+    if type(doc['format']) is not int or doc['format'] != FORMAT or doc['version'] != CANDIDATE_VERSION:
         raise VerificationError('неподдерживаемая версия манифеста или кандидата')
     if doc['status'] != 'candidate' or doc['scope'] != 'source-l0-only':
         raise VerificationError('неверный статус или область')
