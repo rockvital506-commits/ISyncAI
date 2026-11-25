@@ -5204,6 +5204,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 4,
+        "new_brand": 1,
+        "new_project_path": 1
+      },
+      "path": "research/audit/test_plan_mode_freshness.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 5,
         "new_brand": 2,
         "new_project_path": 2
@@ -5345,7 +5354,7 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 58,
+        "candidate_version": 60,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,
@@ -7481,7 +7490,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1992,
+  "scanned_files": 1993,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }

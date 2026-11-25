@@ -11,10 +11,11 @@ from .operation_card import compile_prompt
 from .profile_journal import canonical_bytes
 from .registry_policy import StoreError, check_operation
 
-PLAN_FORMAT = 2
+PLAN_FORMAT = 3
 REPLACEMENT_NOTICE = (
     'При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
-    'метаданные. Их сохранность и актуальность этим планом не проверяются.'
+    'метаданные. Их сохранность не проверяется; на POSIX перед записью сравниваются '
+    'только биты mode входных файлов.'
 )
 
 
@@ -92,7 +93,10 @@ class PlanSession:
         if preview.from_revision == preview.to_revision:
             return dict(result, outcome='no_change')
         ticket = token_hex(32)
-        result.update(outcome='planned', ticket=ticket, replacement_notice=REPLACEMENT_NOTICE)
+        modes = ({'status': 'captured_posix_mode_bits', 'inputs': dict(preview.input_modes)}
+                 if preview.input_modes is not None else {'status': 'not_checked', 'inputs': None})
+        result.update(outcome='planned', ticket=ticket, replacement_notice=REPLACEMENT_NOTICE,
+                      input_mode_bits=modes)
         self._pending = _Pending(ticket, canonical_bytes(result), preview)
         return result
 

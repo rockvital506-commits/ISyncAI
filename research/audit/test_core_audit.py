@@ -3,8 +3,11 @@
 import copy
 import importlib.util
 import json
+import os
+import stat
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -122,22 +125,33 @@ class AuditTests(unittest.TestCase):
 
     def test_109_preview_oracle_adapts_only_expected_and_fails_on_wrong_notice(self):
         from types import SimpleNamespace
-        module = SimpleNamespace(expected_preview=lambda outcome: {'plan_format':2, 'outcome':outcome})
-        audit.adapt_109_preview(module)
-        planned = module.expected_preview('planned')
-        self.assertEqual(planned['replacement_notice'], audit.PLAN2_NOTICE)
-        self.assertNotIn('replacement_notice', module.expected_preview('no_change'))
-        with self.assertRaises(ValueError): module.expected_preview('other')
-        original = (audit.ROOT/'research/109/test_plan.py').read_bytes()
-        historical = audit.load_path_adapted_test(109, audit.ROOT/'research/109/test_plan.py')
-        self.assertEqual((audit.ROOT/'research/109/test_plan.py').read_bytes(),original)
-        expected = {'plan_format':2, 'outcome':'planned', 'replacement_notice':audit.PLAN2_NOTICE}
-        actual = {**expected, 'ticket':'a'*64}
-        self.assertTrue(historical.exact_preview(actual, expected))
-        actual['replacement_notice'] = 'wrong'
-        self.assertFalse(historical.exact_preview(actual, expected))
-        del actual['replacement_notice']
-        self.assertFalse(historical.exact_preview(actual, expected))
+        with tempfile.TemporaryDirectory(prefix='oracle-mode-') as tmp:
+            root = Path(tmp)
+            for name in ('l0', 'l1', 'l2'): (root/name).write_bytes(b'test')
+            files = {'L0':'l0','L1':'l1','L2':'l2'}
+            module = SimpleNamespace(FILES=files,
+                expected_preview=lambda work,outcome: {'plan_format':3, 'outcome':outcome})
+            audit.adapt_109_preview(module)
+            planned = module.expected_preview(root,'planned')
+            self.assertEqual(planned['replacement_notice'], audit.PLAN3_NOTICE)
+            modes = ({'status':'captured_posix_mode_bits','inputs':
+                      {area:format(stat.S_IMODE((root/name).lstat().st_mode),'04o') for area,name in files.items()}}
+                     if os.name == 'posix' else {'status':'not_checked','inputs':None})
+            self.assertEqual(planned['input_mode_bits'],modes)
+            self.assertNotIn('replacement_notice', module.expected_preview(root,'no_change'))
+            self.assertNotIn('input_mode_bits', module.expected_preview(root,'no_change'))
+            with self.assertRaises(ValueError): module.expected_preview(root,'other')
+            original = (audit.ROOT/'research/109/test_plan.py').read_bytes()
+            historical = audit.load_path_adapted_test(109, audit.ROOT/'research/109/test_plan.py')
+            self.assertEqual((audit.ROOT/'research/109/test_plan.py').read_bytes(),original)
+            expected = planned
+            actual = {**expected, 'ticket':'a'*64}
+            self.assertTrue(historical.exact_preview(actual, expected))
+            actual['replacement_notice'] = 'wrong'
+            self.assertFalse(historical.exact_preview(actual, expected))
+            actual['replacement_notice'] = audit.PLAN3_NOTICE
+            actual['input_mode_bits'] = {'status':'not_checked','inputs':None} if os.name == 'posix' else {}
+            self.assertFalse(historical.exact_preview(actual, expected))
 
     def test_audit_integration(self):
         self.assertEqual(audit.check_known_drift()['mismatches'], [])

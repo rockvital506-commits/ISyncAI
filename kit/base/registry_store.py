@@ -32,6 +32,7 @@ class _Loaded:
     files: dict
     documents: dict
     inputs_sha256: dict
+    input_modes: dict | None
     raw: dict
     journals: dict
 
@@ -61,6 +62,7 @@ class _ActionPreview:
     from_revision: int
     to_revision: int
     inputs_sha256: dict
+    input_modes: dict | None
     before: bytes
     after: bytes
 
@@ -112,6 +114,11 @@ def _existing(workspace, rel, *, registry=False):
     return current, info
 
 
+def _mode_check_supported():
+    # Не выдаём платформенные псевдобиты за проверенные POSIX mode.
+    return os.name == 'posix'
+
+
 def _load(layout):
     roots = _declared_roots(layout)
     workspace = _workspace(layout.workspace)
@@ -124,9 +131,12 @@ def _load(layout):
         identities.add(identity)
 
     files, documents, inputs_sha256, raw_by_area, journals = {}, {}, {}, {}, {}
+    input_modes = {} if _mode_check_supported() else None
     for area, suffix in _SUFFIX.items():
         rel = roots[area] + '/' + suffix
-        path, _ = _existing(workspace, rel, registry=True)
+        path, info = _existing(workspace, rel, registry=True)
+        if input_modes is not None:
+            input_modes[area] = format(stat.S_IMODE(info.st_mode), '04o')
         try:
             raw = path.read_bytes()
         except OSError as error:
@@ -144,7 +154,7 @@ def _load(layout):
         files[area], documents[area] = path, document
         inputs_sha256[area] = sha256(raw).hexdigest()
         raw_by_area[area] = raw
-    return _Loaded(workspace, roots, files, documents, inputs_sha256, raw_by_area, journals)
+    return _Loaded(workspace, roots, files, documents, inputs_sha256, input_modes, raw_by_area, journals)
 
 
 def _status(current, *, target=None, revision=None):
@@ -332,7 +342,8 @@ def _prepare_action(current, operation, params):
     revision, before = current.documents[target]['revision'], current.raw[target]
     after = before if change is None else _mutation_bytes(current, operation, target, change)
     return _ActionPreview(operation, dict(params), _rel(current, target), revision,
-                          revision if change is None else change.candidate['revision'], current.inputs_sha256, before, after)
+                          revision if change is None else change.candidate['revision'], current.inputs_sha256,
+                          None if current.input_modes is None else dict(current.input_modes), before, after)
 
 
 def _preview_action(layout, operation, params):
@@ -358,6 +369,9 @@ def _apply_action(layout, preview, *, allow_delete=False):
         raise StoreError('stale_revision', 'revision/from')
     prepared = _prepare_action(current, operation, params)
     _check_inputs(current, preview)
+    # Только биты mode трёх входных файлов; ACL и гонка после этой точки не проверены.
+    if current.input_modes != preview.input_modes:
+        raise StoreError('stale_metadata', 'inputs/mode')
     if (prepared.registry != preview.registry or prepared.to_revision != preview.to_revision
             or prepared.to_revision != prepared.from_revision + 1
             or prepared.before != preview.before or prepared.after != preview.after):

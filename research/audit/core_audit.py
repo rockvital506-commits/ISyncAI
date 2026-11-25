@@ -36,8 +36,9 @@ from kit.base.operation_plan import PlanSession                   # noqa: E402
 
 RELEASE = '0.2.0-audit'
 # Независимое ожидаемое сообщение нового формата; исторический оракул не меняется на диске.
-PLAN2_NOTICE = ('При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
-                'метаданные. Их сохранность и актуальность этим планом не проверяются.')
+PLAN3_NOTICE = ('При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
+                'метаданные. Их сохранность не проверяется; на POSIX перед записью сравниваются '
+                'только биты mode входных файлов.')
 
 
 # ---------------------------------------------------------------- каталог дрейфа
@@ -524,7 +525,7 @@ def load_path_adapted_test(iteration, path):
                     if isinstance(key, ast.Constant) and key.value == 'plan_format':
                         if not isinstance(value, ast.Constant) or type(value.value) is not int or value.value != 1:
                             raise ValueError('unexpected historical 109 plan format')
-                        value.value = 2
+                        value.value = 3
                         self.plan_dicts += 1
             return node
     spec = importlib.util.spec_from_file_location(f'drift{iteration}', path)
@@ -541,16 +542,24 @@ def load_path_adapted_test(iteration, path):
 
 
 def adapt_109_preview(module):
-    """Независимо добавить предупреждение к ожидаемому диффу, не к результату кандидата."""
+    """Независимо дополнить ожидаемый дифф, не изменяя результат кандидата."""
+    import os
+    import stat
     original = module.expected_preview
     def expected_preview(*args, **kwargs):
         result = original(*args, **kwargs)
-        if (type(result) is not dict or result.get('plan_format') != 2
+        if (type(result) is not dict or result.get('plan_format') != 3
                 or result.get('outcome') not in ('planned', 'no_change')
-                or 'replacement_notice' in result):
+                or 'replacement_notice' in result or 'input_mode_bits' in result):
             raise ValueError('unexpected 109 expected preview')
         if result['outcome'] == 'planned':
-            result['replacement_notice'] = PLAN2_NOTICE
+            result['replacement_notice'] = PLAN3_NOTICE
+            work = Path(args[0])
+            result['input_mode_bits'] = (
+                {'status': 'captured_posix_mode_bits', 'inputs':
+                 {area: format(stat.S_IMODE((work / rel).lstat().st_mode), '04o')
+                  for area, rel in module.FILES.items()}}
+                if os.name == 'posix' else {'status': 'not_checked', 'inputs': None})
         return result
     module.expected_preview = expected_preview
 

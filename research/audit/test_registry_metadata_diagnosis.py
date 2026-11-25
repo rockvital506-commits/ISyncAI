@@ -87,7 +87,7 @@ class MetadataDiagnosisTests(unittest.TestCase):
         self.assertEqual(self.apply(plan)['outcome'], 'applied')
         self.assert_only_target_changed(before,self.l2)
 
-    def test_mode_drift_after_plan_is_not_detected(self):
+    def test_mode_drift_after_plan_is_rejected(self):
         self.l1.chmod(0o600)
         plan = self.plan('L1')
         self.assertEqual(plan['inputs_sha256']['L1'],hashlib.sha256(self.l1.read_bytes()).hexdigest())
@@ -95,10 +95,13 @@ class MetadataDiagnosisTests(unittest.TestCase):
         before = self.snapshot()
         self.assertEqual(plan['inputs_sha256']['L1'],hashlib.sha256(self.l1.read_bytes()).hexdigest())
         self.assertEqual(before[str(self.l1.relative_to(self.workspace))][1],0o640)
-        self.assertEqual(self.apply(plan)['outcome'], 'applied')
-        self.assert_only_target_changed(before,self.l1)
+        with self.assertRaises(StoreError) as error: self.apply(plan)
+        self.assertEqual(error.exception.code,'stale_metadata')
+        self.assertEqual(self.snapshot(),before)
+        with self.assertRaises(StoreError) as retry: self.apply(plan)
+        self.assertEqual(retry.exception.code,'ticket_unknown')
 
-    def test_non_target_mode_drift_is_not_part_of_input_hashes(self):
+    def test_non_target_mode_drift_is_not_in_hashes_but_is_rejected(self):
         self.l2.chmod(0o600)
         plan = self.plan('L1')
         content_hash = hashlib.sha256(self.l2.read_bytes()).hexdigest()
@@ -106,8 +109,9 @@ class MetadataDiagnosisTests(unittest.TestCase):
         self.l2.chmod(0o640)
         before = self.snapshot()
         self.assertEqual(hashlib.sha256(self.l2.read_bytes()).hexdigest(),content_hash)
-        self.assertEqual(self.apply(plan)['outcome'],'applied')
-        self.assert_only_target_changed(before,self.l1)
+        with self.assertRaises(StoreError) as error: self.apply(plan)
+        self.assertEqual(error.exception.code,'stale_metadata')
+        self.assertEqual(self.snapshot(),before)
         self.assertEqual(stat.S_IMODE(self.l2.stat().st_mode),0o640)
 
     def test_original_private_mode_stays_private(self):
@@ -129,7 +133,7 @@ class MetadataDiagnosisTests(unittest.TestCase):
         self.assertEqual(retry.exception.code,'ticket_unknown')
         self.assertEqual(self.snapshot(),before)
 
-    def test_isolated_snapshot_session_also_does_not_check_mode_drift(self):
+    def test_isolated_snapshot_session_rejects_mode_drift(self):
         manifest_raw = (ROOT/'kit/KIT-VERSION.json').read_bytes()
         manifest = json.loads(manifest_raw)
         source = self.root/'source'; source.mkdir()
@@ -168,10 +172,11 @@ class MetadataDiagnosisTests(unittest.TestCase):
         before_plan = self.snapshot()
         plan = send({'type':'plan','request':request})
         self.assertEqual(plan['outcome'],'planned')
-        self.assertEqual(plan['plan_format'],2)
+        self.assertEqual(plan['plan_format'],3)
         self.assertEqual(plan['replacement_notice'],
             'При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
-            'метаданные. Их сохранность и актуальность этим планом не проверяются.')
+            'метаданные. Их сохранность не проверяется; на POSIX перед записью сравниваются '
+            'только биты mode входных файлов.')
         self.assertEqual(self.snapshot(),before_plan)
         altered = dict(plan); del altered['replacement_notice']
         denied = send({'type':'apply','plan':altered,'confirmed_ticket':plan['ticket']})
@@ -180,8 +185,8 @@ class MetadataDiagnosisTests(unittest.TestCase):
         self.l1.chmod(0o640)
         before_apply = self.snapshot()
         result = send({'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']})
-        self.assertEqual(result['outcome'],'applied')
-        self.assert_only_target_changed(before_apply,self.l1)
+        self.assertEqual(result['diagnostic']['code'],'stale_metadata')
+        self.assertEqual(self.snapshot(),before_apply)
         self.assertEqual(send({'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']})['diagnostic']['code'],
                          'ticket_unknown')
 
