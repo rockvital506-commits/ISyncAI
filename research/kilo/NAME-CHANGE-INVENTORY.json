@@ -5226,6 +5226,16 @@
     {
       "area": "audit",
       "hits": {
+        "candidate_version": 1,
+        "kit_import": 2,
+        "new_brand": 1,
+        "new_project_path": 1
+      },
+      "path": "research/audit/test_move_preview.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 4,
         "new_brand": 2,
         "new_project_path": 2
@@ -7593,7 +7603,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2020,
+  "scanned_files": 2023,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
