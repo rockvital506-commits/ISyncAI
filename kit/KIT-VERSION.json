@@ -5,16 +5,17 @@
     "kit/ENVIRONMENTS.md": "319959a30a8b62a321d9dbce990548e50aa4feea8c05a330eec5c21a15509c3e",
     "kit/GUARD-TREE.md": "51d9d174e8f87493b0bc20271ab8554e57cb0f98d12af3da003536a91107a7db",
     "kit/GUARD.md": "946a16c80f86d63fce8c29053b8be5a765dd06d0763d4c3b0860d6c4ce632419",
-    "kit/IDENTITY.md": "46a00e69fe5c87dfebb88aa1b5f7d3f98f0aa1832c265b3403390f7b2947e2fb",
+    "kit/IDENTITY.md": "f5c4370946d6c86f96fd244d29596d2fd2df359f7f1c076e177941f9633eb7ec",
     "kit/KILO-DEPLOY.md": "8273783d325bc21375be51f3d5ab797f35e758e33e05108cadd6c27522b761d6",
     "kit/KILO-INSPECT.md": "fbc9c640fe2126bf56adb7c0977c8f8b4f86af2202630d3ce2737af10a08beb8",
-    "kit/LAYERS.md": "9ce4d337e66d95563d1f0a87fada02e95973b4a026c857fc2f6e6ae0026e4ec8",
+    "kit/LAYERS.md": "32caf09f35896612bb23638ea85e937a2041b61631ea6c28c0bff876e9d8118f",
     "kit/LEGACY-CAPSULE.md": "e340cd6d934f6033ab41bafa0592e1715f5b1bad365f1a5ae0018ff0a35ed8a7",
     "kit/LEGACY-PROJECTION.md": "5c3a3d39172c56187f9b54b17e98dbacd0b7db8c8e41064ab5c82d9db7fcc77f",
     "kit/PREVIEW-RULE.md": "e321f9c245a0873b515427c682f9766522e78c72234a2febeda77138a42515a8",
     "kit/RENDER-RULE.md": "620c77196b9ebf6d3432f00841b05c8b3cb9edd232a950af3a98b3c3330ec046",
     "kit/SESSION-CLI.md": "fbcd14cf824a58e20df4e2e79638d78f73d7b48302ac106cce8662dbc4d1f470",
-    "kit/SNAPSHOT-SESSION.md": "36fe67cf164ac7fc6eb3a0118326ff388f712a11342db94fda8ed46d24acab1a",
+    "kit/SNAPSHOT-EXPORT.md": "cfb79f128845e07e53684e7804bae9ce7a18b2f64c717d103e139f8ba9dce8ec",
+    "kit/SNAPSHOT-SESSION.md": "4427d919f81ad2e99089dcf5f1c727b0886c07edb6d5999f473399df08f8ca7b",
     "kit/base/BUNDLE-ROLLBACK.md": "b2feedb660a66b6c76a2885fd59d61804f64df9124c8d6200a9aa7e7d41ca3df",
     "kit/base/BUNDLE-TRUST.md": "155252beebc46103544503f2f5ab5130e66936b0b9aef16dacd61775aa820aea",
     "kit/base/BUNDLE-VERIFY.md": "b844f606a435c45d0cdc468558ad718d8bae8c1e62f3a6e44b729729338c1446",
@@ -58,12 +59,13 @@
     "kit/preview_rule.py": "c7367b3c33651dd2cb876601025ca53517d61d644c6e71817111a28f9c176229",
     "kit/render_rule.py": "f2a858f51ac29c084a3d2b2e0cafff533b13a5f4928a2193e1e6ca42127d11c0",
     "kit/session_cli.py": "a895e61e67a21498c2645341198be82b97ae685d62000208796d32d84ed88915",
+    "kit/snapshot_export.py": "3e569f5eff8f078b87e17f97d332e0af6fbb5a2a04f63986c1c248165a120626",
     "kit/snapshot_session.py": "f79ab888a285e34d4b53ee8988f048d82c067a2ea2b6ee52aab9efa02727c9fd",
-    "kit/verify_candidate.py": "36b35485e5ff9e706f5c4480aa9c7f04b823ec2e9af6e6d76b10c44eb34ce4e1"
+    "kit/verify_candidate.py": "6bb02c5c3b5f538bc96fdd529be839ba6b60c2d43f6ba42a96a16badb9d137ba"
   },
   "format": 2,
   "product": "DomainAgentKit",
   "scope": "source-l0-only",
   "status": "candidate",
-  "version": "0.2.0-mvp.19"
+  "version": "0.2.0-mvp.20"
 }
