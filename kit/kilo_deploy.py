@@ -39,6 +39,14 @@ def _dirs(loaded):
     return path, (info.st_dev, info.st_ino)
 
 
+def target_name(area, entry_id):
+    """Имя только из идентификатора схемы; не путь и не выбор произвольного файла."""
+    if (type(area) is not str or area not in ('L1', 'L2') or type(entry_id) is not str
+            or schema_v2._ID.fullmatch(entry_id) is None):
+        raise DeployError('invalid_target')
+    return f'kit-{area.lower()}-{entry_id}.md'
+
+
 def _target_absent(path):
     try:
         path.lstat()
@@ -84,8 +92,7 @@ class KiloDeploymentSession:
         loaded = registry_store._load(self.layout)
         content = render(loaded.documents, area=area, entry_id=entry_id)
         directory, identity = _dirs(loaded)
-        # render уже проверил ID схемой, поэтому имя не может содержать разделители пути.
-        name = f'kit-{area.lower()}-{entry_id}.md'
+        name = target_name(area, entry_id)
         _target_absent(directory / name)
         ticket = token_hex(32)
         result = {'plan_format': 2, 'outcome': 'planned', 'target': '.kilo/rules/' + name,

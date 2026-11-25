@@ -2,8 +2,9 @@
   "files": {
     "kit/ENVIRONMENTS.json": "0a6eb262e80c942f47455a96ae5b761071c9f0a731dca1b51a400629ce113c13",
     "kit/ENVIRONMENTS.md": "319959a30a8b62a321d9dbce990548e50aa4feea8c05a330eec5c21a15509c3e",
-    "kit/KILO-DEPLOY.md": "9d1b712e52c3ba46945a21c1d93432fdc1dfa34bc2b73349efb0e18b321b9e3a",
-    "kit/LAYERS.md": "af362fe33944fa466efb28306a54254ae63af17ac4c594e20a41519309510faf",
+    "kit/KILO-DEPLOY.md": "8273783d325bc21375be51f3d5ab797f35e758e33e05108cadd6c27522b761d6",
+    "kit/KILO-INSPECT.md": "fbc9c640fe2126bf56adb7c0977c8f8b4f86af2202630d3ce2737af10a08beb8",
+    "kit/LAYERS.md": "b632f79f1f069cbab05ae783d7e2a3c2c5d941f73fb92d832b8fd6da3c2c5017",
     "kit/PREVIEW-RULE.md": "e321f9c245a0873b515427c682f9766522e78c72234a2febeda77138a42515a8",
     "kit/RENDER-RULE.md": "620c77196b9ebf6d3432f00841b05c8b3cb9edd232a950af3a98b3c3330ec046",
     "kit/SESSION-CLI.md": "860c1526a00d608d0555a2f53997f1a049e7578eb03375792658f93259c64052",
@@ -40,14 +41,15 @@
     "kit/base/registry_store.py": "1615c9dc35d6029e696c0629e15d5910c597c9e4daf9e5898789732d59e80c87",
     "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
     "kit/base/simulation.py": "395b2c08d0624e55a6c84ea23a93835cf8ece79513481bd9cf93f333d22e77f9",
-    "kit/kilo_deploy.py": "4d5312b8e3ea3d458057819c7a47221db0730355e20cbdcedf3695c7438be5c2",
+    "kit/kilo_deploy.py": "380ede43750e4ca502235c83761f7443c113a9ee1c0f855535910156ea9d3dd2",
+    "kit/kilo_inspect.py": "920f51354d79d6e8576e5caf4b36591ed8efe403732a7695ab4c5bc2a8a48891",
     "kit/preview_rule.py": "c7367b3c33651dd2cb876601025ca53517d61d644c6e71817111a28f9c176229",
     "kit/render_rule.py": "f2a858f51ac29c084a3d2b2e0cafff533b13a5f4928a2193e1e6ca42127d11c0",
     "kit/session_cli.py": "41a6b23338a5a0e9fdf7564756df6d94c70aeeb79ec71e791e1154318c3cf115",
-    "kit/verify_candidate.py": "99c0b652498ad547d81694c79c2ddfe596c2da413fa96634e953b122dce7fb01"
+    "kit/verify_candidate.py": "63512af22a43ae6731d8b1a2b586414d15d3644c4dfd404b7c31c6f4e9af6202"
   },
   "format": 1,
   "scope": "source-l0-only",
   "status": "candidate",
-  "version": "0.2.0-mvp.8"
+  "version": "0.2.0-mvp.9"
 }
