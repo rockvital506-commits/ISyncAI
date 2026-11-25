@@ -2,9 +2,11 @@
 from dataclasses import dataclass
 from difflib import diff_bytes, unified_diff
 from hashlib import sha256
+from functools import wraps
 from io import BytesIO
 import json
 from secrets import token_hex
+import threading
 
 from . import registry_store
 from .operation_card import compile_prompt
@@ -63,6 +65,18 @@ def _diff(preview):
             'unified': display.decode('utf-8')}
 
 
+def _exclusive_session(fn):
+    @wraps(fn)
+    def run(self, *args, **kwargs):
+        if not self._session_lock.acquire(blocking=False):
+            raise StoreError('session_busy', 'session')
+        try:
+            return fn(self, *args, **kwargs)
+        finally:
+            self._session_lock.release()
+    return run
+
+
 class PlanSession:
     """Один ожидающий план в памяти. Не идентификация пользователя и не разрешение ОС."""
 
@@ -72,9 +86,11 @@ class PlanSession:
         self._layout = layout
         self._profile_id = profile_id
         self._pending = None
+        self._session_lock = threading.Lock()
 
+    @_exclusive_session
     def plan(self, card):
-        """Показать точный дифф без записи. Любая новая попытка отзывает старый билет."""
+        """Показать дифф; любая попытка, допущенная в метод, отзывает старый билет."""
         self._pending = None
         card = _checked_card(card)
         result = {'plan_format': PLAN_FORMAT, 'dry_run': True, 'card': card}
@@ -102,6 +118,7 @@ class PlanSession:
         self._pending = _Pending(ticket, canonical_bytes(result), preview)
         return result
 
+    @_exclusive_session
     def apply(self, plan, *, confirmed_ticket=None, allow_delete=False):
         """Писать только по отдельному билету на этот план; для удаления нужно также allow_delete."""
         if type(confirmed_ticket) is not str or not confirmed_ticket:
