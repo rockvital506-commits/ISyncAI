@@ -212,6 +212,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "candidate_version": 1
+      },
+      "path": "kit/SYSTEM-L0.json"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "new_brand": 1
       },
       "path": "kit/base/BUNDLE-TRUST.md"
@@ -4999,6 +5006,13 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 2
+      },
+      "path": "research/audit/l0_candidate_audit.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 1,
         "new_brand": 1
       },
@@ -5223,6 +5237,14 @@
         "new_project_path": 1
       },
       "path": "research/audit/test_kilo_inspect.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 1
+      },
+      "path": "research/audit/test_l0_candidate.py"
     },
     {
       "area": "audit",
@@ -7628,7 +7650,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2029,
+  "scanned_files": 2033,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }

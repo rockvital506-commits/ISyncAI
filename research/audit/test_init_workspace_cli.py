@@ -59,7 +59,7 @@ class CliInitializationTests(unittest.TestCase):
     def apply(self,plan,ticket=None,peer=None):
         return self.request({'type':'apply','plan':plan,'confirmed_ticket':plan['ticket'] if ticket is None else ticket},peer)
 
-    def test_full_synthetic_path_from_cli_to_isolated_snapshot_session(self):
+    def full_synthetic_path_from_cli_to_isolated_snapshot_session(self, expected_system_ids=None):
         plan=self.request(self.command());self.assertEqual(plan['outcome'],'planned');self.assertFalse(self.dest.exists())
         self.assertEqual(self.apply(plan,'')['code'],'confirmation_required');self.assertFalse(self.dest.exists())
         self.assertEqual(self.apply(plan)['outcome'],'created_unverified_origin')
@@ -77,6 +77,11 @@ class CliInitializationTests(unittest.TestCase):
             '--candidate-root',str(source),'--workspace',str(self.dest),'--profile-root','profiles/pilot',
             '--profile-id','Pilot','--manifest-pin',hashlib.sha256(raw).hexdigest(),'--system-pin',self.pin])
         self.assertEqual(self.request({'type':'bootstrap'},snapshot)['outcome'],'bootstrap')
+        if expected_system_ids is not None:
+            report=self.request({'type':'applicable','scope':'docs/file'},snapshot)
+            self.assertEqual(report['outcome'],'applicable')
+            self.assertEqual({r['entry']['id'] for r in report['entries'] if r['area']=='L0'},expected_system_ids)
+            self.assertEqual(report['text_conflicts'],'not_checked')
         prompt=('Создай черновик контракта X-9 в профиле Pilot, постоянное, область «docs», '
                 'название «Пример», основание «Проба», критерий «Запись существует»: Синтетический текст.')
         change=self.request({'type':'plan','request':prompt},snapshot)
@@ -91,6 +96,15 @@ class CliInitializationTests(unittest.TestCase):
         self.assertEqual((self.dest/'.domain-agent-kit/project/registry.json').read_bytes(),
                          before['.domain-agent-kit/project/registry.json'])
         self.assertNotEqual((self.dest/'profiles/pilot/registry.json').read_bytes(),before['profiles/pilot/registry.json'])
+
+    def test_full_synthetic_path_empty_l0(self):
+        self.full_synthetic_path_from_cli_to_isolated_snapshot_session()
+
+    def test_full_synthetic_path_candidate_system_l0(self):
+        self.raw=(ROOT/'kit/SYSTEM-L0.json').read_bytes();self.pin=hashlib.sha256(self.raw).hexdigest()
+        system=json.loads(self.raw)
+        self.assertEqual(len(system['entries']),10)
+        self.full_synthetic_path_from_cli_to_isolated_snapshot_session({e['id'] for e in system['entries']})
 
     def test_cancel_malformed_and_new_plan_revoke(self):
         plan=self.request(self.command());self.assertEqual(self.request({'type':'cancel'})['outcome'],'cancelled')
