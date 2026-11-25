@@ -75,6 +75,20 @@ class DeliveryWorkflowTests(unittest.TestCase):
 
     def test_signed_candidate_new_workspace_and_confirmed_operation(self):
         signed = self.fixture.verify()
+        exported = self.root/'exported-candidate'
+        export = self.start([sys.executable, '-I', '-S', '-B', str(ROOT/'kit/snapshot_export.py'),
+                             '--source', str(self.fixture.ctx.candidate), '--destination', str(exported),
+                             '--manifest-pin', signed['manifest_sha256']])
+        plan = self.send(export, {'type':'plan'})
+        self.assertEqual(plan['outcome'], 'planned', plan)
+        self.assertEqual(plan['publication']['sync'], 'files_then_directories_bottom_up')
+        self.assertFalse(exported.exists())
+        denied = self.send(export, {'type':'apply','plan':plan,'confirmed_ticket':'wrong'})
+        self.assertEqual(denied['code'], 'confirmation_required')
+        self.assertFalse(exported.exists())
+        result = self.send(export, {'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']})
+        self.assertEqual(result['outcome'], 'created', result)
+        self.fixture.ctx.candidate = exported
         self.init()
         proc = self.start(self.snapshot_args(signed['manifest_sha256']))
         bootstrap = self.send(proc, {'type':'bootstrap'})

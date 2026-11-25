@@ -7,6 +7,7 @@ import json
 import os
 import queue
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -49,7 +50,8 @@ class ExportTests(unittest.TestCase):
         plan = self.session.plan()
         self.assertEqual(plan['outcome'], 'planned')
         self.assertEqual(plan['publication'], {'existing_destination':'refuse', 'failure':'leave_unverified',
-            'directory_mode':'0700_before_umask', 'file_mode':'0600_before_umask'})
+            'directory_mode':'0700_before_umask', 'file_mode':'0600_before_umask',
+            'sync':'files_then_directories_bottom_up'})
         self.assertFalse(self.dest.exists())
         doc = json.loads((self.source/'kit/KIT-VERSION.json').read_bytes())
         self.assertEqual({r['path'] for r in plan['files']}, set(doc['files']) | {'kit/KIT-VERSION.json'})
@@ -68,6 +70,59 @@ class ExportTests(unittest.TestCase):
         self.loader._strict_source(self.dest, self.pin, self.verifier)
         self.error('ticket_unknown', self.session.apply, plan, plan['ticket'])
         self.error('destination_occupied', self.session.plan)
+
+    def test_sync_order_and_failure_never_report_success(self):
+        original_file = export._write_exclusive
+        original_dir = export._sync_directory
+        events = []
+        def record_file(path, data):
+            original_file(path, data)
+            events.append(('file', path))
+        def record_dir(path):
+            original_dir(path)
+            events.append(('dir', path))
+        plan = self.session.plan()
+        with patch.object(export, '_write_exclusive', side_effect=record_file), \
+             patch.object(export, '_sync_directory', side_effect=record_dir):
+            self.assertEqual(self.session.apply(plan, plan['ticket'])['outcome'], 'created')
+        self.assertEqual(len([e for e in events if e[0] == 'file']), len(plan['files']))
+        self.assertTrue(all(kind == 'file' for kind, _ in events[:-4]))
+        self.assertEqual(events[-4:], [('dir',self.dest/'kit/base'), ('dir',self.dest/'kit'),
+                                       ('dir',self.dest), ('dir',self.parent)])
+        for fail_at in range(4):
+            with self.subTest(directory=fail_at):
+                dest = self.parent/('failed-'+str(fail_at))
+                session = export.ExportSession(self.source,dest,self.pin,self.loader,self.verifier)
+                plan = session.plan(); calls = []; real_fsync = os.fsync
+                def fail_directory(fd):
+                    if stat.S_ISDIR(os.fstat(fd).st_mode):
+                        calls.append(fd)
+                        if len(calls) == fail_at+1: raise OSError('synthetic fsync failure')
+                    return real_fsync(fd)
+                with patch.object(export.os, 'fsync', side_effect=fail_directory):
+                    self.error('destination_partial_or_unverified',session.apply,plan,plan['ticket'])
+                self.assertEqual(len(calls), fail_at+1)
+                self.assertTrue(dest.is_dir())
+                self.error('ticket_unknown',session.apply,plan,plan['ticket'])
+                self.error('destination_occupied',session.plan)
+
+    def test_file_fsync_failure_leaves_unverified_destination(self):
+        plan = self.session.plan()
+        with patch.object(export.os, 'fsync', side_effect=OSError('synthetic file fsync failure')):
+            self.error('destination_partial_or_unverified', self.session.apply, plan, plan['ticket'])
+        self.assertTrue(self.dest.is_dir())
+        self.error('ticket_unknown', self.session.apply, plan, plan['ticket'])
+        self.error('destination_occupied', self.session.plan)
+
+    def test_sync_platform_unavailable_before_creation(self):
+        with patch.object(export.os, 'name', 'nt'):
+            self.error('sync_platform_unavailable', self.session.plan)
+        self.assertFalse(self.dest.exists())
+        plan = self.session.plan()
+        with patch.object(export.os, 'name', 'nt'):
+            self.error('sync_platform_unavailable', self.session.apply, plan, plan['ticket'])
+        self.assertFalse(self.dest.exists())
+        self.error('ticket_unknown', self.session.apply, plan, plan['ticket'])
 
     def test_changed_plan_and_source_refuse_without_destination(self):
         plan = self.session.plan()

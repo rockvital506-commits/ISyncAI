@@ -3,7 +3,7 @@ from . import applicability, schema_v2
 from .registry_policy import StoreError
 
 # Локальная привязка к байтам кандидатного L0, не доверенный внешний источник.
-SYSTEM_L0_SHA256 = 'c2c05fa0774211fef5379efb938ce3a29786cf979ca6ab88bfb3bff93f65f018'
+SYSTEM_L0_SHA256 = 'ed1e990fe71a613f4bc80008d0b0a9bc49b1b10fa9c894494b1c51f580277dc7'
 _MAX_CHOICES = 4096
 
 

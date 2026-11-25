@@ -102,10 +102,28 @@ def _source(source, pin, loader, verifier):
         raise ExportError('source_unverified') from exc
 
 
+def _require_sync():
+    if (os.name != 'posix' or not hasattr(os, 'O_DIRECTORY') or not hasattr(os, 'O_NOFOLLOW')
+            or not hasattr(os, 'fsync')):
+        raise ExportError('sync_platform_unavailable')
+
+
 def _write_exclusive(path, data):
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, 'O_BINARY', 0) | getattr(os, 'O_NOFOLLOW', 0)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW | getattr(os, 'O_CLOEXEC', 0)
     with os.fdopen(os.open(path, flags, 0o600), 'wb') as stream:
-        stream.write(data)
+        if stream.write(data) != len(data):
+            raise OSError('short write')
+        stream.flush()
+        os.fsync(stream.fileno())
+
+
+def _sync_directory(path):
+    flags = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | getattr(os, 'O_CLOEXEC', 0)
+    fd = os.open(path, flags)
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
 
 
 class ExportSession:
@@ -136,6 +154,7 @@ class ExportSession:
     def plan(self):
         self.pending = None
         try:
+            _require_sync()
             topology = self._paths()
             data = _source(self.source, self.pin, self.loader, self.verifier)
             if self._paths() != topology:
@@ -145,7 +164,8 @@ class ExportSession:
             result = {'outcome': 'planned', 'source': str(self.source), 'destination': str(self.destination),
                       'manifest_sha256': self.pin, 'directories': ['kit', 'kit/base'], 'files': rows,
                       'publication': {'existing_destination': 'refuse', 'failure': 'leave_unverified',
-                                      'directory_mode': '0700_before_umask', 'file_mode': '0600_before_umask'},
+                                      'directory_mode': '0700_before_umask', 'file_mode': '0600_before_umask',
+                                      'sync': 'files_then_directories_bottom_up'},
                       'total_bytes': sum(row['bytes'] for row in rows), 'ticket': secrets.token_hex(32)}
             self.pending = (_canonical(result), data, topology, result['ticket'])
             return result
@@ -164,6 +184,7 @@ class ExportSession:
         try:
             if type(plan) is not dict or _canonical(plan) != saved:
                 raise ExportError('plan_mismatch')
+            _require_sync()
             if self._paths() != topology or _source(self.source, self.pin, self.loader, self.verifier) != data:
                 raise ExportError('stale_plan')
         except ExportError:
@@ -185,6 +206,10 @@ class ExportSession:
             for path, content in sorted(data.items()):
                 _write_exclusive(self.destination/path, content)
             self.loader._strict_source(self.destination, self.pin, self.verifier)
+            # Сначала содержимое, затем имена в каталогах до родителя нового снимка.
+            for directory in (self.destination/'kit/base', self.destination/'kit',
+                              self.destination, self.destination.parent):
+                _sync_directory(directory)
         except Exception as exc:
             # Никогда не удалять даже частично созданный каталог; автоматического отката нет.
             raise ExportError('destination_partial_or_unverified') from exc
