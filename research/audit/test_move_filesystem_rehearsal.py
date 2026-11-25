@@ -13,7 +13,7 @@ import unittest
 ROOT=Path(__file__).resolve().parents[2];sys.path[:0]=[str(ROOT),str(ROOT/'research/audit')]
 import core_audit as audit
 import move_recovery_model as model
-from kit.base import registry_journal, schema_v2, registry_store as store
+from kit.base import move_intent, registry_journal, schema_v2, registry_store as store
 from kit.base.registry_policy import StoreError
 
 PHASES=('before_marker','after_create','half_record','full_record','marker_synced','parent_synced',
@@ -165,6 +165,23 @@ class FilesystemRehearsal(unittest.TestCase):
                             self.assertNotIn('SOURCE',ids);self.assertEqual('TARGET' in ids,area==intent['target'])
                             self.assertEqual(journal['decisions'][-1]['operation'],'delete' if area==src else 'create')
                     self.assertEqual(sibling.read_bytes(),b'unchanged synthetic')
+    def test_intent_diagnoses_real_interrupted_states_without_unblocking(self):
+        for src in ('L1','L2'):
+            for phase,expected in (('parent_synced','before_both'),('target_replaced','target_after_source_before'),
+                                   ('source_replaced','after_both')):
+                with self.subTest(src=src,phase=phase):
+                    root,layout,original,record,sibling=self.fixture(src);files=paths(root)
+                    preview=original['preview']
+                    report,portable=move_intent.build(original['before'],source=src,target=original['target'],
+                        entry_id=preview['source_entry']['id'],candidate=preview['target_entry'],
+                        portability_context=original['portability_context'])
+                    self.assertEqual(self.run_child(root,'start',phase,record).returncode,77)
+                    observed={k:v.read_bytes() for k,v in files.items()}
+                    result=move_intent.assess(portable,intent_pin=report['intent_sha256'],observed=observed)
+                    self.assertEqual(result['state'],expected);self.assertEqual(result['marker'],'not_checked')
+                    with self.assertRaises(StoreError) as error:store.status(layout)
+                    self.assertEqual(error.exception.code,'move_pending');self.assertEqual(sibling.read_bytes(),b'unchanged synthetic')
+
     def test_crash_during_recovery_is_retryable_with_retained_marker(self):
         points=('recovery_marker_synced','recovery_parent_synced','target_staged','target_synced',
                 'target_replaced','target_parent_synced','recovery_target_synced','recovery_target_parent_synced',
