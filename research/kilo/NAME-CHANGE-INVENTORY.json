@@ -336,6 +336,15 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "kit_import": 2,
+        "new_brand": 2,
+        "new_project_path": 2
+      },
+      "path": "kit/init_workspace.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "kit_import": 4
       },
       "path": "kit/kilo_deploy.py"
@@ -5139,6 +5148,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 7,
+        "new_brand": 1,
+        "new_project_path": 1
+      },
+      "path": "research/audit/test_init_workspace.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 5
       },
       "path": "research/audit/test_inprocess_write_lock.py"
@@ -7575,7 +7593,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2017,
+  "scanned_files": 2020,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }

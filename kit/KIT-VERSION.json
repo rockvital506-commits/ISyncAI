@@ -5,10 +5,11 @@
     "kit/ENVIRONMENTS.md": "319959a30a8b62a321d9dbce990548e50aa4feea8c05a330eec5c21a15509c3e",
     "kit/GUARD-TREE.md": "51d9d174e8f87493b0bc20271ab8554e57cb0f98d12af3da003536a91107a7db",
     "kit/GUARD.md": "10b372512f4e844a62661737a5f0ae81d4a1e05c21915898e8eea69ba596754e",
-    "kit/IDENTITY.md": "ba79693f845285ac0e7359ce8c00a1615bf961e065685a9e5703c8ada39ead16",
+    "kit/IDENTITY.md": "63f76c5243386f0664e0cbf33f48c861e001c4da2d0d6d88db2110f20aa9de1a",
+    "kit/INIT-WORKSPACE.md": "cef9912a32931e456e943a0118cb865ba6b1996172abc6afc7fd7b499656c4bd",
     "kit/KILO-DEPLOY.md": "8273783d325bc21375be51f3d5ab797f35e758e33e05108cadd6c27522b761d6",
     "kit/KILO-INSPECT.md": "fbc9c640fe2126bf56adb7c0977c8f8b4f86af2202630d3ce2737af10a08beb8",
-    "kit/LAYERS.md": "7454ef1b8acb9dd9548c4a5fa420ebac0fe620b44a666faeb9cc3c4d7462d175",
+    "kit/LAYERS.md": "75d89eaa9eae670fd0a21c53a157f07f6c5a38989692a12d790230c332d1c658",
     "kit/LEGACY-CAPSULE.md": "e340cd6d934f6033ab41bafa0592e1715f5b1bad365f1a5ae0018ff0a35ed8a7",
     "kit/LEGACY-PROJECTION.md": "5c3a3d39172c56187f9b54b17e98dbacd0b7db8c8e41064ab5c82d9db7fcc77f",
     "kit/PREVIEW-RULE.md": "e321f9c245a0873b515427c682f9766522e78c72234a2febeda77138a42515a8",
@@ -52,6 +53,7 @@
     "kit/compare_old.py": "2af15c01f5d44da8721dda8e0afa79e736b8f17a9dba857073ace3deca6546fc",
     "kit/guard.py": "a3a48578130b71cf1d4f09d8d67c9de74b2c2eea3aa00bdb78684e5f835a0475",
     "kit/guard_tree.py": "2c67512c43c354d03847c81130e70b09220c04db79778c844e2abf75fbb8891f",
+    "kit/init_workspace.py": "f007e604094cff7b570efb9aabe3be5a6d6abfe45eaa8f55372535cfb60c4cb9",
     "kit/kilo_deploy.py": "380ede43750e4ca502235c83761f7443c113a9ee1c0f855535910156ea9d3dd2",
     "kit/kilo_inspect.py": "920f51354d79d6e8576e5caf4b36591ed8efe403732a7695ab4c5bc2a8a48891",
     "kit/legacy_capsule.py": "d2168fcaa5e61ebb38fcf577ce0ab2a2a9a703f158853e2d2927097e63f08595",
@@ -61,11 +63,11 @@
     "kit/session_cli.py": "b60ce435f85fb3dc5b55b239cba88e42ea8a4af5b2361902d20fba660de71786",
     "kit/snapshot_export.py": "fa97a2a32e2d4dd7b15399e5a0f9812e474cc02892246c06a9396c6bfae6dd7a",
     "kit/snapshot_session.py": "0228a472aeeaaead0609a68ed867c00336717025f89a6d324abcbf9660325810",
-    "kit/verify_candidate.py": "c06248936403823bf1a59ec75670276090a80a68e79dd506aa287dcef8961071"
+    "kit/verify_candidate.py": "08fb986f17d4d1e35fea79aa8efbc50c6d8c530f6a22d7be0e172e622ca8a748"
   },
   "format": 2,
   "product": "DomainAgentKit",
   "scope": "source-l0-only",
   "status": "candidate",
-  "version": "0.2.0-mvp.34"
+  "version": "0.2.0-mvp.35"
 }
