@@ -19,7 +19,9 @@ from kit.base.registry_policy import StoreError
 
 EXPECTED = ('Замена файла может изменить ACL и другие метаданные. На POSIX перед заменой '
             'сравниваются mode, UID и GID цели и временного файла; несовпадение вызывает отказ. '
-            'Сохранность ACL и защита от гонок не проверяются; на других ОС метаданные не проверяются.')
+            'Сохранность ACL и защита от гонок не проверяются; на других ОС метаданные не проверяются. '
+            'При конкурирующей записи возможна потеря подтверждённых решений, даже если обе операции вернули applied. '
+            'Не применяйте без исключения других писателей и подмены файлов и каталогов; это условие не проверяется.')
 
 
 class NoticeTests(unittest.TestCase):
@@ -68,6 +70,11 @@ class NoticeTests(unittest.TestCase):
         removed = copy.deepcopy(plan); del removed['replacement_notice']; variants.append(removed)
         edited = copy.deepcopy(plan); edited['replacement_notice'] = 'Без изменений прав'; variants.append(edited)
         wrong_type = copy.deepcopy(plan); wrong_type['replacement_notice'] = True; variants.append(wrong_type)
+        old_notice = copy.deepcopy(plan)
+        old_notice['replacement_notice'] = ('Замена файла может изменить ACL и другие метаданные. На POSIX перед заменой '
+            'сравниваются mode, UID и GID цели и временного файла; несовпадение вызывает отказ. '
+            'Сохранность ACL и защита от гонок не проверяются; на других ОС метаданные не проверяются.')
+        variants.append(old_notice)  # Полная форма .27, но без новой предупреждающей части.
         old = copy.deepcopy(plan); old['plan_format'] = 1; del old['replacement_notice']; variants.append(old)
         version_only = copy.deepcopy(plan); version_only['plan_format'] = 1; variants.append(version_only)
         old2 = copy.deepcopy(plan); old2['plan_format'] = 2; del old2['input_mode_bits']; variants.append(old2)

@@ -185,6 +185,11 @@ class SnapshotTests(unittest.TestCase):
         before = self.profile.read_bytes()
         plan = self.send(proc, lines, self.request())
         self.assertEqual(plan['outcome'], 'planned')
+        self.assertEqual(plan['replacement_notice'], audit.PLAN4_NOTICE)
+        self.assertEqual(self.profile.read_bytes(), before)
+        forged = dict(plan); forged['replacement_notice'] = 'без предупреждения о гонке'
+        altered = self.send(proc, lines, {'type':'apply', 'plan':forged, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(altered['diagnostic']['code'], 'plan_mismatch')
         self.assertEqual(self.profile.read_bytes(), before)
         refusal = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':''})
         self.assertEqual(refusal['diagnostic']['code'], 'confirmation_required')
