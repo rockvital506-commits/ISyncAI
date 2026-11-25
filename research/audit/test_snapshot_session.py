@@ -29,7 +29,10 @@ class SnapshotTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name).resolve()
         self.candidate = self.root/'candidate'; self.candidate.mkdir()
-        shutil.copytree(ROOT/'kit', self.candidate/'kit', ignore=shutil.ignore_patterns('__pycache__'))
+        manifest = json.loads((ROOT/'kit/KIT-VERSION.json').read_bytes())
+        for rel in ('kit/KIT-VERSION.json', *manifest['files']):
+            target = self.candidate/rel; target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT/rel, target)
         self.workspace = self.root/'workspace'; self.workspace.mkdir()
         self.layout = audit.make_workspace(self.workspace, parent_scope='.')
         self.manifest_pin = digest(self.candidate/'kit/KIT-VERSION.json')
@@ -57,6 +60,7 @@ class SnapshotTests(unittest.TestCase):
         def reader():
             for line in proc.stdout:
                 lines.put(line)
+            lines.put(None)
         thread = threading.Thread(target=reader, daemon=True)
         thread.start()
         return proc, lines
@@ -67,6 +71,8 @@ class SnapshotTests(unittest.TestCase):
             line = lines.get(timeout=15)
         except queue.Empty:
             raise AssertionError('нет ответа проверенной сессии') from None
+        if line is None:
+            raise AssertionError('проверенная сессия завершилась без ответа')
         return json.loads(line)
 
     def request(self):
@@ -127,7 +133,7 @@ class SnapshotTests(unittest.TestCase):
             path.symlink_to(ROOT/'kit/base/entry.txt')
         except OSError as exc:
             self.skipTest('символические ссылки недоступны: '+str(exc))
-        self.assertEqual(self.check_refusal(), 'candidate_unverified')
+        self.assertEqual(self.check_refusal(), 'source_file_invalid')
         path.unlink(); path.write_bytes(original)
 
     def test_changed_start_revokes_plan_and_refuses_bootstrap(self):
@@ -271,13 +277,71 @@ class SnapshotTests(unittest.TestCase):
             source.symlink_to(ROOT/'kit/base/operation_card.py')
         except OSError as exc:
             self.skipTest('символические ссылки недоступны: '+str(exc))
-        self.assertEqual(self.check_refusal(), 'candidate_unverified')
+        self.assertEqual(self.check_refusal(), 'source_file_invalid')
         source.unlink(); source.write_bytes(original)
-        alias = self.candidate/'alias.py'
+        alias = self.root/'alias.py'
         try:
             os.link(source, alias)
         except OSError as exc:
             self.skipTest('жёсткие ссылки недоступны: '+str(exc))
+        self.assertEqual(self.check_refusal(), 'source_file_invalid')
+
+    def test_closed_source_rejects_unlisted_objects_without_writing(self):
+        for rel, is_dir in (('extra.txt', False), ('kit/extra.py', False),
+                            ('kit/examples', True), ('kit/base/__pycache__', True),
+                            ('kit/base/nested', True)):
+            with self.subTest(path=rel):
+                p = self.candidate/rel
+                if is_dir:
+                    p.mkdir()
+                else:
+                    p.write_text('synthetic extra', encoding='utf-8')
+                self.assertEqual(self.check_refusal(), 'candidate_unverified')
+                if is_dir:
+                    p.rmdir()  # Только созданный в этой пробе пустой каталог.
+                else:
+                    p.unlink()
+
+    def test_unlisted_file_after_plan_revokes_ticket(self):
+        proc, lines = self.launch()
+        plan = self.send(proc, lines, self.request())
+        self.assertEqual(plan['outcome'], 'planned')
+        before = audit.tree_digest(self.workspace)
+        extra = self.candidate/'kit/unlisted.py'; extra.write_text('unused', encoding='utf-8')
+        denied = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(denied, {'outcome':'error','code':'runtime_preflight_failed'})
+        self.assertEqual(audit.tree_digest(self.workspace), before)
+        extra.unlink()  # Только тестовый объект.
+        stale = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(stale['diagnostic']['code'], 'ticket_unknown')
+        self.assertEqual(audit.tree_digest(self.workspace), before)
+
+    def test_nonexecuted_member_size_and_hardlink_are_checked(self):
+        path = self.candidate/'kit/base/SCHEMA-V2.md'; original = path.read_bytes()
+        self.repin_document('kit/base/SCHEMA-V2.md', b'x' * (2_097_152 + 1))
+        self.assertEqual(self.check_refusal(), 'source_file_invalid')
+        self.repin_document('kit/base/SCHEMA-V2.md', original)
+        alias = self.root/'outside-alias'
+        try:
+            os.link(path, alias)
+        except OSError as exc:
+            self.skipTest('жёсткие ссылки недоступны: '+str(exc))
+        self.assertEqual(self.check_refusal(), 'source_file_invalid')
+
+    def test_excessive_member_count_with_local_pin_rejected(self):
+        manifest = self.candidate/'kit/KIT-VERSION.json'
+        doc = json.loads(manifest.read_bytes())
+        for i in range(1025):
+            doc['files'][f'kit/base/synthetic-{i}.txt'] = '0'*64
+        manifest.write_text(json.dumps(doc, sort_keys=True)+'\n', encoding='utf-8')
+        self.manifest_pin = digest(manifest)  # Тестовый pin не устанавливает подлинность.
+        self.assertEqual(self.check_refusal(), 'candidate_unverified')
+
+    @unittest.skipUnless(hasattr(os, 'mkfifo'), 'FIFO недоступен')
+    def test_nonregular_member_refused_without_blocking(self):
+        target = self.candidate/'kit/base/SCHEMA-V2.md'
+        target.unlink()  # Только синтетический файл во временной копии.
+        os.mkfifo(target)
         self.assertEqual(self.check_refusal(), 'source_file_invalid')
 
     def test_snapshotted_bytes_and_unknown_kit_module(self):

@@ -77,15 +77,19 @@ class DeliveryTests(unittest.TestCase):
         def reader():
             for line in p.stdout:
                 lines.put(line)
+            lines.put(None)
         threading.Thread(target=reader, daemon=True).start()
         return p, lines
 
     def send(self, p, lines, message):
         p.stdin.write(json.dumps(message, ensure_ascii=False)+'\n'); p.stdin.flush()
         try:
-            return json.loads(lines.get(timeout=15))
+            line = lines.get(timeout=15)
         except queue.Empty:
             raise AssertionError('нет ответа из автономной сессии') from None
+        if line is None:
+            raise AssertionError('автономная сессия завершилась без ответа')
+        return json.loads(line)
 
     def refusal(self, args=None, reason=None):
         before = audit.tree_digest(self.workspace)
@@ -158,22 +162,8 @@ class DeliveryTests(unittest.TestCase):
                                capture_output=True, text=True, timeout=30)
         self.assertEqual(check.returncode, 0, check.stderr)
         self.assertEqual(json.loads(check.stdout)['status'], 'pass')
-        probe = r'''import importlib, importlib.util, sys
-from pathlib import Path
-loader, source, pin = sys.argv[1:]
-spec = importlib.util.spec_from_file_location('trusted', loader)
-m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
-root, sources, start = m.capture(Path(source), pin, m._trusted_verifier())
-sys.meta_path.insert(0, m.SnapshotFinder(sources))
-try: importlib.import_module('kit.unlisted')
-except ModuleNotFoundError: print('refused')
-else: raise AssertionError('unlisted code imported')
-'''
-        result = subprocess.run([sys.executable,'-I','-S','-B','-c',probe,
-                                 str(self.trusted/'snapshot_session.py'),str(self.source),self.manifest_pin],
-                                cwd=self.workspace, capture_output=True, text=True, timeout=30)
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.strip(), 'refused')
+        # Опытная сессия теперь дополнительно отклоняет лишний объект до исполнения.
+        self.refusal(reason='candidate_unverified')
         self.assertFalse(self.marker.exists())
 
     def test_recomputed_pin_only_proves_consistency(self):

@@ -14,6 +14,7 @@ import sys
 from pathlib import Path
 
 MAX_INPUT = 2_097_152
+MAX_MEMBERS = 1024
 HEX = re.compile(r'[0-9a-f]{64}')
 # Закрытый список только для данного сценария; другие команды не поддерживаются.
 MODULES = {
@@ -59,6 +60,43 @@ def _read_regular(path):
         raise SnapshotError('source_file_invalid') from exc
 
 
+def _strict_source(root, manifest_pin, verifier):
+    """Закрытая раскладка только для этой сессии; не атомарна с проверкой/исполнением."""
+    reparse = getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 0)
+    for directory in (root, root / 'kit', root / 'kit/base'):
+        info = directory.lstat()
+        if not stat.S_ISDIR(info.st_mode) or getattr(info, 'st_file_attributes', 0) & reparse:
+            raise SnapshotError('candidate_unverified')
+    raw = _read_regular(root / 'kit/KIT-VERSION.json')
+    if hashlib.sha256(raw).hexdigest() != manifest_pin:
+        raise SnapshotError('candidate_unverified')
+    doc = json.loads(raw.decode('utf-8'), object_pairs_hook=verifier.no_duplicates)
+    if type(doc) is not dict or type(doc.get('files')) is not dict:
+        raise SnapshotError('candidate_unverified')
+    files = doc['files']
+    if not files or len(files) > MAX_MEMBERS:
+        raise SnapshotError('candidate_unverified')
+    for path, expected in files.items():
+        if type(path) is not str or type(expected) is not str or HEX.fullmatch(expected) is None:
+            raise SnapshotError('candidate_unverified')
+        if path not in verifier.EXTRA and not (path.startswith('kit/base/')
+                                               and verifier.NAME.fullmatch(path[len('kit/base/'):])):
+            raise SnapshotError('candidate_unverified')
+    top = {path.removeprefix('kit/') for path in verifier.EXTRA}
+    base = {path.removeprefix('kit/base/') for path in files if path.startswith('kit/base/')}
+    if (set(files) != verifier.EXTRA | {'kit/base/' + name for name in base}
+            or {p.name for p in root.iterdir()} != {'kit'}
+            or {p.name for p in (root / 'kit').iterdir()} != top | {'base', 'KIT-VERSION.json'}
+            or {p.name for p in (root / 'kit/base').iterdir()} != base):
+        raise SnapshotError('candidate_unverified')
+    # Каждый заявленный файл читается с лимитом, проверкой типа и без конечной ссылки.
+    for path, expected in files.items():
+        if hashlib.sha256(_read_regular(root / path)).hexdigest() != expected:
+            raise SnapshotError('candidate_unverified')
+    verifier.verify(root, pin=manifest_pin)  # Строгая проверка полей манифеста и версии.
+    return doc
+
+
 def capture(candidate_root, manifest_pin, verifier):
     """Проверить срез, затем закрепить исполняемые модули по тому же pin в памяти."""
     if type(manifest_pin) is not str or HEX.fullmatch(manifest_pin) is None:
@@ -68,11 +106,7 @@ def capture(candidate_root, manifest_pin, verifier):
         if not root.is_absolute():
             raise SnapshotError('candidate_root_invalid')
         root = root.resolve(strict=True)
-        verifier.verify(root, pin=manifest_pin)
-        raw = _read_regular(root / 'kit/KIT-VERSION.json')
-        if hashlib.sha256(raw).hexdigest() != manifest_pin:
-            raise SnapshotError('candidate_unverified')
-        doc = json.loads(raw.decode('utf-8'), object_pairs_hook=verifier.no_duplicates)
+        doc = _strict_source(root, manifest_pin, verifier)
         def read_pinned(path):
             expected = doc['files'].get(path)
             if type(expected) is not str or HEX.fullmatch(expected) is None:
@@ -143,7 +177,8 @@ def run(args):
         raise SnapshotError('workspace_invalid')
     if any(name == 'kit' or name.startswith('kit.') for name in sys.modules):
         raise SnapshotError('module_namespace_already_loaded')
-    root, sources, start = capture(args.candidate_root, args.manifest_pin, _trusted_verifier())
+    verifier = _trusted_verifier()
+    root, sources, start = capture(args.candidate_root, args.manifest_pin, verifier)
     sys.meta_path.insert(0, SnapshotFinder(sources))
     from kit.guard import guard
     from kit.base.bootstrap import extract_start
@@ -158,6 +193,7 @@ def run(args):
     layout = Layout(args.workspace, args.profile_root)
 
     def preflight():
+        _strict_source(root, args.manifest_pin, verifier)
         guard(root, layout, manifest_pin=args.manifest_pin, system_pin=args.system_pin)
 
     try:

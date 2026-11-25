@@ -5220,7 +5220,7 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 27,
+        "candidate_version": 29,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,
