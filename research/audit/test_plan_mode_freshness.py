@@ -165,15 +165,21 @@ class PosixModePlanTests(ModePlanBase):
         self.assertEqual(self.observed(),before)
         self.assertEqual(send(command)['diagnostic']['code'],'ticket_unknown')
 
-    def test_legacy_native_create_is_not_mode_checked(self):
+    def test_native_plan_does_not_capture_mode_but_replacement_checks_current_mode(self):
         entry = audit.entry('Q-9','rule','profile_owner','C-1','docs',state='draft')
         self.files['L1'].chmod(0o600)
         plan = store.plan_create(self.layout,entry)
         self.files['L1'].chmod(0o640)
-        before = self.files['L1'].read_bytes()
+        before = self.observed()
+        with self.assertRaises(StoreError) as error:
+            store.apply_create(self.layout,plan,confirmed_ticket=plan['ticket'])
+        self.assertEqual(error.exception.code,'replacement_metadata_mismatch')
+        self.assertEqual(self.observed(),before)
+        # В нативном плане нет mode: повтор после исправления режима может быть успешен.
+        self.files['L1'].chmod(0o600)
         store.apply_create(self.layout,plan,confirmed_ticket=plan['ticket'])
-        self.assertNotEqual(self.files['L1'].read_bytes(),before)
-        # Исторический путь не обещает новые гарантии PlanSession.
+        self.assertNotEqual(self.files['L1'].read_bytes(),before['L1'][0])
+        self.assertEqual(stat.S_IMODE(self.files['L1'].stat().st_mode),0o600)
 
 
 class SimulatedUnsupportedTests(ModePlanBase):

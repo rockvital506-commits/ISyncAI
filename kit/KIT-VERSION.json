@@ -5,10 +5,10 @@
     "kit/ENVIRONMENTS.md": "319959a30a8b62a321d9dbce990548e50aa4feea8c05a330eec5c21a15509c3e",
     "kit/GUARD-TREE.md": "51d9d174e8f87493b0bc20271ab8554e57cb0f98d12af3da003536a91107a7db",
     "kit/GUARD.md": "10b372512f4e844a62661737a5f0ae81d4a1e05c21915898e8eea69ba596754e",
-    "kit/IDENTITY.md": "a10bf1156fcefdd14d6bcd5d78d984a471d3f91ded27517270fae3e5c0778dd5",
+    "kit/IDENTITY.md": "922b3f737538409127edce5dcca33fda8025ad6ff678818382c67af38c472a2a",
     "kit/KILO-DEPLOY.md": "8273783d325bc21375be51f3d5ab797f35e758e33e05108cadd6c27522b761d6",
     "kit/KILO-INSPECT.md": "fbc9c640fe2126bf56adb7c0977c8f8b4f86af2202630d3ce2737af10a08beb8",
-    "kit/LAYERS.md": "01cb40f0ae4d86973c6d45191fef0effea268117f75527c5b1b7e30c7ea17437",
+    "kit/LAYERS.md": "7955ee766bb8d8496c282c374f494b446339ea8f4640d12b30b79693bc6f807d",
     "kit/LEGACY-CAPSULE.md": "e340cd6d934f6033ab41bafa0592e1715f5b1bad365f1a5ae0018ff0a35ed8a7",
     "kit/LEGACY-PROJECTION.md": "5c3a3d39172c56187f9b54b17e98dbacd0b7db8c8e41064ab5c82d9db7fcc77f",
     "kit/PREVIEW-RULE.md": "e321f9c245a0873b515427c682f9766522e78c72234a2febeda77138a42515a8",
@@ -23,7 +23,7 @@
     "kit/base/CONFLICT-REVIEW.md": "1a8205107cba9068def1a89d99b52b0490700f5b4f73ecd0d4449fc1dc05466b",
     "kit/base/OPERATION-CARD.md": "4dd571b6ad9cf736c7efa7d1b53285a5c58f58dd984def621d8969c0f94e51f5",
     "kit/base/OPERATION-MATRIX.md": "93530bd7177d44c96e3de24f4e17d58853cd1b94d2934661a536c81fbe4e54c5",
-    "kit/base/OPERATION-PLAN.md": "7c1b7b3ef79b02d608293af2f5b48ad888a2bce95ba63f75bbda4d66bd5a3f27",
+    "kit/base/OPERATION-PLAN.md": "475d7c824a690ed5da386bd446f872b33da8e23188e080a96ad0c58dc19771ff",
     "kit/base/PROFILE-JOURNAL.md": "9f2d691c31927e51f8e669227be23ec77ffd61921313109a28f4cf2db4c0abfb",
     "kit/base/PROJECT-SPECIFICITY.md": "88a73617256e39dd414f292acad4b1163052e8db2904d6116df7d19a6cd2020e",
     "kit/base/PROMOTION.md": "bc4c08cc1eb588d04264c5e0bcc454bc7249c0ee0df078076c893c2bf1301629",
@@ -31,7 +31,7 @@
     "kit/base/SCHEMA-V2.md": "149ffb51ab757386de7582fcb65e124bee9666a9fa59c384d4c428839275ba84",
     "kit/base/SIMULATION.md": "83e221e535ff2cfeb0c7831bdd66a6114ba3a02224825592d42373260b05036f",
     "kit/base/START.md": "0f6b13027476ce9439e3b8e13390fb552b8571aafc9efc7f604d93790eb73efb",
-    "kit/base/STORAGE-V2.md": "dee65daba8f58b66fd1ae9824bdad8144b1b8c20cd7ded3ef5f2ae57be442697",
+    "kit/base/STORAGE-V2.md": "fdddae26455a7d8c245c8679ad0feb2aad47f63f5c91554f49fe13bf638a88d0",
     "kit/base/bootstrap.py": "537c5d056f6033d4985201c45abf573baa23c688ba8136e68eb990db76e8361e",
     "kit/base/bundle.py": "35f63d4a0867ebe7f93bca94445a4444b2c574a11d67284aa60696e237b4fe20",
     "kit/base/bundle_rollback.py": "92feebd165caa095187d3f2b33b9e3c70b7708d9c943d821bb3e1940c75f9484",
@@ -46,7 +46,7 @@
     "kit/base/promotion.py": "511e8c03dbc2996c1d705c497e3cce570c14ec23e7adac16516ff1c6f1c05db2",
     "kit/base/registry_journal.py": "340d4c758dbbfc0c7dd0005d6b22fafd619f3a66874b516eb6120737a7263539",
     "kit/base/registry_policy.py": "6ba8b0021a90944a4645ef9b1d7f750663a85f2b4e32a2b68b76a0f581967b52",
-    "kit/base/registry_store.py": "4f76f231fef8b4445b191436fb0807a5d722a6240139e2232968ca51c1763de0",
+    "kit/base/registry_store.py": "c976a90cf9db91a121c46e918d5a6ca4b2d3cba5d684e4cfc07752fb46e1413a",
     "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
     "kit/base/simulation.py": "3fbf5188f63984423be67757ec8bec9a7acc9fab942d05fbd383824602d4fac9",
     "kit/compare_old.py": "2af15c01f5d44da8721dda8e0afa79e736b8f17a9dba857073ace3deca6546fc",
@@ -61,11 +61,11 @@
     "kit/session_cli.py": "b60ce435f85fb3dc5b55b239cba88e42ea8a4af5b2361902d20fba660de71786",
     "kit/snapshot_export.py": "fa97a2a32e2d4dd7b15399e5a0f9812e474cc02892246c06a9396c6bfae6dd7a",
     "kit/snapshot_session.py": "0228a472aeeaaead0609a68ed867c00336717025f89a6d324abcbf9660325810",
-    "kit/verify_candidate.py": "c211888059cdc0eacf6b60d7d5172e1d3f45c4821c6ded041fa87bf1c2873f22"
+    "kit/verify_candidate.py": "3a47526e0a142c4986af76eb62c0452df528f225e1a42d55926c3f7e612f96d5"
   },
   "format": 2,
   "product": "DomainAgentKit",
   "scope": "source-l0-only",
   "status": "candidate",
-  "version": "0.2.0-mvp.32"
+  "version": "0.2.0-mvp.33"
 }

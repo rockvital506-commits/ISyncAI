@@ -555,5 +555,11 @@ def apply_create(layout, plan, *, confirmed_ticket, preview=None):
     raw = _mutation_bytes(current, 'create', 'L1', change)
     if preview is not None and raw != preview.after:
         raise StoreError('plan_mismatch', 'diff')
-    _replace(current.files['L1'], raw, expected['registry'])
+    expected_metadata = None
+    if current.input_modes is not None:
+        _, target_info = _existing(current.workspace, expected['registry'], registry=True)
+        expected_metadata = _posix_metadata(target_info, expected['registry'])
+        if format(expected_metadata[0], '04o') != current.input_modes['L1']:
+            raise StoreError('stale_metadata', 'inputs/mode')
+    _replace(current.files['L1'], raw, expected['registry'], expected_metadata=expected_metadata)
     return _status(current, target='L1', revision=change.candidate['revision'])

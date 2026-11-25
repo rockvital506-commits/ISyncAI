@@ -596,10 +596,18 @@ def check_known_drift():
             exception_ids = set()
             if iteration == 108:
                 evidence = subprocess_evidence(path)
-            elif iteration == 105:
-                evidence = {'os': platform.system(), 'rows': [module.observe(store, case['id']) for case in cases]}
-            elif iteration == 107:
-                evidence = {'os': platform.system(), 'rows': [module.observe(store, case) for case in cases]}
+            elif iteration in (105, 107):
+                # Исторические временные файлы создаются заново; приватный umask позволяет
+                # испытать путь с совпадающим mode, не меняя запечатанные исходники.
+                import os
+                old_umask = os.umask(0o077) if os.name == 'posix' else None
+                try:
+                    rows = ([module.observe(store, case['id']) for case in cases] if iteration == 105
+                            else [module.observe(store, case) for case in cases])
+                    evidence = {'os': platform.system(), 'rows': rows}
+                finally:
+                    if old_umask is not None:
+                        os.umask(old_umask)
             else:
                 # И-109 создаёт только временные фикстуры. На POSIX задаём им приватный
                 # режим, чтобы исследовать успешный маршрут при новом отказе несовпадения.
