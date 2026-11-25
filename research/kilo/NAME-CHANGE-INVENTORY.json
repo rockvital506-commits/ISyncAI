@@ -205,6 +205,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "kit_import": 1
+      },
+      "path": "kit/MOVE-INTENT-EXPORT.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "new_brand": 1
       },
       "path": "kit/MOVE-RECOVERY-INSPECT.md"
@@ -423,6 +430,13 @@
         "kit_import": 2
       },
       "path": "kit/legacy_projection.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 5
+      },
+      "path": "kit/move_intent_export.py"
     },
     {
       "area": "candidate_kit",
@@ -5374,6 +5388,16 @@
     {
       "area": "audit",
       "hits": {
+        "candidate_version": 1,
+        "kit_import": 5,
+        "new_brand": 3,
+        "new_project_path": 3
+      },
+      "path": "research/audit/test_move_intent_export.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 3,
         "new_brand": 4,
         "new_project_path": 4
@@ -7796,7 +7820,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2058,
+  "scanned_files": 2061,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
