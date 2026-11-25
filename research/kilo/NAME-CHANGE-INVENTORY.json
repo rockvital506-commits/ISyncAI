@@ -495,6 +495,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "kit_import": 4
+      },
+      "path": "kit/move_stage_cleanup.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "kit_import": 3
       },
       "path": "kit/preview_rule.py"
@@ -5533,6 +5540,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 5,
+        "new_brand": 5,
+        "new_project_path": 5
+      },
+      "path": "research/audit/test_move_stage_cleanup.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 4,
         "new_brand": 2,
         "new_project_path": 2
@@ -7908,7 +7924,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2076,
+  "scanned_files": 2079,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
