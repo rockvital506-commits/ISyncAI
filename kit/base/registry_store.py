@@ -376,7 +376,13 @@ def _apply_action(layout, preview, *, allow_delete=False):
             or prepared.to_revision != prepared.from_revision + 1
             or prepared.before != preview.before or prepared.after != preview.after):
         raise StoreError('plan_mismatch', 'diff')
-    _replace(current.files[target], prepared.after, prepared.registry)
+    expected_metadata = None
+    if current.input_modes is not None:
+        _, target_info = _existing(current.workspace, prepared.registry, registry=True)
+        expected_metadata = _posix_metadata(target_info, prepared.registry)
+        if format(expected_metadata[0], '04o') != current.input_modes[target]:
+            raise StoreError('stale_metadata', 'inputs/mode')
+    _replace(current.files[target], prepared.after, prepared.registry, expected_metadata=expected_metadata)
     return _status(current, target=target, revision=prepared.to_revision)
 
 
@@ -416,20 +422,48 @@ def preview_create(layout, entry, *, target='L1'):
     return CreatePreview(plan, current.inputs_sha256, before, after)
 
 
-def _replace(registry, raw, rel):
+def _posix_metadata(info, rel):
+    try:
+        mode, uid, gid = info.st_mode, info.st_uid, info.st_gid
+        if (type(mode) is not int or not stat.S_ISREG(mode) or type(uid) is not int or uid < 0
+                or type(gid) is not int or gid < 0):
+            raise ValueError('invalid metadata')
+        return stat.S_IMODE(mode), uid, gid
+    except (AttributeError, TypeError, ValueError) as error:
+        raise StoreError('metadata_unavailable', rel) from error
+
+
+def _replace(registry, raw, rel, *, expected_metadata=None):
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(mode='wb', dir=registry.parent, prefix='.registry-', suffix='.tmp',
                                          delete=False) as staged:
             temporary = Path(staged.name)
-            staged.write(raw)
+            def check_stage():
+                if expected_metadata is not None:
+                    try:
+                        observed = _posix_metadata(os.fstat(staged.fileno()), rel)
+                    except OSError as error:
+                        raise StoreError('metadata_unavailable', rel) from error
+                    if observed != expected_metadata:
+                        raise StoreError('replacement_metadata_mismatch', rel)
+            # Сравнение без chmod/chown: при несовпадении даже содержимое не записывается.
+            check_stage()
+            written = staged.write(raw)
+            if expected_metadata is not None:
+                if written != len(raw):
+                    raise OSError('short_write')
+                staged.flush()
+                check_stage()
         os.replace(temporary, registry)
-    except OSError as error:
+    except (OSError, StoreError) as error:
         if temporary is not None:
             try:
                 temporary.unlink(missing_ok=True)
             except OSError as cleanup:
                 raise StoreError('cleanup_failed', rel) from cleanup
+        if isinstance(error, StoreError):
+            raise
         raise StoreError('write_failed', rel) from error
 
 

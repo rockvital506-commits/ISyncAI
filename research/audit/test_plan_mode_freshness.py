@@ -39,7 +39,7 @@ class ModePlanBase(unittest.TestCase):
                 'область «docs», название «Пример», основание «Проба», '
                 'критерий «Запись существует»: Синтетический текст.')
         plan = self.session.plan(compile_prompt(text))
-        self.assertEqual((plan['plan_format'],plan['outcome']),(3,'planned'))
+        self.assertEqual((plan['plan_format'],plan['outcome']),(4,'planned'))
         return plan
 
     def reject(self,code,plan):
@@ -91,34 +91,33 @@ class PosixModePlanTests(ModePlanBase):
             with self.subTest(changed=changed.get('input_mode_bits')):
                 self.reject('plan_mismatch',changed)
                 self.assertEqual(self.observed(),before)
-        self.assertEqual(self.session.apply(plan,confirmed_ticket=plan['ticket'])['outcome'],'applied')
+        self.reject('replacement_metadata_mismatch',plan)
+        self.assertEqual(self.observed(),before)
 
-    def test_unchanged_mode_can_still_change_during_replacement(self):
+    def test_unchanged_mode_that_cannot_be_retained_is_refused(self):
         plan = self.make_plan(); initial = self.observed()
-        # Известное ограничение: замена не сохраняет режим; предупреждение остаётся.
-        result = self.session.apply(plan,confirmed_ticket=plan['ticket'])
-        self.assertEqual(result['outcome'],'applied')
-        self.assertNotEqual(self.observed()['L1'][0],initial['L1'][0])
-        # mkstemp не расширяет mode до 0640, но конкретный итог зависит от umask.
-        self.assertNotEqual(self.observed()['L1'][1],0o640)
-        self.assertEqual(self.observed()['L0'],initial['L0'])
-        self.assertEqual(self.observed()['L2'],initial['L2'])
+        self.reject('replacement_metadata_mismatch',plan)
+        self.assertEqual(self.observed(),initial)
+        self.assertFalse(list(self.files['L1'].parent.glob('.registry-*.tmp')))
+        self.reject('ticket_unknown',plan)
 
     def test_restored_mode_is_not_detected_as_history(self):
-        plan = self.make_plan()
         self.files['L1'].chmod(0o600)
+        plan = self.make_plan()
         self.files['L1'].chmod(0o640)
+        self.files['L1'].chmod(0o600)
         self.assertEqual(self.session.apply(plan,confirmed_ticket=plan['ticket'])['outcome'],'applied')
 
     def test_change_after_last_check_still_races(self):
+        self.files['L1'].chmod(0o600)
         plan = self.make_plan(); real_replace = store._replace; events = []
-        def after_check(path, raw, rel):
-            self.files['L1'].chmod(0o600)
+        def after_check(path, raw, rel, *, expected_metadata):
+            self.files['L1'].chmod(0o640)
             events.append(stat.S_IMODE(self.files['L1'].stat().st_mode))
-            return real_replace(path,raw,rel)
+            return real_replace(path,raw,rel,expected_metadata=expected_metadata)
         with patch.object(store,'_replace',side_effect=after_check):
             result = self.session.apply(plan,confirmed_ticket=plan['ticket'])
-        self.assertEqual(events,[0o600])
+        self.assertEqual(events,[0o640])
         self.assertEqual(result['outcome'],'applied')  # Не защита от конкурентной гонки.
 
     def test_special_mode_bits_are_compared_when_supported_by_fs(self):
@@ -158,11 +157,19 @@ class PosixModePlanTests(ModePlanBase):
         self.assertEqual(send(command)['diagnostic']['code'],'stale_metadata')
         self.assertEqual(self.observed(),before)
         self.assertEqual(send(command)['diagnostic']['code'],'ticket_unknown')
+        self.files['L1'].chmod(0o640)
+        plan = send({'type':'plan','request':audit.card(ident='Q-9')['request']})
+        before = self.observed()
+        command = {'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']}
+        self.assertEqual(send(command)['diagnostic']['code'],'replacement_metadata_mismatch')
+        self.assertEqual(self.observed(),before)
+        self.assertEqual(send(command)['diagnostic']['code'],'ticket_unknown')
 
     def test_legacy_native_create_is_not_mode_checked(self):
         entry = audit.entry('Q-9','rule','profile_owner','C-1','docs',state='draft')
-        plan = store.plan_create(self.layout,entry)
         self.files['L1'].chmod(0o600)
+        plan = store.plan_create(self.layout,entry)
+        self.files['L1'].chmod(0o640)
         before = self.files['L1'].read_bytes()
         store.apply_create(self.layout,plan,confirmed_ticket=plan['ticket'])
         self.assertNotEqual(self.files['L1'].read_bytes(),before)

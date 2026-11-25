@@ -130,10 +130,10 @@ class AuditTests(unittest.TestCase):
             for name in ('l0', 'l1', 'l2'): (root/name).write_bytes(b'test')
             files = {'L0':'l0','L1':'l1','L2':'l2'}
             module = SimpleNamespace(FILES=files,
-                expected_preview=lambda work,outcome: {'plan_format':3, 'outcome':outcome})
+                expected_preview=lambda work,outcome: {'plan_format':4, 'outcome':outcome})
             audit.adapt_109_preview(module)
             planned = module.expected_preview(root,'planned')
-            self.assertEqual(planned['replacement_notice'], audit.PLAN3_NOTICE)
+            self.assertEqual(planned['replacement_notice'], audit.PLAN4_NOTICE)
             modes = ({'status':'captured_posix_mode_bits','inputs':
                       {area:format(stat.S_IMODE((root/name).lstat().st_mode),'04o') for area,name in files.items()}}
                      if os.name == 'posix' else {'status':'not_checked','inputs':None})
@@ -149,7 +149,7 @@ class AuditTests(unittest.TestCase):
             self.assertTrue(historical.exact_preview(actual, expected))
             actual['replacement_notice'] = 'wrong'
             self.assertFalse(historical.exact_preview(actual, expected))
-            actual['replacement_notice'] = audit.PLAN3_NOTICE
+            actual['replacement_notice'] = audit.PLAN4_NOTICE
             actual['input_mode_bits'] = {'status':'not_checked','inputs':None} if os.name == 'posix' else {}
             self.assertFalse(historical.exact_preview(actual, expected))
 

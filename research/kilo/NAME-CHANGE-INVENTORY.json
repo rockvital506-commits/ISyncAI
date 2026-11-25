@@ -4957,8 +4957,8 @@
       "hits": {
         "candidate_version": 1,
         "kit_import": 3,
-        "new_brand": 5,
-        "new_project_path": 5,
+        "new_brand": 6,
+        "new_project_path": 6,
         "project_path": 1
       },
       "path": "research/audit/core_audit.py"
@@ -5273,6 +5273,13 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 2
+      },
+      "path": "research/audit/test_replacement_metadata.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "candidate_version": 1,
         "donor_version": 4,
         "new_brand": 4,
@@ -5354,7 +5361,7 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 60,
+        "candidate_version": 61,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,
@@ -7490,7 +7497,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1993,
+  "scanned_files": 1994,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }

@@ -68,24 +68,17 @@ class MetadataDiagnosisTests(unittest.TestCase):
             else:
                 self.assertEqual(after[rel], before[rel])
 
-    def test_l1_confirmed_replacement_changes_mode(self):
-        before = self.snapshot(); old_inode = (self.l1.stat().st_dev,self.l1.stat().st_ino)
-        plan = self.plan('L1')
-        self.assertEqual(self.snapshot(), before)
-        with self.assertRaises(StoreError) as denied:
-            self.session.apply(plan, confirmed_ticket='')
-        self.assertEqual(denied.exception.code, 'confirmation_required')
-        self.assertEqual(self.snapshot(), before)
-        self.assertEqual(self.apply(plan)['outcome'], 'applied')
-        self.assert_only_target_changed(before,self.l1)
-        self.assertNotEqual(old_inode,(self.l1.stat().st_dev,self.l1.stat().st_ino))
-
-    def test_l2_confirmed_replacement_changes_mode(self):
-        self.l2.chmod(0o644)
-        before = self.snapshot(); plan = self.plan('L2')
-        self.assertEqual(self.snapshot(),before)
-        self.assertEqual(self.apply(plan)['outcome'], 'applied')
-        self.assert_only_target_changed(before,self.l2)
+    def test_mismatching_target_mode_is_refused_for_both_layers(self):
+        for target, path, mode in (('L1', self.l1, 0o640), ('L2', self.l2, 0o644)):
+            with self.subTest(target=target):
+                path.chmod(mode)
+                before = self.snapshot(); plan = self.plan(target)
+                with self.assertRaises(StoreError) as error: self.apply(plan)
+                self.assertEqual(error.exception.code, 'replacement_metadata_mismatch')
+                self.assertEqual(self.snapshot(), before)
+                self.assertEqual(list(path.parent.glob('.registry-*.tmp')), [])
+                with self.assertRaises(StoreError) as retry: self.apply(plan)
+                self.assertEqual(retry.exception.code, 'ticket_unknown')
 
     def test_mode_drift_after_plan_is_rejected(self):
         self.l1.chmod(0o600)
@@ -121,6 +114,7 @@ class MetadataDiagnosisTests(unittest.TestCase):
         self.assert_only_target_changed(before,self.l1)
 
     def test_replace_failure_preserves_observed_bytes_and_mode(self):
+        self.l1.chmod(0o600)
         before = self.snapshot(); plan = self.plan('L1')
         with patch('kit.base.registry_store.os.replace',side_effect=OSError('synthetic')):
             with self.assertRaises(StoreError) as error:
@@ -172,11 +166,8 @@ class MetadataDiagnosisTests(unittest.TestCase):
         before_plan = self.snapshot()
         plan = send({'type':'plan','request':request})
         self.assertEqual(plan['outcome'],'planned')
-        self.assertEqual(plan['plan_format'],3)
-        self.assertEqual(plan['replacement_notice'],
-            'При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
-            'метаданные. Их сохранность не проверяется; на POSIX перед записью сравниваются '
-            'только биты mode входных файлов.')
+        self.assertEqual(plan['plan_format'],4)
+        self.assertEqual(plan['replacement_notice'], audit.PLAN4_NOTICE)
         self.assertEqual(self.snapshot(),before_plan)
         altered = dict(plan); del altered['replacement_notice']
         denied = send({'type':'apply','plan':altered,'confirmed_ticket':plan['ticket']})
@@ -189,6 +180,12 @@ class MetadataDiagnosisTests(unittest.TestCase):
         self.assertEqual(self.snapshot(),before_apply)
         self.assertEqual(send({'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']})['diagnostic']['code'],
                          'ticket_unknown')
+        plan = send({'type':'plan','request':request})
+        before_apply = self.snapshot()
+        command = {'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']}
+        self.assertEqual(send(command)['diagnostic']['code'], 'replacement_metadata_mismatch')
+        self.assertEqual(self.snapshot(), before_apply)
+        self.assertEqual(send(command)['diagnostic']['code'], 'ticket_unknown')
 
 
 if __name__ == '__main__':

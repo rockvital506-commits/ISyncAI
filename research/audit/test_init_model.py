@@ -133,6 +133,7 @@ class InitModelTests(unittest.TestCase):
             source = root/'source'; source.mkdir(); trusted = root/'trusted'; trusted.mkdir()
             for rel, data in files.items():
                 path = workspace/rel; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(data)
+                if os.name == 'posix': path.chmod(0o600)  # Только новые синтетические файлы.
             manifest_raw = (ROOT/'kit/KIT-VERSION.json').read_bytes()
             manifest = json.loads(manifest_raw)
             for rel in ['kit/KIT-VERSION.json', *manifest['files']]:

@@ -36,9 +36,9 @@ from kit.base.operation_plan import PlanSession                   # noqa: E402
 
 RELEASE = '0.2.0-audit'
 # Независимое ожидаемое сообщение нового формата; исторический оракул не меняется на диске.
-PLAN3_NOTICE = ('При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
-                'метаданные. Их сохранность не проверяется; на POSIX перед записью сравниваются '
-                'только биты mode входных файлов.')
+PLAN4_NOTICE = ('Замена файла может изменить ACL и другие метаданные. На POSIX перед заменой '
+                'сравниваются mode, UID и GID цели и временного файла; несовпадение вызывает отказ. '
+                'Сохранность ACL и защита от гонок не проверяются; на других ОС метаданные не проверяются.')
 
 
 # ---------------------------------------------------------------- каталог дрейфа
@@ -80,6 +80,12 @@ def make_workspace(root, *, parent_scope='docs', parent_state='active', bare_l1=
     write(root / 'kit/base/registry.json', l0)
     write(root / 'profiles/pilot/registry.json', l1_doc)
     write(root / '.domain-agent-kit/project/registry.json', l2)
+    # Только новые синтетические фикстуры: соответствуют приватному temp-файлу POSIX.
+    import os
+    if os.name == 'posix':
+        for rel in ('kit/base/registry.json', 'profiles/pilot/registry.json',
+                    '.domain-agent-kit/project/registry.json'):
+            (root / rel).chmod(0o600)
     return store.Layout(root, 'profiles/pilot')
 
 
@@ -525,7 +531,7 @@ def load_path_adapted_test(iteration, path):
                     if isinstance(key, ast.Constant) and key.value == 'plan_format':
                         if not isinstance(value, ast.Constant) or type(value.value) is not int or value.value != 1:
                             raise ValueError('unexpected historical 109 plan format')
-                        value.value = 3
+                        value.value = 4
                         self.plan_dicts += 1
             return node
     spec = importlib.util.spec_from_file_location(f'drift{iteration}', path)
@@ -548,12 +554,12 @@ def adapt_109_preview(module):
     original = module.expected_preview
     def expected_preview(*args, **kwargs):
         result = original(*args, **kwargs)
-        if (type(result) is not dict or result.get('plan_format') != 3
+        if (type(result) is not dict or result.get('plan_format') != 4
                 or result.get('outcome') not in ('planned', 'no_change')
                 or 'replacement_notice' in result or 'input_mode_bits' in result):
             raise ValueError('unexpected 109 expected preview')
         if result['outcome'] == 'planned':
-            result['replacement_notice'] = PLAN3_NOTICE
+            result['replacement_notice'] = PLAN4_NOTICE
             work = Path(args[0])
             result['input_mode_bits'] = (
                 {'status': 'captured_posix_mode_bits', 'inputs':
@@ -593,24 +599,32 @@ def check_known_drift():
             elif iteration == 107:
                 evidence = {'os': platform.system(), 'rows': [module.observe(store, case) for case in cases]}
             else:
-                rows = []
-                audit = module.Audit()
-                for case in cases:
-                    try:
-                        row = module.observe(store, PlanSession, compile_prompt, audit, case)
-                    except Exception as error:
-                        # Только точная историческая ошибка и только у N17 допустимы.
-                        if known_exception(case['id'], error):
-                            exception_ids.add(case['id'])
+                # И-109 создаёт только временные фикстуры. На POSIX задаём им приватный
+                # режим, чтобы исследовать успешный маршрут при новом отказе несовпадения.
+                import os
+                old_umask = os.umask(0o077) if os.name == 'posix' else None
+                try:
+                    rows = []
+                    audit = module.Audit()
+                    for case in cases:
+                        try:
+                            row = module.observe(store, PlanSession, compile_prompt, audit, case)
+                        except Exception as error:
+                            # Только точная историческая ошибка и только у N17 допустимы.
+                            if known_exception(case['id'], error):
+                                exception_ids.add(case['id'])
+                                continue
+                            out.append(f'И-109 {case["id"]}: неожиданное исключение {type(error).__name__}: {error}')
                             continue
-                        out.append(f'И-109 {case["id"]}: неожиданное исключение {type(error).__name__}: {error}')
-                        continue
-                    if case['id'] == 'N17-list':
-                        out.append('И-109 N17-list: ожидаемое KeyError diff не возникло')
-                        continue
-                    rows.append(row)
-                expected = [c for c in expected if c['id'] != 'N17-list']
-                evidence = {'os': platform.system(), 'rows': rows}
+                        if case['id'] == 'N17-list':
+                            out.append('И-109 N17-list: ожидаемое KeyError diff не возникло')
+                            continue
+                        rows.append(row)
+                    expected = [c for c in expected if c['id'] != 'N17-list']
+                    evidence = {'os': platform.system(), 'rows': rows}
+                finally:
+                    if old_umask is not None:
+                        os.umask(old_umask)
             out.extend(f'И-{iteration} {issue}' for issue in compare_evidence(module, expected, evidence))
             historical = [c for c in cases if c['id'] not in exception_ids]
             observed_drift = {row['id'] for row in module.case_checks(historical, evidence)

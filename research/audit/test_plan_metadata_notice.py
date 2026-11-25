@@ -17,9 +17,9 @@ from kit.base.operation_card import compile_prompt
 from kit.base.operation_plan import PlanSession
 from kit.base.registry_policy import StoreError
 
-EXPECTED = ('При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
-            'метаданные. Их сохранность не проверяется; на POSIX перед записью сравниваются '
-            'только биты mode входных файлов.')
+EXPECTED = ('Замена файла может изменить ACL и другие метаданные. На POSIX перед заменой '
+            'сравниваются mode, UID и GID цели и временного файла; несовпадение вызывает отказ. '
+            'Сохранность ACL и защита от гонок не проверяются; на других ОС метаданные не проверяются.')
 
 
 class NoticeTests(unittest.TestCase):
@@ -45,7 +45,7 @@ class NoticeTests(unittest.TestCase):
 
     def plan(self, target='L1'):
         result = self.session.plan(compile_prompt(self.phrase(target)))
-        self.assertEqual((result['plan_format'],result['outcome']),(3,'planned'))
+        self.assertEqual((result['plan_format'],result['outcome']),(4,'planned'))
         self.assertEqual(result['replacement_notice'],EXPECTED)
         return result
 
@@ -96,7 +96,7 @@ class NoticeTests(unittest.TestCase):
                        'Временное указание: Синтетическое указание.'):
             with self.subTest(phrase=phrase):
                 result = self.session.plan(compile_prompt(phrase))
-                self.assertEqual(result['plan_format'],3)
+                self.assertEqual(result['plan_format'],4)
                 self.assertIn(result['outcome'],('listed','missing_params','non_registry'))
                 self.assertNotIn('replacement_notice',result)
                 self.assertNotIn('ticket',result)
@@ -108,7 +108,7 @@ class NoticeTests(unittest.TestCase):
         self.session.apply(plan,confirmed_ticket=plan['ticket'])
         before = audit.tree_digest(self.root)
         repeated = self.session.plan(card)
-        self.assertEqual((repeated['plan_format'],repeated['outcome']),(3,'no_change'))
+        self.assertEqual((repeated['plan_format'],repeated['outcome']),(4,'no_change'))
         self.assertNotIn('replacement_notice',repeated)
         self.assertNotIn('ticket',repeated)
         self.assertEqual(audit.tree_digest(self.root),before)
@@ -157,7 +157,7 @@ class NoticeTests(unittest.TestCase):
             return json.loads(line)
         before = audit.tree_digest(self.root)
         plan = send({'type':'plan','request':self.phrase('L1')})
-        self.assertEqual((plan['plan_format'],plan['replacement_notice']),(3,EXPECTED))
+        self.assertEqual((plan['plan_format'],plan['replacement_notice']),(4,EXPECTED))
         forged = copy.deepcopy(plan); del forged['replacement_notice']
         response = send({'type':'apply','plan':forged,'confirmed_ticket':plan['ticket']})
         self.assertEqual(response['diagnostic']['code'],'plan_mismatch')

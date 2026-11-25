@@ -11,11 +11,11 @@ from .operation_card import compile_prompt
 from .profile_journal import canonical_bytes
 from .registry_policy import StoreError, check_operation
 
-PLAN_FORMAT = 3
+PLAN_FORMAT = 4
 REPLACEMENT_NOTICE = (
-    'При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
-    'метаданные. Их сохранность не проверяется; на POSIX перед записью сравниваются '
-    'только биты mode входных файлов.'
+    'Замена файла может изменить ACL и другие метаданные. На POSIX перед заменой '
+    'сравниваются mode, UID и GID цели и временного файла; несовпадение вызывает отказ. '
+    'Сохранность ACL и защита от гонок не проверяются; на других ОС метаданные не проверяются.'
 )
 
 

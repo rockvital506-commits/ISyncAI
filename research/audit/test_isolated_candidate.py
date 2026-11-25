@@ -17,7 +17,7 @@ LEGACY = ('kit/compare_old.py', 'kit/COMPARE-OLD.md',
 
 # Исполняется отдельным интерпретатором -I -S в корне ТОЛЬКО временной копии.
 RUNNER = r'''
-import json, sys
+import json, os, sys
 from pathlib import Path
 root = Path(sys.argv[1]); scenario = sys.argv[2]
 sys.path.insert(0, str(root))
@@ -54,9 +54,10 @@ else:
     def write(path, value):
         p = root / path; p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(value, ensure_ascii=False) + '\n', encoding='utf-8')
+        if os.name == 'posix': p.chmod(0o600)  # Только синтетическая проба.
     def empty(area, roots):
         result = {'schema_version': 2, 'area': area, 'roots': [roots], 'entries': []}
-        result.update({'release_version': '0.2.0-mvp.26'} if area == 'L0' else {'revision': 0})
+        result.update({'release_version': '0.2.0-mvp.27'} if area == 'L0' else {'revision': 0})
         return result
     write('kit/base/registry.json', empty('L0', 'kit'))
     write('profiles/pilot/registry.json', empty('L1', 'profiles/pilot'))
@@ -102,7 +103,7 @@ for area, root, path in (('L0', 'kit', 'kit/base/registry.json'),
                          ('L1', 'profiles/pilot', 'profiles/pilot/registry.json'),
                          ('L2', '.domain-agent-kit', '.domain-agent-kit/project/registry.json')):
     doc = {'schema_version': 2, 'area': area, 'roots': [root], 'entries': []}
-    doc.update({'release_version': '0.2.0-mvp.26'} if area == 'L0' else {'revision': 0})
+    doc.update({'release_version': '0.2.0-mvp.27'} if area == 'L0' else {'revision': 0})
     write(path, doc)
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 manifest_pin = sha(source / 'kit/KIT-VERSION.json')
