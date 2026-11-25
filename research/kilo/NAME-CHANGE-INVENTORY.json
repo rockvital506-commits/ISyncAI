@@ -5263,6 +5263,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 3,
+        "new_brand": 2,
+        "new_project_path": 1
+      },
+      "path": "research/audit/test_registry_xattr_diagnosis.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "candidate_version": 1,
         "kit_import": 2,
         "new_brand": 1,
@@ -5388,6 +5397,14 @@
         "old_brand": 1
       },
       "path": "research/kilo/README.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 1,
+        "new_brand": 1
+      },
+      "path": "research/kilo/REGISTRY-XATTR-DIAGNOSIS.md"
     },
     {
       "area": "kilo_docs_and_history",
@@ -7497,7 +7514,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1994,
+  "scanned_files": 1996,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
