@@ -117,6 +117,9 @@ def context_review(backend, mode, scope):
                  'message':'Источники изменились после показа. Начните обзор заново.'})
         return
     display(result)
+    if result.get('outcome') == 'review_required':
+        return choices, inputs
+    return None
 
 
 def main():
@@ -136,19 +139,52 @@ def main():
         display(bootstrap)
         if bootstrap.get('outcome') != 'bootstrap':
             return 1
-        print('Введите обычную фразу, /контекст project|kit scope или /выход. Ответы могут содержать секреты.', flush=True)
+        print('Введите обычную фразу, /контекст или /экспорт project|kit scope, либо /выход. Ответы могут содержать секреты.', flush=True)
         while True:
             phrase = ask('\nЗапрос> ')
             if phrase == '/выход':
                 return 0
             if not phrase.strip():
                 continue
-            if phrase.startswith('/контекст'):
+            if phrase.startswith(('/контекст','/экспорт')):
                 parts = phrase.split()
-                if len(parts) != 3 or parts[0] != '/контекст' or parts[1] not in ('project','kit'):
+                if len(parts) != 3 or parts[0] not in ('/контекст','/экспорт') or parts[1] not in ('project','kit'):
                     display({'outcome':'error','code':'context_command_invalid'})
-                else:
-                    context_review(backend, parts[1], parts[2])
+                    continue
+                reviewed = context_review(backend, parts[1], parts[2])
+                if parts[0] == '/контекст' or reviewed is None:
+                    continue
+                choices, inputs = reviewed
+                destination = ask('Абсолютный путь нового внешнего файла (пустая строка отменяет): ')
+                if not destination:
+                    display({'outcome':'context_export_cancelled'})
+                    continue
+                plan = backend.request({'type':'context_export_plan','mode':parts[1],'scope':parts[2],
+                                        'choices':choices,'destination':destination})
+                if plan.get('outcome') != 'planned':
+                    display(plan)
+                    continue
+                if plan.get('inputs_sha256') != inputs:
+                    backend.request({'type':'cancel'})
+                    display({'outcome':'error','code':'context_inputs_changed',
+                             'message':'Источники изменились после обзора. Начните заново.'})
+                    continue
+                display(plan)
+                ticket = plan.get('ticket')
+                if type(ticket) is not str:
+                    raise TerminalError('invalid_plan')
+                apply = {'type':'context_export_apply','plan':plan,'confirmed_ticket':ticket}
+                if len((json.dumps(apply,ensure_ascii=False,separators=(',', ':'))+'\n').encode('utf-8')) > MAX_COMMAND:
+                    backend.request({'type':'cancel'})
+                    display({'outcome':'error','code':'plan_too_large_to_apply'})
+                    continue
+                if ask('Для показанного плана введите ПОДТВЕРЖДАЮ; иной ответ отменяет: ') != 'ПОДТВЕРЖДАЮ':
+                    display(backend.request({'type':'cancel'}))
+                    continue
+                applying = True
+                result = backend.request(apply)
+                display(result)
+                applying = False
                 continue
             plan = backend.request({'type':'plan','request':phrase})
             display(plan)

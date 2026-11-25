@@ -161,6 +161,106 @@ class TerminalTests(unittest.TestCase):
         self.assertEqual(before, audit.tree_digest(self.ctx.workspace))
         self.send(fd, '/выход'); self.assertEqual(proc.wait(timeout=15),0)
 
+    def test_context_export_both_modes_with_separate_confirmation(self):
+        self.use_candidate_system()
+        proc, fd = self.start(); before = audit.tree_digest(self.ctx.workspace)
+        for mode in ('project','kit'):
+            destination = self.ctx.root/('export '+mode+'.json')
+            self.send(fd, '/экспорт '+mode+' docs/a')
+            self.until(fd, 'иной ответ отменяет обзор: '); self.send(fd, 'включить')
+            self.until(fd, 'иной ответ отменяет обзор: '); self.send(fd, 'исключить')
+            output = self.until(fd, 'пустая строка отменяет): ')
+            self.assertIn('"outcome": "review_required"', output)
+            self.send(fd, str(destination)); plan = self.until(fd, 'иной ответ отменяет: ')
+            self.assertIn('"content_utf8"', plan); self.assertIn('"failure": "leave_partial_or_unverified"', plan)
+            self.assertFalse(destination.exists())
+            self.send(fd, 'ПОДТВЕРЖДАЮ'); output = self.until(fd, 'Запрос> ')
+            self.assertIn('"outcome": "context_file_created"', output)
+            result = json.loads(destination.read_bytes()); self.assertEqual(result['context']['mode'], mode)
+            self.assertEqual(result['agent_delivery'], 'not_checked')
+            self.assertNotIn('P-1', {r['entry']['id'] for r in result['context']['entries']})
+            self.assertEqual(before, audit.tree_digest(self.ctx.workspace))
+        self.send(fd, '/выход'); self.assertEqual(proc.wait(timeout=15),0)
+
+    def test_context_export_cancel_occupied_and_input_drift(self):
+        self.use_candidate_system()
+        proc, fd = self.start(); before = audit.tree_digest(self.ctx.workspace)
+        dest = self.ctx.root/'out.json'
+        def review():
+            self.send(fd, '/экспорт project docs/a')
+            self.until(fd, 'иной ответ отменяет обзор: '); self.send(fd, 'включить')
+            self.until(fd, 'иной ответ отменяет обзор: '); self.send(fd, 'включить')
+            self.until(fd, 'пустая строка отменяет): ')
+        review(); self.send(fd, str(dest)); self.until(fd, 'иной ответ отменяет: ')
+        self.assertFalse(dest.exists()); self.send(fd, 'нет')
+        self.until(fd, 'Запрос> '); self.assertFalse(dest.exists())
+        dest.write_bytes(b'unchanged')
+        review(); self.send(fd, str(dest)); out = self.until(fd, 'Запрос> ')
+        self.assertIn('context_export_destination_occupied', out); self.assertEqual(dest.read_bytes(), b'unchanged')
+        for protected in (self.ctx.workspace/'protected.json', self.ctx.candidate/'protected.json'):
+            review(); self.send(fd, str(protected)); out = self.until(fd, 'Запрос> ')
+            self.assertIn('context_export_destination_invalid', out); self.assertFalse(protected.exists())
+        review()
+        doc = json.loads(self.ctx.profile.read_bytes()); doc['entries'][0]['text'] = 'drift after review'
+        audit.write(self.ctx.profile, doc); changed = audit.tree_digest(self.ctx.workspace)
+        other = self.ctx.root/'drift.json'; self.send(fd, str(other)); out = self.until(fd, 'Запрос> ')
+        self.assertIn('context_inputs_changed', out); self.assertFalse(other.exists())
+        self.assertNotEqual(before,changed); self.assertEqual(changed,audit.tree_digest(self.ctx.workspace))
+        self.send(fd, '/выход'); self.assertEqual(proc.wait(timeout=15),0)
+
+    def test_export_input_change_after_plan_never_creates_file(self):
+        self.use_candidate_system()
+        proc, fd = self.start(); destination = self.ctx.root/'stale.json'
+        self.send(fd, '/экспорт project docs/a')
+        self.until(fd, 'иной ответ отменяет обзор: '); self.send(fd, 'включить')
+        self.until(fd, 'иной ответ отменяет обзор: '); self.send(fd, 'включить')
+        self.until(fd, 'пустая строка отменяет): '); self.send(fd, str(destination))
+        self.until(fd, 'иной ответ отменяет: ')
+        doc = json.loads(self.ctx.profile.read_bytes()); doc['entries'][0]['text'] = 'drift after plan'
+        audit.write(self.ctx.profile, doc); changed = audit.tree_digest(self.ctx.workspace)
+        self.send(fd, 'ПОДТВЕРЖДАЮ'); result = self.until(fd, 'Запрос> ')
+        self.assertIn('"outcome": "error"', result)
+        self.assertFalse(destination.exists()); self.assertEqual(changed, audit.tree_digest(self.ctx.workspace))
+        self.send(fd, '/выход'); self.assertEqual(proc.wait(timeout=15),0)
+
+    def test_export_eof_before_confirmation_never_creates_file(self):
+        self.use_candidate_system()
+        proc, fd = self.start(); before = audit.tree_digest(self.ctx.workspace)
+        destination = self.ctx.root/'eof.json'
+        self.send(fd, '/экспорт kit docs/a')
+        self.until(fd, 'иной ответ отменяет обзор: '); self.send(fd, 'включить')
+        self.until(fd, 'иной ответ отменяет обзор: '); self.send(fd, 'включить')
+        self.until(fd, 'пустая строка отменяет): '); self.send(fd, str(destination))
+        self.until(fd, 'иной ответ отменяет: '); os.write(fd, b'\x04')
+        self.assertEqual(proc.wait(timeout=15), 0)
+        self.assertFalse(destination.exists()); self.assertEqual(before, audit.tree_digest(self.ctx.workspace))
+
+    def test_export_failure_after_send_is_unknown_and_not_retried(self):
+        from io import StringIO
+        from unittest.mock import patch
+        calls = []; inputs = {'L0':'a','L1':'b','L2':'c'}
+        class BrokenBackend:
+            def __init__(self, args): pass
+            def request(self, request):
+                calls.append(request['type'])
+                if request['type'] == 'bootstrap': return {'outcome':'bootstrap'}
+                if request['type'] == 'context_export_plan':
+                    return {'outcome':'planned','ticket':'t','inputs_sha256':inputs}
+                raise terminal.TerminalError('backend_response_unavailable')
+            def close(self): pass
+        stderr = StringIO()
+        with patch.object(sys, 'argv', self.command()[4:]), \
+             patch.object(sys.stdin, 'isatty', return_value=True), \
+             patch.object(sys.stdout, 'isatty', return_value=True), \
+             patch.object(sys, 'stderr', stderr), \
+             patch.object(terminal, 'Backend', BrokenBackend), \
+             patch.object(terminal, 'context_review', return_value=({'include':[],'exclude':[]},inputs)), \
+             patch.object(terminal, 'ask', side_effect=['/экспорт project docs/a','/tmp/file','ПОДТВЕРЖДАЮ']), \
+             patch.object(terminal, 'display'):
+            self.assertEqual(terminal.main(), 1)
+        self.assertEqual(calls, ['bootstrap','context_export_plan','context_export_apply'])
+        self.assertIn('Исход применения неизвестен', stderr.getvalue())
+
     def test_non_tty_and_nonisolated_are_refused(self):
         before = audit.tree_digest(self.ctx.workspace)
         result = subprocess.run(self.command(), input='', text=True, capture_output=True, timeout=20)
