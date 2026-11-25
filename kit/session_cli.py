@@ -10,7 +10,7 @@ from pathlib import Path
 # Для прямого запуска -I; при импорте проверенным загрузчиком не расширяем sys.path.
 if __name__ == '__main__':
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from kit.base import applicability, context_modes, schema_v2
+from kit.base import applicability, context_modes, move_preview, schema_v2
 from kit.base.operation_card import compile_prompt
 from kit.base.operation_plan import PlanSession
 from kit.base.registry_store import Layout, StoreError
@@ -68,6 +68,13 @@ def main(*, preflight=None, bootstrap=None):
                 result = session.apply(data['plan'], confirmed_ticket=data['confirmed_ticket'],
                                        allow_delete=data.get('allow_delete', False))
                 respond(result)
+            elif (mode == 'move_preview' and set(data) == {'type','source','target','entry_id','candidate','portability_context'}
+                  and all(type(data[k]) is str for k in ('source','target','entry_id'))
+                  and type(data['candidate']) is dict):
+                session.cancel()
+                respond(move_preview.preview_workspace(Layout(args.workspace, args.profile_root),
+                        source=data['source'], target=data['target'], entry_id=data['entry_id'],
+                        candidate=data['candidate'], portability_context=data['portability_context']))
             elif mode == 'applicable' and set(data) == {'type', 'scope'} and type(data['scope']) is str:
                 # Любой новый запрос к данным отзывает ожидающий план перед чтением.
                 session.cancel()

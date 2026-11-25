@@ -23,6 +23,8 @@ MODULES = {
     'kit.session_cli': 'kit/session_cli.py',
     'kit.base.applicability': 'kit/base/applicability.py',
     'kit.base.context_modes': 'kit/base/context_modes.py',
+    'kit.base.move_preview': 'kit/base/move_preview.py',
+    'kit.base.project_specificity': 'kit/base/project_specificity.py',
     'kit.base.schema_v2': 'kit/base/schema_v2.py',
     'kit.base.registry_policy': 'kit/base/registry_policy.py',
     'kit.base.profile_journal': 'kit/base/profile_journal.py',

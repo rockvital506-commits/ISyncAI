@@ -132,3 +132,13 @@ def preview_move(inputs, *, source, target, entry_id, candidate, portability_con
             'diffs': diffs, 'source_removed_in_hypothesis': True, 'transaction_history': 'not_implemented',
             'text_conflicts': 'not_checked', 'authorization': 'not_checked', 'confirmation': 'not_implemented',
             'apply': 'not_implemented', 'recovery': 'not_implemented'}
+
+
+def preview_workspace(layout, *, source, target, entry_id, candidate, portability_context):
+    """Согласованный штатный снимок для preview; запись и выдача билета отсутствуют."""
+    if source == 'L1' and portability_context is not None:
+        raise StoreError('invalid_context', 'portability_context')
+    from . import registry_store
+    current = registry_store._load(layout)
+    return preview_move(current.raw, source=source, target=target, entry_id=entry_id,
+                        candidate=candidate, portability_context=portability_context)

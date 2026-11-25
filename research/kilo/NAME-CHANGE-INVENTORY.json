@@ -5360,6 +5360,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 1,
+        "new_brand": 2,
+        "new_project_path": 2
+      },
+      "path": "research/audit/test_move_preview_session.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "candidate_version": 1,
         "kit_import": 1,
         "new_brand": 1,
@@ -7737,7 +7746,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2049,
+  "scanned_files": 2050,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
