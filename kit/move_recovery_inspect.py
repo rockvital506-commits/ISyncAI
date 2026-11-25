@@ -12,7 +12,7 @@ import sys
 
 if __name__ == '__main__':
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from kit.base import move_intent, registry_store
+from kit.base import move_intent, move_preview, registry_store
 from kit.base.registry_policy import StoreError
 
 
@@ -55,6 +55,15 @@ def _read(parent, name, limit):
     finally:os.close(fd)
 
 
+def _check_intent_roots(layout, before):
+    """Привязать корни проверенного intent к явно выбранной физической раскладке."""
+    roots=registry_store._declared_roots(layout)
+    docs,_=move_preview._parse(before)
+    for area in ('L0','L1','L2'):
+        if docs[area]['roots']!=[roots[area]]:
+            raise StoreError('move_probe_root_mismatch',area)
+
+
 def _inspect(layout, *, intent_pin, exclusive_held):
     """exclusive_held допустим только внутри штатной EX-блокировки того же workspace."""
     if (os.name!='posix' or registry_store.fcntl is None or not hasattr(os,'O_NOFOLLOW')
@@ -88,7 +97,8 @@ def _inspect(layout, *, intent_pin, exclusive_held):
         if len(set(ids))!=3:raise OSError('root alias')
         marker=_read(root_fds['L2'],'.move-pending',move_intent.MAX_INTENT)
         # Некорректный marker/pin отвергаем до открытия реестров.
-        move_intent._verified(marker,intent_pin)
+        _,before,_=move_intent._verified(marker,intent_pin)
+        _check_intent_roots(layout,before)
         observed={}
         for area in ('L0','L1','L2'):
             components=registry_store._SUFFIX[area].split('/');fd=root_fds[area]

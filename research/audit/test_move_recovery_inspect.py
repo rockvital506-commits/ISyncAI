@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -80,6 +81,13 @@ class RecoveryInspectTests(unittest.TestCase):
         path.unlink();path.write_bytes(self.before['L1'])
         # Результат не может использовать профиль с пересечением корней.
         self.error('profile_root_conflict',probe.inspect,store.Layout(self.root,'.domain-agent-kit/project'),intent_pin=self.pin)
+    def test_intent_roots_must_match_selected_layout_before_registry_reads(self):
+        shutil.copytree(self.root/'profiles/pilot',self.root/'profiles/other')
+        wrong=store.Layout(self.root,'profiles/other');real=probe._read;accessed=[]
+        def track(parent,name,limit):accessed.append(name);return real(parent,name,limit)
+        with patch.object(probe,'_read',side_effect=track):
+            self.error('move_probe_root_mismatch',probe.inspect,wrong,intent_pin=self.pin)
+        self.assertEqual(accessed,['.move-pending']);self.verify_gate()
     def test_real_writer_lock_blocks_separate_cli_and_releases(self):
         command=[sys.executable,'-I','-S','-B',str(ROOT/'kit/move_recovery_inspect.py'),
                  '--workspace',str(self.root),'--profile-root','profiles/pilot','--intent-pin',self.pin]

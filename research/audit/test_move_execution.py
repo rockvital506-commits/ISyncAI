@@ -52,6 +52,13 @@ class ExecutionTests(unittest.TestCase):
                 self.error('move_pending',store.status,layout);self.assertEqual(probe.inspect(layout,intent_pin=pin)['state'],'after_both')
                 s=self.session(layout,raw,pin);p=s.plan();self.assertEqual(p['state'],'after_both');self.apply(s,p)
                 self.assertEqual(files[src].read_bytes(),after[src])
+    def test_equal_bytes_at_wrong_profile_root_do_not_enable_execution(self):
+        root,layout,files,before,raw,pin,neighbor=self.fixture()
+        shutil.copytree(root/'profiles/pilot',root/'profiles/other')
+        wrong=store.Layout(root,'profiles/other');s=self.session(wrong,raw,pin)
+        self.error('move_probe_root_mismatch',s.plan)
+        self.assertEqual({k:p.read_bytes() for k,p in files.items()},before)
+        self.assertEqual((root/'profiles/other/registry.json').read_bytes(),before['L1'])
     def test_stale_plan_changed_bytes_and_wrong_ticket(self):
         root,layout,files,before,raw,pin,neighbor=self.fixture();s=self.session(layout,raw,pin);p=s.plan()
         altered=copy.deepcopy(p);altered['state']='after_both';self.error('plan_mismatch',s.apply,altered,confirmed_ticket=p['ticket'])
