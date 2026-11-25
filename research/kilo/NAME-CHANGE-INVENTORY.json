@@ -273,6 +273,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "new_brand": 3
+      },
+      "path": "kit/SOURCE-RELEASE-TRUST.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "candidate_version": 1
       },
       "path": "kit/SYSTEM-L0.json"
@@ -551,6 +558,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "kit_import": 1
+      },
+      "path": "kit/openssl_ed25519.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "kit_import": 3
       },
       "path": "kit/preview_rule.py"
@@ -582,6 +596,14 @@
         "kit_import": 4
       },
       "path": "kit/snapshot_session.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 2,
+        "new_brand": 1
+      },
+      "path": "kit/source_release_trust.py"
     },
     {
       "area": "candidate_kit",
@@ -5818,6 +5840,15 @@
       "path": "research/audit/test_snapshot_session.py"
     },
     {
+      "area": "audit",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 1,
+        "new_brand": 3
+      },
+      "path": "research/audit/test_source_release_trust.py"
+    },
+    {
       "area": "kilo_docs_and_history",
       "hits": {
         "old_brand": 1
@@ -5884,7 +5915,7 @@
       "hits": {
         "candidate_version": 65,
         "donor_version": 3,
-        "new_brand": 9,
+        "new_brand": 10,
         "new_project_path": 3,
         "old_brand": 1,
         "project_path": 2
@@ -8026,7 +8057,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2094,
+  "scanned_files": 2098,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
