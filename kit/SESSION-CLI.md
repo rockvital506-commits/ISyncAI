@@ -27,6 +27,9 @@ python3 -B kit/session_cli.py --workspace /absolute/workspace --profile-root pro
 `{"type":"applicable","scope":"docs/readme.md"}`; он отзывает ожидающий план и не пишет.
 Подробные границы фильтра, конфликты и ограничения — [APPLICABILITY.md](base/APPLICABILITY.md).
 Отчёт не определяет контекст задачи или смысл и не гарантирует следования агентом.
+Отдельные `context_export_plan` и `context_export_apply` создают внешний файл выбранного
+контекста после собственного плана и подтверждения; см. [CONTEXT-EXPORT.md](CONTEXT-EXPORT.md).
+Создание файла не доказывает доставку, чтение или применение агентом.
 
 Каждый ответ — одна JSON-строка на stdout. Для мутации `plan` возвращает `plan_format: 4`,
 `outcome: planned`, точный байтовый дифф, `input_mode_bits`, предупреждение `replacement_notice`
@@ -57,4 +60,4 @@ python3 -B kit/session_cli.py --workspace /absolute/workspace --profile-root pro
 
 Объект с зарезервированным именем `.domain-agent-kit/.move-pending` вызывает `move_pending`
 при штатной загрузке; не удаляйте его для обхода отказа. Подробности и пределы —
-[MOVE-PENDING.md](base/MOVE-PENDING.md). Восстановление и перемещение не реализованы.
+[MOVE-PENDING.md](base/MOVE-PENDING.md). Готовые восстановление и перемещение не подтверждены.

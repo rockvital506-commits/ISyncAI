@@ -21,6 +21,8 @@ MODULES = {
     'kit.verify_candidate': 'kit/verify_candidate.py',
     'kit.guard': 'kit/guard.py',
     'kit.session_cli': 'kit/session_cli.py',
+    'kit.context_export': 'kit/context_export.py',
+    'kit.init_workspace': 'kit/init_workspace.py',
     'kit.base.applicability': 'kit/base/applicability.py',
     'kit.base.context_modes': 'kit/base/context_modes.py',
     'kit.base.move_preview': 'kit/base/move_preview.py',
@@ -213,7 +215,7 @@ def run(args):
     sys.meta_path.insert(0, SnapshotFinder(sources))
     from kit.guard import guard
     from kit.base.bootstrap import extract_start
-    from kit.base.registry_store import Layout
+    from kit.base.registry_store import Layout, StoreError
     from kit import session_cli
     try:
         bootstrap = extract_start(start['entry'], start['start'])
@@ -233,9 +235,21 @@ def run(args):
         preflight()  # Не читать пользовательские команды, если вход уже неверен.
     except Exception as exc:
         raise SnapshotError('runtime_unverified') from exc
+    def export_destination_check(value):
+        try:
+            path = Path(value)
+            if not path.is_absolute() or '..' in path.parts or not path.name:
+                raise ValueError('invalid destination')
+            target = path.parent.resolve(strict=True) / path.name
+            if any(target == root or root in target.parents for root in roots):
+                raise ValueError('destination overlaps protected root')
+        except (OSError, TypeError, ValueError, RuntimeError) as exc:
+            raise StoreError('context_export_destination_invalid', 'destination') from exc
+
     sys.argv = ['verified-session', '--workspace', str(roots[1]),
                 '--profile-root', args.profile_root, '--profile-id', args.profile_id]
-    return session_cli.main(preflight=preflight, bootstrap=bootstrap)
+    return session_cli.main(preflight=preflight, bootstrap=bootstrap,
+                            export_destination_check=export_destination_check)
 
 
 def main():

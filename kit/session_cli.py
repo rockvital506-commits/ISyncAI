@@ -10,6 +10,7 @@ from pathlib import Path
 # Для прямого запуска -I; при импорте проверенным загрузчиком не расширяем sys.path.
 if __name__ == '__main__':
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from kit import context_export
 from kit.base import applicability, context_modes, move_preview, schema_v2
 from kit.base.operation_card import compile_prompt
 from kit.base.operation_plan import PlanSession
@@ -23,7 +24,7 @@ def respond(data):
     sys.stdout.flush()
 
 
-def main(*, preflight=None, bootstrap=None):
+def main(*, preflight=None, bootstrap=None, export_destination_check=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--workspace', type=Path, required=True)
     parser.add_argument('--profile-root', required=True)
@@ -34,6 +35,12 @@ def main(*, preflight=None, bootstrap=None):
     except (TypeError, ValueError):
         print('invalid_profile_id', file=sys.stderr)
         return 2
+    export_session = None
+    def cancel_export():
+        nonlocal export_session
+        if export_session is not None:
+            export_session.cancel()
+            export_session = None
     while True:
         line = sys.stdin.buffer.readline(MAX_LINE + 1)
         if not line:
@@ -41,6 +48,7 @@ def main(*, preflight=None, bootstrap=None):
         if len(line) > MAX_LINE:
             # Не разбивать одну чрезмерную команду на несколько трактуемых запросов.
             session.cancel()
+            cancel_export()
             respond({'outcome': 'error', 'code': 'input_too_large'})
             return 1
         if preflight is not None:
@@ -49,6 +57,7 @@ def main(*, preflight=None, bootstrap=None):
             except Exception:
                 # Отказ проверки отзывает даже ранее показанный ожидающий план.
                 session.cancel()
+                cancel_export()
                 respond({'outcome': 'error', 'code': 'runtime_preflight_failed'})
                 continue
         try:
@@ -56,6 +65,8 @@ def main(*, preflight=None, bootstrap=None):
             if type(data) is not dict or type(data.get('type')) is not str:
                 raise ValueError('request')
             mode = data['type']
+            if mode != 'context_export_apply':
+                cancel_export()
             if mode == 'bootstrap' and set(data) == {'type'} and bootstrap is not None:
                 respond(bootstrap)
             elif mode == 'plan' and set(data) == {'type', 'request'} and type(data['request']) is str:
@@ -84,6 +95,32 @@ def main(*, preflight=None, bootstrap=None):
                 session.cancel()
                 respond(context_modes.prepare(Layout(args.workspace, args.profile_root), mode=data['mode'],
                                                scope=data['scope'], choices=data['choices']))
+            elif (mode == 'context_export_plan' and set(data) == {'type','mode','scope','choices','destination'}
+                  and type(data['mode']) is str and type(data['scope']) is str
+                  and type(data['choices']) is dict and type(data['destination']) is str):
+                session.cancel()
+                if export_destination_check is not None:
+                    export_destination_check(data['destination'])
+                pending = context_export.ContextExportSession(Layout(args.workspace,args.profile_root),data['destination'],
+                          mode=data['mode'],scope=data['scope'],choices=data['choices'])
+                result = pending.plan()
+                sample = {'type':'context_export_apply','plan':result,'confirmed_ticket':result['ticket']}
+                if len(json.dumps(sample,ensure_ascii=False,separators=(',', ':')).encode('utf-8')) + 1 > MAX_LINE:
+                    pending.cancel()
+                    raise StoreError('context_export_plan_too_large','plan')
+                export_session = pending
+                respond(result)
+            elif (mode == 'context_export_apply' and set(data) == {'type','plan','confirmed_ticket'}
+                  and type(data['plan']) is dict and type(data['confirmed_ticket']) is str):
+                session.cancel()
+                if export_session is None:
+                    raise StoreError('ticket_unknown','ticket')
+                if export_destination_check is not None:
+                    try: export_destination_check(str(export_session.destination))
+                    except Exception:
+                        cancel_export()
+                        raise
+                respond(export_session.apply(data['plan'],confirmed_ticket=data['confirmed_ticket']))
             elif mode == 'cancel' and set(data) == {'type'}:
                 session.cancel()
                 respond({'outcome': 'cancelled'})
@@ -94,6 +131,7 @@ def main(*, preflight=None, bootstrap=None):
         except (schema_v2.SchemaError, ValueError, TypeError, UnicodeError, RecursionError):
             # Некорректная новая команда не сохраняет потенциально забытый ожидающий план.
             session.cancel()
+            cancel_export()
             respond({'outcome': 'error', 'code': 'invalid_request'})
 
 

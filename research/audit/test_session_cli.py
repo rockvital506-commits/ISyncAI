@@ -62,6 +62,19 @@ class SessionTests(unittest.TestCase):
         marker.unlink()  # Только тестовая фикстура, не восстановление.
         self.assertEqual(self.send(p,self.apply_msg(plan))['diagnostic']['code'],'ticket_unknown')
 
+    def test_context_export_plan_confirmation_and_cross_cancellation(self):
+        (self.root/'kit/base/registry.json').write_bytes((ROOT/'kit/SYSTEM-L0.json').read_bytes())
+        p=self.process();choices={'include':[{'area':'L1','id':'C-1'},{'area':'L2','id':'P-1'}],'exclude':[]}
+        with tempfile.TemporaryDirectory(prefix='context-cli-out-') as tmp:
+            dest=Path(tmp)/'context.json';request={'type':'context_export_plan','mode':'project','scope':'docs/a','choices':choices,'destination':str(dest)}
+            plan=self.send(p,request);self.assertEqual(plan['outcome'],'planned');self.assertFalse(dest.exists())
+            attempt={'type':'context_export_apply','plan':plan,'confirmed_ticket':'wrong'}
+            self.assertEqual(self.send(p,attempt)['diagnostic']['code'],'confirmation_required');self.assertFalse(dest.exists())
+            attempt['confirmed_ticket']=plan['ticket'];result=self.send(p,attempt);self.assertEqual(result['outcome'],'context_file_created')
+            self.assertEqual(dest.read_text(),plan['content_utf8']);self.assertEqual(result['agent_application'],'not_checked')
+            request['destination']=str(Path(tmp)/'other.json');plan=self.send(p,request);self.assertEqual(plan['outcome'],'planned')
+            self.plan(p);attempt={'type':'context_export_apply','plan':plan,'confirmed_ticket':plan['ticket']}
+            self.assertEqual(self.send(p,attempt)['diagnostic']['code'],'ticket_unknown');self.assertFalse(Path(request['destination']).exists())
     def test_context_modes_read_and_cancel_pending(self):
         l0=self.root/'kit/base/registry.json';l0.write_bytes((ROOT/'kit/SYSTEM-L0.json').read_bytes())
         p=self.process();before=a.tree_digest(self.root);plan=self.plan(p)

@@ -120,6 +120,28 @@ class SnapshotTests(unittest.TestCase):
         marker.unlink()
         self.assertEqual(self.send(proc,lines,msg)['diagnostic']['code'],'ticket_unknown')
 
+    def test_pinned_context_export_separate_confirmation_and_root_guard(self):
+        self.l0.write_bytes((ROOT/'kit/SYSTEM-L0.json').read_bytes());self.system_pin=digest(self.l0)
+        malicious=self.workspace/'kit/context_export.py';malicious.write_text('from pathlib import Path\nPath('+repr(str(self.marker))+').touch()\n')
+        choices={'include':[{'area':'L1','id':'C-1'},{'area':'L2','id':'P-1'}],'exclude':[]}
+        proc,lines=self.launch();destination=self.root/'context.json'
+        req={'type':'context_export_plan','mode':'project','scope':'docs/file','choices':choices,'destination':str(destination)}
+        plan=self.send(proc,lines,req);self.assertEqual(plan['outcome'],'planned');self.assertFalse(destination.exists())
+        apply={'type':'context_export_apply','plan':plan,'confirmed_ticket':plan['ticket']}
+        result=self.send(proc,lines,apply);self.assertEqual(result['outcome'],'context_file_created')
+        self.assertEqual(destination.read_text(),plan['content_utf8']);self.assertEqual(result['agent_delivery'],'not_checked');self.assertFalse(self.marker.exists())
+        for parent in (self.workspace,self.candidate,ROOT/'kit'):
+            req['destination']=str(parent/'must-not-create.json')
+            self.assertEqual(self.send(proc,lines,req)['diagnostic']['code'],'context_export_destination_invalid')
+            self.assertFalse((parent/'must-not-create.json').exists())
+    def test_context_export_preflight_revokes_ticket(self):
+        self.l0.write_bytes((ROOT/'kit/SYSTEM-L0.json').read_bytes());self.system_pin=digest(self.l0)
+        choices={'include':[{'area':'L1','id':'C-1'},{'area':'L2','id':'P-1'}],'exclude':[]};proc,lines=self.launch()
+        destination=self.root/'context.json';plan=self.send(proc,lines,{'type':'context_export_plan','mode':'kit','scope':'docs','choices':choices,'destination':str(destination)})
+        self.assertEqual(plan['outcome'],'planned');raw=self.l0.read_bytes();self.l0.write_bytes(raw+b' ')
+        apply={'type':'context_export_apply','plan':plan,'confirmed_ticket':plan['ticket']}
+        self.assertEqual(self.send(proc,lines,apply),{'outcome':'error','code':'runtime_preflight_failed'});self.assertFalse(destination.exists())
+        self.l0.write_bytes(raw);self.assertEqual(self.send(proc,lines,apply)['diagnostic']['code'],'ticket_unknown')
     def test_context_modes_use_pinned_module_and_revoke_pending(self):
         self.l0.write_bytes((ROOT/'kit/SYSTEM-L0.json').read_bytes());self.system_pin=digest(self.l0)
         before=audit.tree_digest(self.workspace);proc,lines=self.launch()
