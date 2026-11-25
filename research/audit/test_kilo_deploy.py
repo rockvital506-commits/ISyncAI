@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 import os
+import stat
 import subprocess
 import sys
 import tempfile
@@ -131,7 +132,12 @@ class DeployTests(unittest.TestCase):
 
     def test_unknown_created_identity_is_reported(self):
         plan = self.plan()
-        with patch('kit.kilo_deploy.os.fstat', side_effect=OSError('synthetic')):
+        real_fstat = os.fstat
+        def fail_stage(fd):
+            info = real_fstat(fd)
+            if stat.S_ISREG(info.st_mode): raise OSError('synthetic')
+            return info
+        with patch('kit.kilo_deploy.os.fstat', side_effect=fail_stage):
             with self.assertRaises(DeployError) as exc: self.apply(plan)
         self.assertEqual(exc.exception.code, 'cleanup_unsafe')
         self.assertFalse((self.root/plan['target']).exists())

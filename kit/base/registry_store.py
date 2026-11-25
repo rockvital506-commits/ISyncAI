@@ -177,7 +177,7 @@ def _mode_check_supported():
     return os.name == 'posix'
 
 
-def _load(layout):
+def _load_unlocked(layout):
     roots = _declared_roots(layout)
     workspace = _workspace(layout.workspace)
     identities = set()
@@ -213,6 +213,50 @@ def _load(layout):
         inputs_sha256[area] = sha256(raw).hexdigest()
         raw_by_area[area] = raw
     return _Loaded(workspace, roots, files, documents, inputs_sha256, input_modes, raw_by_area, journals)
+
+
+def _load(layout):
+    """Один трёхреестровый снимок под общим advisory flock; не защита после возврата."""
+    if (os.name != 'posix' or fcntl is None or not hasattr(fcntl, 'flock')
+            or not hasattr(os, 'O_DIRECTORY') or not hasattr(os, 'O_NOFOLLOW')):
+        raise StoreError('read_lock_unavailable', 'workspace')
+    workspace = _workspace(layout.workspace)
+    fd = None
+    try:
+        try:
+            fd = os.open(workspace, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | getattr(os, 'O_CLOEXEC', 0))
+            opened = os.fstat(fd)
+            if (not stat.S_ISDIR(opened.st_mode) or opened.st_dev < 0 or opened.st_ino <= 0):
+                raise OSError('workspace_lock_invalid')
+            try:
+                fcntl.flock(fd, fcntl.LOCK_SH | fcntl.LOCK_NB)
+            except OSError as error:
+                if error.errno in (errno.EACCES, errno.EAGAIN):
+                    raise StoreError('read_busy', 'workspace') from error
+                raise
+            current = os.stat(workspace, follow_symlinks=False)
+            if (not stat.S_ISDIR(current.st_mode) or
+                    (current.st_dev, current.st_ino) != (opened.st_dev, opened.st_ino)):
+                raise OSError('workspace_lock_changed')
+        except StoreError:
+            raise
+        except (OSError, AttributeError, TypeError, ValueError) as error:
+            raise StoreError('read_lock_unavailable', 'workspace') from error
+        result = _load_unlocked(layout)
+        try:
+            current = os.stat(workspace, follow_symlinks=False)
+            if (not stat.S_ISDIR(current.st_mode) or
+                    (current.st_dev, current.st_ino) != (opened.st_dev, opened.st_ino)):
+                raise OSError('workspace_lock_changed')
+        except (OSError, AttributeError, TypeError, ValueError) as error:
+            raise StoreError('read_lock_unavailable', 'workspace') from error
+        return result
+    finally:
+        if fd is not None:
+            try:
+                os.close(fd)
+            except OSError as error:
+                raise StoreError('read_lock_release_failed', 'workspace') from error
 
 
 def _status(current, *, target=None, revision=None):
@@ -423,7 +467,7 @@ def _apply_action(layout, preview, *, allow_delete=False):
     check_operation(operation, target=target)
     if operation == 'delete' and allow_delete is not True:
         raise StoreError('delete_confirmation_required', 'allow_delete')
-    current = _load(layout)
+    current = _load_unlocked(layout)
     if current.documents[target]['revision'] != preview.from_revision:
         raise StoreError('stale_revision', 'revision/from')
     prepared = _prepare_action(current, operation, params)
@@ -553,7 +597,7 @@ def apply_create(layout, plan, *, confirmed_ticket, preview=None):
     _native_create(plan.get('target'))
     if type(confirmed_ticket) is not str or plan.get('ticket') != confirmed_ticket:
         raise StoreError('confirmation_required', 'confirmed_ticket')
-    current = _load(layout)
+    current = _load_unlocked(layout)
     steps = plan.get('revision')
     if (type(steps) is not dict or steps.keys() != {'from', 'to'} or type(steps['from']) is not int
             or type(steps['to']) is not int or steps['from'] < 0 or steps['to'] != steps['from'] + 1):

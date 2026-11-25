@@ -203,7 +203,7 @@ class InterprocessWriteLock(unittest.TestCase):
         self.send(a,{'cmd':'resume'});self.assertEqual(self.receive(a)['outcome'],'applied')
         self.assertEqual(self.history('L1')[1],['A-9'])
 
-    def check_json_interface_lock(self, peer):
+    def check_json_interface_lock(self, peer, *, snapshot=False):
         request = {'type':'plan', 'request':audit.card(ident='Q-9')['request']}
         before=self.snapshot();plan=self.request(peer,request)
         self.assertEqual(plan['outcome'],'planned')
@@ -211,7 +211,11 @@ class InterprocessWriteLock(unittest.TestCase):
         try:
             store.fcntl.flock(fd,store.fcntl.LOCK_EX|store.fcntl.LOCK_NB)
             msg={'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']}
-            self.assertEqual(self.request(peer,msg)['diagnostic']['code'],'write_busy')
+            response=self.request(peer,msg)
+            if snapshot:
+                self.assertEqual(response,{'outcome':'error','code':'runtime_preflight_failed'})
+            else:
+                self.assertEqual(response['diagnostic']['code'],'write_busy')
             self.assertEqual(self.snapshot(),before)
         finally: os.close(fd)
         self.assertEqual(self.request(peer,msg)['diagnostic']['code'],'ticket_unknown')
@@ -239,7 +243,7 @@ class InterprocessWriteLock(unittest.TestCase):
                          '--candidate-root',str(candidate),'--workspace',str(self.root),
                          '--profile-root','profiles/pilot','--profile-id','Pilot',
                          '--manifest-pin',hashlib.sha256(raw).hexdigest(),'--system-pin',system_pin])
-        self.check_json_interface_lock(peer)
+        self.check_json_interface_lock(peer,snapshot=True)
 
     def test_missing_or_failed_lock_is_fail_closed(self):
         layout=store.Layout(self.root,'profiles/pilot');session=PlanSession(layout,profile_id='Pilot')

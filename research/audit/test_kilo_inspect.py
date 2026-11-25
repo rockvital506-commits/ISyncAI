@@ -129,10 +129,14 @@ class InspectionTests(unittest.TestCase):
         other = self.directory/'other'; other.write_bytes(b'foreign')
         try: self.target.symlink_to(other)
         except OSError as exc: self.skipTest(f'нет символических ссылок: {exc}')
-        with patch('kit.kilo_inspect.os.open') as opened:
+        real_open = os.open; target_opened = []
+        def checked_open(path, *args, **kwargs):
+            if Path(path) == self.target: target_opened.append(path)
+            return real_open(path, *args, **kwargs)
+        with patch('kit.kilo_inspect.os.open', side_effect=checked_open):
             with self.assertRaises(InspectionError) as exc: self.inspection()
         self.assertEqual(exc.exception.code, 'unsafe_target')
-        opened.assert_not_called()
+        self.assertEqual(target_opened, [])
         self.assertEqual(other.read_bytes(), b'foreign')
 
     def test_symlink_substitution_at_open_is_not_followed_when_supported(self):
@@ -141,10 +145,11 @@ class InspectionTests(unittest.TestCase):
         self.target.write_bytes(b'original')
         other = self.directory/'other'; other.write_bytes(b'foreign')
         original = os.open
-        def replace_open(path, flags, *args):
-            self.target.unlink()
-            self.target.symlink_to(other)
-            return original(path, flags, *args)
+        def replace_open(path, flags, *args, **kwargs):
+            if Path(path) == self.target:
+                self.target.unlink()
+                self.target.symlink_to(other)
+            return original(path, flags, *args, **kwargs)
         with patch('kit.kilo_inspect.os.open', side_effect=replace_open):
             with self.assertRaises(InspectionError) as exc: self.inspection()
         self.assertEqual(exc.exception.code, 'target_unreadable')
@@ -163,10 +168,14 @@ class InspectionTests(unittest.TestCase):
         self.assertEqual(exc.exception.code, 'unsafe_target')
         self.target.rmdir()
         self.target.write_bytes(b'x'*(MAX_TARGET_BYTES+1))
-        with patch('kit.kilo_inspect.os.open') as opened:
+        real_open = os.open; target_opened = []
+        def checked_open(path, *args, **kwargs):
+            if Path(path) == self.target: target_opened.append(path)
+            return real_open(path, *args, **kwargs)
+        with patch('kit.kilo_inspect.os.open', side_effect=checked_open):
             with self.assertRaises(InspectionError) as exc: self.inspection()
         self.assertEqual(exc.exception.code, 'target_too_large')
-        opened.assert_not_called()
+        self.assertEqual(target_opened, [])
 
     def test_target_changed_while_reading(self):
         self.deploy(); original = os.read; changed = []

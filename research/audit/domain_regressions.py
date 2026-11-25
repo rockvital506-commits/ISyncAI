@@ -141,6 +141,19 @@ def main(number):
             raise ValueError('unexpected historical 115 section size')
         module.SECTION_BYTES = 2861
         module.json = JsonProxy(core_audit.translated_paths)
+        # Новое штатное чтение открывает только корень каждой синтетической раскладки
+        # как каталог для shared flock. Остальные ограничения исторического monitor сохранены.
+        original_event = module.Monitor.event
+        def event(monitor, event_name, args):
+            if monitor.active and event_name == 'open' and monitor.root is not None:
+                path, _, flags = args
+                rel = monitor.local(path)
+                allowed = {pathlib.Path(fixture) / variant for fixture in module.FIXTURES for variant in module.VARIANTS}
+                writes = module.os.O_WRONLY | module.os.O_RDWR | module.os.O_CREAT | module.os.O_TRUNC | module.os.O_APPEND
+                if rel in allowed and flags & module.os.O_DIRECTORY and not flags & writes:
+                    return
+            return original_event(monitor, event_name, args)
+        module.Monitor.event = event
     elif number == 116:
         get = module.get
         module.get = lambda path: core_audit.translated_paths(get(path)) if path == 'research/115/CASES.json' else get(path)
