@@ -7,8 +7,9 @@
     "kit/GUARD.md": "1528f3b921bbd89ab759a19f45f0a9e57b310e565ee78e9561368729f58a4d82",
     "kit/KILO-DEPLOY.md": "8273783d325bc21375be51f3d5ab797f35e758e33e05108cadd6c27522b761d6",
     "kit/KILO-INSPECT.md": "fbc9c640fe2126bf56adb7c0977c8f8b4f86af2202630d3ce2737af10a08beb8",
-    "kit/LAYERS.md": "29875693773ba3ad1e70b4a5d9ac736252f1bec8fe348d1490b642a799205806",
+    "kit/LAYERS.md": "f3b7ee6763467f1dfc6c2f61e2cab9f4da21ac73197273556e6ff30489adb348",
     "kit/LEGACY-CAPSULE.md": "e340cd6d934f6033ab41bafa0592e1715f5b1bad365f1a5ae0018ff0a35ed8a7",
+    "kit/LEGACY-PROJECTION.md": "e6a9f40f415c97a6d61b3e71a97aaf8708843f7f5d3863205911ef9561890f6d",
     "kit/PREVIEW-RULE.md": "e321f9c245a0873b515427c682f9766522e78c72234a2febeda77138a42515a8",
     "kit/RENDER-RULE.md": "620c77196b9ebf6d3432f00841b05c8b3cb9edd232a950af3a98b3c3330ec046",
     "kit/SESSION-CLI.md": "860c1526a00d608d0555a2f53997f1a049e7578eb03375792658f93259c64052",
@@ -45,19 +46,20 @@
     "kit/base/registry_store.py": "1615c9dc35d6029e696c0629e15d5910c597c9e4daf9e5898789732d59e80c87",
     "kit/base/schema_v2.py": "0b5f2912ff01b431f6591cf2fcd2dac513a31ea62b976f1a1d1e714c56645abd",
     "kit/base/simulation.py": "395b2c08d0624e55a6c84ea23a93835cf8ece79513481bd9cf93f333d22e77f9",
-    "kit/compare_old.py": "82e1f8658cdfa8523a02109971104b9ff55e2b39f9dea296433bc8e5e2dab379",
+    "kit/compare_old.py": "2af15c01f5d44da8721dda8e0afa79e736b8f17a9dba857073ace3deca6546fc",
     "kit/guard.py": "870e3f1121d4f5b13f993273a72fe5ffca9cec06418e51cb3e79b8211edf050d",
     "kit/guard_tree.py": "9d756bf3e3ffca575058a4569fe900fa5cfdb9bd0f778ec994b5d3ac9741d0e4",
     "kit/kilo_deploy.py": "380ede43750e4ca502235c83761f7443c113a9ee1c0f855535910156ea9d3dd2",
     "kit/kilo_inspect.py": "920f51354d79d6e8576e5caf4b36591ed8efe403732a7695ab4c5bc2a8a48891",
     "kit/legacy_capsule.py": "d2168fcaa5e61ebb38fcf577ce0ab2a2a9a703f158853e2d2927097e63f08595",
+    "kit/legacy_projection.py": "9ab2d4094592186553036a409155b1ab3108f6472aac46d6b662b3ec229b1125",
     "kit/preview_rule.py": "c7367b3c33651dd2cb876601025ca53517d61d644c6e71817111a28f9c176229",
     "kit/render_rule.py": "f2a858f51ac29c084a3d2b2e0cafff533b13a5f4928a2193e1e6ca42127d11c0",
     "kit/session_cli.py": "41a6b23338a5a0e9fdf7564756df6d94c70aeeb79ec71e791e1154318c3cf115",
-    "kit/verify_candidate.py": "e20266a91421eb28c0644dc9bc45c42040410fd902b22e35dc096245737fdace"
+    "kit/verify_candidate.py": "d2f3f7de54aeae444c4965fb37d2f1d1521180281489cd7d3e0401e7673f2ab2"
   },
   "format": 1,
   "scope": "source-l0-only",
   "status": "candidate",
-  "version": "0.2.0-mvp.14"
+  "version": "0.2.0-mvp.15"
 }

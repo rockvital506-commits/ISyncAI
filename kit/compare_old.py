@@ -89,10 +89,9 @@ def _legacy_rows(rows, prefix):
     return result
 
 
-def compare(source, candidate):
-    """Сравнивает только указанный объём; одинаковые байты не доказывают миграцию."""
+def _source(source):
+    """Общие ограниченные проверки старого набора; не подтверждает здоровье источника."""
     _inputs(source, SOURCE_KEYS)
-    _inputs(candidate, CANDIDATE_KEYS)
     state = _json(source['state'], 'source_invalid')
     checks = _json(source['checks'], 'source_invalid')
     base = _json(source['base_rules'], 'source_invalid')
@@ -130,6 +129,14 @@ def compare(source, candidate):
                 raise ComparisonError('source_invalid')
             if parent.startswith('B-'):
                 blockers.append({'code': 'cross_layer_parent', 'id': ident, 'parent': parent})
+    return state, project, blockers
+
+
+def compare(source, candidate):
+    """Сравнивает только указанный объём; одинаковые байты не доказывают миграцию."""
+    _inputs(source, SOURCE_KEYS)
+    _inputs(candidate, CANDIDATE_KEYS)
+    state, project, blockers = _source(source)
     try:
         registry, _ = registry_journal.unpack_registry(_json(candidate['registry'], 'target_invalid'), area='L2')
     except (schema_v2.SchemaError, RecursionError) as exc:
