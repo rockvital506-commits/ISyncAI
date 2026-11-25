@@ -31,6 +31,9 @@ class GuardTests(unittest.TestCase):
         self.layout = a.make_workspace(self.workspace, parent_scope='.')
         self.manifest = self.snapshot/'kit/KIT-VERSION.json'
         self.l0 = self.workspace/'kit/base/registry.json'
+        system = json.loads(self.l0.read_bytes())
+        system['release_version'] = json.loads(self.manifest.read_bytes())['version']
+        a.write(self.l0, system)  # Только синтетическая раскладка; не поставка системного L0.
         self.profile = self.workspace/'profiles/pilot/registry.json'
         self.project = self.workspace/'.domain-agent-kit/project/registry.json'
         self.manifest_pin = sha(self.manifest)
@@ -89,6 +92,38 @@ class GuardTests(unittest.TestCase):
         doc = json.loads(self.l0.read_text(encoding='utf-8'))
         doc['entries'][0]['text'] = 'другой системный текст'; a.write(self.l0, doc)
         self.violation('system_digest_mismatch')
+
+    def test_system_version_is_exact_and_pin_checked_first(self):
+        original = json.loads(self.l0.read_bytes())
+        expected = json.loads(self.manifest.read_bytes())['version']
+        for version in ('0.2.0-mvp.20', '0.2.0', expected+'+build.1', '0.2.0-audit'):
+            with self.subTest(version=version):
+                doc = dict(original, release_version=version); a.write(self.l0, doc)
+                self.violation('system_digest_mismatch')  # Прежний pin отказывает первым.
+                self.system_pin = sha(self.l0)  # Только локальный синтетический pin.
+                self.violation('system_version_mismatch')
+                result = self.cli()
+                self.assertEqual(result.returncode, 1)
+                self.assertEqual(json.loads(result.stdout)['reason'], 'system_version_mismatch')
+        a.write(self.l0, original); self.system_pin = sha(self.l0)
+        self.assertEqual(self.check()['outcome'], 'pass')
+        doc = dict(original, release_version='not-semver'); a.write(self.l0, doc)
+        self.system_pin = sha(self.l0)
+        self.violation('workspace_unverified')
+
+    def test_matching_version_does_not_certify_nonempty_l0(self):
+        doc = json.loads(self.l0.read_bytes()); doc['entries'] = []; a.write(self.l0, doc)
+        self.system_pin = sha(self.l0)
+        self.assertEqual(self.check()['outcome'], 'pass')  # Только схема, pin и версия.
+
+    def test_version_compares_decoded_string_not_json_spelling(self):
+        doc = json.loads(self.l0.read_bytes()); version = doc['release_version']
+        self.assertTrue(version.startswith('0'))
+        raw = json.dumps(doc, ensure_ascii=False).replace('"release_version": "'+version+'"',
+              '"release_version": "\\u0030'+version[1:]+'"', 1).encode('utf-8')
+        self.assertIn(b'\\u0030', raw)
+        self.l0.write_bytes(raw); self.system_pin = sha(self.l0)
+        self.assertEqual(self.check()['outcome'], 'pass')
 
     def test_corrupt_registry_and_missing_file_rejected(self):
         self.profile.write_bytes(b'not a registry')

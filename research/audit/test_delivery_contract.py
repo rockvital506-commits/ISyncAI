@@ -48,6 +48,7 @@ class DeliveryTests(unittest.TestCase):
         audit.make_workspace(self.workspace, parent_scope='.')
         self.l0 = self.workspace/'kit/base/registry.json'
         doc = json.loads(self.l0.read_bytes()); doc['entries'] = []
+        doc['release_version'] = self.manifest['version']
         audit.write(self.l0, doc)  # Пустой L0 — лишь тест схемы, не содержимое Kit.
         self.system_pin = sha(self.l0.read_bytes())
         self.profile = self.workspace/'profiles/pilot/registry.json'
@@ -134,8 +135,8 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(json.loads(self.profile.read_bytes())['registry']['entries'][-1]['id'], 'C-9')
         l0 = json.loads(self.l0.read_bytes())
         self.assertEqual(l0['entries'], [])
-        # Pin фиксирует байты, но guard пока не связывает версию реестра с версией кандидата.
-        self.assertNotEqual(l0['release_version'], self.manifest['version'])
+        # Совпадение версии и pin не превращает пустой стендовый L0 в содержимое продукта.
+        self.assertEqual(l0['release_version'], self.manifest['version'])
 
     def test_refusal_bad_pin_and_altered_candidates(self):
         self.refusal(self.args(manifest_pin='0'*64), 'candidate_unverified')

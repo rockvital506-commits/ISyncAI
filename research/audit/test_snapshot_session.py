@@ -37,6 +37,8 @@ class SnapshotTests(unittest.TestCase):
         self.layout = audit.make_workspace(self.workspace, parent_scope='.')
         self.manifest_pin = digest(self.candidate/'kit/KIT-VERSION.json')
         self.l0 = self.workspace/'kit/base/registry.json'
+        system = json.loads(self.l0.read_bytes()); system['release_version'] = manifest['version']
+        audit.write(self.l0, system)  # Синтетический L0, не продуктовый системный реестр.
         self.system_pin = digest(self.l0)
         self.profile = self.workspace/'profiles/pilot/registry.json'
         self.marker = self.root/'untrusted-code-executed'
@@ -205,6 +207,16 @@ class SnapshotTests(unittest.TestCase):
         self.assertEqual(self.check_refusal(self.args(system_pin='0'*64)), 'runtime_unverified')
         self.assertEqual(self.check_refusal(self.args(system_pin='bad')), 'pin_required')
         self.assertEqual(self.check_refusal(self.args(flags=('-B',))), 'isolated_python_required')
+
+    def test_version_mismatch_with_matching_system_pin_refuses_before_commands(self):
+        before = audit.tree_digest(self.workspace)
+        system = json.loads(self.l0.read_bytes()); system['release_version'] = '0.2.0-mvp.20'
+        audit.write(self.l0, system)
+        self.system_pin = digest(self.l0)  # Совпадение хеша не подтверждает совместимость.
+        changed = audit.tree_digest(self.workspace)
+        self.assertNotEqual(before, changed)
+        self.assertEqual(self.check_refusal(), 'runtime_unverified')
+        self.assertEqual(audit.tree_digest(self.workspace), changed)
 
     def test_missing_registry_or_workspace_mismatch_fail_closed(self):
         project = self.workspace/'.domain-agent-kit/project/registry.json'

@@ -273,6 +273,9 @@ raise AssertionError('exit not reached')
         self.assertEqual(applied['outcome'],'created')
         workspace = self.root/'workspace'; workspace.mkdir(); audit.make_workspace(workspace, parent_scope='.')
         l0 = workspace/'kit/base/registry.json'
+        system = json.loads(l0.read_bytes())
+        system['release_version'] = json.loads((self.source/'kit/KIT-VERSION.json').read_bytes())['version']
+        audit.write(l0, system)  # Версия синтетической раскладки, не рабочая установка.
         system_pin = hashlib.sha256(l0.read_bytes()).hexdigest()
         p = subprocess.run([sys.executable,'-I','-S','-B',str(trusted/'snapshot_session.py'),
             '--candidate-root',str(self.dest),'--workspace',str(workspace),'--profile-root','profiles/pilot',

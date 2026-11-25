@@ -16,7 +16,7 @@ from kit.base import registry_policy, schema_v2
 from kit.base.operation_card import compile_prompt
 from kit.base.operation_plan import PlanSession
 from kit.base.registry_store import Layout, StoreError
-from kit.guard import guard
+from kit.guard import guard, GuardViolation
 from kit.render_rule import render, RenderError
 
 
@@ -117,11 +117,15 @@ class L0ProposalTests(unittest.TestCase):
             draft = copy.deepcopy(self.proposal['registry']); fixture.write(l0, draft)
             self.assertEqual(self.guard_workspace(workspace)['outcome'], 'pass')
             draft['entries'] = []
-            draft['release_version'] = '0.2.0-audit'  # явно несовпадающая версия на стенде
             fixture.write(l0, draft)
-            self.assertEqual(self.guard_workspace(workspace)['outcome'], 'pass')
+            self.assertEqual(self.guard_workspace(workspace)['outcome'], 'pass')  # Пустой L0 не становится полным.
             with self.assertRaises(audit.AuditError):
                 changed = copy.deepcopy(self.proposal); changed['registry'] = draft; self.check(changed)
+            draft['release_version'] = '0.2.0-audit'  # несовпадающая версия и новый локальный pin
+            fixture.write(l0, draft)
+            with self.assertRaises(GuardViolation) as caught:
+                self.guard_workspace(workspace)
+            self.assertEqual(caught.exception.reason, 'system_version_mismatch')
 
     def test_guard_does_not_resolve_contradictory_text(self):
         with tempfile.TemporaryDirectory(prefix='l0-conflict-synthetic-') as d:

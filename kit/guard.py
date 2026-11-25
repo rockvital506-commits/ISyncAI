@@ -37,6 +37,9 @@ def guard(candidate_root, layout, *, manifest_pin, system_pin):
         raise GuardViolation('workspace_unverified') from exc
     if not hmac.compare_digest(loaded.inputs_sha256['L0'], system_pin):
         raise GuardViolation('system_digest_mismatch')
+    # Консервативный допуск текущего кандидата: никакой неявной миграции L0.
+    if loaded.documents['L0']['release_version'] != candidate['candidate']:
+        raise GuardViolation('system_version_mismatch')
     try:
         schema_v2.validate_catalog(loaded.documents)
     except (schema_v2.SchemaError, RecursionError) as exc:

@@ -5056,6 +5056,7 @@
     {
       "area": "audit",
       "hits": {
+        "candidate_version": 3,
         "kit_import": 1,
         "new_brand": 1,
         "new_project_path": 1
@@ -5198,6 +5199,7 @@
     {
       "area": "audit",
       "hits": {
+        "candidate_version": 1,
         "new_brand": 2,
         "new_project_path": 2
       },
@@ -5236,7 +5238,7 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 34,
+        "candidate_version": 36,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,
