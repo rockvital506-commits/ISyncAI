@@ -5327,7 +5327,7 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 52,
+        "candidate_version": 54,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,
@@ -7463,7 +7463,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1986,
+  "scanned_files": 1989,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
