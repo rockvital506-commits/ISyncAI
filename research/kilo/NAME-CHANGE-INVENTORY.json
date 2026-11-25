@@ -5189,6 +5189,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 1,
+        "new_brand": 3,
+        "new_project_path": 3
+      },
+      "path": "research/audit/test_profile_portability.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 4,
         "new_brand": 2,
         "new_project_path": 2
@@ -5273,7 +5282,16 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 46,
+        "candidate_version": 1,
+        "new_brand": 1,
+        "new_project_path": 1
+      },
+      "path": "research/kilo/L1-TWO-PROJECTS-DIAGNOSIS.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 48,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,
@@ -7409,7 +7427,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1978,
+  "scanned_files": 1980,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
