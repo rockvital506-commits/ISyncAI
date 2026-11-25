@@ -12,9 +12,9 @@ from pathlib import Path
 
 FORMAT = 2
 PRODUCT = 'DomainAgentKit'
-CANDIDATE_VERSION = '0.2.0-mvp.16'
+CANDIDATE_VERSION = '0.2.0-mvp.17'
 MANIFEST = 'kit/KIT-VERSION.json'
-EXTRA = {'kit/verify_candidate.py', 'kit/LAYERS.md', 'kit/IDENTITY.md', 'kit/render_rule.py', 'kit/RENDER-RULE.md', 'kit/preview_rule.py', 'kit/PREVIEW-RULE.md', 'kit/session_cli.py', 'kit/SESSION-CLI.md', 'kit/ENVIRONMENTS.json', 'kit/ENVIRONMENTS.md', 'kit/kilo_deploy.py', 'kit/KILO-DEPLOY.md', 'kit/kilo_inspect.py', 'kit/KILO-INSPECT.md', 'kit/guard.py', 'kit/GUARD.md', 'kit/guard_tree.py', 'kit/GUARD-TREE.md', 'kit/compare_old.py', 'kit/COMPARE-OLD.md', 'kit/legacy_capsule.py', 'kit/LEGACY-CAPSULE.md', 'kit/legacy_projection.py', 'kit/LEGACY-PROJECTION.md'}
+EXTRA = {'kit/verify_candidate.py', 'kit/LAYERS.md', 'kit/IDENTITY.md', 'kit/snapshot_session.py', 'kit/SNAPSHOT-SESSION.md', 'kit/render_rule.py', 'kit/RENDER-RULE.md', 'kit/preview_rule.py', 'kit/PREVIEW-RULE.md', 'kit/session_cli.py', 'kit/SESSION-CLI.md', 'kit/ENVIRONMENTS.json', 'kit/ENVIRONMENTS.md', 'kit/kilo_deploy.py', 'kit/KILO-DEPLOY.md', 'kit/kilo_inspect.py', 'kit/KILO-INSPECT.md', 'kit/guard.py', 'kit/GUARD.md', 'kit/guard_tree.py', 'kit/GUARD-TREE.md', 'kit/compare_old.py', 'kit/COMPARE-OLD.md', 'kit/legacy_capsule.py', 'kit/LEGACY-CAPSULE.md', 'kit/legacy_projection.py', 'kit/LEGACY-PROJECTION.md'}
 HEX = re.compile(r'^[0-9a-f]{64}$')
 NAME = re.compile(r'^[A-Za-z0-9][A-Za-z0-9_.-]*$')
 

@@ -205,6 +205,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "new_brand": 2
+      },
+      "path": "kit/SNAPSHOT-SESSION.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "new_brand": 1
       },
       "path": "kit/base/BUNDLE-TRUST.md"
@@ -376,6 +383,13 @@
         "kit_import": 4
       },
       "path": "kit/session_cli.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 3
+      },
+      "path": "kit/snapshot_session.py"
     },
     {
       "area": "candidate_kit",
@@ -5166,6 +5180,14 @@
       "path": "research/audit/test_session_cli.py"
     },
     {
+      "area": "audit",
+      "hits": {
+        "new_brand": 2,
+        "new_project_path": 2
+      },
+      "path": "research/audit/test_snapshot_session.py"
+    },
+    {
       "area": "kilo_docs_and_history",
       "hits": {
         "old_brand": 1
@@ -5189,7 +5211,7 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 20,
+        "candidate_version": 23,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,
@@ -7318,7 +7340,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1962,
+  "scanned_files": 1965,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }

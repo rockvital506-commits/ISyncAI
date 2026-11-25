@@ -9,7 +9,8 @@ import sys
 from pathlib import Path
 
 # Код и зависимости берутся рядом с этим файлом, не из проверяемого корня кандидата.
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+if __name__ == '__main__':
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from kit.verify_candidate import HEX, VerificationError, verify
 from kit.base import registry_policy, registry_store, schema_v2
 from kit.base.registry_store import Layout, StoreError

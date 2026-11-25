@@ -56,7 +56,7 @@ else:
         p.write_text(json.dumps(value, ensure_ascii=False) + '\n', encoding='utf-8')
     def empty(area, roots):
         result = {'schema_version': 2, 'area': area, 'roots': [roots], 'entries': []}
-        result.update({'release_version': '0.2.0-mvp.16'} if area == 'L0' else {'revision': 0})
+        result.update({'release_version': '0.2.0-mvp.17'} if area == 'L0' else {'revision': 0})
         return result
     write('kit/base/registry.json', empty('L0', 'kit'))
     write('profiles/pilot/registry.json', empty('L1', 'profiles/pilot'))
@@ -102,7 +102,7 @@ for area, root, path in (('L0', 'kit', 'kit/base/registry.json'),
                          ('L1', 'profiles/pilot', 'profiles/pilot/registry.json'),
                          ('L2', '.domain-agent-kit', '.domain-agent-kit/project/registry.json')):
     doc = {'schema_version': 2, 'area': area, 'roots': [root], 'entries': []}
-    doc.update({'release_version': '0.2.0-mvp.16'} if area == 'L0' else {'revision': 0})
+    doc.update({'release_version': '0.2.0-mvp.17'} if area == 'L0' else {'revision': 0})
     write(path, doc)
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 manifest_pin = sha(source / 'kit/KIT-VERSION.json')

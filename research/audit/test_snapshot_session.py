@@ -1,0 +1,226 @@
+#!/usr/bin/env python3
+"""Изолированный исполнитель: только синтетические деревья и процессы."""
+import hashlib
+import json
+import os
+import queue
+import shutil
+import subprocess
+import sys
+import tempfile
+import threading
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path[:0] = [str(ROOT), str(ROOT/'research/audit')]
+import core_audit as audit
+
+RUNNER = ROOT/'kit/snapshot_session.py'
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+class SnapshotTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix='domain-snapshot-')
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name).resolve()
+        self.candidate = self.root/'candidate'; self.candidate.mkdir()
+        shutil.copytree(ROOT/'kit', self.candidate/'kit', ignore=shutil.ignore_patterns('__pycache__'))
+        self.workspace = self.root/'workspace'; self.workspace.mkdir()
+        self.layout = audit.make_workspace(self.workspace, parent_scope='.')
+        self.manifest_pin = digest(self.candidate/'kit/KIT-VERSION.json')
+        self.l0 = self.workspace/'kit/base/registry.json'
+        self.system_pin = digest(self.l0)
+        self.profile = self.workspace/'profiles/pilot/registry.json'
+        self.marker = self.root/'untrusted-code-executed'
+
+    def args(self, *, manifest_pin=None, system_pin=None, flags=('-I','-S','-B')):
+        return [sys.executable, *flags, str(RUNNER), '--candidate-root', str(self.candidate),
+                '--workspace', str(self.workspace), '--profile-root', 'profiles/pilot', '--profile-id', 'Pilot',
+                '--manifest-pin', self.manifest_pin if manifest_pin is None else manifest_pin,
+                '--system-pin', self.system_pin if system_pin is None else system_pin]
+
+    def launch(self, **kwargs):
+        env = dict(os.environ, PYTHONPATH=str(self.root/'untrusted'), PYTHONDONTWRITEBYTECODE='1')
+        proc = subprocess.Popen(self.args(**kwargs), cwd=self.workspace, env=env, stdin=subprocess.PIPE,
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding='utf-8', bufsize=1)
+        def cleanup():
+            if proc.poll() is None:
+                proc.kill()
+            proc.communicate(timeout=15)
+        self.addCleanup(cleanup)
+        lines = queue.Queue()
+        def reader():
+            for line in proc.stdout:
+                lines.put(line)
+        thread = threading.Thread(target=reader, daemon=True)
+        thread.start()
+        return proc, lines
+
+    def send(self, proc, lines, data):
+        proc.stdin.write(json.dumps(data, ensure_ascii=False) + '\n'); proc.stdin.flush()
+        try:
+            line = lines.get(timeout=15)
+        except queue.Empty:
+            raise AssertionError('нет ответа проверенной сессии') from None
+        return json.loads(line)
+
+    def request(self):
+        return {'type':'plan', 'request':('Создай черновик контракта C-9 в профиле Pilot, постоянное, '
+                'область «docs», название «Пример», основание «Проба», '
+                'критерий «Запись существует»: Согласуем порядок чтения.')}
+
+    def check_refusal(self, args=None):
+        before = audit.tree_digest(self.workspace)
+        result = subprocess.run(args or self.args(), cwd=self.workspace, input='', capture_output=True,
+                                text=True, encoding='utf-8', timeout=30)
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertEqual(result.stdout, '')
+        self.assertEqual(before, audit.tree_digest(self.workspace))
+        self.assertFalse(self.marker.exists())
+        return json.loads(result.stderr)['reason']
+
+    def test_verified_plan_and_explicit_apply(self):
+        proc, lines = self.launch()
+        before = self.profile.read_bytes()
+        plan = self.send(proc, lines, self.request())
+        self.assertEqual(plan['outcome'], 'planned')
+        self.assertEqual(self.profile.read_bytes(), before)
+        refusal = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':''})
+        self.assertEqual(refusal['diagnostic']['code'], 'confirmation_required')
+        self.assertEqual(self.profile.read_bytes(), before)
+        result = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(result['outcome'], 'applied')
+        doc = json.loads(self.profile.read_text(encoding='utf-8'))
+        self.assertEqual(doc['registry']['entries'][-1]['id'], 'C-9')
+        self.assertEqual(doc['registry']['entries'][-1]['state'], 'draft')
+
+    def test_workspace_code_and_pythonpath_are_not_imported(self):
+        for folder in (self.workspace/'kit/base', self.root/'untrusted/kit/base'):
+            folder.mkdir(parents=True, exist_ok=True)
+            (folder/'registry_store.py').write_text('from pathlib import Path\nPath('+repr(str(self.marker))+').touch()\n', encoding='utf-8')
+        proc, lines = self.launch()
+        got = self.send(proc, lines, self.request())
+        self.assertEqual(got['outcome'], 'planned')
+        self.assertFalse(self.marker.exists())
+
+    def test_bad_pins_and_missing_isolation_fail_before_session(self):
+        self.assertEqual(self.check_refusal(self.args(manifest_pin='0'*64)), 'candidate_unverified')
+        self.assertEqual(self.check_refusal(self.args(manifest_pin='bad')), 'pin_required')
+        self.assertEqual(self.check_refusal(self.args(system_pin='0'*64)), 'runtime_unverified')
+        self.assertEqual(self.check_refusal(self.args(system_pin='bad')), 'pin_required')
+        self.assertEqual(self.check_refusal(self.args(flags=('-B',))), 'isolated_python_required')
+
+    def test_missing_registry_or_workspace_mismatch_fail_closed(self):
+        project = self.workspace/'.domain-agent-kit/project/registry.json'
+        project.unlink()  # только синтетическая временная копия
+        self.assertEqual(self.check_refusal(), 'runtime_unverified')
+        args = self.args()
+        index = args.index('--workspace') + 1
+        args[index] = 'relative-workspace'
+        self.assertEqual(self.check_refusal(args), 'workspace_invalid')
+        args = self.args()
+        index = args.index('--candidate-root') + 1
+        args[index] = 'relative-candidate'
+        self.assertEqual(self.check_refusal(args), 'candidate_root_invalid')
+
+    def test_modified_source_rejected_without_executing_it(self):
+        file = self.candidate/'kit/base/registry_store.py'
+        file.write_text('from pathlib import Path\nPath('+repr(str(self.marker))+').touch()\n', encoding='utf-8')
+        self.assertEqual(self.check_refusal(), 'candidate_unverified')
+
+    def test_replaced_l0_refuses_and_revokes_pending_plan(self):
+        proc, lines = self.launch()
+        original_l0 = self.l0.read_bytes()
+        before_profile = self.profile.read_bytes()
+        plan = self.send(proc, lines, self.request())
+        self.assertEqual(plan['outcome'], 'planned')
+        self.l0.write_bytes(original_l0 + b' ')
+        result = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(result, {'outcome':'error', 'code':'runtime_preflight_failed'})
+        self.assertEqual(self.profile.read_bytes(), before_profile)
+        self.l0.write_bytes(original_l0)
+        stale = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(stale['diagnostic']['code'], 'ticket_unknown')
+        self.assertEqual(self.profile.read_bytes(), before_profile)
+
+    def test_new_formal_conflict_refuses_command_without_selecting_winner(self):
+        proc, lines = self.launch()
+        plan = self.send(proc, lines, self.request())
+        self.assertEqual(plan['outcome'], 'planned')
+        project = self.workspace/'.domain-agent-kit/project/registry.json'
+        profile = json.loads(self.profile.read_text(encoding='utf-8'))
+        row = audit.entry('R-profile', 'rule', 'profile_owner', 'C-1', '.', text='профиль')
+        row.update(key='policy', value='first'); profile['entries'].append(row); audit.write(self.profile, profile)
+        project_doc = json.loads(project.read_text(encoding='utf-8'))
+        row = audit.entry('R-project', 'rule', 'project_owner', 'P-1', '.', text='проект')
+        row.update(key='policy', value='second'); project_doc['entries'].append(row); audit.write(project, project_doc)
+        before = audit.tree_digest(self.workspace)
+        result = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(result, {'outcome':'error', 'code':'runtime_preflight_failed'})
+        self.assertEqual(audit.tree_digest(self.workspace), before)
+
+    def test_changed_source_after_plan_refuses_and_revokes_ticket(self):
+        proc, lines = self.launch()
+        source = self.candidate/'kit/base/operation_plan.py'
+        original = source.read_bytes()
+        before_profile = self.profile.read_bytes()
+        plan = self.send(proc, lines, self.request())
+        source.write_bytes(original + b'\n# synthetic mutation\n')
+        result = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(result, {'outcome':'error', 'code':'runtime_preflight_failed'})
+        self.assertEqual(self.profile.read_bytes(), before_profile)
+        source.write_bytes(original)
+        stale = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(stale['diagnostic']['code'], 'ticket_unknown')
+        self.assertEqual(self.profile.read_bytes(), before_profile)
+
+    def test_source_symlink_and_hardlink_rejected(self):
+        source = self.candidate/'kit/base/operation_card.py'
+        original = source.read_bytes(); source.unlink()
+        try:
+            source.symlink_to(ROOT/'kit/base/operation_card.py')
+        except OSError as exc:
+            self.skipTest('символические ссылки недоступны: '+str(exc))
+        self.assertEqual(self.check_refusal(), 'candidate_unverified')
+        source.unlink(); source.write_bytes(original)
+        alias = self.candidate/'alias.py'
+        try:
+            os.link(source, alias)
+        except OSError as exc:
+            self.skipTest('жёсткие ссылки недоступны: '+str(exc))
+        self.assertEqual(self.check_refusal(), 'source_file_invalid')
+
+    def test_snapshotted_bytes_and_unknown_kit_module(self):
+        # Отдельный -I-процесс доказывает загрузку уже закреплённых байтов после изменения
+        # на диске; это не обещание работы с конкурирующим процессом в production.
+        payload = r'''import importlib, importlib.util, sys
+from pathlib import Path
+runner, root, pin, marker = sys.argv[1:]
+spec=importlib.util.spec_from_file_location('trusted_loader',runner)
+m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+root,sources=m.capture(Path(root),pin,m._trusted_verifier())
+path=root/'kit/base/registry_policy.py'
+path.write_bytes(path.read_bytes()+b'\nfrom pathlib import Path\nPath('+repr(marker).encode()+b').touch()\n')
+(root/'kit/unexpected.py').write_text('raise AssertionError("unexpected fallback")\n')
+sys.meta_path.insert(0,m.SnapshotFinder(sources))
+loaded=importlib.import_module('kit.base.registry_policy')
+assert callable(loaded.operation_matrix) and not Path(marker).exists()
+try: importlib.import_module('kit.unexpected')
+except ModuleNotFoundError: pass
+else: raise AssertionError('unlisted kit module loaded')
+print('snapshot-ok')
+'''
+        result = subprocess.run([sys.executable,'-I','-S','-B','-c',payload,str(RUNNER),str(self.candidate),
+                                 self.manifest_pin,str(self.marker)], capture_output=True,text=True,timeout=30)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), 'snapshot-ok')
+        self.assertFalse(self.marker.exists())
+
+
+if __name__ == '__main__':
+    unittest.main()

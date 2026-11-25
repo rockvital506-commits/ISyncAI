@@ -2,6 +2,8 @@
 
 Интерфейс связывает уже существующую раскладку v2 и `PlanSession` в одном процессе. Он не
 устанавливает Kit, не создаёт отсутствующие реестры и не выдаёт прав. Требуется Python 3.10+.
+Для ограниченной сессии из закреплённых исходных байтов предусмотрен отдельный опытный
+[`snapshot_session.py`](SNAPSHOT-SESSION.md); прямой вызов ниже такой проверки не выполняет.
 
 ```text
 python3 -B kit/session_cli.py --workspace /absolute/workspace --profile-root profiles/pilot --profile-id Pilot

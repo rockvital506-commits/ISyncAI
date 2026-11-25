@@ -7,7 +7,9 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+# Для прямого запуска -I; при импорте проверенным загрузчиком не расширяем sys.path.
+if __name__ == '__main__':
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from kit.base import schema_v2
 from kit.base.operation_card import compile_prompt
 from kit.base.operation_plan import PlanSession
@@ -21,7 +23,7 @@ def respond(data):
     sys.stdout.flush()
 
 
-def main():
+def main(*, preflight=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--workspace', type=Path, required=True)
     parser.add_argument('--profile-root', required=True)
@@ -41,6 +43,14 @@ def main():
             session._pending = None
             respond({'outcome': 'error', 'code': 'input_too_large'})
             return 1
+        if preflight is not None:
+            try:
+                preflight()
+            except Exception:
+                # Отказ проверки отзывает даже ранее показанный ожидающий план.
+                session._pending = None
+                respond({'outcome': 'error', 'code': 'runtime_preflight_failed'})
+                continue
         try:
             data = schema_v2.parse_json(line)
             if type(data) is not dict or type(data.get('type')) is not str:
