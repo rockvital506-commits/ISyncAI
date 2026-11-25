@@ -120,6 +120,25 @@ class AuditTests(unittest.TestCase):
         self.assertEqual(module.L2, '.domain-agent-kit')
         self.assertEqual(path.read_bytes(), original)
 
+    def test_109_preview_oracle_adapts_only_expected_and_fails_on_wrong_notice(self):
+        from types import SimpleNamespace
+        module = SimpleNamespace(expected_preview=lambda outcome: {'plan_format':2, 'outcome':outcome})
+        audit.adapt_109_preview(module)
+        planned = module.expected_preview('planned')
+        self.assertEqual(planned['replacement_notice'], audit.PLAN2_NOTICE)
+        self.assertNotIn('replacement_notice', module.expected_preview('no_change'))
+        with self.assertRaises(ValueError): module.expected_preview('other')
+        original = (audit.ROOT/'research/109/test_plan.py').read_bytes()
+        historical = audit.load_path_adapted_test(109, audit.ROOT/'research/109/test_plan.py')
+        self.assertEqual((audit.ROOT/'research/109/test_plan.py').read_bytes(),original)
+        expected = {'plan_format':2, 'outcome':'planned', 'replacement_notice':audit.PLAN2_NOTICE}
+        actual = {**expected, 'ticket':'a'*64}
+        self.assertTrue(historical.exact_preview(actual, expected))
+        actual['replacement_notice'] = 'wrong'
+        self.assertFalse(historical.exact_preview(actual, expected))
+        del actual['replacement_notice']
+        self.assertFalse(historical.exact_preview(actual, expected))
+
     def test_audit_integration(self):
         self.assertEqual(audit.check_known_drift()['mismatches'], [])
 

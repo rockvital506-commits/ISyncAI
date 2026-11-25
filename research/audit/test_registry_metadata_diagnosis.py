@@ -168,6 +168,14 @@ class MetadataDiagnosisTests(unittest.TestCase):
         before_plan = self.snapshot()
         plan = send({'type':'plan','request':request})
         self.assertEqual(plan['outcome'],'planned')
+        self.assertEqual(plan['plan_format'],2)
+        self.assertEqual(plan['replacement_notice'],
+            'При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
+            'метаданные. Их сохранность и актуальность этим планом не проверяются.')
+        self.assertEqual(self.snapshot(),before_plan)
+        altered = dict(plan); del altered['replacement_notice']
+        denied = send({'type':'apply','plan':altered,'confirmed_ticket':plan['ticket']})
+        self.assertEqual(denied['diagnostic']['code'],'plan_mismatch')
         self.assertEqual(self.snapshot(),before_plan)
         self.l1.chmod(0o640)
         before_apply = self.snapshot()

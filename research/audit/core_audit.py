@@ -35,6 +35,9 @@ from kit.base.operation_card import compile_prompt                # noqa: E402
 from kit.base.operation_plan import PlanSession                   # noqa: E402
 
 RELEASE = '0.2.0-audit'
+# Независимое ожидаемое сообщение нового формата; исторический оракул не меняется на диске.
+PLAN2_NOTICE = ('При замене файла реестра могут измениться права доступа, владелец, ACL и другие '
+                'метаданные. Их сохранность и актуальность этим планом не проверяются.')
 
 
 # ---------------------------------------------------------------- каталог дрейфа
@@ -499,27 +502,61 @@ def translated_paths(value):
 
 
 def load_path_adapted_test(iteration, path):
-    """Только исторический код репозитория; в памяти меняются строковые литералы пути.
+    """Исторический код в памяти: пути и, только для И-109, ожидаемый формат плана.
 
-    Это адаптированный тест текущего пути, не повтор исходного запечатанного испытания.
+    Это адаптированный тест, не повтор исходного запечатанного испытания.
     """
     import ast
     import importlib.util
     class ReplacePath(ast.NodeTransformer):
+        def __init__(self):
+            self.plan_dicts = 0
+
         def visit_Constant(self, node):
             if isinstance(node.value, str):
                 node.value = translated_paths(node.value)
             return node
+
+        def visit_Dict(self, node):
+            self.generic_visit(node)
+            if iteration == 109:
+                for key, value in zip(node.keys, node.values):
+                    if isinstance(key, ast.Constant) and key.value == 'plan_format':
+                        if not isinstance(value, ast.Constant) or type(value.value) is not int or value.value != 1:
+                            raise ValueError('unexpected historical 109 plan format')
+                        value.value = 2
+                        self.plan_dicts += 1
+            return node
     spec = importlib.util.spec_from_file_location(f'drift{iteration}', path)
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
-    tree = ReplacePath().visit(ast.parse(path.read_text(encoding='utf-8'), filename=str(path)))
+    transform = ReplacePath()
+    tree = transform.visit(ast.parse(path.read_text(encoding='utf-8'), filename=str(path)))
+    if iteration == 109 and transform.plan_dicts != 2:
+        raise ValueError('unexpected historical 109 plan dictionary count')
     exec(compile(tree, str(path), 'exec'), module.__dict__)
+    if iteration == 109:
+        adapt_109_preview(module)
     return module
 
 
+def adapt_109_preview(module):
+    """Независимо добавить предупреждение к ожидаемому диффу, не к результату кандидата."""
+    original = module.expected_preview
+    def expected_preview(*args, **kwargs):
+        result = original(*args, **kwargs)
+        if (type(result) is not dict or result.get('plan_format') != 2
+                or result.get('outcome') not in ('planned', 'no_change')
+                or 'replacement_notice' in result):
+            raise ValueError('unexpected 109 expected preview')
+        if result['outcome'] == 'planned':
+            result['replacement_notice'] = PLAN2_NOTICE
+        return result
+    module.expected_preview = expected_preview
+
+
 def check_known_drift():
-    """130 случаев с точечными ожиданиями; пути 105/107/109 адаптированы в памяти."""
+    """130 случаев: пути 105/107/109 и эталон формата 109 адаптированы в памяти."""
     import importlib.util
     import platform
     out, count = [], 0
@@ -575,7 +612,7 @@ def check_known_drift():
                            f'исчезли={sorted(set(KNOWN_DRIFT[iteration]) - observed_drift)}')
         except Exception as error:
             out.append(f'И-{iteration}: сбой аудита {type(error).__name__}: {error}')
-    return {'name': 'текущие ожидания случаев 105/107/108/109 (пути 105/107/109 адаптированы в памяти)',
+    return {'name': 'текущие ожидания 105/107/108/109 (пути и формат плана 109 адаптированы в памяти)',
             'cases': count, 'mismatches': out}
 
 
