@@ -68,11 +68,13 @@ def worker(root):
                             result = session.apply(plan, confirmed_ticket=msg.get('ticket'))
                     else:
                         result = session.apply(plan, confirmed_ticket=msg.get('ticket'))
-                    emit(result)
+                    response = result
                 except StoreError as error:
-                    emit({'outcome': 'error', 'code': error.code})
+                    response = {'outcome': 'error', 'code': error.code}
             finally:
                 os.close(fd)
+            # Ответ после освобождения lock: следующий запрос не гоняется с закрытием fd.
+            emit(response)
         else:
             raise ValueError('invalid study command')
 

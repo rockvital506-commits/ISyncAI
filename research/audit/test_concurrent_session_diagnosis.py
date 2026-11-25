@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Два реальных PlanSession, детерминированная вложенность apply, не стресс-тест."""
+"""Два PlanSession в одном модуле, вложенный apply, не защита между процессами."""
 import hashlib
 import json
 import os
@@ -66,40 +66,27 @@ class ConcurrentSessions(ModePlanBase):
         real_replace = store._replace
         events = []
         def intersect(path, raw, rel, *, expected_metadata):
-            if not events:
-                # A выполнил все проверки и вошёл в _replace; B полностью применяет свой план.
-                self.assertEqual(digest(raw), pa['diff']['after_sha256'])
-                self.assertEqual(self.observed(), before)
-                events.append('A-checked')
-                result_b = b.apply(pb, confirmed_ticket=pb['ticket'])
-                events.append(result_b['outcome'])
-                self.assertEqual(digest(self.files[target_b].read_bytes()), pb['diff']['after_sha256'])
-                registry, journal = self.history(target_b)
-                self.assertIn('B-9', [e['id'] for e in registry['entries']])
-                self.assertEqual([d['entry_id'] for d in journal['decisions']], ['B-9'])
+            # A уже держит общую блокировку и проверила входы.
+            self.assertEqual(digest(raw), pa['diff']['after_sha256'])
+            self.assertEqual(self.observed(), before)
+            with self.assertRaises(StoreError) as error:
+                b.apply(pb, confirmed_ticket=pb['ticket'])
+            self.assertEqual(error.exception.code, 'write_busy')
+            self.assertEqual(self.observed(), before)
+            events.append('B-busy')
             return real_replace(path, raw, rel, expected_metadata=expected_metadata)
         with patch.object(store, '_replace', side_effect=intersect):
             result_a = self.session.apply(pa, confirmed_ticket=pa['ticket'])
-        self.assertEqual(events, ['A-checked', 'applied'])
+        self.assertEqual(events, ['B-busy'])
         self.assertEqual(result_a['outcome'], 'applied')
         after = self.observed(); self.assertEqual(after['L0'], before['L0'])
         self.assertEqual(digest(after[target_a][0]), pa['diff']['after_sha256'])
-        a_registry, a_journal = self.history(target_a)
-        self.assertEqual([d['entry_id'] for d in a_journal['decisions']], ['A-9'])
-        self.assertIn('A-9', [e['id'] for e in a_registry['entries']])
-        if target_a == target_b:
-            # B сообщил applied и ранее имел правильные байты; A стёр запись и решение B.
-            self.assertNotIn('B-9', [e['id'] for e in a_registry['entries']])
-            self.assertNotEqual(digest(after[target_b][0]), pb['diff']['after_sha256'])
-            self.assertEqual(a_registry['revision'], pa['diff']['revision']['to'])
-            self.assertEqual(after['L2' if target_a == 'L1' else 'L1'],
-                             before['L2' if target_a == 'L1' else 'L1'])
-        else:
-            self.assertEqual(digest(after[target_b][0]), pb['diff']['after_sha256'])
-            b_registry, b_journal = self.history(target_b)
-            self.assertIn('B-9', [e['id'] for e in b_registry['entries']])
-            self.assertEqual([d['entry_id'] for d in b_journal['decisions']], ['B-9'])
-            self.assertNotEqual(digest(after[target_b][0]), pa['inputs_sha256'][target_b])
+        registry, journal = self.history(target_a)
+        self.assertEqual([d['entry_id'] for d in journal['decisions']], ['A-9'])
+        self.assertIn('A-9', [e['id'] for e in registry['entries']])
+        self.assertNotIn('B-9', [e['id'] for e in registry['entries']])
+        other = 'L2' if target_a == 'L1' else 'L1'
+        self.assertEqual(after[other], before[other])
         for target in ('L1', 'L2'):
             self.assertEqual(list(self.files[target].parent.glob('.registry-*.tmp')), [])
         self.consumed(self.session, pa); self.consumed(b, pb)

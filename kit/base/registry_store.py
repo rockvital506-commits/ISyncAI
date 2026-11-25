@@ -1,11 +1,13 @@
 """Внутреннее хранилище v2: раздельные корни и согласованные манипуляции L1/L2."""
 from dataclasses import dataclass
 from hashlib import sha256
+from functools import wraps
 import json
 import os
 from pathlib import Path
 import stat
 import tempfile
+import threading
 
 from . import profile_journal, registry_journal, registry_policy, schema_v2
 from .profile_journal import canonical_bytes as _wire
@@ -23,6 +25,21 @@ class Layout:
 # Проверяемая цель L1 первая: алиас её файла диагностируется на выбранном профиле.
 _SUFFIX = {'L1': 'registry.json', 'L0': 'base/registry.json', 'L2': 'project/registry.json'}
 _REPARSE = getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 0)
+
+# Только один экземпляр модуля в одном процессе. Не межпроцессная блокировка.
+_WRITE_LOCK = threading.Lock()
+
+
+def _serialized_write(fn):
+    @wraps(fn)
+    def run(*args, **kwargs):
+        if not _WRITE_LOCK.acquire(blocking=False):
+            raise StoreError('write_busy', 'write')
+        try:
+            return fn(*args, **kwargs)
+        finally:
+            _WRITE_LOCK.release()
+    return run
 
 
 @dataclass(frozen=True)
@@ -357,6 +374,7 @@ def _check_inputs(current, preview):
             raise StoreError('stale_plan', 'inputs/' + area)
 
 
+@_serialized_write
 def _apply_action(layout, preview, *, allow_delete=False):
     """Только после проверки отдельного билета в PlanSession."""
     operation, params = preview.operation, preview.params
@@ -467,6 +485,7 @@ def _replace(registry, raw, rel, *, expected_metadata=None):
         raise StoreError('write_failed', rel) from error
 
 
+@_serialized_write
 def apply_create(layout, plan, *, confirmed_ticket, preview=None):
     """Записать только актуальный план создания L1; вызов не удостоверяет владельца."""
     if type(plan) is not dict:
