@@ -50,21 +50,35 @@ class InitBackend(ui.Backend):
 
 
 def main():
-    argparse.ArgumentParser(description=__doc__).parse_args()
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--inspect',action='store_true',help='только наблюдение сохранённых имён, без восстановления')
+    args=parser.parse_args()
     if not (sys.flags.isolated and sys.flags.no_site and sys.dont_write_bytecode):
         print('Требуется Python -I -S -B.',file=sys.stderr);return 2
     if not (sys.stdin.isatty() and sys.stdout.isatty()):
         print('Требуется интерактивный терминал для ввода и полного показа плана.',file=sys.stderr);return 2
     backend=None;applying=False
     try:
-        print('Только новый workspace: не установка кода и не обновление существующего проекта. '
-              'L0 и план могут содержать секреты.',flush=True)
+        if args.inspect:
+            print('Только наблюдение сохранённых имён, без восстановления. L0 и вывод могут содержать секреты.',flush=True)
+        else:
+            print('Только новый workspace: не установка кода и не обновление существующего проекта. '
+                  'L0 и план могут содержать секреты.',flush=True)
         destination=ui.ask('Абсолютный путь нового workspace: ')
+        staging=ui.ask('Сохранённый из плана абсолютный путь staging: ') if args.inspect else None
         profile=ui.ask('Относительный корень нового профиля: ')
         l0_path=ui.ask('Абсолютный путь доверенного файла L0: ')
         pin=ui.ask('Отдельно удостоверенный SHA-256 L0: ')
         text=_read_l0(l0_path,pin)
         backend=InitBackend()
+        if args.inspect:
+            result=backend.request({'type':'inspect_atomic','destination':destination,'staging':staging,
+                                    'profile_root':profile,'l0_utf8':text,'system_pin':pin})
+            ui.display(result)
+            if result.get('outcome') != 'observation_only': return 1
+            print('Только наблюдение: не доказывает происхождение, согласие или сохранность; '
+                  'ничего не повторяйте и не удаляйте автоматически.',flush=True)
+            return 0
         plan=backend.request({'type':'plan_atomic','destination':destination,'profile_root':profile,
                               'l0_utf8':text,'system_pin':pin})
         ui.display(plan)

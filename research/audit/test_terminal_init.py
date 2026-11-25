@@ -16,6 +16,8 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT),str(ROOT/'research/audit')]
 import test_terminal_session as helpers
 import test_atomic_init as atomic_tests
+import core_audit as audit
+from kit.atomic_init import AtomicInitializationSession
 from kit.guard import guard
 from kit.base.registry_store import Layout
 
@@ -41,12 +43,17 @@ class TerminalInitTests(unittest.TestCase):
 
     def command(self):return [sys.executable,'-I','-S','-B',str(ROOT/'kit/terminal_init.py')]
 
-    def start(self,path=None,pin=None):
+    def start(self,path=None,pin=None,*,inspect=False,staging=None):
         master,slave=pty.openpty();attrs=termios.tcgetattr(slave);attrs[3]&=~termios.ECHO;termios.tcsetattr(slave,termios.TCSANOW,attrs)
-        try:proc=subprocess.Popen(self.command(),stdin=slave,stdout=slave,stderr=slave,close_fds=True)
+        command=self.command()+(['--inspect'] if inspect else [])
+        try:proc=subprocess.Popen(command,stdin=slave,stdout=slave,stderr=slave,close_fds=True)
         finally:os.close(slave)
         self.procs.append((proc,master));self.until(master,'Абсолютный путь нового workspace: ')
-        self.send(master,str(self.dest));self.until(master,'Относительный корень нового профиля: ')
+        self.send(master,str(self.dest))
+        if inspect:
+            self.until(master,'Сохранённый из плана абсолютный путь staging: ')
+            self.send(master,str(staging or self.root/('.domain-init-'+'a'*32)))
+        self.until(master,'Относительный корень нового профиля: ')
         self.send(master,'profiles/pilot');self.until(master,'Абсолютный путь доверенного файла L0: ')
         self.send(master,str(path or self.l0));self.until(master,'Отдельно удостоверенный SHA-256 L0: ')
         self.send(master,self.pin if pin is None else pin);return proc,master
@@ -78,6 +85,31 @@ class TerminalInitTests(unittest.TestCase):
         sentinel.unlink();self.dest.rmdir()
         p,fd=self.start();self.until(fd,'иной ответ отменяет: ');os.write(fd,b'\x04')
         self.assertEqual(p.wait(timeout=20),0);self.assertFalse(self.dest.exists())
+
+    def test_inspect_absent_partial_and_published_without_mutation(self):
+        stage=self.root/('.domain-init-'+'a'*32)
+        before=audit.tree_digest(self.root)
+        p,fd=self.start(inspect=True,staging=stage);out=self.until(fd,'ничего не повторяйте и не удаляйте автоматически.')
+        self.assertIn('"destination_state": "absent"',out);self.assertIn('"staging_state": "absent"',out)
+        self.assertEqual(p.wait(timeout=20),0);self.assertEqual(before,audit.tree_digest(self.root))
+        stage.mkdir(mode=0o700);(stage/'incomplete').write_bytes(b'keep')
+        before=audit.tree_digest(self.root)
+        p,fd=self.start(inspect=True,staging=stage);out=self.until(fd,'ничего не повторяйте и не удаляйте автоматически.')
+        self.assertIn('"staging_state": "different"',out);self.assertEqual(p.wait(timeout=20),0)
+        self.assertEqual(before,audit.tree_digest(self.root))
+        session=AtomicInitializationSession(self.dest,profile_root='profiles/pilot',l0_bytes=self.l0.read_bytes(),system_pin=self.pin)
+        plan=session.plan();session.apply(plan,confirmed_ticket=plan['ticket'])
+        before=audit.tree_digest(self.root)
+        p,fd=self.start(inspect=True,staging=stage);out=self.until(fd,'ничего не повторяйте и не удаляйте автоматически.')
+        self.assertIn('"destination_state": "matches_observation"',out);self.assertIn('"staging_state": "different"',out)
+        self.assertEqual(p.wait(timeout=20),0);self.assertEqual(before,audit.tree_digest(self.root))
+
+    def test_inspect_invalid_staging_and_wrong_pin_do_not_write(self):
+        before=audit.tree_digest(self.root)
+        p,fd=self.start(inspect=True,staging=self.root/'bad-stage');out=self.until(fd,'inspection_paths_invalid')
+        self.assertIn('inspection_paths_invalid',out);self.assertEqual(p.wait(timeout=20),1)
+        p,fd=self.start(inspect=True,pin='0'*64);self.until(fd,'l0_pin_mismatch')
+        self.assertEqual(p.wait(timeout=20),1);self.assertEqual(before,audit.tree_digest(self.root))
 
     def test_non_tty_and_apply_failure_unknown_without_retry(self):
         result=subprocess.run(self.command(),input='',capture_output=True,text=True,timeout=20)

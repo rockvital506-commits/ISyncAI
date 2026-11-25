@@ -5908,7 +5908,7 @@
     {
       "area": "audit",
       "hits": {
-        "kit_import": 2
+        "kit_import": 3
       },
       "path": "research/audit/test_terminal_init.py"
     },
