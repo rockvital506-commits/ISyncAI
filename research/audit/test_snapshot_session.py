@@ -43,8 +43,8 @@ class SnapshotTests(unittest.TestCase):
         self.profile = self.workspace/'profiles/pilot/registry.json'
         self.marker = self.root/'untrusted-code-executed'
 
-    def args(self, *, manifest_pin=None, system_pin=None, flags=('-I','-S','-B')):
-        return [sys.executable, *flags, str(RUNNER), '--candidate-root', str(self.candidate),
+    def args(self, *, manifest_pin=None, system_pin=None, flags=('-I','-S','-B'), runner=RUNNER):
+        return [sys.executable, *flags, str(runner), '--candidate-root', str(self.candidate),
                 '--workspace', str(self.workspace), '--profile-root', 'profiles/pilot', '--profile-id', 'Pilot',
                 '--manifest-pin', self.manifest_pin if manifest_pin is None else manifest_pin,
                 '--system-pin', self.system_pin if system_pin is None else system_pin]
@@ -230,6 +230,117 @@ class SnapshotTests(unittest.TestCase):
         index = args.index('--candidate-root') + 1
         args[index] = 'relative-candidate'
         self.assertEqual(self.check_refusal(args), 'candidate_root_invalid')
+
+    def test_overlapping_source_workspace_and_trusted_directories_refused(self):
+        # До загрузки кандидата: совпадение и вложенность в обоих направлениях для каждой пары.
+        pairs = ((0, 1), (0, 2), (1, 2))
+        for pair in pairs:
+            for relation in ('equal', 'first_inside', 'second_inside'):
+                with self.subTest(pair=pair, relation=relation):
+                    sandbox = self.root/('case-%s-%s-%s' % (*pair, relation)); sandbox.mkdir()
+                    paths = [sandbox/'source', sandbox/'work', sandbox/'trusted']
+                    a, b = pair
+                    if relation == 'equal':
+                        paths[b] = paths[a]
+                    elif relation == 'first_inside':
+                        paths[a] = paths[b]/'nested'
+                    else:
+                        paths[b] = paths[a]/'nested'
+                    for path in paths:
+                        path.mkdir(parents=True, exist_ok=True)
+                    for name in ('snapshot_session.py', 'verify_candidate.py'):
+                        shutil.copyfile(ROOT/'kit'/name, paths[2]/name)
+                    before = audit.tree_digest(sandbox)
+                    cmd = [sys.executable, '-I', '-S', '-B', str(paths[2]/'snapshot_session.py'),
+                           '--candidate-root', str(paths[0]), '--workspace', str(paths[1]),
+                           '--profile-root', 'profiles/pilot', '--profile-id', 'Pilot',
+                           '--manifest-pin', self.manifest_pin, '--system-pin', self.system_pin]
+                    result = subprocess.run(cmd, input='{"type":"bootstrap"}\n', capture_output=True,
+                                            text=True, timeout=30)
+                    self.assertEqual(result.returncode, 1, result.stderr)
+                    self.assertEqual(result.stdout, '')
+                    self.assertEqual(json.loads(result.stderr)['reason'], 'roots_overlap')
+                    self.assertEqual(audit.tree_digest(sandbox), before)
+
+    def test_aliases_are_resolved_for_overlap_and_disjoint_paths(self):
+        alias = self.root/'alias'
+        try:
+            alias.symlink_to(self.candidate, target_is_directory=True)
+        except OSError as exc:
+            self.skipTest('символические ссылки недоступны: '+str(exc))
+        args = self.args()
+        args[args.index('--workspace') + 1] = str(alias)
+        self.assertEqual(self.check_refusal(args), 'roots_overlap')
+        alias.unlink(); alias.symlink_to(self.candidate/'kit', target_is_directory=True)
+        self.assertEqual(self.check_refusal(args), 'roots_overlap')
+        alias.unlink(); alias.symlink_to(self.candidate, target_is_directory=True)
+        self.candidate = alias
+        proc, lines = self.launch()
+        self.assertEqual(self.send(proc, lines, {'type':'bootstrap'})['outcome'], 'bootstrap')
+
+    def test_similar_path_prefixes_are_not_nested(self):
+        sibling = self.root/'candidate-other'
+        shutil.copytree(self.workspace, sibling)
+        self.workspace = sibling
+        proc, lines = self.launch()
+        self.assertEqual(self.send(proc, lines, {'type':'bootstrap'})['outcome'], 'bootstrap')
+
+    def test_root_alias_drift_revokes_pending_plan(self):
+        for which in ('candidate', 'workspace'):
+            with self.subTest(root=which):
+                original = getattr(self, which)
+                alias = self.root/(which+'-link')
+                try:
+                    alias.symlink_to(original, target_is_directory=True)
+                except OSError as exc:
+                    self.skipTest('символические ссылки недоступны: '+str(exc))
+                setattr(self, which, alias)
+                proc, lines = self.launch()
+                plan = self.send(proc, lines, self.request())
+                self.assertEqual(plan['outcome'], 'planned')
+                before = audit.tree_digest(self.root/'workspace')
+                other = self.root/(which+'-other'); other.mkdir()
+                alias.unlink(); alias.symlink_to(other, target_is_directory=True)
+                denied = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+                self.assertEqual(denied, {'outcome':'error', 'code':'runtime_preflight_failed'})
+                self.assertEqual(audit.tree_digest(self.root/'workspace'), before)
+                alias.unlink(); alias.symlink_to(original, target_is_directory=True)
+                stale = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+                self.assertEqual(stale['diagnostic']['code'], 'ticket_unknown')
+                self.assertEqual(audit.tree_digest(self.root/'workspace'), before)
+                setattr(self, which, original)
+                proc.kill(); proc.wait(timeout=15)
+
+    def test_trusted_path_alias_drift_revokes_pending_plan(self):
+        for directory in (self.root/'trusted-a', self.root/'trusted-b'):
+            directory.mkdir()
+            for name in ('snapshot_session.py', 'verify_candidate.py'):
+                shutil.copyfile(ROOT/'kit'/name, directory/name)
+        alias = self.root/'trusted-link'
+        try:
+            alias.symlink_to(self.root/'trusted-a', target_is_directory=True)
+        except OSError as exc:
+            self.skipTest('символические ссылки недоступны: '+str(exc))
+        proc, lines = self.launch(runner=alias/'snapshot_session.py')
+        plan = self.send(proc, lines, self.request())
+        self.assertEqual(plan['outcome'], 'planned')
+        before = audit.tree_digest(self.workspace)
+        alias.unlink(); alias.symlink_to(self.root/'trusted-b', target_is_directory=True)
+        denied = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(denied, {'outcome':'error', 'code':'runtime_preflight_failed'})
+        self.assertEqual(audit.tree_digest(self.workspace), before)
+        alias.unlink(); alias.symlink_to(self.root/'trusted-a', target_is_directory=True)
+        stale = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(stale['diagnostic']['code'], 'ticket_unknown')
+        self.assertEqual(audit.tree_digest(self.workspace), before)
+
+    def test_missing_or_non_directory_roots_refused(self):
+        for root in ('candidate', 'workspace'):
+            for path in (self.root/'missing', self.l0):
+                with self.subTest(root=root, path=path):
+                    args = self.args(); flag = '--candidate-root' if root == 'candidate' else '--workspace'
+                    args[args.index(flag) + 1] = str(path)
+                    self.assertEqual(self.check_refusal(args), 'roots_invalid')
 
     def test_modified_source_rejected_without_executing_it(self):
         file = self.candidate/'kit/base/registry_store.py'

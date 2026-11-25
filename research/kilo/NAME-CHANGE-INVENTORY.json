@@ -5238,7 +5238,7 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 36,
+        "candidate_version": 38,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,

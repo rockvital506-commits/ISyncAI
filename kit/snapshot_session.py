@@ -168,6 +168,26 @@ def _trusted_verifier():
     return module
 
 
+def _roots(candidate, workspace):
+    """Канонические пути: это не обнаружение bind mount и не защита от гонок."""
+    try:
+        source = Path(candidate).resolve(strict=True)
+        work = Path(workspace).resolve(strict=True)
+        trusted = Path(__file__).resolve(strict=True).parent
+        if not all(path.is_dir() for path in (source, work, trusted)):
+            raise SnapshotError('roots_invalid')
+    except (OSError, RuntimeError, TypeError, ValueError) as exc:
+        if isinstance(exc, SnapshotError):
+            raise
+        raise SnapshotError('roots_invalid') from exc
+    paths = (source, work, trusted)
+    for i, a in enumerate(paths):
+        for b in paths[i + 1:]:
+            if a == b or a in b.parents or b in a.parents:
+                raise SnapshotError('roots_overlap')
+    return paths
+
+
 def run(args):
     if not (sys.flags.isolated and sys.flags.no_site and sys.dont_write_bytecode):
         raise SnapshotError('isolated_python_required')
@@ -175,10 +195,13 @@ def run(args):
         raise SnapshotError('pin_required')
     if not args.workspace.is_absolute():
         raise SnapshotError('workspace_invalid')
+    if not args.candidate_root.is_absolute():
+        raise SnapshotError('candidate_root_invalid')
     if any(name == 'kit' or name.startswith('kit.') for name in sys.modules):
         raise SnapshotError('module_namespace_already_loaded')
+    roots = _roots(args.candidate_root, args.workspace)
     verifier = _trusted_verifier()
-    root, sources, start = capture(args.candidate_root, args.manifest_pin, verifier)
+    root, sources, start = capture(roots[0], args.manifest_pin, verifier)
     sys.meta_path.insert(0, SnapshotFinder(sources))
     from kit.guard import guard
     from kit.base.bootstrap import extract_start
@@ -190,9 +213,11 @@ def run(args):
                          start_file_sha256=hashlib.sha256(start['start']).hexdigest())
     except Exception as exc:
         raise SnapshotError('bootstrap_unverified') from exc
-    layout = Layout(args.workspace, args.profile_root)
+    layout = Layout(roots[1], args.profile_root)
 
     def preflight():
+        if _roots(args.candidate_root, args.workspace) != roots:
+            raise SnapshotError('roots_changed')
         _strict_source(root, args.manifest_pin, verifier)
         guard(root, layout, manifest_pin=args.manifest_pin, system_pin=args.system_pin)
 
@@ -200,7 +225,7 @@ def run(args):
         preflight()  # Не читать пользовательские команды, если вход уже неверен.
     except Exception as exc:
         raise SnapshotError('runtime_unverified') from exc
-    sys.argv = ['verified-session', '--workspace', str(args.workspace),
+    sys.argv = ['verified-session', '--workspace', str(roots[1]),
                 '--profile-root', args.profile_root, '--profile-id', args.profile_id]
     return session_cli.main(preflight=preflight, bootstrap=bootstrap)
 

@@ -14,7 +14,7 @@ from kit.verify_candidate import CANDIDATE_VERSION, PRODUCT, verify
 class IdentityTests(unittest.TestCase):
     def test_manifest_identity_and_candidate_are_explicit(self):
         manifest = json.loads((ROOT/'kit/KIT-VERSION.json').read_text(encoding='utf-8'))
-        self.assertEqual((PRODUCT, CANDIDATE_VERSION), ('DomainAgentKit', '0.2.0-mvp.21'))
+        self.assertEqual((PRODUCT, CANDIDATE_VERSION), ('DomainAgentKit', '0.2.0-mvp.22'))
         self.assertEqual((manifest['format'], manifest['product'], manifest['version']),
                          (2, PRODUCT, CANDIDATE_VERSION))
         self.assertEqual(verify(ROOT)['product'], PRODUCT)
