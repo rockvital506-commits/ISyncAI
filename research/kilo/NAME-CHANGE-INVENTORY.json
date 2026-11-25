@@ -345,6 +345,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "kit_import": 2
+      },
+      "path": "kit/init_workspace_cli.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "kit_import": 4
       },
       "path": "kit/kilo_deploy.py"
@@ -5157,6 +5164,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 3,
+        "new_brand": 3,
+        "new_project_path": 3
+      },
+      "path": "research/audit/test_init_workspace_cli.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 5
       },
       "path": "research/audit/test_inprocess_write_lock.py"
@@ -7603,7 +7619,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2023,
+  "scanned_files": 2026,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
