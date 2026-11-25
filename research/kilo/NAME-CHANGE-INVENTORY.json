@@ -4968,6 +4968,15 @@
     {
       "area": "audit",
       "hits": {
+        "candidate_version": 2,
+        "kit_import": 6,
+        "project_path": 4
+      },
+      "path": "research/audit/test_isolated_candidate.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 3,
         "project_path": 2
       },
@@ -5068,6 +5077,13 @@
         "old_brand": 1
       },
       "path": "research/kilo/CATALOG.json"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 1
+      },
+      "path": "research/kilo/ISOLATED-CANDIDATE-AUDIT.md"
     },
     {
       "area": "kilo_docs_and_history",
@@ -7197,7 +7213,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1953,
+  "scanned_files": 1955,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
