@@ -9,6 +9,7 @@ from pathlib import Path
 if __name__ == '__main__':
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from kit.base import schema_v2
+from kit.atomic_init import AtomicInitializationSession
 from kit.init_workspace import InitializationError, InitializationSession, MAX_L0
 
 # План содержит L0, закодированный внутри JSON. Наихудшее экранирование — шесть байтов на
@@ -38,7 +39,7 @@ def main():
             if obj == {'type':'cancel'}:
                 session = None
                 respond({'outcome':'cancelled'})
-            elif obj['type'] == 'plan' and set(obj) == {'type','destination','profile_root','l0_utf8','system_pin'}:
+            elif obj['type'] in ('plan','plan_atomic') and set(obj) == {'type','destination','profile_root','l0_utf8','system_pin'}:
                 session = None
                 if any(type(obj[k]) is not str for k in ('destination','profile_root','l0_utf8','system_pin')):
                     raise ValueError('request')
@@ -47,8 +48,9 @@ def main():
                 raw = obj['l0_utf8'].encode('utf-8')
                 if len(raw) > MAX_L0:
                     raise InitializationError('system_invalid')
-                session = InitializationSession(obj['destination'], profile_root=obj['profile_root'],
-                                                l0_bytes=raw, system_pin=obj['system_pin'])
+                factory = AtomicInitializationSession if obj['type'] == 'plan_atomic' else InitializationSession
+                session = factory(obj['destination'], profile_root=obj['profile_root'],
+                                  l0_bytes=raw, system_pin=obj['system_pin'])
                 try:
                     plan = session.plan()
                 except InitializationError:

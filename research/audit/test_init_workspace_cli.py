@@ -123,6 +123,20 @@ class CliInitializationTests(unittest.TestCase):
         self.assertEqual(self.request(self.command())['code'],'destination_occupied')
         self.assertEqual(sentinel.read_bytes(),b'preserve')
 
+    def test_atomic_cli_plan_confirm_and_publish(self):
+        from kit import atomic_init
+        try:atomic_init._rename_function()
+        except init.InitializationError:self.skipTest('Linux renameat2 API unavailable; not_run')
+        request=dict(self.command(),type='plan_atomic')
+        plan=self.request(request);self.assertEqual(plan['outcome'],'planned')
+        stage=Path(plan['staging']['destination']);self.assertFalse(stage.exists());self.assertFalse(self.dest.exists())
+        self.assertEqual(self.apply(plan,'')['code'],'confirmation_required')
+        self.assertFalse(self.dest.exists());result=self.apply(plan)
+        self.assertEqual(result['outcome'],'published_unverified_origin');self.assertFalse(stage.exists())
+        for row in plan['staging']['files']:
+            self.assertEqual((self.dest/row['path']).read_bytes(),row['content_utf8'].encode())
+        self.assertEqual(self.apply(plan)['code'],'ticket_unknown');self.assertEqual(self.marker.read_bytes(),b'synthetic')
+
     def test_two_processes_cannot_both_reserve_same_destination(self):
         peer2=self.spawn([sys.executable,'-I','-S','-B',str(ROOT/'kit/init_workspace_cli.py')])
         a=self.request(self.command());b=self.request(self.command(),peer2)
