@@ -5083,6 +5083,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 2,
+        "new_brand": 3,
+        "new_project_path": 3
+      },
+      "path": "research/audit/test_init_failure_rehearsal.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 1,
         "new_brand": 5,
         "new_project_path": 5
@@ -5264,7 +5273,7 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 44,
+        "candidate_version": 46,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,
@@ -7400,7 +7409,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1977,
+  "scanned_files": 1978,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
