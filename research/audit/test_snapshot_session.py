@@ -103,6 +103,21 @@ class SnapshotTests(unittest.TestCase):
         manifest.write_text(json.dumps(doc, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
         self.manifest_pin = digest(manifest)
 
+    def test_context_modes_use_pinned_module_and_revoke_pending(self):
+        self.l0.write_bytes((ROOT/'kit/SYSTEM-L0.json').read_bytes());self.system_pin=digest(self.l0)
+        before=audit.tree_digest(self.workspace);proc,lines=self.launch()
+        plan=self.send(proc,lines,self.request());self.assertEqual(plan['outcome'],'planned')
+        choices={'include':[{'area':'L1','id':'C-1'},{'area':'L2','id':'P-1'}],'exclude':[]}
+        request={'type':'context','mode':'project','scope':'docs/file','choices':choices}
+        project=self.send(proc,lines,request);self.assertEqual(project['outcome'],'review_required')
+        request['mode']='kit';kit=self.send(proc,lines,request);self.assertEqual(kit['outcome'],'review_required')
+        ids=lambda result:{r['entry']['id'] for r in result['entries'] if r['area']=='L0'}
+        self.assertIn('SYS-PROJECT-MODE',ids(project));self.assertNotIn('SYS-KIT-MODE',ids(project))
+        self.assertIn('SYS-KIT-MODE',ids(kit));self.assertNotIn('SYS-PROJECT-MODE',ids(kit))
+        denied=self.send(proc,lines,{'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']})
+        self.assertEqual(denied['diagnostic']['code'],'ticket_unknown')
+        self.assertEqual(before,audit.tree_digest(self.workspace))
+
     def test_applicable_uses_pinned_module_and_revokes_pending(self):
         before=audit.tree_digest(self.workspace);proc,lines=self.launch()
         plan=self.send(proc,lines,self.request());self.assertEqual(plan['outcome'],'planned')

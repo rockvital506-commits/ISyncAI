@@ -10,7 +10,7 @@ from pathlib import Path
 # Для прямого запуска -I; при импорте проверенным загрузчиком не расширяем sys.path.
 if __name__ == '__main__':
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from kit.base import applicability, schema_v2
+from kit.base import applicability, context_modes, schema_v2
 from kit.base.operation_card import compile_prompt
 from kit.base.operation_plan import PlanSession
 from kit.base.registry_store import Layout, StoreError
@@ -72,6 +72,11 @@ def main(*, preflight=None, bootstrap=None):
                 # Любой новый запрос к данным отзывает ожидающий план перед чтением.
                 session.cancel()
                 respond(applicability.applicable(Layout(args.workspace, args.profile_root), scope=data['scope']))
+            elif (mode == 'context' and set(data) == {'type', 'mode', 'scope', 'choices'}
+                  and type(data['mode']) is str and type(data['scope']) is str and type(data['choices']) is dict):
+                session.cancel()
+                respond(context_modes.prepare(Layout(args.workspace, args.profile_root), mode=data['mode'],
+                                               scope=data['scope'], choices=data['choices']))
             elif mode == 'cancel' and set(data) == {'type'}:
                 session.cancel()
                 respond({'outcome': 'cancelled'})

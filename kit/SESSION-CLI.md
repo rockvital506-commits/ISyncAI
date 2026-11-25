@@ -15,6 +15,10 @@ python3 -B kit/session_cli.py --workspace /absolute/workspace --profile-root pro
 {"type":"plan","request":"Покажи правила в профиле Pilot."}
 ```
 
+Для опытного явного выбора `project`/`kit` предусмотрен запрос `context`; все решения
+и ограничения описаны в [CONTEXT-MODES.md](base/CONTEXT-MODES.md). Результат требует
+смыслового ревью и не доставляется агенту автоматически. Запрос отзывает ожидающий план.
+
 Для структурного отчёта по одному явно указанному пути можно отправить
 `{"type":"applicable","scope":"docs/readme.md"}`; он отзывает ожидающий план и не пишет.
 Подробные границы фильтра, конфликты и ограничения — [APPLICABILITY.md](base/APPLICABILITY.md).

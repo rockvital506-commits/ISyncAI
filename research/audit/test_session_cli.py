@@ -52,6 +52,17 @@ class SessionTests(unittest.TestCase):
     def apply_msg(self, plan, token=None):
         return {'type':'apply','plan':plan,'confirmed_ticket':plan['ticket'] if token is None else token}
 
+    def test_context_modes_read_and_cancel_pending(self):
+        l0=self.root/'kit/base/registry.json';l0.write_bytes((ROOT/'kit/SYSTEM-L0.json').read_bytes())
+        p=self.process();before=a.tree_digest(self.root);plan=self.plan(p)
+        choices={'include':[{'area':'L1','id':'C-1'},{'area':'L2','id':'P-1'}], 'exclude':[]}
+        result=self.send(p,{'type':'context','mode':'project','scope':'docs/a','choices':choices})
+        self.assertEqual(result['outcome'],'review_required')
+        ids={row['entry']['id'] for row in result['entries'] if row['area']=='L0'}
+        self.assertIn('SYS-PROJECT-MODE',ids);self.assertNotIn('SYS-KIT-MODE',ids)
+        self.assertEqual(self.send(p,self.apply_msg(plan))['diagnostic']['code'],'ticket_unknown')
+        self.assertEqual(before,a.tree_digest(self.root))
+
     def test_applicable_read_revokes_pending_and_does_not_write(self):
         p=self.process();before=a.tree_digest(self.root);plan=self.plan(p)
         result=self.send(p,{'type':'applicable','scope':'docs/readme.md'})
