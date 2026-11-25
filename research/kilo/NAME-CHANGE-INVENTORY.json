@@ -387,7 +387,7 @@
     {
       "area": "candidate_kit",
       "hits": {
-        "kit_import": 3
+        "kit_import": 4
       },
       "path": "kit/snapshot_session.py"
     },
@@ -5211,7 +5211,7 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 23,
+        "candidate_version": 25,
         "donor_version": 3,
         "new_brand": 7,
         "new_project_path": 1,

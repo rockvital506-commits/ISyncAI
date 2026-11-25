@@ -135,6 +135,11 @@ def main(number):
         sys.modules['test_promotion'] = load(114)
     module = load(number)
     if number == 115:
+        # Текущий раздел изменён намеренно; исторический фиксированный размер остаётся
+        # в неизменённом тесте. Адаптируем явный размер, не вычисляя его из результата.
+        if (module.ENTRY_BYTES, module.SECTION_BYTES) != (20, 2363):
+            raise ValueError('unexpected historical 115 section size')
+        module.SECTION_BYTES = 2861
         module.json = JsonProxy(core_audit.translated_paths)
     elif number == 116:
         get = module.get

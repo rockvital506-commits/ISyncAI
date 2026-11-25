@@ -84,6 +84,91 @@ class SnapshotTests(unittest.TestCase):
         self.assertFalse(self.marker.exists())
         return json.loads(result.stderr)['reason']
 
+    def repin_document(self, rel, data):
+        (self.candidate/rel).write_bytes(data)
+        manifest = self.candidate/'kit/KIT-VERSION.json'
+        doc = json.loads(manifest.read_text(encoding='utf-8'))
+        doc['files'][rel] = hashlib.sha256(data).hexdigest()
+        manifest.write_text(json.dumps(doc, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+        self.manifest_pin = digest(manifest)
+
+    def test_start_is_pinned_minimal_and_not_workspace_input(self):
+        entry = self.candidate/'kit/base/entry.txt'
+        start = self.candidate/'kit/base/START.md'
+        for name in ('entry.txt', 'START.md'):
+            (self.workspace/'kit/base'/name).write_text('UNTRUSTED-WORKSPACE-INPUT', encoding='utf-8')
+        before = audit.tree_digest(self.workspace)
+        proc, lines = self.launch()
+        result = self.send(proc, lines, {'type':'bootstrap'})
+        self.assertEqual(result['outcome'], 'bootstrap')
+        self.assertEqual(result['manifest_sha256'], self.manifest_pin)
+        self.assertEqual(result['start_file_sha256'], digest(start))
+        section = result['section0'].encode('utf-8')
+        self.assertTrue(start.read_bytes().startswith(section))
+        self.assertTrue(section.endswith(b'<!-- /bootstrap-0 -->\n'))
+        self.assertNotIn('## 1.', result['section0'])
+        self.assertNotIn('UNTRUSTED-WORKSPACE-INPUT', result['section0'])
+        self.assertEqual(result['inputs'], [
+            {'file':'kit/base/entry.txt', 'bytes':len(entry.read_bytes()), 'sha256':digest(entry)},
+            {'file':'kit/base/START.md', 'bytes':len(section), 'sha256':hashlib.sha256(section).hexdigest()}])
+        self.assertEqual(audit.tree_digest(self.workspace), before)
+        self.assertEqual(self.send(proc, lines, {'type':'bootstrap', 'extra':True})['code'], 'invalid_request')
+        direct = subprocess.run([sys.executable, '-I', '-S', '-B', str(ROOT/'kit/session_cli.py'),
+            '--workspace', str(self.workspace), '--profile-root', 'profiles/pilot', '--profile-id', 'Pilot'],
+            input='{"type":"bootstrap"}\n', capture_output=True, text=True, timeout=30)
+        self.assertEqual(direct.returncode, 0, direct.stderr)
+        self.assertEqual(json.loads(direct.stdout)['code'], 'invalid_request')
+
+    def test_start_missing_and_link_rejected(self):
+        path = self.candidate/'kit/base/entry.txt'; original = path.read_bytes()
+        path.unlink()
+        self.assertEqual(self.check_refusal(), 'candidate_unverified')
+        try:
+            path.symlink_to(ROOT/'kit/base/entry.txt')
+        except OSError as exc:
+            self.skipTest('символические ссылки недоступны: '+str(exc))
+        self.assertEqual(self.check_refusal(), 'candidate_unverified')
+        path.unlink(); path.write_bytes(original)
+
+    def test_changed_start_revokes_plan_and_refuses_bootstrap(self):
+        proc, lines = self.launch()
+        source = self.candidate/'kit/base/START.md'; original = source.read_bytes()
+        plan = self.send(proc, lines, self.request())
+        self.assertEqual(plan['outcome'], 'planned')
+        source.write_bytes(original + b'\nmutation\n')
+        self.assertEqual(self.send(proc, lines, {'type':'bootstrap'}),
+                         {'outcome':'error','code':'runtime_preflight_failed'})
+        source.write_bytes(original)
+        result = self.send(proc, lines, {'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']})
+        self.assertEqual(result['diagnostic']['code'], 'ticket_unknown')
+
+    def test_start_invalid_or_unpinned_refuses(self):
+        for rel in ('kit/base/entry.txt', 'kit/base/START.md'):
+            path = self.candidate/rel; old = path.read_bytes()
+            path.write_bytes(old + b'mutation')
+            self.assertEqual(self.check_refusal(), 'candidate_unverified')
+            path.write_bytes(old)
+        self.repin_document('kit/base/entry.txt', b'wrong\n')
+        self.assertEqual(self.check_refusal(), 'bootstrap_unverified')
+        self.repin_document('kit/base/entry.txt', b'kit/base/START.md#0\n')
+        for data in (b'## 0. Title\n\n<!-- /bootstrap-0 -->\n',
+                     b'## 0. Title\nbody\n## 1. Next\n<!-- /bootstrap-0 -->\n',
+                     b'## 0. Title\n'+b'x'*4100+b'\n<!-- /bootstrap-0 -->\n',
+                     b'## 0. Title\n\xff\n<!-- /bootstrap-0 -->\n'):
+            self.repin_document('kit/base/START.md', data)
+            self.assertEqual(self.check_refusal(), 'bootstrap_unverified')
+        self.repin_document('kit/base/START.md', b'x' * (2_097_152 + 1))
+        self.assertEqual(self.check_refusal(), 'source_file_invalid')
+
+    def test_crlf_start_and_pointer(self):
+        self.repin_document('kit/base/entry.txt', b'kit/base/START.md#0\r\n')
+        data = b'## 0. Title\r\nbody\r\n<!-- /bootstrap-0 -->\r\n## 1. hidden\r\n'
+        self.repin_document('kit/base/START.md', data)
+        proc, lines = self.launch()
+        result = self.send(proc, lines, {'type':'bootstrap'})
+        self.assertEqual(result['section0'], '## 0. Title\r\nbody\r\n<!-- /bootstrap-0 -->\r\n')
+        self.assertEqual(result['start_file_sha256'], hashlib.sha256(data).hexdigest())
+
     def test_verified_plan_and_explicit_apply(self):
         proc, lines = self.launch()
         before = self.profile.read_bytes()
@@ -203,7 +288,7 @@ from pathlib import Path
 runner, root, pin, marker = sys.argv[1:]
 spec=importlib.util.spec_from_file_location('trusted_loader',runner)
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
-root,sources=m.capture(Path(root),pin,m._trusted_verifier())
+root,sources,start=m.capture(Path(root),pin,m._trusted_verifier())
 path=root/'kit/base/registry_policy.py'
 path.write_bytes(path.read_bytes()+b'\nfrom pathlib import Path\nPath('+repr(marker).encode()+b').touch()\n')
 (root/'kit/unexpected.py').write_text('raise AssertionError("unexpected fallback")\n')

@@ -23,7 +23,7 @@ def respond(data):
     sys.stdout.flush()
 
 
-def main(*, preflight=None):
+def main(*, preflight=None, bootstrap=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--workspace', type=Path, required=True)
     parser.add_argument('--profile-root', required=True)
@@ -56,7 +56,9 @@ def main(*, preflight=None):
             if type(data) is not dict or type(data.get('type')) is not str:
                 raise ValueError('request')
             mode = data['type']
-            if mode == 'plan' and set(data) == {'type', 'request'} and type(data['request']) is str:
+            if mode == 'bootstrap' and set(data) == {'type'} and bootstrap is not None:
+                respond(bootstrap)
+            elif mode == 'plan' and set(data) == {'type', 'request'} and type(data['request']) is str:
                 plan = session.plan(compile_prompt(data['request']))
                 respond(plan)
             elif (mode == 'apply' and set(data) in ({'type', 'plan', 'confirmed_ticket'},

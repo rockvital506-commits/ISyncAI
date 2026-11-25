@@ -27,7 +27,9 @@ MODULES = {
     'kit.base.registry_store': 'kit/base/registry_store.py',
     'kit.base.operation_card': 'kit/base/operation_card.py',
     'kit.base.operation_plan': 'kit/base/operation_plan.py',
+    'kit.base.bootstrap': 'kit/base/bootstrap.py',
 }
+START_FILES = {'entry': 'kit/base/entry.txt', 'start': 'kit/base/START.md'}
 
 
 class SnapshotError(ValueError):
@@ -71,16 +73,17 @@ def capture(candidate_root, manifest_pin, verifier):
         if hashlib.sha256(raw).hexdigest() != manifest_pin:
             raise SnapshotError('candidate_unverified')
         doc = json.loads(raw.decode('utf-8'), object_pairs_hook=verifier.no_duplicates)
-        sources = {}
-        for name, path in MODULES.items():
+        def read_pinned(path):
             expected = doc['files'].get(path)
             if type(expected) is not str or HEX.fullmatch(expected) is None:
                 raise SnapshotError('candidate_unverified')
             content = _read_regular(root / path)
             if hashlib.sha256(content).hexdigest() != expected:
                 raise SnapshotError('candidate_unverified')
-            sources[name] = content
-        return root, sources
+            return content
+        sources = {name: read_pinned(path) for name, path in MODULES.items()}
+        start = {name: read_pinned(path) for name, path in START_FILES.items()}
+        return root, sources, start
     except SnapshotError:
         raise
     except (verifier.VerificationError, OSError, TypeError, ValueError, KeyError, UnicodeError, RecursionError) as exc:
@@ -140,11 +143,18 @@ def run(args):
         raise SnapshotError('workspace_invalid')
     if any(name == 'kit' or name.startswith('kit.') for name in sys.modules):
         raise SnapshotError('module_namespace_already_loaded')
-    root, sources = capture(args.candidate_root, args.manifest_pin, _trusted_verifier())
+    root, sources, start = capture(args.candidate_root, args.manifest_pin, _trusted_verifier())
     sys.meta_path.insert(0, SnapshotFinder(sources))
     from kit.guard import guard
+    from kit.base.bootstrap import extract_start
     from kit.base.registry_store import Layout
     from kit import session_cli
+    try:
+        bootstrap = extract_start(start['entry'], start['start'])
+        bootstrap.update(outcome='bootstrap', manifest_sha256=args.manifest_pin,
+                         start_file_sha256=hashlib.sha256(start['start']).hexdigest())
+    except Exception as exc:
+        raise SnapshotError('bootstrap_unverified') from exc
     layout = Layout(args.workspace, args.profile_root)
 
     def preflight():
@@ -156,7 +166,7 @@ def run(args):
         raise SnapshotError('runtime_unverified') from exc
     sys.argv = ['verified-session', '--workspace', str(args.workspace),
                 '--profile-root', args.profile_root, '--profile-id', args.profile_id]
-    return session_cli.main(preflight=preflight)
+    return session_cli.main(preflight=preflight, bootstrap=bootstrap)
 
 
 def main():

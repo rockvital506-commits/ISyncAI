@@ -1,6 +1,7 @@
 """Явный короткий вход к PlanSession на уже подготовленной раскладке v2."""
 from contextlib import contextmanager
 from hashlib import sha256
+from io import BytesIO
 
 from . import operation_card, operation_plan, registry_store
 from .registry_policy import StoreError
@@ -29,38 +30,55 @@ def _input(workspace, rel):
         raise StoreError('io_error', rel) from error
 
 
-def _read_entry(workspace):
-    with _input(workspace, _ENTRY) as stream:
-        raw = stream.read(len(_POINTER) + 3)  # Максимальный CRLF и ещё байт для проверки хвоста.
+def _entry_stream(stream):
+    raw = stream.read(len(_POINTER) + 3)  # Максимальный CRLF и ещё байт для проверки хвоста.
     if raw not in _line_forms(_POINTER):
         raise StoreError('invalid_entrypoint', _ENTRY)
     return raw
 
 
+def _section_stream(stream):
+    head = stream.readline(_SECTION_LIMIT)
+    if not (head.startswith(_HEADING) and head.endswith(b'\n') and head[len(_HEADING):].strip()):
+        raise StoreError('invalid_start_section', _START)
+    raw, body = bytearray(head), False
+    while len(raw) < _SECTION_LIMIT:
+        line = stream.readline(_SECTION_LIMIT - len(raw))
+        if not line.endswith(b'\n') or line.startswith(b'## '):
+            break
+        raw.extend(line)
+        if line in _line_forms(_END):
+            if not body:
+                break
+            try:
+                return bytes(raw), raw.decode('utf-8')
+            except UnicodeDecodeError as error:
+                raise StoreError('invalid_start_section', _START) from error
+        body = body or bool(line.strip())
+    raise StoreError('invalid_start_section', _START)
+
+
+def _read_entry(workspace):
+    with _input(workspace, _ENTRY) as stream:
+        return _entry_stream(stream)
+
+
 def _read_section(workspace):
     with _input(workspace, _START) as stream:
-        head = stream.readline(_SECTION_LIMIT)
-        if not (head.startswith(_HEADING) and head.endswith(b'\n') and head[len(_HEADING):].strip()):
-            raise StoreError('invalid_start_section', _START)
-        raw, body = bytearray(head), False
-        while len(raw) < _SECTION_LIMIT:
-            line = stream.readline(_SECTION_LIMIT - len(raw))
-            if not line.endswith(b'\n') or line.startswith(b'## '):
-                break
-            raw.extend(line)
-            if line in _line_forms(_END):
-                if not body:
-                    break
-                try:
-                    return bytes(raw), raw.decode('utf-8')
-                except UnicodeDecodeError as error:
-                    raise StoreError('invalid_start_section', _START) from error
-            body = body or bool(line.strip())
-    raise StoreError('invalid_start_section', _START)
+        return _section_stream(stream)
 
 
 def _read_fact(rel, raw):
     return {'file': rel, 'bytes': len(raw), 'sha256': sha256(raw).hexdigest()}
+
+
+def extract_start(entry_bytes, start_bytes):
+    """Разобрать явно переданные байты без I/O; вызывающий отвечает за их доверие."""
+    if type(entry_bytes) is not bytes or type(start_bytes) is not bytes:
+        raise StoreError('invalid_entrypoint', _ENTRY)
+    entry = _entry_stream(BytesIO(entry_bytes))
+    section, text = _section_stream(BytesIO(start_bytes))
+    return {'section0': text, 'inputs': [_read_fact(_ENTRY, entry), _read_fact(_START, section)]}
 
 
 class BootstrapSession:
