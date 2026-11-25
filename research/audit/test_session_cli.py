@@ -52,6 +52,16 @@ class SessionTests(unittest.TestCase):
     def apply_msg(self, plan, token=None):
         return {'type':'apply','plan':plan,'confirmed_ticket':plan['ticket'] if token is None else token}
 
+    def test_pending_move_blocks_preplanned_apply_and_reads(self):
+        p=self.process();plan=self.plan(p)
+        marker=self.root/'.domain-agent-kit/.move-pending';marker.write_bytes(b'synthetic pending')
+        before=a.tree_digest(self.root)
+        self.assertEqual(self.send(p,self.apply_msg(plan))['diagnostic']['code'],'move_pending')
+        self.assertEqual(self.send(p,{'type':'applicable','scope':'docs/a'})['diagnostic']['code'],'move_pending')
+        self.assertEqual(before,a.tree_digest(self.root));self.assertEqual(marker.read_bytes(),b'synthetic pending')
+        marker.unlink()  # Только тестовая фикстура, не восстановление.
+        self.assertEqual(self.send(p,self.apply_msg(plan))['diagnostic']['code'],'ticket_unknown')
+
     def test_context_modes_read_and_cancel_pending(self):
         l0=self.root/'kit/base/registry.json';l0.write_bytes((ROOT/'kit/SYSTEM-L0.json').read_bytes())
         p=self.process();before=a.tree_digest(self.root);plan=self.plan(p)

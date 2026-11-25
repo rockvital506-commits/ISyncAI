@@ -177,6 +177,25 @@ def _mode_check_supported():
     return os.name == 'posix'
 
 
+def _refuse_pending_move(workspace, expected_parent):
+    """Никакого чтения или очистки объекта: зарезервированное имя блокирует доступ."""
+    marker = workspace / '.domain-agent-kit' / '.move-pending'
+    try:
+        marker.lstat()  # lstat обнаруживает и оборванную ссылку.
+    except FileNotFoundError:
+        # Отсутствие родителя не является доказательством отсутствия маркера.
+        try:
+            _, info = _existing(workspace, '.domain-agent-kit')
+            if (info.st_dev, info.st_ino) != expected_parent:
+                raise StoreError('move_state_unavailable', '.domain-agent-kit/.move-pending')
+        except StoreError as error:
+            raise StoreError('move_state_unavailable', '.domain-agent-kit/.move-pending') from error
+        return
+    except OSError as error:
+        raise StoreError('move_state_unavailable', '.domain-agent-kit/.move-pending') from error
+    raise StoreError('move_pending', '.domain-agent-kit/.move-pending')
+
+
 def _load_unlocked(layout):
     roots = _declared_roots(layout)
     workspace = _workspace(layout.workspace)
@@ -187,7 +206,9 @@ def _load_unlocked(layout):
         if identity in identities:
             raise StoreError('profile_root_conflict', roots['L1'])
         identities.add(identity)
+        if area == 'L2': project_identity = identity
 
+    _refuse_pending_move(workspace, project_identity)
     files, documents, inputs_sha256, raw_by_area, journals = {}, {}, {}, {}, {}
     input_modes = {} if _mode_check_supported() else None
     for area, suffix in _SUFFIX.items():

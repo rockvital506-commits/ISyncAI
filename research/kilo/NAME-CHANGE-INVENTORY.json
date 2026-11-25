@@ -205,7 +205,16 @@
     {
       "area": "candidate_kit",
       "hits": {
-        "new_brand": 2
+        "new_brand": 1,
+        "new_project_path": 1
+      },
+      "path": "kit/SESSION-CLI.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "new_brand": 3,
+        "new_project_path": 1
       },
       "path": "kit/SNAPSHOT-SESSION.md"
     },
@@ -248,6 +257,14 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "new_brand": 1,
+        "new_project_path": 1
+      },
+      "path": "kit/base/MOVE-PENDING.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "donor_version": 1
       },
       "path": "kit/base/REGISTRY-JOURNAL.md"
@@ -272,8 +289,8 @@
     {
       "area": "candidate_kit",
       "hits": {
-        "new_brand": 2,
-        "new_project_path": 2
+        "new_brand": 3,
+        "new_project_path": 3
       },
       "path": "kit/base/STORAGE-V2.md"
     },
@@ -295,8 +312,8 @@
     {
       "area": "candidate_kit",
       "hits": {
-        "new_brand": 1,
-        "new_project_path": 1
+        "new_brand": 7,
+        "new_project_path": 7
       },
       "path": "kit/base/registry_store.py"
     },
@@ -5324,6 +5341,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 3,
+        "new_brand": 4,
+        "new_project_path": 4
+      },
+      "path": "research/audit/test_move_pending_gate.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "candidate_version": 1,
         "kit_import": 2,
         "new_brand": 1,
@@ -5489,8 +5515,8 @@
     {
       "area": "audit",
       "hits": {
-        "new_brand": 1,
-        "new_project_path": 1
+        "new_brand": 2,
+        "new_project_path": 2
       },
       "path": "research/audit/test_session_cli.py"
     },
@@ -5505,8 +5531,8 @@
       "area": "audit",
       "hits": {
         "candidate_version": 1,
-        "new_brand": 2,
-        "new_project_path": 2
+        "new_brand": 4,
+        "new_project_path": 4
       },
       "path": "research/audit/test_snapshot_session.py"
     },
@@ -5569,8 +5595,8 @@
       "hits": {
         "candidate_version": 65,
         "donor_version": 3,
-        "new_brand": 7,
-        "new_project_path": 1,
+        "new_brand": 9,
+        "new_project_path": 3,
         "old_brand": 1,
         "project_path": 2
       },
@@ -7711,7 +7737,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2047,
+  "scanned_files": 2049,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }

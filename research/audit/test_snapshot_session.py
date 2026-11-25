@@ -103,6 +103,23 @@ class SnapshotTests(unittest.TestCase):
         manifest.write_text(json.dumps(doc, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
         self.manifest_pin = digest(manifest)
 
+    def test_pending_move_blocks_snapshot_start(self):
+        marker=self.workspace/'.domain-agent-kit/.move-pending';marker.write_bytes(b'synthetic pending')
+        self.assertEqual(self.check_refusal(),'runtime_unverified')
+        self.assertEqual(marker.read_bytes(),b'synthetic pending')
+
+    def test_pending_move_stops_preflight_and_revokes_prior_plan(self):
+        proc,lines=self.launch();plan=self.send(proc,lines,self.request())
+        self.assertEqual(plan['outcome'],'planned')
+        marker=self.workspace/'.domain-agent-kit/.move-pending';marker.write_bytes(b'synthetic pending')
+        before=audit.tree_digest(self.workspace)
+        msg={'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']}
+        self.assertEqual(self.send(proc,lines,msg),{'outcome':'error','code':'runtime_preflight_failed'})
+        self.assertEqual(before,audit.tree_digest(self.workspace));self.assertEqual(marker.read_bytes(),b'synthetic pending')
+        # Убираем только собственный синтетический объект; это не инструкция восстановления.
+        marker.unlink()
+        self.assertEqual(self.send(proc,lines,msg)['diagnostic']['code'],'ticket_unknown')
+
     def test_context_modes_use_pinned_module_and_revoke_pending(self):
         self.l0.write_bytes((ROOT/'kit/SYSTEM-L0.json').read_bytes());self.system_pin=digest(self.l0)
         before=audit.tree_digest(self.workspace);proc,lines=self.launch()
