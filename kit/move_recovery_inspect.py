@@ -55,8 +55,8 @@ def _read(parent, name, limit):
     finally:os.close(fd)
 
 
-def inspect(layout, *, intent_pin):
-    """Не очищает marker, не исполняет восстановление; подтверждение источника не выполняет."""
+def _inspect(layout, *, intent_pin, exclusive_held):
+    """exclusive_held допустим только внутри штатной EX-блокировки того же workspace."""
     if (os.name!='posix' or registry_store.fcntl is None or not hasattr(os,'O_NOFOLLOW')
             or not hasattr(os,'O_DIRECTORY') or not hasattr(os,'O_NONBLOCK')
             or os.open not in os.supports_dir_fd or os.stat not in os.supports_dir_fd):
@@ -72,10 +72,11 @@ def inspect(layout, *, intent_pin):
         info=os.fstat(root);named=os.stat(workspace,follow_symlinks=False)
         if (not stat.S_ISDIR(info.st_mode) or not stat.S_ISDIR(named.st_mode) or info.st_ino <= 0
                 or (info.st_dev,info.st_ino)!=(named.st_dev,named.st_ino)):raise OSError('workspace changed')
-        try:registry_store.fcntl.flock(root,registry_store.fcntl.LOCK_SH|registry_store.fcntl.LOCK_NB)
-        except OSError as error:
-            if error.errno in (errno.EAGAIN,errno.EACCES):raise StoreError('move_probe_busy','workspace') from error
-            raise
+        if not exclusive_held:
+            try:registry_store.fcntl.flock(root,registry_store.fcntl.LOCK_SH|registry_store.fcntl.LOCK_NB)
+            except OSError as error:
+                if error.errno in (errno.EAGAIN,errno.EACCES):raise StoreError('move_probe_busy','workspace') from error
+                raise
         # Только заранее валидированные компоненты; ссылки не проходят на каждом уровне.
         root_fds={}
         for area,path in roots.items():
@@ -115,6 +116,11 @@ def inspect(layout, *, intent_pin):
             try:os.close(fd)
             except OSError as error:release_error=error
         if release_error is not None:raise StoreError('move_probe_release_failed','workspace') from release_error
+
+
+def inspect(layout, *, intent_pin):
+    """Не очищает marker, не исполняет восстановление; источник не удостоверяет."""
+    return _inspect(layout,intent_pin=intent_pin,exclusive_held=False)
 
 
 def main():
