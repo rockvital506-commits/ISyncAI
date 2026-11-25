@@ -296,6 +296,13 @@
       "hits": {
         "new_brand": 2
       },
+      "path": "kit/TERMINAL-RECOVERY.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "new_brand": 2
+      },
       "path": "kit/TERMINAL-SESSION.md"
     },
     {
@@ -625,6 +632,13 @@
         "kit_import": 1
       },
       "path": "kit/terminal_move.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 2
+      },
+      "path": "kit/terminal_recovery.py"
     },
     {
       "area": "candidate_kit",
@@ -5886,6 +5900,15 @@
       "path": "research/audit/test_terminal_move.py"
     },
     {
+      "area": "audit",
+      "hits": {
+        "kit_import": 2,
+        "new_brand": 2,
+        "new_project_path": 2
+      },
+      "path": "research/audit/test_terminal_recovery.py"
+    },
+    {
       "area": "kilo_docs_and_history",
       "hits": {
         "old_brand": 1
@@ -8094,7 +8117,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2105,
+  "scanned_files": 2108,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
