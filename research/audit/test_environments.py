@@ -25,7 +25,7 @@ class EnvironmentStatuses(unittest.TestCase):
                 self.assertEqual(value['mvp_application'], 'not_run')
                 self.assertTrue((ROOT/value['basis']).is_file())
                 self.assertTrue(value['limit'])
-        self.assertEqual(self.data['environments']['copilot']['status'], 'stub')
+        self.assertEqual(self.data['environments']['copilot']['status'], 'candidate')
         self.assertEqual(self.data['environments']['kilo']['status'], 'candidate')
         self.assertEqual(self.data['environments']['arena']['status'], 'candidate')
 

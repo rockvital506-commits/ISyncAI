@@ -17,11 +17,11 @@
       "limit": "Историческая проба механизма instructions не является сквозным прогоном нового рендера."
     },
     "copilot": {
-      "status": "stub",
+      "status": "candidate",
       "mvp_reading": "not_run",
       "mvp_application": "not_run",
-      "basis": "research/121/SURFACES.json",
-      "limit": "Адаптер MVP не реализован и не измерен; финальная цель поддержки среды сохраняется."
+      "basis": "kit/COPILOT-DEPLOY.md",
+      "limit": "Один глобальный производный файл проверен только синтетически; обнаружение, чтение, применение и среда Copilot не проверены."
     }
   }
 }
