@@ -443,6 +443,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "kit_import": 4
+      },
+      "path": "kit/move_execution.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "kit_import": 5
       },
       "path": "kit/move_intent_export.py"
@@ -5394,6 +5401,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 7,
+        "new_brand": 8,
+        "new_project_path": 8
+      },
+      "path": "research/audit/test_move_execution.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 3,
         "new_brand": 7,
         "new_project_path": 7
@@ -7868,7 +7884,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2070,
+  "scanned_files": 2073,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
