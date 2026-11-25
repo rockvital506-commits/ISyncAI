@@ -103,6 +103,64 @@ class TerminalTests(unittest.TestCase):
         self.assertEqual(proc.wait(timeout=15), 0)
         self.assertEqual(before, audit.tree_digest(self.ctx.workspace))
 
+    def use_candidate_system(self):
+        import hashlib
+        raw = (ROOT/'kit/SYSTEM-L0.json').read_bytes()
+        self.ctx.l0.write_bytes(raw)
+        self.ctx.system_pin = hashlib.sha256(raw).hexdigest()
+
+    def test_context_modes_explicit_choices_and_cancel(self):
+        self.use_candidate_system()
+        proc, fd = self.start(); before = audit.tree_digest(self.ctx.workspace)
+        for mode, present, absent in (('project','SYS-PROJECT-MODE','SYS-KIT-MODE'),
+                                      ('kit','SYS-KIT-MODE','SYS-PROJECT-MODE')):
+            self.send(fd, '/контекст '+mode+' docs/a')
+            self.until(fd, 'иной ответ отменяет обзор: ')
+            self.send(fd, 'включить'); self.until(fd, 'иной ответ отменяет обзор: ')
+            self.send(fd, 'исключить'); output = self.until(fd, 'Запрос> ')
+            self.assertIn('"outcome": "review_required"', output)
+            self.assertIn(present, output); self.assertNotIn(absent, output)
+            self.assertIn('"delivery": "not_implemented"', output)
+        self.send(fd, '/контекст project docs/a')
+        self.until(fd, 'иной ответ отменяет обзор: ')
+        self.send(fd, 'отмена'); output = self.until(fd, 'Запрос> ')
+        self.assertIn('context_cancelled', output)
+        self.assertEqual(before, audit.tree_digest(self.ctx.workspace))
+        self.send(fd, '/выход'); self.assertEqual(proc.wait(timeout=15),0)
+
+    def test_context_detects_drift_before_display(self):
+        self.use_candidate_system()
+        proc, fd = self.start()
+        self.send(fd, '/контекст project docs/a')
+        self.until(fd, 'иной ответ отменяет обзор: ')
+        doc = json.loads(self.ctx.profile.read_bytes())
+        doc['entries'][0]['text'] = 'Синтетическое изменение после показа'
+        audit.write(self.ctx.profile, doc)
+        changed = audit.tree_digest(self.ctx.workspace)
+        self.send(fd, 'включить'); self.until(fd, 'иной ответ отменяет обзор: ')
+        self.send(fd, 'включить'); output = self.until(fd, 'Запрос> ')
+        self.assertIn('context_inputs_changed', output)
+        self.assertNotIn('"outcome": "review_required"', output)
+        self.assertEqual(changed, audit.tree_digest(self.ctx.workspace))
+        self.send(fd, '/выход'); self.assertEqual(proc.wait(timeout=15),0)
+
+    def test_context_cannot_exclude_mandatory_constraint(self):
+        self.use_candidate_system()
+        doc = json.loads(self.ctx.profile.read_bytes())
+        doc['entries'].append(audit.entry('X-1','constraint','profile_owner','C-1','docs',state='active'))
+        audit.write(self.ctx.profile, doc)
+        proc, fd = self.start(); before = audit.tree_digest(self.ctx.workspace)
+        self.send(fd, '/контекст project docs/a')
+        for _ in range(3):
+            prompt = self.until(fd, 'иной ответ отменяет обзор: ')
+            current_row = prompt.rsplit('\r\n{', 1)[-1]
+            decision = 'исключить' if '"id": "X-1"' in current_row else 'включить'
+            self.send(fd, decision)
+        result = self.until(fd, 'Запрос> ')
+        self.assertIn('context_mandatory_excluded', result)
+        self.assertEqual(before, audit.tree_digest(self.ctx.workspace))
+        self.send(fd, '/выход'); self.assertEqual(proc.wait(timeout=15),0)
+
     def test_non_tty_and_nonisolated_are_refused(self):
         before = audit.tree_digest(self.ctx.workspace)
         result = subprocess.run(self.command(), input='', text=True, capture_output=True, timeout=20)

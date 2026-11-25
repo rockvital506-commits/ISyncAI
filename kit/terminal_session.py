@@ -83,6 +83,42 @@ class Backend:
             self.proc.stdout.close()
 
 
+def context_review(backend, mode, scope):
+    """Владелец классифицирует каждую запись; контекст никому не доставляется."""
+    print('Контекст не доставляется агенту; безопасность, полнота и смысл не проверены.', flush=True)
+    report = backend.request({'type':'applicable','scope':scope})
+    display(report)
+    if report.get('outcome') != 'applicable':
+        return
+    rows = report.get('entries')
+    inputs = report.get('inputs_sha256')
+    if type(rows) is not list or type(inputs) is not dict:
+        raise TerminalError('applicability_invalid')
+    choices = {'include':[], 'exclude':[]}
+    seen = set()
+    for row in rows:
+        if type(row) is not dict or row.get('area') not in ('L0','L1','L2') or type(row.get('entry')) is not dict:
+            raise TerminalError('applicability_invalid')
+        if row['area'] == 'L0':
+            continue
+        ident = row['entry'].get('id')
+        if type(ident) is not str or (row['area'],ident) in seen:
+            raise TerminalError('applicability_invalid')
+        seen.add((row['area'],ident))
+        display(row)
+        decision = ask('Введите включить или исключить; иной ответ отменяет обзор: ')
+        if decision not in ('включить','исключить'):
+            display({'outcome':'context_cancelled'})
+            return
+        choices['include' if decision == 'включить' else 'exclude'].append({'area':row['area'],'id':ident})
+    result = backend.request({'type':'context','mode':mode,'scope':scope,'choices':choices})
+    if result.get('outcome') == 'review_required' and result.get('inputs_sha256') != inputs:
+        display({'outcome':'error','code':'context_inputs_changed',
+                 'message':'Источники изменились после показа. Начните обзор заново.'})
+        return
+    display(result)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('candidate-root','workspace','profile-root','profile-id','manifest-pin','system-pin'):
@@ -100,12 +136,19 @@ def main():
         display(bootstrap)
         if bootstrap.get('outcome') != 'bootstrap':
             return 1
-        print('Введите одну обычную фразу или /выход. Полные ответы могут содержать секреты.', flush=True)
+        print('Введите обычную фразу, /контекст project|kit scope или /выход. Ответы могут содержать секреты.', flush=True)
         while True:
             phrase = ask('\nЗапрос> ')
             if phrase == '/выход':
                 return 0
             if not phrase.strip():
+                continue
+            if phrase.startswith('/контекст'):
+                parts = phrase.split()
+                if len(parts) != 3 or parts[0] != '/контекст' or parts[1] not in ('project','kit'):
+                    display({'outcome':'error','code':'context_command_invalid'})
+                else:
+                    context_review(backend, parts[1], parts[2])
                 continue
             plan = backend.request({'type':'plan','request':phrase})
             display(plan)
