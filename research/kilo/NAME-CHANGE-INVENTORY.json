@@ -236,6 +236,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "new_brand": 1
+      },
+      "path": "kit/MOVE-SESSION-CLI.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "new_brand": 1,
         "new_project_path": 1
       },
@@ -498,6 +505,13 @@
         "new_project_path": 5
       },
       "path": "kit/move_reservation.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 3
+      },
+      "path": "kit/move_session_cli.py"
     },
     {
       "area": "candidate_kit",
@@ -5556,6 +5570,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 4,
+        "new_brand": 1,
+        "new_project_path": 1
+      },
+      "path": "research/audit/test_move_session_cli.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 5,
         "new_brand": 5,
         "new_project_path": 5
@@ -7940,7 +7963,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2082,
+  "scanned_files": 2085,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
