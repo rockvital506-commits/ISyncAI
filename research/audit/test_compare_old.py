@@ -46,7 +46,7 @@ def fixture():
         converted.update(parent=row['contract'],authority='project_owner')
         if row['key'] is not None: converted.update(key=row['key'],value=row['value'])
         entries.append(converted)
-    target = {'schema_version':2,'area':'L2','roots':['.agent-contract'],'revision':2,'entries':entries}
+    target = {'schema_version':2,'area':'L2','roots':['.domain-agent-kit'],'revision':2,'entries':entries}
     source = {'state':raw(state),'checks':raw(checks),'base_rules':raw(base)}
     candidate = {'registry':raw(target),**{'preserved_'+k:v for k,v in source.items()}}
     return state, checks, base, target, source, candidate

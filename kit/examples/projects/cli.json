@@ -2,7 +2,7 @@
   "schema_version": 2,
   "area": "L2",
   "roots": [
-    ".agent-contract"
+    ".domain-agent-kit"
   ],
   "revision": 0,
   "entries": [

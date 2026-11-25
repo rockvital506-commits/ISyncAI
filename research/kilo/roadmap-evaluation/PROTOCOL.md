@@ -16,7 +16,7 @@
 
 - `research/README.md`, `research/STRATEGY.md` и `research/ROADMAP.md` — включая исторические;
 - `research/strategy/COMPATIBILITY.json` — историческая матрица с намеренно устаревшей строкой;
-- `research/kilo/ROADMAP.md`, `README.md`, `VISION-END-STATE.md`, `TARGETS.md`,
+- `research/kilo/ROADMAP.md`, `ROADMAP-ITERATIONS.md`, `README.md`, `VISION-END-STATE.md`, `TARGETS.md`,
   `ROADMAP-PROTOCOL.md`, `MVP-ROADMAP.md` и `QUESTIONS.md` (последний скопировать из этого
   каталога по пути `research/kilo/QUESTIONS.md`).
 

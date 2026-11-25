@@ -56,11 +56,11 @@ else:
         p.write_text(json.dumps(value, ensure_ascii=False) + '\n', encoding='utf-8')
     def empty(area, roots):
         result = {'schema_version': 2, 'area': area, 'roots': [roots], 'entries': []}
-        result.update({'release_version': '0.2.0-mvp.15'} if area == 'L0' else {'revision': 0})
+        result.update({'release_version': '0.2.0-mvp.16'} if area == 'L0' else {'revision': 0})
         return result
     write('kit/base/registry.json', empty('L0', 'kit'))
     write('profiles/pilot/registry.json', empty('L1', 'profiles/pilot'))
-    write('.agent-contract/project/registry.json', empty('L2', '.agent-contract'))
+    write('.domain-agent-kit/project/registry.json', empty('L2', '.domain-agent-kit'))
     session = BootstrapSession(layout, profile_id='Pilot')
     phrase = ('Создай черновик контракта C-1 в профиле Pilot, постоянное, '
               'область «docs», название «Пример», основание «Тест», '
@@ -100,9 +100,9 @@ def write(path, doc):
     p.write_text(json.dumps(doc) + '\n', encoding='utf-8')
 for area, root, path in (('L0', 'kit', 'kit/base/registry.json'),
                          ('L1', 'profiles/pilot', 'profiles/pilot/registry.json'),
-                         ('L2', '.agent-contract', '.agent-contract/project/registry.json')):
+                         ('L2', '.domain-agent-kit', '.domain-agent-kit/project/registry.json')):
     doc = {'schema_version': 2, 'area': area, 'roots': [root], 'entries': []}
-    doc.update({'release_version': '0.2.0-mvp.15'} if area == 'L0' else {'revision': 0})
+    doc.update({'release_version': '0.2.0-mvp.16'} if area == 'L0' else {'revision': 0})
     write(path, doc)
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 manifest_pin = sha(source / 'kit/KIT-VERSION.json')
@@ -176,6 +176,27 @@ class IsolatedCandidateTests(unittest.TestCase):
         self.assertEqual(result['legacy_or_research_imports'], [])
         self.assertIn('состав отличается', result['verification'])
         self.assertIn('kit/base/registry.json', result['verification'])
+
+    def test_old_project_root_is_not_implicitly_selected(self):
+        result = self.run_scenario('prepared')
+        self.assertEqual(result['outcome'], 'applied')
+        new_root = self.root/'.domain-agent-kit'
+        old_root = self.root/'.agent-contract'
+        new_root.rename(old_root)  # только временная синтетическая фикстура
+        before = (old_root/'project/registry.json').read_bytes()
+        probe = r'''import sys
+from pathlib import Path
+root=Path(sys.argv[1]); sys.path.insert(0,str(root))
+from kit.base.registry_store import Layout, StoreError, status
+try: status(Layout(root,'profiles/pilot'))
+except StoreError as e: print(e.code)
+else: raise AssertionError('old root unexpectedly accepted')
+'''
+        p = subprocess.run([sys.executable, '-I', '-S', '-B', '-c', probe, str(self.root)],
+                           cwd=self.root, capture_output=True, text=True, timeout=30)
+        self.assertEqual(p.returncode, 0, p.stderr)
+        self.assertEqual(p.stdout.strip(), 'missing_path')
+        self.assertEqual((old_root/'project/registry.json').read_bytes(), before)
 
     def test_guard_separate_source_does_not_check_workspace_code(self):
         result = subprocess.run([sys.executable, '-I', '-S', '-B', '-c', GUARD_RUNNER, str(self.root)],

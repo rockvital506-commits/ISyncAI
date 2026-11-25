@@ -72,7 +72,7 @@ class RoadmapTests(unittest.TestCase):
         cls.text = ROADMAP.read_text(encoding='utf-8')
 
     def test_explicit_anchors(self):
-        self.assertIn('**Версия роадмапа:** `3.0.0`', self.text[:500])
+        self.assertIn('**Версия роадмапа:** `3.1.0`', self.text[:500])
         self.assertEqual(validate(self.text), [])
 
     def test_missing_or_changed_essential_anchor_detected(self):
@@ -109,7 +109,7 @@ class RoadmapTests(unittest.TestCase):
             with self.subTest(path=rel):
                 content = (ROOT / rel).read_text(encoding='utf-8')
                 self.assertIn('ROADMAP.md', content[:700])
-                self.assertIn('3.0.0', content[:700])
+                self.assertIn('3.1.0', content[:700])
 
     def test_historical_strategy_and_roadmap_bytes_unchanged(self):
         for name, expected in [('research/STRATEGY.md','0360a91a9797ee69c63837cae20bf484332e999514e2bfa567cf56b2ce99b248'),
@@ -136,6 +136,17 @@ class RoadmapTests(unittest.TestCase):
         self.assertIn('Как называется конечная система', questions)
         self.assertIn('Текущее имя DomainAgentKit', rubric)
 
+    def test_iteration_plan_keeps_required_boundaries(self):
+        plan = (ROOT/'research/kilo/ROADMAP-ITERATIONS.md').read_text(encoding='utf-8')
+        self.assertIn('ROADMAP-ITERATIONS.md', self.text)
+        for n in range(1, 21):
+            self.assertIn('| D%02d |' % n, plan)
+        for marker in ('с удалением источника', 'P00 → П1…П8', 'одна ячейка среда × операция',
+                       'Миграция донора не обязательна', 'чистого агента Arena', 'не заменяет ворота'):
+            self.assertIn(marker, plan if marker != 'не заменяет ворота' else
+                          (ROOT/'research/kilo/roadmap-evaluation/RUBRIC.md').read_text(encoding='utf-8'))
+        self.assertIn('ROADMAP-ITERATIONS.md', (ROOT/'research/kilo/roadmap-evaluation/PROTOCOL.md').read_text(encoding='utf-8'))
+
     def test_every_gate_named_once(self):
         for n in range(1,7): self.assertEqual(len(re.findall(r'\*\*G'+str(n)+r':\*\*',self.text)),1)
 
@@ -154,7 +165,7 @@ class RoadmapTests(unittest.TestCase):
     def test_fixture_contains_only_declared_documents_without_answer_key(self):
         sources = ['research/README.md', 'research/STRATEGY.md', 'research/ROADMAP.md',
                    'research/strategy/COMPATIBILITY.json', 'research/kilo/ROADMAP.md',
-                   'research/kilo/README.md', 'research/kilo/VISION-END-STATE.md',
+                   'research/kilo/ROADMAP-ITERATIONS.md', 'research/kilo/README.md', 'research/kilo/VISION-END-STATE.md',
                    'research/kilo/TARGETS.md', 'research/kilo/ROADMAP-PROTOCOL.md',
                    'research/kilo/MVP-ROADMAP.md']
         with tempfile.TemporaryDirectory(prefix='roadmap-fixture-') as name:

@@ -32,7 +32,7 @@ class GuardTests(unittest.TestCase):
         self.manifest = self.snapshot/'kit/KIT-VERSION.json'
         self.l0 = self.workspace/'kit/base/registry.json'
         self.profile = self.workspace/'profiles/pilot/registry.json'
-        self.project = self.workspace/'.agent-contract/project/registry.json'
+        self.project = self.workspace/'.domain-agent-kit/project/registry.json'
         self.manifest_pin = sha(self.manifest)
         self.system_pin = sha(self.l0)
 

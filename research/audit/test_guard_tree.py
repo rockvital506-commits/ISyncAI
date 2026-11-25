@@ -57,6 +57,7 @@ class GuardTreeTests(unittest.TestCase):
         before = self.git('status','--porcelain=v1','-z')
         report = self.check()
         self.assertEqual(report['outcome'],'pass')
+        self.assertEqual(report['product'],'DomainAgentKit')
         self.assertEqual(report['tree_oid'],self.tree)
         self.assertEqual(report['manifest_sha256'],self.pin)
         self.assertEqual(report['files'],len(self.doc['files']))
@@ -123,6 +124,19 @@ class GuardTreeTests(unittest.TestCase):
         path = self.repo/'kit/KIT-VERSION.json'; path.write_bytes(b'{"format":1,"format":1}')
         self.git('add','--','kit/KIT-VERSION.json')
         self.violation('manifest_invalid',tree=self.git('write-tree').strip(),pin=hashlib.sha256(path.read_bytes()).hexdigest())
+
+    def test_wrong_product_or_old_format_rejected_even_with_matching_pin(self):
+        for mutation in ('wrong_product', 'missing_product', 'old_format'):
+            with self.subTest(mutation=mutation):
+                doc = dict(self.doc)
+                if mutation == 'wrong_product': doc['product'] = 'OtherKit'
+                elif mutation == 'missing_product': del doc['product']
+                else: doc['format'] = 1
+                path = self.repo/'kit/KIT-VERSION.json'
+                path.write_text(json.dumps(doc,sort_keys=True),encoding='utf-8')
+                self.git('add','--','kit/KIT-VERSION.json')
+                self.violation('manifest_invalid',tree=self.git('write-tree').strip(),
+                               pin=hashlib.sha256(path.read_bytes()).hexdigest())
 
     def test_oversized_blob_is_refused(self):
         path = self.repo/'kit/base/SCHEMA-V2.md'; path.write_bytes(b'x'*(MAX_BLOB+1))

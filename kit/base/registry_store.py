@@ -66,7 +66,7 @@ class _ActionPreview:
 
 
 def _declared_roots(layout):
-    roots = {'L0': 'kit', 'L1': layout.profile_root, 'L2': '.agent-contract'}
+    roots = {'L0': 'kit', 'L1': layout.profile_root, 'L2': '.domain-agent-kit'}
     # Пустые оболочки только для общей лексической политики формы; это не инициализация.
     candidates = {area: {'schema_version': schema_v2.SCHEMA_VERSION, 'area': area, 'roots': [root], 'entries': [],
                          **({'release_version': '0.0.0'} if area == 'L0' else {'revision': 0})}

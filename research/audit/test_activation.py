@@ -82,7 +82,7 @@ class ActivationTests(unittest.TestCase):
 
     def test_stale_other_area_denied(self):
         plan = self.plan('Активируй контракт C-1 в профиле Pilot.')
-        p = self.root / '.agent-contract/project/registry.json'
+        p = self.root / '.domain-agent-kit/project/registry.json'
         p.write_bytes(p.read_bytes() + b'\n')
         self.assert_denied(lambda: self.apply(plan), 'stale_plan')
 
@@ -109,7 +109,7 @@ class ActivationTests(unittest.TestCase):
         self.assert_denied(lambda: self.plan('Активируй правило Q-1 в профиле Pilot.'), 'rule_conflict')
 
     def test_l2_separate_and_l1_untouched(self):
-        path = self.root / '.agent-contract/project/registry.json'
+        path = self.root / '.domain-agent-kit/project/registry.json'
         doc = json.loads(path.read_text(encoding='utf-8'))
         doc['entries'][0]['state'] = 'draft'
         audit.write(path, doc)

@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from kit.verify_candidate import (CANDIDATE_VERSION, EXTRA, FORMAT, HEX, MANIFEST, NAME,
+from kit.verify_candidate import (CANDIDATE_VERSION, EXTRA, FORMAT, HEX, MANIFEST, NAME, PRODUCT,
                                   VerificationError, no_duplicates)
 
 MAX_BLOB = 2_097_152
@@ -92,8 +92,8 @@ def _manifest(raw, pin):
                          parse_constant=lambda _: (_ for _ in ()).throw(VerificationError('number')))
     except (UnicodeError, ValueError, RecursionError) as exc:
         raise TreeViolation('manifest_invalid') from exc
-    if (type(doc) is not dict or set(doc) != {'format', 'version', 'status', 'scope', 'files'}
-            or type(doc['format']) is not int or doc['format'] != FORMAT
+    if (type(doc) is not dict or set(doc) != {'format', 'product', 'version', 'status', 'scope', 'files'}
+            or doc['product'] != PRODUCT or type(doc['format']) is not int or doc['format'] != FORMAT
             or doc['version'] != CANDIDATE_VERSION or doc['status'] != 'candidate'
             or doc['scope'] != 'source-l0-only' or type(doc['files']) is not dict):
         raise TreeViolation('manifest_invalid')
@@ -147,7 +147,7 @@ def _check_tree(git, tree_oid, manifest_pin):
             raise TreeViolation('candidate_digest_mismatch')
     return {'guard_tree_format': 1, 'outcome': 'pass', 'tree_oid': tree_oid,
             'git_object_format': git.object_format, 'manifest_sha256': manifest_pin,
-            'candidate': CANDIDATE_VERSION, 'files': len(files), 'checked': 'candidate_l0_only'}
+            'product': PRODUCT, 'candidate': CANDIDATE_VERSION, 'files': len(files), 'checked': 'candidate_l0_only'}
 
 
 def guard_tree(repo, *, tree_oid, manifest_pin):

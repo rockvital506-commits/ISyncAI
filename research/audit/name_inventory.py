@@ -22,6 +22,7 @@ PATTERNS = {
     'new_brand': re.compile(r'Domain[ _-]*Agent[ _-]*Kit', re.I),
     'donor_lab': re.compile(r'Agent[ _-]*Contract[ _-]*Lab', re.I),
     'project_path': re.compile(r'\.agent-contract', re.I),
+    'new_project_path': re.compile(r'\.domain-agent-kit', re.I),
     'kit_import': re.compile(r'\b(?:from|import)\s+kit\b'),
     'donor_version': re.compile(r'0\.1\.36'),
     'candidate_version': re.compile(r'0\.2\.0'),

@@ -132,7 +132,7 @@ class SessionTests(unittest.TestCase):
 
     def test_stale_input_denied(self):
         p = self.process(); plan = self.plan(p)
-        f = self.root/'.agent-contract/project/registry.json'; f.write_bytes(f.read_bytes()+b'\n')
+        f = self.root/'.domain-agent-kit/project/registry.json'; f.write_bytes(f.read_bytes()+b'\n')
         before = a.tree_digest(self.root)
         denied = self.send(p, self.apply_msg(plan))
         self.assertEqual(denied['diagnostic']['code'], 'stale_plan')

@@ -147,28 +147,40 @@
     {
       "area": "candidate_kit",
       "hits": {
-        "old_brand": 2
+        "new_brand": 2
       },
       "path": "kit/GUARD-TREE.md"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "old_brand": 2
+        "new_brand": 2
       },
       "path": "kit/GUARD.md"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "candidate_version": 1
+        "candidate_version": 1,
+        "new_brand": 5,
+        "new_project_path": 1
+      },
+      "path": "kit/IDENTITY.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "candidate_version": 1,
+        "new_brand": 1
       },
       "path": "kit/KIT-VERSION.json"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "candidate_version": 2
+        "candidate_version": 2,
+        "new_brand": 3,
+        "new_project_path": 1
       },
       "path": "kit/LAYERS.md"
     },
@@ -185,21 +197,23 @@
       "hits": {
         "donor_version": 1,
         "kit_import": 1,
-        "project_path": 3
+        "new_brand": 3,
+        "new_project_path": 3
       },
       "path": "kit/LEGACY-PROJECTION.md"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "old_brand": 1
+        "new_brand": 1
       },
       "path": "kit/base/BUNDLE-TRUST.md"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "kit/base/CONFLICT-REVIEW.md"
     },
@@ -214,50 +228,55 @@
       "area": "candidate_kit",
       "hits": {
         "candidate_version": 2,
-        "old_brand": 1,
-        "project_path": 1
+        "new_brand": 2,
+        "new_project_path": 1
       },
       "path": "kit/base/SCHEMA-V2.md"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "kit/base/SIMULATION.md"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "project_path": 2
+        "new_brand": 2,
+        "new_project_path": 2
       },
       "path": "kit/base/STORAGE-V2.md"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "old_brand": 1
+        "new_brand": 1
       },
       "path": "kit/base/bundle_trust.py"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "kit/base/conflict_review.py"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "kit/base/registry_store.py"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "project_path": 2
+        "new_brand": 2,
+        "new_project_path": 2
       },
       "path": "kit/base/simulation.py"
     },
@@ -272,21 +291,24 @@
     {
       "area": "candidate_kit",
       "hits": {
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "kit/examples/projects/README.md"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "kit/examples/projects/cli.json"
     },
     {
       "area": "candidate_kit",
       "hits": {
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "kit/examples/projects/docs.json"
     },
@@ -358,7 +380,8 @@
     {
       "area": "candidate_kit",
       "hits": {
-        "candidate_version": 1
+        "candidate_version": 1,
+        "new_brand": 1
       },
       "path": "kit/verify_candidate.py"
     },
@@ -4904,15 +4927,34 @@
     {
       "area": "audit",
       "hits": {
+        "new_brand": 1
+      },
+      "path": "research/audit/DOMAIN-REGRESSIONS.md"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "candidate_version": 1,
         "kit_import": 3,
-        "project_path": 4
+        "new_brand": 5,
+        "new_project_path": 5,
+        "project_path": 1
       },
       "path": "research/audit/core_audit.py"
     },
     {
       "area": "audit",
       "hits": {
+        "new_brand": 2,
+        "old_brand": 1
+      },
+      "path": "research/audit/domain_regressions.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "new_brand": 1,
+        "new_project_path": 1,
         "project_path": 1
       },
       "path": "research/audit/name_inventory.py"
@@ -4929,7 +4971,8 @@
       "area": "audit",
       "hits": {
         "kit_import": 3,
-        "project_path": 2
+        "new_brand": 2,
+        "new_project_path": 2
       },
       "path": "research/audit/test_activation.py"
     },
@@ -4943,25 +4986,65 @@
     {
       "area": "audit",
       "hits": {
+        "new_brand": 2
+      },
+      "path": "research/audit/test_candidate.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "candidate_version": 1,
         "donor_version": 5,
         "kit_import": 2,
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "research/audit/test_compare_old.py"
     },
     {
       "area": "audit",
       "hits": {
-        "kit_import": 1,
+        "new_brand": 2,
+        "new_project_path": 2,
         "project_path": 1
+      },
+      "path": "research/audit/test_core_audit.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "candidate_version": 1,
+        "kit_import": 2,
+        "new_brand": 3,
+        "new_project_path": 2,
+        "old_brand": 1,
+        "project_path": 1
+      },
+      "path": "research/audit/test_domain_identity.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 4,
+        "new_brand": 2,
+        "old_brand": 1
+      },
+      "path": "research/audit/test_domain_signature.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 1,
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "research/audit/test_guard.py"
     },
     {
       "area": "audit",
       "hits": {
-        "kit_import": 1
+        "kit_import": 1,
+        "new_brand": 1
       },
       "path": "research/audit/test_guard_tree.py"
     },
@@ -4969,8 +5052,10 @@
       "area": "audit",
       "hits": {
         "candidate_version": 2,
-        "kit_import": 6,
-        "project_path": 4
+        "kit_import": 7,
+        "new_brand": 5,
+        "new_project_path": 5,
+        "project_path": 1
       },
       "path": "research/audit/test_isolated_candidate.py"
     },
@@ -4978,7 +5063,8 @@
       "area": "audit",
       "hits": {
         "kit_import": 3,
-        "project_path": 2
+        "new_brand": 2,
+        "new_project_path": 2
       },
       "path": "research/audit/test_kilo_deploy.py"
     },
@@ -4986,7 +5072,8 @@
       "area": "audit",
       "hits": {
         "kit_import": 3,
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "research/audit/test_kilo_inspect.py"
     },
@@ -5001,7 +5088,8 @@
       "area": "audit",
       "hits": {
         "kit_import": 3,
-        "project_path": 2
+        "new_brand": 2,
+        "new_project_path": 2
       },
       "path": "research/audit/test_legacy_projection.py"
     },
@@ -5009,14 +5097,16 @@
       "area": "audit",
       "hits": {
         "kit_import": 4,
-        "project_path": 2
+        "new_brand": 2,
+        "new_project_path": 2
       },
       "path": "research/audit/test_mvp_end_to_end.py"
     },
     {
       "area": "audit",
       "hits": {
-        "new_brand": 1,
+        "new_brand": 2,
+        "new_project_path": 1,
         "old_brand": 10,
         "project_path": 1
       },
@@ -5026,7 +5116,8 @@
       "area": "audit",
       "hits": {
         "kit_import": 5,
-        "project_path": 2
+        "new_brand": 2,
+        "new_project_path": 2
       },
       "path": "research/audit/test_preview_rule.py"
     },
@@ -5041,7 +5132,8 @@
       "area": "audit",
       "hits": {
         "kit_import": 4,
-        "project_path": 2
+        "new_brand": 2,
+        "new_project_path": 2
       },
       "path": "research/audit/test_project_candidates.py"
     },
@@ -5050,7 +5142,8 @@
       "hits": {
         "candidate_version": 1,
         "kit_import": 2,
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "research/audit/test_render_rule.py"
     },
@@ -5067,7 +5160,8 @@
     {
       "area": "audit",
       "hits": {
-        "project_path": 1
+        "new_brand": 1,
+        "new_project_path": 1
       },
       "path": "research/audit/test_session_cli.py"
     },
@@ -5095,11 +5189,12 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
-        "candidate_version": 19,
+        "candidate_version": 20,
         "donor_version": 3,
-        "new_brand": 2,
+        "new_brand": 7,
+        "new_project_path": 1,
         "old_brand": 1,
-        "project_path": 1
+        "project_path": 2
       },
       "path": "research/kilo/MVP-ROADMAP.md"
     },
@@ -5132,6 +5227,15 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
+        "candidate_version": 1,
+        "new_brand": 3,
+        "new_project_path": 1
+      },
+      "path": "research/kilo/ROADMAP-ITERATIONS.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
         "old_brand": 1
       },
       "path": "research/kilo/ROADMAP-PROTOCOL.md"
@@ -5147,7 +5251,8 @@
       "area": "kilo_docs_and_history",
       "hits": {
         "donor_version": 3,
-        "new_brand": 3,
+        "new_brand": 4,
+        "new_project_path": 1,
         "old_brand": 2
       },
       "path": "research/kilo/ROADMAP.md"
@@ -7213,7 +7318,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1955,
+  "scanned_files": 1962,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }

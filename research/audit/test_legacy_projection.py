@@ -30,7 +30,7 @@ class ProjectionTests(unittest.TestCase):
 
     def run_project(self, roots=None):
         item = self.capsule()
-        return project(item['archive'], pin=item['archive_sha256'], roots=['.agent-contract'] if roots is None else roots)
+        return project(item['archive'], pin=item['archive_sha256'], roots=['.domain-agent-kit'] if roots is None else roots)
 
     def test_exact_core_projection_and_comparison(self):
         report, registry = self.run_project()
@@ -147,7 +147,7 @@ class ProjectionTests(unittest.TestCase):
             return subprocess.run([sys.executable,'-I','-S','-B',str(ROOT/'kit/legacy_projection.py')],
                                   input=json.dumps(req).encode(),capture_output=True,timeout=30)
         req = {'format':1,'action':'analyze','archive_base64':base64.b64encode(item['archive']).decode(),
-               'pin':item['archive_sha256'],'roots':['.agent-contract']}
+               'pin':item['archive_sha256'],'roots':['.domain-agent-kit']}
         p = call(req); self.assertEqual(p.returncode,0,p.stderr)
         self.assertNotIn(b'registry_base64',p.stdout)
         self.assertNotIn('Синтетический текст правила'.encode(),p.stdout)

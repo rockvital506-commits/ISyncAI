@@ -67,13 +67,13 @@ class PreviewTests(unittest.TestCase):
     def test_conflict_rejected(self):
         profile = self.root / 'profiles/pilot/registry.json'; doc = json.loads(profile.read_text(encoding='utf-8'))
         doc['entries'][1].update(key='x', value='a'); a.write(profile, doc)
-        project = self.root / '.agent-contract/project/registry.json'; other = json.loads(project.read_text(encoding='utf-8'))
+        project = self.root / '.domain-agent-kit/project/registry.json'; other = json.loads(project.read_text(encoding='utf-8'))
         child = a.entry('Q-1', 'rule', 'project_owner', 'P-1', '.'); child.update(key='x', value='b')
         other['entries'].append(child); a.write(project, other)
         with self.assertRaises(RenderError): preview(self.layout, area='L1', entry_id='R-1')
 
     def test_missing_layer_rejected(self):
-        (self.root/'.agent-contract/project/registry.json').unlink()
+        (self.root/'.domain-agent-kit/project/registry.json').unlink()
         with self.assertRaises(StoreError): preview(self.layout, area='L1', entry_id='R-1')
 
     def test_symlink_rejected(self):

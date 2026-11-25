@@ -55,7 +55,7 @@ class DeployTests(unittest.TestCase):
         self.denied(lambda: self.plan(), 'target_exists')
 
     def test_l2_and_cancel(self):
-        project = self.root/'.agent-contract/project/registry.json'
+        project = self.root/'.domain-agent-kit/project/registry.json'
         doc = json.loads(project.read_text(encoding='utf-8'))
         doc['entries'].append(a.entry('R-2', 'rule', 'project_owner', 'P-1', '.', text='Проектное правило.'))
         a.write(project, doc)
@@ -75,7 +75,7 @@ class DeployTests(unittest.TestCase):
 
     def test_changed_source_denied_and_ticket_consumed(self):
         plan = self.plan()
-        project = self.root/'.agent-contract/project/registry.json'
+        project = self.root/'.domain-agent-kit/project/registry.json'
         project.write_bytes(project.read_bytes()+b'\n')
         self.denied(lambda: self.apply(plan), 'stale_plan')
         self.denied(lambda: self.apply(plan), 'ticket_unknown')

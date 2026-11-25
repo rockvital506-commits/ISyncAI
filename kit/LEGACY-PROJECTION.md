@@ -9,9 +9,9 @@
 ```python
 from kit.legacy_projection import analyze, project
 
-summary = analyze(archive_bytes, pin=trusted_pin, roots=['.agent-contract'])
+summary = analyze(archive_bytes, pin=trusted_pin, roots=['.domain-agent-kit'])
 summary, proposed_registry_bytes = project(archive_bytes, pin=trusted_pin,
-                                           roots=['.agent-contract'])
+                                           roots=['.domain-agent-kit'])
 ```
 
 `roots` задаёт вызывающий; это **логические** корни хранения, не создаваемые пути. `analyze`
@@ -42,7 +42,7 @@ checks в новом runtime; `migration_ready` всегда `false`. Стаби
 `python3 -I -S -B kit/legacy_projection.py` принимает один JSON через stdin:
 
 ```json
-{"format":1,"action":"analyze","archive_base64":"<base64>","pin":"<sha256>","roots":[".agent-contract"]}
+{"format":1,"action":"analyze","archive_base64":"<base64>","pin":"<sha256>","roots":[".domain-agent-kit"]}
 ```
 
 `action: "project"` дополнительно возвращает `registry_base64` (или `null`, если блокировано).

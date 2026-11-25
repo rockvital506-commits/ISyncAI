@@ -10,10 +10,11 @@ import stat
 import sys
 from pathlib import Path
 
-FORMAT = 1
-CANDIDATE_VERSION = '0.2.0-mvp.15'
+FORMAT = 2
+PRODUCT = 'DomainAgentKit'
+CANDIDATE_VERSION = '0.2.0-mvp.16'
 MANIFEST = 'kit/KIT-VERSION.json'
-EXTRA = {'kit/verify_candidate.py', 'kit/LAYERS.md', 'kit/render_rule.py', 'kit/RENDER-RULE.md', 'kit/preview_rule.py', 'kit/PREVIEW-RULE.md', 'kit/session_cli.py', 'kit/SESSION-CLI.md', 'kit/ENVIRONMENTS.json', 'kit/ENVIRONMENTS.md', 'kit/kilo_deploy.py', 'kit/KILO-DEPLOY.md', 'kit/kilo_inspect.py', 'kit/KILO-INSPECT.md', 'kit/guard.py', 'kit/GUARD.md', 'kit/guard_tree.py', 'kit/GUARD-TREE.md', 'kit/compare_old.py', 'kit/COMPARE-OLD.md', 'kit/legacy_capsule.py', 'kit/LEGACY-CAPSULE.md', 'kit/legacy_projection.py', 'kit/LEGACY-PROJECTION.md'}
+EXTRA = {'kit/verify_candidate.py', 'kit/LAYERS.md', 'kit/IDENTITY.md', 'kit/render_rule.py', 'kit/RENDER-RULE.md', 'kit/preview_rule.py', 'kit/PREVIEW-RULE.md', 'kit/session_cli.py', 'kit/SESSION-CLI.md', 'kit/ENVIRONMENTS.json', 'kit/ENVIRONMENTS.md', 'kit/kilo_deploy.py', 'kit/KILO-DEPLOY.md', 'kit/kilo_inspect.py', 'kit/KILO-INSPECT.md', 'kit/guard.py', 'kit/GUARD.md', 'kit/guard_tree.py', 'kit/GUARD-TREE.md', 'kit/compare_old.py', 'kit/COMPARE-OLD.md', 'kit/legacy_capsule.py', 'kit/LEGACY-CAPSULE.md', 'kit/legacy_projection.py', 'kit/LEGACY-PROJECTION.md'}
 HEX = re.compile(r'^[0-9a-f]{64}$')
 NAME = re.compile(r'^[A-Za-z0-9][A-Za-z0-9_.-]*$')
 
@@ -63,8 +64,10 @@ def verify(root, *, pin=None):
                          parse_constant=lambda _: (_ for _ in ()).throw(VerificationError('недопустимое число')))
     except (UnicodeError, json.JSONDecodeError) as exc:
         raise VerificationError('манифест не является UTF-8 JSON') from exc
-    if type(doc) is not dict or set(doc) != {'format', 'version', 'status', 'scope', 'files'}:
+    if type(doc) is not dict or set(doc) != {'format', 'product', 'version', 'status', 'scope', 'files'}:
         raise VerificationError('неверные поля манифеста')
+    if doc['product'] != PRODUCT:
+        raise VerificationError('неверная идентичность продукта')
     if type(doc['format']) is not int or doc['format'] != FORMAT or doc['version'] != CANDIDATE_VERSION:
         raise VerificationError('неподдерживаемая версия манифеста или кандидата')
     if doc['status'] != 'candidate' or doc['scope'] != 'source-l0-only':
@@ -93,7 +96,7 @@ def verify(root, *, pin=None):
     for path in sorted(files):
         if digest(regular_file(root / path)) != files[path]:
             raise VerificationError('хеш не совпадает: ' + path)
-    return {'status': 'pass', 'candidate': doc['version'], 'files': len(files),
+    return {'status': 'pass', 'product': PRODUCT, 'candidate': doc['version'], 'files': len(files),
             'manifest_sha256': manifest_hash, 'pin_checked': pin is not None}
 
 

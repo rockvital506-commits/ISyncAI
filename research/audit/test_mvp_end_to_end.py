@@ -28,12 +28,12 @@ def run_project(name):
         root = Path(tmp)
         layout = a.make_workspace(root)
         project = json.loads((EXAMPLES / 'projects' / (name + '.json')).read_text(encoding='utf-8'))
-        a.write(root / '.agent-contract/project/registry.json', project)
+        a.write(root / '.domain-agent-kit/project/registry.json', project)
         source = json.loads((EXAMPLES / 'profile-candidate.json').read_text(encoding='utf-8'))
         session = PlanSession(layout, profile_id='Pilot')
         l0_path = root / 'kit/base/registry.json'
         l0_before = l0_path.read_bytes()
-        l2_path = root / '.agent-contract/project/registry.json'
+        l2_path = root / '.domain-agent-kit/project/registry.json'
         l2_before = l2_path.read_bytes()
 
         def confirmed(phrase):

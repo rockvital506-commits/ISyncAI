@@ -23,7 +23,7 @@ def fixture():
         'L1': {'schema_version':2,'area':'L1','roots':['profiles/pilot'],'revision':3,
                'entries':[entry('C-1','contract','profile_owner',None,'.'),
                           entry('R-1','rule','profile_owner','C-1','.',text='Проверяй перед записью.')]},
-        'L2': {'schema_version':2,'area':'L2','roots':['.agent-contract'],'revision':7,
+        'L2': {'schema_version':2,'area':'L2','roots':['.domain-agent-kit'],'revision':7,
                'entries':[entry('P-1','contract','project_owner',None,'.'),
                           entry('Q-1','protocol','project_owner','P-1','.',text='Проверь проект.')]},
     }

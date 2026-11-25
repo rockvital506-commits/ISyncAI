@@ -17,8 +17,8 @@
 с выбранным репозиторием определяет владелец.
 
 ```text
-python3 -I -S -B /trusted/AgentContractKit/kit/guard_tree.py --repo /path/to/repository --commit <полный-oid-commit> --manifest-pin <доверенный-sha256-манифеста>
-python3 -I -S -B /trusted/AgentContractKit/kit/guard_tree.py --repo /path/to/repository --tree <полный-oid-tree> --manifest-pin <доверенный-sha256-манифеста>
+python3 -I -S -B /trusted/DomainAgentKit/kit/guard_tree.py --repo /path/to/repository --commit <полный-oid-commit> --manifest-pin <доверенный-sha256-манифеста>
+python3 -I -S -B /trusted/DomainAgentKit/kit/guard_tree.py --repo /path/to/repository --tree <полный-oid-tree> --manifest-pin <доверенный-sha256-манифеста>
 ```
 
 Это две альтернативные команды-схемы; угловые скобки нужно заменить значениями. В режиме

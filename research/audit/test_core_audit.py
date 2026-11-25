@@ -108,6 +108,18 @@ class AuditTests(unittest.TestCase):
         self.assertEqual(adjusted['N28-kind']['revision'], {'from': 4, 'to': 5})
         self.assertTrue(adjusted['N16-project']['l0_l2_unchanged'])
 
+    def test_legacy_paths_are_translated_only_in_memory(self):
+        source = {'paths': ['.agent-contract/project/registry.json', 'unrelated'], 'n': 1}
+        before = copy.deepcopy(source)
+        adapted = audit.translated_paths(source)
+        self.assertEqual(source, before)
+        self.assertEqual(adapted, {'paths': ['.domain-agent-kit/project/registry.json', 'unrelated'], 'n': 1})
+        path = audit.ROOT/'research/105/test_layout.py'
+        original = path.read_bytes()
+        module = audit.load_path_adapted_test(105, path)
+        self.assertEqual(module.L2, '.domain-agent-kit')
+        self.assertEqual(path.read_bytes(), original)
+
     def test_audit_integration(self):
         self.assertEqual(audit.check_known_drift()['mismatches'], [])
 

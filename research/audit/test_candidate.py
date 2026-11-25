@@ -29,11 +29,26 @@ class CandidateTests(unittest.TestCase):
     def test_pass_and_pin(self):
         result = verify_candidate.verify(self.root)
         self.assertEqual(result['status'], 'pass')
+        self.assertEqual(result['product'], 'DomainAgentKit')
+        self.assertEqual((self.doc['format'], self.doc['product']), (2, 'DomainAgentKit'))
         self.assertEqual(result['files'], len(self.doc['files']))
         self.assertFalse(result['pin_checked'])
         self.assertTrue(verify_candidate.verify(self.root, pin=result['manifest_sha256'])['pin_checked'])
         with self.assertRaises(verify_candidate.VerificationError):
             verify_candidate.verify(self.root, pin='0' * 64)
+
+    def test_wrong_or_missing_identity_and_old_format_fail_even_with_local_pin(self):
+        for mutation in ('wrong_product', 'missing_product', 'old_format', 'bool_format'):
+            with self.subTest(mutation=mutation):
+                doc = copy.deepcopy(self.doc)
+                if mutation == 'wrong_product': doc['product'] = 'OtherKit'
+                elif mutation == 'missing_product': del doc['product']
+                elif mutation == 'old_format': doc['format'] = 1
+                else: doc['format'] = True
+                self.save(doc)
+                pin = verify_candidate.digest(self.manifest.read_bytes())
+                with self.assertRaises(verify_candidate.VerificationError):
+                    verify_candidate.verify(self.root, pin=pin)
 
     def test_modified_file(self):
         p = self.root / 'kit/base/SCHEMA-V2.md'

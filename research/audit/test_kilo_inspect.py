@@ -25,7 +25,7 @@ class InspectionTests(unittest.TestCase):
         self.root = Path(self.tmp.name)
         self.layout = a.make_workspace(self.root, parent_scope='.')
         self.profile = self.root/'profiles/pilot/registry.json'
-        self.project = self.root/'.agent-contract/project/registry.json'
+        self.project = self.root/'.domain-agent-kit/project/registry.json'
         doc = json.loads(self.profile.read_text(encoding='utf-8'))
         doc['entries'].append(a.entry('R-1','rule','profile_owner','C-1','.',text='Синтетическое правило.'))
         a.write(self.profile, doc)

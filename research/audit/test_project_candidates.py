@@ -29,7 +29,7 @@ class ProjectCandidates(unittest.TestCase):
         self.assertNotEqual(docs['cli']['entries'][1]['id'], docs['docs']['entries'][1]['id'])
         for doc in docs.values():
             self.assertEqual(doc['revision'], 0)
-            self.assertEqual(doc['roots'], ['.agent-contract'])
+            self.assertEqual(doc['roots'], ['.domain-agent-kit'])
             self.assertTrue(all(row['state'] == 'draft' for row in doc['entries']))
             self.assertEqual(doc['entries'][1]['parent'], doc['entries'][0]['id'])
 
@@ -40,7 +40,7 @@ class ProjectCandidates(unittest.TestCase):
             with self.subTest(project=name), tempfile.TemporaryDirectory(prefix='kit-project-example-') as tmp:
                 root = Path(tmp)
                 layout = a.make_workspace(root)
-                file = root / '.agent-contract/project/registry.json'
+                file = root / '.domain-agent-kit/project/registry.json'
                 a.write(file, copy.deepcopy(doc))
                 l0 = (root / 'kit/base/registry.json').read_bytes()
                 l1 = (root / 'profiles/pilot/registry.json').read_bytes()

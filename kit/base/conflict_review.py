@@ -8,7 +8,7 @@ from .registry_policy import StoreError
 REVIEW_FORMAT = 1
 _MAX_BYTES, _MAX_ENTRIES = 1_048_576, 64
 _AREAS = ('L0', 'L1', 'L2')
-_ROOTS = {'L0': 'kit', 'L1': 'profiles/staged', 'L2': '.agent-contract'}
+_ROOTS = {'L0': 'kit', 'L1': 'profiles/staged', 'L2': '.domain-agent-kit'}
 _FIELDS = ('id', 'kind', 'state', 'authority', 'parent', 'scope', 'value', 'text')
 
 

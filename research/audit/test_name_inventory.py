@@ -13,10 +13,11 @@ spec.loader.exec_module(module)
 
 class InventoryTests(unittest.TestCase):
     def test_variations_and_no_raw_text(self):
-        hits = module.scan_content('AgentContractKit / Agent Contract Kit / domain-agent-kit / .agent-contract')
+        hits = module.scan_content('AgentContractKit / Agent Contract Kit / domain-agent-kit / .agent-contract / .domain-agent-kit')
         self.assertEqual(hits['old_brand'], 2)
-        self.assertEqual(hits['new_brand'], 1)
+        self.assertEqual(hits['new_brand'], 2)
         self.assertEqual(hits['project_path'], 1)
+        self.assertEqual(hits['new_project_path'], 1)
         self.assertNotIn('AgentContractKit', repr(hits))
 
     def test_limits_scope_and_excludes_sensitive_paths(self):

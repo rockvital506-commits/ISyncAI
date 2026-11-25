@@ -64,18 +64,18 @@ def entry(ident, kind, authority, parent, scope, *, state='active', text='тек
 def make_workspace(root, *, parent_scope='docs', parent_state='active', bare_l1=False):
     """Три раздельных корня L0/L1/L2. Родитель C-1 для дочерних записей."""
     root = Path(root).resolve()
-    for rel in ('kit/base', 'profiles/pilot', '.agent-contract/project'):
+    for rel in ('kit/base', 'profiles/pilot', '.domain-agent-kit/project'):
         (root / rel).mkdir(parents=True)
     l0 = {'schema_version': 2, 'area': 'L0', 'roots': ['kit'], 'release_version': RELEASE,
           'entries': [entry('S-1', 'contract', 'system_release', None, '.')]}
     l1_doc = {'schema_version': 2, 'area': 'L1', 'roots': ['profiles/pilot'], 'revision': 0,
               'entries': [entry('C-1', 'contract', 'profile_owner', None, parent_scope,
                                 state=parent_state)]}
-    l2 = {'schema_version': 2, 'area': 'L2', 'roots': ['.agent-contract'], 'revision': 0,
+    l2 = {'schema_version': 2, 'area': 'L2', 'roots': ['.domain-agent-kit'], 'revision': 0,
           'entries': [entry('P-1', 'contract', 'project_owner', None, '.')]}
     write(root / 'kit/base/registry.json', l0)
     write(root / 'profiles/pilot/registry.json', l1_doc)
-    write(root / '.agent-contract/project/registry.json', l2)
+    write(root / '.domain-agent-kit/project/registry.json', l2)
     return store.Layout(root, 'profiles/pilot')
 
 
@@ -316,7 +316,7 @@ def check_kinds_and_layers():
                            'основание «Нужно», критерий «Есть»: Текст правила.')
         try:
             plan = session.plan(c)
-            if plan['outcome'] != 'planned' or plan['diff']['file'] != '.agent-contract/project/registry.json':
+            if plan['outcome'] != 'planned' or plan['diff']['file'] != '.domain-agent-kit/project/registry.json':
                 out.append(f'L2: {plan["outcome"]}, файл {plan.get("diff", {}).get("file")}')
         except store.StoreError as error:
             out.append(f'L2: отказ {error.diagnostic()["code"]} — документ разрешает')
@@ -487,8 +487,39 @@ def known_exception(ident, error):
     return ident == 'N17-list' and type(error) is KeyError and error.args == ('diff',)
 
 
+def translated_paths(value):
+    """Переадресация синтетических фикстур в памяти; исходный корпус не меняется."""
+    if isinstance(value, str):
+        return value.replace('.agent-contract', '.domain-agent-kit')
+    if isinstance(value, list):
+        return [translated_paths(x) for x in value]
+    if isinstance(value, dict):
+        return {key: translated_paths(item) for key, item in value.items()}
+    return value
+
+
+def load_path_adapted_test(iteration, path):
+    """Только исторический код репозитория; в памяти меняются строковые литералы пути.
+
+    Это адаптированный тест текущего пути, не повтор исходного запечатанного испытания.
+    """
+    import ast
+    import importlib.util
+    class ReplacePath(ast.NodeTransformer):
+        def visit_Constant(self, node):
+            if isinstance(node.value, str):
+                node.value = translated_paths(node.value)
+            return node
+    spec = importlib.util.spec_from_file_location(f'drift{iteration}', path)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    tree = ReplacePath().visit(ast.parse(path.read_text(encoding='utf-8'), filename=str(path)))
+    exec(compile(tree, str(path), 'exec'), module.__dict__)
+    return module
+
+
 def check_known_drift():
-    """Сверка всех 130 случаев с актуальными точечными ожиданиями и историческими проверками."""
+    """130 случаев с точечными ожиданиями; пути 105/107/109 адаптированы в памяти."""
     import importlib.util
     import platform
     out, count = [], 0
@@ -496,16 +527,23 @@ def check_known_drift():
                             (108, 'test_cards'), (109, 'test_plan')):
         path = ROOT / f'research/{iteration}/{name}.py'
         try:
-            spec = importlib.util.spec_from_file_location(f'drift{iteration}', path)
-            module = importlib.util.module_from_spec(spec)
-            sys.modules[f'drift{iteration}'] = module
-            spec.loader.exec_module(module)
+            if iteration in (105, 107, 109):
+                module = load_path_adapted_test(iteration, path)
+            else:
+                spec = importlib.util.spec_from_file_location(f'drift{iteration}', path)
+                module = importlib.util.module_from_spec(spec)
+                sys.modules[f'drift{iteration}'] = module
+                spec.loader.exec_module(module)
             cases = json.loads((ROOT / f'research/{iteration}/CASES.json').read_text(encoding='utf-8'))['cases']
+            if iteration in (105, 107, 109):
+                cases = translated_paths(cases)
             expected = current_cases(iteration, cases)
             count += len(cases)
             exception_ids = set()
-            if iteration in (105, 108):
+            if iteration == 108:
                 evidence = subprocess_evidence(path)
+            elif iteration == 105:
+                evidence = {'os': platform.system(), 'rows': [module.observe(store, case['id']) for case in cases]}
             elif iteration == 107:
                 evidence = {'os': platform.system(), 'rows': [module.observe(store, case) for case in cases]}
             else:
@@ -537,7 +575,8 @@ def check_known_drift():
                            f'исчезли={sorted(set(KNOWN_DRIFT[iteration]) - observed_drift)}')
         except Exception as error:
             out.append(f'И-{iteration}: сбой аудита {type(error).__name__}: {error}')
-    return {'name': 'текущие ожидания случаев 105/107/108/109', 'cases': count, 'mismatches': out}
+    return {'name': 'текущие ожидания случаев 105/107/108/109 (пути 105/107/109 адаптированы в памяти)',
+            'cases': count, 'mismatches': out}
 
 
 CHECKS = (check_matrix, check_schema_scope, check_schema_parent, check_plan_outcomes,

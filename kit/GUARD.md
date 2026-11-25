@@ -19,7 +19,7 @@
 Пример с подстановкой собственных путей и заранее проверенных хешей:
 
 ```text
-python3 -I -S -B /trusted/AgentContractKit/kit/guard.py --candidate-root /snapshot/AgentContractKit --workspace /project --profile-root profiles/pilot --manifest-pin <sha256-манифеста> --system-pin <sha256-L0-реестра>
+python3 -I -S -B /trusted/DomainAgentKit/kit/guard.py --candidate-root /snapshot/DomainAgentKit --workspace /project --profile-root profiles/pilot --manifest-pin <sha256-манифеста> --system-pin <sha256-L0-реестра>
 ```
 
 `-I -S -B` изолирует импорт от текущего каталога, пользовательского `PYTHONPATH` и site и

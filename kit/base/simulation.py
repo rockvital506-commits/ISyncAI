@@ -12,7 +12,7 @@ from .registry_policy import StoreError
 SIMULATION_FORMAT = 1
 _PROFILE_ROOT, _PROFILE_ID = 'profiles/staged', 'staged'
 _ENTRY, _START = 'kit/base/entry.txt', 'kit/base/START.md'
-_L0, _L2 = 'kit/base/registry.json', '.agent-contract/project/registry.json'
+_L0, _L2 = 'kit/base/registry.json', '.domain-agent-kit/project/registry.json'
 _ASSET = {'cli': 'src/tool/usage.txt', 'docs': 'docs/site/index.md'}
 _WITNESS = {'entry_id', 'entry_sha256', 'control_sha256', 'profile_sha256'}
 _HASH = re.compile('[a-f0-9]{64}')
@@ -96,7 +96,7 @@ def _validate_projects(startup, system, projects, installed):
             l2 = schema_v2.validate_json(fixture['registry'], expected_area='L2')
         except schema_v2.SchemaError:
             _fail(where, 'registry')
-        if l2['roots'] != ['.agent-contract']:
+        if l2['roots'] != ['.domain-agent-kit']:
             _fail(where, 'roots')
         if not any(row['kind'] == 'rule' for row in l2['entries']):
             _fail(where, 'fixture')

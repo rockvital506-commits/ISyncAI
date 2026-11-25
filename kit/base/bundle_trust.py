@@ -6,7 +6,9 @@ import re
 from .bundle_verify import bundle_verify
 from .registry_policy import StoreError
 
-_DOMAIN = b'AgentContractKit:bundle-signature:v1\x00'
+# Формат подписи 2 несовместим с прежним доменом; автоматического fallback нет.
+_DOMAIN = b'DomainAgentKit:bundle-signature:v2\x00'
+_SIGNATURE_FORMAT = 2
 _HASH = re.compile('[0-9a-f]{64}')
 _ID = re.compile('[A-Za-z0-9][A-Za-z0-9._-]{0,63}')
 _UTC = re.compile('[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z')
@@ -89,7 +91,7 @@ def _unsigned(integrity, required, exception, approved, now):
 
 
 def _signed(integrity, signature, public, verifier):
-    if (not _closed(signature, _SIGNATURE) or type(signature['format']) is not int or signature['format'] != 1
+    if (not _closed(signature, _SIGNATURE) or type(signature['format']) is not int or signature['format'] != _SIGNATURE_FORMAT
             or type(signature['algorithm']) is not str or not _matches(_HASH, signature['key_id'])
             or type(signature['signature']) is not bytes or len(signature['signature']) != 64):
         return _assessment(integrity, 'signature_invalid', 'blocked', 'shape')
