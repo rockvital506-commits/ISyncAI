@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Изолированный исполнитель: только синтетические деревья и процессы."""
 import hashlib
+import importlib.util
 import json
 import os
 import queue
@@ -11,6 +12,8 @@ import tempfile
 import threading
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT/'research/audit')]
@@ -332,6 +335,67 @@ class SnapshotTests(unittest.TestCase):
         alias.unlink(); alias.symlink_to(self.root/'trusted-a', target_is_directory=True)
         stale = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
         self.assertEqual(stale['diagnostic']['code'], 'ticket_unknown')
+        self.assertEqual(audit.tree_digest(self.workspace), before)
+
+    def test_replaced_same_path_roots_revoke_plan_even_with_identical_files(self):
+        trusted = self.root/'trusted'; trusted.mkdir()
+        for name in ('snapshot_session.py', 'verify_candidate.py'):
+            shutil.copyfile(ROOT/'kit'/name, trusted/name)
+        for name, directory in (('candidate', self.candidate), ('workspace', self.workspace), ('trusted', trusted)):
+            with self.subTest(root=name):
+                replacement = self.root/(name+'-replacement')
+                saved = self.root/(name+'-saved')
+                shutil.copytree(directory, replacement)
+                self.assertEqual(audit.tree_digest(directory), audit.tree_digest(replacement))
+                self.assertNotEqual((directory.stat().st_dev, directory.stat().st_ino),
+                                    (replacement.stat().st_dev, replacement.stat().st_ino))
+                proc, lines = self.launch(runner=trusted/'snapshot_session.py')
+                plan = self.send(proc, lines, self.request())
+                self.assertEqual(plan['outcome'], 'planned')
+                before = audit.tree_digest(self.workspace)
+                directory.rename(saved); replacement.rename(directory)
+                self.assertEqual(audit.tree_digest(directory), audit.tree_digest(saved))
+                denied = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+                self.assertEqual(denied, {'outcome':'error', 'code':'runtime_preflight_failed'})
+                self.assertEqual(audit.tree_digest(self.workspace), before)
+                if name == 'workspace':
+                    self.assertEqual(audit.tree_digest(saved), before)
+                directory.rename(replacement); saved.rename(directory)
+                stale = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+                self.assertEqual(stale['diagnostic']['code'], 'ticket_unknown')
+                self.assertEqual(audit.tree_digest(self.workspace), before)
+                proc.kill(); proc.wait(timeout=15)
+
+    def test_identical_or_unavailable_root_identity_is_refused(self):
+        # Имитируем файловую систему с одинаковыми/недоступными номерами, без bind mount.
+        spec = importlib.util.spec_from_file_location('snapshot_identity_test', RUNNER)
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        original_stat = Path.stat
+        source_info = original_stat(self.candidate)
+        for mode in ('same', 'zero'):
+            def simulated(path, *args, **kwargs):
+                info = original_stat(path, *args, **kwargs)
+                if path == self.workspace:
+                    return SimpleNamespace(st_mode=info.st_mode, st_dev=source_info.st_dev,
+                                           st_ino=source_info.st_ino if mode == 'same' else 0)
+                return info
+            with self.subTest(mode=mode), patch.object(Path, 'stat', simulated):
+                with self.assertRaises(module.SnapshotError) as raised:
+                    module._roots(self.candidate, self.workspace)
+                self.assertEqual(str(raised.exception), 'roots_overlap' if mode == 'same' else 'roots_invalid')
+
+    def test_same_root_does_not_attest_trusted_file_contents(self):
+        trusted = self.root/'trusted'; trusted.mkdir()
+        for name in ('snapshot_session.py', 'verify_candidate.py'):
+            shutil.copyfile(ROOT/'kit'/name, trusted/name)
+        proc, lines = self.launch(runner=trusted/'snapshot_session.py')
+        self.assertEqual(self.send(proc, lines, {'type':'bootstrap'})['outcome'], 'bootstrap')
+        identity = (trusted.stat().st_dev, trusted.stat().st_ino)
+        (trusted/'verify_candidate.py').write_text('untrusted replacement\n', encoding='utf-8')
+        self.assertEqual((trusted.stat().st_dev, trusted.stat().st_ino), identity)
+        before = audit.tree_digest(self.workspace)
+        # Сосед загружен при старте; содержимое файла доверенного инструмента не сверяется.
+        self.assertEqual(self.send(proc, lines, {'type':'bootstrap'})['outcome'], 'bootstrap')
         self.assertEqual(audit.tree_digest(self.workspace), before)
 
     def test_missing_or_non_directory_roots_refused(self):

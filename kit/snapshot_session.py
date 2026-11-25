@@ -169,23 +169,27 @@ def _trusted_verifier():
 
 
 def _roots(candidate, workspace):
-    """Канонические пути: это не обнаружение bind mount и не защита от гонок."""
+    """Пути и идентичности корней; сравнение не атомарно с использованием."""
     try:
-        source = Path(candidate).resolve(strict=True)
-        work = Path(workspace).resolve(strict=True)
-        trusted = Path(__file__).resolve(strict=True).parent
-        if not all(path.is_dir() for path in (source, work, trusted)):
-            raise SnapshotError('roots_invalid')
+        paths = (Path(candidate).resolve(strict=True), Path(workspace).resolve(strict=True),
+                 Path(__file__).resolve(strict=True).parent)
+        identities = []
+        for path in paths:
+            info = path.stat()
+            if (not stat.S_ISDIR(info.st_mode) or type(info.st_dev) is not int
+                    or info.st_dev < 0 or type(info.st_ino) is not int or info.st_ino <= 0):
+                raise SnapshotError('roots_invalid')
+            identities.append((info.st_dev, info.st_ino))
     except (OSError, RuntimeError, TypeError, ValueError) as exc:
         if isinstance(exc, SnapshotError):
             raise
         raise SnapshotError('roots_invalid') from exc
-    paths = (source, work, trusted)
     for i, a in enumerate(paths):
-        for b in paths[i + 1:]:
-            if a == b or a in b.parents or b in a.parents:
+        for j in range(i + 1, len(paths)):
+            b = paths[j]
+            if a == b or a in b.parents or b in a.parents or identities[i] == identities[j]:
                 raise SnapshotError('roots_overlap')
-    return paths
+    return paths, tuple(identities)
 
 
 def run(args):
@@ -199,7 +203,7 @@ def run(args):
         raise SnapshotError('candidate_root_invalid')
     if any(name == 'kit' or name.startswith('kit.') for name in sys.modules):
         raise SnapshotError('module_namespace_already_loaded')
-    roots = _roots(args.candidate_root, args.workspace)
+    roots, identities = _roots(args.candidate_root, args.workspace)
     verifier = _trusted_verifier()
     root, sources, start = capture(roots[0], args.manifest_pin, verifier)
     sys.meta_path.insert(0, SnapshotFinder(sources))
@@ -216,7 +220,7 @@ def run(args):
     layout = Layout(roots[1], args.profile_root)
 
     def preflight():
-        if _roots(args.candidate_root, args.workspace) != roots:
+        if _roots(args.candidate_root, args.workspace) != (roots, identities):
             raise SnapshotError('roots_changed')
         _strict_source(root, args.manifest_pin, verifier)
         guard(root, layout, manifest_pin=args.manifest_pin, system_pin=args.system_pin)
