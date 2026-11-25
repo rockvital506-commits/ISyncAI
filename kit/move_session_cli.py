@@ -83,7 +83,7 @@ class MoveConsole:
         raise ValueError('request')
 
 
-def main():
+def main(*, preflight=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--workspace',type=Path,required=True);parser.add_argument('--profile-root',required=True)
     args=parser.parse_args();session=MoveConsole(registry_store.Layout(args.workspace,args.profile_root))
@@ -94,6 +94,11 @@ def main():
         if not line:return 0
         if len(line)>MAX_LINE:
             session._cancel();respond({'outcome':'error','code':'input_too_large'});return 1
+        if preflight is not None:
+            try:preflight()
+            except Exception:
+                session._cancel();session.raw=None;session.pin=None
+                respond({'outcome':'error','code':'runtime_preflight_failed'});continue
         try:
             data=schema_v2.parse_json(line)
             respond(session.handle(data))

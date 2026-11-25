@@ -251,6 +251,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "new_brand": 2
+      },
+      "path": "kit/SNAPSHOT-MOVE-SESSION.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "new_brand": 3,
         "new_project_path": 1
       },
@@ -540,6 +547,13 @@
         "kit_import": 4
       },
       "path": "kit/session_cli.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 4
+      },
+      "path": "kit/snapshot_move_session.py"
     },
     {
       "area": "candidate_kit",
@@ -5749,6 +5763,16 @@
       "area": "audit",
       "hits": {
         "candidate_version": 1,
+        "kit_import": 2,
+        "new_brand": 2,
+        "new_project_path": 2
+      },
+      "path": "research/audit/test_snapshot_move_session.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "candidate_version": 1,
         "new_brand": 4,
         "new_project_path": 4
       },
@@ -7963,7 +7987,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2085,
+  "scanned_files": 2088,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
