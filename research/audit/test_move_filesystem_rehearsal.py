@@ -13,7 +13,7 @@ import unittest
 ROOT=Path(__file__).resolve().parents[2];sys.path[:0]=[str(ROOT),str(ROOT/'research/audit')]
 import core_audit as audit
 import move_recovery_model as model
-from kit.base import move_intent, registry_journal, schema_v2, registry_store as store
+from kit.base import move_intent, move_preview, registry_journal, schema_v2, registry_store as store
 from kit.base.registry_policy import StoreError
 
 PHASES=('before_marker','after_create','half_record','full_record','marker_synced','parent_synced',
@@ -30,6 +30,13 @@ def encode(intent):
 
 def decode(raw):
     doc=schema_v2.parse_json(raw)
+    if 'intent_format' in doc:
+        parsed,before,after=move_intent._verified(raw,hashlib.sha256(raw).hexdigest())
+        preview=move_preview.preview_move(before,source=parsed['source'],target=parsed['target'],
+            entry_id=parsed['entry_id'],candidate=parsed['candidate'],portability_context=parsed['portability_context'])
+        result={'format':1,'source':parsed['source'],'target':parsed['target'],'before':before,
+                'after':after,'preview':preview,'portability_context':parsed['portability_context']}
+        model._validate(result);return result
     for key in ('before','after'):
         doc[key]={k:base64.b64decode(v,validate=True) for k,v in doc[key].items()}
     model._validate(doc)
@@ -179,6 +186,23 @@ class FilesystemRehearsal(unittest.TestCase):
                     observed={k:v.read_bytes() for k,v in files.items()}
                     result=move_intent.assess(portable,intent_pin=report['intent_sha256'],observed=observed)
                     self.assertEqual(result['state'],expected);self.assertEqual(result['marker'],'not_checked')
+                    with self.assertRaises(StoreError) as error:store.status(layout)
+                    self.assertEqual(error.exception.code,'move_pending');self.assertEqual(sibling.read_bytes(),b'unchanged synthetic')
+
+    def test_product_probe_reads_portable_intent_after_process_exit(self):
+        from kit import move_recovery_inspect as probe
+        for src in ('L1','L2'):
+            for phase,expected in (('parent_synced','before_both'),('target_replaced','target_after_source_before'),
+                                   ('source_replaced','after_both')):
+                with self.subTest(src=src,phase=phase):
+                    root,layout,original,_,sibling=self.fixture(src);p=original['preview']
+                    report,portable=move_intent.build(original['before'],source=src,target=original['target'],
+                        entry_id=p['source_entry']['id'],candidate=p['target_entry'],
+                        portability_context=original['portability_context'])
+                    self.assertEqual(self.run_child(root,'start',phase,portable).returncode,77)
+                    before=audit.tree_digest(root)
+                    result=probe.inspect(layout,intent_pin=report['intent_sha256'])
+                    self.assertEqual(result['state'],expected);self.assertEqual(before,audit.tree_digest(root))
                     with self.assertRaises(StoreError) as error:store.status(layout)
                     self.assertEqual(error.exception.code,'move_pending');self.assertEqual(sibling.read_bytes(),b'unchanged synthetic')
 

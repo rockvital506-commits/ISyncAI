@@ -205,6 +205,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "new_brand": 1
+      },
+      "path": "kit/MOVE-RECOVERY-INSPECT.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "new_brand": 1,
         "new_project_path": 1
       },
@@ -416,6 +423,13 @@
         "kit_import": 2
       },
       "path": "kit/legacy_projection.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 2
+      },
+      "path": "kit/move_recovery_inspect.py"
     },
     {
       "area": "candidate_kit",
@@ -5341,7 +5355,7 @@
     {
       "area": "audit",
       "hits": {
-        "kit_import": 2,
+        "kit_import": 3,
         "new_brand": 7,
         "new_project_path": 7
       },
@@ -5384,6 +5398,15 @@
         "new_project_path": 2
       },
       "path": "research/audit/test_move_preview_session.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 3,
+        "new_brand": 3,
+        "new_project_path": 3
+      },
+      "path": "research/audit/test_move_recovery_inspect.py"
     },
     {
       "area": "audit",
@@ -7773,7 +7796,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2055,
+  "scanned_files": 2058,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
