@@ -226,6 +226,13 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "kit_import": 2
+      },
+      "path": "kit/atomic_init_inspect.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "new_brand": 1
       },
       "path": "kit/base/BUNDLE-TRUST.md"
@@ -359,7 +366,7 @@
     {
       "area": "candidate_kit",
       "hits": {
-        "kit_import": 3
+        "kit_import": 4
       },
       "path": "kit/init_workspace_cli.py"
     },
@@ -5077,6 +5084,13 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 4
+      },
+      "path": "research/audit/test_atomic_init_inspect.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "new_brand": 5,
         "old_brand": 1
       },
@@ -7673,7 +7687,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2039,
+  "scanned_files": 2042,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }

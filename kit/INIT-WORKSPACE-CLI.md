@@ -14,6 +14,9 @@
 python3 -I -S -B /trusted/kit/init_workspace_cli.py
 ```
 
+Для неопределённого исхода `inspect_atomic` сравнивает имена без удаления/исправления;
+это не восстановление: [ATOMIC-INIT-INSPECT.md](ATOMIC-INIT-INSPECT.md).
+
 Отдельный Linux-вариант с публикацией через `renameat2(RENAME_NOREPLACE)` вызывается
 `type: "plan_atomic"`; его границы и неопределённый исход — [ATOMIC-INIT.md](ATOMIC-INIT.md).
 Никакого автоматического переключения или fallback нет. Ниже `plan` — прежний неатомарный путь.
