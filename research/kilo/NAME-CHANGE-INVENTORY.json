@@ -205,6 +205,14 @@
     {
       "area": "candidate_kit",
       "hits": {
+        "new_brand": 1,
+        "new_project_path": 1
+      },
+      "path": "kit/MOVE-FINALIZE.md"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
         "kit_import": 1
       },
       "path": "kit/MOVE-INTENT-EXPORT.md"
@@ -446,6 +454,13 @@
         "kit_import": 4
       },
       "path": "kit/move_execution.py"
+    },
+    {
+      "area": "candidate_kit",
+      "hits": {
+        "kit_import": 4
+      },
+      "path": "kit/move_finalize.py"
     },
     {
       "area": "candidate_kit",
@@ -5419,6 +5434,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 5,
+        "new_brand": 10,
+        "new_project_path": 10
+      },
+      "path": "research/audit/test_move_finalize.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "candidate_version": 1,
         "kit_import": 2,
         "new_brand": 1,
@@ -7884,7 +7908,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2073,
+  "scanned_files": 2076,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
