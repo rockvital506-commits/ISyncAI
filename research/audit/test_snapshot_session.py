@@ -200,6 +200,16 @@ class SnapshotTests(unittest.TestCase):
         self.assertEqual(doc['registry']['entries'][-1]['id'], 'C-9')
         self.assertEqual(doc['registry']['entries'][-1]['state'], 'draft')
 
+    def test_cancel_revokes_ticket_in_snapshot_session(self):
+        proc, lines = self.launch(); before = audit.tree_digest(self.workspace)
+        plan = self.send(proc, lines, self.request())
+        self.assertEqual(plan['outcome'], 'planned')
+        self.assertEqual(self.send(proc, lines, {'type':'cancel'}), {'outcome':'cancelled'})
+        self.assertEqual(self.send(proc, lines, {'type':'cancel'}), {'outcome':'cancelled'})
+        denied = self.send(proc, lines, {'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(denied['diagnostic']['code'], 'ticket_unknown')
+        self.assertEqual(audit.tree_digest(self.workspace), before)
+
     def test_workspace_code_and_pythonpath_are_not_imported(self):
         for folder in (self.workspace/'kit/base', self.root/'untrusted/kit/base'):
             folder.mkdir(parents=True, exist_ok=True)

@@ -89,6 +89,11 @@ class PlanSession:
         self._session_lock = threading.Lock()
 
     @_exclusive_session
+    def cancel(self):
+        """Отозвать ожидающий билет без записи; не прерывает уже начатый apply."""
+        self._pending = None
+
+    @_exclusive_session
     def plan(self, card):
         """Показать дифф; любая попытка, допущенная в метод, отзывает старый билет."""
         self._pending = None

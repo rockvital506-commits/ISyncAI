@@ -40,7 +40,7 @@ def main(*, preflight=None, bootstrap=None):
             return 0
         if len(line) > MAX_LINE:
             # Не разбивать одну чрезмерную команду на несколько трактуемых запросов.
-            session._pending = None
+            session.cancel()
             respond({'outcome': 'error', 'code': 'input_too_large'})
             return 1
         if preflight is not None:
@@ -48,7 +48,7 @@ def main(*, preflight=None, bootstrap=None):
                 preflight()
             except Exception:
                 # Отказ проверки отзывает даже ранее показанный ожидающий план.
-                session._pending = None
+                session.cancel()
                 respond({'outcome': 'error', 'code': 'runtime_preflight_failed'})
                 continue
         try:
@@ -69,7 +69,7 @@ def main(*, preflight=None, bootstrap=None):
                                        allow_delete=data.get('allow_delete', False))
                 respond(result)
             elif mode == 'cancel' and set(data) == {'type'}:
-                session._pending = None
+                session.cancel()
                 respond({'outcome': 'cancelled'})
             else:
                 raise ValueError('request')
@@ -77,7 +77,7 @@ def main(*, preflight=None, bootstrap=None):
             respond({'outcome': 'error', 'diagnostic': exc.diagnostic()})
         except (schema_v2.SchemaError, ValueError, TypeError, UnicodeError, RecursionError):
             # Некорректная новая команда не сохраняет потенциально забытый ожидающий план.
-            session._pending = None
+            session.cancel()
             respond({'outcome': 'error', 'code': 'invalid_request'})
 
 

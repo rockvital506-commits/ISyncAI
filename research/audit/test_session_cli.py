@@ -82,6 +82,13 @@ class SessionTests(unittest.TestCase):
                 self.assertEqual(denied['diagnostic']['code'], 'ticket_unknown')
                 self.assertEqual(before, a.tree_digest(self.root))
 
+    def test_cancel_twice_is_idempotent_and_leaves_bytes_unchanged(self):
+        p = self.process(); before = a.tree_digest(self.root); plan = self.plan(p)
+        self.assertEqual(self.send(p, {'type':'cancel'}), {'outcome':'cancelled'})
+        self.assertEqual(self.send(p, {'type':'cancel'}), {'outcome':'cancelled'})
+        self.assertEqual(self.send(p, self.apply_msg(plan))['diagnostic']['code'], 'ticket_unknown')
+        self.assertEqual(before, a.tree_digest(self.root))
+
     def test_edited_plan_denied(self):
         p = self.process(); before = a.tree_digest(self.root); plan = self.plan(p)
         forged = json.loads(json.dumps(plan)); forged['diff']['unified'] += 'подмена'

@@ -102,6 +102,54 @@ class SessionExclusion(ModePlanBase):
         self.error('plan_mismatch', lambda: self.session.apply(modified, confirmed_ticket=plan['ticket']))
         self.assertEqual(self.session.apply(plan, confirmed_ticket=plan['ticket'])['outcome'], 'applied')
 
+    def test_cancel_is_idempotent_and_revokes_without_writing(self):
+        before = self.observed()
+        self.assertIsNone(self.session.cancel())
+        plan = self.session.plan(audit.card(ident='Q-9'))
+        self.assertIsNone(self.session.cancel()); self.assertIsNone(self.session.cancel())
+        self.assertEqual(self.observed(), before)
+        self.error('ticket_unknown', lambda: self.session.apply(plan, confirmed_ticket=plan['ticket']))
+        new = self.session.plan(audit.card(ident='Q-9'))
+        self.assertEqual(self.session.apply(new, confirmed_ticket=new['ticket'])['outcome'], 'applied')
+        applied = self.observed(); self.assertIsNone(self.session.cancel())
+        self.assertEqual(self.observed(), applied)  # Это не откат завершённой записи.
+
+    def test_cancel_busy_during_apply_does_not_abort_inflight_write(self):
+        plan = self.session.plan(audit.card(ident='Q-9')); before = self.observed()
+        entered, release = threading.Event(), threading.Event(); self.addCleanup(release.set)
+        real_same = operation_plan._same_json
+        def pause(got, expected):
+            if type(got) is dict and got.get('ticket') == plan['ticket']:
+                entered.set()
+                if not release.wait(10): raise RuntimeError('synthetic timeout')
+            return real_same(got, expected)
+        with patch.object(operation_plan, '_same_json', side_effect=pause):
+            thread, result = self.threaded(lambda: self.session.apply(plan, confirmed_ticket=plan['ticket']))
+            try:
+                self.assertTrue(entered.wait(10))
+                self.error('session_busy', self.session.cancel)
+                self.assertEqual(self.observed(), before)
+            finally: release.set(); thread.join(timeout=15)
+            self.assertEqual(self.finish(release, thread, result)['outcome'], 'applied')
+        self.error('ticket_unknown', lambda: self.session.apply(plan, confirmed_ticket=plan['ticket']))
+        self.assertNotEqual(self.observed()['L1'], before['L1'])
+
+    def test_cancel_busy_during_plan_preserves_resulting_ticket(self):
+        entered, release = threading.Event(), threading.Event(); self.addCleanup(release.set)
+        real_preview = store._preview_action
+        def pause(*args, **kwargs):
+            entered.set()
+            if not release.wait(10): raise RuntimeError('synthetic timeout')
+            return real_preview(*args, **kwargs)
+        with patch.object(store, '_preview_action', side_effect=pause):
+            thread, result = self.threaded(lambda: self.session.plan(audit.card(ident='Q-9')))
+            try:
+                self.assertTrue(entered.wait(10))
+                self.error('session_busy', self.session.cancel)
+            finally: release.set(); thread.join(timeout=15)
+            plan = self.finish(release, thread, result)
+        self.assertEqual(self.session.apply(plan, confirmed_ticket=plan['ticket'])['outcome'], 'applied')
+
     def test_unexpected_exception_releases_guard(self):
         with patch.object(operation_plan, '_checked_card', side_effect=RuntimeError('synthetic')):
             with self.assertRaises(RuntimeError): self.session.plan(audit.card(ident='Q-9'))
