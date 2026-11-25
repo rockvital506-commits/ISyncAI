@@ -187,13 +187,14 @@ class CooperativeSessionStudy(unittest.TestCase):
         self.assertEqual(self.request(a, {'cmd': 'apply', 'ticket': plan['ticket']})['outcome'], 'applied')
         self.assertEqual(self.history('L1')[1], ['A-9'])
 
-    def test_bypassing_wrapper_allows_loss(self):
+    def test_bypassing_study_wrapper_still_obeys_candidate_directory_lock(self):
         a, b, pa, pb, _ = self.setup_peers('L1', 'L1')
-        self.assertEqual(self.request(b, {'cmd': 'bypass', 'ticket': pb['ticket']})['outcome'], 'applied')
-        self.assertEqual(self.history('L1')[1], ['B-9'])
+        self.assertEqual(self.request(b, {'cmd': 'bypass', 'ticket': pb['ticket']}),
+                         {'outcome': 'error', 'code': 'write_busy'})
         self.assertEqual(self.resume(a)['outcome'], 'applied')
         self.assertEqual(self.history('L1')[1], ['A-9'])
         self.assertEqual(hashlib.sha256(self.paths['L1'].read_bytes()).hexdigest(), pa['diff']['after_sha256'])
+        self.assertEqual(self.request(b, {'cmd': 'bypass', 'ticket': pb['ticket']})['code'], 'ticket_unknown')
 
     def test_process_killed_before_temp_allows_second_to_apply(self):
         a, b, _, pb, before = self.setup_peers('L1', 'L1')
@@ -205,16 +206,16 @@ class CooperativeSessionStudy(unittest.TestCase):
         self.assertEqual(hashlib.sha256(self.paths['L1'].read_bytes()).hexdigest(), pb['diff']['after_sha256'])
         self.assertEqual(self.history('L1')[1], ['B-9'])
 
-    def test_replaced_lock_file_allows_loss_despite_cooperation(self):
+    def test_replaced_study_lock_still_obeys_candidate_directory_lock(self):
         a, b, pa, pb, _ = self.setup_peers('L1', 'L1')
         old = self.root/'old-study.lock'; self.lock.rename(old); self.lock.write_bytes(b'')
         self.assertNotEqual(old.stat().st_ino, self.lock.stat().st_ino)
-        self.assertEqual(self.request(b, {'cmd': 'apply', 'ticket': pb['ticket']})['outcome'], 'applied')
-        self.assertEqual(self.history('L1')[1], ['B-9'])
-        self.assertEqual(hashlib.sha256(self.paths['L1'].read_bytes()).hexdigest(), pb['diff']['after_sha256'])
+        self.assertEqual(self.request(b, {'cmd': 'apply', 'ticket': pb['ticket']}),
+                         {'outcome': 'error', 'code': 'write_busy'})
         self.assertEqual(self.resume(a)['outcome'], 'applied')
         self.assertEqual(self.history('L1')[1], ['A-9'])
         self.assertEqual(hashlib.sha256(self.paths['L1'].read_bytes()).hexdigest(), pa['diff']['after_sha256'])
+        self.assertEqual(self.request(b, {'cmd': 'apply', 'ticket': pb['ticket']})['code'], 'ticket_unknown')
 
 
 if __name__ == '__main__':

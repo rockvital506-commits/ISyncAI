@@ -37,7 +37,10 @@ class ReplacementTests(ModePlanBase):
             with self.subTest(variant=variant):
                 plan = self.make_plan(); before = self.observed(); seen = []
                 def altered(fd):
-                    info = real_fstat(fd); seen.append(info.st_size)
+                    info = real_fstat(fd)
+                    # Каталог блокировки не является целевым временным файлом.
+                    if stat.S_ISDIR(info.st_mode): return info
+                    seen.append(info.st_size)
                     if variant == 'oserror': raise OSError('synthetic')
                     if variant == 'missing': return SimpleNamespace(st_mode=info.st_mode)
                     return SimpleNamespace(st_mode=info.st_mode,
@@ -77,7 +80,9 @@ class ReplacementTests(ModePlanBase):
     def test_second_fstat_drift_refuses_after_staged_write(self):
         plan = self.make_plan(); before = self.observed(); real_fstat = store.os.fstat; sizes = []
         def changed(fd):
-            info = real_fstat(fd); sizes.append(info.st_size)
+            info = real_fstat(fd)
+            if stat.S_ISDIR(info.st_mode): return info
+            sizes.append(info.st_size)
             return SimpleNamespace(st_mode=info.st_mode, st_uid=info.st_uid + (len(sizes) == 2), st_gid=info.st_gid)
         with patch.object(store.os, 'fstat', side_effect=changed), patch.object(store.os, 'replace') as replace:
             self.reject('replacement_metadata_mismatch', plan); replace.assert_not_called()

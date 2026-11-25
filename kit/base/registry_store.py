@@ -2,12 +2,18 @@
 from dataclasses import dataclass
 from hashlib import sha256
 from functools import wraps
+import errno
 import json
 import os
 from pathlib import Path
 import stat
 import tempfile
 import threading
+
+try:
+    import fcntl
+except ImportError:
+    fcntl = None
 
 from . import profile_journal, registry_journal, registry_policy, schema_v2
 from .profile_journal import canonical_bytes as _wire
@@ -32,13 +38,48 @@ _WRITE_LOCK = threading.Lock()
 
 def _serialized_write(fn):
     @wraps(fn)
-    def run(*args, **kwargs):
+    def run(layout, *args, **kwargs):
         if not _WRITE_LOCK.acquire(blocking=False):
             raise StoreError('write_busy', 'write')
+        fd = None
         try:
-            return fn(*args, **kwargs)
+            if (os.name != 'posix' or fcntl is None or not hasattr(fcntl, 'flock')
+                    or not hasattr(os, 'O_DIRECTORY') or not hasattr(os, 'O_NOFOLLOW')):
+                raise StoreError('write_lock_unavailable', 'workspace')
+            workspace = _workspace(layout.workspace)
+            try:
+                fd = os.open(workspace, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | getattr(os, 'O_CLOEXEC', 0))
+                opened = os.fstat(fd)
+                if (type(opened.st_mode) is not int or not stat.S_ISDIR(opened.st_mode)
+                        or type(opened.st_dev) is not int or opened.st_dev < 0
+                        or type(opened.st_ino) is not int or opened.st_ino <= 0):
+                    raise OSError('workspace_lock_invalid')
+                try:
+                    fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                except OSError as error:
+                    if error.errno in (errno.EACCES, errno.EAGAIN):
+                        raise StoreError('write_busy', 'write') from error
+                    raise
+                current = os.stat(workspace, follow_symlinks=False)
+                if (type(current.st_mode) is not int or not stat.S_ISDIR(current.st_mode)
+                        or type(current.st_dev) is not int or type(current.st_ino) is not int
+                        or (current.st_dev, current.st_ino) != (opened.st_dev, opened.st_ino)):
+                    raise OSError('workspace_lock_changed')
+            except StoreError:
+                raise
+            except (OSError, AttributeError, TypeError, ValueError) as error:
+                raise StoreError('write_lock_unavailable', 'workspace') from error
+            return fn(layout, *args, **kwargs)
         finally:
-            _WRITE_LOCK.release()
+            try:
+                if fd is not None:
+                    try:
+                        os.close(fd)
+                    except OSError as error:
+                        # Запись могла уже завершиться: исход неопределён, не заявляем applied.
+                        raise StoreError('write_lock_release_failed', 'workspace') from error
+            finally:
+                _WRITE_LOCK.release()
     return run
 
 
