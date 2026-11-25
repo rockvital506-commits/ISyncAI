@@ -4968,6 +4968,15 @@
       "area": "audit",
       "hits": {
         "kit_import": 1,
+        "new_brand": 2,
+        "new_project_path": 2
+      },
+      "path": "research/audit/init_model.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 1,
         "new_brand": 1
       },
       "path": "research/audit/l0_proposal_audit.py"
@@ -5070,6 +5079,15 @@
         "new_brand": 1
       },
       "path": "research/audit/test_guard_tree.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 1,
+        "new_brand": 5,
+        "new_project_path": 5
+      },
+      "path": "research/audit/test_init_model.py"
     },
     {
       "area": "audit",
@@ -5220,6 +5238,14 @@
         "new_project_path": 1
       },
       "path": "research/kilo/D02-DELIVERY-CONTRACT.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "new_brand": 1,
+        "new_project_path": 1
+      },
+      "path": "research/kilo/D04-INITIALIZATION-STUDY.md"
     },
     {
       "area": "kilo_docs_and_history",
@@ -7374,7 +7400,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 1974,
+  "scanned_files": 1977,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
