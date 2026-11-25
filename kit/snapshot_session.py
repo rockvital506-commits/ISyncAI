@@ -21,6 +21,7 @@ MODULES = {
     'kit.verify_candidate': 'kit/verify_candidate.py',
     'kit.guard': 'kit/guard.py',
     'kit.session_cli': 'kit/session_cli.py',
+    'kit.base.applicability': 'kit/base/applicability.py',
     'kit.base.schema_v2': 'kit/base/schema_v2.py',
     'kit.base.registry_policy': 'kit/base/registry_policy.py',
     'kit.base.profile_journal': 'kit/base/profile_journal.py',

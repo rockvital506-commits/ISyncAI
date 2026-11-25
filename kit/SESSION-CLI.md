@@ -15,6 +15,11 @@ python3 -B kit/session_cli.py --workspace /absolute/workspace --profile-root pro
 {"type":"plan","request":"Покажи правила в профиле Pilot."}
 ```
 
+Для структурного отчёта по одному явно указанному пути можно отправить
+`{"type":"applicable","scope":"docs/readme.md"}`; он отзывает ожидающий план и не пишет.
+Подробные границы фильтра, конфликты и ограничения — [APPLICABILITY.md](base/APPLICABILITY.md).
+Отчёт не определяет контекст задачи или смысл и не гарантирует следования агентом.
+
 Каждый ответ — одна JSON-строка на stdout. Для мутации `plan` возвращает `plan_format: 4`,
 `outcome: planned`, точный байтовый дифф, `input_mode_bits`, предупреждение `replacement_notice`
 и билет. На POSIX показываются исходные биты mode трёх файлов реестров; их изменение к моменту

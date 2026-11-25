@@ -52,6 +52,18 @@ class SessionTests(unittest.TestCase):
     def apply_msg(self, plan, token=None):
         return {'type':'apply','plan':plan,'confirmed_ticket':plan['ticket'] if token is None else token}
 
+    def test_applicable_read_revokes_pending_and_does_not_write(self):
+        p=self.process();before=a.tree_digest(self.root);plan=self.plan(p)
+        result=self.send(p,{'type':'applicable','scope':'docs/readme.md'})
+        self.assertEqual(result['outcome'],'applicable');self.assertEqual(result['coverage'],'selected_scope_only')
+        self.assertEqual({row['area'] for row in result['entries']},{'L0','L1','L2'})
+        self.assertEqual(self.send(p,self.apply_msg(plan))['diagnostic']['code'],'ticket_unknown')
+        self.assertEqual(before,a.tree_digest(self.root))
+        plan=self.plan(p)
+        self.assertEqual(self.send(p,{'type':'applicable','scope':'../bad'})['diagnostic']['code'],'scope_invalid')
+        self.assertEqual(self.send(p,self.apply_msg(plan))['diagnostic']['code'],'ticket_unknown')
+        self.assertEqual(before,a.tree_digest(self.root))
+
     def test_separate_confirmation_and_replay(self):
         p = self.process(); before = a.tree_digest(self.root); plan = self.plan(p)
         self.assertEqual(before, a.tree_digest(self.root))

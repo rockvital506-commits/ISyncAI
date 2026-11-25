@@ -103,6 +103,17 @@ class SnapshotTests(unittest.TestCase):
         manifest.write_text(json.dumps(doc, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
         self.manifest_pin = digest(manifest)
 
+    def test_applicable_uses_pinned_module_and_revokes_pending(self):
+        before=audit.tree_digest(self.workspace);proc,lines=self.launch()
+        plan=self.send(proc,lines,self.request());self.assertEqual(plan['outcome'],'planned')
+        report=self.send(proc,lines,{'type':'applicable','scope':'docs/readme.md'})
+        self.assertEqual(report['outcome'],'applicable')
+        self.assertEqual({row['area'] for row in report['entries']},{'L0','L1','L2'})
+        self.assertEqual(report['inputs_sha256']['L0'],self.system_pin)
+        again=self.send(proc,lines,{'type':'apply','plan':plan,'confirmed_ticket':plan['ticket']})
+        self.assertEqual(again['diagnostic']['code'],'ticket_unknown')
+        self.assertEqual(before,audit.tree_digest(self.workspace))
+
     def test_start_is_pinned_minimal_and_not_workspace_input(self):
         entry = self.candidate/'kit/base/entry.txt'
         start = self.candidate/'kit/base/START.md'

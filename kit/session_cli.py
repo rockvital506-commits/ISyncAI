@@ -10,7 +10,7 @@ from pathlib import Path
 # Для прямого запуска -I; при импорте проверенным загрузчиком не расширяем sys.path.
 if __name__ == '__main__':
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from kit.base import schema_v2
+from kit.base import applicability, schema_v2
 from kit.base.operation_card import compile_prompt
 from kit.base.operation_plan import PlanSession
 from kit.base.registry_store import Layout, StoreError
@@ -68,6 +68,10 @@ def main(*, preflight=None, bootstrap=None):
                 result = session.apply(data['plan'], confirmed_ticket=data['confirmed_ticket'],
                                        allow_delete=data.get('allow_delete', False))
                 respond(result)
+            elif mode == 'applicable' and set(data) == {'type', 'scope'} and type(data['scope']) is str:
+                # Любой новый запрос к данным отзывает ожидающий план перед чтением.
+                session.cancel()
+                respond(applicability.applicable(Layout(args.workspace, args.profile_root), scope=data['scope']))
             elif mode == 'cancel' and set(data) == {'type'}:
                 session.cancel()
                 respond({'outcome': 'cancelled'})
