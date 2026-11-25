@@ -50,6 +50,9 @@ def _directory(path):
         if not stat.S_ISDIR(info.st_mode) or getattr(info, 'st_file_attributes', 0) & reparse:
             raise ExportError('path_invalid')
     info = path.lstat()
+    if (type(info.st_dev) is not int or info.st_dev < 0
+            or type(info.st_ino) is not int or info.st_ino <= 0):
+        raise ExportError('path_invalid')
     return (info.st_dev, info.st_ino)
 
 
@@ -117,21 +120,26 @@ class ExportSession:
                 or '..' in self.source.parts or '..' in self.destination.parts
                 or self.destination == Path(self.destination.anchor)):
             raise ExportError('path_invalid')
-        _directory(self.source)
+        source_identity = _directory(self.source)
         parent_identity = _directory(self.destination.parent)
-        if self.destination.is_relative_to(self.source) or self.source.is_relative_to(self.destination):
+        trusted = Path(__file__).resolve(strict=True).parent
+        trusted_identity = _directory(trusted)
+        for a, b in ((self.source, self.destination), (self.source, trusted), (self.destination, trusted)):
+            if a == b or a.is_relative_to(b) or b.is_relative_to(a):
+                raise ExportError('path_overlap')
+        if len({source_identity, parent_identity, trusted_identity}) != 3:
             raise ExportError('path_overlap')
         if _exists(self.destination):
             raise ExportError('destination_occupied')
-        return parent_identity
+        return source_identity, parent_identity, trusted, trusted_identity
 
     def plan(self):
         self.pending = None
         try:
-            parent = self._paths()
+            topology = self._paths()
             data = _source(self.source, self.pin, self.loader, self.verifier)
-            if self._paths() != parent:
-                raise ExportError('destination_changed')
+            if self._paths() != topology:
+                raise ExportError('paths_changed')
             rows = [{'path': path, 'bytes': len(content), 'sha256': hashlib.sha256(content).hexdigest()}
                     for path, content in sorted(data.items())]
             result = {'outcome': 'planned', 'source': str(self.source), 'destination': str(self.destination),
@@ -139,7 +147,7 @@ class ExportSession:
                       'publication': {'existing_destination': 'refuse', 'failure': 'leave_unverified',
                                       'directory_mode': '0700_before_umask', 'file_mode': '0600_before_umask'},
                       'total_bytes': sum(row['bytes'] for row in rows), 'ticket': secrets.token_hex(32)}
-            self.pending = (_canonical(result), data, parent, result['ticket'])
+            self.pending = (_canonical(result), data, topology, result['ticket'])
             return result
         except ExportError:
             raise
@@ -149,14 +157,14 @@ class ExportSession:
     def apply(self, plan, confirmed_ticket):
         if self.pending is None:
             raise ExportError('ticket_unknown')
-        saved, data, parent, ticket = self.pending
+        saved, data, topology, ticket = self.pending
         if (type(confirmed_ticket) is not str or self.loader.HEX.fullmatch(confirmed_ticket) is None
                 or not secrets.compare_digest(confirmed_ticket, ticket)):
             raise ExportError('confirmation_required')
         try:
             if type(plan) is not dict or _canonical(plan) != saved:
                 raise ExportError('plan_mismatch')
-            if self._paths() != parent or _source(self.source, self.pin, self.loader, self.verifier) != data:
+            if self._paths() != topology or _source(self.source, self.pin, self.loader, self.verifier) != data:
                 raise ExportError('stale_plan')
         except ExportError:
             self.pending = None

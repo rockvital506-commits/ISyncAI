@@ -13,6 +13,7 @@ import tempfile
 import threading
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -94,6 +95,102 @@ class ExportTests(unittest.TestCase):
         self.dest.mkdir(); sentinel = self.dest/'sentinel'; sentinel.write_bytes(b'preserve')
         self.error('destination_occupied', self.session.plan)
         self.assertEqual(sentinel.read_bytes(), b'preserve')
+
+    def test_overlaps_with_trusted_directory_are_refused_before_plan(self):
+        for pair in ('source', 'destination'):
+            for relation in ('same', 'inside_trusted', 'contains_trusted'):
+                with self.subTest(pair=pair, relation=relation):
+                    case = self.root/(pair+'-'+relation); case.mkdir()
+                    source = case/'source'; source.mkdir()
+                    parent = case/'out'; parent.mkdir()
+                    dest = parent/'snapshot'
+                    trusted = case/'trusted'; trusted.mkdir()
+                    if pair == 'source':
+                        if relation == 'same': source = trusted
+                        elif relation == 'inside_trusted': source = trusted/'source'; source.mkdir()
+                        else: trusted = source/'trusted'; trusted.mkdir()
+                    else:
+                        if relation == 'same': dest = trusted
+                        elif relation == 'inside_trusted': dest = trusted/'snapshot'
+                        else: dest = case/'container'; dest.mkdir(); trusted = dest/'trusted'; trusted.mkdir()
+                    tool = trusted/'snapshot_export.py'; tool.write_text('# synthetic\n')
+                    before = audit.tree_digest(case)
+                    session = export.ExportSession(source, dest, self.pin, self.loader, self.verifier)
+                    with patch.object(export, '__file__', str(tool)):
+                        self.error('path_overlap', session.plan)
+                    self.assertEqual(audit.tree_digest(case), before)
+                    self.assertIsNone(session.pending)
+
+    def test_replaced_source_same_bytes_revokes_plan_without_destination(self):
+        plan = self.session.plan()
+        replacement = self.root/'replacement-source'; shutil.copytree(self.source, replacement)
+        saved = self.root/'saved-source'
+        self.assertEqual(audit.tree_digest(self.source), audit.tree_digest(replacement))
+        self.assertNotEqual(self.source.stat().st_ino, replacement.stat().st_ino)
+        self.source.rename(saved); replacement.rename(self.source)
+        self.error('stale_plan', self.session.apply, plan, plan['ticket'])
+        self.assertFalse(self.dest.exists())
+        self.assertEqual(audit.tree_digest(self.source), audit.tree_digest(saved))
+        self.source.rename(replacement); saved.rename(self.source)
+        self.error('ticket_unknown', self.session.apply, plan, plan['ticket'])
+        self.assertFalse(self.dest.exists())
+
+    def test_replaced_trusted_root_same_bytes_revokes_plan_without_destination(self):
+        trusted = self.root/'trusted'; trusted.mkdir()
+        for name in ('snapshot_export.py', 'snapshot_session.py', 'verify_candidate.py'):
+            shutil.copyfile(ROOT/'kit'/name, trusted/name)
+        replacement = self.root/'replacement-trusted'; shutil.copytree(trusted, replacement)
+        saved = self.root/'saved-trusted'
+        self.assertEqual(audit.tree_digest(trusted), audit.tree_digest(replacement))
+        self.assertNotEqual(trusted.stat().st_ino, replacement.stat().st_ino)
+        with patch.object(export, '__file__', str(trusted/'snapshot_export.py')):
+            plan = self.session.plan()
+            trusted.rename(saved); replacement.rename(trusted)
+            self.error('stale_plan', self.session.apply, plan, plan['ticket'])
+            self.assertFalse(self.dest.exists())
+            self.assertEqual(audit.tree_digest(trusted), audit.tree_digest(saved))
+            trusted.rename(replacement); saved.rename(trusted)
+            self.error('ticket_unknown', self.session.apply, plan, plan['ticket'])
+            self.assertFalse(self.dest.exists())
+
+    def test_same_trusted_root_does_not_attest_its_files(self):
+        trusted = self.root/'trusted'; trusted.mkdir()
+        for name in ('snapshot_export.py', 'snapshot_session.py', 'verify_candidate.py'):
+            shutil.copyfile(ROOT/'kit'/name, trusted/name)
+        with patch.object(export, '__file__', str(trusted/'snapshot_export.py')):
+            plan = self.session.plan()
+            old = (trusted.stat().st_dev, trusted.stat().st_ino)
+            (trusted/'verify_candidate.py').write_text('synthetic replacement\n', encoding='utf-8')
+            self.assertEqual((trusted.stat().st_dev, trusted.stat().st_ino), old)
+            # Используется уже загруженный проверяющий; файл тройки заново не удостоверяется.
+            self.assertEqual(self.session.apply(plan, plan['ticket'])['outcome'], 'created')
+
+    def test_zero_inode_and_identical_root_ids_are_refused(self):
+        original_lstat = Path.lstat
+        source_info = original_lstat(self.source)
+        for kind in ('zero', 'same'):
+            def simulated(path, *args, **kwargs):
+                info = original_lstat(path, *args, **kwargs)
+                if path == self.parent:
+                    return SimpleNamespace(st_mode=info.st_mode, st_dev=source_info.st_dev,
+                                           st_ino=0 if kind == 'zero' else source_info.st_ino)
+                return info
+            with self.subTest(kind=kind), patch.object(Path, 'lstat', simulated):
+                self.error('path_invalid' if kind == 'zero' else 'path_overlap', self.session.plan)
+                self.assertFalse(self.dest.exists())
+
+    def test_source_replaced_during_plan_refuses_and_no_ticket(self):
+        replacement = self.root/'replacement-source'; shutil.copytree(self.source, replacement)
+        saved = self.root/'saved-source'; real_source = export._source
+        def replaced(*args):
+            data = real_source(*args)
+            self.source.rename(saved); replacement.rename(self.source)
+            return data
+        with patch.object(export, '_source', side_effect=replaced):
+            self.error('paths_changed', self.session.plan)
+        self.assertIsNone(self.session.pending)
+        self.assertFalse(self.dest.exists())
+        self.assertEqual(audit.tree_digest(self.source), audit.tree_digest(saved))
 
     def test_parent_symlink_and_occupied_race(self):
         link = self.root/'symlink-parent'
@@ -283,6 +380,41 @@ raise AssertionError('exit not reached')
             input='{"type":"bootstrap"}\n',capture_output=True,text=True,encoding='utf-8',timeout=30)
         self.assertEqual(p.returncode, 0, p.stderr)
         self.assertEqual(json.loads(p.stdout)['outcome'], 'bootstrap')
+
+    def test_process_replaced_trusted_root_refuses_and_revokes_ticket(self):
+        trusted = self.root/'trusted-process'; trusted.mkdir()
+        for name in ('snapshot_export.py', 'snapshot_session.py', 'verify_candidate.py'):
+            shutil.copyfile(ROOT/'kit'/name, trusted/name)
+        replacement = self.root/'trusted-copy'; shutil.copytree(trusted, replacement)
+        saved = self.root/'trusted-saved'
+        proc = subprocess.Popen([sys.executable, '-I', '-S', '-B', str(trusted/'snapshot_export.py'),
+            '--source', str(self.source), '--destination', str(self.dest), '--manifest-pin', self.pin],
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            text=True, encoding='utf-8', bufsize=1)
+        def cleanup():
+            if proc.poll() is None: proc.kill()
+            proc.communicate(timeout=15)
+        self.addCleanup(cleanup)
+        lines = queue.Queue()
+        def reader():
+            for line in proc.stdout: lines.put(line)
+            lines.put(None)
+        threading.Thread(target=reader, daemon=True).start()
+        def send(message):
+            proc.stdin.write(json.dumps(message)+'\n'); proc.stdin.flush()
+            try: line = lines.get(timeout=15)
+            except queue.Empty: raise AssertionError('нет ответа экспортёра') from None
+            self.assertIsNotNone(line, 'экспортёр завершился без ответа')
+            return json.loads(line)
+        plan = send({'type':'plan'}); self.assertEqual(plan['outcome'], 'planned')
+        trusted.rename(saved); replacement.rename(trusted)
+        denied = send({'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(denied, {'outcome':'error', 'code':'stale_plan'})
+        self.assertFalse(self.dest.exists())
+        trusted.rename(replacement); saved.rename(trusted)
+        stale = send({'type':'apply', 'plan':plan, 'confirmed_ticket':plan['ticket']})
+        self.assertEqual(stale, {'outcome':'error', 'code':'ticket_unknown'})
+        self.assertFalse(self.dest.exists())
 
     def test_requires_isolated_python(self):
         p = subprocess.run([sys.executable,'-B',str(ROOT/'kit/snapshot_export.py'),
