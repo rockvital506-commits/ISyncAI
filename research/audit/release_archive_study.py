@@ -33,8 +33,8 @@ def build(manifest, files):
     return result
 
 
-def assess(archive_bytes, statement, signature, *, policy, verify_signature):
-    """Оценивает только bytes в памяти, внешний policy/callback и подпись .74."""
+def capture(archive_bytes, statement, signature, *, policy, verify_signature):
+    """Верифицированные данные возвращаются только после полной проверки в памяти."""
     if type(archive_bytes) is not bytes or not 0 < len(archive_bytes) <= MAX_ARCHIVE:
         raise ArchiveError('archive_invalid')
     try:
@@ -52,9 +52,16 @@ def assess(archive_bytes, statement, signature, *, policy, verify_signature):
         manifest=data.pop(MANIFEST)
         if build(manifest,data)!=archive_bytes: raise ArchiveError('archive_noncanonical')
         result=policy_study.assess(statement,signature,policy=policy,files=data,manifest=manifest,verify_signature=verify_signature)
-        return dict(result,archive='canonical_in_memory',extraction='not_performed',
+        report=dict(result,archive='canonical_in_memory',extraction='not_performed',
                     filesystem_types_and_races='not_checked',checker_origin='assumed_not_verified')
+        return report, tuple(sorted([(MANIFEST,manifest), *data.items()]))
     except ArchiveError: raise
     except policy_study.PolicyError as error: raise ArchiveError('policy_refused:'+str(error)) from error
     except (zipfile.BadZipFile,zipfile.LargeZipFile,OSError,RuntimeError,ValueError,TypeError,KeyError,NotImplementedError,OverflowError) as error:
         raise ArchiveError('archive_invalid') from error
+
+
+def assess(archive_bytes, statement, signature, *, policy, verify_signature):
+    """Совместимый наблюдательный интерфейс, без выдачи bytes вызывающему."""
+    report,_=capture(archive_bytes,statement,signature,policy=policy,verify_signature=verify_signature)
+    return report
