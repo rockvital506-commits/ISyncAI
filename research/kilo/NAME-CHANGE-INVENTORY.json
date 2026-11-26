@@ -5265,6 +5265,13 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 2
+      },
+      "path": "research/audit/environment_context_delivery_study.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 1,
         "new_brand": 2,
         "new_project_path": 2
@@ -8382,7 +8389,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2171,
+  "scanned_files": 2173,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
