@@ -5340,6 +5340,13 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 2
+      },
+      "path": "research/audit/release_rebuild_study.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "donor_lab": 1,
         "project_path": 2
       },
@@ -8272,7 +8279,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2145,
+  "scanned_files": 2148,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
