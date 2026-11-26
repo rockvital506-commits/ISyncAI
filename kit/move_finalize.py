@@ -15,6 +15,7 @@ def _no_stages(dirs):
     # Не читаем и не удаляем найденные объекты. Любой зарезервированный префикс блокирует завершение.
     if os.listdir not in os.supports_fd:raise OSError('listdir fd unsupported')
     for area in ('L1','L2'):
+        if area == 'L1':store._refuse_profile_copy_stages_fd(dirs.parents[area])
         if any(name.startswith('.move-stage-') for name in os.listdir(dirs.parents[area])):
             raise StoreError('move_stages_present',area)
 

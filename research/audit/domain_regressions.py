@@ -150,8 +150,19 @@ def main(number):
                 rel = monitor.local(path)
                 allowed = {pathlib.Path(fixture) / variant for fixture in module.FIXTURES for variant in module.VARIANTS}
                 writes = module.os.O_WRONLY | module.os.O_RDWR | module.os.O_CREAT | module.os.O_TRUNC | module.os.O_APPEND
-                if rel in allowed and flags & module.os.O_DIRECTORY and not flags & writes:
+                profiles = {root / 'profiles/staged' for root in allowed}
+                if rel in allowed | profiles and flags & module.os.O_DIRECTORY and not flags & writes:
                     return
+            if monitor.active and event_name == 'os.listdir' and type(args[0]) is int:
+                try:
+                    fdpath = pathlib.Path(module.os.readlink('/proc/self/fd/' + str(args[0])))
+                    rel = monitor.local(str(fdpath))
+                    profiles = {pathlib.Path(fixture) / variant / 'profiles/staged'
+                                for fixture in module.FIXTURES for variant in module.VARIANTS}
+                    if rel in profiles:
+                        return
+                except OSError:
+                    pass
             return original_event(monitor, event_name, args)
         module.Monitor.event = event
     elif number == 116:

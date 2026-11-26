@@ -110,7 +110,7 @@ class ProfileCopyTests(unittest.TestCase):
         self.assertEqual(source,self.a1.read_bytes());self.assertEqual(before,self.b1.read_bytes())
         stage=self.b1.parent/p['stage_name'];self.assertTrue(stage.exists())
         self.error('ticket_unknown',s.apply,p,confirmed_ticket=p['ticket'])
-        self.error('profile_copy_stage_present',self.session().plan)
+        self.error('profile_copy_pending',self.session().plan)
 
     def test_parent_fsync_failure_reports_unknown_even_after_replacement(self):
         source=self.a1.read_bytes();s=self.session();p=s.plan();real=os.fsync

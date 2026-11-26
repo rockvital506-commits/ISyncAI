@@ -290,9 +290,12 @@ class InterprocessWriteLock(unittest.TestCase):
 
     def test_release_failure_reports_uncertain_outcome_and_frees_local_mutex(self):
         layout=store.Layout(self.root,'profiles/pilot');session=PlanSession(layout,profile_id='Pilot')
-        plan=session.plan(audit.card(ident='Q-9'));real_close=os.close
+        plan=session.plan(audit.card(ident='Q-9'));real_close=os.close;real_fstat=os.fstat
         def fail_after_close(fd):
-            real_close(fd);raise OSError(errno.EIO,'synthetic after close')
+            info=real_fstat(fd);root_info=self.root.stat()
+            is_lock=(info.st_dev,info.st_ino)==(root_info.st_dev,root_info.st_ino)
+            real_close(fd)
+            if is_lock:raise OSError(errno.EIO,'synthetic after lock close')
         with patch.object(store.os,'close',side_effect=fail_after_close):
             with self.assertRaises(StoreError) as error: session.apply(plan,confirmed_ticket=plan['ticket'])
         self.assertEqual(error.exception.code,'write_lock_release_failed')

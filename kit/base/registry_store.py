@@ -196,6 +196,42 @@ def _refuse_pending_move(workspace, expected_parent):
     raise StoreError('move_pending', '.domain-agent-kit/.move-pending')
 
 
+def _refuse_profile_copy_stages_fd(fd):
+    """Не открывать и не удалять неизвестные объекты со служебным префиксом."""
+    try:
+        if any(name.startswith('.profile-copy-stage-') for name in os.listdir(fd)):
+            raise StoreError('profile_copy_pending','L1')
+    except StoreError:
+        raise
+    except (OSError,ValueError,TypeError,AttributeError,NotImplementedError) as error:
+        raise StoreError('profile_copy_state_unavailable','L1') from error
+
+
+def _refuse_profile_copy_stages(workspace,profile_root,expected_identity):
+    fd=None
+    try:
+        flags=os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW|getattr(os,'O_CLOEXEC',0)
+        path=workspace/profile_root
+        fd=os.open(path,flags)
+        opened=os.fstat(fd)
+        if (not stat.S_ISDIR(opened.st_mode) or (opened.st_dev,opened.st_ino)!=expected_identity):
+            raise OSError('profile changed')
+        _refuse_profile_copy_stages_fd(fd)
+        _,named=_existing(workspace,profile_root)
+        current=os.fstat(fd)
+        if ((named.st_dev,named.st_ino)!=expected_identity or
+                (current.st_dev,current.st_ino)!=expected_identity):raise OSError('profile changed')
+    except StoreError as error:
+        if error.code=='profile_copy_pending':raise
+        raise StoreError('profile_copy_state_unavailable','L1') from error
+    except (OSError,ValueError,TypeError,AttributeError,NotImplementedError) as error:
+        raise StoreError('profile_copy_state_unavailable','L1') from error
+    finally:
+        if fd is not None:
+            try:os.close(fd)
+            except OSError as error:raise StoreError('profile_copy_state_unavailable','L1') from error
+
+
 def _load_unlocked(layout):
     roots = _declared_roots(layout)
     workspace = _workspace(layout.workspace)
@@ -207,8 +243,10 @@ def _load_unlocked(layout):
             raise StoreError('profile_root_conflict', roots['L1'])
         identities.add(identity)
         if area == 'L2': project_identity = identity
+        if area == 'L1': profile_identity = identity
 
     _refuse_pending_move(workspace, project_identity)
+    _refuse_profile_copy_stages(workspace,roots['L1'],profile_identity)
     files, documents, inputs_sha256, raw_by_area, journals = {}, {}, {}, {}, {}
     input_modes = {} if _mode_check_supported() else None
     for area, suffix in _SUFFIX.items():

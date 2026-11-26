@@ -95,6 +95,7 @@ def _inspect(layout, *, intent_pin, exclusive_held):
             root_fds[area]=fd
         ids=[(os.fstat(fd).st_dev,os.fstat(fd).st_ino) for fd in root_fds.values()]
         if len(set(ids))!=3:raise OSError('root alias')
+        registry_store._refuse_profile_copy_stages_fd(root_fds['L1'])
         marker=_read(root_fds['L2'],'.move-pending',move_intent.MAX_INTENT)
         # Некорректный marker/pin отвергаем до открытия реестров.
         _,before,_=move_intent._verified(marker,intent_pin)
