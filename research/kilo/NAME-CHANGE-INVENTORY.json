@@ -5899,7 +5899,7 @@
     {
       "area": "audit",
       "hits": {
-        "kit_import": 1
+        "kit_import": 2
       },
       "path": "research/audit/test_release_archive_publish_study.py"
     },

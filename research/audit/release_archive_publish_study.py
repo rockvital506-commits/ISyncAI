@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 """Стендовая публикация проверенных bytes в новую цель; не установщик выпуска."""
 import copy
+import errno
 import hashlib
 import os
 from pathlib import Path
 import re
 import secrets
+import stat
 import threading
+
+try:
+    import fcntl
+except ImportError:
+    fcntl=None
 
 import release_archive_study as archive
 from kit import atomic_init as atomic, atomic_init_inspect as observer, init_workspace as init
@@ -82,6 +89,7 @@ class PublishSession:
             self.pending=None
             try:
                 atomic._rename_function()
+                if fcntl is None or not hasattr(fcntl,'flock'):raise PublishError('publication_lock_unavailable')
                 dest=self.destination
                 if (not dest.is_absolute() or '..' in dest.parts or not dest.name or
                         dest==ROOT or ROOT in dest.parents or dest in ROOT.parents):
@@ -103,6 +111,7 @@ class PublishSession:
                         'verification':report,'external_policy_summary':summary,
                         'files':[{'path':path,'bytes':len(data),'sha256':_digest(data)} for path,data in rows],
                         'effect':'publish_new_snapshot_only','failure':'stage_or_destination_unknown_do_not_retry',
+                        'concurrency':'cooperative_parent_flock_only',
                         'authorization':'not_checked','trust_anchor':'assumed_not_verified','ticket':secrets.token_hex(32)}
                 self.pending=(init._canonical(result),dest,identity,rows,report,copy.deepcopy(self.policy),
                               self.archive_bytes,self.statement,self.signature,self.verify_signature,result['ticket'],
@@ -138,6 +147,15 @@ class PublishSession:
                 atomic._rename_function()
                 parent,current=init._open_parent(dest.parent)
                 if current!=identity:raise PublishError('stale_parent')
+                if fcntl is None or not hasattr(fcntl,'flock'):raise PublishError('publication_lock_unavailable')
+                try:fcntl.flock(parent,fcntl.LOCK_EX|fcntl.LOCK_NB)
+                except OSError as error:
+                    if error.errno in (errno.EACCES,errno.EAGAIN):raise PublishError('publication_busy') from error
+                    raise PublishError('publication_lock_unavailable') from error
+                check,latest=init._open_parent(dest.parent)
+                try:
+                    if latest!=identity:raise PublishError('stale_parent')
+                finally:os.close(check)
                 if init._occupied(parent,dest.name):raise PublishError('destination_occupied')
                 if any(name.startswith('.domain-release-stage-') for name in os.listdir(parent)):
                     raise PublishError('stage_pending')
@@ -155,7 +173,18 @@ class PublishSession:
                 os.fsync(parent)
                 attempted=True
                 atomic._rename_noreplace(parent,plan['stage_name'],dest.name)
+                named=os.stat(dest.name,dir_fd=parent,follow_symlinks=False)
+                if not stat.S_ISDIR(named.st_mode) or atomic._identity(named)!=stage_id:
+                    raise OSError('published name changed')
+                atomic._sync_verified_tree(stage_fd,data,*uidgid)
+                check,latest=init._open_parent(dest.parent)
+                try:
+                    if latest!=identity:raise OSError('parent changed')
+                finally:os.close(check)
                 os.fsync(parent)
+                named=os.stat(dest.name,dir_fd=parent,follow_symlinks=False)
+                if not stat.S_ISDIR(named.st_mode) or atomic._identity(named)!=stage_id:
+                    raise OSError('published name changed')
             except PublishError:raise
             except (InitializationError,OSError,ValueError,TypeError,AttributeError,NotImplementedError) as error:
                 raise PublishError('publication_unknown' if attempted else 'stage_partial_or_unverified' if made else 'publication_unavailable') from error
