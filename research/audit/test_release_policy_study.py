@@ -42,7 +42,8 @@ class ReleasePolicyStudyTests(unittest.TestCase):
     def test_real_signature_full_manifest_and_explicit_limitations(self):
         result=self.assess();self.assertEqual(result['outcome'],'study_policy_consistent')
         self.assertEqual(result['freshness'],'not_proved');self.assertEqual(result['installation'],'not_performed')
-        self.assertEqual(result['l0_schema_and_semantics'],'not_checked')
+        self.assertEqual(result['l0_schema'],'checked_by_pretrusted_study_schema')
+        self.assertEqual(result['l0_semantics'],'not_checked')
     def test_malformed_statement_and_wrong_domain(self):
         self.error('statement_invalid',raw=b'{"format":1,"format":1}')
         self.error('statement_invalid',raw=study.canonical(self.doc)+b' ')
@@ -69,6 +70,43 @@ class ReleasePolicyStudyTests(unittest.TestCase):
         p=copy.deepcopy(self.policy);p['required_paths'].remove('kit/SYSTEM-L0.json');self.error('manifest_invalid',policy=p)
         self.error('manifest_invalid',manifest=self.manifest+b' ')
         p=copy.deepcopy(self.policy);p['required_paths'].append('../outside');self.error('policy_invalid',policy=p)
+    def system_fixture(self, system):
+        files=dict(self.files)
+        files['kit/SYSTEM-L0.json']=(json.dumps(system,ensure_ascii=False)+'\n').encode()
+        manifest=copy.deepcopy(self.manifest_doc)
+        manifest['files']['kit/SYSTEM-L0.json']=study.sha(files['kit/SYSTEM-L0.json'])
+        raw=(json.dumps(manifest,ensure_ascii=False)+'\n').encode()
+        doc=dict(self.doc,system_sha256=study.sha(files['kit/SYSTEM-L0.json']),manifest_sha256=study.sha(raw))
+        return dict(doc=doc,files=files,manifest=raw)
+    def test_pretrusted_schema_rejects_resigned_bad_system_shape_and_links(self):
+        original=json.loads(self.files['kit/SYSTEM-L0.json'])
+        for change in ('duplicate_id','missing_parent','bad_state','missing_entries','extra_field'):
+            with self.subTest(change=change):
+                system=copy.deepcopy(original)
+                if change=='duplicate_id':system['entries'][1]['id']=system['entries'][0]['id']
+                elif change=='missing_parent':system['entries'][1]['parent']='DOES-NOT-EXIST'
+                elif change=='bad_state':system['entries'][1]['state']='invented'
+                elif change=='missing_entries':del system['entries']
+                else:system['surprise']='extra'
+                self.error('system_schema_invalid',**self.system_fixture(system))
+    def test_candidate_schema_is_not_executed_or_used_as_trusted_validator(self):
+        system=json.loads(self.files['kit/SYSTEM-L0.json']);system['entries'][1]['parent']='DOES-NOT-EXIST'
+        data=self.system_fixture(system)
+        data['files']['kit/base/schema_v2.py']=b'raise RuntimeError("untrusted code executed")\n'
+        manifest=json.loads(data['manifest'])
+        manifest['files']['kit/base/schema_v2.py']=study.sha(data['files']['kit/base/schema_v2.py'])
+        data['manifest']=(json.dumps(manifest)+'\n').encode()
+        data['doc']['manifest_sha256']=study.sha(data['manifest'])
+        self.error('system_schema_invalid',**data)
+    def test_empty_l0_can_be_schema_valid_without_semantic_review(self):
+        system=json.loads(self.files['kit/SYSTEM-L0.json']);system['entries']=[]
+        result=self.assess(**self.system_fixture(system))
+        self.assertEqual(result['l0_schema'],'checked_by_pretrusted_study_schema')
+        self.assertEqual(result['l0_semantics'],'not_checked')
+        self.assertEqual(result['release'],'not_authorized')
+    def test_schema_copy_is_current_candidate_byte_for_byte(self):
+        self.assertEqual((ROOT/'research/audit/release_schema_v2_study.py').read_bytes(),
+                         (ROOT/'kit/base/schema_v2.py').read_bytes())
     def test_consistent_replacement_system_wrong_version_still_refused(self):
         files=dict(self.files);system=json.loads(files['kit/SYSTEM-L0.json']);system['release_version']='0.0.0'
         files['kit/SYSTEM-L0.json']=(json.dumps(system)+'\n').encode()

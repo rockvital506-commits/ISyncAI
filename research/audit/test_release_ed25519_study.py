@@ -23,7 +23,7 @@ class ReleaseEd25519StudyTests(unittest.TestCase):
         with self.assertRaisesRegex(provider.ProviderError,'provider_pin_mismatch'):
             provider.verify(key,b'\x72',sig,executable=fixture.OPENSSL,executable_pin='0'*64)
     def test_fixed_tool_modules_do_not_import_kit(self):
-        names=('release_archive_cli_study.py','release_archive_study.py','release_policy_study.py','release_ed25519_study.py')
+        names=('release_archive_cli_study.py','release_archive_study.py','release_policy_study.py','release_ed25519_study.py','release_schema_v2_study.py')
         for name in names:
             with self.subTest(name=name):
                 tree=ast.parse((ROOT/'research/audit'/name).read_bytes())

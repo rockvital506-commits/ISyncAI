@@ -4,6 +4,9 @@ import hashlib
 import json
 import re
 
+# Заранее доверенная копия схемы; код проверяемого архива не импортируется.
+import release_schema_v2_study as schema
+
 DOMAIN = b'DomainAgentKit:release-policy:study:v1\x00'
 MAX_DOCUMENT = 2_097_152
 MAX_FILES = 1024
@@ -121,9 +124,14 @@ def assess(statement, signature, *, policy, files, manifest, verify_signature):
         system = _parse(files['kit/SYSTEM-L0.json'])
         if (type(system) is not dict or system.get('area') != 'L0' or system.get('roots') != ['kit'] or
                 system.get('release_version') != doc['version']): raise PolicyError('system_invalid')
+        try:
+            schema.validate_json(files['kit/SYSTEM-L0.json'],expected_area='L0')
+        except schema.SchemaError as error:
+            raise PolicyError('system_schema_invalid') from error
     except PolicyError: raise
     except (TypeError,ValueError,UnicodeError,RecursionError,KeyError) as error: raise PolicyError('artifact_invalid') from error
     return {'outcome':'study_policy_consistent', 'statement_sha256':sha(statement), 'sequence':doc['sequence'],
             'key_origin':'assumed_not_verified', 'policy_origin':'assumed_not_verified',
             'checkpoint_integrity':'assumed_not_verified', 'freshness':'not_proved',
-            'l0_schema_and_semantics':'not_checked', 'installation':'not_performed', 'release':'not_authorized'}
+            'l0_schema':'checked_by_pretrusted_study_schema', 'l0_semantics':'not_checked',
+            'installation':'not_performed', 'release':'not_authorized'}

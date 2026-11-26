@@ -79,7 +79,7 @@ class ReleaseArchiveCliTests(unittest.TestCase):
         self.error('policy_invalid',self.inspect,policy_pin=hashlib.sha256(raw).hexdigest())
     def test_relocated_trusted_tools_and_different_cwd(self):
         audit=self.root/'standalone-verifier';audit.mkdir()
-        for name in ('release_archive_cli_study.py','release_archive_study.py','release_policy_study.py','release_ed25519_study.py'):
+        for name in ('release_archive_cli_study.py','release_archive_study.py','release_policy_study.py','release_ed25519_study.py','release_schema_v2_study.py'):
             shutil.copyfile(ROOT/'research/audit'/name,audit/name)
         fake=self.root/'kit';fake.mkdir()
         (fake/'__init__.py').write_text("from pathlib import Path; Path('untrusted-import-ran').write_text('bad')\n")
