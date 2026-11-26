@@ -9,6 +9,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import secrets
 import stat
 import sys
@@ -247,6 +248,66 @@ class ProfileCopySession:
         finally:self.lock.release()
 
 
+_STAGE_NAME = re.compile(r'\.profile-copy-stage-[0-9a-f]{32}\Z')
+
+
+def inspect_target(layout, *, stage_name, before_sha256, after_sha256):
+    """Только наблюдение сохранённых имён/хешей, без снятия барьера или авторизации."""
+    if not isinstance(layout,store.Layout):raise StoreError('invalid_layout','workspace')
+    if (type(stage_name) is not str or _STAGE_NAME.fullmatch(stage_name) is None or
+            any(type(v) is not str or HEX.fullmatch(v) is None for v in (before_sha256,after_sha256))):
+        raise StoreError('profile_copy_inspect_invalid','inputs')
+    if not init._supported() or store.fcntl is None or not hasattr(os,'O_NONBLOCK'):
+        raise StoreError('profile_copy_inspect_unavailable','workspace')
+    roots=store._declared_roots(layout);workspace=store._workspace(layout.workspace)
+    opened=[];bindings=[]
+    def observe(parent,name):
+        try:info=os.stat(name,dir_fd=parent,follow_symlinks=False)
+        except FileNotFoundError:return {'state':'absent'}
+        if not stat.S_ISREG(info.st_mode) or info.st_nlink!=1:
+            return {'state':'unsafe_type_or_links'}
+        if info.st_size<0 or info.st_size>MAX_PROFILE:return {'state':'too_large'}
+        data=probe._read(parent,name,MAX_PROFILE)
+        digest=hashlib.sha256(data).hexdigest()
+        matches=[]
+        if digest==before_sha256:matches.append('before')
+        if digest==after_sha256:matches.append('after')
+        return {'state':'read','sha256':digest,'size':len(data),'matches':matches}
+    try:
+        flags=os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW|getattr(os,'O_CLOEXEC',0)
+        root=os.open(workspace,flags);opened.append(root)
+        initial=os.fstat(root);named=os.stat(workspace,follow_symlinks=False)
+        if (not stat.S_ISDIR(initial.st_mode) or not stat.S_ISDIR(named.st_mode) or initial.st_ino<=0 or
+                (initial.st_dev,initial.st_ino)!=(named.st_dev,named.st_ino)):raise OSError('workspace changed')
+        try:store.fcntl.flock(root,store.fcntl.LOCK_SH|store.fcntl.LOCK_NB)
+        except OSError as error:
+            if error.errno in (errno.EAGAIN,errno.EACCES):raise StoreError('profile_copy_inspect_busy','workspace') from error
+            raise
+        parent=root
+        for component in roots['L1'].split('/'):
+            child=probe._directory(parent,component);opened.append(child);bindings.append((parent,component,child));parent=child
+        registry=observe(parent,'registry.json');stage=observe(parent,stage_name)
+        for directory,name,child in bindings:
+            a=os.fstat(child);b=os.stat(name,dir_fd=directory,follow_symlinks=False)
+            if not stat.S_ISDIR(b.st_mode) or (a.st_dev,a.st_ino)!=(b.st_dev,b.st_ino):raise OSError('directory changed')
+        named=os.stat(workspace,follow_symlinks=False)
+        if not stat.S_ISDIR(named.st_mode) or (initial.st_dev,initial.st_ino)!=(named.st_dev,named.st_ino):raise OSError('workspace changed')
+        return {'outcome':'observation_only','workspace':str(workspace),'profile_root':roots['L1'],
+                'stage_name':stage_name,'registry':registry,'stage':stage,
+                'before_sha256':before_sha256,'after_sha256':after_sha256,
+                'origin':'not_verified','authorization':'not_verified','durability':'not_verified',
+                'completion':'not_verified','recovery':'not_performed','snapshot':'cooperative_lock_only'}
+    except StoreError:raise
+    except (OSError,ValueError,TypeError,AttributeError,NotImplementedError) as error:
+        raise StoreError('profile_copy_inspect_unavailable','workspace') from error
+    finally:
+        failure=None
+        for fd in reversed(opened):
+            try:os.close(fd)
+            except OSError as error:failure=error
+        if failure is not None:raise StoreError('profile_copy_inspect_unavailable','workspace') from failure
+
+
 MAX_LINE=32*1024*1024
 
 
@@ -275,6 +336,11 @@ def main():
                     sample={'type':'apply','plan':result,'confirmed_ticket':result['ticket']}
                     if len(json.dumps(sample,ensure_ascii=False).encode('utf-8'))+1>MAX_LINE:
                         session.cancel();raise StoreError('profile_copy_plan_too_large','plan')
+            elif (type(request) is dict and set(request)=={'type','stage_name','before_sha256','after_sha256'}
+                  and request['type']=='inspect'):
+                session.cancel()
+                result=inspect_target(session.target,stage_name=request['stage_name'],
+                                      before_sha256=request['before_sha256'],after_sha256=request['after_sha256'])
             elif request=={'type':'cancel'}:
                 session.cancel();result={'outcome':'cancelled'}
             elif (type(request) is dict and set(request)=={'type','plan','confirmed_ticket'} and request['type']=='apply'

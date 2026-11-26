@@ -5810,6 +5810,13 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 3
+      },
+      "path": "research/audit/test_profile_copy_inspect.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 4,
         "new_brand": 1,
         "new_project_path": 1
@@ -8170,7 +8177,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2115,
+  "scanned_files": 2116,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
