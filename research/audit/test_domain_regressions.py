@@ -5,11 +5,31 @@ import json
 import os
 import subprocess
 import sys
+import types
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 HARNESS = ROOT/'research/audit/domain_regressions.py'
+
+
+sys.path.insert(0, str(ROOT/'research/audit'))
+import domain_regressions
+
+
+class ProviderResultTests(unittest.TestCase):
+    def test_only_known_results_are_classified(self):
+        ok=b'Signature Verified Successfully\n'; bad=b'Signature Verification Failure\n'
+        diagnostic=(b'40E7EF6332730000:error:030000EA:digital envelope routines:EVP_DigestVerify:'
+                    b'provider signature failure:../crypto/evp/m_sigver.c:779:ED25519 digest_verify:\n')
+        result=lambda code,out,err: types.SimpleNamespace(returncode=code,stdout=out,stderr=err)
+        self.assertIs(domain_regressions.verifier_result(result(0,ok,b'')),True)
+        self.assertIs(domain_regressions.verifier_result(result(1,bad,b'')),False)
+        self.assertIs(domain_regressions.verifier_result(result(1,bad,diagnostic)),False)
+        for case in ((0,ok,diagnostic),(0,bad,b''),(2,bad,diagnostic),
+                     (1,bad,b'provider unavailable\n'),(1,bad,diagnostic+b'extra\n'),(1,b'',b'')):
+            with self.subTest(case=case), self.assertRaises(ValueError):
+                domain_regressions.verifier_result(result(*case))
 
 
 class RetargetedTests(unittest.TestCase):

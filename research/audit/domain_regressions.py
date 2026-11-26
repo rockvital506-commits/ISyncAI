@@ -10,6 +10,7 @@ import hashlib
 import importlib.util
 import json
 import pathlib
+import re
 import subprocess
 import sys
 import tempfile
@@ -75,7 +76,30 @@ class JsonProxy:
         return getattr(json, name)
 
 
+def verifier_result(result):
+    """Интерпретация только наблюдённых форм OpenSSL; остальные ошибки не классифицировать."""
+    if result.returncode == 0 and result.stdout.strip() == b'Signature Verified Successfully' and not result.stderr:
+        return True
+    diagnostic = rb'[0-9A-Fa-f]+:error:030000EA:digital envelope routines:EVP_DigestVerify:provider signature failure:[^\r\n]*:ED25519 digest_verify:\r?\n'
+    if (result.returncode == 1 and result.stdout.strip() == b'Signature Verification Failure'
+            and (not result.stderr or re.fullmatch(diagnostic, result.stderr))):
+        return False
+    raise ValueError('openssl_verifier_unavailable')
+
+
 def retarget_119(module):
+    # Не изменяем исторический источник; учитываем stderr OpenSSL 3.5.5 в новом стенде.
+    def check(key, message, signature):
+        if type(key) is not bytes or len(key) != 32 or type(message) is not bytes or type(signature) is not bytes or len(signature) != 64:
+            raise ValueError('invalid verifier input')
+        with tempfile.TemporaryDirectory(prefix='domain-i119-verify-') as d:
+            root = pathlib.Path(d)
+            for name, data in (('public.der', module.SPKI + key), ('message.bin', message), ('signature.bin', signature)):
+                (root / name).write_bytes(data)
+            p = module.openssl(root, 'pkeyutl', '-verify', '-pubin', '-keyform', 'DER', '-inkey', 'public.der',
+                               '-rawin', '-in', 'message.bin', '-sigfile', 'signature.bin')
+            return verifier_result(p)
+    module.ed25519_check = check
     book = json.loads((ROOT/'research/119/CASES.json').read_bytes())
     archives, integrity = module.fixtures()
     key_id = hashlib.sha256(TEST_PUBLIC).hexdigest()
