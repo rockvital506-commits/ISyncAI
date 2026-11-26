@@ -70,6 +70,17 @@ class ReleasePolicyStudyTests(unittest.TestCase):
         p=copy.deepcopy(self.policy);p['required_paths'].remove('kit/SYSTEM-L0.json');self.error('manifest_invalid',policy=p)
         self.error('manifest_invalid',manifest=self.manifest+b' ')
         p=copy.deepcopy(self.policy);p['required_paths'].append('../outside');self.error('policy_invalid',policy=p)
+    def test_signed_incompatible_file_tree_is_refused_by_external_policy(self):
+        for extra in ('kit/base','kit/KIT-VERSION.json'):
+            with self.subTest(extra=extra):
+                files=dict(self.files);files[extra]=b'file'
+                manifest=copy.deepcopy(self.manifest_doc);manifest['files'][extra]=study.sha(files[extra])
+                raw=(json.dumps(manifest)+'\n').encode()
+                doc=dict(self.doc,manifest_sha256=study.sha(raw))
+                p=copy.deepcopy(self.policy);p['required_paths']=sorted(files)
+                self.error('policy_invalid',policy=p,files=files,manifest=raw,doc=doc)
+        self.assertTrue(study._compatible_paths(['kit/base','kit/basement/x']))
+
     def system_fixture(self, system):
         files=dict(self.files)
         files['kit/SYSTEM-L0.json']=(json.dumps(system,ensure_ascii=False)+'\n').encode()

@@ -68,6 +68,20 @@ class ReleaseArchiveStudyTests(unittest.TestCase):
             z.writestr('kit/KIT-VERSION.json',b'one')
             z.writestr('kit/a',b'two');z.writestr('kit/a',b'three')
         self.error('archive_members_invalid',raw=out.getvalue())
+    def test_file_directory_collision_refused_before_capture(self):
+        files=dict(self.f.files);files['kit/base']=b'not a directory'
+        with self.assertRaisesRegex(archive.ArchiveError,'inputs_invalid'):
+            archive.build(self.f.manifest,files)
+        out=io.BytesIO()
+        with zipfile.ZipFile(io.BytesIO(self.raw)) as source,zipfile.ZipFile(out,'w') as dest:
+            for info in source.infolist():dest.writestr(info,source.read(info))
+            info=zipfile.ZipInfo('kit/base',date_time=(1980,1,1,0,0,0))
+            info.create_system=3;info.external_attr=0o100600<<16
+            dest.writestr(info,b'not a directory')
+        self.error('archive_members_invalid',raw=out.getvalue())
+        with self.assertRaisesRegex(archive.ArchiveError,'inputs_invalid'):
+            archive.build(self.f.manifest,{'kit/KIT-VERSION.json':b'bad'})
+
     def test_invalid_or_unbounded_input_and_no_path_traversal(self):
         self.error('archive_invalid',raw=b'not a zip')
         self.error('archive_invalid',raw=b'x'*(archive.MAX_ARCHIVE+1))

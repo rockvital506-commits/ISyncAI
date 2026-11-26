@@ -56,6 +56,14 @@ def _path(value):
     return len(parts) in (2, 3) and parts[0] == 'kit' and all(NAME.fullmatch(p) for p in parts) and (len(parts) == 2 or parts[1] == 'base')
 
 
+def _compatible_paths(paths):
+    """Состав файлов не должен требовать файл и каталог с одним именем."""
+    names = set(paths)
+    return ('kit/KIT-VERSION.json' not in names and
+            not any('/'.join(path.split('/')[:i]) in names
+                    for path in names for i in range(1, len(path.split('/')))))
+
+
 def assess(statement, signature, *, policy, files, manifest, verify_signature):
     """Предполагает ВНЕШНИЕ доверенные policy и callback; не читает и не изменяет файлы."""
     try:
@@ -78,6 +86,7 @@ def assess(statement, signature, *, policy, files, manifest, verify_signature):
                 any(not _hash(k) for k in policy['revoked']) or len(set(policy['revoked'])) != len(policy['revoked']) or
                 type(policy['required_paths']) is not list or not 1 <= len(policy['required_paths']) <= MAX_FILES or
                 any(not _path(p) for p in policy['required_paths']) or len(set(policy['required_paths'])) != len(policy['required_paths']) or
+                not _compatible_paths(policy['required_paths']) or
                 any(not _hash(policy[k]) for k in ('loader_sha256','verifier_sha256'))):
             raise PolicyError('policy_invalid')
         for key_id,key in policy['keys'].items():

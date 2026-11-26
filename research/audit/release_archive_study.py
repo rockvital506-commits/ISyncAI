@@ -17,7 +17,8 @@ def build(manifest, files):
     if (type(manifest) is not bytes or not 0 < len(manifest) <= policy_study.MAX_DOCUMENT or
             type(files) is not dict or not 1 <= len(files) <= policy_study.MAX_FILES or MANIFEST in files or
             any(not policy_study._path(name) or type(data) is not bytes or len(data)>policy_study.MAX_DOCUMENT
-                for name,data in files.items()) or sum(map(len,files.values()))+len(manifest)>policy_study.MAX_TOTAL):
+                for name,data in files.items()) or not policy_study._compatible_paths(files) or
+            sum(map(len,files.values()))+len(manifest)>policy_study.MAX_TOTAL):
         raise ArchiveError('inputs_invalid')
     members = dict(files); members[MANIFEST] = manifest
     target = io.BytesIO()
@@ -43,6 +44,7 @@ def capture(archive_bytes, statement, signature, *, policy, verify_signature):
             names=[row.filename for row in rows]
             if (not 2 <= len(rows) <= policy_study.MAX_FILES+1 or len(set(names))!=len(names) or
                     MANIFEST not in names or any(name != MANIFEST and not policy_study._path(name) for name in names) or
+                    not policy_study._compatible_paths(name for name in names if name != MANIFEST) or
                     any(row.is_dir() or row.compress_type != zipfile.ZIP_STORED or row.flag_bits & 1 or
                         row.file_size > policy_study.MAX_DOCUMENT or row.compress_size != row.file_size or
                         (row.external_attr >> 16) != 0o100600 for row in rows) or
