@@ -5258,6 +5258,13 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 4
+      },
+      "path": "research/audit/environment_adapter_preview_study.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 1,
         "new_brand": 2,
         "new_project_path": 2
@@ -5521,6 +5528,13 @@
         "old_brand": 1
       },
       "path": "research/audit/test_domain_signature.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 1
+      },
+      "path": "research/audit/test_environment_adapter_preview_study.py"
     },
     {
       "area": "audit",
@@ -8328,7 +8342,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2159,
+  "scanned_files": 2161,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
