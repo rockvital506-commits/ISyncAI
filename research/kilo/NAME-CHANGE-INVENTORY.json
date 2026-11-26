@@ -5326,6 +5326,13 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 1
+      },
+      "path": "research/audit/release_install_terminal_study.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "new_brand": 3
       },
       "path": "research/audit/release_policy_study.py"
@@ -8265,7 +8272,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2143,
+  "scanned_files": 2145,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
