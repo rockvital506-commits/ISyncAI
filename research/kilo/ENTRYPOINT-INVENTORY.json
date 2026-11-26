@@ -1,0 +1,131 @@
+{
+  "basis": "explicit_top_level_name_main_only",
+  "entries": [
+    {
+      "category": "diagnostic",
+      "path": "kit/compare_old.py",
+      "sha256": "2af15c01f5d44da8721dda8e0afa79e736b8f17a9dba857073ace3deca6546fc"
+    },
+    {
+      "category": "adapter_write",
+      "path": "kit/copilot_deploy.py",
+      "sha256": "37cc8ea57563bb065472cdc277c2a971b9745075d4d8d92cfc4a5b555c7e6467"
+    },
+    {
+      "category": "guard",
+      "path": "kit/guard.py",
+      "sha256": "a3a48578130b71cf1d4f09d8d67c9de74b2c2eea3aa00bdb78684e5f835a0475"
+    },
+    {
+      "category": "guard",
+      "path": "kit/guard_tree.py",
+      "sha256": "2c67512c43c354d03847c81130e70b09220c04db79778c844e2abf75fbb8891f"
+    },
+    {
+      "category": "initialization_write",
+      "path": "kit/init_workspace_cli.py",
+      "sha256": "7e00d18bc70b5ef15daf3ad3774fc279cb6c9e44e96cf4c6344fd540d4d63115"
+    },
+    {
+      "category": "adapter_write",
+      "path": "kit/kilo_deploy.py",
+      "sha256": "380ede43750e4ca502235c83761f7443c113a9ee1c0f855535910156ea9d3dd2"
+    },
+    {
+      "category": "diagnostic",
+      "path": "kit/kilo_inspect.py",
+      "sha256": "920f51354d79d6e8576e5caf4b36591ed8efe403732a7695ab4c5bc2a8a48891"
+    },
+    {
+      "category": "diagnostic",
+      "path": "kit/legacy_capsule.py",
+      "sha256": "d2168fcaa5e61ebb38fcf577ce0ab2a2a9a703f158853e2d2927097e63f08595"
+    },
+    {
+      "category": "diagnostic",
+      "path": "kit/legacy_projection.py",
+      "sha256": "9ab2d4094592186553036a409155b1ab3108f6472aac46d6b662b3ec229b1125"
+    },
+    {
+      "category": "diagnostic",
+      "path": "kit/move_recovery_inspect.py",
+      "sha256": "87a6078d52458ec43350bfd9fcd25965566f0bb282fa5dfa9759c7ae4020c2cc"
+    },
+    {
+      "category": "move_write",
+      "path": "kit/move_session_cli.py",
+      "sha256": "541026f6a107c4e46647e4a36bb18667587fea64532e7809b6376af026d22a7b"
+    },
+    {
+      "category": "diagnostic",
+      "path": "kit/preview_rule.py",
+      "sha256": "c7367b3c33651dd2cb876601025ca53517d61d644c6e71817111a28f9c176229"
+    },
+    {
+      "category": "profile_write",
+      "path": "kit/profile_copy.py",
+      "sha256": "ea0566b3aee37f3c7fc862bd90195cb61c528d2076b976307414c34327d5be3c"
+    },
+    {
+      "category": "diagnostic",
+      "path": "kit/render_rule.py",
+      "sha256": "f2a858f51ac29c084a3d2b2e0cafff533b13a5f4928a2193e1e6ca42127d11c0"
+    },
+    {
+      "category": "registry_write",
+      "path": "kit/session_cli.py",
+      "sha256": "986dbe82edfdb998e2fa303c1c5ff4f6efc7669ff19313444f5549807ba84f82"
+    },
+    {
+      "category": "delivery_write",
+      "path": "kit/snapshot_export.py",
+      "sha256": "4e63db8d19647369c9663332577e7cf69d4dffff53204c8004427ae01c18a396"
+    },
+    {
+      "category": "move_write",
+      "path": "kit/snapshot_move_session.py",
+      "sha256": "3bfd675c6690fd884be446c0b35427350075f652d99f4771532195e84e65ee09"
+    },
+    {
+      "category": "registry_write",
+      "path": "kit/snapshot_session.py",
+      "sha256": "f3c34f933b03345cbef8c1d8f941fa7881e0e84939a795c36ffe4b3189ea0db4"
+    },
+    {
+      "category": "guard",
+      "path": "kit/source_release_trust.py",
+      "sha256": "05698a0707317b6e41883307472184cd45c96e10e78d434dc13bfee591ca9639"
+    },
+    {
+      "category": "initialization_write",
+      "path": "kit/terminal_init.py",
+      "sha256": "2d3cbf3aba122eba90488b6f8a04cfbd3621088794cde70f3d99cb0c6f2ae51c"
+    },
+    {
+      "category": "move_write",
+      "path": "kit/terminal_move.py",
+      "sha256": "372b72c5add00da2907c6c58dce6b285f6e1d179f37cee37a371ab1bd1e2d935"
+    },
+    {
+      "category": "move_write",
+      "path": "kit/terminal_recovery.py",
+      "sha256": "070f404c8b4417ab49714ec8bb08ecfcbf8bf8a293b8a1d9f6753f67dca9ad20"
+    },
+    {
+      "category": "registry_write",
+      "path": "kit/terminal_session.py",
+      "sha256": "38b8924f41301ae024a2db7b6a5611411bd530fd64a93ea88fdb3aa44c84fcb0"
+    },
+    {
+      "category": "guard",
+      "path": "kit/verify_candidate.py",
+      "sha256": "1f4ed9ba1409342ff7bbbbc5f6726def2bd7e9bb32c2b01ab2ac055b6c9cdc98"
+    }
+  ],
+  "format": 1,
+  "limitations": [
+    "dynamic_execution_not_detected",
+    "imported_library_api_not_enumerated",
+    "no_security_or_environment_attestation"
+  ]
+}

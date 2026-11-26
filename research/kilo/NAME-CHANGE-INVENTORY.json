@@ -6047,6 +6047,14 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
+        "candidate_version": 1,
+        "new_brand": 1
+      },
+      "path": "research/kilo/MVP-READINESS-PLAN.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
         "candidate_version": 65,
         "donor_version": 3,
         "new_brand": 10,
@@ -6055,6 +6063,14 @@
         "project_path": 2
       },
       "path": "research/kilo/MVP-ROADMAP.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
+        "candidate_version": 1,
+        "new_brand": 1
+      },
+      "path": "research/kilo/MVP-TRUST-AND-FAILURE-MAP.md"
     },
     {
       "area": "kilo_docs_and_history",
@@ -8191,7 +8207,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2117,
+  "scanned_files": 2122,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
