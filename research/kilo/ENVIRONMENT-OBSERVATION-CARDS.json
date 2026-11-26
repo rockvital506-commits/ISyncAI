@@ -1,0 +1,86 @@
+{
+  "cards": [
+    {
+      "budget": "not_measured",
+      "client_version": null,
+      "context_window_tokens": null,
+      "delivery_mechanism": null,
+      "environment": "arena",
+      "format": 1,
+      "independent_observer": "not_verified",
+      "injected_tokens": null,
+      "interventions": null,
+      "material_sha256": null,
+      "mode": null,
+      "model": null,
+      "negative_control": null,
+      "note": "template_only_no_evidence",
+      "positive_control": null,
+      "recorded_action": null,
+      "run_count": 0,
+      "settings": null,
+      "status": {
+        "applied": "not_run",
+        "created": "not_run",
+        "detected": "not_run",
+        "read": "not_run"
+      },
+      "token_measurement_source": null
+    },
+    {
+      "budget": "not_measured",
+      "client_version": null,
+      "context_window_tokens": null,
+      "delivery_mechanism": null,
+      "environment": "kilo",
+      "format": 1,
+      "independent_observer": "not_verified",
+      "injected_tokens": null,
+      "interventions": null,
+      "material_sha256": null,
+      "mode": null,
+      "model": null,
+      "negative_control": null,
+      "note": "template_only_no_evidence",
+      "positive_control": null,
+      "recorded_action": null,
+      "run_count": 0,
+      "settings": null,
+      "status": {
+        "applied": "not_run",
+        "created": "not_run",
+        "detected": "not_run",
+        "read": "not_run"
+      },
+      "token_measurement_source": null
+    },
+    {
+      "budget": "not_measured",
+      "client_version": null,
+      "context_window_tokens": null,
+      "delivery_mechanism": null,
+      "environment": "copilot",
+      "format": 1,
+      "independent_observer": "not_verified",
+      "injected_tokens": null,
+      "interventions": null,
+      "material_sha256": null,
+      "mode": null,
+      "model": null,
+      "negative_control": null,
+      "note": "template_only_no_evidence",
+      "positive_control": null,
+      "recorded_action": null,
+      "run_count": 0,
+      "settings": null,
+      "status": {
+        "applied": "not_run",
+        "created": "not_run",
+        "detected": "not_run",
+        "read": "not_run"
+      },
+      "token_measurement_source": null
+    }
+  ],
+  "format": 1
+}
