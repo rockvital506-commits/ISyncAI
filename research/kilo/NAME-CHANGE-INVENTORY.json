@@ -5607,6 +5607,15 @@
     {
       "area": "audit",
       "hits": {
+        "kit_import": 3,
+        "new_brand": 2,
+        "new_project_path": 2
+      },
+      "path": "research/audit/test_installed_profile_portability_study.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
         "kit_import": 5
       },
       "path": "research/audit/test_interprocess_read_lock.py"
@@ -8373,7 +8382,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2165,
+  "scanned_files": 2166,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
