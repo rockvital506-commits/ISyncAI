@@ -56,6 +56,16 @@ class InstallSession:
             self._inner.cancel()
         finally: self._lock.release()
 
+    def inspect(self, *, stage_name):
+        """Наблюдение указанных имён, без удаления или вывода об успехе установки."""
+        if not self._lock.acquire(False): raise InstallError('session_busy')
+        try:
+            self._pending = None
+            try: result = self._inner.inspect(stage_name=stage_name)
+            except publish.PublishError as error: raise InstallError(str(error)) from error
+            return dict(result, installation='not_proved', recovery='not_performed')
+        finally: self._lock.release()
+
     def plan(self):
         if not self._lock.acquire(False): raise InstallError('session_busy')
         try:

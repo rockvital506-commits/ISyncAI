@@ -87,6 +87,12 @@ class InstallTests(unittest.TestCase):
                 self.s.apply(p,confirmed_ticket=p['ticket'])
         stage=self.root/p['publication_plan']['stage_name']
         self.assertTrue(stage.is_dir());self.assertFalse(self.dest.exists())
+        observation=self.s.inspect(stage_name=stage.name)
+        self.assertEqual(observation['outcome'],'observation_only')
+        self.assertEqual(observation['destination_state'],'absent')
+        self.assertEqual(observation['installation'],'not_proved')
+        self.assertEqual(observation['recovery'],'not_performed')
+        self.assertTrue(stage.is_dir())
         with self.assertRaisesRegex(install.InstallError,'ticket_unknown'):
             self.s.apply(p,confirmed_ticket=p['ticket'])
 
