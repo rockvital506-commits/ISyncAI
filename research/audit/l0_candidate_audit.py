@@ -39,7 +39,7 @@ def check(proposal, roadmap, manifest, system):
     except (proposal_audit.AuditError, schema_v2.SchemaError, ValueError, TypeError, KeyError, RecursionError) as error:
         raise CandidateError('invalid') from error
     return {'outcome':'local_candidate_shape_pass','entries':10,'active_entries':10,
-            'system_sha256':hashlib.sha256(system).hexdigest(),'semantic_review':'author_only',
+            'system_sha256':hashlib.sha256(system).hexdigest(),'semantic_review':'not_run',
             'independent_origin':'not_verified','independent_review':'not_run'}
 
 

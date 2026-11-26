@@ -1,5 +1,7 @@
 # Карточки подготовки наблюдений Arena / Kilo / Copilot `.84a`
 
+> **Актуализация v4.0.0:** этот документ сохраняет исторический срез. Решения владельца и текущие критерии — [ROADMAP.md](ROADMAP.md) и [ROADMAP-ADAPTATION-DECISIONS.md](ROADMAP-ADAPTATION-DECISIONS.md): Copilot вне MVP; автоматическое доверие и ключи отложены; перенос и backup различаются. Старые статусы и утверждения ниже не переопределяют новые решения.
+
 **Это пустые шаблоны, не результаты и не доказательство интеграции.** Машинные карточки:
 [`ENVIRONMENT-OBSERVATION-CARDS.json`](ENVIRONMENT-OBSERVATION-CARDS.json). По всем средам
 `created`, `detected`, `read`, `applied` = `not_run`, запусков 0; факт локального исполнения

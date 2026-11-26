@@ -25,18 +25,18 @@ def validate(text):
     required = {
         'authority': ('единый действующий роадмап', 'перед началом', 'после каждой итерации',
                       'SHA-256', 'P10', 'не являются действующей целью', 'исторические файлы'),
-        'goal': ('пользователя, проекта и AI-агентов', 'L0/L1/L2', '0.1.36', 'ISAI', 'DomainAgentKit', 'не требует их установки',
+        'goal': ('автоматическая синхронизация L1 не требуется', 'Windows 11', 'пользователя, проекта и AI-агентов', 'L0/L1/L2', '0.1.36', 'ISAI', 'DomainAgentKit', 'не требует их установки',
                  'Совместимость со старым', 'не требуются'),
-        'move': ('L0 — системная область', 'L1 — переносимая область', 'L2 — проектная область',
+        'move': ('новая L2 пуста', 'не в источнике', 'L2→L1', 'L0 — системная область', 'L1 — переносимая область', 'L2 — проектная область',
                  'A1:', 'A2:', 'A3:', 'A4:', 'с удалением исходной записи', 'нельзя удалять источник',
                  'рабочий перенос не объявляется реализованным', 'отдельное подтверждение'),
-        'contexts': ('**Проектная задача.**', 'не разработка Kit', 'минимум инструкций Kit',
+        'contexts': ('ручного аудита конкретный срез', 'Автоматизацию подтверждения доверия', '**Проектная задача.**', 'не разработка Kit', 'минимум инструкций Kit',
                      '**Операция Kit.**', 'системные контракты', 'нужны самой операции'),
         'route': ('чистая рабочая установка `not run`', 'полный цикл и перенос `not run`',
                   'действие агентом `not run`'),
         'test': ('новым контекстом', 'не связаны с разработкой', 'Второй проект',
                  'Контроль без выбранной сущности', '`pass`/`fail`/`not run`', 'обычным unit-тестом'),
-        'gates': ('**G1:**', '**G2:**', '**G3:**', '**G4:**', '**G5:**', '**G6:**',
+        'gates': ('Arena и нативный Kilo Code на Windows 11', 'Copilot —', '**G1:**', '**G2:**', '**G3:**', '**G4:**', '**G5:**', '**G6:**',
                   'Миграция донора не требуется', 'пока обязательные G1–G6 не пройдены'),
         'bounds': ('не отключать sandbox', 'чужие проекты', '`MVP-ROADMAP.md`', 'ROADMAP-IMPLEMENTATION.md'),
     }
@@ -72,7 +72,7 @@ class RoadmapTests(unittest.TestCase):
         cls.text = ROADMAP.read_text(encoding='utf-8')
 
     def test_explicit_anchors(self):
-        self.assertIn('**Версия роадмапа:** `3.1.0`', self.text[:500])
+        self.assertIn('**Версия роадмапа:** `4.0.0`', self.text[:500])
         self.assertEqual(validate(self.text), [])
 
     def test_missing_or_changed_essential_anchor_detected(self):
@@ -92,6 +92,15 @@ class RoadmapTests(unittest.TestCase):
             with self.subTest(example=example):
                 self.assertIn('known_contradiction:' + str(i), validate(self.text + '\n' + example))
 
+    def test_owner_decision_anchors_fail_closed(self):
+        for marker in ('новая L2 пуста', 'не в источнике', 'L2→L1',
+                       'автоматическая синхронизация L1 не требуется',
+                       'ручного аудита конкретный срез', 'Автоматизацию подтверждения доверия',
+                       'Arena и нативный Kilo Code на Windows 11', 'Copilot —'):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, self.text)
+                self.assertTrue(validate(self.text.replace(marker, '[удалено]')))
+
     def test_reminder_and_deferral_are_explicit(self):
         self.assertIn('напомнить владельцу предоставить', self.text)
         self.assertIn('отдельного агента с чистым контекстом в Arena', self.text)
@@ -109,7 +118,7 @@ class RoadmapTests(unittest.TestCase):
             with self.subTest(path=rel):
                 content = (ROOT / rel).read_text(encoding='utf-8')
                 self.assertIn('ROADMAP.md', content[:700])
-                self.assertIn('3.1.0', content[:700])
+                self.assertIn('4.0.0', content[:700])
 
     def test_historical_strategy_and_roadmap_bytes_unchanged(self):
         for name, expected in [('research/STRATEGY.md','0360a91a9797ee69c63837cae20bf484332e999514e2bfa567cf56b2ce99b248'),

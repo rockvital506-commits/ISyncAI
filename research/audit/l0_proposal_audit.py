@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from kit.base import schema_v2
 
-ROADMAP_SHA = '7712160f17edda9db74dbf9045f0662c0d7cee90c788e389a0ab68bb1b286e94'
+ROADMAP_SHA = 'ca7dc58c79cf64423d0a1e1c4fd9a309591a9e1c528c84a615e053fb64ed805f'
 # Явный перечень именно текущей исследовательской гипотезы; не системная политика.
 ANCHORS = {
     'SYS-CONTRACT': ('contract', None, 'both', 'системные контракты, механизмы и правила операций самого Kit;'),
@@ -34,7 +34,7 @@ def check(proposal, roadmap_bytes, manifest_bytes):
     if (type(proposal) is not dict or set(proposal) != {'proposal_format', 'status', 'roadmap_version',
             'roadmap_sha256', 'candidate_manifest_sha256', 'registry', 'trace'}
             or type(proposal['proposal_format']) is not int or proposal['proposal_format'] != 1
-            or proposal['status'] != 'draft_not_active' or proposal['roadmap_version'] != '3.1.0'):
+            or proposal['status'] != 'draft_not_active' or proposal['roadmap_version'] != '4.0.0'):
         raise AuditError('proposal_shape')
     if (hashlib.sha256(roadmap_bytes).hexdigest() != ROADMAP_SHA
             or proposal['roadmap_sha256'] != ROADMAP_SHA

@@ -10,7 +10,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[2]
 PIN='8401cefcf5163c9f576ca0a34a5176ace945a6920b8f5967692b2df792dd1292'
-ROADMAP_PIN='7712160f17edda9db74dbf9045f0662c0d7cee90c788e389a0ab68bb1b286e94'
+ROADMAP_PIN='ca7dc58c79cf64423d0a1e1c4fd9a309591a9e1c528c84a615e053fb64ed805f'
 RAN=re.compile(r'Ran (\d+) tests? in ')
 
 

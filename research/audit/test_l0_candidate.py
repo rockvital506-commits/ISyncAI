@@ -31,7 +31,7 @@ class CandidateL0Tests(unittest.TestCase):
         result=self.check()
         self.assertEqual((result['entries'],result['active_entries']),(10,10))
         self.assertEqual((result['semantic_review'],result['independent_review'],result['independent_origin']),
-                         ('author_only','not_run','not_verified'))
+                         ('not_run','not_run','not_verified'))
         self.assertTrue(all(e['state']=='draft' for e in self.proposal['registry']['entries']))
         self.assertTrue(all(e['state']=='active' for e in schema_v2.parse_json(self.system)['entries']))
 

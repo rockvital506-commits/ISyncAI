@@ -1,8 +1,8 @@
 {
   "proposal_format": 1,
   "status": "draft_not_active",
-  "roadmap_version": "3.1.0",
-  "roadmap_sha256": "7712160f17edda9db74dbf9045f0662c0d7cee90c788e389a0ab68bb1b286e94",
+  "roadmap_version": "4.0.0",
+  "roadmap_sha256": "ca7dc58c79cf64423d0a1e1c4fd9a309591a9e1c528c84a615e053fb64ed805f",
   "candidate_manifest_sha256": "8401cefcf5163c9f576ca0a34a5176ace945a6920b8f5967692b2df792dd1292",
   "registry": {
     "schema_version": 2,

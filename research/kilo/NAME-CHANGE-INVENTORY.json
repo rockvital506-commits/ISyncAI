@@ -6223,6 +6223,13 @@
     {
       "area": "kilo_docs_and_history",
       "hits": {
+        "new_brand": 1
+      },
+      "path": "research/kilo/MVP-READINESS-REASSESSMENT.md"
+    },
+    {
+      "area": "kilo_docs_and_history",
+      "hits": {
         "candidate_version": 65,
         "donor_version": 3,
         "new_brand": 10,
@@ -8389,7 +8396,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2174,
+  "scanned_files": 2176,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
