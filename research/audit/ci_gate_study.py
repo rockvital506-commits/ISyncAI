@@ -2,6 +2,7 @@
 """Локальная/CI проверка кандидата: checkout и Python предполагаются доверенными."""
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -31,6 +32,12 @@ def _test_status(stdout,stderr):
     if len(matches)!=1 or int(matches[0])<1 or 'skipped=' in combined or 'OK (skipped' in combined:
         raise GateError('tests_missing_or_skipped')
     return int(matches[0])
+
+
+def _annotation(message):
+    """Escape untrusted line breaks and percent signs in a GitHub workflow command."""
+    text=str(message)[-5000:]
+    return '::error::'+text.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
 
 
 def main():
@@ -66,6 +73,7 @@ def main():
         return 0
     except (GateError,OSError,UnicodeError,ValueError) as error:
         print(json.dumps({'outcome':'gate_failed','reason':str(error)},ensure_ascii=False),file=sys.stderr)
+        if os.environ.get('GITHUB_ACTIONS')=='true':print(_annotation(error),flush=True)
         return 1
 
 
