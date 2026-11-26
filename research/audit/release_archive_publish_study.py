@@ -4,14 +4,16 @@ import copy
 import hashlib
 import os
 from pathlib import Path
+import re
 import secrets
 import threading
 
 import release_archive_study as archive
-from kit import atomic_init as atomic, init_workspace as init
+from kit import atomic_init as atomic, atomic_init_inspect as observer, init_workspace as init
 from kit.init_workspace import InitializationError
 
 ROOT=Path(__file__).resolve().parents[2]
+STAGE=re.compile(r'\.domain-release-stage-[0-9a-f]{32}\Z')
 
 
 class PublishError(ValueError):
@@ -36,6 +38,42 @@ class PublishSession:
     def cancel(self):
         if not self.lock.acquire(False):raise PublishError('session_busy')
         try:self.pending=None
+        finally:self.lock.release()
+
+    def inspect(self, *, stage_name):
+        """Наблюдение двух имён, без восстановления, удаления и гарантии атомарности."""
+        if not self.lock.acquire(False):raise PublishError('session_busy')
+        try:
+            self.pending=None
+            dest=self.destination
+            if (type(stage_name) is not str or STAGE.fullmatch(stage_name) is None or
+                    not dest.is_absolute() or '..' in dest.parts or not dest.name or stage_name==dest.name or
+                    dest==ROOT or ROOT in dest.parents or dest in ROOT.parents):
+                raise PublishError('inspection_invalid')
+            if not init._supported() or os.listdir not in os.supports_fd or not hasattr(os,'O_NONBLOCK'):
+                raise PublishError('inspection_unavailable')
+            parent=None
+            try:
+                report,rows=self._capture();files=dict(rows)
+                parent,identity=init._open_parent(dest.parent)
+                uid,gid=os.geteuid(),os.getegid()
+                target=observer._observe(parent,dest.name,files,uid,gid)
+                stage=observer._observe(parent,stage_name,files,uid,gid)
+                check,latest=init._open_parent(dest.parent)
+                try:
+                    if identity!=latest:raise OSError('parent changed')
+                finally:os.close(check)
+                return {'outcome':'observation_only','destination':str(dest),'stage_name':stage_name,
+                        'destination_state':target,'stage_state':stage,'verification':report,
+                        'origin':'not_verified','authorization':'not_checked','completion':'not_verified',
+                        'durability':'not_verified','recovery':'not_performed','snapshot':'not_atomic'}
+            except PublishError:raise
+            except (InitializationError,OSError,ValueError,TypeError,AttributeError,NotImplementedError) as error:
+                raise PublishError('inspection_unavailable') from error
+            finally:
+                if parent is not None:
+                    try:os.close(parent)
+                    except OSError as error:raise PublishError('inspection_unavailable') from error
         finally:self.lock.release()
 
     def plan(self):

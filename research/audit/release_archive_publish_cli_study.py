@@ -56,6 +56,12 @@ def main():
                         'provider_sha256':args.openssl_pin,'input_observation':'captured_once_at_start',
                         'policy_origin':'assumed_not_verified','installation':'not_performed'}
                 pending=(init._canonical(result),inner,result['ticket'])
+            elif (type(request) is dict and set(request)=={'type','stage_name'} and request['type']=='inspect'
+                  and type(request['stage_name']) is str):
+                pending=None
+                result=session.inspect(stage_name=request['stage_name'])
+                result.update(policy_sha256=args.policy_pin,provider_sha256=args.openssl_pin,
+                              input_observation='captured_once_at_start')
             elif request=={'type':'cancel'}:
                 pending=None;session.cancel();result={'outcome':'cancelled'}
             elif (type(request) is dict and set(request)=={'type','plan','confirmed_ticket'} and request['type']=='apply'

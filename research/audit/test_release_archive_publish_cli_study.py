@@ -107,6 +107,16 @@ class PublishCliTests(unittest.TestCase):
         p=self.send(proc,{'type':'plan'});self.assertEqual(self.send(proc,{'type':'unexpected'})['code'],'invalid_request')
         self.assertEqual(self.send(proc,{'type':'apply','plan':p,'confirmed_ticket':p['ticket']})['code'],'ticket_unknown')
         self.assertFalse(self.dest.exists())
+    def test_inspect_saved_name_revokes_previous_plan_without_writing(self):
+        proc=self.start(self.args());p=self.send(proc,{'type':'plan'});name=p['publication_plan']['stage_name']
+        before=audit.tree_digest(self.root)
+        result=self.send(proc,{'type':'inspect','stage_name':name})
+        self.assertEqual(result['outcome'],'observation_only',result)
+        self.assertEqual((result['destination_state'],result['stage_state']),('absent','absent'))
+        self.assertEqual(result['completion'],'not_verified');self.assertEqual(result['input_observation'],'captured_once_at_start')
+        self.assertEqual(before,audit.tree_digest(self.root))
+        self.assertEqual(self.send(proc,{'type':'apply','plan':p,'confirmed_ticket':p['ticket']})['code'],'ticket_unknown')
+        self.assertEqual(self.send(proc,{'type':'inspect','stage_name':'../x'})['code'],'inspection_invalid')
     def test_wrong_pin_or_tampered_archive_fail_without_publication(self):
         cmd=self.args();cmd[cmd.index('--policy-pin')+1]='0'*64
         result=subprocess.run(cmd,input='',capture_output=True,text=True,timeout=20)
