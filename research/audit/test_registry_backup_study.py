@@ -4,9 +4,11 @@ import base64
 import copy
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 import unittest
+from unittest import mock
 
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT),str(ROOT/'research/audit')]
@@ -62,6 +64,28 @@ class BackupTests(unittest.TestCase):
         report,data=backup.inspect(backup._canonical(obj),system_pin=self.fx.pin)
         self.assertEqual(report['authenticity'],'not_verified')
         self.assertEqual(data['L1'],raw)
+
+    def test_bounded_source_symlink_and_busy_refused(self):
+        original=self.fx.a1.read_bytes()
+        with self.fx.a1.open('wb') as f:f.truncate(backup.MAX_ENTRY+1)
+        with self.assertRaisesRegex(backup.BackupError,'source_unavailable:unsafe_or_changed'):self.capture()
+        self.fx.a1.unlink();self.fx.a1.symlink_to(self.fx.b1)
+        with self.assertRaisesRegex(backup.BackupError,'source_unavailable:unsafe_or_changed'):self.capture()
+        self.fx.a1.unlink();self.fx.a1.write_bytes(original)
+        fd=os.open(self.fx.a.workspace,os.O_RDONLY|os.O_DIRECTORY)
+        try:
+            store.fcntl.flock(fd,store.fcntl.LOCK_EX|store.fcntl.LOCK_NB)
+            with self.assertRaisesRegex(backup.BackupError,'source_unavailable:read_busy'):self.capture()
+        finally:os.close(fd)
+
+    def test_source_changed_during_capture_is_refused(self):
+        original=backup.probe._read;calls=[]
+        def changing(parent,name,limit):
+            result=original(parent,name,limit);calls.append(name)
+            if len(calls)==2:self.fx.a1.write_bytes(self.fx.a1.read_bytes()+b' ')
+            return result
+        with mock.patch.object(backup.probe,'_read',side_effect=changing):
+            with self.assertRaisesRegex(backup.BackupError,'source_unavailable:unsafe_or_changed'):self.capture()
 
     def test_pending_move_and_copy_refused(self):
         marker=self.fx.a.workspace/'.domain-agent-kit/.move-pending';marker.write_bytes(b'pending')

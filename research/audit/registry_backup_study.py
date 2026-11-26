@@ -2,9 +2,14 @@
 """Закрытый in-memory снимок трёх реестров, не готовая резервная копия."""
 import base64
 import binascii
+import errno
 import hashlib
 import json
+import os
+from pathlib import Path
+import stat
 
+from kit import init_workspace as init, move_recovery_inspect as probe
 from kit.base import registry_journal, registry_policy, registry_store, schema_v2
 from kit.base.registry_policy import StoreError
 from kit.verify_candidate import HEX
@@ -55,12 +60,72 @@ def _check_data(profile_root, system_pin, data):
     return documents
 
 
-def capture(layout, *, system_pin):
-    """Только чтение, штатный cooperative SH flock во время загрузки."""
-    if not isinstance(layout,registry_store.Layout):raise BackupError('layout_invalid')
-    try:loaded=registry_store._load(layout)
+def _bounded_capture(layout):
+    """Открытые dirfd и ограниченные чтения; не защита от произвольного писателя."""
+    if (not init._supported() or registry_store.fcntl is None or not hasattr(os,'O_NONBLOCK')
+            or os.listdir not in os.supports_fd):raise BackupError('source_unavailable:platform')
+    try:
+        workspace=Path(layout.workspace)
+        if not workspace.is_absolute() or '..' in workspace.parts:raise BackupError('layout_invalid')
+        roots=registry_store._declared_roots(layout)
     except StoreError as error:raise BackupError('source_unavailable:'+error.code) from error
-    data=dict(loaded.raw)
+    except (ValueError,TypeError) as error:raise BackupError('layout_invalid') from error
+    opened=[];bindings=[]
+    def child(parent,name):
+        fd=probe._directory(parent,name);opened.append(fd);bindings.append((parent,name,fd));return fd
+    def barriers(fds):
+        registry_store._refuse_profile_copy_stages_fd(fds['L1'])
+        try:os.stat('.move-pending',dir_fd=fds['L2'],follow_symlinks=False)
+        except FileNotFoundError:return
+        raise BackupError('source_unavailable:move_pending')
+    try:
+        root,identity=init._open_parent(workspace);opened.append(root)
+        try:registry_store.fcntl.flock(root,registry_store.fcntl.LOCK_SH|registry_store.fcntl.LOCK_NB)
+        except OSError as error:
+            if error.errno in (errno.EAGAIN,errno.EACCES):raise BackupError('source_unavailable:read_busy') from error
+            raise
+        fds={}
+        for area,path in roots.items():
+            fd=root
+            for component in path.split('/'):fd=child(fd,component)
+            fds[area]=fd
+        ids=[(os.fstat(fd).st_dev,os.fstat(fd).st_ino) for fd in fds.values()]
+        if len(set(ids))!=3:raise OSError('root alias')
+        barriers(fds)
+        registry_dirs={}
+        for area in AREAS:
+            fd=fds[area];components=registry_store._SUFFIX[area].split('/')
+            for component in components[:-1]:fd=child(fd,component)
+            registry_dirs[area]=(fd,components[-1])
+        data={area:probe._read(fd,name,MAX_ENTRY) for area,(fd,name) in registry_dirs.items()}
+        for area,(fd,name) in registry_dirs.items():
+            if probe._read(fd,name,MAX_ENTRY)!=data[area]:raise OSError('registry changed')
+        barriers(fds)
+        for parent,name,fd in bindings:
+            current=os.stat(name,dir_fd=parent,follow_symlinks=False);held=os.fstat(fd)
+            if not stat.S_ISDIR(current.st_mode) or (current.st_dev,current.st_ino)!=(held.st_dev,held.st_ino):
+                raise OSError('directory changed')
+        check,latest=init._open_parent(workspace)
+        try:
+            if identity!=latest:raise OSError('workspace changed')
+        finally:os.close(check)
+        return workspace,data
+    except BackupError:raise
+    except StoreError as error:raise BackupError('source_unavailable:'+error.code) from error
+    except (init.InitializationError,OSError,ValueError,TypeError,AttributeError,NotImplementedError) as error:
+        raise BackupError('source_unavailable:unsafe_or_changed') from error
+    finally:
+        failed=False
+        for fd in reversed(opened):
+            try:os.close(fd)
+            except OSError:failed=True
+        if failed:raise BackupError('source_unavailable:close_failed')
+
+
+def capture(layout, *, system_pin):
+    """Только чтение, cooperative SH flock во время ограниченной загрузки."""
+    if not isinstance(layout,registry_store.Layout):raise BackupError('layout_invalid')
+    workspace,data=_bounded_capture(layout)
     _check_data(layout.profile_root,system_pin,data)
     doc={'format':1,'product':'DomainAgentKit','profile_root':layout.profile_root,
          'system_sha256':system_pin,
@@ -68,7 +133,7 @@ def capture(layout, *, system_pin):
                              'base64':base64.b64encode(data[area]).decode('ascii')} for area in AREAS}}
     wire=_canonical(doc)
     if len(wire)>MAX_WIRE:raise BackupError('snapshot_too_large')
-    return wire, {'outcome':'memory_snapshot_captured','source':str(loaded.workspace),
+    return wire, {'outcome':'memory_snapshot_captured','source':str(workspace),
                   'file_sha256':_hash(wire),'scope':'three_registries_and_embedded_histories_only',
                   'concurrency':'cooperative_lock_during_read_only','origin':'not_verified',
                   'authenticity':'not_verified','backup_file':'not_written','restore':'not_performed'}

@@ -5305,7 +5305,14 @@
     {
       "area": "audit",
       "hits": {
-        "kit_import": 3,
+        "kit_import": 2
+      },
+      "path": "research/audit/registry_backup_publish_study.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 4,
         "new_brand": 2
       },
       "path": "research/audit/registry_backup_study.py"
@@ -5897,6 +5904,13 @@
         "new_project_path": 2
       },
       "path": "research/audit/test_project_candidates.py"
+    },
+    {
+      "area": "audit",
+      "hits": {
+        "kit_import": 1
+      },
+      "path": "research/audit/test_registry_backup_publish_study.py"
     },
     {
       "area": "audit",
@@ -8296,7 +8310,7 @@
       "path": "research/strategy/pre-104/check_preparation.py"
     }
   ],
-  "scanned_files": 2151,
+  "scanned_files": 2153,
   "scope": "tracked-allowed-text-plus-explicit-working-files",
   "skipped_files": []
 }
