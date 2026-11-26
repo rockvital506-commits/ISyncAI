@@ -78,11 +78,9 @@ class ReleaseArchiveCliTests(unittest.TestCase):
         raw=b'{"keys":{},"keys":{}}';self.policy.write_bytes(raw)
         self.error('policy_invalid',self.inspect,policy_pin=hashlib.sha256(raw).hexdigest())
     def test_relocated_trusted_tools_and_different_cwd(self):
-        trusted=self.root/'trusted';audit=trusted/'research/audit';kit=trusted/'kit';audit.mkdir(parents=True);kit.mkdir()
-        for name in ('release_archive_cli_study.py','release_archive_study.py','release_policy_study.py'):
+        audit=self.root/'standalone-verifier';audit.mkdir()
+        for name in ('release_archive_cli_study.py','release_archive_study.py','release_policy_study.py','release_ed25519_study.py'):
             shutil.copyfile(ROOT/'research/audit'/name,audit/name)
-        for name in ('openssl_ed25519.py','verify_candidate.py'):
-            shutil.copyfile(ROOT/'kit'/name,kit/name)
         fake=self.root/'kit';fake.mkdir()
         (fake/'__init__.py').write_text("from pathlib import Path; Path('untrusted-import-ran').write_text('bad')\n")
         cmd=[sys.executable,'-I','-S','-B',str(audit/'release_archive_cli_study.py'),

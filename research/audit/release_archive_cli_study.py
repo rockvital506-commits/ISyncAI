@@ -11,11 +11,10 @@ import stat
 import sys
 
 HERE=Path(__file__).resolve().parent
-ROOT=HERE.parents[1]
-sys.path[:0]=[str(HERE),str(ROOT)]
+sys.path.insert(0,str(HERE))
 import release_archive_study as archive
 import release_policy_study as policy_study
-from kit import openssl_ed25519 as openssl
+import release_ed25519_study as openssl
 
 HEX=policy_study.HEX
 SIGNATURE=re.compile(r'[0-9a-f]{128}\Z')
