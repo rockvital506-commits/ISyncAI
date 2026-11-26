@@ -10,6 +10,7 @@ import os
 import secrets
 import stat
 import sys
+import threading
 from pathlib import Path
 
 MAX_TOTAL = 16 * 1024 * 1024
@@ -217,18 +218,103 @@ class ExportSession:
                 'files': len(data), 'total_bytes': sum(map(len, data.values()))}
 
 
+class SignedExportSession:
+    """Подпись закрепляет pin для отдельного экспорта; доверие к ключу вне этого API."""
+    def __init__(self, source, destination, *, public_key, trusted_key_id, signature,
+                 openssl_executable, openssl_pin, loader, verifier, trust):
+        self.source, self.destination = Path(source), Path(destination)
+        self.public_key, self.trusted_key_id, self.signature = public_key, trusted_key_id, signature
+        self.openssl_executable, self.openssl_pin = openssl_executable, openssl_pin
+        self.loader, self.verifier, self.trust = loader, verifier, trust
+        self.pending = None
+        self.lock = threading.Lock()
+
+    def _inputs(self):
+        return (self.source,self.destination,self.public_key,self.trusted_key_id,self.signature,
+                self.openssl_executable,self.openssl_pin,self.loader,self.verifier,self.trust)
+
+    def _verify(self):
+        try:
+            return self.trust.verify_signed_source(self.source,public_key=self.public_key,
+                    trusted_key_id=self.trusted_key_id,signature=self.signature,
+                    openssl_executable=self.openssl_executable,openssl_pin=self.openssl_pin)
+        except self.trust.SourceTrustError as error:
+            raise ExportError('signed_source_unverified') from error
+
+    def cancel(self):
+        if not self.lock.acquire(False):raise ExportError('session_busy')
+        try:self.pending=None
+        finally:self.lock.release()
+
+    def plan(self):
+        if not self.lock.acquire(False):raise ExportError('session_busy')
+        try:
+            self.pending=None
+            inputs=self._inputs();proof=self._verify()
+            export=ExportSession(self.source,self.destination,proof['manifest_sha256'],self.loader,self.verifier)
+            inner=export.plan()
+            # Сводим доказательство и снимок к одному точно показанному билету.
+            if self._inputs()!=inputs:raise ExportError('stale_plan')
+            result={'outcome':'planned','authentication':proof,'export_plan':inner,
+                    'signature_sha256':hashlib.sha256(self.signature).hexdigest(),
+                    'openssl_path':str(self.openssl_executable),'openssl_sha256':self.openssl_pin,
+                    'source_authentication':'under_explicit_key_and_provider',
+                    'key_distribution':'not_verified','installation':'not_performed',
+                    'ticket':inner['ticket']}
+            self.pending=(_canonical(result),inputs,proof,export,inner,result['ticket'])
+            return result
+        finally:self.lock.release()
+
+    def apply(self, plan, confirmed_ticket):
+        if not self.lock.acquire(False):raise ExportError('session_busy')
+        try:
+            if self.pending is None:raise ExportError('ticket_unknown')
+            saved,inputs,proof,export,inner,ticket=self.pending
+            if (type(confirmed_ticket) is not str or self.loader.HEX.fullmatch(confirmed_ticket) is None
+                    or not secrets.compare_digest(ticket,confirmed_ticket)):
+                raise ExportError('confirmation_required')
+            self.pending=None
+            try:
+                if type(plan) is not dict or _canonical(plan)!=saved:raise ExportError('plan_mismatch')
+                if self._inputs()!=inputs or self._verify()!=proof:raise ExportError('stale_plan')
+            except ExportError:raise
+            except (ValueError,TypeError,RecursionError,UnicodeError) as error:raise ExportError('plan_mismatch') from error
+            result=export.apply(inner,confirmed_ticket)
+            return dict(result,source_authentication='under_explicit_key_and_provider',
+                        key_distribution='not_verified',installation='not_performed')
+        finally:self.lock.release()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--destination', type=Path, required=True)
-    parser.add_argument('--manifest-pin', required=True)
+    parser.add_argument('--manifest-pin')
+    parser.add_argument('--public-key-hex'); parser.add_argument('--trusted-key-id')
+    parser.add_argument('--signature-hex'); parser.add_argument('--openssl', type=Path)
+    parser.add_argument('--openssl-pin')
     args = parser.parse_args()
+    signed = (args.public_key_hex,args.trusted_key_id,args.signature_hex,args.openssl,args.openssl_pin)
+    if not ((args.manifest_pin is not None and all(v is None for v in signed)) or
+            (args.manifest_pin is None and all(v is not None for v in signed))):
+        print('choose_exactly_one_trust_mode', file=sys.stderr);return 2
     if not (sys.flags.isolated and sys.flags.no_site and sys.dont_write_bytecode):
         print('isolated_python_required', file=sys.stderr)
         return 2
     try:
         loader = _trusted_loader()
-        session = ExportSession(args.source, args.destination, args.manifest_pin, loader, loader._trusted_verifier())
+        verifier = loader._trusted_verifier()
+        if args.manifest_pin is not None:
+            session = ExportSession(args.source, args.destination, args.manifest_pin, loader, verifier)
+        else:
+            # Вся соседняя копия kit — заранее доверенный инструмент, не source.
+            sys.path.insert(0,str(Path(__file__).resolve().parent.parent))
+            from kit import source_release_trust as trust
+            if trust._PUBLIC.fullmatch(args.public_key_hex) is None or trust._SIGNATURE.fullmatch(args.signature_hex) is None:
+                raise ValueError('invalid_signature_input')
+            session = SignedExportSession(args.source,args.destination,public_key=bytes.fromhex(args.public_key_hex),
+                    trusted_key_id=args.trusted_key_id,signature=bytes.fromhex(args.signature_hex),
+                    openssl_executable=args.openssl,openssl_pin=args.openssl_pin,loader=loader,verifier=verifier,trust=trust)
     except Exception:
         print('trusted_loader_unavailable', file=sys.stderr)
         return 2
@@ -250,7 +336,8 @@ def main():
                   and type(request['plan']) is dict and type(request['confirmed_ticket']) is str):
                 result = session.apply(request['plan'], request['confirmed_ticket'])
             elif request == {'type': 'cancel'}:
-                session.pending = None
+                if isinstance(session,SignedExportSession):session.cancel()
+                else:session.pending = None
                 result = {'outcome': 'cancelled'}
             else:
                 raise ValueError('request')

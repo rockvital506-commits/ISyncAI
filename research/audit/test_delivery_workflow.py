@@ -78,10 +78,13 @@ class DeliveryWorkflowTests(unittest.TestCase):
         exported = self.root/'exported-candidate'
         export = self.start([sys.executable, '-I', '-S', '-B', str(ROOT/'kit/snapshot_export.py'),
                              '--source', str(self.fixture.ctx.candidate), '--destination', str(exported),
-                             '--manifest-pin', signed['manifest_sha256']])
+                             '--public-key-hex', self.fixture.public.hex(), '--trusted-key-id', self.fixture.key_id,
+                             '--signature-hex', self.fixture.sign().hex(), '--openssl', str(signing.OPENSSL),
+                             '--openssl-pin', self.fixture.binary_pin])
         plan = self.send(export, {'type':'plan'})
         self.assertEqual(plan['outcome'], 'planned', plan)
-        self.assertEqual(plan['publication']['sync'], 'files_then_directories_bottom_up')
+        self.assertEqual(plan['authentication']['manifest_sha256'], signed['manifest_sha256'])
+        self.assertEqual(plan['export_plan']['publication']['sync'], 'files_then_directories_bottom_up')
         self.assertFalse(exported.exists())
         denied = self.send(export, {'type':'apply','plan':plan,'confirmed_ticket':'wrong'})
         self.assertEqual(denied['code'], 'confirmation_required')
